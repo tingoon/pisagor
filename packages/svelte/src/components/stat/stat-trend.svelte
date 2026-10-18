@@ -6,7 +6,7 @@
   import { cn } from "@pisagor/utils";
   import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
@@ -25,7 +25,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const t = useMessageResolver();
+  const { m } = useLocale();
 </script>
 
 <Ark
@@ -47,6 +47,6 @@
   {:else if icon}
     {@render icon()}
   {/if}
-  <span class="sr-only">{t(`stat.trend.${trend}` as MessageKey)}</span>
+  <span class="sr-only">{m(`stat.trend.${trend}` as MessageKey)}</span>
   {@render children?.()}
 </Ark>

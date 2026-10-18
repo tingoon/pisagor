@@ -27,7 +27,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -272,11 +272,12 @@ export function SelectClearTrigger({
   className,
   ...rest
 }: SelectClearTriggerProps) {
+  const { m } = useLocale();
   const slots = useSelectSlots();
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={useMessage("select.clear")}
+      aria-label={m("select.clear")}
       {...rest}
       className={slots.clearTrigger({ className })}
     />

@@ -29,7 +29,7 @@ import {
   watch,
 } from "vue";
 import type { CSSProperties, PropType, VNodeChild } from "vue";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { Table } from "../table";
 import { type ClassValue, createContext } from "../../internal";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
@@ -352,7 +352,7 @@ export const DataGridColumnResizer = defineComponent({
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    const resizeLabel = useTranslation("dataGrid.resizeColumn");
+    const { m } = useLocale();
     return () => {
       const headerCell = useDataGridHeaderCellContext<RowData>();
       const { slots: variantSlots, table } =
@@ -370,7 +370,7 @@ export const DataGridColumnResizer = defineComponent({
 
       return h("div", {
         ...attrs,
-        "aria-label": resizeLabel,
+        "aria-label": m("dataGrid.resizeColumn"),
         "aria-orientation": "vertical",
         "aria-valuenow": header.column.getSize(),
         class: variantSlots.columnResizer({
@@ -743,7 +743,7 @@ export const DataGridEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const emptyText = useTranslation("dataGrid.empty");
+    const { m } = useLocale();
     return () => {
       const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
@@ -761,7 +761,7 @@ export const DataGridEmpty = defineComponent({
           h(
             Table.Cell as ArkPart,
             { class: variantSlots.empty(), colSpan: span },
-            () => slots.default?.() ?? emptyText,
+            () => slots.default?.() ?? m("dataGrid.empty"),
           ),
       );
     };

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import type { ClassValue } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
   type Props = {
     class?: ClassValue;
@@ -9,11 +9,11 @@
     [key: string]: unknown;
   };
   let { children, class: className, ...rest }: Props = $props();
-  const t = useMessageResolver();
+  const { m } = useLocale();
 </script>
 
 <ColorPickerPrimitive.EyeDropperTrigger
-  aria-label={t("colorPicker.eyeDropper")}
+  aria-label={m("colorPicker.eyeDropper")}
   {...rest}
   class={className}
 >

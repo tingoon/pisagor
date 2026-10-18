@@ -6,10 +6,10 @@
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useTagsInput } from "./tags-input.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
@@ -21,7 +21,7 @@
 </script>
 
 <TagsInputPrimitive.ClearTrigger
-  aria-label={t("tagsInput.clear")}
+  aria-label={m("tagsInput.clear")}
   {...rest}
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),

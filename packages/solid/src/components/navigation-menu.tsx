@@ -16,7 +16,7 @@ import {
 } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -81,12 +81,12 @@ const NavigationMenuNav: Component<NavigationMenuProps> = withProvider(
 );
 
 export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
+  const { m } = useLocale();
   const [openId, setOpenId] = createSignal<string | null>(null);
-  const label = useTranslation("navigationMenu.label");
 
   return (
     <NavigationMenuStateContext.Provider value={{ openId, setOpenId }}>
-      <NavigationMenuNav aria-label={label} {...props} />
+      <NavigationMenuNav aria-label={m("navigationMenu.label")} {...props} />
     </NavigationMenuStateContext.Provider>
   );
 }

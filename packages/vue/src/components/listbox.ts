@@ -22,7 +22,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { DropdownMenu } from "./dropdown-menu";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -386,6 +386,7 @@ export const ListboxEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useListboxSlots();
 
     return () => {
@@ -397,7 +398,7 @@ export const ListboxEmpty = defineComponent({
           ...attrs,
           class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
         },
-        slots.default?.() ?? useTranslation("listbox.empty"),
+        slots.default?.() ?? m("listbox.empty"),
       );
     };
   },

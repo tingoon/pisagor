@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { TimerActionTriggerProps } from "@ark-ui/svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import TimerActionTrigger from "./timer-action-trigger.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<TimerActionTriggerProps, "action">;
   let { children, ...rest }: Props = $props();
 </script>
 
-<TimerActionTrigger aria-label={t("timer.reset")} {...rest} action="reset">
+<TimerActionTrigger aria-label={m("timer.reset")} {...rest} action="reset">
   {@render children?.()}
 </TimerActionTrigger>

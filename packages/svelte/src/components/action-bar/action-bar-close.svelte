@@ -2,10 +2,10 @@
   import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useActionBar } from "./action-bar.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     onclick,
@@ -24,7 +24,7 @@
 </script>
 
 <Ark
-  aria-label={t("actionBar.close")}
+  aria-label={m("actionBar.close")}
   as="button"
   {...rest}
   class={ctx.slots.close({ class: cn(className) })}

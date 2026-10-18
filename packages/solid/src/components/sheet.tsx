@@ -22,7 +22,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -85,6 +85,7 @@ export function SheetPositioner(props: SheetPositionerProps): JSX.Element {
 }
 
 export function SheetContent(props: SheetContentProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "placement",
     "variant",
@@ -115,7 +116,7 @@ export function SheetContent(props: SheetContentProps): JSX.Element {
               asChild={(triggerProps) => (
                 <Button
                   {...triggerProps({ class: styles.slots.inline() })}
-                  aria-label={useTranslation("sheet.close")}
+                  aria-label={m("sheet.close")}
                   size="icon-sm"
                   variant="ghost"
                 >

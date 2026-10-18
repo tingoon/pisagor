@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { ComponentProps } from "svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { Table } from "../table";
   import { useDataGridContext } from "./data-grid.context";
 
@@ -11,7 +11,7 @@
 
   let { children, colSpan, class: className, ...rest }: Props = $props();
   const { slots, table } = useDataGridContext();
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const span = $derived(colSpan ?? table.getAllColumns().length);
 </script>
 
@@ -20,7 +20,7 @@
     {#if children}
       {@render children()}
     {:else}
-      {t("dataGrid.empty")}
+      {m("dataGrid.empty")}
     {/if}
   </Table.Cell>
 </Table.Row>

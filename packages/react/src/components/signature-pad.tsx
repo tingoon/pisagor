@@ -18,7 +18,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -124,6 +124,7 @@ const SignaturePadSegment = withContext(SignaturePadPrimitive.Segment, {
 });
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
+  const { m } = useLocale();
   const { slots } = useSignaturePad();
 
   return (
@@ -133,7 +134,7 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
       className={slots.clear({ className })}
     >
       <Button
-        aria-label={useMessage("signaturePad.clearSignature")}
+        aria-label={m("signaturePad.clearSignature")}
         size="icon-md"
         variant="ghost"
       >

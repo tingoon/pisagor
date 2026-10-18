@@ -15,7 +15,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -135,6 +135,7 @@ function FileInputLabel(props: FileInputLabelProps): JSX.Element {
 }
 
 export function FileInput(props: FileInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -205,13 +206,11 @@ export function FileInput(props: FileInputProps): JSX.Element {
           onClick={openPicker}
           type="button"
         >
-          {local.browseLabel ?? useTranslation("fileInput.browse")}
+          {m("fileInput.browse", local.browseLabel)}
         </InputGroupButton>
       </InputGroupAddon>
       <FileInputLabel onClick={local.disabled ? undefined : openPicker}>
-        {fileLabel() ??
-          local.placeholder ??
-          useTranslation("fileInput.placeholder")}
+        {fileLabel() ?? m("fileInput.placeholder", local.placeholder)}
       </FileInputLabel>
     </FileInputRoot>
   );

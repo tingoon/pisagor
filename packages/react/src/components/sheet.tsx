@@ -20,7 +20,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -93,7 +93,7 @@ export function SheetContent({
   className,
   ...rest
 }: SheetContentProps) {
-  const sheetCloseMessage = useMessage("sheet.close");
+  const { m } = useLocale();
   const { slots } = useSheet();
 
   return (
@@ -110,7 +110,7 @@ export function SheetContent({
           {!!showCloseButton && (
             <SheetCloseTrigger asChild>
               <Button
-                aria-label={sheetCloseMessage}
+                aria-label={m("sheet.close")}
                 className={slots.inline()}
                 size="icon-sm"
                 variant="ghost"

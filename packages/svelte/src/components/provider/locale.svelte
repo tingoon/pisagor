@@ -1,15 +1,31 @@
 <script lang="ts">
   import { LocaleProvider } from "@ark-ui/svelte";
+  import { type LocaleConfig, resolveLocale } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import { setLocaleConfig } from "./context";
-  import ProviderDir from "./dir.svelte";
+  import { createLocaleValue, setLocaleValue, useLocale } from "./context";
 
-  /** Override only the locale (and Ark-derived `dir`) for a subtree. */
-  let { children, locale }: { children?: Snippet; locale?: string } = $props();
+  /** Override the locale, direction and/or UI messages for a subtree. */
+  let {
+    children,
+    dir,
+    locale,
+    messages,
+  }: LocaleConfig & { children?: Snippet } = $props();
 
-  const config = setLocaleConfig({ locale });
+  const parentLocale = useLocale();
+  const resolved = $derived(
+    resolveLocale({ dir, locale, messages }, parentLocale),
+  );
+  const value = setLocaleValue(createLocaleValue(() => resolved));
 </script>
 
-<LocaleProvider locale={config.locale}>
-  <ProviderDir part="locale">{@render children?.()}</ProviderDir>
+<LocaleProvider locale={value.locale}>
+  <div
+    data-part="locale"
+    data-scope="provider"
+    dir={value.dir}
+    style="display: contents"
+  >
+    {@render children?.()}
+  </div>
 </LocaleProvider>

@@ -4,7 +4,7 @@ import { navbarRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -37,12 +37,13 @@ const NavbarNavBase: Component<NavbarNavProps> = withContext(ark.nav, {
 });
 
 export function NavbarNav(props: NavbarNavProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label"]);
 
   return (
     <NavbarNavBase
       {...rest}
-      aria-label={local["aria-label"] ?? useTranslation("navbar.label")}
+      aria-label={m("navbar.label", local["aria-label"])}
     />
   );
 }

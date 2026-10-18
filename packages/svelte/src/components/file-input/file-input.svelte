@@ -9,11 +9,11 @@
   import { cn } from "@pisagor/utils";
   import type { HTMLInputAttributes } from "svelte/elements";
   import { InputGroup } from "../input-group";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./file-input.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -38,10 +38,10 @@
     multiple,
     name,
     required,
-    browseLabel = t("fileInput.browse"),
+    browseLabel = m("fileInput.browse"),
     capture,
     id,
-    placeholder = t("fileInput.placeholder"),
+    placeholder = m("fileInput.placeholder"),
     onchange,
     onFilesChange,
     onValueChange,

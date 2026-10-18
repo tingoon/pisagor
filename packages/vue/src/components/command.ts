@@ -27,7 +27,7 @@ import { Combobox, type ComboboxRootProps } from "./combobox";
 import { Dialog, type DialogContentProps } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Slot recipe context
@@ -135,6 +135,7 @@ export const CommandDialogContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     provideCommandStyles({
@@ -165,7 +166,7 @@ export const CommandDialogContent = defineComponent({
               h(Dialog.Header as ArkPart, {
                 class: variantSlots.dialogHeader(),
                 description: props.description,
-                title: props.title ?? useTranslation("command.title"),
+                title: m("command.title", props.title),
               }),
               slots.default?.(),
             ],
@@ -358,6 +359,7 @@ export const CommandEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const styles = useCommand();
 
     return () => {
@@ -369,7 +371,7 @@ export const CommandEmpty = defineComponent({
           ...attrs,
           class: cn(variantSlots.empty(), props.class, attrs.class),
         },
-        slots.default?.() ?? useTranslation("command.empty"),
+        slots.default?.() ?? m("command.empty"),
       );
     };
   },
@@ -549,6 +551,7 @@ export const CommandShorthand = defineComponent({
     placeholder: { default: undefined, type: String },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const filterFn = useFilter({ sensitivity: "base" });
     const { collection, filter } = useListCollection<CommandShorthandItem>({
       filter: (itemText, query) => filterFn.value.contains(itemText, query),
@@ -557,7 +560,6 @@ export const CommandShorthand = defineComponent({
       itemToString: (item) => item.label,
       itemToValue: (item) => item.value,
     });
-    const placeholder = useTranslation("command.placeholder");
 
     return () => {
       const groups = collection.value.group();
@@ -575,7 +577,9 @@ export const CommandShorthand = defineComponent({
           },
         },
         () => [
-          h(CommandInput, { placeholder: props.placeholder ?? placeholder }),
+          h(CommandInput, {
+            placeholder: m("command.placeholder", props.placeholder),
+          }),
           h(CommandContent, null, () => [
             h(
               CommandEmpty,

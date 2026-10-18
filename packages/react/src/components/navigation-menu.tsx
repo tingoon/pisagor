@@ -5,7 +5,7 @@ import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
 import type { ComponentProps, FunctionComponent, KeyboardEvent } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -115,13 +115,14 @@ export function NavigationMenuRoot({
   "aria-label": ariaLabel,
   ...rest
 }: NavigationMenuProps) {
+  const { m } = useLocale();
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <NavigationMenuStateContext value={{ openId, setOpenId }}>
       <NavigationMenuNav
         {...rest}
-        aria-label={useMessage("navigationMenu.label", ariaLabel)}
+        aria-label={m("navigationMenu.label", ariaLabel)}
       />
     </NavigationMenuStateContext>
   );

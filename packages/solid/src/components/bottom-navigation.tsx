@@ -10,7 +10,7 @@ import {
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createContext, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -73,13 +73,13 @@ const BottomNavigationNav: Component<ComponentProps<typeof ark.nav>> =
 export function BottomNavigationRoot(
   props: BottomNavigationRootProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["value", "aria-label"]);
-  const label = useTranslation("bottomNavigation.label");
   return (
     <BottomNavigationValueContext.Provider value={() => local.value}>
       <BottomNavigationNav
         {...rest}
-        aria-label={local["aria-label"] ?? label}
+        aria-label={m("bottomNavigation.label", local["aria-label"])}
       />
     </BottomNavigationValueContext.Provider>
   );

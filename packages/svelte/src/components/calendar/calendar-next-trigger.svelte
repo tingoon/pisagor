@@ -6,10 +6,10 @@
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CaretRightIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useCalendar } from "./calendar.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
@@ -21,7 +21,7 @@
 </script>
 
 <CalendarPrimitive.NextTrigger
-  aria-label={t("calendar.nextMonth")}
+  aria-label={m("calendar.nextMonth")}
   {...rest}
   class={cn(
     buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),

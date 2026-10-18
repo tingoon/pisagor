@@ -2,9 +2,9 @@
   import { XIcon } from "phosphor-svelte";
   import type { ClassValue } from "svelte/elements";
   import InputGroupButton from "../input-group/input-group-button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = {
     class?: ClassValue;
@@ -20,7 +20,7 @@
 </script>
 
 <InputGroupButton
-  aria-label={t("inputClearButton.clear")}
+  aria-label={m("inputClearButton.clear")}
   {...rest}
   class={className}
   data-part="clear-button"

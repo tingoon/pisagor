@@ -21,7 +21,7 @@ import {
 } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -415,13 +415,14 @@ export const ActionBarClose = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const { onClose, isOpen, slots: styleSlots } = useActionBar();
 
     return () =>
       h(
         ark.button as ArkPart,
         {
-          "aria-label": useTranslation("actionBar.close"),
+          "aria-label": m("actionBar.close"),
           ...attrs,
           class: styleSlots.close({ class: props.class }),
           "data-part": "close",

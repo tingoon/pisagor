@@ -5,7 +5,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 
 interface InputClearButtonProps extends InputGroupButtonProps {
   onClear: () => void;
@@ -29,11 +29,12 @@ function XIcon() {
 }
 
 export function InputClearButton(props: InputClearButtonProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["onClear"]);
 
   return (
     <InputGroupButton
-      aria-label={useTranslation("inputClearButton.clear")}
+      aria-label={m("inputClearButton.clear")}
       {...rest}
       data-part="clear-button"
       data-scope="input"

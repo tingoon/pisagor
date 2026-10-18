@@ -14,7 +14,7 @@ import { computed, defineComponent, h, type PropType, ref, watch } from "vue";
 import { Combobox } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 import type { ClassValue, VariantClassNames } from "../../internal";
 import { phoneInputFlags } from "./phone-input-flags";
 
@@ -183,6 +183,7 @@ export const PhoneInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const resolvedDefaultCountry = computed(
       () => props.defaultCountry ?? ("US" as Country),
     );
@@ -297,9 +298,7 @@ export const PhoneInput = defineComponent({
                       h(
                         Combobox.Trigger as ArkPart,
                         {
-                          "aria-label": useTranslation(
-                            "phoneInput.selectCountry",
-                          ),
+                          "aria-label": m("phoneInput.selectCountry"),
                           class: slots.countrySelect(),
                           disabled: isDisabled,
                           onBlur: props.onBlur,
@@ -352,7 +351,7 @@ export const PhoneInput = defineComponent({
                           class: slots.search({
                             class: classNames?.search,
                           }),
-                          placeholder: useTranslation("phoneInput.search"),
+                          placeholder: m("phoneInput.search"),
                         }),
                       ),
                     ),

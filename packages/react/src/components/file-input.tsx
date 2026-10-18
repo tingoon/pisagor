@@ -19,7 +19,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -171,8 +171,9 @@ export function FileInput({
   className,
   ...rest
 }: FileInputProps) {
-  const placeholder = useMessage("fileInput.placeholder", placeholderProp);
-  const browseLabel = useMessage("fileInput.browse", browseLabelProp);
+  const { m } = useLocale();
+  const placeholder = m("fileInput.placeholder", placeholderProp);
+  const browseLabel = m("fileInput.browse", browseLabelProp);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileLabel, setFileLabel] = useState<string>();
 

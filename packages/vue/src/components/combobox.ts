@@ -31,7 +31,7 @@ import {
 } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -353,12 +353,13 @@ export const ComboboxClearTrigger = defineComponent({
     "aria-label": { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         ComboboxPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
+          "aria-label": m("select.clear", props["aria-label"]),
         },
         () => slots.default?.(),
       );
@@ -536,6 +537,7 @@ export const ComboboxEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useComboboxSlots();
 
     return () => {
@@ -547,7 +549,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        () => slots.default?.() ?? useTranslation("combobox.empty"),
+        () => slots.default?.() ?? m("combobox.empty"),
       );
     };
   },

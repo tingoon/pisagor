@@ -21,7 +21,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -116,6 +116,7 @@ const SignaturePadSegment: Component<SignaturePadSegmentProps> = withContext(
 );
 
 function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useSignaturePad();
   return (
@@ -126,7 +127,7 @@ function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
           {...triggerProps({
             class: styles.slots.clear({ class: local.class }),
           })}
-          aria-label={useTranslation("signaturePad.clearSignature")}
+          aria-label={m("signaturePad.clearSignature")}
           size="icon-md"
           variant="ghost"
         >

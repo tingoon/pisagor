@@ -20,7 +20,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -408,6 +408,7 @@ export const CalendarPrevTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.PrevTrigger",
   setup(_props, { attrs }) {
+    const { m } = useLocale();
     const styles = useCalendar();
 
     return () =>
@@ -418,7 +419,7 @@ export const CalendarPrevTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("calendar.previousMonth"),
+              "aria-label": m("calendar.previousMonth"),
               class: styles.slots.prevTrigger(),
               size: "icon-md",
               variant: "ghost",
@@ -437,6 +438,7 @@ export const CalendarNextTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.NextTrigger",
   setup(_props, { attrs }) {
+    const { m } = useLocale();
     const styles = useCalendar();
 
     return () =>
@@ -447,7 +449,7 @@ export const CalendarNextTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("calendar.nextMonth"),
+              "aria-label": m("calendar.nextMonth"),
               class: styles.slots.nextTrigger(),
               size: "icon-md",
               variant: "ghost",

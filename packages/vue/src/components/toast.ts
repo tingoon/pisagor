@@ -27,7 +27,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -177,6 +177,7 @@ const ToastItemContent = defineComponent({
   name: "Toaster.ItemContent",
   props: itemBagProps,
   setup(props) {
+    const { m } = useLocale();
     const styles = useToastItem();
 
     return () => {
@@ -282,7 +283,7 @@ const ToastItemContent = defineComponent({
                     h(
                       Button as ArkPart,
                       {
-                        "aria-label": useTranslation("toast.close"),
+                        "aria-label": m("toast.close"),
                         class: slots.close({
                           class: props.classNames?.close,
                         }),

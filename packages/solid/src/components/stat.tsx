@@ -17,7 +17,7 @@ import {
   type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
-import { type MessageKey, useTranslation } from "./provider/context";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -69,6 +69,7 @@ export const StatDescription = withContext(ark.p, { name: "Description" });
 
 /** Leaf with its own recipe (`trend` variant stays on the part). */
 export function StatTrend(props: StatTrendProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "trend",
     "recipe",
@@ -98,9 +99,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
       ) : (
         <MinusIcon aria-hidden />
       )}
-      <span class="sr-only">
-        {useTranslation(`stat.trend.${trend()}` as MessageKey)}
-      </span>
+      <span class="sr-only">{m(`stat.trend.${trend()}` as MessageKey)}</span>
       {local.children}
     </ark.div>
   );

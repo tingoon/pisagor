@@ -4,12 +4,12 @@
     type ListboxEmptyProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useListbox } from "./listbox.context";
 
   let { class: className, children, ...rest }: ListboxEmptyProps = $props();
   const styles = useListbox();
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const slots = $derived(styles.slots);
 </script>
 
@@ -17,6 +17,6 @@
   {#if children}
     {@render children()}
   {:else}
-    {t("listbox.empty")}
+    {m("listbox.empty")}
   {/if}
 </ListboxPrimitive.Empty>

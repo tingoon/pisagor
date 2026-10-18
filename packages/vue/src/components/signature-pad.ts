@@ -26,7 +26,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -196,8 +196,8 @@ const SignaturePadClear = defineComponent({
   name: "SignaturePad.Clear",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const styles = useSignaturePadStyles();
-    const label = useTranslation("signaturePad.clearSignature");
 
     return () =>
       h(
@@ -212,7 +212,11 @@ const SignaturePadClear = defineComponent({
         () =>
           h(
             Button as ArkPart,
-            { "aria-label": label, size: "icon-md", variant: "ghost" },
+            {
+              "aria-label": m("signaturePad.clearSignature"),
+              size: "icon-md",
+              variant: "ghost",
+            },
             () => slots.default?.() ?? h(PhArrowCounterClockwise),
           ),
       );
@@ -268,6 +272,7 @@ const SignaturePadShorthand = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const surfaceVariant = useFormControlSurface();
 
     return () => {
@@ -331,9 +336,7 @@ const SignaturePadShorthand = defineComponent({
                       h(
                         Button as ArkPart,
                         {
-                          "aria-label": useTranslation(
-                            "signaturePad.clearSignature",
-                          ),
+                          "aria-label": m("signaturePad.clearSignature"),
                           size: "icon-md",
                           variant: "ghost",
                         },

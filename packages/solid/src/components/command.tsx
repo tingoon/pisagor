@@ -30,7 +30,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -97,6 +97,7 @@ export function CommandDialogTrigger(props: DialogTriggerProps): JSX.Element {
 function CommandDialogFrame(
   props: Omit<CommandDialogContentProps, "recipe">,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "children",
@@ -117,9 +118,7 @@ function CommandDialogFrame(
           size={local.size ?? "lg"}
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
-            <Dialog.Title>
-              {local.title ?? useTranslation("command.title")}
-            </Dialog.Title>
+            <Dialog.Title>{m("command.title", local.title)}</Dialog.Title>
             <Dialog.Description>
               {local.description ?? "Search for a command to run..."}
             </Dialog.Description>
@@ -242,6 +241,7 @@ export function CommandList(props: CommandListProps): JSX.Element {
 }
 
 export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useCommand();
   return (
@@ -249,7 +249,7 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useTranslation("command.empty")}
+      {local.children || m("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -312,6 +312,7 @@ export function CommandFooter(props: CommandFooterProps): JSX.Element {
 }
 
 export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "emptyText",
     "items",
@@ -326,7 +327,6 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
     itemToString: (item) => item.label,
     itemToValue: (item) => item.value,
   });
-  const placeholder = useTranslation("command.placeholder");
 
   return (
     <CommandRoot
@@ -337,7 +337,7 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
         local.onInputValueChange?.(details);
       }}
     >
-      <CommandInput placeholder={local.placeholder ?? placeholder} />
+      <CommandInput placeholder={m("command.placeholder", local.placeholder)} />
       <CommandContent>
         <CommandEmpty>{local.emptyText}</CommandEmpty>
         <CommandList>

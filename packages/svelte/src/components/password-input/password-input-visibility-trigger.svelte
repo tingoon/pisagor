@@ -7,9 +7,9 @@
   import { cn } from "@pisagor/utils";
   import { EyeIcon, EyeSlashIcon } from "phosphor-svelte";
   import InputGroupAddon from "../input-group/input-group-addon.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     children,
@@ -20,7 +20,7 @@
 
 <InputGroupAddon align="inline-end">
   <PasswordInputPrimitive.VisibilityTrigger
-    aria-label={t("passwordInput.togglePasswordVisibility")}
+    aria-label={m("passwordInput.togglePasswordVisibility")}
     {...rest}
     class={cn(inputGroupButtonRecipe({ size: "icon-xs" }), className)}
     type="button"

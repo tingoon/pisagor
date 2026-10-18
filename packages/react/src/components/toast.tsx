@@ -37,7 +37,7 @@ import type {
 } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
@@ -143,7 +143,7 @@ function ToastItemContent({
   classNames,
 }: Omit<ToastItemProps, keyof ToastItemRootProps> &
   Pick<ToastItemProps, "toast">) {
-  const toastCloseMessage = useMessage("toast.close");
+  const { m } = useLocale();
   const { slots } = useToastItem();
   const ToastIcon = toastData.type
     ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
@@ -202,7 +202,7 @@ function ToastItemContent({
         {!isNotClosable && (
           <ToastPrimitive.CloseTrigger {...closeTriggerProps} asChild>
             <Button
-              aria-label={toastCloseMessage}
+              aria-label={m("toast.close")}
               className={slots.close({ className: classNames?.close })}
               size="icon-xs"
               variant="ghost"

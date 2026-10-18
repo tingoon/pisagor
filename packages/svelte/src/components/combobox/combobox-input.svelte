@@ -14,7 +14,7 @@
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
   import { isInsideControl } from "../../internal";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import {
     COMBOBOX_INSIDE_CONTROL,
@@ -25,7 +25,7 @@
   import ComboboxControl from "./combobox-control.svelte";
   import ComboboxTrigger from "./combobox-trigger.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -75,7 +75,7 @@
       {/if}
       {#if clearable && api().inputValue}
         <ComboboxClearTrigger
-          aria-label={t("combobox.clear")}
+          aria-label={m("combobox.clear")}
           class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >

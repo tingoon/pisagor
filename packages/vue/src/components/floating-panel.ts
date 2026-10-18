@@ -21,7 +21,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Slot recipe context
@@ -273,6 +273,7 @@ export const FloatingPanelMinimize = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -281,7 +282,7 @@ export const FloatingPanelMinimize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.minimize"),
+              "aria-label": m("floatingPanel.minimize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -310,6 +311,7 @@ export const FloatingPanelMaximize = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -318,7 +320,7 @@ export const FloatingPanelMaximize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.maximize"),
+              "aria-label": m("floatingPanel.maximize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -347,6 +349,7 @@ export const FloatingPanelRestore = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     return () => {
       const panelSlots = useFloatingPanelSlots();
 
@@ -357,7 +360,7 @@ export const FloatingPanelRestore = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.restore"),
+              "aria-label": m("floatingPanel.restore"),
               class: props.class,
               size: props.size,
               variant: props.variant,

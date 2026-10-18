@@ -13,7 +13,7 @@ import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
@@ -338,6 +338,7 @@ export function ActionBarClose({
   className,
   ...rest
 }: ActionBarCloseProps) {
+  const { m } = useLocale();
   const { onClose, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -347,7 +348,7 @@ export function ActionBarClose({
 
   return (
     <ark.button
-      aria-label={useMessage("actionBar.close")}
+      aria-label={m("actionBar.close")}
       {...rest}
       className={slots.close({ className })}
       data-part="close"

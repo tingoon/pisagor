@@ -23,7 +23,7 @@ import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { InputGroup, type InputGroupProps } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -157,7 +157,7 @@ export function TagsInputControl({
   className,
   ...rest
 }: TagsInputControlProps) {
-  const tagsInputClearAllTagsMessage = useMessage("tagsInput.clearAllTags");
+  const { m } = useLocale();
   const api = useTagsInputContext();
   const { slots } = useTagsInput();
 
@@ -171,7 +171,7 @@ export function TagsInputControl({
       >
         {children}
         {clearable && api.value.length > 0 && (
-          <TagsInputClearTrigger aria-label={tagsInputClearAllTagsMessage} />
+          <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
         )}
       </InputGroup>
     </TagsInputPrimitive.Control>
@@ -233,12 +233,13 @@ export function TagsInputItemDeleteTrigger({
   className,
   ...rest
 }: TagsInputItemDeleteTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useTagsInputItem();
 
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={useMessage("tagsInput.removeTag")}
+        aria-label={m("tagsInput.removeTag")}
         className={slots.delete({ className })}
         size="icon-xs"
         variant="ghost"
@@ -274,12 +275,13 @@ export function TagsInputClearTrigger({
   className,
   ...rest
 }: TagsInputClearTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useTagsInput();
 
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={useMessage("tagsInput.clear")}
+        aria-label={m("tagsInput.clear")}
         className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"

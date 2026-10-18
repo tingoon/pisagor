@@ -14,7 +14,7 @@ import {
   untrack,
 } from "solid-js";
 import { createEditorTransaction } from "solid-tiptap";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
@@ -55,6 +55,7 @@ export type RichTextEditorContentProps = ComponentProps<typeof ark.div>;
 export function RichTextEditorRoot(
   props: RichTextEditorRootProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "variant",
     "defaultValue",
@@ -77,8 +78,7 @@ export function RichTextEditorRoot(
   const recipe = () => local.recipe ?? richTextEditorRecipe;
   const slots = () => recipe()();
   const resolvedAriaLabel = () =>
-    local["aria-label"] ??
-    (local.id ? undefined : useTranslation("richTextEditor.label"));
+    local["aria-label"] ?? (local.id ? undefined : m("richTextEditor.label"));
 
   const [host, setHost] = createSignal<HTMLDivElement | undefined>();
   const [editor, setEditor] = createSignal<Editor | undefined>();
@@ -189,6 +189,7 @@ export function RichTextEditorRoot(
 export function RichTextEditorToolbar(
   props: RichTextEditorToolbarProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { editor, slots } = useRichTextEditorState();
 
@@ -226,7 +227,7 @@ export function RichTextEditorToolbar(
             fallback={
               <div class={slots.inline()}>
                 <Toggle
-                  aria-label={useTranslation("richTextEditor.bold")}
+                  aria-label={m("richTextEditor.bold")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleBold().run()
                   }
@@ -238,7 +239,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Bold</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useTranslation("richTextEditor.italic")}
+                  aria-label={m("richTextEditor.italic")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleItalic().run()
                   }
@@ -250,7 +251,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Italic</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useTranslation("richTextEditor.strikethrough")}
+                  aria-label={m("richTextEditor.strikethrough")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleStrike().run()
                   }
@@ -262,7 +263,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Strikethrough</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useTranslation("richTextEditor.bulletList")}
+                  aria-label={m("richTextEditor.bulletList")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleBulletList().run()
                   }
@@ -274,7 +275,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Bullet list</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useTranslation("richTextEditor.orderedList")}
+                  aria-label={m("richTextEditor.orderedList")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleOrderedList().run()
                   }

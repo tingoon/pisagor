@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
-import { useMessage } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
@@ -90,7 +90,7 @@ export function RichTextEditorRoot({
   className,
   ...rest
 }: RichTextEditorRootProps) {
-  const richTextEditorLabelMessage = useMessage("richTextEditor.label");
+  const { m } = useLocale();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -101,7 +101,7 @@ export function RichTextEditorRoot({
   };
   const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel =
-    ariaLabel ?? (id ? undefined : richTextEditorLabelMessage);
+    ariaLabel ?? (id ? undefined : m("richTextEditor.label"));
   const slots = recipe();
 
   const editor = useEditor({
@@ -199,17 +199,7 @@ export function RichTextEditorToolbar({
   className,
   ...rest
 }: RichTextEditorToolbarProps) {
-  const richTextEditorOrderedListMessage = useMessage(
-    "richTextEditor.orderedList",
-  );
-  const richTextEditorBulletListMessage = useMessage(
-    "richTextEditor.bulletList",
-  );
-  const richTextEditorStrikethroughMessage = useMessage(
-    "richTextEditor.strikethrough",
-  );
-  const richTextEditorItalicMessage = useMessage("richTextEditor.italic");
-  const richTextEditorBoldMessage = useMessage("richTextEditor.bold");
+  const { m } = useLocale();
   const { editor, slots } = useRichTextEditorState();
   const activeMarks = useEditorState({
     editor,
@@ -248,7 +238,7 @@ export function RichTextEditorToolbar({
       {children ?? (
         <div className={slots.inline()}>
           <Toggle
-            aria-label={richTextEditorBoldMessage}
+            aria-label={m("richTextEditor.bold")}
             onPressedChange={() => editor.chain().focus().toggleBold().run()}
             pressed={activeMarks.bold}
             size="sm"
@@ -257,7 +247,7 @@ export function RichTextEditorToolbar({
             <TextBIcon />
           </Toggle>
           <Toggle
-            aria-label={richTextEditorItalicMessage}
+            aria-label={m("richTextEditor.italic")}
             onPressedChange={() => editor.chain().focus().toggleItalic().run()}
             pressed={activeMarks.italic}
             size="sm"
@@ -266,7 +256,7 @@ export function RichTextEditorToolbar({
             <TextItalicIcon />
           </Toggle>
           <Toggle
-            aria-label={richTextEditorStrikethroughMessage}
+            aria-label={m("richTextEditor.strikethrough")}
             onPressedChange={() => editor.chain().focus().toggleStrike().run()}
             pressed={activeMarks.strike}
             size="sm"
@@ -275,7 +265,7 @@ export function RichTextEditorToolbar({
             <TextStrikethroughIcon />
           </Toggle>
           <Toggle
-            aria-label={richTextEditorBulletListMessage}
+            aria-label={m("richTextEditor.bulletList")}
             onPressedChange={() =>
               editor.chain().focus().toggleBulletList().run()
             }
@@ -286,7 +276,7 @@ export function RichTextEditorToolbar({
             <ListBulletsIcon />
           </Toggle>
           <Toggle
-            aria-label={richTextEditorOrderedListMessage}
+            aria-label={m("richTextEditor.orderedList")}
             onPressedChange={() =>
               editor.chain().focus().toggleOrderedList().run()
             }

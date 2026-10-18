@@ -17,7 +17,7 @@ import {
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -92,8 +92,8 @@ function PasswordInputInput(props: PasswordInputInputProps): JSX.Element {
 function PasswordInputVisibilityTrigger(
   props: PasswordInputVisibilityTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children"]);
-  const label = useTranslation("passwordInput.togglePasswordVisibility");
 
   return (
     <InputGroup.Addon align="inline-end">
@@ -101,7 +101,7 @@ function PasswordInputVisibilityTrigger(
         {...rest}
         asChild={(triggerProps) => (
           <InputGroup.Button
-            aria-label={label}
+            aria-label={m("passwordInput.togglePasswordVisibility")}
             {...triggerProps()}
             size="icon-xs"
             variant="ghost"
@@ -119,6 +119,7 @@ function PasswordInputVisibilityTrigger(
 }
 
 function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, inputProps] = splitProps(props, [
     "size",
     "variant",
@@ -223,7 +224,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
             <Show when={canClear()}>
               <InputGroup.Addon align="inline-end" class={slots().clearAddon()}>
                 <InputGroup.Button
-                  aria-label={useTranslation("passwordInput.clear")}
+                  aria-label={m("passwordInput.clear")}
                   {...restClearButtonProps}
                   data-part="clear-trigger"
                   data-scope="password-input"
@@ -245,9 +246,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <InputGroup.Button
                     {...triggerProps()}
-                    aria-label={useTranslation(
-                      "passwordInput.togglePasswordVisibility",
-                    )}
+                    aria-label={m("passwordInput.togglePasswordVisibility")}
                     size="icon-xs"
                     variant="ghost"
                   >

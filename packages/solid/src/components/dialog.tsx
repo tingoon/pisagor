@@ -17,7 +17,7 @@ import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -134,6 +134,7 @@ export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
 }
 
 export function DialogContent(props: DialogContentProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "bottomStickOnMobile",
@@ -161,7 +162,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: styles.slots.inline() })}
-              aria-label={useTranslation("dialog.close")}
+              aria-label={m("dialog.close")}
               size="icon-sm"
               variant="ghost"
             >

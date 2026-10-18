@@ -5,9 +5,9 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { XIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   const api = useDatePickerContext();
   const visible = $derived(
@@ -17,7 +17,7 @@
 
 {#if visible}
   <DatePickerPrimitive.ClearTrigger
-    aria-label={t("datePicker.clear")}
+    aria-label={m("datePicker.clear")}
     class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
     type="button"
   >

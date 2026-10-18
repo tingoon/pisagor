@@ -18,7 +18,7 @@
   import type { Snippet } from "svelte";
   import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./clipboard.context";
   import ClipboardControl from "./clipboard-control.svelte";
@@ -29,7 +29,7 @@
   import ClipboardRoot from "./clipboard-root.svelte";
   import ClipboardValue from "./clipboard-value.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -80,7 +80,7 @@
     controlVariant: controlVariantProp,
     valueSize: valueSizeProp,
     variant = "input",
-    buttonAriaLabel = t("clipboard.copy"),
+    buttonAriaLabel = m("clipboard.copy"),
     copiedIcon,
     copyIcon,
     label,

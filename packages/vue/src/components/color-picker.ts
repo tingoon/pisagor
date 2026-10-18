@@ -9,7 +9,7 @@ import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -165,6 +165,7 @@ export const ColorPickerClearTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     return () => {
       const api = useColorPicker();
 
@@ -197,7 +198,7 @@ export const ColorPickerClearTrigger = defineComponent({
         h(
           InputGroup.Button as ArkPart,
           {
-            "aria-label": useTranslation("colorPicker.clearColor"),
+            "aria-label": m("colorPicker.clearColor"),
             ...attrs,
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
             "data-part": "clear-trigger",
@@ -396,13 +397,13 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
     variant: { default: "outline", type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useTranslation("colorPicker.eyeDropper");
+    const { m } = useLocale();
 
     return () =>
       h(
         ColorPickerPrimitive.EyeDropperTrigger as ArkPart,
         {
-          "aria-label": label,
+          "aria-label": m("colorPicker.eyeDropper"),
           ...attrs,
           asChild: true,
         } as unknown as Parameters<typeof h>[1],

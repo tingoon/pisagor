@@ -12,8 +12,25 @@ Wrap the app once so locale, icons, and toasts are shared by child components.
 
 <Example name="Default" />
 
-### Translations
+### Messages
 
-Override built-in labels (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `translations` you pass are merged over it, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete.
+Pass `locale` (BCP 47, default `en-US`), an optional `dir` (derived from `locale` when omitted) and `messages` to override built-in UI messages (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `messages` you pass are merged over it and over any parent `Provider`, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete. Use `Provider.Locale` to change these for a subtree only.
 
 <Example name="Messages" />
+
+### useLocale
+
+`useLocale()` returns `{ locale, dir, messages, m }`: the BCP 47 `locale`, the text `dir` (`"ltr"` or `"rtl"`), every resolved UI message in `messages`, and `m(key, override?)`, which returns `override` when it is not `null`/`undefined`, otherwise `messages[key]`. Call it in `setup`. `m` and the `locale` / `dir` / `messages` getters read the injected `Provider` value on access, so templates and render functions update when it changes. Use `formatMessage(m(key), values)` from `@pisagor/utils` for messages with placeholders.
+
+```vue
+<script lang="ts" setup>
+import { useLocale } from "@pisagor/vue";
+
+const props = defineProps<{ ariaLabel?: string }>();
+const { m } = useLocale();
+</script>
+
+<template>
+  <span :aria-label="m('spinner.loading', props.ariaLabel)" />
+</template>
+```

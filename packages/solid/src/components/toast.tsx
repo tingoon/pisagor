@@ -34,7 +34,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
@@ -127,6 +127,7 @@ function ToastItemContent(
   props: Omit<ToastItemProps, keyof ToastItemRootProps> &
     Pick<ToastItemProps, "toast">,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local] = splitProps(props, [
     "actionsProps",
     "actionTriggerProps",
@@ -203,7 +204,7 @@ function ToastItemContent(
                 {...triggerProps({
                   class: styles.slots.close({ class: local.classNames?.close }),
                 })}
-                aria-label={useTranslation("toast.close")}
+                aria-label={m("toast.close")}
                 size="icon-xs"
                 variant="ghost"
               >

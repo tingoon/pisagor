@@ -14,6 +14,7 @@ import {
   createSlotRecipeContext,
   renderIconCloseButton,
 } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -121,6 +122,7 @@ export const PopoverContent = defineComponent({
     showCloseButton: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots: children }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     providePopoverStyles({
@@ -145,7 +147,7 @@ export const PopoverContent = defineComponent({
               children.default?.(),
               props.showCloseButton
                 ? h(PopoverCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(slots.close()),
+                    renderIconCloseButton(m("dialog.close"), slots.close()),
                   )
                 : null,
             ],

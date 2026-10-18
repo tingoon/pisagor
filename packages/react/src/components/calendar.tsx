@@ -41,7 +41,7 @@ import {
 import { cn } from "@pisagor/utils";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -227,7 +227,7 @@ export function CalendarTodayTrigger({
   variant = "outline",
   ...rest
 }: ButtonProps) {
-  const calendarTodayMessage = useMessage("calendar.today");
+  const { m } = useLocale();
   return (
     <CalendarContext>
       {(calendar) => (
@@ -239,7 +239,7 @@ export function CalendarTodayTrigger({
           size={size}
           variant={variant}
         >
-          {calendarTodayMessage}
+          {m("calendar.today")}
         </Button>
       )}
     </CalendarContext>
@@ -333,12 +333,13 @@ export function CalendarViewControl({
 }
 
 export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useCalendar();
 
   return (
     <CalendarPrimitive.PrevTrigger {...props} asChild>
       <Button
-        aria-label={useMessage("calendar.previousMonth")}
+        aria-label={m("calendar.previousMonth")}
         className={slots.prevTrigger()}
         size="icon-md"
         variant="ghost"
@@ -350,12 +351,13 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
 }
 
 export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useCalendar();
 
   return (
     <CalendarPrimitive.NextTrigger {...props} asChild>
       <Button
-        aria-label={useMessage("calendar.nextMonth")}
+        aria-label={m("calendar.nextMonth")}
         className={slots.nextTrigger()}
         size="icon-md"
         variant="ghost"

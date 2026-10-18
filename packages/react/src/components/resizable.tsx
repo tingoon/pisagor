@@ -16,7 +16,7 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 export {
   type SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -238,11 +238,12 @@ export function ResizableResizeTrigger({
   className,
   ...rest
 }: ResizableResizeTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useResizable();
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useMessage("resizable.resize")}
+      aria-label={m("resizable.resize")}
       {...rest}
       className={slots.resizeTrigger({ className })}
     >

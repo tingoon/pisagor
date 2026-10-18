@@ -6,10 +6,10 @@
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CaretLeftIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useCarousel } from "./carousel.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let { class: className, ...rest }: CarouselPrevTriggerProps = $props();
   const styles = useCarousel();
@@ -17,7 +17,7 @@
 </script>
 
 <CarouselPrimitive.PrevTrigger
-  aria-label={t("carousel.previous")}
+  aria-label={m("carousel.previous")}
   {...rest}
   class={cn(
     buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),

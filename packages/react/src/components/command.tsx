@@ -31,7 +31,7 @@ import type {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -130,8 +130,9 @@ export function CommandDialogContent({
   className,
   ...rest
 }: CommandDialogContentProps) {
-  const title = useMessage("command.title", titleProp);
-  const description = useMessage("command.description", descriptionProp);
+  const { m } = useLocale();
+  const title = m("command.title", titleProp);
+  const description = m("command.description", descriptionProp);
   const slots = recipe();
 
   return (
@@ -226,12 +227,12 @@ export function CommandEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
-  const commandEmptyMessage = useMessage("command.empty");
+  const { m } = useLocale();
   const { slots } = useCommand();
 
   return (
     <Combobox.Empty {...rest} className={slots.empty({ className })}>
-      {children || commandEmptyMessage}
+      {children || m("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -318,6 +319,7 @@ export function CommandShorthand({
   onInputValueChange,
   ...rest
 }: CommandShorthandProps) {
+  const { m } = useLocale();
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
     filter: contains,
@@ -337,9 +339,7 @@ export function CommandShorthand({
         onInputValueChange?.(details);
       }}
     >
-      <CommandInput
-        placeholder={useMessage("command.placeholder", placeholder)}
-      />
+      <CommandInput placeholder={m("command.placeholder", placeholder)} />
       <CommandContent>
         <CommandEmpty>{emptyText}</CommandEmpty>
         <CommandList>

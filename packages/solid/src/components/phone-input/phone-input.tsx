@@ -25,7 +25,7 @@ import {
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 import {
   CaretUpDownIcon,
   GlobeIcon,
@@ -131,6 +131,7 @@ function PhoneInputCountrySelect(props: {
   onBlur?: () => void;
   onFocus?: () => void;
 }): JSX.Element {
+  const { m } = useLocale();
   const ctx = usePhoneInput();
   const items = createMemo(() =>
     props.options.map((option) => ({
@@ -164,7 +165,7 @@ function PhoneInputCountrySelect(props: {
       >
         <Combobox.Control class={ctx.slots.countryControl()}>
           <Combobox.Trigger
-            aria-label={useTranslation("phoneInput.selectCountry")}
+            aria-label={m("phoneInput.selectCountry")}
             class={ctx.slots.countrySelect()}
             disabled={isDisabled()}
             onBlur={props.onBlur}
@@ -199,7 +200,7 @@ function PhoneInputCountrySelect(props: {
                 <InputGroup.Input
                   {...inputProps()}
                   class={ctx.slots.search({ class: ctx.classNames?.search })}
-                  placeholder={useTranslation("phoneInput.search")}
+                  placeholder={m("phoneInput.search")}
                 />
               )}
             />

@@ -16,7 +16,7 @@ import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -221,13 +221,14 @@ export const ResizableResizeTriggerIndicator: Component<ResizableResizeTriggerIn
 export function ResizableResizeTrigger(
   props: ResizableResizeTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "withHandle", "class"]);
   const styles = useResizable();
   const withHandle = () => local.withHandle ?? false;
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useTranslation("resizable.resize")}
+      aria-label={m("resizable.resize")}
       {...rest}
       class={styles.slots.resizeTrigger({ class: local.class })}
     >

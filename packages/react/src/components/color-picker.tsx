@@ -29,7 +29,7 @@ import { type ComponentProps, useMemo } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -187,7 +187,7 @@ export function ColorPickerClearTrigger({
   className,
   ...rest
 }: ColorPickerClearTriggerProps) {
-  const colorPickerClearColorMessage = useMessage("colorPicker.clearColor");
+  const { m } = useLocale();
   const api = useColorPickerContext();
 
   if (!clearable) {
@@ -210,7 +210,7 @@ export function ColorPickerClearTrigger({
   return (
     <InputGroup.Addon align="inline-end">
       <InputGroup.Button
-        aria-label={colorPickerClearColorMessage}
+        aria-label={m("colorPicker.clearColor")}
         {...rest}
         className={className}
         data-part="clear-trigger"
@@ -325,9 +325,10 @@ export function ColorPickerEyeDropperTrigger({
   children,
   ...rest
 }: ColorPickerEyeDropperTriggerProps) {
+  const { m } = useLocale();
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={useMessage("colorPicker.eyeDropper")}
+      aria-label={m("colorPicker.eyeDropper")}
       {...rest}
       asChild
     >

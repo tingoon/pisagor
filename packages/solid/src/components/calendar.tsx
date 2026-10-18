@@ -43,7 +43,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -300,6 +300,7 @@ export function CalendarViewControl(
 export function CalendarPrevTrigger(
   props: CalendarPrevTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const styles = useCalendar();
   return (
     <CalendarPrimitive.PrevTrigger
@@ -307,7 +308,7 @@ export function CalendarPrevTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.prevTrigger() })}
-          aria-label={useTranslation("calendar.previousMonth")}
+          aria-label={m("calendar.previousMonth")}
           size="icon-md"
           variant="ghost"
         >
@@ -321,6 +322,7 @@ export function CalendarPrevTrigger(
 export function CalendarNextTrigger(
   props: CalendarNextTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const styles = useCalendar();
   return (
     <CalendarPrimitive.NextTrigger
@@ -328,7 +330,7 @@ export function CalendarNextTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.nextTrigger() })}
-          aria-label={useTranslation("calendar.nextMonth")}
+          aria-label={m("calendar.nextMonth")}
           size="icon-md"
           variant="ghost"
         >

@@ -8,7 +8,7 @@ import {
   InputGroupButton,
   InputGroupText,
 } from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -108,6 +108,7 @@ export const FileInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const surfaceVariant = useFormControlSurface();
 
     const inputRef = ref<HTMLInputElement | null>(null);
@@ -186,7 +187,7 @@ export const FileInput = defineComponent({
                     onClick: openPicker,
                     type: "button",
                   },
-                  () => props.browseLabel ?? useTranslation("fileInput.browse"),
+                  () => m("fileInput.browse", props.browseLabel),
                 ),
               ),
               h(
@@ -197,8 +198,7 @@ export const FileInput = defineComponent({
                 },
                 () =>
                   fileLabel.value ??
-                  props.placeholder ??
-                  useTranslation("fileInput.placeholder"),
+                  m("fileInput.placeholder", props.placeholder),
               ),
             ],
           ),

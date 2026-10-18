@@ -18,7 +18,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -155,7 +155,8 @@ export function Clipboard({
   classNames,
   ...rest
 }: ClipboardProps) {
-  const buttonAriaLabel = useMessage("clipboard.copy", buttonAriaLabelProp);
+  const { m } = useLocale();
+  const buttonAriaLabel = m("clipboard.copy", buttonAriaLabelProp);
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: controlVariantProp ?? ("primary" as FormControlVariant),

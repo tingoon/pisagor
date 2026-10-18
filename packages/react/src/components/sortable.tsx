@@ -5,6 +5,7 @@ import type {
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
+import { formatMessage } from "@pisagor/utils";
 import type {
   ComponentProps,
   DragEvent,
@@ -22,7 +23,7 @@ import {
 } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { createContext as createNamedContext } from "../utils";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 type SortableOrientation = "vertical" | "horizontal";
@@ -150,6 +151,7 @@ export function SortableRoot({
   className,
   ...rest
 }: SortableRootProps) {
+  const { m } = useLocale();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
   const [handleIds, setHandleIds] = useState(() => new Set<string>());
@@ -158,7 +160,6 @@ export function SortableRoot({
     orientation === "vertical"
       ? "Alt+ArrowUp Alt+ArrowDown"
       : "Alt+ArrowLeft Alt+ArrowRight";
-  const movedTemplate = useMessage("sortable.moved");
   const activeIdRef = useRef<string | null>(null);
   const itemsRef = useRef(items);
   itemsRef.current = items;
@@ -383,9 +384,10 @@ export function SortableRoot({
       </ark.div>
       <span aria-live="polite" className="sr-only">
         {moved &&
-          movedTemplate
-            .replace("{position}", String(moved.position))
-            .replace("{total}", String(moved.total))}
+          formatMessage(m("sortable.moved"), {
+            position: moved.position,
+            total: moved.total,
+          })}
       </span>
     </SortableContext>
   );
@@ -426,7 +428,7 @@ export function SortableHandle({
   className,
   ...rest
 }: SortableHandleProps) {
-  const sortableDragHandleMessage = useMessage("sortable.dragHandle");
+  const { m } = useLocale();
   const { id, slots } = useSortableItem();
   const {
     disabled,
@@ -455,7 +457,7 @@ export function SortableHandle({
           ? "Alt+ArrowUp Alt+ArrowDown"
           : "Alt+ArrowLeft Alt+ArrowRight"
       }
-      aria-label={rest["aria-label"] ?? sortableDragHandleMessage}
+      aria-label={m("sortable.dragHandle", rest["aria-label"])}
       className={slots.handle({ className, disabled })}
       data-part="handle"
       data-scope="sortable"

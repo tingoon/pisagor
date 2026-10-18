@@ -11,7 +11,7 @@ import {
   DotsThreeIcon,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -53,6 +53,7 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 }
 
 export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label", "children", "recipe"]);
   const slots = createMemo(() => (local.recipe ?? breadcrumbRecipe)());
 
@@ -67,7 +68,7 @@ export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
     >
       <ark.nav
         {...rest}
-        aria-label={local["aria-label"] ?? useTranslation("breadcrumb.label")}
+        aria-label={m("breadcrumb.label", local["aria-label"])}
         data-part="root"
         data-scope="breadcrumb"
       >

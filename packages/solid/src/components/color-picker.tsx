@@ -33,7 +33,7 @@ import {
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -154,6 +154,7 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
 export function ColorPickerClearTrigger(
   props: ColorPickerClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["clearable", "onClick", "class"]);
   const api = useColorPickerContext();
   const clearable = () => local.clearable ?? false;
@@ -172,7 +173,7 @@ export function ColorPickerClearTrigger(
     <Show when={visible()}>
       <InputGroup.Addon align="inline-end">
         <InputGroup.Button
-          aria-label={useTranslation("colorPicker.clearColor")}
+          aria-label={m("colorPicker.clearColor")}
           {...rest}
           class={local.class}
           data-part="clear-trigger"
@@ -286,11 +287,11 @@ export function ColorPickerChannelSlider(
 export function ColorPickerEyeDropperTrigger(
   props: ColorPickerEyeDropperTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
-  const label = useTranslation("colorPicker.eyeDropper");
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={label}
+      aria-label={m("colorPicker.eyeDropper")}
       {...rest}
       asChild={(triggerProps) => (
         <Button

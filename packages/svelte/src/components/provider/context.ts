@@ -1,37 +1,32 @@
 import {
   defaultLocale,
   defaultMotion,
-  defaultProviderConfig,
-  defaultTranslations,
-  resolveMessage,
   resolveProviderValue,
 } from "@pisagor/utils";
 import type {
-  LocaleConfig,
+  LocaleContextValue,
   MessageKey,
+  MessageLookup,
   MotionConfig,
   ProviderConfig,
   ProviderContextValue,
-  TranslationsConfig,
 } from "@pisagor/utils";
-import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+import { isNullish, mergeDeep, omitBy } from "remeda";
 import { createContext } from "../../utils/create-context";
 
 export type {
   LocaleConfig,
+  LocaleContextValue,
+  LocaleDir,
   MessageKey,
+  MessageLookup,
+  Messages,
   MotionConfig,
   ProviderContextValue,
-  TranslationsConfig,
 } from "@pisagor/utils";
 
-const localeCtx = createContext("Locale")<LocaleConfig>({
+const localeCtx = createContext("Locale")<LocaleContextValue>({
   defaultValue: defaultLocale,
-  strict: false,
-});
-
-const translationsCtx = createContext("Translations")<TranslationsConfig>({
-  defaultValue: defaultTranslations,
   strict: false,
 });
 
@@ -44,67 +39,56 @@ const providerCtx = createContext("Provider")<ProviderConfig>({
   strict: false,
 });
 
-export const setLocaleContext = localeCtx.setContext;
-export const useLocale = (): LocaleConfig =>
+/**
+ * Nearest locale context: `{ locale, dir, messages, m }`. Call once during
+ * component init (context is only readable there) and use `m(key, override)` in
+ * markup, e.g. `m("spinner.loading", ariaLabel)`. The properties are getters
+ * over the `Provider` state, so markup stays reactive (avoid destructuring
+ * `locale` / `dir` / `messages` in the script). Safe outside a `Provider`
+ * (English defaults, `en-US`, `ltr`).
+ */
+export const useLocale = (): LocaleContextValue =>
   localeCtx.getContext() ?? defaultLocale;
 
-export const setTranslationsContext = translationsCtx.setContext;
-export const useTranslations = (): TranslationsConfig =>
-  translationsCtx.getContext() ?? defaultTranslations;
-
-export const setMotionContext = motionCtx.setContext;
 export const useMotion = (): MotionConfig =>
   motionCtx.getContext() ?? defaultMotion;
 
-export const setProviderContext = providerCtx.setContext;
 export const useProvider = (): ProviderConfig | undefined =>
   providerCtx.getContext();
 
-/** Resolve a library translation key from the nearest `Provider`. */
-export function useTranslation(key: MessageKey): string {
-  return resolveMessage(useTranslations(), key);
-}
-
 /**
- * Return a resolver bound to the nearest `Provider` translations. Call during
- * component init and use the returned function in markup.
- */
-export function useMessageResolver(): (key: MessageKey) => string {
-  const translations = useTranslations();
-  return (key) => resolveMessage(translations, key);
-}
-
-/**
- * Full library context: `{ locale, translations, motion }`. Safe outside a
- * `Provider` — English defaults apply.
+ * Full library context: `{ locale, motion }`. Safe outside a `Provider` —
+ * defaults apply.
  */
 export function useProviderValue(): ProviderContextValue {
-  const config = useProvider() ?? defaultProviderConfig;
-  const translations = useTranslations();
-  const motion = useMotion();
-  const locale = useLocale();
+  return resolveProviderValue(useLocale(), useMotion());
+}
+
+/**
+ * Wrap a resolved locale getter (e.g. a `$derived` value) in a getter object so
+ * `locale`, `dir`, `messages` and `m` stay reactive for consumers.
+ */
+export function createLocaleValue(
+  resolved: () => LocaleContextValue,
+): LocaleContextValue {
   return {
-    ...resolveProviderValue({ ...config, locale, motion }, translations),
-    locale,
-    motion,
+    get dir() {
+      return resolved().dir;
+    },
+    get locale() {
+      return resolved().locale;
+    },
+    get messages() {
+      return resolved().messages;
+    },
+    m: ((key: MessageKey, override?: unknown) =>
+      override ?? resolved().messages[key]) as MessageLookup,
   };
 }
 
-export function setLocaleConfig(partial?: Partial<LocaleConfig>): LocaleConfig {
-  const config = mergeDeep(
-    mergeDeep(defaultLocale, useLocale()),
-    omitBy(partial ?? {}, isNullish),
-  ) as LocaleConfig;
-  setLocaleContext(config);
-  return config;
-}
-
-export function setTranslationsConfig(
-  translations?: TranslationsConfig,
-): TranslationsConfig {
-  const config = merge(useTranslations(), translations ?? {});
-  setTranslationsContext(config);
-  return config;
+export function setLocaleValue(value: LocaleContextValue): LocaleContextValue {
+  localeCtx.setContext(value);
+  return value;
 }
 
 export function setMotionConfig(partial?: Partial<MotionConfig>): MotionConfig {
@@ -112,11 +96,11 @@ export function setMotionConfig(partial?: Partial<MotionConfig>): MotionConfig {
     mergeDeep(defaultMotion, useMotion()),
     omitBy(partial ?? {}, isNullish),
   ) as MotionConfig;
-  setMotionContext(config);
+  motionCtx.setContext(config);
   return config;
 }
 
 export function setProviderConfig(value: ProviderConfig): ProviderConfig {
-  setProviderContext(value);
+  providerCtx.setContext(value);
   return value;
 }

@@ -23,7 +23,7 @@ import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import { type ReactNode, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -207,12 +207,12 @@ export function ListboxEmpty({
   className,
   ...rest
 }: ListboxEmptyProps) {
-  const listboxEmptyMessage = useMessage("listbox.empty");
+  const { m } = useLocale();
   const { slots } = useListbox();
 
   return (
     <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || listboxEmptyMessage}
+      {children || m("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }

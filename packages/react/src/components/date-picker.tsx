@@ -21,7 +21,7 @@ import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
@@ -209,6 +209,7 @@ export function DatePickerInput({
   className,
   ...rest
 }: DatePickerInputProps) {
+  const { m } = useLocale();
   const { slots, variant: contextVariant } = useDatePicker();
 
   return (
@@ -233,7 +234,7 @@ export function DatePickerInput({
           >
             <DatePickerPrimitive.Trigger asChild>
               <Button
-                aria-label={useMessage("datePicker.openCalendar")}
+                aria-label={m("datePicker.openCalendar")}
                 size="icon-md"
                 variant="ghost"
               >
@@ -248,7 +249,7 @@ export function DatePickerInput({
 }
 
 export function DatePickerClearTrigger() {
-  const datePickerClearMessage = useMessage("datePicker.clear");
+  const { m } = useLocale();
   const api = useDatePickerContext();
 
   if (api.disabled || api.readOnly || api.value.length === 0) {
@@ -258,7 +259,7 @@ export function DatePickerClearTrigger() {
   return (
     <DatePickerPrimitive.ClearTrigger asChild>
       <InputGroup.Button
-        aria-label={datePickerClearMessage}
+        aria-label={m("datePicker.clear")}
         size="icon-xs"
         type="button"
         variant="ghost"

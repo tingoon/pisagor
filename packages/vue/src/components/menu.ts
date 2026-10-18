@@ -14,7 +14,7 @@ import {
   provide,
 } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -55,12 +55,13 @@ export const MenuRoot = defineComponent({
   inheritAttrs: false,
   name: "Menu",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         MenuRootBase,
         {
           ...attrs,
-          "aria-label": attrs["aria-label"] ?? useTranslation("menu.label"),
+          "aria-label": m("menu.label", attrs["aria-label"]),
         },
         slots,
       );

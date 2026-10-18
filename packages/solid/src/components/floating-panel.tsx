@@ -24,7 +24,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -161,6 +161,7 @@ export function FloatingPanelControl(
 export function FloatingPanelMinimize(
   props: FloatingPanelMinimizeProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   return (
     <FloatingPanelPrimitive.StageTrigger
@@ -168,7 +169,7 @@ export function FloatingPanelMinimize(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label={useTranslation("floatingPanel.minimize")}
+          aria-label={m("floatingPanel.minimize")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "ghost"}
         >
@@ -183,6 +184,7 @@ export function FloatingPanelMinimize(
 export function FloatingPanelMaximize(
   props: FloatingPanelMaximizeProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   return (
     <FloatingPanelPrimitive.StageTrigger
@@ -190,7 +192,7 @@ export function FloatingPanelMaximize(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label={useTranslation("floatingPanel.maximize")}
+          aria-label={m("floatingPanel.maximize")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "ghost"}
         >
@@ -205,6 +207,7 @@ export function FloatingPanelMaximize(
 export function FloatingPanelRestore(
   props: FloatingPanelRestoreProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   const slots = useFloatingPanelSlots();
 
@@ -214,7 +217,7 @@ export function FloatingPanelRestore(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label={useTranslation("floatingPanel.restore")}
+          aria-label={m("floatingPanel.restore")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "outline"}
         >

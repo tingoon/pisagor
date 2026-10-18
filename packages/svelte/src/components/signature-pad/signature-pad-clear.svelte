@@ -6,10 +6,10 @@
   import { cn } from "@pisagor/utils";
   import { ArrowCounterClockwiseIcon } from "phosphor-svelte";
   import Button from "../button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useSignaturePad } from "./signature-pad.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
@@ -22,7 +22,7 @@
   {#snippet asChild(props)}
     <Button
       {...props({ class: styles.slots.clear({ class: cn(className) }) })}
-      aria-label={t("signaturePad.clearSignature")}
+      aria-label={m("signaturePad.clearSignature")}
       size="icon-md"
       variant="ghost"
     >

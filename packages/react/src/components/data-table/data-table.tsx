@@ -3,7 +3,7 @@ import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
-import { useMessage } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { Table } from "../table";
 import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
@@ -309,7 +309,8 @@ function DataTableEmpty({
   className,
   ...rest
 }: DataTableEmptyProps) {
-  const children = useMessage("dataTable.empty", childrenProp);
+  const { m } = useLocale();
+  const children = m("dataTable.empty", childrenProp);
   const { slots, table } = useDataTableContext();
   const span = colSpan ?? table.getAllColumns().length;
 

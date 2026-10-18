@@ -18,7 +18,7 @@ import {
   type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -84,12 +84,16 @@ export const NavigationMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenu",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     const openId = ref<string | null>(null);
     provide(NavigationMenuOpenKey, openId);
-    const label = useTranslation("navigationMenu.label");
 
     return () =>
-      h(NavigationMenuNav as ArkPart, { "aria-label": label, ...attrs }, slots);
+      h(
+        NavigationMenuNav as ArkPart,
+        { "aria-label": m("navigationMenu.label"), ...attrs },
+        slots,
+      );
   },
 });
 

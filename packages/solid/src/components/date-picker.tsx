@@ -32,7 +32,7 @@ import { createContext } from "../utils";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
@@ -251,6 +251,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
 }
 
 export function DatePickerClearTrigger(): JSX.Element {
+  const { m } = useLocale();
   const api = useDatePickerContext();
 
   return (
@@ -259,7 +260,7 @@ export function DatePickerClearTrigger(): JSX.Element {
         asChild={(triggerProps) => (
           <InputGroup.Button
             {...triggerProps()}
-            aria-label={useTranslation("datePicker.clear")}
+            aria-label={m("datePicker.clear")}
             size="icon-xs"
             type="button"
             variant="ghost"

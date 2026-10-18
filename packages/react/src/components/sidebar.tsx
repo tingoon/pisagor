@@ -21,7 +21,7 @@ import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -302,8 +302,7 @@ export function SidebarProvider({
 }
 
 export function SidebarRoot(props: SidebarProps) {
-  const sidebarDescriptionMessage = useMessage("sidebar.description");
-  const sidebarTitleMessage = useMessage("sidebar.title");
+  const { m } = useLocale();
   const {
     collapsible = "offcanvas",
     placement = "left",
@@ -344,8 +343,8 @@ export function SidebarRoot(props: SidebarProps) {
           }
         >
           <Sheet.Header className={slots.mobileHeader()}>
-            <Sheet.Title>{sidebarTitleMessage}</Sheet.Title>
-            <Sheet.Description>{sidebarDescriptionMessage}</Sheet.Description>
+            <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
+            <Sheet.Description>{m("sidebar.description")}</Sheet.Description>
           </Sheet.Header>
           <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
@@ -388,6 +387,7 @@ export function SidebarRoot(props: SidebarProps) {
 }
 
 export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
+  const { m } = useLocale();
   const { slots, toggleSidebar } = useSidebar();
 
   return (
@@ -406,18 +406,19 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
     >
       <SidebarSimpleIcon className={slots.triggerIcon()} />
       <ark.span className={slots.triggerLabel()}>
-        {useMessage("sidebar.toggle")}
+        {m("sidebar.toggle")}
       </ark.span>
     </Button>
   );
 }
 
 export function SidebarRail({ className, ...rest }: SidebarRailProps) {
+  const { m } = useLocale();
   const { slots, toggleSidebar } = useSidebar();
 
   return (
     <ark.button
-      aria-label={useMessage("sidebar.toggle")}
+      aria-label={m("sidebar.toggle")}
       {...rest}
       className={slots.rail({ className })}
       data-part="rail"

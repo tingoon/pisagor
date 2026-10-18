@@ -24,7 +24,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -75,6 +75,7 @@ export const CarouselControl: Component<CarouselControlProps> = withContext(
 export function CarouselPrevTrigger(
   props: CarouselPrevTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useCarousel();
   return (
@@ -85,7 +86,7 @@ export function CarouselPrevTrigger(
           {...triggerProps({
             class: styles.slots.prevTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("carousel.previous")}
+          aria-label={m("carousel.previous")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -101,6 +102,7 @@ export function CarouselPrevTrigger(
 export function CarouselNextTrigger(
   props: CarouselNextTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useCarousel();
   return (
@@ -111,7 +113,7 @@ export function CarouselNextTrigger(
           {...triggerProps({
             class: styles.slots.nextTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("carousel.next")}
+          aria-label={m("carousel.next")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -127,9 +129,8 @@ export function CarouselNextTrigger(
 export function CarouselAutoplayTrigger(
   props: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>,
 ): JSX.Element {
+  const { m } = useLocale();
   const carousel = useCarouselContext();
-  const playLabel = useTranslation("carousel.play");
-  const pauseLabel = useTranslation("carousel.pause");
 
   return (
     <CarouselPrimitive.AutoplayTrigger
@@ -137,7 +138,9 @@ export function CarouselAutoplayTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label={carousel().isPlaying ? pauseLabel : playLabel}
+          aria-label={
+            carousel().isPlaying ? m("carousel.pause") : m("carousel.play")
+          }
           clickEffect={false}
           pill
           size="icon-md"

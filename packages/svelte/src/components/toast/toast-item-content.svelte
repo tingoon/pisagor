@@ -19,11 +19,11 @@
   import type { HTMLAttributes } from "svelte/elements";
   import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import Spinner from "../spinner.svelte";
   import { useToastItem } from "./toast.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = {
     actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
@@ -128,7 +128,7 @@
       {#snippet asChild(props)}
         <Button
           {...props({ class: slots.close({ class: classNames?.close }) })}
-          aria-label={t("toast.close")}
+          aria-label={m("toast.close")}
           size="icon-xs"
           variant="ghost"
         >

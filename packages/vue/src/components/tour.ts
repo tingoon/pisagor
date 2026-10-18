@@ -25,7 +25,7 @@ import type { InjectionKey, PropType, UnwrapRef } from "vue";
 import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideTourStyles } = createSlotRecipeContext({
@@ -270,6 +270,7 @@ export const TourContent = defineComponent({
     showCloseButton: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
@@ -309,7 +310,7 @@ export const TourContent = defineComponent({
                           h(
                             "span",
                             { class: recipeSlots.closeLabel() },
-                            useTranslation("tour.close"),
+                            m("tour.close"),
                           ),
                         ],
                       ),

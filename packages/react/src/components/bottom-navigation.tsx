@@ -14,7 +14,7 @@ import {
   use,
 } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -78,11 +78,12 @@ export function BottomNavigationRoot({
   "aria-label": ariaLabel,
   ...rest
 }: BottomNavigationRootProps) {
+  const { m } = useLocale();
   return (
     <BottomNavigationValueContext value={value}>
       <BottomNavigationNav
         {...rest}
-        aria-label={useMessage("bottomNavigation.label", ariaLabel)}
+        aria-label={m("bottomNavigation.label", ariaLabel)}
       />
     </BottomNavigationValueContext>
   );

@@ -14,7 +14,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -142,7 +142,7 @@ export function DialogContent({
   className,
   ...rest
 }: DialogContentProps) {
-  const dialogCloseMessage = useMessage("dialog.close");
+  const { m } = useLocale();
   const { slots } = useDialog();
 
   return (
@@ -155,7 +155,7 @@ export function DialogContent({
       {!!showCloseButton && (
         <DialogCloseTrigger asChild>
           <Button
-            aria-label={dialogCloseMessage}
+            aria-label={m("dialog.close")}
             className={slots.inline()}
             size="icon-sm"
             variant="ghost"

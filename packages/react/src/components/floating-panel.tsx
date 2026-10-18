@@ -23,7 +23,7 @@ import type { ComponentProps } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -175,10 +175,11 @@ export function FloatingPanelMinimize({
   variant = "ghost",
   ...rest
 }: FloatingPanelMinimizeProps) {
+  const { m } = useLocale();
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
       <Button
-        aria-label={useMessage("floatingPanel.minimize")}
+        aria-label={m("floatingPanel.minimize")}
         size={size}
         variant={variant}
       >
@@ -193,10 +194,11 @@ export function FloatingPanelMaximize({
   variant = "ghost",
   ...rest
 }: FloatingPanelMaximizeProps) {
+  const { m } = useLocale();
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
       <Button
-        aria-label={useMessage("floatingPanel.maximize")}
+        aria-label={m("floatingPanel.maximize")}
         size={size}
         variant={variant}
       >
@@ -211,12 +213,13 @@ export function FloatingPanelRestore({
   variant = "outline",
   ...rest
 }: FloatingPanelRestoreProps) {
+  const { m } = useLocale();
   const slots = useFloatingPanelSlots();
 
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
       <Button
-        aria-label={useMessage("floatingPanel.restore")}
+        aria-label={m("floatingPanel.restore")}
         size={size}
         variant={variant}
       >

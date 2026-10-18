@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cn, handleColumnResizeKeyDown } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import {
     useDataGridContext,
     useDataGridHeaderCellContext,
@@ -10,14 +10,14 @@
   let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
   const headerCell = useDataGridHeaderCellContext();
   const { slots, table } = useDataGridContext();
-  const t = useMessageResolver();
+  const { m } = useLocale();
 </script>
 
 {#if headerCell?.header.column.getCanResize()}
   <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
   <!-- biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus -->
   <div
-    aria-label={t("dataGrid.resizeColumn")}
+    aria-label={m("dataGrid.resizeColumn")}
     {...rest}
     aria-orientation="vertical"
     aria-valuenow={headerCell.header.column.getSize()}

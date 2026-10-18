@@ -13,7 +13,7 @@ import { Button } from "./button";
 import { FieldLabel } from "./field";
 import { Input, type InputProps } from "./input";
 import { InputClearButton } from "./input/input-clear-button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -229,6 +229,7 @@ export const NumberInputDecrementTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const styles = useNumberInput();
 
     return () =>
@@ -243,7 +244,7 @@ export const NumberInputDecrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("numberInput.decrement"),
+              "aria-label": m("numberInput.decrement"),
               variant: "ghost",
             },
             () => h(PhMinus, { "aria-hidden": true }),
@@ -262,6 +263,7 @@ export const NumberInputIncrementTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const styles = useNumberInput();
 
     return () =>
@@ -276,7 +278,7 @@ export const NumberInputIncrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("numberInput.increment"),
+              "aria-label": m("numberInput.increment"),
               variant: "ghost",
             },
             () => h(PhPlus, { "aria-hidden": true }),

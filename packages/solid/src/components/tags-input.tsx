@@ -22,7 +22,7 @@ import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { XIcon, createSlotRecipeContext } from "../internal";
 import { InputGroup, type InputGroupProps } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -130,6 +130,7 @@ export function TagsInputRoot(props: TagsInputProps): JSX.Element {
 }
 
 export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -154,9 +155,7 @@ export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
         >
           {local.children}
           <Show when={clearable() && api().value.length > 0}>
-            <TagsInputClearTrigger
-              aria-label={useTranslation("tagsInput.clearAllTags")}
-            />
+            <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
           </Show>
         </InputGroup>
       )}
@@ -229,6 +228,7 @@ export function TagsInputItemText(props: TagsInputItemTextProps): JSX.Element {
 export function TagsInputItemDeleteTrigger(
   props: TagsInputItemDeleteTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useTagsInputItem();
 
@@ -240,7 +240,7 @@ export function TagsInputItemDeleteTrigger(
           {...triggerProps({
             class: styles.slots.delete({ class: local.class }),
           })}
-          aria-label={useTranslation("tagsInput.removeTag")}
+          aria-label={m("tagsInput.removeTag")}
           size="icon-xs"
           variant="ghost"
         >
@@ -280,6 +280,7 @@ export function TagsInputInput(props: TagsInputInputProps): JSX.Element {
 export function TagsInputClearTrigger(
   props: TagsInputClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useTagsInput();
 
@@ -291,7 +292,7 @@ export function TagsInputClearTrigger(
           {...triggerProps({
             class: styles.slots.clearTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("tagsInput.clear")}
+          aria-label={m("tagsInput.clear")}
           size="icon-xs"
           variant="ghost"
         >

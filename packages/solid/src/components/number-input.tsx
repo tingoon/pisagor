@@ -15,7 +15,7 @@ import { createMemo, Show, splitProps } from "solid-js";
 import { MinusIcon, PlusIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -170,6 +170,7 @@ export function NumberInputClearTrigger(): JSX.Element {
 export function NumberInputDecrementTrigger(
   props: NumberInputDecrementTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useNumberInput();
 
@@ -181,7 +182,7 @@ export function NumberInputDecrementTrigger(
           {...triggerProps({
             class: styles.slots.decrementTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("numberInput.decrement")}
+          aria-label={m("numberInput.decrement")}
           variant="ghost"
         >
           <MinusIcon />
@@ -194,6 +195,7 @@ export function NumberInputDecrementTrigger(
 export function NumberInputIncrementTrigger(
   props: NumberInputIncrementTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useNumberInput();
 
@@ -205,7 +207,7 @@ export function NumberInputIncrementTrigger(
           {...triggerProps({
             class: styles.slots.incrementTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("numberInput.increment")}
+          aria-label={m("numberInput.increment")}
           variant="ghost"
         >
           <PlusIcon />

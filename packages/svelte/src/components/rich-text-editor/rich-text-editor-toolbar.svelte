@@ -9,12 +9,12 @@
     TextStrikethroughIcon,
   } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import Toggle from "../toggle.svelte";
   import VisuallyHidden from "../visually-hidden.svelte";
   import { useRichTextEditorState } from "./rich-text-editor.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
@@ -68,7 +68,7 @@
     {:else}
       <div class={ctx.slots.inline()}>
         <Toggle
-          aria-label={t("richTextEditor.bold")}
+          aria-label={m("richTextEditor.bold")}
           onPressedChange={() => ctx.editor?.chain().focus().toggleBold().run()}
           pressed={bold}
           size="sm"
@@ -78,7 +78,7 @@
           <VisuallyHidden>Bold</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label={t("richTextEditor.italic")}
+          aria-label={m("richTextEditor.italic")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleItalic().run()}
           pressed={italic}
@@ -89,7 +89,7 @@
           <VisuallyHidden>Italic</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label={t("richTextEditor.strikethrough")}
+          aria-label={m("richTextEditor.strikethrough")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleStrike().run()}
           pressed={strike}
@@ -100,7 +100,7 @@
           <VisuallyHidden>Strikethrough</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label={t("richTextEditor.bulletList")}
+          aria-label={m("richTextEditor.bulletList")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleBulletList().run()}
           pressed={bulletList}
@@ -111,7 +111,7 @@
           <VisuallyHidden>Bullet list</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label={t("richTextEditor.orderedList")}
+          aria-label={m("richTextEditor.orderedList")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleOrderedList().run()}
           pressed={orderedList}

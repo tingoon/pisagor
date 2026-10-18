@@ -22,7 +22,7 @@ import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
@@ -282,13 +282,14 @@ export function ActionBarSeparator(
 }
 
 export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["onClick", "class", "children"]);
   const styles = useActionBarStyles();
   const state = useActionBarState();
 
   return (
     <ark.button
-      aria-label={useTranslation("actionBar.close")}
+      aria-label={m("actionBar.close")}
       {...rest}
       class={styles.slots.close({ class: local.class })}
       data-part="close"

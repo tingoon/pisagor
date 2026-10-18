@@ -4,10 +4,10 @@
   import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useSortable, useSortableItem } from "./sortable.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     children,
@@ -55,7 +55,7 @@
     ? "Alt+ArrowUp Alt+ArrowDown"
     : "Alt+ArrowLeft Alt+ArrowRight"}
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ??
-    t("sortable.dragHandle")}
+    m("sortable.dragHandle")}
   class={item.slots.handle({
     class: cn(className),
     disabled: sortable.disabled,

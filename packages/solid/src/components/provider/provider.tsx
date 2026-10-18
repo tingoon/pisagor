@@ -1,47 +1,31 @@
-import {
-  LocaleProvider as ArkLocaleProvider,
-  useLocaleContext,
-} from "@ark-ui/solid";
-import { defaultLocale, defaultMotion } from "@pisagor/utils";
-import type {
-  LocaleConfig,
-  MotionConfig,
-  TranslationsConfig,
-} from "@pisagor/utils";
-import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/solid";
+import { defaultMotion, resolveLocale } from "@pisagor/utils";
+import type { LocaleConfig, MotionConfig } from "@pisagor/utils";
+import { isNullish, mergeDeep, omitBy } from "remeda";
 import type { JSX, ParentProps } from "solid-js";
-import { Show, splitProps } from "solid-js";
+import { createMemo, Show, splitProps } from "solid-js";
 import { Toaster, type ToasterProps } from "../toast";
 import {
+  createLocaleValue,
   LocaleContext,
   MotionContext,
   ProviderContext,
-  TranslationsContext,
   useLocale,
   useMotion,
   useProvider,
-  useTranslations,
 } from "./context";
 
 // #region Types
-export interface ProviderProps extends ParentProps {
-  /** Locale settings merged over the parent `Provider`. */
-  locale?: Partial<LocaleConfig>;
-  /**
-   * Partial translation overrides merged over the parent `Provider`
-   * translations and the built-in English defaults.
-   */
-  translations?: TranslationsConfig;
+export interface ProviderProps extends ParentProps, LocaleConfig {
   /** Animation settings merged over the parent `Provider`. */
   motion?: Partial<MotionConfig>;
 }
 
-export interface LocaleProviderProps
-  extends ParentProps, Partial<LocaleConfig> {}
-
-export interface TranslationsProviderProps extends ParentProps {
-  translations?: TranslationsConfig;
-}
+/**
+ * `locale`, `dir` and partial `messages` merged over the parent `Provider` for
+ * a subtree.
+ */
+export interface LocaleProviderProps extends ParentProps, LocaleConfig {}
 
 export type MotionProviderProps = ParentProps & Partial<MotionConfig>;
 
@@ -49,50 +33,31 @@ export type ToasterProviderProps = ToasterProps;
 // #endregion
 
 // #region Parts
-/** Override only the locale (and Ark-derived `dir`) for a subtree. */
+/** Override the locale, direction and/or UI messages for a subtree. */
 export function LocaleProvider(props: LocaleProviderProps): JSX.Element {
-  const [local] = splitProps(props, ["children", "locale"]);
+  const [local] = splitProps(props, ["children", "dir", "locale", "messages"]);
   const parentLocale = useLocale();
-  const config = () =>
-    mergeDeep(
-      mergeDeep(defaultLocale, parentLocale ?? {}),
-      omitBy({ locale: local.locale }, isNullish),
-    ) as LocaleConfig;
+  const resolved = createMemo(() =>
+    resolveLocale(
+      { dir: local.dir, locale: local.locale, messages: local.messages },
+      parentLocale,
+    ),
+  );
+  const value = createLocaleValue(resolved);
 
   return (
-    <ArkLocaleProvider locale={config().locale}>
-      <LocaleContext value={config()}>
-        <LocaleDir>{local.children}</LocaleDir>
+    <ArkLocaleProvider locale={value.locale}>
+      <LocaleContext value={value}>
+        <div
+          data-part="locale"
+          data-scope="provider"
+          dir={value.dir}
+          style={{ display: "contents" }}
+        >
+          {local.children}
+        </div>
       </LocaleContext>
     </ArkLocaleProvider>
-  );
-}
-
-function LocaleDir(props: ParentProps): JSX.Element {
-  const locale = useLocaleContext();
-  return (
-    <div
-      data-part="locale"
-      data-scope="provider"
-      dir={locale().dir}
-      style={{ display: "contents" }}
-    >
-      {props.children}
-    </div>
-  );
-}
-
-/** Override only translations for a subtree. */
-export function TranslationsProvider(
-  props: TranslationsProviderProps,
-): JSX.Element {
-  const [local] = splitProps(props, ["children", "translations"]);
-  const parentTranslations = useTranslations();
-  const config = () =>
-    merge(parentTranslations ?? {}, local.translations ?? {});
-
-  return (
-    <TranslationsContext value={config()}>{local.children}</TranslationsContext>
   );
 }
 
@@ -127,9 +92,10 @@ export function ToasterProvider(props: ToasterProviderProps): JSX.Element {
 
 function ProviderRoot(props: ProviderProps): JSX.Element {
   const [local] = splitProps(props, [
-    "locale",
     "children",
-    "translations",
+    "dir",
+    "locale",
+    "messages",
     "motion",
   ]);
   const parentConfig = useProvider();
@@ -137,27 +103,36 @@ function ProviderRoot(props: ProviderProps): JSX.Element {
   const parentLocale = useLocale();
   const root = !parentConfig;
 
-  const config = () => ({
-    locale: mergeDeep(
-      mergeDeep(defaultLocale, parentLocale ?? {}),
-      omitBy(local.locale ?? {}, isNullish),
-    ) as LocaleConfig,
-    motion: mergeDeep(
-      mergeDeep(defaultMotion, parentMotion ?? {}),
-      omitBy(local.motion ?? {}, isNullish),
-    ) as MotionConfig,
-  });
+  const locale = createLocaleValue(
+    createMemo(() =>
+      resolveLocale(
+        { dir: local.dir, locale: local.locale, messages: local.messages },
+        parentLocale,
+      ),
+    ),
+  );
+  const config = {
+    locale,
+    get motion() {
+      return mergeDeep(
+        mergeDeep(defaultMotion, parentMotion ?? {}),
+        omitBy(local.motion ?? {}, isNullish),
+      ) as MotionConfig;
+    },
+  };
 
   return (
-    <ProviderContext value={config()}>
-      <LocaleProvider {...local.locale}>
+    <ProviderContext value={config}>
+      <LocaleProvider
+        dir={local.dir}
+        locale={local.locale}
+        messages={local.messages}
+      >
         <MotionProvider {...local.motion}>
-          <TranslationsProvider translations={local.translations}>
-            <Show when={root}>
-              <ToasterProvider />
-            </Show>
-            {local.children}
-          </TranslationsProvider>
+          <Show when={root}>
+            <ToasterProvider />
+          </Show>
+          {local.children}
         </MotionProvider>
       </LocaleProvider>
     </ProviderContext>
@@ -169,5 +144,4 @@ export const Provider = Object.assign(ProviderRoot, {
   Locale: LocaleProvider,
   Motion: MotionProvider,
   Toaster: ToasterProvider,
-  Translations: TranslationsProvider,
 });

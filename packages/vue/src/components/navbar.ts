@@ -8,7 +8,7 @@ import {
   type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -60,6 +60,7 @@ export const NavbarNav = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const styles = useNavbarStyles();
 
     return () => {
@@ -69,7 +70,7 @@ export const NavbarNav = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? useTranslation("navbar.label"),
+          "aria-label": m("navbar.label", props.ariaLabel),
           class: slots$.nav({
             class: cn(props.class, attrs.class, props.classNames?.nav),
           }),

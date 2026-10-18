@@ -15,9 +15,9 @@
   import InputGroupAddon from "../input-group/input-group-addon.svelte";
   import InputGroupButton from "../input-group/input-group-button.svelte";
   import InputGroupRoot from "../input-group/input-group-root.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -103,7 +103,7 @@
       {#if canClear}
         <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
           <InputGroupButton
-            aria-label={t("passwordInput.clear")}
+            aria-label={m("passwordInput.clear")}
             data-part="clear-trigger"
             data-scope="password-input"
             onclick={handleClear}
@@ -118,7 +118,7 @@
 
       <InputGroupAddon align="inline-end">
         <PasswordInputPrimitive.VisibilityTrigger
-          aria-label={t("passwordInput.togglePasswordVisibility")}
+          aria-label={m("passwordInput.togglePasswordVisibility")}
           class={inputGroupButtonRecipe({ size: "icon-xs" })}
           type="button"
         >

@@ -22,7 +22,7 @@ import {
   createContext,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -134,6 +134,7 @@ export const SortableRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const activeId = ref<string | null>(null);
     const overId = ref<string | null>(null);
     const handleIds = ref<Set<string>>(new Set());
@@ -181,7 +182,6 @@ export const SortableRoot = defineComponent({
       props.onValueChange?.(reorder(current, from, to));
     };
 
-    const movedTemplate = useTranslation("sortable.moved");
     const moved = ref("");
     const keyShortcuts = () =>
       props.orientation === "vertical"
@@ -196,7 +196,7 @@ export const SortableRoot = defineComponent({
       if (index === -1 || targetIndex < 0 || targetIndex >= current.length)
         return;
       props.onValueChange?.(reorder(current, index, targetIndex));
-      moved.value = formatMessage(movedTemplate, {
+      moved.value = formatMessage(m("sortable.moved"), {
         position: targetIndex + 1,
         total: current.length,
       });
@@ -388,6 +388,7 @@ export const SortableHandle = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const itemContext = useSortableItemContext();
     const getSlots = useSortableItemSlots();
     const sortable = useSortableContext();
@@ -417,7 +418,7 @@ export const SortableHandle = defineComponent({
           "aria-label":
             (attrs["aria-label"] as string | undefined) ??
             props.ariaLabel ??
-            useTranslation("sortable.dragHandle"),
+            m("sortable.dragHandle"),
           class: getSlots().handle({
             class: cn(props.class, attrs.class),
             disabled: sortable.disabled,

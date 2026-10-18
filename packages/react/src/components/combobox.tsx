@@ -31,7 +31,7 @@ import { createContext, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -189,7 +189,7 @@ export function ComboboxInput({
   className,
   ...rest
 }: ComboboxInputProps) {
-  const comboboxClearMessage = useMessage("combobox.clear");
+  const { m } = useLocale();
   const { inputValue } = useComboboxContext();
   const slots = useComboboxSlots();
   const control = use(ComboboxControlContext);
@@ -217,7 +217,7 @@ export function ComboboxInput({
         {clearable && inputValue && (
           <ComboboxClearTrigger asChild>
             <InputGroup.Button
-              aria-label={comboboxClearMessage}
+              aria-label={m("combobox.clear")}
               size="icon-xs"
               variant="ghost"
             >
@@ -241,7 +241,7 @@ export function ComboboxTrigger({
   className,
   ...rest
 }: ComboboxTriggerProps) {
-  const comboboxToggleMessage = useMessage("combobox.toggle");
+  const { m } = useLocale();
   const slots = useComboboxSlots();
 
   return (
@@ -252,7 +252,7 @@ export function ComboboxTrigger({
     >
       {children ?? (
         <Button
-          aria-label={comboboxToggleMessage}
+          aria-label={m("combobox.toggle")}
           className={slots.triggerButton()}
           variant="ghost"
         >
@@ -267,7 +267,8 @@ export function ComboboxClearTrigger({
   "aria-label": ariaLabelProp,
   ...rest
 }: ComboboxClearTriggerProps) {
-  const ariaLabel = useMessage("combobox.clear", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("combobox.clear", ariaLabelProp);
   return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
 }
 
@@ -368,12 +369,12 @@ export function ComboboxEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
-  const comboboxEmptyMessage = useMessage("combobox.empty");
+  const { m } = useLocale();
   const slots = useComboboxSlots();
 
   return (
     <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || comboboxEmptyMessage}
+      {children || m("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

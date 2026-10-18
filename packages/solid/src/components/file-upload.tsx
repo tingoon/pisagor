@@ -28,7 +28,7 @@ import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { UploadIcon, XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -199,6 +199,7 @@ export function FileUploadItemGroup(
 }
 
 export function FileUploadList(props: FileUploadListProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class", "recipe"]);
   const fileUpload = useFileUploadContext();
   const styles = useFileUpload();
@@ -236,8 +237,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
           <For each={errors}>
             {(code) => (
               <div class={itemSlots().error()}>
-                {useTranslation(`fileUpload.error.${code}` as MessageKey) ??
-                  code}
+                {m(`fileUpload.error.${code}` as MessageKey) ?? code}
               </div>
             )}
           </For>
@@ -246,7 +246,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: itemSlots().deleteButton() })}
-              aria-label={useTranslation("fileUpload.removeFile")}
+              aria-label={m("fileUpload.removeFile")}
               size="icon-xs"
               variant="ghost"
             >

@@ -26,7 +26,7 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "./dialog";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -193,7 +193,7 @@ export function TourContent({
   className,
   ...rest
 }: TourContentProps) {
-  const tourCloseMessage = useMessage("tour.close");
+  const { m } = useLocale();
   const { slots } = useTourContext();
 
   return (
@@ -229,7 +229,7 @@ export function TourContent({
               >
                 <XIcon />
 
-                <span className={slots.closeLabel()}>{tourCloseMessage}</span>
+                <span className={slots.closeLabel()}>{m("tour.close")}</span>
               </Button>
             </TourCloseTrigger>
           )}

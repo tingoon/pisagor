@@ -17,7 +17,7 @@ import {
   Show,
   splitProps,
 } from "solid-js";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { Table } from "../table";
 import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
@@ -140,10 +140,10 @@ function DataGridHeaderRow(props: DataGridHeaderRowProps): JSX.Element {
 }
 
 function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const headerCell = useDataGridHeaderCellContext();
   const { slots, table } = useDataGridContext();
-  const resizeLabel = useTranslation("dataGrid.resizeColumn");
 
   return (
     <Show when={headerCell}>
@@ -154,7 +154,7 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
             {/* biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus */}
             <div
               {...rest}
-              aria-label={resizeLabel}
+              aria-label={m("dataGrid.resizeColumn")}
               aria-orientation="vertical"
               aria-valuenow={header().column.getSize()}
               class={slots.columnResizer({
@@ -524,6 +524,7 @@ function DataGridCell<TData extends RowData>(
 }
 
 function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "colSpan", "class"]);
   const { slots, table } = useDataGridContext();
   const span = () => local.colSpan ?? table.getAllColumns().length;
@@ -536,7 +537,7 @@ function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
       data-scope="data-grid"
     >
       <Table.Cell class={slots.empty()} colSpan={span()}>
-        {local.children ?? useTranslation("dataGrid.empty")}
+        {m("dataGrid.empty", local.children)}
       </Table.Cell>
     </Table.Row>
   );

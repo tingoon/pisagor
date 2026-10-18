@@ -3,12 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxClearTriggerProps,
   } from "@ark-ui/svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
-    "aria-label": ariaLabel = t("select.clear"),
+    "aria-label": ariaLabel = m("select.clear"),
     children,
     ...rest
   }: ComboboxClearTriggerProps = $props();

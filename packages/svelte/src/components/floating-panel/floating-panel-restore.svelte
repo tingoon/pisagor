@@ -6,10 +6,10 @@
   import { buttonRecipe, floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ArrowsOutIcon, CornersInIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFloatingPanel } from "./floating-panel.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
     size?: "icon-xs" | "icon-sm" | "icon-md";
@@ -27,7 +27,7 @@
 </script>
 
 <FloatingPanelPrimitive.StageTrigger
-  aria-label={t("floatingPanel.restore")}
+  aria-label={m("floatingPanel.restore")}
   {...rest}
   class={cn(buttonRecipe({ size, variant }).base(), className)}
   stage="default"

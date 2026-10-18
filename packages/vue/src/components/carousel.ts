@@ -11,7 +11,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -91,6 +91,7 @@ function createNavTrigger(
       },
     },
     setup(props, { attrs }) {
+      const { m } = useLocale();
       const styles = useCarousel();
 
       return () =>
@@ -108,8 +109,8 @@ function createNavTrigger(
               Button as ArkPart,
               {
                 "aria-label": isPrev
-                  ? useTranslation("carousel.previous")
-                  : useTranslation("carousel.next"),
+                  ? m("carousel.previous")
+                  : m("carousel.next"),
                 clickEffect: false,
                 pill: true,
                 size: "icon-md",
@@ -138,9 +139,8 @@ export const CarouselAutoplayTrigger = defineComponent({
   inheritAttrs: false,
   name: "Carousel.AutoplayTrigger",
   setup(_, { attrs }) {
+    const { m } = useLocale();
     const carousel = useCarouselContext();
-    const playLabel = useTranslation("carousel.play");
-    const pauseLabel = useTranslation("carousel.pause");
 
     return () => {
       const isPlaying = carousel.value.isPlaying;
@@ -151,7 +151,9 @@ export const CarouselAutoplayTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": isPlaying ? pauseLabel : playLabel,
+              "aria-label": isPlaying
+                ? m("carousel.pause")
+                : m("carousel.play"),
               clickEffect: false,
               pill: true,
               size: "icon-md",

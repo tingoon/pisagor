@@ -6,9 +6,9 @@
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ArrowsOutIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
     size?: "icon-xs" | "icon-sm" | "icon-md";
@@ -24,7 +24,7 @@
 </script>
 
 <FloatingPanelPrimitive.StageTrigger
-  aria-label={t("floatingPanel.maximize")}
+  aria-label={m("floatingPanel.maximize")}
   {...rest}
   class={cn(buttonRecipe({ size, variant }).base(), className)}
   stage="maximized"

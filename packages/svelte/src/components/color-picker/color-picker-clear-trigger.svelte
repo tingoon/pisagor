@@ -3,9 +3,9 @@
   import { XIcon } from "phosphor-svelte";
   import type { ClassValue } from "svelte/elements";
   import { InputGroup } from "../input-group";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = {
     class?: ClassValue;
@@ -32,7 +32,7 @@
 {#if visible}
   <InputGroup.Addon align="inline-end">
     <InputGroup.Button
-      aria-label={t("colorPicker.clearColor")}
+      aria-label={m("colorPicker.clearColor")}
       class={className}
       data-part="clear-trigger"
       data-scope="color-picker"

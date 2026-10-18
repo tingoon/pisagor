@@ -21,6 +21,7 @@ import {
   createSlotRecipeContext,
   renderIconCloseButton,
 } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideDialogStyles, withContext } =
@@ -219,6 +220,7 @@ export const DialogContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const dialogContext = useDialogLocal();
 
     return () => {
@@ -246,7 +248,10 @@ export const DialogContent = defineComponent({
                 slots.default?.(),
                 props.showCloseButton
                   ? h(DialogCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(dialogContext.slots.inline()),
+                      renderIconCloseButton(
+                        m("dialog.close"),
+                        dialogContext.slots.inline(),
+                      ),
                     )
                   : null,
               ],

@@ -17,7 +17,7 @@ import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -62,6 +62,7 @@ export function PopoverPositioner(props: PopoverPositionerProps): JSX.Element {
 }
 
 export function PopoverContent(props: PopoverContentProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "showCloseButton",
     "children",
@@ -91,7 +92,7 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <Button
                     {...triggerProps({ class: slots().close() })}
-                    aria-label={useTranslation("popover.close")}
+                    aria-label={m("popover.close")}
                     size="icon-sm"
                     variant="ghost"
                   >

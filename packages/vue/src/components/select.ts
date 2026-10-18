@@ -31,7 +31,7 @@ import {
   createContext,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -441,6 +441,7 @@ export const SelectClearTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useSelectSlots();
 
     return () => {
@@ -450,7 +451,7 @@ export const SelectClearTrigger = defineComponent({
         SelectPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
+          "aria-label": m("select.clear", props["aria-label"]),
           class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
         },
         () => slots.default?.(),

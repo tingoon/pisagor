@@ -2,7 +2,7 @@
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import ComboboxEmpty from "../combobox/combobox-empty.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useCommand } from "./command.context";
 
   let {
@@ -10,7 +10,7 @@
     class: className,
     ...rest
   }: ComponentProps<typeof ComboboxEmpty> = $props();
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const styles = useCommand();
   const slots = $derived(styles.slots);
 </script>
@@ -19,6 +19,6 @@
   {#if children}
     {@render children()}
   {:else}
-    {t("command.empty")}
+    {m("command.empty")}
   {/if}
 </ComboboxEmpty>

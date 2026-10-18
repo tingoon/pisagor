@@ -43,7 +43,7 @@ import {
 } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -187,6 +187,7 @@ export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
 }
 
 export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -231,7 +232,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
             asChild={(triggerProps) => (
               <InputGroup.Button
                 {...triggerProps()}
-                aria-label={useTranslation("combobox.clear")}
+                aria-label={m("combobox.clear")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -252,6 +253,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
 }
 
 export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class", "asChild"]);
   const slots = useComboboxSlots();
 
@@ -271,7 +273,7 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label={useTranslation("combobox.toggle")}
+          aria-label={m("combobox.toggle")}
           class={slots().triggerButton()}
           variant="ghost"
         >
@@ -285,11 +287,12 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
 export function ComboboxClearTrigger(
   props: ComboboxClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label"]);
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
-      aria-label={local["aria-label"] ?? useTranslation("select.clear")}
+      aria-label={m("select.clear", local["aria-label"])}
     />
   );
 }
@@ -385,6 +388,7 @@ export function ComboboxItem(props: ComboboxItemProps): JSX.Element {
 }
 
 export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const slots = useComboboxSlots();
   return (
@@ -392,7 +396,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={slots().empty({ class: local.class })}
     >
-      {local.children || useTranslation("combobox.empty")}
+      {local.children || m("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

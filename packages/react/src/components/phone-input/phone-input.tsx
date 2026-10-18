@@ -16,7 +16,7 @@ import RPNPhoneInput, {
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
-import { useMessage } from "../provider/context";
+import { useLocale } from "../provider/context";
 import type { FormControlVariant, VariantClassNames } from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
@@ -165,6 +165,7 @@ function PhoneInputCountrySelect({
   onChange,
   onFocus,
 }: PhoneInputCountrySelectProps) {
+  const { m } = useLocale();
   const { classNames, popupProps, size, slots } = usePhoneInput();
 
   const items = useMemo(
@@ -203,7 +204,7 @@ function PhoneInputCountrySelect({
       >
         <Combobox.Control className={slots.countryControl()}>
           <Combobox.Trigger
-            aria-label={useMessage("phoneInput.selectCountry")}
+            aria-label={m("phoneInput.selectCountry")}
             asChild
             className={slots.countrySelect()}
             disabled={isDisabled}
@@ -240,7 +241,7 @@ function PhoneInputCountrySelect({
             <Combobox.FieldInput asChild>
               <InputGroup.Input
                 className={slots.search({ className: classNames?.search })}
-                placeholder={useMessage("phoneInput.search")}
+                placeholder={m("phoneInput.search")}
               />
             </Combobox.FieldInput>
           </InputGroup>
@@ -256,7 +257,7 @@ function PhoneInputCountrySelect({
             </Combobox.Item>
           ))}
         </Combobox.List>
-        <Combobox.Empty>{useMessage("phoneInput.empty")}</Combobox.Empty>
+        <Combobox.Empty>{m("phoneInput.empty")}</Combobox.Empty>
       </Combobox.Content>
     </Combobox.Root>
   );

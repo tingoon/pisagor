@@ -16,7 +16,7 @@ import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -165,6 +165,7 @@ export function NumberInputDecrementTrigger({
   className,
   ...rest
 }: NumberInputDecrementTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useNumberInput();
 
   return (
@@ -173,7 +174,7 @@ export function NumberInputDecrementTrigger({
       asChild
       className={slots.decrementTrigger({ className })}
     >
-      <Button aria-label={useMessage("numberInput.decrement")} variant="ghost">
+      <Button aria-label={m("numberInput.decrement")} variant="ghost">
         <MinusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.DecrementTrigger>
@@ -184,6 +185,7 @@ export function NumberInputIncrementTrigger({
   className,
   ...rest
 }: NumberInputIncrementTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useNumberInput();
 
   return (
@@ -192,7 +194,7 @@ export function NumberInputIncrementTrigger({
       asChild
       className={slots.incrementTrigger({ className })}
     >
-      <Button aria-label={useMessage("numberInput.increment")} variant="ghost">
+      <Button aria-label={m("numberInput.increment")} variant="ghost">
         <PlusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.IncrementTrigger>

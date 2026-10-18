@@ -6,7 +6,7 @@ import { flexRender, useTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ComponentProps, ReactNode } from "react";
-import { useMessage } from "../provider/context";
+import { useLocale } from "../provider/context";
 import { Table } from "../table";
 import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
@@ -212,7 +212,7 @@ function DataGridColumnResizer({
   className,
   ...rest
 }: DataGridColumnResizerProps) {
-  const dataGridResizeColumnMessage = useMessage("dataGrid.resizeColumn");
+  const { m } = useLocale();
   const headerCell = useDataGridHeaderCellContext();
   const { slots, table } = useDataGridContext();
 
@@ -230,7 +230,7 @@ function DataGridColumnResizer({
     // biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus
     <div
       {...rest}
-      aria-label={dataGridResizeColumnMessage}
+      aria-label={m("dataGrid.resizeColumn")}
       aria-orientation="vertical"
       aria-valuenow={header.column.getSize()}
       className={slots.columnResizer({
@@ -593,7 +593,8 @@ function DataGridEmpty({
   className,
   ...rest
 }: DataGridEmptyProps) {
-  const children = useMessage("dataGrid.empty", childrenProp);
+  const { m } = useLocale();
+  const children = m("dataGrid.empty", childrenProp);
   const { slots, table } = useDataGridContext();
   const span = colSpan ?? table.getAllColumns().length;
 

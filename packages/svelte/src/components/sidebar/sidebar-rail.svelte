@@ -2,17 +2,17 @@
   import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useSidebar } from "./sidebar.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let { class: className, ...rest }: HTMLButtonAttributes = $props();
   const ctx = useSidebar();
 </script>
 
 <Ark
-  aria-label={t("sidebar.toggle")}
+  aria-label={m("sidebar.toggle")}
   as="button"
   {...rest}
   class={ctx.slots.rail({ class: cn(className) })}
@@ -21,6 +21,6 @@
   data-sidebar="rail"
   onclick={() => ctx.toggleSidebar()}
   tabindex={-1}
-  title={t("sidebar.toggle")}
+  title={m("sidebar.toggle")}
   type="button"
 />

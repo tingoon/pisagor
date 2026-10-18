@@ -5,11 +5,11 @@
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { DotsSixVerticalIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useResizable } from "./resizable.context";
   import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = SplitterResizeTriggerProps & { withHandle?: boolean };
 
@@ -24,7 +24,7 @@
 </script>
 
 <SplitterPrimitive.ResizeTrigger
-  aria-label={t("resizable.resize")}
+  aria-label={m("resizable.resize")}
   {...rest}
   class={slots.resizeTrigger({ class: cn(className) })}
 >

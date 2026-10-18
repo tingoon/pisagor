@@ -23,7 +23,7 @@ import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { CheckIcon, createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -200,6 +200,7 @@ export function ListboxItemIndicator(
 }
 
 export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class", "children"]);
   const styles = useListbox();
 
@@ -208,7 +209,7 @@ export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useTranslation("listbox.empty")}
+      {local.children || m("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }

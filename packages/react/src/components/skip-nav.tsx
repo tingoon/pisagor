@@ -5,7 +5,7 @@ import type {
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps
@@ -43,6 +43,7 @@ export function SkipNavLink({
   className,
   ...rest
 }: SkipNavLinkProps) {
+  const { m } = useLocale();
   const slots = recipe();
 
   return (
@@ -53,7 +54,7 @@ export function SkipNavLink({
       data-scope="skip-nav"
       href={`#${id}`}
     >
-      {useMessage("skipNav.label", children)}
+      {m("skipNav.label", children)}
     </ark.a>
   );
 }

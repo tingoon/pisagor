@@ -17,7 +17,7 @@ import {
   type Ref,
 } from "vue";
 import { createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -77,13 +77,17 @@ export const BottomNavigationRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useTranslation("bottomNavigation.label");
+    const { m } = useLocale();
     provide(
       BottomNavigationValueKey,
       computed(() => props.value),
     );
     return () =>
-      h(BottomNavigationNav, { "aria-label": label, ...attrs }, slots);
+      h(
+        BottomNavigationNav,
+        { "aria-label": m("bottomNavigation.label"), ...attrs },
+        slots,
+      );
   },
 });
 

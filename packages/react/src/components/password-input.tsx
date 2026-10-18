@@ -16,7 +16,7 @@ import {
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Types
 
@@ -79,7 +79,7 @@ function PasswordInputShorthand({
   className,
   ...inputProps
 }: PasswordInputProps) {
-  const passwordInputClearMessage = useMessage("passwordInput.clear");
+  const { m } = useLocale();
   const { fallback, children, ...restIndicatorProps } = indicatorProps ?? {};
   const {
     onClick: onClearClick,
@@ -132,7 +132,7 @@ function PasswordInputShorthand({
             <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
                 {...restClearButtonProps}
-                aria-label={passwordInputClearMessage}
+                aria-label={m("passwordInput.clear")}
                 data-part="clear-trigger"
                 data-scope="password-input"
                 onClick={(event) => {
@@ -153,9 +153,7 @@ function PasswordInputShorthand({
               asChild
             >
               <InputGroup.Button
-                aria-label={useMessage(
-                  "passwordInput.togglePasswordVisibility",
-                )}
+                aria-label={m("passwordInput.togglePasswordVisibility")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -211,11 +209,12 @@ function PasswordInputVisibilityTrigger({
   children,
   ...rest
 }: PasswordInputPrimitiveVisibilityTriggerProps) {
+  const { m } = useLocale();
   return (
     <InputGroup.Addon align="inline-end">
       <PasswordInputPrimitive.VisibilityTrigger {...rest} asChild>
         <InputGroup.Button
-          aria-label={useMessage("passwordInput.togglePasswordVisibility")}
+          aria-label={m("passwordInput.togglePasswordVisibility")}
           size="icon-xs"
           variant="ghost"
         >

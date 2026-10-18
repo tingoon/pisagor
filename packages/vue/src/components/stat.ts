@@ -17,7 +17,7 @@ import {
   type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
-import { type MessageKey, useTranslation } from "./provider/context";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -101,6 +101,7 @@ export const StatTrend = defineComponent({
     trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     return () => {
       return h(
         ark.div as ArkPart,
@@ -121,7 +122,7 @@ export const StatTrend = defineComponent({
           h(
             "span",
             { class: "sr-only" },
-            useTranslation(`stat.trend.${props.trend}` as MessageKey),
+            m(`stat.trend.${props.trend}` as MessageKey),
           ),
           slots.default?.(),
         ],

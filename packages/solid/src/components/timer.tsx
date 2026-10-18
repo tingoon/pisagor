@@ -15,7 +15,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -169,9 +169,10 @@ export function TimerActionTrigger(
 }
 
 export function TimerPause(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.pause")}
+      aria-label={m("timer.pause")}
       {...props}
       action="pause"
     />
@@ -179,9 +180,10 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerResume(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.resume")}
+      aria-label={m("timer.resume")}
       {...props}
       action="resume"
     />
@@ -189,9 +191,10 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerStart(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.start")}
+      aria-label={m("timer.start")}
       {...props}
       action="start"
     />
@@ -199,9 +202,10 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerReset(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.reset")}
+      aria-label={m("timer.reset")}
       {...props}
       action="reset"
     />
@@ -209,9 +213,10 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerRestart(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.restart")}
+      aria-label={m("timer.restart")}
       {...props}
       action="restart"
     />

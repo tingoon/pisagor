@@ -10,7 +10,7 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -137,6 +137,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots: vueSlots }) {
+    const { m } = useLocale();
     const getSlots = useTagsInputItemSlots();
 
     return () => {
@@ -146,16 +147,14 @@ export const TagsInputItemDeleteTrigger = defineComponent({
         TagsInputPrimitive.ItemDeleteTrigger as ArkPart,
         {
           ...(attrs as object),
-          "aria-label":
-            props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
+          "aria-label": m("tagsInput.removeTag", props["aria-label"]),
           asChild: true,
         },
         () =>
           h(
             InputGroup.Button as ArkPart,
             {
-              "aria-label":
-                props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
+              "aria-label": m("tagsInput.removeTag", props["aria-label"]),
               class: slots.delete({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
@@ -320,6 +319,7 @@ export const TagsInputClearTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots: vueSlots }) {
+    const { m } = useLocale();
     const getSlots = useTagsInputSlots();
 
     return () => {
@@ -329,16 +329,14 @@ export const TagsInputClearTrigger = defineComponent({
         TagsInputPrimitive.ClearTrigger as ArkPart,
         {
           ...(attrs as object),
-          "aria-label":
-            props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
+          "aria-label": m("tagsInput.clearAllTags", props["aria-label"]),
           asChild: true,
         },
         () =>
           h(
             InputGroup.Button as ArkPart,
             {
-              "aria-label":
-                props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
+              "aria-label": m("tagsInput.clearAllTags", props["aria-label"]),
               class: slots.clearTrigger({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),

@@ -26,6 +26,7 @@ import {
   useDialog,
 } from "./dialog";
 import type { DialogBodyProps, DialogHeaderProps, DialogProps } from "./dialog";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideSheetStyles } = createSlotRecipeContext({
@@ -166,6 +167,7 @@ export const SheetContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const dialogContext = useDialog();
 
     return () => {
@@ -195,7 +197,10 @@ export const SheetContent = defineComponent({
                 slots.default?.(),
                 props.showCloseButton
                   ? h(SheetCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(sheetSlots.inline()),
+                      renderIconCloseButton(
+                        m("dialog.close"),
+                        sheetSlots.inline(),
+                      ),
                     )
                   : null,
               ],

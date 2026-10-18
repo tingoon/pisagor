@@ -8,7 +8,7 @@ import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -64,7 +64,8 @@ export function BreadcrumbRoot({
   recipe = breadcrumbRecipe,
   ...rest
 }: BreadcrumbRootProps) {
-  const ariaLabel = useMessage("breadcrumb.label", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("breadcrumb.label", ariaLabelProp);
   const slots = recipe();
 
   return (
@@ -129,6 +130,7 @@ export function BreadcrumbEllipsis({
   className,
   ...rest
 }: BreadcrumbEllipsisProps) {
+  const { m } = useLocale();
   const { slots } = useBreadcrumb();
 
   return (
@@ -139,7 +141,7 @@ export function BreadcrumbEllipsis({
       data-scope="breadcrumb"
     >
       <DotsThreeIcon aria-hidden />
-      <span className="sr-only">{useMessage("breadcrumb.more")}</span>
+      <span className="sr-only">{m("breadcrumb.more")}</span>
     </ark.span>
   );
 }

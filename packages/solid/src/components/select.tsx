@@ -38,7 +38,7 @@ import {
   XIcon,
   createSlotRecipeContext,
 } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -285,12 +285,13 @@ export function SelectItem(props: SelectItemProps): JSX.Element {
 export function SelectClearTrigger(
   props: SelectClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={useTranslation("select.clear")}
+      aria-label={m("select.clear")}
       {...rest}
       class={slots().clearTrigger({ class: local.class })}
     />

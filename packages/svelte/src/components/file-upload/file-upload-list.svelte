@@ -4,7 +4,7 @@
   import { fileUploadItemRecipe } from "@pisagor/recipes";
   import { cn, type MessageKey } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFileUpload } from "./file-upload.context";
   import FileUploadItem from "./file-upload-item.svelte";
   import FileUploadItemDeleteTrigger from "./file-upload-item-delete-trigger.svelte";
@@ -21,7 +21,7 @@
   const styles = useFileUpload();
   const slots = $derived(styles.slots);
   const itemSlots = $derived(recipe());
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const accepted = $derived(api().acceptedFiles);
   const rejected = $derived(api().rejectedFiles);
 </script>
@@ -49,7 +49,7 @@
       <FileUploadItemSize />
       {#each errors ?? [] as code (code)}
         <div class={itemSlots.error()}>
-          {t(`fileUpload.error.${code}` as MessageKey) ?? code}
+          {m(`fileUpload.error.${code}` as MessageKey) ?? code}
         </div>
       {/each}
     </div>

@@ -75,7 +75,7 @@ Prefer public components in app code; only extend `combobox` when building packa
 
 ## i18n and direction
 
-- **Library defaults** (aria-labels, placeholders) ship in English. Consumers override via `Provider` `translations` (`useTranslation` / framework equivalent) or by passing props.
+- **Library defaults** (aria-labels, placeholders) ship as English UI messages. Consumers override them via `Provider` `messages` or by passing props. Components call `const { m } = useLocale();` once at the top of the component/setup and use `m(key, prop)` in markup (the prop wins when it is not `null`/`undefined`); use `formatMessage(m(key), values)` for placeholders.
 - **Direction:** inferred from `Provider` `locale` (RTL for `ar` / `he` / `fa` / `ur`). Icon mirroring follows resolved direction.
 - Consumers own localization; packages do not ship locale catalogs.
 

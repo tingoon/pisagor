@@ -15,7 +15,7 @@ import {
 } from "solid-js";
 import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type SortableOrientation = "vertical" | "horizontal";
 
@@ -90,6 +90,7 @@ function reorder(list: string[], from: number, to: number) {
 }
 
 export function SortableRoot(props: SortableRootProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "orientation",
     "disabled",
@@ -154,7 +155,6 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     local.onValueChange?.(reorder(current, from, to));
   };
 
-  const movedTemplate = useTranslation("sortable.moved");
   const [moved, setMoved] = createSignal("");
   const keyShortcuts = () =>
     orientation() === "vertical"
@@ -170,7 +170,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       return;
     local.onValueChange?.(reorder(current, index, targetIndex));
     setMoved(
-      formatMessage(movedTemplate, {
+      formatMessage(m("sortable.moved"), {
         position: targetIndex + 1,
         total: current.length,
       }),
@@ -326,6 +326,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
 }
 
 export function SortableHandle(props: SortableHandleProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class", "aria-label"]);
   const styles = useSortableItemStyles();
   const item = useSortableItemState();
@@ -347,7 +348,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
           ? "Alt+ArrowUp Alt+ArrowDown"
           : "Alt+ArrowLeft Alt+ArrowRight"
       }
-      aria-label={local["aria-label"] ?? useTranslation("sortable.dragHandle")}
+      aria-label={m("sortable.dragHandle", local["aria-label"])}
       class={styles.slots.handle({ class: local.class, disabled: disabled() })}
       data-part="handle"
       data-scope="sortable"

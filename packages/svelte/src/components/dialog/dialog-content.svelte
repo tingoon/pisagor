@@ -7,10 +7,10 @@
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useDialog } from "./dialog.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = ArkDialogContentProps & {
     bottomStickOnMobile?: boolean;
@@ -36,7 +36,7 @@
   {@render children?.()}
   {#if showCloseButton}
     <DialogPrimitive.CloseTrigger
-      aria-label={t("dialog.close")}
+      aria-label={m("dialog.close")}
       class={cn(
         buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
         slots.inline(),

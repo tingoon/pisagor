@@ -14,7 +14,7 @@ import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -75,7 +75,7 @@ export function PopoverContent({
   className,
   ...rest
 }: PopoverContentProps) {
-  const popoverCloseMessage = useMessage("popover.close");
+  const { m } = useLocale();
   const slots = recipe();
 
   return (
@@ -91,7 +91,7 @@ export function PopoverContent({
             {!!showCloseButton && (
               <PopoverCloseTrigger asChild>
                 <Button
-                  aria-label={popoverCloseMessage}
+                  aria-label={m("popover.close")}
                   className={slots.close()}
                   size="icon-sm"
                   variant="ghost"

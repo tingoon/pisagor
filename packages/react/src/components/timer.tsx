@@ -12,11 +12,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
-import {
-  type MessageKey,
-  useMessage,
-  useMessageResolver,
-} from "./provider/context";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -79,7 +75,7 @@ export function TimerRoot({
   units,
   ...rest
 }: TimerRootProps) {
-  const resolveMessage = useMessageResolver();
+  const { m } = useLocale();
   return (
     <TimerRootBase {...rest}>
       {units && (
@@ -90,7 +86,7 @@ export function TimerRoot({
               <TimerItemGroup>
                 <TimerItem type={unit} />
                 <TimerItemLabel>
-                  {resolveMessage(`timer.${unit}` as MessageKey)}
+                  {m(`timer.${unit}` as MessageKey)}
                 </TimerItemLabel>
               </TimerItemGroup>
             </Fragment>
@@ -187,51 +183,56 @@ export function TimerActionTrigger(props: TimerActionTriggerProps) {
 }
 
 export function TimerPause(props: TimerActionProps) {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="pause"
-      aria-label={useMessage("timer.pause")}
+      aria-label={m("timer.pause")}
     />
   );
 }
 
 export function TimerResume(props: TimerActionProps) {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="resume"
-      aria-label={useMessage("timer.resume")}
+      aria-label={m("timer.resume")}
     />
   );
 }
 
 export function TimerStart(props: TimerActionProps) {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="start"
-      aria-label={useMessage("timer.start")}
+      aria-label={m("timer.start")}
     />
   );
 }
 
 export function TimerReset(props: TimerActionProps) {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="reset"
-      aria-label={useMessage("timer.reset")}
+      aria-label={m("timer.reset")}
     />
   );
 }
 
 export function TimerRestart(props: TimerActionProps) {
+  const { m } = useLocale();
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="restart"
-      aria-label={useMessage("timer.restart")}
+      aria-label={m("timer.restart")}
     />
   );
 }

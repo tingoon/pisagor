@@ -11,7 +11,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -214,11 +214,12 @@ export const TimerPause = defineComponent({
   inheritAttrs: false,
   name: "TimerPause",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.pause"),
+          "aria-label": m("timer.pause"),
           ...attrs,
           action: "pause",
         },
@@ -231,11 +232,12 @@ export const TimerResume = defineComponent({
   inheritAttrs: false,
   name: "TimerResume",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.resume"),
+          "aria-label": m("timer.resume"),
           ...attrs,
           action: "resume",
         },
@@ -248,11 +250,12 @@ export const TimerStart = defineComponent({
   inheritAttrs: false,
   name: "TimerStart",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.start"),
+          "aria-label": m("timer.start"),
           ...attrs,
           action: "start",
         },
@@ -265,11 +268,12 @@ export const TimerReset = defineComponent({
   inheritAttrs: false,
   name: "TimerReset",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.reset"),
+          "aria-label": m("timer.reset"),
           ...attrs,
           action: "reset",
         },
@@ -282,11 +286,12 @@ export const TimerRestart = defineComponent({
   inheritAttrs: false,
   name: "TimerRestart",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.restart"),
+          "aria-label": m("timer.restart"),
           ...attrs,
           action: "restart",
         },

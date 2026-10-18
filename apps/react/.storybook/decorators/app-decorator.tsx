@@ -25,7 +25,7 @@ export const AppDecorator: Decorator = (Story, context) => {
 
   return (
     <div className="bg-background text-foreground" dir={direction}>
-      <Provider locale={{ locale }}>
+      <Provider locale={locale}>
         <Story />
       </Provider>
     </div>

@@ -23,7 +23,7 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -124,6 +124,7 @@ const ClipboardLabel = withContext(ClipboardPrimitive.Label, { name: "Label" });
 
 // #region Shorthand
 export function Clipboard(props: ClipboardProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "buttonSize",
     "buttonVariant",
@@ -146,8 +147,7 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   const variant = () => local.variant ?? "input";
   const buttonSize = () =>
     local.buttonSize ?? (`icon-${local.size ?? "md"}` as ButtonProps["size"]);
-  const buttonAriaLabel = () =>
-    local.buttonAriaLabel ?? useTranslation("clipboard.copy");
+  const buttonAriaLabel = () => m("clipboard.copy", local.buttonAriaLabel);
   const copyIcon = () => local.copyIcon ?? <ClipboardIcon />;
   const copiedIcon = () => local.copiedIcon ?? <CheckIcon />;
   const shellClassName = () =>

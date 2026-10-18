@@ -13,7 +13,7 @@ import {
   type VNodeChild,
 } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -73,6 +73,7 @@ export const BreadcrumbRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     provideBreadcrumbStyles({
@@ -87,7 +88,7 @@ export const BreadcrumbRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? useTranslation("breadcrumb.label"),
+          "aria-label": m("breadcrumb.label", props.ariaLabel),
           "data-part": "root",
           "data-scope": "breadcrumb",
         },

@@ -28,11 +28,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import {
-  type MessageKey,
-  useMessage,
-  useMessageResolver,
-} from "./provider/context";
+import { type MessageKey, useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -220,8 +216,7 @@ export function FileUploadList({
   recipe = fileUploadItemRecipe,
   ...rest
 }: FileUploadListProps) {
-  const fileUploadRemoveFileMessage = useMessage("fileUpload.removeFile");
-  const resolveMessage = useMessageResolver();
+  const { m } = useLocale();
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
   const itemSlots = recipe();
@@ -261,14 +256,14 @@ export function FileUploadList({
           <FileUploadItemSize />
           {errors?.map((code) => (
             <div className={itemSlots.error()} key={code}>
-              {resolveMessage(`fileUpload.error.${code}` as MessageKey) ?? code}
+              {m(`fileUpload.error.${code}` as MessageKey) ?? code}
             </div>
           ))}
         </div>
 
         <FileUploadItemDeleteTrigger asChild>
           <Button
-            aria-label={fileUploadRemoveFileMessage}
+            aria-label={m("fileUpload.removeFile")}
             className={itemSlots.deleteButton()}
             size="icon-xs"
             variant="ghost"

@@ -12,7 +12,7 @@ import {
   use,
 } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -58,7 +58,8 @@ export function MenuRoot({
   "aria-label": ariaLabelProp,
   ...rest
 }: MenuRootProps) {
-  const ariaLabel = useMessage("menu.label", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("menu.label", ariaLabelProp);
   return <MenuRootBase {...rest} aria-label={ariaLabel} />;
 }
 

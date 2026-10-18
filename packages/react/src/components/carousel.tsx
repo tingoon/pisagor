@@ -18,7 +18,7 @@ import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -74,6 +74,7 @@ export function CarouselPrevTrigger({
   className,
   ...rest
 }: CarouselPrevTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useCarousel();
 
   return (
@@ -83,7 +84,7 @@ export function CarouselPrevTrigger({
       className={slots.prevTrigger({ className })}
     >
       <Button
-        aria-label={useMessage("carousel.previous")}
+        aria-label={m("carousel.previous")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -99,6 +100,7 @@ export function CarouselNextTrigger({
   className,
   ...rest
 }: CarouselNextTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useCarousel();
 
   return (
@@ -108,7 +110,7 @@ export function CarouselNextTrigger({
       className={slots.nextTrigger({ className })}
     >
       <Button
-        aria-label={useMessage("carousel.next")}
+        aria-label={m("carousel.next")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -124,14 +126,13 @@ export function CarouselAutoplayTrigger({
   className,
   ...rest
 }: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>) {
+  const { m } = useLocale();
   const carousel = useCarouselContext();
 
   return (
     <CarouselPrimitive.AutoplayTrigger {...rest} asChild className={className}>
       <Button
-        aria-label={useMessage(
-          carousel.isPlaying ? "carousel.pause" : "carousel.play",
-        )}
+        aria-label={m(carousel.isPlaying ? "carousel.pause" : "carousel.play")}
         clickEffect={false}
         pill
         size="icon-md"
