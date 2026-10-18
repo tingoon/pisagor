@@ -153,7 +153,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 - Re-export types, hooks, or `RootProvider` only when part of the public API.
 - Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that.
-- For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Type `ark.*` hosts with `HTMLArkProps<"tag">` only — do not mix in `ComponentPropsWithRef` / separate `PolymorphicProps`. Type native hosts with `ComponentPropsWithRef<"tag">` only. Reserve `ComponentProps` for third-party components that do not export props.
+- For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Type `ark.*` hosts with `HTMLArkProps<"tag">`, or `HTMLArkPropsWithRef<"tag">` from `../internal` when `ref` is forwarded — do not mix in `ComponentPropsWithRef` / separate `PolymorphicProps` / `RefAttributes`. Type native hosts with `ComponentPropsWithRef<"tag">` only. Reserve `ComponentProps` for third-party components that do not export props.
 - Pure Ark props: re-export from the **barrel** (`export type { FooRootProps } from "@ark-ui/react"`). Component modules import for signatures only — do not `export type { FooRootProps }` there. When the local name must extend/omit the Ark type of the same name, import as `FooRootProps as FooRootPrimitiveProps` (`{ArkName}PrimitiveProps`; value alias stays `Foo as FooPrimitive`).
 - Do **not** add identity aliases (`type FooProps = FooRootPrimitiveProps` or empty `interface FooProps extends FooRootPrimitiveProps {}`). Import and use the Ark type directly. Rename aliases only when the public name differs (`ComboboxFieldInputProps = ComboboxInputPrimitiveProps`, `TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps`).
 - Barrel may alias for public names (`DatePickerRootProps as DatePickerProps`).
@@ -257,12 +257,12 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 
 ### Do
 
-- Prefer Ark-exported part props (`AccordionRootProps`, `DialogContentProps`, `HighlightProps`) over `ComponentProps<typeof Primitive.Part>`. For `ark.*` hosts use `HTMLArkProps<"div">` (plus `RefAttributes<Element>` when `ref` is forwarded); for native tags use `ComponentPropsWithRef<"div">` — never combine Ark and native prop types on the same host.
+- Prefer Ark-exported part props (`AccordionRootProps`, `DialogContentProps`, `HighlightProps`) over `ComponentProps<typeof Primitive.Part>`. For `ark.*` hosts use `HTMLArkProps<"div">`, or `HTMLArkPropsWithRef<"div">` from `../internal` when `ref` is forwarded; for native tags use `ComponentPropsWithRef<"div">` — never combine Ark and native prop types on the same host.
 - Re-export **unchanged** Ark props from the component **barrel** (`index.ts`): `export type { AccordionRootProps } from "@ark-ui/react"`. Do not `export type { AccordionRootProps }` from the component module — import there only for local signatures / `extends`.
-- Library-owned props (`Omit` / `extends` with extra fields / `RefAttributes` / renamed aliases) stay in the component module and are re-exported from the barrel via `export type { FooProps } from "./foo"`.
+- Library-owned props (`Omit` / `extends` with extra fields / renamed aliases) stay in the component module and are re-exported from the barrel via `export type { FooProps } from "./foo"`.
 - Do not invent passthrough aliases — if nothing is added, use the imported Ark `*Props` name as-is.
 - When a local `FooRootProps` extends/omits Ark’s same-named type, import as `type FooRootProps as FooRootPrimitiveProps` (insert `Primitive` before `Props`, not after the component name).
-- Ark `*Props` are typically `ComponentPropsWithoutRef` — when the wrapper destructures `ref`, intersect `RefAttributes<Element>` (what `ComponentProps<typeof Primitive>` used to provide).
+- Ark `*Props` / `HTMLArkProps` are typically `ComponentPropsWithoutRef`. When a closed `ark.*` wrapper forwards `ref`, extend `HTMLArkPropsWithRef<"tag">` instead of `HTMLArkProps` + `RefAttributes`. For Ark primitive wrappers (`FieldInputProps`, …), intersect `RefAttributes<Element>` when needed.
 - Note Ark naming quirks (e.g. tabs compound uses `TabListProps` / `TabTriggerProps` / `TabContentProps`, not `TabsListProps`).
 - Use `export interface FooProps` when props are part of the public API.
 - Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).

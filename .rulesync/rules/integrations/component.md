@@ -29,11 +29,12 @@ Blank line before `return`: put one empty line between the preceding statements 
 
 Host element props — match the runtime host, do not mix:
 
-| Host                            | React props type                            | Notes                                                                                                                                                                                                        |
-| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ark.button` / `ark.div` / …    | `HTMLArkProps<"tag">` from `@ark-ui/react`  | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentPropsWithRef` / `PolymorphicProps`. When `ref` is forwarded (destructured or via `...rest`), also extend `RefAttributes<Element>`. |
-| Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react` | No Ark types.                                                                                                                                                                                                |
-| Never                           | `ComponentProps<typeof ark.tag>`            | Prefer `HTMLArkProps<"tag">`.                                                                                                                                                                                |
+| Host                            | React props type                                                | Notes                                                                                                              |
+| ------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `ark.button` / `ark.div` / …    | `HTMLArkProps<"tag">` from `@ark-ui/react`                      | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentPropsWithRef` / `PolymorphicProps`.      |
+| `ark.*` when `ref` is forwarded | `HTMLArkPropsWithRef<"tag">` from `packages/react/src/internal` | Use instead of `HTMLArkProps` + `RefAttributes`. Do **not** mix with `HTMLArkProps` / separate `PolymorphicProps`. |
+| Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react`                     | No Ark types.                                                                                                      |
+| Never                           | `ComponentProps<typeof ark.tag>`                                | Prefer `HTMLArkProps<"tag">` (or `HTMLArkPropsWithRef` when forwarding `ref`).                                     |
 
 Solid: `HTMLArkProps<"tag">` from `@ark-ui/solid` for `ark.*`. Vue: runtime props/attrs (nothing to type). Svelte: `HTMLAttributes<Element>` from `svelte/elements` (`@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel).
 
