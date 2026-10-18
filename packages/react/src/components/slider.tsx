@@ -1,13 +1,13 @@
-import {
-  Slider as SliderPrimitive,
-  type SliderControlProps,
-  type SliderMarkerGroupProps,
-  type SliderMarkerProps,
-  type SliderRangeProps,
-  type SliderRootProps as SliderPrimitiveRootProps,
-  type SliderThumbProps,
-  type SliderTrackProps,
-  type SliderValueTextProps,
+import { Slider as SliderPrimitive } from "@ark-ui/react";
+import type {
+  SliderControlProps,
+  SliderMarkerGroupProps,
+  SliderMarkerProps,
+  SliderRangeProps,
+  SliderRootProps as SliderPrimitiveRootProps,
+  SliderThumbProps,
+  SliderTrackProps,
+  SliderValueTextProps,
 } from "@ark-ui/react";
 import type { SliderProps as BaseSliderRootProps } from "@pisagor/props";
 import {

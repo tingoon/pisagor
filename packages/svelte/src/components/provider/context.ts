@@ -3,14 +3,16 @@ import {
   defaultMotion,
   defaultProviderConfig,
   defaultTranslations,
-  type LocaleConfig,
-  type MessageKey,
-  type MotionConfig,
-  type ProviderConfig,
-  type ProviderContextValue,
   resolveMessage,
   resolveProviderValue,
-  type TranslationsConfig,
+} from "@pisagor/utils";
+import type {
+  LocaleConfig,
+  MessageKey,
+  MotionConfig,
+  ProviderConfig,
+  ProviderContextValue,
+  TranslationsConfig,
 } from "@pisagor/utils";
 import { isNullish, merge, mergeDeep, omitBy } from "remeda";
 import { createContext } from "../../utils/create-context";

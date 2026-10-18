@@ -18,16 +18,14 @@ import {
 import {
   DialogBackdrop,
   DialogBody,
-  type DialogBodyProps,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  type DialogHeaderProps,
-  type DialogProps,
   DialogRoot,
   DialogTitle,
   useDialog,
 } from "./dialog";
+import type { DialogBodyProps, DialogHeaderProps, DialogProps } from "./dialog";
 
 // #region Slot recipe context
 const { provideStyles: provideSheetStyles } = createSlotRecipeContext({

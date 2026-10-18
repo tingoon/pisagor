@@ -1,10 +1,10 @@
 <script lang="ts">
-  import {
-    ScrollArea as ScrollAreaPrimitive,
-    type ScrollAreaRootProps,
-    type ScrollAreaScrollbarProps,
-    type ScrollAreaThumbProps,
-    type ScrollAreaViewportProps,
+  import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte";
+  import type {
+    ScrollAreaRootProps,
+    ScrollAreaScrollbarProps,
+    ScrollAreaThumbProps,
+    ScrollAreaViewportProps,
   } from "@ark-ui/svelte";
   import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
   import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";

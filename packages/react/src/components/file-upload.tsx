@@ -1,16 +1,18 @@
 import {
   FileUpload as FileUploadPrimitive,
-  type FileUploadClearTriggerProps,
-  type FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
-  type FileUploadItemGroupProps,
-  type FileUploadItemNameProps,
-  type FileUploadItemPreviewProps,
-  type FileUploadItemProps,
-  type FileUploadItemSizeTextProps,
-  type FileUploadRootProps as FileUploadPrimitiveRootProps,
-  type FileUploadTriggerProps,
   ark,
   useFileUploadContext,
+} from "@ark-ui/react";
+import type {
+  FileUploadClearTriggerProps,
+  FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
+  FileUploadItemGroupProps,
+  FileUploadItemNameProps,
+  FileUploadItemPreviewProps,
+  FileUploadItemProps,
+  FileUploadItemSizeTextProps,
+  FileUploadRootProps as FileUploadPrimitiveRootProps,
+  FileUploadTriggerProps,
 } from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {

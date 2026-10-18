@@ -1,15 +1,17 @@
 import {
-  type CollectionItem,
   Listbox as ListboxPrimitive,
-  type ListboxEmptyProps,
-  type ListboxItemGroupLabelProps,
-  type ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  type ListboxItemIndicatorProps,
-  type ListboxItemProps as ListboxPrimitiveItemProps,
-  type ListboxItemTextProps,
-  type ListboxRootProps as ListboxPrimitiveRootProps,
-  type ListboxValueTextProps,
   createListCollection,
+} from "@ark-ui/react";
+import type {
+  CollectionItem,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  ListboxItemIndicatorProps,
+  ListboxItemProps as ListboxPrimitiveItemProps,
+  ListboxItemTextProps,
+  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxValueTextProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {

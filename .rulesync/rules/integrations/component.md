@@ -23,6 +23,8 @@ Import paths below use `@pisagor/{pkg}` for light components — substitute `rea
 
 Import from package barrels; use subpaths only for CSS, separate entries, or names missing from the root. This covers Ark (`@ark-ui/<fw>`), Zag, Phosphor (`phosphor-svelte`, not `phosphor-svelte/lib/*`) and our own packages. Allowed subpaths: CSS (`@pisagor/*/styles`); separate runtime or tooling entries (`react-dom/client`, `solid-js/web`, `svelte/elements`, `astro/*`, `storybook/test`, `@storybook/*/node`); packages whose root does not export the name (`@squidlab/phosphor-solid/icons`, `@modelcontextprotocol/sdk/server/*`, React `createGridCollection` from `@ark-ui/react/collection`); lazy-loaded heavy modules (`@tanstack/highlight/core` and `/languages/*`); and our intentional subpaths (`/hooks`, `/utils`, `data-grid`, `data-table`, `phone-input`, `rich-text-editor`, form `/tanstack`, `@pisagor/presets/pisagor`). Lint enforces this (`no-restricted-imports` in `bunfig.toml`, `noRestrictedImports` in `biome.json`); add a new exception there, or a disable comment that says why.
 
+Type imports: when an import has 3 or more inline `type X` specifiers, split it into a value import plus one `import type { … } from "…"` with all the types (keep aliases, e.g. `SliderRootProps as SliderPrimitiveRootProps`). An import with only types is always a pure `import type`. Imports with 1–2 inline types stay inline. No linter enforces the 3+ threshold: Biome `useImportType` (`auto`, `inlineType`, `separatedType`) and oxlint `consistent-type-imports` (`fixStyle`) only pick one style for every import, so follow this by hand. `bun fmt` and Biome `useImportType` (`auto`) leave both forms as they are.
+
 ---
 
 ## Overlay vs modal

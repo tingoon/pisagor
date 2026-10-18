@@ -1,14 +1,13 @@
-import {
-  Drawer as DrawerPrimitive,
-  type DrawerBackdropProps,
-  type DrawerCloseTriggerProps,
-  type DrawerContentProps as DrawerPrimitiveContentProps,
-  type DrawerGrabberProps,
-  type DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  type DrawerRootProps as DrawerPrimitiveRootProps,
-  type DrawerTitleProps,
-  type DrawerTriggerProps,
-  ark,
+import { Drawer as DrawerPrimitive, ark } from "@ark-ui/solid";
+import type {
+  DrawerBackdropProps,
+  DrawerCloseTriggerProps,
+  DrawerContentProps as DrawerPrimitiveContentProps,
+  DrawerGrabberProps,
+  DrawerPositionerProps as DrawerPrimitivePositionerProps,
+  DrawerRootProps as DrawerPrimitiveRootProps,
+  DrawerTitleProps,
+  DrawerTriggerProps,
 } from "@ark-ui/solid";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";

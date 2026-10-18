@@ -1,8 +1,8 @@
-import {
-  Avatar as AvatarPrimitive,
-  type AvatarFallbackProps,
-  type AvatarImageProps,
-  type AvatarRootProps as AvatarPrimitiveRootProps,
+import { Avatar as AvatarPrimitive } from "@ark-ui/solid";
+import type {
+  AvatarFallbackProps,
+  AvatarImageProps,
+  AvatarRootProps as AvatarPrimitiveRootProps,
 } from "@ark-ui/solid";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import {

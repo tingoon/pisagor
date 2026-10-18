@@ -1,11 +1,10 @@
-import {
-  Steps as StepsPrimitive,
-  type StepsIndicatorProps,
-  type StepsItemProps as StepsPrimitiveItemProps,
-  type StepsNextTriggerProps,
-  type StepsPrevTriggerProps,
-  type StepsRootProps as StepsPrimitiveRootProps,
-  ark,
+import { Steps as StepsPrimitive, ark } from "@ark-ui/react";
+import type {
+  StepsIndicatorProps,
+  StepsItemProps as StepsPrimitiveItemProps,
+  StepsNextTriggerProps,
+  StepsPrevTriggerProps,
+  StepsRootProps as StepsPrimitiveRootProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {

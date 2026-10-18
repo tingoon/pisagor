@@ -1,16 +1,15 @@
-import {
-  Steps as StepsPrimitive,
-  type StepsCompletedContentProps,
-  type StepsContentProps,
-  type StepsIndicatorProps,
-  type StepsItemProps as StepsPrimitiveItemProps,
-  type StepsListProps,
-  type StepsNextTriggerProps,
-  type StepsPrevTriggerProps,
-  type StepsRootProps as StepsPrimitiveRootProps,
-  type StepsSeparatorProps,
-  type StepsTriggerProps,
-  ark,
+import { Steps as StepsPrimitive, ark } from "@ark-ui/solid";
+import type {
+  StepsCompletedContentProps,
+  StepsContentProps,
+  StepsIndicatorProps,
+  StepsItemProps as StepsPrimitiveItemProps,
+  StepsListProps,
+  StepsNextTriggerProps,
+  StepsPrevTriggerProps,
+  StepsRootProps as StepsPrimitiveRootProps,
+  StepsSeparatorProps,
+  StepsTriggerProps,
 } from "@ark-ui/solid";
 import type {
   StepsItemProps as BaseStepsItemProps,

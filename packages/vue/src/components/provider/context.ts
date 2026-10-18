@@ -3,22 +3,19 @@ import {
   defaultMotion,
   defaultProviderConfig,
   defaultTranslations,
-  type LocaleConfig,
-  type MessageKey,
-  type MotionConfig,
-  type ProviderConfig,
-  type ProviderContextValue,
   resolveMessage,
   resolveProviderValue,
-  type TranslationsConfig,
 } from "@pisagor/utils";
-import {
-  type ComputedRef,
-  type InjectionKey,
-  inject,
-  type Ref,
-  unref,
-} from "vue";
+import type {
+  LocaleConfig,
+  MessageKey,
+  MotionConfig,
+  ProviderConfig,
+  ProviderContextValue,
+  TranslationsConfig,
+} from "@pisagor/utils";
+import { inject, unref } from "vue";
+import type { ComputedRef, InjectionKey, Ref } from "vue";
 
 export type {
   LocaleConfig,

@@ -23,11 +23,11 @@ import type {
   ComboboxRootProps,
 } from "./combobox";
 import { Combobox } from "./combobox";
-import {
-  Dialog,
-  type DialogContentProps,
-  type DialogRootProps,
-  type DialogTriggerProps,
+import { Dialog } from "./dialog";
+import type {
+  DialogContentProps,
+  DialogRootProps,
+  DialogTriggerProps,
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";

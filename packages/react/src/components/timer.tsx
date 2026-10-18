@@ -1,10 +1,8 @@
-import {
-  Timer as TimerPrimitive,
-  type TimerActionTriggerProps,
-  type TimerRootProps as TimerPrimitiveRootProps,
-  type TimerSeparatorProps,
-  ark,
-  useTimerContext,
+import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/react";
+import type {
+  TimerActionTriggerProps,
+  TimerRootProps as TimerPrimitiveRootProps,
+  TimerSeparatorProps,
 } from "@ark-ui/react";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,

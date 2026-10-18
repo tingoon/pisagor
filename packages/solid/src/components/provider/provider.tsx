@@ -2,12 +2,11 @@ import {
   LocaleProvider as ArkLocaleProvider,
   useLocaleContext,
 } from "@ark-ui/solid";
-import {
-  defaultLocale,
-  defaultMotion,
-  type LocaleConfig,
-  type MotionConfig,
-  type TranslationsConfig,
+import { defaultLocale, defaultMotion } from "@pisagor/utils";
+import type {
+  LocaleConfig,
+  MotionConfig,
+  TranslationsConfig,
 } from "@pisagor/utils";
 import { isNullish, merge, mergeDeep, omitBy } from "remeda";
 import type { JSX, ParentProps } from "solid-js";

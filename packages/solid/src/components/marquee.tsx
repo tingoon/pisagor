@@ -1,9 +1,9 @@
-import {
-  Marquee as MarqueePrimitive,
-  type MarqueeContentProps,
-  type MarqueeEdgeProps,
-  type MarqueeItemProps,
-  type MarqueeRootProps as MarqueePrimitiveRootProps,
+import { Marquee as MarqueePrimitive } from "@ark-ui/solid";
+import type {
+  MarqueeContentProps,
+  MarqueeEdgeProps,
+  MarqueeItemProps,
+  MarqueeRootProps as MarqueePrimitiveRootProps,
 } from "@ark-ui/solid";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";

@@ -1,11 +1,10 @@
-import {
-  Dialog as DialogPrimitive,
-  type DialogCloseTriggerProps,
-  type DialogContentProps,
-  type DialogPositionerProps,
-  type DialogRootProps,
-  type DialogTriggerProps,
-  Portal,
+import { Dialog as DialogPrimitive, Portal } from "@ark-ui/react";
+import type {
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogPositionerProps,
+  DialogRootProps,
+  DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";

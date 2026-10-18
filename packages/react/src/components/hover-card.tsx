@@ -1,10 +1,9 @@
-import {
-  HoverCard as HoverCardPrimitive,
-  type HoverCardArrowProps,
-  type HoverCardContentProps as HoverCardPrimitiveContentProps,
-  type HoverCardRootProps as HoverCardPrimitiveRootProps,
-  type HoverCardTriggerProps,
-  Portal,
+import { HoverCard as HoverCardPrimitive, Portal } from "@ark-ui/react";
+import type {
+  HoverCardArrowProps,
+  HoverCardContentProps as HoverCardPrimitiveContentProps,
+  HoverCardRootProps as HoverCardPrimitiveRootProps,
+  HoverCardTriggerProps,
 } from "@ark-ui/react";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";

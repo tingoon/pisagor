@@ -1,15 +1,14 @@
-import {
-  Popover as PopoverPrimitive,
-  type PopoverAnchorProps,
-  type PopoverArrowProps,
-  type PopoverCloseTriggerProps,
-  type PopoverContentProps as PopoverPrimitiveContentProps,
-  type PopoverDescriptionProps,
-  type PopoverPositionerProps,
-  type PopoverRootProps,
-  type PopoverTitleProps,
-  type PopoverTriggerProps,
-  ark,
+import { Popover as PopoverPrimitive, ark } from "@ark-ui/solid";
+import type {
+  PopoverAnchorProps,
+  PopoverArrowProps,
+  PopoverCloseTriggerProps,
+  PopoverContentProps as PopoverPrimitiveContentProps,
+  PopoverDescriptionProps,
+  PopoverPositionerProps,
+  PopoverRootProps,
+  PopoverTitleProps,
+  PopoverTriggerProps,
 } from "@ark-ui/solid";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";

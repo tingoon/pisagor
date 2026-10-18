@@ -11,18 +11,8 @@ import {
   handleNavigationMenuContentKeyDown,
   handleNavigationMenuListKeyDown,
 } from "@pisagor/utils";
-import {
-  computed,
-  defineComponent,
-  h,
-  type InjectionKey,
-  inject,
-  type PropType,
-  provide,
-  type Ref,
-  ref,
-  useId,
-} from "vue";
+import { computed, defineComponent, h, inject, provide, ref, useId } from "vue";
+import type { InjectionKey, PropType, Ref } from "vue";
 import {
   type ClassValue,
   type VariantClassNames,

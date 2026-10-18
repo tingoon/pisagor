@@ -1,9 +1,9 @@
-import {
-  ScrollArea as ScrollAreaPrimitive,
-  type ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
-  type ScrollAreaScrollbarProps,
-  type ScrollAreaThumbProps,
-  type ScrollAreaViewportProps,
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react";
+import type {
+  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  ScrollAreaScrollbarProps,
+  ScrollAreaThumbProps,
+  ScrollAreaViewportProps,
 } from "@ark-ui/react";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";

@@ -1,21 +1,23 @@
 import {
   ColorPicker as ColorPickerPrimitive,
-  type ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
-  type ColorPickerAreaThumbProps,
-  type ColorPickerChannelInputProps,
-  type ColorPickerContentProps,
-  type ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  type ColorPickerRootProps as ColorPickerPrimitiveRootProps,
-  type ColorPickerSwatchGroupProps,
-  type ColorPickerSwatchProps,
-  type ColorPickerTriggerProps,
-  type ColorPickerValueChangeDetails,
-  type ColorPickerValueSwatchProps,
-  type ColorPickerValueTextProps,
-  type ColorPickerViewProps,
   ark,
   parseColor as parseColorArk,
   useColorPickerContext,
+} from "@ark-ui/solid";
+import type {
+  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  ColorPickerAreaThumbProps,
+  ColorPickerChannelInputProps,
+  ColorPickerContentProps,
+  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
+  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerSwatchGroupProps,
+  ColorPickerSwatchProps,
+  ColorPickerTriggerProps,
+  ColorPickerValueChangeDetails,
+  ColorPickerValueSwatchProps,
+  ColorPickerValueTextProps,
+  ColorPickerViewProps,
 } from "@ark-ui/solid";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";

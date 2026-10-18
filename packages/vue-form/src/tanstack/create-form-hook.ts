@@ -1,9 +1,9 @@
-import type { AnyFieldApi } from "@tanstack/vue-form";
-import {
-  type FormAsyncValidateOrFn,
-  type FormOptions,
-  type FormValidateOrFn,
-  useForm,
+import { useForm } from "@tanstack/vue-form";
+import type {
+  AnyFieldApi,
+  FormAsyncValidateOrFn,
+  FormOptions,
+  FormValidateOrFn,
 } from "@tanstack/vue-form";
 import {
   type Component,

@@ -11,11 +11,11 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
-import {
-  type FormControlVariant,
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
+import { createSlotRecipeContext } from "../internal";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
 } from "../internal";
 import { Input } from "./input";
 import {

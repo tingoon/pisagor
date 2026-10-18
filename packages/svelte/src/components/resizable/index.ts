@@ -1,13 +1,15 @@
 import {
-  type SplitterExpandCollapseDetails,
-  type SplitterPanelData,
-  type SplitterResizeDetails,
-  type SplitterResizeEndDetails,
-  type UseSplitterProps,
-  type UseSplitterReturn,
   createSplitterRegistry as createRegistry,
   useSplitter,
   useSplitterContext,
+} from "@ark-ui/svelte";
+import type {
+  SplitterExpandCollapseDetails,
+  SplitterPanelData,
+  SplitterResizeDetails,
+  SplitterResizeEndDetails,
+  UseSplitterProps,
+  UseSplitterReturn,
 } from "@ark-ui/svelte";
 import ResizableContext from "./resizable-context.svelte";
 import ResizableEdgeHandle from "./resizable-edge-handle.svelte";

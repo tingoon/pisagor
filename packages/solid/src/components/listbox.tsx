@@ -1,16 +1,18 @@
 import {
-  type CollectionItem,
   Listbox as ListboxPrimitive,
-  type ListboxContentProps,
-  type ListboxEmptyProps,
-  type ListboxItemGroupLabelProps,
-  type ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  type ListboxItemIndicatorProps,
-  type ListboxItemProps as ListboxPrimitiveItemProps,
-  type ListboxItemTextProps,
-  type ListboxRootProps as ListboxPrimitiveRootProps,
-  type ListboxValueTextProps,
   createListCollection,
+} from "@ark-ui/solid";
+import type {
+  CollectionItem,
+  ListboxContentProps,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  ListboxItemIndicatorProps,
+  ListboxItemProps as ListboxPrimitiveItemProps,
+  ListboxItemTextProps,
+  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxValueTextProps,
 } from "@ark-ui/solid";
 import type {
   ListboxItemProps as BaseListboxItemProps,

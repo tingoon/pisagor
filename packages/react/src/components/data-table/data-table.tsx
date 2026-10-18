@@ -4,12 +4,8 @@ import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
 import { useMessage } from "../provider/context";
-import {
-  Table,
-  type TableCellProps,
-  type TableHeadProps,
-  type TableRowProps,
-} from "../table";
+import { Table } from "../table";
+import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
   Cell,
   DataTableContextValue,

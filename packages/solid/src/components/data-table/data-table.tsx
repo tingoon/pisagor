@@ -4,12 +4,8 @@ import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import {
-  Table,
-  type TableCellProps,
-  type TableHeadProps,
-  type TableRowProps,
-} from "../table";
+import { Table } from "../table";
+import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
   Cell,
   DataTableContextValue,

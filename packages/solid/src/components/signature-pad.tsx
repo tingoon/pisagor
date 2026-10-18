@@ -1,10 +1,10 @@
-import {
-  SignaturePad as SignaturePadPrimitive,
-  type SignaturePadClearTriggerProps,
-  type SignaturePadControlProps,
-  type SignaturePadGuideProps,
-  type SignaturePadRootProps as SignaturePadPrimitiveRootProps,
-  type SignaturePadSegmentProps,
+import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/solid";
+import type {
+  SignaturePadClearTriggerProps,
+  SignaturePadControlProps,
+  SignaturePadGuideProps,
+  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+  SignaturePadSegmentProps,
 } from "@ark-ui/solid";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
 import {

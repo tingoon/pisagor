@@ -1,11 +1,11 @@
-import {
-  Splitter as SplitterPrimitive,
-  type SplitterContextProps,
-  type SplitterPanelProps,
-  type SplitterResizeTriggerIndicatorProps,
-  type SplitterResizeTriggerProps,
-  type SplitterRootProps,
-  type SplitterRootProviderProps,
+import { Splitter as SplitterPrimitive } from "@ark-ui/solid";
+import type {
+  SplitterContextProps,
+  SplitterPanelProps,
+  SplitterResizeTriggerIndicatorProps,
+  SplitterResizeTriggerProps,
+  SplitterRootProps,
+  SplitterRootProviderProps,
 } from "@ark-ui/solid";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,

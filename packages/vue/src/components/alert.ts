@@ -10,13 +10,8 @@ import {
   type AlertVariantProps,
   alertRecipe,
 } from "@pisagor/recipes";
-import {
-  type Component,
-  defineComponent,
-  h,
-  type PropType,
-  type VNodeChild,
-} from "vue";
+import { defineComponent, h } from "vue";
+import type { Component, PropType, VNodeChild } from "vue";
 import {
   type ClassValue,
   type VariantClassNames,

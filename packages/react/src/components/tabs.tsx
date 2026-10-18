@@ -1,9 +1,9 @@
-import {
-  type TabContentProps,
-  type TabListProps,
-  type TabTriggerProps,
-  Tabs as TabsPrimitive,
-  type TabsRootProps as TabsPrimitiveRootProps,
+import { Tabs as TabsPrimitive } from "@ark-ui/react";
+import type {
+  TabContentProps,
+  TabListProps,
+  TabTriggerProps,
+  TabsRootProps as TabsPrimitiveRootProps,
 } from "@ark-ui/react";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";

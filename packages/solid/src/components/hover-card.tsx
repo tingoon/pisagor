@@ -1,9 +1,9 @@
-import {
-  HoverCard as HoverCardPrimitive,
-  type HoverCardArrowProps,
-  type HoverCardContentProps as HoverCardPrimitiveContentProps,
-  type HoverCardRootProps as HoverCardPrimitiveRootProps,
-  type HoverCardTriggerProps,
+import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid";
+import type {
+  HoverCardArrowProps,
+  HoverCardContentProps as HoverCardPrimitiveContentProps,
+  HoverCardRootProps as HoverCardPrimitiveRootProps,
+  HoverCardTriggerProps,
 } from "@ark-ui/solid";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";

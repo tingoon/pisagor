@@ -1,15 +1,17 @@
 import {
   TagsInput as TagsInputPrimitive,
-  type TagsInputClearTriggerProps,
-  type TagsInputControlProps as TagsInputPrimitiveControlProps,
-  type TagsInputInputProps,
-  type TagsInputItemInputProps,
-  type TagsInputItemPreviewProps,
-  type TagsInputItemProps as TagsInputPrimitiveItemProps,
-  type TagsInputItemTextProps,
-  type TagsInputRootProps as TagsInputPrimitiveRootProps,
-  type TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
   useTagsInputContext,
+} from "@ark-ui/solid";
+import type {
+  TagsInputClearTriggerProps,
+  TagsInputControlProps as TagsInputPrimitiveControlProps,
+  TagsInputInputProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemProps as TagsInputPrimitiveItemProps,
+  TagsInputItemTextProps,
+  TagsInputRootProps as TagsInputPrimitiveRootProps,
+  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
 } from "@ark-ui/solid";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,

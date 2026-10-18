@@ -1,9 +1,9 @@
-import {
-  Switch as SwitchPrimitive,
-  type SwitchControlProps,
-  type SwitchHiddenInputProps,
-  type SwitchRootProps as SwitchPrimitiveRootProps,
-  type SwitchThumbProps,
+import { Switch as SwitchPrimitive } from "@ark-ui/solid";
+import type {
+  SwitchControlProps,
+  SwitchHiddenInputProps,
+  SwitchRootProps as SwitchPrimitiveRootProps,
+  SwitchThumbProps,
 } from "@ark-ui/solid";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";

@@ -1,9 +1,9 @@
-import {
-  Accordion as AccordionPrimitive,
-  type AccordionItemContentProps,
-  type AccordionItemProps as AccordionPrimitiveItemProps,
-  type AccordionItemTriggerProps,
-  type AccordionRootProps,
+import { Accordion as AccordionPrimitive } from "@ark-ui/solid";
+import type {
+  AccordionItemContentProps,
+  AccordionItemProps as AccordionPrimitiveItemProps,
+  AccordionItemTriggerProps,
+  AccordionRootProps,
 } from "@ark-ui/solid";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";

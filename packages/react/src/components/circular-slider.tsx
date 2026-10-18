@@ -1,13 +1,15 @@
 import {
   AngleSlider as AngleSliderPrimitive,
-  type AngleSliderControlProps,
-  type AngleSliderHiddenInputProps,
-  type AngleSliderMarkerGroupProps,
-  type AngleSliderMarkerProps,
-  type AngleSliderRootProps,
-  type AngleSliderThumbProps,
-  type AngleSliderValueTextProps,
   useAngleSliderContext,
+} from "@ark-ui/react";
+import type {
+  AngleSliderControlProps,
+  AngleSliderHiddenInputProps,
+  AngleSliderMarkerGroupProps,
+  AngleSliderMarkerProps,
+  AngleSliderRootProps,
+  AngleSliderThumbProps,
+  AngleSliderValueTextProps,
 } from "@ark-ui/react";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";

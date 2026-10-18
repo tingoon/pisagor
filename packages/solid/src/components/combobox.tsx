@@ -1,20 +1,22 @@
 import {
-  type CollectionItem,
   Combobox as ComboboxPrimitive,
-  type ComboboxClearTriggerProps,
-  type ComboboxContentProps as ComboboxPrimitiveContentProps,
-  type ComboboxControlProps,
-  type ComboboxEmptyProps,
-  type ComboboxInputProps as ComboboxPrimitiveInputProps,
-  type ComboboxItemGroupLabelProps,
-  type ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  type ComboboxItemProps as ComboboxPrimitiveItemProps,
-  type ComboboxListProps,
-  type ComboboxPositionerProps,
-  type ComboboxRootProps as ComboboxPrimitiveRootProps,
-  type ComboboxTriggerProps,
   createListCollection,
   useComboboxContext,
+} from "@ark-ui/solid";
+import type {
+  CollectionItem,
+  ComboboxClearTriggerProps,
+  ComboboxContentProps as ComboboxPrimitiveContentProps,
+  ComboboxControlProps,
+  ComboboxEmptyProps,
+  ComboboxInputProps as ComboboxPrimitiveInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
+  ComboboxItemProps as ComboboxPrimitiveItemProps,
+  ComboboxListProps,
+  ComboboxPositionerProps,
+  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxTriggerProps,
 } from "@ark-ui/solid";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {

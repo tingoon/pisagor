@@ -1,8 +1,8 @@
-import {
-  SignaturePad as SignaturePadPrimitive,
-  type SignaturePadClearTriggerProps,
-  type SignaturePadControlProps,
-  type SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react";
+import type {
+  SignaturePadClearTriggerProps,
+  SignaturePadControlProps,
+  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
 } from "@ark-ui/react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";

@@ -1,17 +1,13 @@
 import fs, { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  type InterfaceDeclaration,
-  Node,
-  type ObjectLiteralExpression,
-  Project,
-  type PropertyAssignment,
-  type PropertySignature,
-  SyntaxKind,
-  type Symbol as TsSymbol,
-  TypeFormatFlags,
-  ts,
+import { Node, Project, SyntaxKind, TypeFormatFlags, ts } from "ts-morph";
+import type {
+  InterfaceDeclaration,
+  ObjectLiteralExpression,
+  PropertyAssignment,
+  PropertySignature,
+  Symbol as TsSymbol,
 } from "ts-morph";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));

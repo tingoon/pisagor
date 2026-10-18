@@ -3,12 +3,11 @@ import {
   useLocaleContext,
 } from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
-import {
-  defaultLocale,
-  defaultMotion,
-  type LocaleConfig,
-  type MotionConfig,
-  type TranslationsConfig,
+import { defaultLocale, defaultMotion } from "@pisagor/utils";
+import type {
+  LocaleConfig,
+  MotionConfig,
+  TranslationsConfig,
 } from "@pisagor/utils";
 import { type PropsWithChildren, type ReactNode, useMemo } from "react";
 import { isNullish, merge, mergeDeep, omitBy } from "remeda";

@@ -1,17 +1,17 @@
-import {
-  Switch as SwitchPrimitive,
-  type SwitchControlProps,
-  type SwitchHiddenInputProps,
-  type SwitchRootProps as SwitchPrimitiveRootProps,
-  type SwitchThumbProps,
+import { Switch as SwitchPrimitive } from "@ark-ui/react";
+import type {
+  SwitchControlProps,
+  SwitchHiddenInputProps,
+  SwitchRootProps as SwitchPrimitiveRootProps,
+  SwitchThumbProps,
 } from "@ark-ui/react";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import {
-  type FormControlVariant,
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
+import { createSlotRecipeContext } from "../internal";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
 } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

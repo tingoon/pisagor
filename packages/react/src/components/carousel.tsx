@@ -1,9 +1,11 @@
 import {
   Carousel as CarouselPrimitive,
-  type CarouselNextTriggerProps,
-  type CarouselPrevTriggerProps,
-  type CarouselRootProps as CarouselPrimitiveRootProps,
   useCarouselContext,
+} from "@ark-ui/react";
+import type {
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+  CarouselRootProps as CarouselPrimitiveRootProps,
 } from "@ark-ui/react";
 import {
   CaretLeftIcon,

@@ -2,16 +2,8 @@ import { ark } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import {
-  type ComponentProps,
-  createContext,
-  type FunctionComponent,
-  type KeyboardEvent,
-  use,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { createContext, use, useId, useRef, useState } from "react";
+import type { ComponentProps, FunctionComponent, KeyboardEvent } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useMessage } from "./provider/context";
 

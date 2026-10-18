@@ -19,18 +19,16 @@ import type {
 import { useTable } from "@tanstack/vue-table";
 import { useVirtualizer } from "@tanstack/vue-virtual";
 import {
-  type CSSProperties,
   computed,
   defineComponent,
   h,
   onBeforeUnmount,
   onMounted,
-  type PropType,
   ref,
   shallowRef,
-  type VNodeChild,
   watch,
 } from "vue";
+import type { CSSProperties, PropType, VNodeChild } from "vue";
 import { useTranslation } from "../provider/context";
 import { Table } from "../table";
 import { type ClassValue, createContext } from "../../internal";

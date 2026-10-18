@@ -1,8 +1,8 @@
-import {
-  RatingGroup as RatingGroupPrimitive,
-  type RatingGroupControlProps,
-  type RatingGroupItemProps,
-  type RatingGroupRootProps,
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react";
+import type {
+  RatingGroupControlProps,
+  RatingGroupItemProps,
+  RatingGroupRootProps,
 } from "@ark-ui/react";
 import { StarIcon } from "@phosphor-icons/react";
 import type { RatingProps as BaseRatingRootProps } from "@pisagor/props";
@@ -10,11 +10,11 @@ import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
-import {
-  type FormControlVariant,
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
+import { createSlotRecipeContext } from "../internal";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
 } from "../internal";
 
 // #region Context

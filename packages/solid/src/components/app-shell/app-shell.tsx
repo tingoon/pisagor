@@ -12,14 +12,16 @@ import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
   APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
   AppShellContext,
-  type AppShellFixedStackVar,
-  type AppShellPlacement,
-  type AppShellRailState,
-  type AppShellRegionVar,
-  type AppShellSideState,
   AppShellStylesContext,
   ZERO_FIXED_STACK_VARS,
   ZERO_REGION_VARS,
+} from "./app-shell.context";
+import type {
+  AppShellFixedStackVar,
+  AppShellPlacement,
+  AppShellRailState,
+  AppShellRegionVar,
+  AppShellSideState,
 } from "./app-shell.context";
 
 const APP_SHELL_GRID_COLUMNS = `

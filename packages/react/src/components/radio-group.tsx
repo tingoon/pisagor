@@ -1,9 +1,9 @@
-import {
-  RadioGroup as RadioGroupPrimitive,
-  type RadioGroupItemProps as RadioGroupPrimitiveItemProps,
-  type RadioGroupItemTextProps,
-  type RadioGroupLabelProps,
-  type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react";
+import type {
+  RadioGroupItemProps as RadioGroupPrimitiveItemProps,
+  RadioGroupItemTextProps,
+  RadioGroupLabelProps,
+  RadioGroupRootProps as RadioGroupPrimitiveRootProps,
 } from "@ark-ui/react";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,

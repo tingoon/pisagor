@@ -1,13 +1,11 @@
-import {
-  Dialog as DialogPrimitive,
-  type DialogBackdropProps,
-  type DialogCloseTriggerProps,
-  type DialogContentProps as DialogPrimitiveContentProps,
-  type DialogPositionerProps as DialogPrimitivePositionerProps,
-  type DialogRootProps as DialogPrimitiveRootProps,
-  type DialogTriggerProps,
-  Portal,
-  ark,
+import { Dialog as DialogPrimitive, Portal, ark } from "@ark-ui/react";
+import type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps as DialogPrimitiveContentProps,
+  DialogPositionerProps as DialogPrimitivePositionerProps,
+  DialogRootProps as DialogPrimitiveRootProps,
+  DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";

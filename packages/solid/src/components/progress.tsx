@@ -1,9 +1,9 @@
-import {
-  Progress as ProgressPrimitive,
-  type ProgressRangeProps,
-  type ProgressRootProps as ProgressPrimitiveRootProps,
-  type ProgressTrackProps,
-  type ProgressValueTextProps,
+import { Progress as ProgressPrimitive } from "@ark-ui/solid";
+import type {
+  ProgressRangeProps,
+  ProgressRootProps as ProgressPrimitiveRootProps,
+  ProgressTrackProps,
+  ProgressValueTextProps,
 } from "@ark-ui/solid";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";

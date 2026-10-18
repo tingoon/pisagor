@@ -1,11 +1,11 @@
-import {
-  Editable as EditablePrimitive,
-  type EditableCancelTriggerProps,
-  type EditableEditTriggerProps,
-  type EditableInputProps as EditablePrimitiveInputProps,
-  type EditablePreviewProps as EditablePrimitivePreviewProps,
-  type EditableRootProps as EditablePrimitiveRootProps,
-  type EditableSubmitTriggerProps,
+import { Editable as EditablePrimitive } from "@ark-ui/react";
+import type {
+  EditableCancelTriggerProps,
+  EditableEditTriggerProps,
+  EditableInputProps as EditablePrimitiveInputProps,
+  EditablePreviewProps as EditablePrimitivePreviewProps,
+  EditableRootProps as EditablePrimitiveRootProps,
+  EditableSubmitTriggerProps,
 } from "@ark-ui/react";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";

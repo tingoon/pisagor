@@ -1,19 +1,16 @@
-import {
-  Portal,
-  Tour as TourPrimitive,
-  type TourActionTriggerProps,
-  type TourCloseTriggerProps,
-  type TourContentProps as TourPrimitiveContentProps,
-  type TourDescriptionProps,
-  type TourPositionerProps,
-  type TourProgressTextProps,
-  type TourRootProps as TourPrimitiveRootProps,
-  type TourSpotlightProps,
-  type TourStepDetails,
-  type TourTitleProps,
-  type UseTourReturn,
-  ark,
-  useTour,
+import { Portal, Tour as TourPrimitive, ark, useTour } from "@ark-ui/react";
+import type {
+  TourActionTriggerProps,
+  TourCloseTriggerProps,
+  TourContentProps as TourPrimitiveContentProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourRootProps as TourPrimitiveRootProps,
+  TourSpotlightProps,
+  TourStepDetails,
+  TourTitleProps,
+  UseTourReturn,
 } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import type { TourProps as BaseTourProps } from "@pisagor/props";

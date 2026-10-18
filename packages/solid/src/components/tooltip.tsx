@@ -1,10 +1,10 @@
-import {
-  Tooltip as TooltipPrimitive,
-  type TooltipArrowProps,
-  type TooltipContentProps,
-  type TooltipPositionerProps,
-  type TooltipRootProps as TooltipPrimitiveRootProps,
-  type TooltipTriggerProps,
+import { Tooltip as TooltipPrimitive } from "@ark-ui/solid";
+import type {
+  TooltipArrowProps,
+  TooltipContentProps,
+  TooltipPositionerProps,
+  TooltipRootProps as TooltipPrimitiveRootProps,
+  TooltipTriggerProps,
 } from "@ark-ui/solid";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";

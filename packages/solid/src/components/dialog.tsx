@@ -1,14 +1,13 @@
-import {
-  Dialog as DialogPrimitive,
-  type DialogBackdropProps,
-  type DialogCloseTriggerProps,
-  type DialogContentProps as DialogPrimitiveContentProps,
-  type DialogDescriptionProps,
-  type DialogPositionerProps as DialogPrimitivePositionerProps,
-  type DialogRootProps as DialogPrimitiveRootProps,
-  type DialogTitleProps,
-  type DialogTriggerProps,
-  ark,
+import { Dialog as DialogPrimitive, ark } from "@ark-ui/solid";
+import type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps as DialogPrimitiveContentProps,
+  DialogDescriptionProps,
+  DialogPositionerProps as DialogPrimitivePositionerProps,
+  DialogRootProps as DialogPrimitiveRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
 } from "@ark-ui/solid";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";

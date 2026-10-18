@@ -4,22 +4,11 @@ import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import {
-  type ComponentProps,
-  type CSSProperties,
-  type ReactNode,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties, ComponentProps, ReactNode } from "react";
 import { useMessage } from "../provider/context";
-import {
-  Table,
-  type TableCellProps,
-  type TableHeadProps,
-  type TableRowProps,
-} from "../table";
+import { Table } from "../table";
+import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
   Cell,
   Column,

@@ -1,8 +1,8 @@
-import {
-  QrCode as QrCodePrimitive,
-  type QrCodeDownloadTriggerProps,
-  type QrCodeFrameProps,
-  type QrCodeRootProps as QrCodePrimitiveRootProps,
+import { QrCode as QrCodePrimitive } from "@ark-ui/react";
+import type {
+  QrCodeDownloadTriggerProps,
+  QrCodeFrameProps,
+  QrCodeRootProps as QrCodePrimitiveRootProps,
 } from "@ark-ui/react";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";

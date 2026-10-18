@@ -1,18 +1,16 @@
-import {
-  Tour as TourPrimitive,
-  type TourActionTriggerProps,
-  type TourCloseTriggerProps,
-  type TourContentProps as TourPrimitiveContentProps,
-  type TourDescriptionProps,
-  type TourPositionerProps,
-  type TourProgressTextProps,
-  type TourRootProps as TourPrimitiveRootProps,
-  type TourSpotlightProps,
-  type TourStepDetails,
-  type TourTitleProps,
-  type UseTourReturn,
-  ark,
-  useTour,
+import { Tour as TourPrimitive, ark, useTour } from "@ark-ui/solid";
+import type {
+  TourActionTriggerProps,
+  TourCloseTriggerProps,
+  TourContentProps as TourPrimitiveContentProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourRootProps as TourPrimitiveRootProps,
+  TourSpotlightProps,
+  TourStepDetails,
+  TourTitleProps,
+  UseTourReturn,
 } from "@ark-ui/solid";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";

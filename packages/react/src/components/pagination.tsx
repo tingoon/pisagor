@@ -1,12 +1,14 @@
 import {
   Pagination as PaginationPrimitive,
-  type PaginationContextProps,
-  type PaginationEllipsisProps,
-  type PaginationItemProps,
-  type PaginationNextTriggerProps,
-  type PaginationPrevTriggerProps,
-  type PaginationRootProps as PaginationPrimitiveRootProps,
   usePaginationContext,
+} from "@ark-ui/react";
+import type {
+  PaginationContextProps,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationNextTriggerProps,
+  PaginationPrevTriggerProps,
+  PaginationRootProps as PaginationPrimitiveRootProps,
 } from "@ark-ui/react";
 import {
   CaretLeftIcon,

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import {
-    RatingGroup as RatingGroupPrimitive,
-    type RatingGroupControlProps,
-    type RatingGroupItemProps,
-    type RatingGroupRootProps,
+  import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte";
+  import type {
+    RatingGroupControlProps,
+    RatingGroupItemProps,
+    RatingGroupRootProps,
   } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import type { RatingRecipeSlot } from "@pisagor/recipes";

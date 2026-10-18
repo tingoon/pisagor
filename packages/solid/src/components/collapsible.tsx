@@ -1,9 +1,9 @@
-import {
-  Collapsible as CollapsiblePrimitive,
-  type CollapsibleContentProps,
-  type CollapsibleIndicatorProps,
-  type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
-  type CollapsibleTriggerProps,
+import { Collapsible as CollapsiblePrimitive } from "@ark-ui/solid";
+import type {
+  CollapsibleContentProps,
+  CollapsibleIndicatorProps,
+  CollapsibleRootProps as CollapsiblePrimitiveRootProps,
+  CollapsibleTriggerProps,
 } from "@ark-ui/solid";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";

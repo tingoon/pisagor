@@ -1,13 +1,15 @@
 import {
   Field as FieldPrimitive,
-  type FieldErrorTextProps,
-  type FieldHelperTextProps,
-  type FieldLabelProps,
-  type FieldRootProps as FieldPrimitiveRootProps,
   Fieldset as FieldsetPrimitive,
-  type FieldsetLegendProps,
-  type FieldsetRootProps,
   ark,
+} from "@ark-ui/solid";
+import type {
+  FieldErrorTextProps,
+  FieldHelperTextProps,
+  FieldLabelProps,
+  FieldRootProps as FieldPrimitiveRootProps,
+  FieldsetLegendProps,
+  FieldsetRootProps,
 } from "@ark-ui/solid";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import {
-    Switch as SwitchPrimitive,
-    type SwitchControlProps,
-    type SwitchHiddenInputProps,
-    type SwitchRootProps,
-    type SwitchThumbProps,
+  import { Switch as SwitchPrimitive } from "@ark-ui/svelte";
+  import type {
+    SwitchControlProps,
+    SwitchHiddenInputProps,
+    SwitchRootProps,
+    SwitchThumbProps,
   } from "@ark-ui/svelte";
   import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
   import type { SwitchRecipeSlot } from "@pisagor/recipes";

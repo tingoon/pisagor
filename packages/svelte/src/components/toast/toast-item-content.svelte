@@ -1,11 +1,11 @@
 <script lang="ts">
-  import {
-    Toast as ToastPrimitive,
-    type ToastActionTriggerProps,
-    type ToastCloseTriggerProps,
-    type ToastDescriptionProps,
-    type ToastOptions,
-    type ToastTitleProps,
+  import { Toast as ToastPrimitive } from "@ark-ui/svelte";
+  import type {
+    ToastActionTriggerProps,
+    ToastCloseTriggerProps,
+    ToastDescriptionProps,
+    ToastOptions,
+    ToastTitleProps,
   } from "@ark-ui/svelte";
   import type { ToastItemRecipeSlot } from "@pisagor/recipes";
   import {

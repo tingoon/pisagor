@@ -13,17 +13,15 @@ import {
   computed,
   defineComponent,
   h,
-  type InjectionKey,
   inject,
-  type PropType,
   provide,
   reactive,
   ref,
   Teleport,
   toValue,
-  type UnwrapRef,
   watchEffect,
 } from "vue";
+import type { InjectionKey, PropType, UnwrapRef } from "vue";
 import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";

@@ -4,12 +4,11 @@ import type {
   StatProps as BaseStatProps,
   StatTrendProps as BaseStatTrendProps,
 } from "@pisagor/props";
-import {
-  type StatRecipeSlot,
-  type StatTrendVariantProps,
-  type StatVariantProps,
-  statRecipe,
-  statTrendRecipe,
+import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
+import type {
+  StatRecipeSlot,
+  StatTrendVariantProps,
+  StatVariantProps,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

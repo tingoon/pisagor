@@ -1,14 +1,12 @@
-import {
-  Popover as PopoverPrimitive,
-  type PopoverAnchorProps,
-  type PopoverArrowProps,
-  type PopoverCloseTriggerProps,
-  type PopoverContentProps as PopoverPrimitiveContentProps,
-  type PopoverPositionerProps,
-  type PopoverRootProps,
-  type PopoverTriggerProps,
-  Portal,
-  ark,
+import { Popover as PopoverPrimitive, Portal, ark } from "@ark-ui/react";
+import type {
+  PopoverAnchorProps,
+  PopoverArrowProps,
+  PopoverCloseTriggerProps,
+  PopoverContentProps as PopoverPrimitiveContentProps,
+  PopoverPositionerProps,
+  PopoverRootProps,
+  PopoverTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";

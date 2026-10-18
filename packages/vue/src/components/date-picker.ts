@@ -11,15 +11,13 @@ import {
   computed,
   defineComponent,
   h,
-  type InjectionKey,
   inject,
-  type PropType,
   provide,
   ref,
   Teleport,
   unref,
-  type VNodeChild,
 } from "vue";
+import type { InjectionKey, PropType, VNodeChild } from "vue";
 import {
   type LoosePropValue,
   createContext,

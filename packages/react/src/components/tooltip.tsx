@@ -1,12 +1,11 @@
-import {
-  Portal,
-  Tooltip as TooltipPrimitive,
-  type TooltipArrowProps,
-  type TooltipContentProps,
-  type TooltipContextProps,
-  type TooltipPositionerProps,
-  type TooltipRootProps as TooltipPrimitiveRootProps,
-  type TooltipTriggerProps,
+import { Portal, Tooltip as TooltipPrimitive } from "@ark-ui/react";
+import type {
+  TooltipArrowProps,
+  TooltipContentProps,
+  TooltipContextProps,
+  TooltipPositionerProps,
+  TooltipRootProps as TooltipPrimitiveRootProps,
+  TooltipTriggerProps,
 } from "@ark-ui/react";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";

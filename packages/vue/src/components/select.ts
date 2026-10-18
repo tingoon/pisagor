@@ -1,10 +1,12 @@
 import {
-  type CollectionItem,
-  type ListCollection,
   Select as SelectPrimitive,
-  type SelectRootProps as ArkSelectRootProps,
   createListCollection,
   useSelectContext as useSelect,
+} from "@ark-ui/vue";
+import type {
+  CollectionItem,
+  ListCollection,
+  SelectRootProps as ArkSelectRootProps,
 } from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";

@@ -1,9 +1,9 @@
-import {
-  PasswordInput as PasswordInputPrimitive,
-  type PasswordInputIndicatorProps,
-  type PasswordInputInputProps,
-  type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  type PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/solid";
+import type {
+  PasswordInputIndicatorProps,
+  PasswordInputInputProps,
+  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+  PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
 } from "@ark-ui/solid";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";

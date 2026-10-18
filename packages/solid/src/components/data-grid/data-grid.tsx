@@ -18,12 +18,8 @@ import {
   splitProps,
 } from "solid-js";
 import { useTranslation } from "../provider/context";
-import {
-  Table,
-  type TableCellProps,
-  type TableHeadProps,
-  type TableRowProps,
-} from "../table";
+import { Table } from "../table";
+import type { TableCellProps, TableHeadProps, TableRowProps } from "../table";
 import type {
   Cell,
   DataGridContextValue,

@@ -1,9 +1,9 @@
-import {
-  ImageCropper as ImageCropperPrimitive,
-  type ImageCropperGridProps,
-  type ImageCropperHandleProps,
-  type ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  type ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
+import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react";
+import type {
+  ImageCropperGridProps,
+  ImageCropperHandleProps,
+  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
+  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
 } from "@ark-ui/react";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";

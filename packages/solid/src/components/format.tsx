@@ -1,8 +1,8 @@
-import {
-  Format as FormatPrimitive,
-  type FormatByteProps,
-  type FormatNumberProps,
-  type FormatRelativeTimeProps,
+import { Format as FormatPrimitive } from "@ark-ui/solid";
+import type {
+  FormatByteProps,
+  FormatNumberProps,
+  FormatRelativeTimeProps,
 } from "@ark-ui/solid";
 import type { JSX } from "solid-js";
 

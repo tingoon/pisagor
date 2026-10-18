@@ -1,15 +1,17 @@
 import {
-  type CreateToasterReturn,
   Portal,
   Toast as ToastPrimitive,
-  type ToastActionTriggerProps,
-  type ToastCloseTriggerProps,
-  type ToastDescriptionProps,
-  type ToastRootProps,
-  type ToastTitleProps,
   Toaster as ToasterPrimitive,
-  type ToasterProps as ToasterPrimitiveProps,
   createToaster,
+} from "@ark-ui/react";
+import type {
+  CreateToasterReturn,
+  ToastActionTriggerProps,
+  ToastCloseTriggerProps,
+  ToastDescriptionProps,
+  ToastRootProps,
+  ToastTitleProps,
+  ToasterProps as ToasterPrimitiveProps,
 } from "@ark-ui/react";
 import {
   CheckCircleIcon,

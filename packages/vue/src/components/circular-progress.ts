@@ -1,12 +1,14 @@
 import {
-  type ProgressRootProps,
   ProgressRootProvider,
-  type ProgressValueChangeDetails,
   ProgressValueText,
-  type UseProgressReturn,
   ark,
   useProgress,
   useProgressContext,
+} from "@ark-ui/vue";
+import type {
+  ProgressRootProps,
+  ProgressValueChangeDetails,
+  UseProgressReturn,
 } from "@ark-ui/vue";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {

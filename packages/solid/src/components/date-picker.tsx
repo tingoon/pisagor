@@ -1,12 +1,14 @@
 import {
   DatePicker as DatePickerPrimitive,
-  type DatePickerContentProps as DatePickerPrimitiveContentProps,
-  type DatePickerInputProps as DatePickerPrimitiveInputProps,
-  type DatePickerPresetTriggerProps,
-  type DatePickerRootProps as DatePickerPrimitiveRootProps,
-  type DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
-  type DatePickerValueTextProps,
   useDatePickerContext,
+} from "@ark-ui/solid";
+import type {
+  DatePickerContentProps as DatePickerPrimitiveContentProps,
+  DatePickerInputProps as DatePickerPrimitiveInputProps,
+  DatePickerPresetTriggerProps,
+  DatePickerRootProps as DatePickerPrimitiveRootProps,
+  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  DatePickerValueTextProps,
 } from "@ark-ui/solid";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";

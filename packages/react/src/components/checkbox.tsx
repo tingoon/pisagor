@@ -1,10 +1,10 @@
-import {
-  Checkbox as CheckboxPrimitive,
-  type CheckboxControlProps,
-  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
-  type CheckboxIndicatorProps,
-  type CheckboxLabelProps,
-  type CheckboxRootProps,
+import { Checkbox as CheckboxPrimitive } from "@ark-ui/react";
+import type {
+  CheckboxControlProps,
+  CheckboxGroupProps as CheckboxPrimitiveGroupProps,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps,
+  CheckboxRootProps,
 } from "@ark-ui/react";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {

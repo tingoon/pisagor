@@ -1,22 +1,24 @@
 import {
   ColorPicker as ColorPickerPrimitive,
-  type ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
-  type ColorPickerAreaThumbProps,
-  type ColorPickerChannelInputProps,
-  type ColorPickerContentProps,
-  type ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  type ColorPickerRootProps as ColorPickerPrimitiveRootProps,
-  type ColorPickerSwatchGroupProps,
-  type ColorPickerSwatchProps,
-  type ColorPickerTriggerProps,
-  type ColorPickerValueChangeDetails,
-  type ColorPickerValueSwatchProps,
-  type ColorPickerValueTextProps,
-  type ColorPickerViewProps,
   Portal,
   ark,
   parseColor as parseColorArk,
   useColorPickerContext,
+} from "@ark-ui/react";
+import type {
+  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  ColorPickerAreaThumbProps,
+  ColorPickerChannelInputProps,
+  ColorPickerContentProps,
+  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
+  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerSwatchGroupProps,
+  ColorPickerSwatchProps,
+  ColorPickerTriggerProps,
+  ColorPickerValueChangeDetails,
+  ColorPickerValueSwatchProps,
+  ColorPickerValueTextProps,
+  ColorPickerViewProps,
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";

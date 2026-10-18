@@ -1,10 +1,9 @@
 import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue";
-import {
-  defaultLocale,
-  defaultMotion,
-  type LocaleConfig,
-  type MotionConfig,
-  type TranslationsConfig,
+import { defaultLocale, defaultMotion } from "@pisagor/utils";
+import type {
+  LocaleConfig,
+  MotionConfig,
+  TranslationsConfig,
 } from "@pisagor/utils";
 import { isNullish, merge, mergeDeep, omitBy } from "remeda";
 import { computed, defineComponent, h, type PropType, provide } from "vue";

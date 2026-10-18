@@ -1,8 +1,8 @@
-import {
-  NumberInput as NumberInputPrimitive,
-  type NumberInputControlProps as NumberInputPrimitiveControlProps,
-  type NumberInputRootProps as NumberInputPrimitiveRootProps,
-  type NumberInputScrubberProps,
+import { NumberInput as NumberInputPrimitive } from "@ark-ui/react";
+import type {
+  NumberInputControlProps as NumberInputPrimitiveControlProps,
+  NumberInputRootProps as NumberInputPrimitiveRootProps,
+  NumberInputScrubberProps,
 } from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";

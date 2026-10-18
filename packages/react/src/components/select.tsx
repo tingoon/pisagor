@@ -1,18 +1,20 @@
 import {
-  type CollectionItem,
   Portal,
   Select as SelectPrimitive,
-  type SelectClearTriggerProps,
-  type SelectContentProps,
-  type SelectItemGroupLabelProps,
-  type SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  type SelectItemProps,
-  type SelectRootProps as SelectPrimitiveRootProps,
-  type SelectTriggerProps as SelectPrimitiveTriggerProps,
-  type SelectValueTextProps,
   ark,
   createListCollection,
   useSelectContext,
+} from "@ark-ui/react";
+import type {
+  CollectionItem,
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectItemGroupLabelProps,
+  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  SelectItemProps,
+  SelectRootProps as SelectPrimitiveRootProps,
+  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectValueTextProps,
 } from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";

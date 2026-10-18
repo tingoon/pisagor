@@ -1,17 +1,19 @@
 import {
-  type CollectionItem,
   Select as SelectPrimitive,
-  type SelectClearTriggerProps,
-  type SelectContentProps,
-  type SelectItemGroupLabelProps,
-  type SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  type SelectItemProps,
-  type SelectRootProps as SelectPrimitiveRootProps,
-  type SelectTriggerProps as SelectPrimitiveTriggerProps,
-  type SelectValueTextProps,
   ark,
   createListCollection,
   useSelectContext,
+} from "@ark-ui/solid";
+import type {
+  CollectionItem,
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectItemGroupLabelProps,
+  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  SelectItemProps,
+  SelectRootProps as SelectPrimitiveRootProps,
+  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectValueTextProps,
 } from "@ark-ui/solid";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {

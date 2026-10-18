@@ -1,8 +1,8 @@
-import {
-  RatingGroup as RatingGroupPrimitive,
-  type RatingGroupControlProps,
-  type RatingGroupItemProps,
-  type RatingGroupRootProps,
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/solid";
+import type {
+  RatingGroupControlProps,
+  RatingGroupItemProps,
+  RatingGroupRootProps,
 } from "@ark-ui/solid";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";

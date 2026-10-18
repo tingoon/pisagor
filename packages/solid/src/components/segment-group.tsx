@@ -1,9 +1,9 @@
-import {
-  SegmentGroup as SegmentGroupPrimitive,
-  type SegmentGroupIndicatorProps,
-  type SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
-  type SegmentGroupItemTextProps,
-  type SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid";
+import type {
+  SegmentGroupIndicatorProps,
+  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
+  SegmentGroupItemTextProps,
+  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
 } from "@ark-ui/solid";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";

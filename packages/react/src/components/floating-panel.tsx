@@ -1,18 +1,20 @@
 import {
   FloatingPanel as FloatingPanelPrimitive,
-  type FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
-  type FloatingPanelCloseTriggerProps,
-  type FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
-  type FloatingPanelControlProps,
-  type FloatingPanelDragTriggerProps,
-  type FloatingPanelHeaderProps,
-  type FloatingPanelResizeTriggerProps,
-  type FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
-  type FloatingPanelStageTriggerProps,
-  type FloatingPanelTitleProps,
-  type FloatingPanelTriggerProps,
   Portal,
   ark,
+} from "@ark-ui/react";
+import type {
+  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  FloatingPanelCloseTriggerProps,
+  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  FloatingPanelControlProps,
+  FloatingPanelDragTriggerProps,
+  FloatingPanelHeaderProps,
+  FloatingPanelResizeTriggerProps,
+  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
+  FloatingPanelStageTriggerProps,
+  FloatingPanelTitleProps,
+  FloatingPanelTriggerProps,
 } from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
