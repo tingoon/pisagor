@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/date-picker` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/date-picker.ts`, native HTML attributes omitted). */
 export const datePickerProps: PropRow[] = [
   {
     name: "recipe",

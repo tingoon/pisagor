@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/rich-text-editor` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/rich-text-editor.ts`, native HTML attributes omitted). */
 export const richTextEditorProps: PropRow[] = [
   {
     name: "recipe",

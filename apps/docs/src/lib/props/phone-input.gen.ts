@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/phone-input` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/phone-input.ts`, native HTML attributes omitted). */
 export const phoneInputProps: PropRow[] = [
   {
     name: "size",

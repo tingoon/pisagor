@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/hover-card` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/hover-card.ts`, native HTML attributes omitted). */
 export const hoverCardProps: PropRow[] = [
   {
     name: "recipe",

@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/drawer` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/drawer.ts`, native HTML attributes omitted). */
 export const drawerProps: PropRow[] = [
   {
     name: "placement",

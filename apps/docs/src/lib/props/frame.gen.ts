@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/frame` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/frame.ts`, native HTML attributes omitted). */
 export const frameProps: PropRow[] = [
   {
     name: "recipe",

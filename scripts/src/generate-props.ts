@@ -335,7 +335,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from \`@pisagor/props/${spec.id}\` (native HTML attributes omitted). */
+/** Own props from \`@pisagor/props\` (\`packages/props/src/${spec.id}.ts\`, native HTML attributes omitted). */
 export const ${exportName}: PropRow[] = [
 ${serializeRows(rows)},
 ];
@@ -624,7 +624,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from \`@pisagor/props/${slug}\` (native HTML attributes omitted). */
+/** Own props from \`@pisagor/props\` (\`packages/props/src/${slug}.ts\`, native HTML attributes omitted). */
 export const ${exportName}: PropRow[] = [
 ${rows}
 ];

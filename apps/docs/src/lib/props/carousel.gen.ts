@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/carousel` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/carousel.ts`, native HTML attributes omitted). */
 export const carouselProps: PropRow[] = [
   {
     name: "recipe",

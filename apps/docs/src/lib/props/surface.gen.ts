@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/surface` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/surface.ts`, native HTML attributes omitted). */
 export const surfaceProps: PropRow[] = [
   {
     name: "bordered",
