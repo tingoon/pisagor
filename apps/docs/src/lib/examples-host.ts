@@ -104,45 +104,57 @@ export function armExamplesHost(
   props: ExamplesHostProps,
   mount: MountExample,
 ): () => void {
-  const target = resolveTarget(props);
-  if (!target) return () => {};
+  const resolved = resolveTarget(props);
+  if (!resolved) return () => {};
+  const target: ExamplesHostTarget = resolved;
 
   let cancelled = false;
   const disposers: Array<() => void> = [];
   const stops: Array<() => void> = [];
   const label = target.kind === "block" ? "block " : "";
 
-  for (const exportName of target.exportNames) {
+  function armSlot(exportName: string, eager: boolean) {
     const slot = document.querySelector(slotSelector(exportName));
-    if (!slot) continue;
-    stops.push(
-      whenVisible(slot, () => {
-        void loadExampleComponent(globs, target, exportName)
-          .then((component) => {
-            if (cancelled) return;
-            const dispose = mount(
-              slot,
-              component,
-              `Missing example “${exportName}” for ${label}“${target.id}”.`,
-            );
-            if (dispose) disposers.push(dispose);
-          })
-          .catch((error) => {
-            console.error(
-              `[examples-host] failed to load “${exportName}” for ${label}“${target.id}”`,
-              error,
-            );
-            if (cancelled) return;
-            const dispose = mount(
-              slot,
-              null,
-              `Failed to load example “${exportName}” for ${label}“${target.id}”: ${String(error)}`,
-            );
-            if (dispose) disposers.push(dispose);
-          });
-      }),
-    );
+    if (!slot) return;
+
+    const load = () => {
+      void loadExampleComponent(globs, target, exportName)
+        .then((component) => {
+          if (cancelled) return;
+          const dispose = mount(
+            slot,
+            component,
+            `Missing example “${exportName}” for ${label}“${target.id}”.`,
+          );
+          if (dispose) disposers.push(dispose);
+        })
+        .catch((error) => {
+          console.error(
+            `[examples-host] failed to load “${exportName}” for ${label}“${target.id}”`,
+            error,
+          );
+          if (cancelled) return;
+          const dispose = mount(
+            slot,
+            null,
+            `Failed to load example “${exportName}” for ${label}“${target.id}”: ${String(error)}`,
+          );
+          if (dispose) disposers.push(dispose);
+        });
+    };
+
+    // First develop.mdx `<Example />` mounts immediately — no IO wait for LCP preview.
+    if (eager) {
+      load();
+      return;
+    }
+
+    stops.push(whenVisible(slot, load));
   }
+
+  target.exportNames.forEach((exportName, index) => {
+    armSlot(exportName, index === 0);
+  });
 
   return () => {
     cancelled = true;
