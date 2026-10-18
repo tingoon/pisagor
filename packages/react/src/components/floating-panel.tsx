@@ -4,14 +4,14 @@ import {
   ark,
 } from "@ark-ui/react";
 import type {
-  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
   FloatingPanelCloseTriggerProps,
-  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  FloatingPanelContentProps as FloatingPanelContentPrimitiveProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
   FloatingPanelResizeTriggerProps,
-  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
+  FloatingPanelRootProps as FloatingPanelRootPrimitiveProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
@@ -43,9 +43,9 @@ function useFloatingPanelSlots() {
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps, BaseFloatingPanelRootProps {}
+  extends FloatingPanelRootPrimitiveProps, BaseFloatingPanelRootProps {}
 
-export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   /**
    * Whether to enable a resizable panel.
    *
@@ -64,7 +64,7 @@ export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *

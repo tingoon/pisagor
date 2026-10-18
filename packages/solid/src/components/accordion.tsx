@@ -1,7 +1,7 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/solid";
 import type {
   AccordionItemContentProps,
-  AccordionItemProps as AccordionPrimitiveItemProps,
+  AccordionItemProps as AccordionItemPrimitiveProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
 } from "@ark-ui/solid";
@@ -24,7 +24,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionPrimitiveItemProps, BaseAccordionItemProps, SizeScaleProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps, SizeScaleProps {}
 
 interface AccordionPresetItem {
   value: string;

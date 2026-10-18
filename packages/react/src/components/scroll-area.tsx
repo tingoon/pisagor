@@ -1,6 +1,6 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react";
 import type {
-  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
@@ -25,7 +25,7 @@ const {
 const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ScrollAreaPrimitiveRootProps & BaseScrollAreaRootProps>;
+}) as FunctionComponent<ScrollAreaRootPrimitiveProps & BaseScrollAreaRootProps>;
 
 function ScrollAreaViewport({
   children,

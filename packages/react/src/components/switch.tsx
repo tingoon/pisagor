@@ -2,7 +2,7 @@ import { Switch as SwitchPrimitive } from "@ark-ui/react";
 import type {
   SwitchControlProps,
   SwitchHiddenInputProps,
-  SwitchRootProps as SwitchPrimitiveRootProps,
+  SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/react";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
@@ -26,7 +26,7 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 
 type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
-type SwitchRootProps = SwitchPrimitiveRootProps & {
+type SwitchRootProps = SwitchRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 } & BaseSwitchRootProps &

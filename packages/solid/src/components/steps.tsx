@@ -4,11 +4,11 @@ import type {
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
-  StepsItemProps as StepsPrimitiveItemProps,
+  StepsItemProps as StepsItemPrimitiveProps,
   StepsListProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsRootProps as StepsPrimitiveRootProps,
+  StepsRootProps as StepsRootPrimitiveProps,
   StepsSeparatorProps,
   StepsTriggerProps,
 } from "@ark-ui/solid";
@@ -33,10 +33,10 @@ const {
 // #endregion
 
 export interface LocalStepsRootProps
-  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
 
 export interface LocalStepsItemProps
-  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
 
 export type StepsTitleProps = HTMLArkProps<"span">;
 export type StepsDescriptionProps = HTMLArkProps<"span">;

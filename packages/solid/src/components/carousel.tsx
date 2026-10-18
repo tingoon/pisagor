@@ -10,7 +10,7 @@ import type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
+  CarouselRootProps as CarouselRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
@@ -35,7 +35,7 @@ const {
 // #endregion
 
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: JSX.Element;

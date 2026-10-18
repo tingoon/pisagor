@@ -6,12 +6,12 @@ import {
   useColorPickerContext,
 } from "@ark-ui/react";
 import type {
-  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
   ColorPickerContentProps,
-  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerControlProps as ColorPickerControlPrimitiveProps,
+  ColorPickerRootProps as ColorPickerRootPrimitiveProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
   ColorPickerTriggerProps,
@@ -44,7 +44,7 @@ const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
 // #region Types
 
 export type ColorPickerRootProps = Omit<
-  ColorPickerPrimitiveRootProps,
+  ColorPickerRootPrimitiveProps,
   "defaultValue" | "value" | "onValueChange"
 >;
 
@@ -89,7 +89,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerControlPrimitiveProps {
   /**
    * Whether to show a clear button when a color is selected.
    *
@@ -103,7 +103,7 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
 > &
   ButtonProps;
 
-export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
+export interface ColorPickerAreaProps extends ColorPickerAreaPrimitiveProps {
   showDots?: boolean;
 }
 

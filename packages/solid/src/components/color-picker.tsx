@@ -5,12 +5,12 @@ import {
   useColorPickerContext,
 } from "@ark-ui/solid";
 import type {
-  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
   ColorPickerContentProps,
-  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerControlProps as ColorPickerControlPrimitiveProps,
+  ColorPickerRootProps as ColorPickerRootPrimitiveProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
   ColorPickerTriggerProps,
@@ -47,7 +47,7 @@ const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
 type FormControlVariant = "primary" | "secondary";
 
 export type ColorPickerRootProps = Omit<
-  ColorPickerPrimitiveRootProps,
+  ColorPickerRootPrimitiveProps,
   "defaultValue" | "value" | "onValueChange"
 >;
 
@@ -64,7 +64,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerControlPrimitiveProps {
   clearable?: boolean;
 }
 
@@ -73,7 +73,7 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
 > &
   ButtonProps;
 
-export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
+export interface ColorPickerAreaProps extends ColorPickerAreaPrimitiveProps {
   showDots?: boolean;
 }
 

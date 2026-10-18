@@ -4,14 +4,14 @@ import {
 } from "@ark-ui/solid";
 import type {
   TagsInputClearTriggerProps,
-  TagsInputControlProps as TagsInputPrimitiveControlProps,
+  TagsInputControlProps as TagsInputControlPrimitiveProps,
   TagsInputInputProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
-  TagsInputItemProps as TagsInputPrimitiveItemProps,
+  TagsInputItemProps as TagsInputItemPrimitiveProps,
   TagsInputItemTextProps,
-  TagsInputRootProps as TagsInputPrimitiveRootProps,
-  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
+  TagsInputRootProps as TagsInputRootPrimitiveProps,
+  TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,
@@ -33,7 +33,7 @@ const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
 // #endregion
 
 export type TagsInputRootProps = Omit<
-  TagsInputPrimitiveRootProps,
+  TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
   Pick<InputGroupProps, "size" | "variant">;
@@ -46,14 +46,14 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 
 export interface TagsInputControlProps
   extends
-    TagsInputPrimitiveControlProps,
+    TagsInputControlPrimitiveProps,
     Pick<InputGroupProps, "size" | "variant"> {
   clearable?: boolean;
 }
 
 export interface TagsInputItemProps
   extends
-    TagsInputPrimitiveItemProps,
+    TagsInputItemPrimitiveProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputItemProps {
   showDelete?: boolean;
@@ -61,7 +61,7 @@ export interface TagsInputItemProps
 
 export interface TagsInputRootProviderProps
   extends
-    TagsInputPrimitiveRootProviderProps,
+    TagsInputRootProviderPrimitiveProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputProps {
   clearable?: boolean;

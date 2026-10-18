@@ -2,7 +2,7 @@ import { Avatar as AvatarPrimitive } from "@ark-ui/react";
 import type {
   AvatarFallbackProps,
   AvatarImageProps,
-  AvatarRootProps as AvatarPrimitiveRootProps,
+  AvatarRootProps as AvatarRootPrimitiveProps,
 } from "@ark-ui/react";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
@@ -24,7 +24,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 const AvatarRoot = withProvider(AvatarPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<AvatarPrimitiveRootProps & BaseAvatarRootProps>;
+}) as FunctionComponent<AvatarRootPrimitiveProps & BaseAvatarRootProps>;
 
 const AvatarImage = withContext(AvatarPrimitive.Image, {
   name: "Image",

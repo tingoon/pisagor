@@ -1,7 +1,7 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/solid";
 import type {
-  NumberInputControlProps as NumberInputPrimitiveControlProps,
-  NumberInputRootProps as NumberInputPrimitiveRootProps,
+  NumberInputControlProps as NumberInputControlPrimitiveProps,
+  NumberInputRootProps as NumberInputRootPrimitiveProps,
   NumberInputScrubberProps,
 } from "@ark-ui/solid";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
@@ -29,7 +29,7 @@ const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
 type FormControlVariant = "primary" | "secondary";
 
 export type NumberInputRootProps = Omit<
-  NumberInputPrimitiveRootProps,
+  NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
   Pick<InputProps, "size" | "variant">;
@@ -41,7 +41,7 @@ export interface NumberInputProps
   onValueChange?: (value: number) => void;
 }
 
-export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps extends NumberInputControlPrimitiveProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }

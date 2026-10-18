@@ -2,7 +2,7 @@ import { Avatar as AvatarPrimitive } from "@ark-ui/solid";
 import type {
   AvatarFallbackProps,
   AvatarImageProps,
-  AvatarRootProps as AvatarPrimitiveRootProps,
+  AvatarRootProps as AvatarRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import {
@@ -27,7 +27,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-type AvatarRootProps = AvatarPrimitiveRootProps &
+type AvatarRootProps = AvatarRootPrimitiveProps &
   AvatarVariantProps &
   BaseAvatarRootProps;
 

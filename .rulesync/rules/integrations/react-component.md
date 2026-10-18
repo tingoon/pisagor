@@ -153,8 +153,8 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 - Re-export types, hooks, or `RootProvider` only when part of the public API.
 - Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that.
 - For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Type `ark.*` hosts with `ComponentPropsWithRef<"tag"> & PolymorphicProps` (mirrors Ark's internal `ArkPropsWithRef`); reserve `ComponentProps` for DOM and third-party components that do not export props.
-- Pure Ark props: re-export from the **barrel** (`export type { FooRootProps } from "@ark-ui/react"`). Component modules import for signatures only — do not `export type { FooRootProps }` there. When the local name must extend/omit the Ark type of the same name, import as `FooRootProps as FooPrimitiveRootProps` (mirror `Foo as FooPrimitive`).
-- Do **not** add identity aliases (`type FooProps = FooPrimitiveRootProps` or empty `interface FooProps extends FooPrimitiveRootProps {}`). Import and use the Ark type directly. Rename aliases only when the public name differs (`ComboboxFieldInputProps = ComboboxPrimitiveInputProps`, `TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps`).
+- Pure Ark props: re-export from the **barrel** (`export type { FooRootProps } from "@ark-ui/react"`). Component modules import for signatures only — do not `export type { FooRootProps }` there. When the local name must extend/omit the Ark type of the same name, import as `FooRootProps as FooRootPrimitiveProps` (`{ArkName}PrimitiveProps`; value alias stays `Foo as FooPrimitive`).
+- Do **not** add identity aliases (`type FooProps = FooRootPrimitiveProps` or empty `interface FooProps extends FooRootPrimitiveProps {}`). Import and use the Ark type directly. Rename aliases only when the public name differs (`ComboboxFieldInputProps = ComboboxInputPrimitiveProps`, `TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps`).
 - Barrel may alias for public names (`DatePickerRootProps as DatePickerProps`).
 
 ### Do not
@@ -260,7 +260,7 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 - Re-export **unchanged** Ark props from the component **barrel** (`index.ts`): `export type { AccordionRootProps } from "@ark-ui/react"`. Do not `export type { AccordionRootProps }` from the component module — import there only for local signatures / `extends`.
 - Library-owned props (`Omit` / `extends` with extra fields / `RefAttributes` / renamed aliases) stay in the component module and are re-exported from the barrel via `export type { FooProps } from "./foo"`.
 - Do not invent passthrough aliases — if nothing is added, use the imported Ark `*Props` name as-is.
-- When a local `FooRootProps` extends/omits Ark’s same-named type, import as `type FooRootProps as FooPrimitiveRootProps` (same `Primitive` placement as `Foo as FooPrimitive`).
+- When a local `FooRootProps` extends/omits Ark’s same-named type, import as `type FooRootProps as FooRootPrimitiveProps` (insert `Primitive` before `Props`, not after the component name).
 - Ark `*Props` are typically `ComponentPropsWithoutRef` — when the wrapper destructures `ref`, intersect `RefAttributes<Element>` (what `ComponentProps<typeof Primitive>` used to provide).
 - Note Ark naming quirks (e.g. tabs compound uses `TabListProps` / `TabTriggerProps` / `TabContentProps`, not `TabsListProps`).
 - Use `export interface FooProps` when props are part of the public API.
@@ -271,7 +271,7 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 
 | `Omit` usage                                           | Valid                                                                                           | Invalid                                                                                                             |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Convenience prop conflicts with primitive prop         | `type SelectRootProps = Omit<SelectPrimitiveRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectPrimitiveRootProps<Item>;` + re-declare `onValueChange` with a different signature    |
+| Convenience prop conflicts with primitive prop         | `type SelectRootProps = Omit<SelectRootPrimitiveProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectRootPrimitiveProps<Item>;` + re-declare `onValueChange` with a different signature    |
 | Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">`                           | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`)                                     |
 | Preserve primitive contracts by default                | `interface DialogBodyProps extends ComponentPropsWithRef<"div">, PolymorphicProps {}`           | `type DialogBodyProps = Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "role">` without an explicit conflict |
 

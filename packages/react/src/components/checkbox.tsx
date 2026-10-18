@@ -1,7 +1,7 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react";
 import type {
   CheckboxControlProps,
-  CheckboxGroupProps as CheckboxPrimitiveGroupProps,
+  CheckboxGroupProps as CheckboxGroupPrimitiveProps,
   CheckboxIndicatorProps,
   CheckboxLabelProps,
   CheckboxRootProps,
@@ -24,7 +24,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 export interface CheckboxGroupProps
   extends
-    Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+    Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
     BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }

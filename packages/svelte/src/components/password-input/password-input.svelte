@@ -2,7 +2,7 @@
   import {
     PasswordInput as PasswordInputPrimitive,
     type PasswordInputInputProps,
-    type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+    type PasswordInputRootProps as PasswordInputRootPrimitiveProps,
   } from "@ark-ui/svelte";
   import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
   import {
@@ -22,7 +22,7 @@
   type FormControlVariant = "primary" | "secondary";
 
   type PasswordInputRootProps = Pick<
-    PasswordInputPrimitiveRootProps,
+    PasswordInputRootPrimitiveProps,
     "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
   >;
 

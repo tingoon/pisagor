@@ -1,9 +1,9 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react";
 import type {
-  RadioGroupItemProps as RadioGroupPrimitiveItemProps,
+  RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-  RadioGroupRootProps as RadioGroupPrimitiveRootProps,
+  RadioGroupRootProps as RadioGroupRootPrimitiveProps,
 } from "@ark-ui/react";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
@@ -30,7 +30,7 @@ interface RadioGroupPresetItem {
 
 export interface RadioGroupRootProps
   extends
-    Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+    Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
     BaseRadioGroupRootProps {
   onValueChange?: (value: string | null) => void;
 }
@@ -40,7 +40,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupPrimitiveItemProps, BaseRadioGroupItemProps {
+  extends RadioGroupItemPrimitiveProps, BaseRadioGroupItemProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

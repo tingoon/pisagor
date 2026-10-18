@@ -2,10 +2,10 @@ import { Dialog as DialogPrimitive, ark } from "@ark-ui/solid";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps as DialogPrimitiveContentProps,
+  DialogContentProps as DialogContentPrimitiveProps,
   DialogDescriptionProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
+  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogRootProps as DialogRootPrimitiveProps,
   DialogTitleProps,
   DialogTriggerProps,
   HTMLArkProps,
@@ -40,10 +40,10 @@ export { useDialog };
 // #endregion
 
 export interface LocalDialogRootProps
-  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps, DialogVariantProps {
+  extends DialogContentPrimitiveProps, DialogVariantProps {
   bottomStickOnMobile?: boolean;
   showCloseButton?: boolean;
 }
@@ -54,7 +54,7 @@ export interface DialogBodyProps extends HTMLArkProps<"div"> {
 
 export type DialogHeaderProps = HTMLArkProps<"div">;
 
-export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
+export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 

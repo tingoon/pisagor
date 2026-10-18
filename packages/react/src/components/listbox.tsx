@@ -6,11 +6,11 @@ import type {
   CollectionItem,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
   ListboxItemIndicatorProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
+  ListboxItemProps as ListboxItemPrimitiveProps,
   ListboxItemTextProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxRootProps as ListboxRootPrimitiveProps,
   ListboxValueTextProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
@@ -50,7 +50,7 @@ interface ListboxPresetItem extends CollectionItem {
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ListboxPrimitiveRootProps<T>,
+  ListboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
@@ -67,9 +67,9 @@ export interface ListboxProps extends Omit<
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
+  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
 
-export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
+export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   /** The heading of the listbox item group. */
   heading?: string;
 }

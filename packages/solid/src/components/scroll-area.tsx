@@ -1,6 +1,6 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid";
 import type {
-  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
@@ -25,7 +25,7 @@ const {
 
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
-type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
+type ScrollAreaRootProps = ScrollAreaRootPrimitiveProps &
   ScrollAreaVariantProps &
   BaseScrollAreaRootProps;
 

@@ -4,7 +4,7 @@ import type {
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
+  PopoverContentProps as PopoverContentPrimitiveProps,
   PopoverPositionerProps,
   PopoverRootProps,
   PopoverTriggerProps,
@@ -31,7 +31,7 @@ const {
 
 // #region Types
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
   /**
    * Whether to show a close button at the top right corner.
    *

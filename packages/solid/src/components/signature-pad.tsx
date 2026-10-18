@@ -3,7 +3,7 @@ import type {
   SignaturePadClearTriggerProps,
   SignaturePadControlProps,
   SignaturePadGuideProps,
-  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+  SignaturePadRootProps as SignaturePadRootPrimitiveProps,
   SignaturePadSegmentProps,
 } from "@ark-ui/solid";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
@@ -38,7 +38,7 @@ const {
 type FormControlVariant = "primary" | "secondary";
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
-type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
+type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   variant?: FormControlVariant;
   invalid?: boolean;
 } & BaseSignaturePadRootProps;

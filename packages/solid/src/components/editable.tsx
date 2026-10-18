@@ -4,9 +4,9 @@ import type {
   EditableCancelTriggerProps,
   EditableControlProps,
   EditableEditTriggerProps,
-  EditableInputProps as EditablePrimitiveInputProps,
-  EditablePreviewProps as EditablePrimitivePreviewProps,
-  EditableRootProps as EditablePrimitiveRootProps,
+  EditableInputProps as EditableInputPrimitiveProps,
+  EditablePreviewProps as EditablePreviewPrimitiveProps,
+  EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/solid";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
@@ -32,7 +32,7 @@ const {
 type FormControlVariant = "primary" | "secondary";
 
 export type EditableRootProps = Omit<
-  EditablePrimitiveRootProps,
+  EditableRootPrimitiveProps,
   "onValueChange" | "value" | "defaultValue"
 >;
 
@@ -44,11 +44,11 @@ export interface EditableProps extends EditableRootProps, BaseEditableProps {
 }
 
 export interface EditableInputProps extends Omit<
-  EditablePrimitiveInputProps,
+  EditableInputPrimitiveProps,
   "size"
 > {}
 
-export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
+export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
   controlVariant?: FormControlVariant;
   size?: ButtonProps["size"];
   variant?: ButtonProps["variant"];

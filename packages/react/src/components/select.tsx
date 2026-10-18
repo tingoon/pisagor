@@ -11,10 +11,10 @@ import type {
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  SelectItemGroupProps as SelectItemGroupPrimitiveProps,
   SelectItemProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectRootProps as SelectRootPrimitiveProps,
+  SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
 } from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
@@ -57,7 +57,7 @@ interface SelectPresetItem {
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  SelectPrimitiveRootProps<T>,
+  SelectRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the trigger. Defaults to `primary`. */
@@ -83,7 +83,7 @@ export interface SelectProps extends Omit<
 
 export interface SelectTriggerProps
   extends
-    Omit<SelectPrimitiveTriggerProps, "size">,
+    Omit<SelectTriggerPrimitiveProps, "size">,
     FormControlShellVariantProps {
   /**
    * Whether to show a clear button when a value is selected.
@@ -93,7 +93,7 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
+export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }

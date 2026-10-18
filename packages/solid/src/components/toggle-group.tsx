@@ -1,7 +1,7 @@
 import {
   ToggleGroup as ToggleGroupPrimitive,
   type ToggleGroupItemProps,
-  type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
+  type ToggleGroupRootProps as ToggleGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
@@ -62,7 +62,7 @@ interface ToggleGroupPresetItem {
 
 export interface ToggleGroupRootProps
   extends
-    Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
+    Omit<ToggleGroupRootPrimitiveProps, "onValueChange">,
     ToggleGroupItemOptions,
     BaseToggleGroupRootProps {
   onValueChange?: (value: string[]) => void;

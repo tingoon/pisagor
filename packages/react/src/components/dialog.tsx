@@ -2,9 +2,9 @@ import { Dialog as DialogPrimitive, Portal, ark } from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps as DialogPrimitiveContentProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
+  DialogContentProps as DialogContentPrimitiveProps,
+  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogRootProps as DialogRootPrimitiveProps,
   DialogTriggerProps,
   PolymorphicProps,
 } from "@ark-ui/react";
@@ -36,10 +36,10 @@ export { useDialog };
 
 // #region Types
 export interface DialogRootProps
-  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps, DialogVariantProps {
+  extends DialogContentPrimitiveProps, DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -66,7 +66,7 @@ export interface DialogBodyProps
 
 export type DialogHeaderProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
-export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
+export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 

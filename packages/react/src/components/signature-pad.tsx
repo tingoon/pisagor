@@ -2,7 +2,7 @@ import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react";
 import type {
   SignaturePadClearTriggerProps,
   SignaturePadControlProps,
-  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+  SignaturePadRootProps as SignaturePadRootPrimitiveProps,
 } from "@ark-ui/react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
@@ -36,7 +36,7 @@ const {
 
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
-type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
+type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */

@@ -7,7 +7,7 @@ import type {
   FieldErrorTextProps,
   FieldHelperTextProps,
   FieldLabelProps,
-  FieldRootProps as FieldPrimitiveRootProps,
+  FieldRootProps as FieldRootPrimitiveProps,
   FieldsetLegendProps,
   FieldsetRootProps,
   PolymorphicProps,
@@ -44,7 +44,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 
 // #region Types
 export interface FieldRootProps
-  extends FieldPrimitiveRootProps, BaseFieldRootProps {}
+  extends FieldRootPrimitiveProps, BaseFieldRootProps {}
 
 export type FieldProps = FieldRootProps;
 

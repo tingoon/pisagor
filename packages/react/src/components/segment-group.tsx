@@ -1,7 +1,7 @@
 import {
   SegmentGroup as SegmentGroupPrimitive,
-  type SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
-  type SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+  type SegmentGroupItemProps as SegmentGroupItemPrimitiveProps,
+  type SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/react";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
@@ -30,7 +30,7 @@ interface SegmentGroupPresetItem {
 
 export interface SegmentGroupRootProps
   extends
-    Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
+    Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
     BaseSegmentGroupRootProps,
     SizeScaleProps {
   /**
@@ -49,7 +49,7 @@ export interface SegmentGroupProps extends Omit<
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupPrimitiveItemProps {
+export interface SegmentGroupItemProps extends SegmentGroupItemPrimitiveProps {
   text?: ReactNode;
 }
 // #endregion
@@ -59,7 +59,7 @@ const SegmentGroupRootBase = withProvider(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  SegmentGroupPrimitiveRootProps & BaseSegmentGroupRootProps
+  SegmentGroupRootPrimitiveProps & BaseSegmentGroupRootProps
 >;
 
 export function SegmentGroupRoot({

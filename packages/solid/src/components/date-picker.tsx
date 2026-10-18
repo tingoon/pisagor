@@ -3,11 +3,11 @@ import {
   useDatePickerContext,
 } from "@ark-ui/solid";
 import type {
-  DatePickerContentProps as DatePickerPrimitiveContentProps,
-  DatePickerInputProps as DatePickerPrimitiveInputProps,
+  DatePickerContentProps as DatePickerContentPrimitiveProps,
+  DatePickerInputProps as DatePickerInputPrimitiveProps,
   DatePickerPresetTriggerProps,
-  DatePickerRootProps as DatePickerPrimitiveRootProps,
-  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  DatePickerRootProps as DatePickerRootPrimitiveProps,
+  DatePickerTriggerProps as DatePickerTriggerPrimitiveProps,
   DatePickerValueTextProps,
 } from "@ark-ui/solid";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
@@ -63,12 +63,12 @@ function useDatePicker() {
 }
 // #endregion
 
-export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerTriggerPrimitiveProps {
   clearable?: boolean;
 }
 
 export interface DatePickerInputProps
-  extends Omit<DatePickerPrimitiveInputProps, "size">, InputProps {
+  extends Omit<DatePickerInputPrimitiveProps, "size">, InputProps {
   clearable?: boolean;
 }
 
@@ -77,13 +77,13 @@ export interface DatePickerTimerProps
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps extends DatePickerContentPrimitiveProps {
   showCalendar?: boolean;
 }
 
 export interface DatePickerRootProps
   extends
-    Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+    Omit<DatePickerRootPrimitiveProps, "onValueChange">,
     BaseDatePickerProps {
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;

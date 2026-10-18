@@ -2,8 +2,8 @@ import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react";
 import type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
-  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
+  ImageCropperRootProps as ImageCropperRootPrimitiveProps,
+  ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/react";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
@@ -24,7 +24,7 @@ const {
 // #region Types
 export interface ImageCropperRootProps
   extends
-    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+    Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   /**
    * Image URL for the auto-rendered cropper layout.
@@ -40,7 +40,7 @@ export interface ImageCropperRootProps
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperSelectionPrimitiveProps {
   /**
    * The axis of the grid to show.
    *

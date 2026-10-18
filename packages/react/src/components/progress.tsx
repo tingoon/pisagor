@@ -1,7 +1,7 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/react";
 import type {
   ProgressRangeProps,
-  ProgressRootProps as ProgressPrimitiveRootProps,
+  ProgressRootProps as ProgressRootPrimitiveProps,
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/react";
@@ -22,7 +22,7 @@ const ProgressRoot = withProvider(ProgressPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ProgressPrimitiveRootProps, "value"> &
+  Omit<ProgressRootPrimitiveProps, "value"> &
     BaseProgressRootProps & { value?: number | null }
 >;
 

@@ -2,7 +2,7 @@ import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/react";
 import type {
   PolymorphicProps,
   TimerActionTriggerProps,
-  TimerRootProps as TimerPrimitiveRootProps,
+  TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
 } from "@ark-ui/react";
 import type {
@@ -62,7 +62,7 @@ export interface TimerActionProps extends Omit<
 > {}
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, BaseTimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
@@ -76,7 +76,7 @@ export type TimerItemLabelProps = ComponentPropsWithRef<"div"> &
 const TimerRootBase = withTimerProvider(TimerPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<TimerPrimitiveRootProps & BaseTimerRootProps>;
+}) as FunctionComponent<TimerRootPrimitiveProps & BaseTimerRootProps>;
 
 export function TimerRoot({
   isControlsVisible,

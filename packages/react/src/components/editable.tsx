@@ -2,9 +2,9 @@ import { Editable as EditablePrimitive } from "@ark-ui/react";
 import type {
   EditableCancelTriggerProps,
   EditableEditTriggerProps,
-  EditableInputProps as EditablePrimitiveInputProps,
-  EditablePreviewProps as EditablePrimitivePreviewProps,
-  EditableRootProps as EditablePrimitiveRootProps,
+  EditableInputProps as EditableInputPrimitiveProps,
+  EditablePreviewProps as EditablePreviewPrimitiveProps,
+  EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/react";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
@@ -28,7 +28,7 @@ const {
 // #region Types
 
 export type EditableRootProps = Omit<
-  EditablePrimitiveRootProps,
+  EditableRootPrimitiveProps,
   "onValueChange" | "value" | "defaultValue"
 >;
 
@@ -60,11 +60,11 @@ export interface EditableProps extends EditableRootProps, BaseEditableProps {
 }
 
 export interface EditableInputProps extends Omit<
-  EditablePrimitiveInputProps,
+  EditableInputPrimitiveProps,
   "size"
 > {}
 
-export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
+export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
   /** Form shell variant. Defaults to `primary`. */
   controlVariant?: FormControlVariant;
   /**
@@ -103,7 +103,7 @@ export function EditableRoot({
   const handleValueChange = onValueChange
     ? (
         details: Parameters<
-          NonNullable<EditablePrimitiveRootProps["onValueChange"]>
+          NonNullable<EditableRootPrimitiveProps["onValueChange"]>
         >[0],
       ) => onValueChange(details.value)
     : undefined;

@@ -1,13 +1,13 @@
 import { FloatingPanel as FloatingPanelPrimitive, ark } from "@ark-ui/solid";
 import type {
-  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
   FloatingPanelCloseTriggerProps,
-  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  FloatingPanelContentProps as FloatingPanelContentPrimitiveProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
   FloatingPanelResizeTriggerProps,
-  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
+  FloatingPanelRootProps as FloatingPanelRootPrimitiveProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
@@ -43,9 +43,9 @@ function useFloatingPanelSlots() {
 // #endregion
 
 export interface LocalFloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps, BaseFloatingPanelRootProps {}
+  extends FloatingPanelRootPrimitiveProps, BaseFloatingPanelRootProps {}
 
-export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   resizable?: boolean;
 }
 
@@ -57,7 +57,7 @@ export type FloatingPanelMinimizeProps = Omit<
 export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps {
   scrollFade?: boolean;
 }
 

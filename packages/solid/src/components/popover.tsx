@@ -4,7 +4,7 @@ import type {
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
+  PopoverContentProps as PopoverContentPrimitiveProps,
   PopoverDescriptionProps,
   PopoverPositionerProps,
   PopoverRootProps,
@@ -33,7 +33,7 @@ const {
 // #endregion
 
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
   showCloseButton?: boolean;
 }
 

@@ -2,10 +2,10 @@ import { Drawer as DrawerPrimitive, Portal, ark } from "@ark-ui/react";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
+  DrawerContentProps as DrawerContentPrimitiveProps,
   DrawerGrabberProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
+  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTriggerProps,
   PolymorphicProps,
 } from "@ark-ui/react";
@@ -28,12 +28,12 @@ const {
 
 // #region Types
 export interface DrawerRootProps
-  extends DrawerPrimitiveRootProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
-export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
+export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   Pick<DrawerVariantProps, "variant">;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps &
+export type DrawerContentProps = DrawerContentPrimitiveProps &
   Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps

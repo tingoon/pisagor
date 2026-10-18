@@ -1,7 +1,7 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/solid";
 import type {
   ProgressRangeProps,
-  ProgressRootProps as ProgressPrimitiveRootProps,
+  ProgressRootProps as ProgressRootPrimitiveProps,
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/solid";
@@ -22,7 +22,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 type ProgressHeaderProps = ComponentProps<"div">;
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value"> &
+type ProgressRootProps = Omit<ProgressRootPrimitiveProps, "value"> &
   BaseProgressProps & {
     value?: number | null;
   };

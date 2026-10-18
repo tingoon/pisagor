@@ -2,10 +2,10 @@ import { Steps as StepsPrimitive, ark } from "@ark-ui/react";
 import type {
   PolymorphicProps,
   StepsIndicatorProps,
-  StepsItemProps as StepsPrimitiveItemProps,
+  StepsItemProps as StepsItemPrimitiveProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsRootProps as StepsPrimitiveRootProps,
+  StepsRootProps as StepsRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
@@ -35,10 +35,10 @@ const {
 
 // #region Types
 export interface StepsRootProps
-  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
 
 export interface StepsItemProps
-  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
 
 export type StepsTitleProps = ComponentPropsWithRef<"span"> & PolymorphicProps;
 

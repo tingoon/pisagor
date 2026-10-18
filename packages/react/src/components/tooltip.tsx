@@ -4,7 +4,7 @@ import type {
   TooltipContentProps,
   TooltipContextProps,
   TooltipPositionerProps,
-  TooltipRootProps as TooltipPrimitiveRootProps,
+  TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
 } from "@ark-ui/react";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
@@ -22,7 +22,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipPrimitiveRootProps, BaseTooltipRootProps {}
+  extends TooltipRootPrimitiveProps, BaseTooltipRootProps {}
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 

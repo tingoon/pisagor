@@ -5,13 +5,13 @@ import {
 } from "@ark-ui/react";
 import type {
   FileUploadClearTriggerProps,
-  FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
+  FileUploadDropzoneProps as FileUploadDropzonePrimitiveProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
   FileUploadItemPreviewProps,
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
-  FileUploadRootProps as FileUploadPrimitiveRootProps,
+  FileUploadRootProps as FileUploadRootPrimitiveProps,
   FileUploadTriggerProps,
   PolymorphicProps,
 } from "@ark-ui/react";
@@ -54,11 +54,11 @@ export interface FileUploadItemRootProps
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadPrimitiveRootProps, BaseFileUploadRootProps {
+  extends FileUploadRootPrimitiveProps, BaseFileUploadRootProps {
   onValueChange?: (value: File[]) => void;
 }
 
-export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps extends FileUploadDropzonePrimitiveProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

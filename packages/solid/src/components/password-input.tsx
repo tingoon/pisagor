@@ -2,8 +2,8 @@ import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/solid";
 import type {
   PasswordInputIndicatorProps,
   PasswordInputInputProps,
-  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
+  PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+  PasswordInputVisibilityTriggerProps as PasswordInputVisibilityTriggerPrimitiveProps,
 } from "@ark-ui/solid";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
@@ -22,12 +22,12 @@ import { useLocale } from "./provider/context";
 type FormControlVariant = "primary" | "secondary";
 
 export type PasswordInputRootProps = Pick<
-  PasswordInputPrimitiveRootProps,
+  PasswordInputRootPrimitiveProps,
   "class" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
 >;
 
 export type PasswordInputVisibilityTriggerProps = Omit<
-  PasswordInputPrimitiveVisibilityTriggerProps,
+  PasswordInputVisibilityTriggerPrimitiveProps,
   "asChild"
 >;
 
@@ -47,7 +47,7 @@ export interface PasswordInputProps
 }
 
 function PasswordInputRoot(
-  props: PasswordInputPrimitiveRootProps & {
+  props: PasswordInputRootPrimitiveProps & {
     recipe?: typeof passwordInputRecipe;
   },
 ): JSX.Element {

@@ -7,16 +7,16 @@ import {
 import type {
   CollectionItem,
   ComboboxClearTriggerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
+  ComboboxContentProps as ComboboxContentPrimitiveProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
+  ComboboxInputProps as ComboboxInputPrimitiveProps,
   ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
+  ComboboxItemGroupProps as ComboboxItemGroupPrimitiveProps,
+  ComboboxItemProps as ComboboxItemPrimitiveProps,
   ComboboxListProps,
   ComboboxPositionerProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
 } from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
@@ -70,7 +70,7 @@ interface ComboboxPresetItem {
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxPrimitiveRootProps<T>,
+  ComboboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the input. Defaults to `primary`. */
@@ -94,7 +94,7 @@ export interface ComboboxProps extends Omit<
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
+  extends Omit<ComboboxInputPrimitiveProps, "size">, InputRootVariantProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -115,17 +115,17 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
+  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
 
-export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
+export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
 
-export interface ComboboxContentProps extends ComboboxPrimitiveContentProps {
+export interface ComboboxContentProps extends ComboboxContentPrimitiveProps {
   /**
    * Whether to render the content in a portal with a positioner.
    *

@@ -1,9 +1,9 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid";
 import type {
   SegmentGroupIndicatorProps,
-  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
+  SegmentGroupItemProps as SegmentGroupItemPrimitiveProps,
   SegmentGroupItemTextProps,
-  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+  SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
@@ -32,7 +32,7 @@ interface SegmentGroupPresetItem {
 
 export interface SegmentGroupRootProps
   extends
-    Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
+    Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
     BaseSegmentGroupRootProps,
     SizeScaleProps {
   variant?: SegmentGroupVariant;
@@ -46,12 +46,12 @@ export interface SegmentGroupProps extends Omit<
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupPrimitiveItemProps {
+export interface SegmentGroupItemProps extends SegmentGroupItemPrimitiveProps {
   text?: JSX.Element;
 }
 
 const SegmentGroupRootBase: Component<
-  SegmentGroupPrimitiveRootProps & BaseSegmentGroupRootProps & SizeScaleProps
+  SegmentGroupRootPrimitiveProps & BaseSegmentGroupRootProps & SizeScaleProps
 > = withProvider(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",

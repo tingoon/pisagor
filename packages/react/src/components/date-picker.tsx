@@ -4,11 +4,11 @@ import {
   useDatePickerContext,
 } from "@ark-ui/react";
 import type {
-  DatePickerContentProps as DatePickerPrimitiveContentProps,
-  DatePickerInputProps as DatePickerPrimitiveInputProps,
+  DatePickerContentProps as DatePickerContentPrimitiveProps,
+  DatePickerInputProps as DatePickerInputPrimitiveProps,
   DatePickerPresetTriggerProps,
-  DatePickerRootProps as DatePickerPrimitiveRootProps,
-  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  DatePickerRootProps as DatePickerRootPrimitiveProps,
+  DatePickerTriggerProps as DatePickerTriggerPrimitiveProps,
   DatePickerValueTextProps,
 } from "@ark-ui/react";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
@@ -45,7 +45,7 @@ function useDatePicker() {
 
 // #region Types
 
-export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerTriggerPrimitiveProps {
   /**
    * Whether to show a clear button when a date is selected.
    *
@@ -55,7 +55,7 @@ export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps 
 }
 
 export interface DatePickerInputProps
-  extends Omit<DatePickerPrimitiveInputProps, "size">, InputProps {
+  extends Omit<DatePickerInputPrimitiveProps, "size">, InputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -74,7 +74,7 @@ export interface DatePickerTimeInputProps
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps extends DatePickerContentPrimitiveProps {
   /**
    * When `true` (default), auto-renders the standard month/year navigation and
    * day grid inside the content — no need to add calendar sub-components
@@ -85,7 +85,7 @@ export interface DatePickerContentProps extends DatePickerPrimitiveContentProps 
 
 export interface DatePickerRootProps
   extends
-    Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+    Omit<DatePickerRootPrimitiveProps, "onValueChange">,
     BaseDatePickerProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;

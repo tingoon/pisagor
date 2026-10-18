@@ -1,6 +1,6 @@
 import {
   JsonTreeView as JsonTreeViewPrimitive,
-  type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
+  type JsonTreeViewRootProps as JsonTreeViewRootPrimitiveProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/react";
 import { CaretRightIcon } from "@phosphor-icons/react";
@@ -22,7 +22,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewPrimitiveRootProps, BaseJsonTreeViewRootProps {}
+  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

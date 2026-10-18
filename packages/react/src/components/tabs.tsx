@@ -3,7 +3,7 @@ import type {
   TabContentProps,
   TabListProps,
   TabTriggerProps,
-  TabsRootProps as TabsPrimitiveRootProps,
+  TabsRootProps as TabsRootPrimitiveProps,
 } from "@ark-ui/react";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
@@ -23,7 +23,7 @@ const {
 
 // #region Types
 export interface TabsRootProps
-  extends TabsPrimitiveRootProps, BaseTabsRootProps {}
+  extends TabsRootPrimitiveProps, BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;

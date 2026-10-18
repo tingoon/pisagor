@@ -5,7 +5,7 @@ import type {
   TimerAreaProps,
   TimerControlProps,
   TimerItemProps,
-  TimerRootProps as TimerPrimitiveRootProps,
+  TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
 } from "@ark-ui/solid";
 import type {
@@ -49,7 +49,7 @@ export interface TimerActionProps extends Omit<
 > {}
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, BaseTimerRootProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }
@@ -57,7 +57,7 @@ export interface TimerRootProps
 export type TimerItemLabelProps = HTMLArkProps<"div">;
 
 const TimerRootProvider: Component<
-  TimerPrimitiveRootProps & BaseTimerRootProps
+  TimerRootPrimitiveProps & BaseTimerRootProps
 > = withTimerProvider(TimerPrimitive.Root, { name: "Root", slot: "base" });
 
 export function TimerRoot(props: TimerRootProps): JSX.Element {

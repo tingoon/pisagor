@@ -1,7 +1,7 @@
 import {
   Marquee as MarqueePrimitive,
   type MarqueeContentProps,
-  type MarqueeRootProps as MarqueePrimitiveRootProps,
+  type MarqueeRootProps as MarqueeRootPrimitiveProps,
 } from "@ark-ui/react";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
@@ -22,7 +22,7 @@ const {
 
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side">, BaseMarqueeRootProps {
+  extends Omit<MarqueeRootPrimitiveProps, "side">, BaseMarqueeRootProps {
   /** @defaultValue "horizontal" */
   orientation?: "horizontal" | "vertical";
   /**
@@ -46,7 +46,7 @@ export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
 const MarqueeRootBase = withProvider(MarqueePrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<MarqueePrimitiveRootProps & BaseMarqueeRootProps>;
+}) as FunctionComponent<MarqueeRootPrimitiveProps & BaseMarqueeRootProps>;
 
 export function MarqueeRoot({
   orientation = "horizontal",

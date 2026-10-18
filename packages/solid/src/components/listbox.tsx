@@ -7,11 +7,11 @@ import type {
   ListboxContentProps,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
   ListboxItemIndicatorProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
+  ListboxItemProps as ListboxItemPrimitiveProps,
   ListboxItemTextProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxRootProps as ListboxRootPrimitiveProps,
   ListboxValueTextProps,
 } from "@ark-ui/solid";
 import type {
@@ -43,7 +43,7 @@ interface ListboxPresetItem extends CollectionItem {
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ListboxPrimitiveRootProps<T>,
+  ListboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
@@ -60,9 +60,9 @@ export interface ListboxProps extends Omit<
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
+  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
 
-export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
+export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   heading?: string;
 }
 

@@ -6,16 +6,16 @@ import {
 import type {
   CollectionItem,
   ComboboxClearTriggerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
+  ComboboxContentProps as ComboboxContentPrimitiveProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
+  ComboboxInputProps as ComboboxInputPrimitiveProps,
   ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
+  ComboboxItemGroupProps as ComboboxItemGroupPrimitiveProps,
+  ComboboxItemProps as ComboboxItemPrimitiveProps,
   ComboboxListProps,
   ComboboxPositionerProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
 } from "@ark-ui/solid";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
@@ -87,7 +87,7 @@ interface ComboboxPresetItem {
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxPrimitiveRootProps<T>,
+  ComboboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the input. Defaults to `primary`. */
@@ -106,22 +106,22 @@ export interface ComboboxProps extends Omit<
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
+  extends Omit<ComboboxInputPrimitiveProps, "size">, InputRootVariantProps {
   clearable?: boolean;
   disabled?: boolean;
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
   heading?: string | JSX.Element;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
+  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
 
-export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
+export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
 
-export interface ComboboxContentProps extends ComboboxPrimitiveContentProps {
+export interface ComboboxContentProps extends ComboboxContentPrimitiveProps {
   portalled?: boolean;
 }
 

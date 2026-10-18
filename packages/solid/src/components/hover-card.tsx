@@ -1,8 +1,8 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid";
 import type {
   HoverCardArrowProps,
-  HoverCardContentProps as HoverCardPrimitiveContentProps,
-  HoverCardRootProps as HoverCardPrimitiveRootProps,
+  HoverCardContentProps as HoverCardContentPrimitiveProps,
+  HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
@@ -22,11 +22,11 @@ const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
 
 // #region Types
 export interface LocalHoverCardRootProps
-  extends HoverCardPrimitiveRootProps, BaseHoverCardRootProps {}
+  extends HoverCardRootPrimitiveProps, BaseHoverCardRootProps {}
 
 export type HoverCardProps = LocalHoverCardRootProps;
 
-export interface HoverCardContentProps extends HoverCardPrimitiveContentProps {
+export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
   /**
    * Whether to render the arrow pointing at the trigger.
    *

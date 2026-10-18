@@ -4,7 +4,7 @@ import type {
   SliderMarkerGroupProps,
   SliderMarkerProps,
   SliderRangeProps,
-  SliderRootProps as SliderPrimitiveRootProps,
+  SliderRootProps as SliderRootPrimitiveProps,
   SliderThumbProps,
   SliderTrackProps,
   SliderValueTextProps,
@@ -56,7 +56,7 @@ type SliderValueProps = SliderValueTextProps;
 
 type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
-type SliderRootProps = SliderPrimitiveRootProps & {
+type SliderRootProps = SliderRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 } & BaseSliderRootProps;

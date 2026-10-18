@@ -3,7 +3,7 @@ import type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
-  QrCodeRootProps as QrCodePrimitiveRootProps,
+  QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
@@ -20,7 +20,7 @@ const {
 // #endregion
 
 export interface LocalQrCodeRootProps
-  extends QrCodePrimitiveRootProps, BaseQrCodeRootProps {}
+  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 

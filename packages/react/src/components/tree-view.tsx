@@ -7,13 +7,13 @@ import type {
   PolymorphicProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
+  TreeViewBranchProps as TreeViewBranchPrimitiveProps,
   TreeViewBranchTextProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
+  TreeViewItemProps as TreeViewItemPrimitiveProps,
+  TreeViewItemTextProps as TreeViewItemTextPrimitiveProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
@@ -104,15 +104,15 @@ export interface TreeViewProps
     BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
-  extends TreeViewPrimitiveBranchProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
-  extends TreeViewPrimitiveItemProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = TreeViewPrimitiveBranchControlProps &
+export type TreeViewBranchControlProps = TreeViewBranchControlPrimitiveProps &
   Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
 export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
@@ -130,7 +130,7 @@ export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
   icon?: JSX.ElementType | null;
 }
 
-export type TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps;
+export type TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   /**

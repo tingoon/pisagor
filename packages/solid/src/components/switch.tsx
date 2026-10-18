@@ -2,7 +2,7 @@ import { Switch as SwitchPrimitive } from "@ark-ui/solid";
 import type {
   SwitchControlProps,
   SwitchHiddenInputProps,
-  SwitchRootProps as SwitchPrimitiveRootProps,
+  SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/solid";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
@@ -22,7 +22,7 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 type FormControlVariant = "primary" | "secondary";
 type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
-type SwitchRootProps = SwitchPrimitiveRootProps & {
+type SwitchRootProps = SwitchRootPrimitiveProps & {
   variant?: FormControlVariant;
 } & BaseSwitchRootProps;
 

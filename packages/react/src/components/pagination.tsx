@@ -8,7 +8,7 @@ import type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps as PaginationPrimitiveRootProps,
+  PaginationRootProps as PaginationRootPrimitiveProps,
 } from "@ark-ui/react";
 import {
   CaretLeftIcon,
@@ -30,7 +30,7 @@ const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface PaginationRootProps
-  extends PaginationPrimitiveRootProps, BasePaginationRootProps {}
+  extends PaginationRootPrimitiveProps, BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

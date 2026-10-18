@@ -2,7 +2,7 @@ import { Collapsible as CollapsiblePrimitive } from "@ark-ui/solid";
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
-  CollapsibleRootProps as CollapsiblePrimitiveRootProps,
+  CollapsibleRootProps as CollapsibleRootPrimitiveProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/solid";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
@@ -24,7 +24,7 @@ const {
 
 // #region Types
 export interface LocalCollapsibleRootProps
-  extends CollapsiblePrimitiveRootProps, BaseCollapsibleRootProps {}
+  extends CollapsibleRootPrimitiveProps, BaseCollapsibleRootProps {}
 // #endregion
 
 // #region Parts

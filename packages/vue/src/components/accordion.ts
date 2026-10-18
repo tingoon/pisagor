@@ -1,6 +1,6 @@
 import {
   Accordion as AccordionPrimitive,
-  type AccordionItemProps as AccordionPrimitiveItemProps,
+  type AccordionItemProps as AccordionItemPrimitiveProps,
 } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
@@ -17,7 +17,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionPrimitiveItemProps, BaseAccordionItemProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 export interface AccordionPresetItem {
   value: string;

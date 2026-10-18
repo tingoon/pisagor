@@ -5,7 +5,7 @@ import {
 import type {
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
+  CarouselRootProps as CarouselRootPrimitiveProps,
 } from "@ark-ui/react";
 import {
   CaretLeftIcon,
@@ -33,7 +33,7 @@ const {
 
 // #region Types
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: ReactNode;

@@ -3,8 +3,8 @@ import type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
+  ImageCropperRootProps as ImageCropperRootPrimitiveProps,
+  ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/solid";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
@@ -25,14 +25,14 @@ const {
 
 export interface ImageCropperRootProps
   extends
-    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+    Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   src?: string;
   alt?: string;
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperSelectionPrimitiveProps {
   axis?: "horizontal" | "vertical" | "both";
 }
 

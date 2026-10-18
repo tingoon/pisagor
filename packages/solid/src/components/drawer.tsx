@@ -2,10 +2,10 @@ import { Drawer as DrawerPrimitive, ark } from "@ark-ui/solid";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
+  DrawerContentProps as DrawerContentPrimitiveProps,
   DrawerGrabberProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
+  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTitleProps,
   DrawerTriggerProps,
   HTMLArkProps,
@@ -27,12 +27,12 @@ const {
 // #endregion
 
 export interface LocalDrawerRootProps
-  extends DrawerPrimitiveRootProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
-export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
+export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   Pick<DrawerVariantProps, "variant">;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps &
+export type DrawerContentProps = DrawerContentPrimitiveProps &
   Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps extends HTMLArkProps<"div"> {

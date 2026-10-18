@@ -1,7 +1,7 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react";
 import type {
-  NumberInputControlProps as NumberInputPrimitiveControlProps,
-  NumberInputRootProps as NumberInputPrimitiveRootProps,
+  NumberInputControlProps as NumberInputControlPrimitiveProps,
+  NumberInputRootProps as NumberInputRootPrimitiveProps,
   NumberInputScrubberProps,
 } from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
@@ -30,7 +30,7 @@ const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
 // #region Types
 
 export type NumberInputRootProps = Omit<
-  NumberInputPrimitiveRootProps,
+  NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
   Pick<InputProps, "size" | "variant">;
@@ -49,7 +49,7 @@ export interface NumberInputProps
   onValueChange?: (value: number) => void;
 }
 
-export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps extends NumberInputControlPrimitiveProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }

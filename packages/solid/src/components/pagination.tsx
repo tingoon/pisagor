@@ -8,7 +8,7 @@ import type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps as PaginationPrimitiveRootProps,
+  PaginationRootProps as PaginationRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
@@ -30,7 +30,7 @@ const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface LocalPaginationRootProps
-  extends PaginationPrimitiveRootProps, BasePaginationRootProps {}
+  extends PaginationRootPrimitiveProps, BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

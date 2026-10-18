@@ -1,6 +1,6 @@
 import {
   JsonTreeView as JsonTreeViewPrimitive,
-  type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
+  type JsonTreeViewRootProps as JsonTreeViewRootPrimitiveProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/solid";
 import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
@@ -24,7 +24,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewPrimitiveRootProps, BaseJsonTreeViewRootProps {}
+  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

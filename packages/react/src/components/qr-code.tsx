@@ -2,7 +2,7 @@ import { QrCode as QrCodePrimitive } from "@ark-ui/react";
 import type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
-  QrCodeRootProps as QrCodePrimitiveRootProps,
+  QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/react";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
@@ -22,7 +22,7 @@ const {
 
 // #region Types
 export interface QrCodeRootProps
-  extends QrCodePrimitiveRootProps, BaseQrCodeRootProps, SizeScaleProps {}
+  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps, SizeScaleProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion

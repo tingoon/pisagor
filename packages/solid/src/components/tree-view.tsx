@@ -7,13 +7,13 @@ import type {
   HTMLArkProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
+  TreeViewBranchProps as TreeViewBranchPrimitiveProps,
   TreeViewBranchTextProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
+  TreeViewItemProps as TreeViewItemPrimitiveProps,
+  TreeViewItemTextProps as TreeViewItemTextPrimitiveProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeProviderProps,
@@ -88,15 +88,15 @@ export interface TreeViewProps
   extends TreeViewRootComponentProps, TreeViewContextProps, BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
-  extends TreeViewPrimitiveBranchProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
-  extends TreeViewPrimitiveItemProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = TreeViewPrimitiveBranchControlProps &
+export type TreeViewBranchControlProps = TreeViewBranchControlPrimitiveProps &
   Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
 export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
@@ -104,7 +104,7 @@ export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
   icon?: Component | null;
 }
 
-export type TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps;
+export type TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   icon?: Component;

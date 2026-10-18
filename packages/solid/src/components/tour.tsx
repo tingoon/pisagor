@@ -3,11 +3,11 @@ import type {
   HTMLArkProps,
   TourActionTriggerProps,
   TourCloseTriggerProps,
-  TourContentProps as TourPrimitiveContentProps,
+  TourContentProps as TourContentPrimitiveProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
-  TourRootProps as TourPrimitiveRootProps,
+  TourRootProps as TourRootPrimitiveProps,
   TourSpotlightProps,
   TourStepDetails,
   TourTitleProps,
@@ -73,7 +73,7 @@ export function useTourContext() {
 // #endregion
 
 export type TourStepType = TourStepDetails;
-export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
+export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
 export interface TourProps extends TourRootProps, BaseTourProps {
   keyboardNavigation?: boolean;
@@ -90,7 +90,7 @@ export interface TourBackdropProps extends ComponentProps<
   dialogRecipe?: typeof dialogRecipe;
 }
 
-export interface TourContentProps extends TourPrimitiveContentProps {
+export interface TourContentProps extends TourContentPrimitiveProps {
   showCloseButton?: boolean;
 }
 

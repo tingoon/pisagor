@@ -4,14 +4,14 @@ import {
 } from "@ark-ui/react";
 import type {
   TagsInputClearTriggerProps,
-  TagsInputControlProps as TagsInputPrimitiveControlProps,
+  TagsInputControlProps as TagsInputControlPrimitiveProps,
   TagsInputInputProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
-  TagsInputItemProps as TagsInputPrimitiveItemProps,
+  TagsInputItemProps as TagsInputItemPrimitiveProps,
   TagsInputItemTextProps,
-  TagsInputRootProps as TagsInputPrimitiveRootProps,
-  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
+  TagsInputRootProps as TagsInputRootPrimitiveProps,
+  TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type {
@@ -41,7 +41,7 @@ const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
 
 // #region Types
 export type TagsInputRootProps = Omit<
-  TagsInputPrimitiveRootProps,
+  TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
   Pick<InputGroupProps, "size" | "variant">;
@@ -60,7 +60,7 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 
 export interface TagsInputControlProps
   extends
-    TagsInputPrimitiveControlProps,
+    TagsInputControlPrimitiveProps,
     Pick<InputGroupProps, "size" | "variant"> {
   /**
    * Whether to show the clear button.
@@ -72,7 +72,7 @@ export interface TagsInputControlProps
 
 export interface TagsInputItemProps
   extends
-    TagsInputPrimitiveItemProps,
+    TagsInputItemPrimitiveProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputItemProps {
   /**
@@ -85,7 +85,7 @@ export interface TagsInputItemProps
 
 export interface TagsInputRootProviderProps
   extends
-    TagsInputPrimitiveRootProviderProps,
+    TagsInputRootProviderPrimitiveProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputRootProviderProps {
   /**

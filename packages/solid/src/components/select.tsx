@@ -10,10 +10,10 @@ import type {
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  SelectItemGroupProps as SelectItemGroupPrimitiveProps,
   SelectItemProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectRootProps as SelectRootPrimitiveProps,
+  SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
 } from "@ark-ui/solid";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
@@ -68,7 +68,7 @@ interface SelectPresetItem {
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  SelectPrimitiveRootProps<T>,
+  SelectRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the trigger. Defaults to `primary`. */
@@ -89,12 +89,12 @@ export interface SelectProps extends Omit<
 
 export interface SelectTriggerProps
   extends
-    Omit<SelectPrimitiveTriggerProps, "size">,
+    Omit<SelectTriggerPrimitiveProps, "size">,
     FormControlShellVariantProps {
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
+export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   heading?: string | JSX.Element;
 }
 
