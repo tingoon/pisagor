@@ -8,7 +8,8 @@ import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, For, Show, splitProps } from "solid-js";
+import { createMemo, For, splitProps } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { StarIcon } from "../internal/icons";
 import type { SizeScaleProps, VariantClassNames } from "../internal/types";
@@ -29,6 +30,11 @@ type RatingControlProps = RatingGroupControlProps;
 type RatingItemProps = RatingGroupItemProps;
 type RatingIndicatorProps = ComponentProps<"span">;
 type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
+type RatingIconProps = {
+  "data-bg"?: string;
+  "data-fg"?: string;
+  weight?: "fill" | "regular";
+};
 
 type RatingRootProps = RatingGroupRootProps &
   SizeScaleProps &
@@ -42,7 +48,12 @@ export interface RatingProps extends Omit<
 > {
   defaultValue?: number;
   value?: number;
-  icon?: JSX.Element;
+  /**
+   * Icon component for each rating item.
+   *
+   * @defaultValue StarIcon
+   */
+  icon?: Component<RatingIconProps>;
   onValueChange?: (value: number) => void;
   classNames?: RatingClassNames;
   controlProps?: Omit<RatingControlProps, "children" | "class">;
@@ -121,7 +132,7 @@ function RatingShorthand(props: RatingProps): JSX.Element {
     "class",
     "classNames",
   ]);
-  const icon = () => local.icon ?? <StarIcon />;
+  const Icon = () => local.icon ?? StarIcon;
 
   return (
     <RatingRoot
@@ -156,19 +167,12 @@ function RatingShorthand(props: RatingProps): JSX.Element {
                             state().highlighted ? "" : undefined
                           }
                         >
-                          <Show keyed when={icon()}>
-                            {(node) => (
-                              <>
-                                <span data-bg="">{node}</span>
-                                <span
-                                  data-fg=""
-                                  style={{ color: "currentColor" }}
-                                >
-                                  {node}
-                                </span>
-                              </>
-                            )}
-                          </Show>
+                          <Dynamic component={Icon()} data-bg="" />
+                          <Dynamic
+                            component={Icon()}
+                            data-fg=""
+                            weight="fill"
+                          />
                         </RatingIndicator>
                       );
                     }}

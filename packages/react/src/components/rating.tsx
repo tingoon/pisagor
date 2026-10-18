@@ -199,7 +199,7 @@ function RatingShorthand({
                         icon as ReactElement,
                         {
                           "data-fg": "",
-                          fill: "currentColor",
+                          weight: "fill",
                         } as ComponentProps<"svg">,
                       )}
                     </RatingIndicator>

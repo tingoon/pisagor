@@ -3,7 +3,7 @@ import { PhStar } from "@phosphor-icons/vue";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { type Component, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -32,7 +32,12 @@ export interface RatingProps extends BaseRatingProps {
   count?: number;
   defaultValue?: number;
   disabled?: boolean;
-  icon?: VNodeChild;
+  /**
+   * Icon component for each rating item.
+   *
+   * @defaultValue PhStar
+   */
+  icon?: Component;
   indicatorProps?: Record<string, unknown>;
   itemProps?: Record<string, unknown>;
   onValueChange?: (value: number) => void;
@@ -153,7 +158,7 @@ const RatingShorthand = defineComponent({
     disabled: { default: undefined, type: Boolean },
     icon: {
       default: undefined,
-      type: [Object, Function, String] as PropType<VNodeChild>,
+      type: [Object, Function] as PropType<Component>,
     },
     indicatorProps: {
       default: undefined,
@@ -252,7 +257,7 @@ const RatingShorthand = defineComponent({
                                 h(icon as ArkPart, {
                                   "aria-hidden": true,
                                   "data-fg": "",
-                                  fill: "currentColor",
+                                  weight: "fill",
                                 }),
                               ],
                             ),

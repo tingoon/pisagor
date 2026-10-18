@@ -15,7 +15,7 @@ export function Compound() {
                       data-highlighted={highlighted ? "" : undefined}
                     >
                       <StarIcon data-bg="" />
-                      <StarIcon data-fg="" fill="currentColor" />
+                      <StarIcon data-fg="" weight="fill" />
                     </Rating.Indicator>
                   )}
                 </Rating.ItemContext>

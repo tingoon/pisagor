@@ -82,7 +82,7 @@
                   data-highlighted={itemState().highlighted ? "" : undefined}
                 >
                   <Icon data-bg="" />
-                  <Icon data-fg="" fill="currentColor" />
+                  <Icon data-fg="" weight="fill" />
                 </RatingIndicator>
               {/snippet}
             </RatingGroupPrimitive.ItemContext>
