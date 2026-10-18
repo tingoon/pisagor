@@ -1,7 +1,6 @@
 ---
 import DoDont from "#/components/docs/do-dont.astro";
 import Example from "#/components/docs/example.astro";
-import PackageLinks from "#/components/docs/package-links.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { listBlockExampleNames, loadBlockPage } from "#/lib/block-doc";
 import { setDocsExampleContext } from "#/lib/docs-example-context";
@@ -22,27 +21,19 @@ setDocsExampleContext(Astro.locals, {
   kind: "block",
 });
 
-const {
-  Content: BlockContent,
-  docs,
-  getHeadings,
-} = await loadBlockPage(framework, id);
+const { Content: BlockContent, docs } = await loadBlockPage(framework, id);
 const Content = BlockContent as (props?: {
   components?: Record<string, unknown>;
 }) => unknown;
 const exampleExportNames = await listBlockExampleNames(framework, id);
-const headings = getHeadings().filter((h) => h.depth === 2 || h.depth === 3);
 const mdxComponents = { DoDont, Example };
 ---
 
 <DocsLayout
   description={docs.description}
   framework={framework}
-  headings={headings}
   title={docs.title}
 >
-  <PackageLinks framework={framework} slot="title-actions" />
-
   <div class={docsProseClass}>
     <Content components={mdxComponents} />
   </div>

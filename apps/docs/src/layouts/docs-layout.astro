@@ -35,6 +35,8 @@ const kicker =
 const description = Astro.props.description;
 const title = Astro.props.title;
 const headings = Astro.props.headings ?? [];
+/** Blocks previews need the full main column — no on-page TOC rail. */
+const showToc = area !== "blocks";
 // Unique <title> per framework/area so the same component across frameworks
 // doesn't produce duplicate titles ("Button – Vue", "Card – Vue Blocks").
 const frameworkLabel =
@@ -88,16 +90,18 @@ const stylesheets = await frameworkStylesheetUrls(framework);
           <slot name="nav" />
           <slot />
         </main>
-        {Astro.slots.has("toc-actions") ? (
-          <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-6 ps-3 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
-            <div class="mb-5">
-              <slot name="toc-actions" />
-            </div>
-            <TableOfContents bare headings={headings} />
-          </aside>
-        ) : (
-          <TableOfContents headings={headings} />
-        )}
+        {showToc ? (
+          Astro.slots.has("toc-actions") ? (
+            <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-6 ps-3 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
+              <div class="mb-5">
+                <slot name="toc-actions" />
+              </div>
+              <TableOfContents bare headings={headings} />
+            </aside>
+          ) : (
+            <TableOfContents headings={headings} />
+          )
+        ) : null}
       </div>
     </div>
   </body>
