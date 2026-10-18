@@ -3,11 +3,11 @@
     Menu as MenuPrimitive,
     type MenuContextTriggerProps,
   } from "@ark-ui/svelte";
-  import type { ContextMenuProps as BaseContextMenuProps } from "@pisagor/props";
+  import type { ContextMenuRootContract } from "@pisagor/props";
   import { contextMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
-  type Props = MenuContextTriggerProps & BaseContextMenuProps;
+  type Props = MenuContextTriggerProps & ContextMenuRootContract;
 
   let {
     recipe = contextMenuRecipe,

@@ -3,10 +3,10 @@
     Avatar as AvatarPrimitive,
     type AvatarRootProps,
   } from "@ark-ui/svelte";
-  import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
+  import type { AvatarRootContract } from "@pisagor/props";
   import { withProvider } from "./avatar.context";
 
-  type Props = AvatarRootProps & BaseAvatarProps;
+  type Props = AvatarRootProps & AvatarRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

@@ -4,7 +4,7 @@
     type TagsInputControlProps as ArkControlProps,
     useTagsInputContext,
   } from "@ark-ui/svelte";
-  import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
+  import type { TagsInputRootContract } from "@pisagor/props";
   import { formControlGroupShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useLocale } from "../provider/context";
@@ -17,7 +17,7 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = ArkControlProps &
-    BaseTagsInputProps & {
+    TagsInputRootContract & {
       clearable?: boolean;
     };
 

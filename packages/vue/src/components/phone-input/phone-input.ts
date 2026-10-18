@@ -1,7 +1,10 @@
 import { createListCollection } from "@ark-ui/vue";
 import { PhCaretUpDown, PhGlobe } from "@phosphor-icons/vue";
-import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
-import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";
+import type {
+  PhoneInputContract,
+  PhoneInputRootContract,
+} from "@pisagor/props";
+import { phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   AsYouType,
@@ -15,12 +18,11 @@ import { Combobox } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useLocale } from "../provider/context";
-import type { ClassValue, VariantClassNames } from "../../internal";
+import type { ClassValue } from "../../internal";
 import { phoneInputFlags } from "./phone-input-flags";
 
 type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 
 // #region Types
 export type Country = CountryCode;
@@ -30,7 +32,8 @@ interface CountrySelectOption {
   value: Country;
 }
 
-export interface PhoneInputProps extends BasePhoneInputProps {
+export interface PhoneInputProps
+  extends PhoneInputRootContract, PhoneInputContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /**
@@ -53,7 +56,6 @@ export interface PhoneInputProps extends BasePhoneInputProps {
   name?: string;
   id?: string;
   class?: ClassValue;
-  classNames?: PhoneInputClassNames;
   /** Tel input props (except owned render/value props). */
   inputProps?: Omit<
     InputProps,
@@ -102,7 +104,7 @@ function formatNational(value: string | undefined, country: Country): string {
 
 function renderFlag(
   slots: ReturnType<typeof phoneInputRecipe>,
-  classNames: PhoneInputClassNames | undefined,
+  classNames: PhoneInputContract["classNames"],
   country: Country | undefined,
   countryName?: string,
 ) {
@@ -138,7 +140,7 @@ export const PhoneInput = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<PhoneInputClassNames | undefined>,
+      type: Object as PropType<PhoneInputContract["classNames"]>,
     },
     defaultCountry: {
       default: "US" as Country,

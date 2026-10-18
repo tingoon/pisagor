@@ -1,11 +1,12 @@
 <script lang="ts">
+  import type { DataTableBodyContract } from "@pisagor/props";
   import { useDataTableContext } from "./data-table.context";
   import DataTableRowProvider from "./data-table-row-provider.svelte";
 
   type Props = {
     children?: import("svelte").Snippet;
     empty?: import("svelte").Snippet;
-  };
+  } & DataTableBodyContract;
 
   let { children, empty }: Props = $props();
   const { table } = useDataTableContext();

@@ -11,21 +11,14 @@ import {
   PhX,
 } from "@phosphor-icons/vue";
 import type {
-  ToastProps as BaseToasterProps,
-  ToastItemProps as BaseToastItemProps,
+  ToastItemContract,
+  ToastItemRootContract,
+  ToastRootContract,
 } from "@pisagor/props";
-import {
-  type ToastItemRecipeSlot,
-  toastItemRecipe,
-  toastRecipe,
-} from "@pisagor/recipes";
+import { toastItemRecipe, toastRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport } from "vue";
-import {
-  type LoosePropValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type LoosePropValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
@@ -40,7 +33,6 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 type ToastType = "error" | "info" | "loading" | "success" | "warning";
 
@@ -57,16 +49,16 @@ type ToastData = {
   action?: ToastAction;
 };
 
-export interface ToasterProps extends BaseToasterProps {
+export interface ToasterProps extends ToastRootContract {
   toaster?: unknown;
   class?: ClassValue;
   style?: Record<string, unknown>;
 }
 
-export interface ToastItemProps extends BaseToastItemProps {
+export interface ToastItemProps
+  extends ToastItemRootContract, ToastItemContract {
   toast: ToastData;
   class?: ClassValue;
-  classNames?: ToastItemClassNames;
   iconProps?: Record<string, unknown>;
   titleProps?: Record<string, unknown>;
   descriptionProps?: Record<string, unknown>;
@@ -152,7 +144,7 @@ const itemBagProps = {
   },
   classNames: {
     default: undefined,
-    type: Object as PropType<ToastItemClassNames>,
+    type: Object as PropType<ToastItemProps["classNames"]>,
   },
   closeTriggerProps: {
     default: undefined,

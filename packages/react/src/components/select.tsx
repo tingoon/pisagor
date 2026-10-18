@@ -16,7 +16,12 @@ import type {
   SelectValueTextProps,
 } from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
+import type {
+  SelectItemGroupContract,
+  SelectPresetItem as BaseSelectPresetItem,
+  SelectRootContract,
+  SelectContract,
+} from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -49,9 +54,8 @@ SelectControlContext.displayName = "SelectControlContext";
 
 // #region Types
 
-interface SelectPresetItem {
+interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -63,12 +67,12 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
-} & BaseSelectRootProps;
+} & Omit<SelectRootContract, "items">;
 
-export interface SelectProps extends Omit<
-  SelectRootProps,
-  "children" | "collection"
-> {
+export interface SelectProps
+  extends
+    Omit<SelectRootProps, "children" | "collection">,
+    Omit<SelectContract, "items" | "placeholder"> {
   /**
    * Whether to show a clear button when a value is selected.
    *
@@ -91,8 +95,8 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
-  /** The heading of the group */
+export interface SelectItemGroupProps
+  extends SelectItemGroupPrimitiveProps, SelectItemGroupContract {
   heading?: string | ReactNode;
 }
 

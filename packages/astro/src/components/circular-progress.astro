@@ -1,13 +1,16 @@
 ---
-import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/props";
+import { circularProgressRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
-interface Props extends HTMLAttributes<"div">, BaseCircularProgressProps {
+interface Props
+  extends HTMLAttributes<"div">,
+    CircularProgressRootContract,
+    CircularProgressContract {
   /**
    * Diameter of the circular progress in pixels.
    *
@@ -48,8 +51,6 @@ interface Props extends HTMLAttributes<"div">, BaseCircularProgressProps {
    * @defaultValue 100
    */
   max?: number;
-  /** Slot class names */
-  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
 }
 
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({

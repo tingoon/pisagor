@@ -1,19 +1,15 @@
 import type {
-  StatProps as BaseStatRootProps,
-  StatTrendProps as BaseStatTrendProps,
+  StatContract,
+  StatRootContract,
+  StatTrendRootContract,
 } from "@pisagor/props";
-import {
-  type StatRecipeSlot,
-  statRecipe,
-  statTrendRecipe,
-} from "@pisagor/recipes";
+import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
   MinusIcon,
-  type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -26,25 +22,21 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type StatRootProps = ComponentProps<"div"> & BaseStatRootProps;
+export type StatRootProps = ComponentProps<"div"> & StatRootContract;
 export type StatLabelProps = ComponentProps<"div">;
 export type StatValueProps = ComponentProps<"div">;
 export type StatDescriptionProps = ComponentProps<"p">;
 export type StatTrendProps = ComponentProps<"div"> &
-  BaseStatTrendProps & {
-    /**
-     * Icon shown before the content. Defaults to an arrow matching `trend`;
-     * pass `null` to hide it.
-     */
+  StatTrendRootContract & {
     icon?: JSX.Element;
   };
 
-export interface StatProps extends Omit<StatRootProps, "children"> {
+export interface StatProps
+  extends Omit<StatRootProps, "children">, StatContract {
   description?: JSX.Element;
   label?: JSX.Element;
   trend?: JSX.Element;
   value?: JSX.Element;
-  classNames?: VariantClassNames<StatRecipeSlot>;
   descriptionProps?: Omit<StatDescriptionProps, "children" | "class">;
   labelProps?: Omit<StatLabelProps, "children" | "class">;
   trendProps?: Omit<StatTrendProps, "children" | "class">;

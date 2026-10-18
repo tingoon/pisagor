@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { ActionBarValueContract } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import Badge from "../badge.svelte";
@@ -7,7 +8,7 @@
   type Props = Omit<ComponentProps<typeof Badge>, "variant"> & {
     count?: number;
     label?: string;
-  };
+  } & ActionBarValueContract;
 
   let {
     count = 0,

@@ -3,7 +3,7 @@
     Slider as SliderPrimitive,
     type SliderRootProps,
   } from "@ark-ui/svelte";
-  import type { SliderProps as BaseSliderProps } from "@pisagor/props";
+  import type { SliderRootContract } from "@pisagor/props";
   import { sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { setSliderContext } from "./slider.context";
@@ -13,7 +13,7 @@
   type Props = SliderRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseSliderProps;
+  } & SliderRootContract;
 
   let {
     variant: variantProp,

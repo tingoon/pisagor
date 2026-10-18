@@ -1,33 +1,32 @@
 <script lang="ts">
   import { Field, type FieldInputProps } from "@ark-ui/svelte";
-  import type { InputProps as BaseInputProps } from "@pisagor/props";
-  import {
-    type InputRecipeSlot,
-    type InputRootVariantProps,
-    inputRecipe,
-    inputRootRecipe,
-  } from "@pisagor/recipes";
+  import type { InputContract, InputRootContract } from "@pisagor/props";
+  import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { VariantClassNames } from "../../internal";
+
   import InputGroupRoot from "../input-group/input-group-root.svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import InputClearAddon from "./input-clear-addon.svelte";
 
   type FormControlVariant = "primary" | "secondary";
 
-  type Props = Omit<FieldInputProps, "size"> &
-    InputRootVariantProps & {
-      /**
-       * Whether to show a clear button when the input has a value.
-       *
-       * @defaultValue false
-       */
-      clearable?: boolean;
-      classNames?: VariantClassNames<InputRecipeSlot>;
-      /** Called with the string value when the input changes. */
-      onValueChange?: (value: string) => void;
-      rootRecipe?: typeof inputRootRecipe;
-    } & BaseInputProps;
+  type Props = Omit<FieldInputProps, "size"> & {
+    /**
+     * Whether to show a clear button when the input has a value.
+     *
+     * @defaultValue false
+     */
+    clearable?: boolean;
+    /** Called with the string value when the input changes. */
+    onValueChange?: (value: string) => void;
+    /**
+     * Clearable-slot style recipe.
+     *
+     * @defaultValue inputRecipe
+     */
+    slotRecipe?: typeof inputRecipe;
+  } & InputRootContract &
+    InputContract;
 
   let {
     size = "md",
@@ -39,8 +38,8 @@
     value = $bindable<string | number | undefined>(undefined),
     oninput,
     onValueChange,
-    recipe = inputRecipe,
-    rootRecipe = inputRootRecipe,
+    recipe = inputRootRecipe,
+    slotRecipe = inputRecipe,
     class: className,
     classNames,
     ...rest
@@ -48,7 +47,7 @@
 
   const surfaceVariant = useFormControlSurface();
   const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
+  const slots = $derived(slotRecipe());
 
   const skipClearable = $derived(
     !clearable || type === "file" || type === "password",
@@ -73,7 +72,7 @@
 {#if skipClearable}
   <Field.Input
     {...rest}
-    class={rootRecipe({ class: cn(className), size, surfaceVariant, variant })}
+    class={recipe({ class: cn(className), size, surfaceVariant, variant })}
     data-size={size}
     data-variant={variant}
     {disabled}

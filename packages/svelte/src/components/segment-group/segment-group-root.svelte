@@ -3,7 +3,7 @@
     SegmentGroup as SegmentGroupPrimitive,
     type SegmentGroupRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
+  import type { SegmentGroupRootContract } from "@pisagor/props";
 
   import { withProvider } from "./segment-group.context";
   import SegmentGroupIndicator from "./segment-group-indicator.svelte";
@@ -13,7 +13,7 @@
   type Props = Omit<ArkRootProps, "onValueChange"> & {
     onValueChange?: (value: string | null) => void;
     variant?: SegmentGroupVariant;
-  } & BaseSegmentGroupProps;
+  } & Omit<SegmentGroupRootContract, "items">;
 
   let {
     orientation = "horizontal",

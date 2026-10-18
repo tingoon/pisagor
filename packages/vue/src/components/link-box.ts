@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 
@@ -23,7 +23,7 @@ export const LinkOverlayLink = withContext(ark.a, {
 // #endregion
 
 // #region Types
-export type LinkBoxRootProps = BaseLinkBoxRootProps & { class?: unknown };
+export type LinkBoxRootProps = LinkBoxRootContract & { class?: unknown };
 export type LinkOverlayLinkProps = { class?: unknown };
 // #endregion
 

@@ -1,10 +1,10 @@
-import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface VisuallyHiddenProps
-  extends ComponentPropsWithRef<"span">, BaseVisuallyHiddenProps {}
+  extends ComponentPropsWithRef<"span">, VisuallyHiddenRootContract {}
 // #endregion
 
 // #region Component

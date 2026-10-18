@@ -4,7 +4,7 @@
     type DialogContentProps,
     Portal,
   } from "@ark-ui/svelte";
-  import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+  import type { SheetRootContract } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
@@ -17,7 +17,7 @@
 
   type Props = DialogContentProps & {
     showCloseButton?: boolean;
-  } & BaseSheetProps;
+  } & SheetRootContract;
 
   let {
     placement = "right",

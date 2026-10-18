@@ -1,6 +1,6 @@
 import { PinInput as PinInputPrimitive } from "@ark-ui/react";
 import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/react";
-import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
+import type { InputOtpRootContract } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,
@@ -31,13 +31,13 @@ function useInputOTP() {
 
 // #region Types
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  BaseInputOTPProps;
+  InputOtpRootContract;
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
+export type InputOTPSlotProps = PinInputInputProps & InputOtpRootContract;
 
 export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr">;
 // #endregion

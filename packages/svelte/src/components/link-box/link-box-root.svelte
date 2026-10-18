@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { LinkBoxProps as BaseLinkBoxProps } from "@pisagor/props";
+  import type { LinkBoxRootContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./link-box.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseLinkBoxProps;
+  } & LinkBoxRootContract;
 
   let { children, ...rest }: Props = $props();
 

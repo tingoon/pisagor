@@ -7,7 +7,7 @@ import type {
   EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/react";
-import type { EditableProps as BaseEditableProps } from "@pisagor/props";
+import type { EditableRootContract } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
@@ -32,7 +32,7 @@ export type EditableRootProps = Omit<
   "onValueChange" | "value" | "defaultValue"
 >;
 
-export interface EditableProps extends EditableRootProps, BaseEditableProps {
+export interface EditableProps extends EditableRootProps, EditableRootContract {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**

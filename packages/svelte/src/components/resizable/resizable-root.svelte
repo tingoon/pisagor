@@ -3,10 +3,10 @@
     Splitter as SplitterPrimitive,
     type SplitterRootProps,
   } from "@ark-ui/svelte";
-  import type { ResizableProps as BaseResizableProps } from "@pisagor/props";
+  import type { ResizableRootContract } from "@pisagor/props";
   import { withProvider } from "./resizable.context";
 
-  type Props = SplitterRootProps & BaseResizableProps;
+  type Props = SplitterRootProps & ResizableRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

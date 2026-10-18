@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
+  import type { SpinnerRootContract } from "@pisagor/props";
   import { spinnerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CircleNotchIcon } from "phosphor-svelte";
@@ -12,7 +12,7 @@
     class?: ClassValue;
     "aria-hidden"?: boolean | "true" | "false" | undefined;
     "aria-label"?: string | undefined;
-  } & BaseSpinnerProps;
+  } & SpinnerRootContract;
 
   let {
     "aria-hidden": ariaHidden,

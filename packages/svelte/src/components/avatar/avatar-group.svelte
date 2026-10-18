@@ -1,22 +1,23 @@
 <script lang="ts">
-  import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
+  import type { AvatarGroupRootContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import Avatar from "./avatar.svelte";
   import AvatarGroupCount from "./avatar-group-count.svelte";
   import AvatarGroupRoot from "./avatar-group-root.svelte";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
-    /** Maximum number of avatars to show; excess shown as "+N". */
-    max?: number;
-    /** User list rendered as avatars. */
-    users: Array<{
-      fallback?: string;
-      /** Stable key; recommended when names or images can repeat. */
-      id?: string;
-      name?: string;
-      src?: string;
-    }>;
-  } & BaseAvatarGroupProps;
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> &
+    AvatarGroupRootContract & {
+      /** Maximum number of avatars to show; excess shown as "+N". */
+      max?: number;
+      /** User list rendered as avatars. */
+      users: Array<{
+        fallback?: string;
+        /** Stable key; recommended when names or images can repeat. */
+        id?: string;
+        name?: string;
+        src?: string;
+      }>;
+    };
 
   let { max, users, ...rest }: Props = $props();
 

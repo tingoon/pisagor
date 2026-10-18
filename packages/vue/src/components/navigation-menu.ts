@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { NavigationMenuProps as BaseNavigationMenuRootProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/props";
 import {
   type NavigationMenuRecipeSlot,
   navigationMenuRecipe,
@@ -28,9 +31,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface NavigationMenuRootProps extends BaseNavigationMenuRootProps {
+export interface NavigationMenuRootProps
+  extends NavigationMenuRootContract, NavigationMenuContract {
   class?: unknown;
 }
+
+export type NavigationMenuProps = NavigationMenuRootProps;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

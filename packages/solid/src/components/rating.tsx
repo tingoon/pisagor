@@ -4,17 +4,13 @@ import type {
   RatingGroupItemProps,
   RatingGroupRootProps,
 } from "@ark-ui/solid";
-import type { RatingProps as BaseRatingProps } from "@pisagor/props";
-import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
+import type { RatingContract, RatingRootContract } from "@pisagor/props";
+import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
-import {
-  StarIcon,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { StarIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
@@ -38,24 +34,16 @@ type RatingIconProps = {
 };
 
 type RatingRootProps = RatingGroupRootProps &
-  BaseRatingProps & {
+  RatingRootContract & {
     variant?: FormControlVariant;
   };
 
-export interface RatingProps extends Omit<
-  RatingRootProps,
-  "children" | "onValueChange"
-> {
+export interface RatingProps
+  extends Omit<RatingRootProps, "children" | "onValueChange">, RatingContract {
   defaultValue?: number;
   value?: number;
-  /**
-   * Icon component for each rating item.
-   *
-   * @defaultValue StarIcon
-   */
   icon?: Component<RatingIconProps>;
   onValueChange?: (value: number) => void;
-  classNames?: VariantClassNames<RatingRecipeSlot>;
   controlProps?: Omit<RatingControlProps, "children" | "class">;
   indicatorProps?: Omit<RatingIndicatorProps, "children" | "class">;
   itemProps?: Omit<RatingItemProps, "children" | "index" | "class">;

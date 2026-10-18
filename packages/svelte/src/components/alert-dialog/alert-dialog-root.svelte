@@ -3,11 +3,11 @@
     Dialog as AlertDialogPrimitive,
     type DialogRootProps,
   } from "@ark-ui/svelte";
-  import type { AlertDialogProps as BaseAlertDialogProps } from "@pisagor/props";
+  import type { AlertDialogRootContract } from "@pisagor/props";
   import { alertDialogRecipe } from "@pisagor/recipes";
   import { setAlertDialogContext } from "./alert-dialog.context";
 
-  type Props = DialogRootProps & BaseAlertDialogProps;
+  type Props = DialogRootProps & AlertDialogRootContract;
 
   let {
     modal = true,

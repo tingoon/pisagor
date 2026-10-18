@@ -1,4 +1,4 @@
-import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
@@ -18,7 +18,7 @@ const {
 
 // #region Types
 export interface FrameRootProps
-  extends ComponentProps<"div">, BaseFrameRootProps {}
+  extends ComponentProps<"div">, FrameRootContract {}
 
 export type FramePanelProps = ComponentProps<"div">;
 export type FrameHeaderProps = ComponentProps<"header">;

@@ -1,17 +1,17 @@
 ---
 import type {
-  ButtonProps as BaseButtonProps,
-  InputGroupButtonProps as BaseInputGroupButtonProps,
+  ButtonRootContract,
+  InputGroupButtonRootContract,
 } from "@pisagor/props";
 import { inputGroupButtonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 import Button from "../button.astro";
 
 type Props = Omit<
-  HTMLAttributes<"button"> & BaseButtonProps,
+  HTMLAttributes<"button"> & ButtonRootContract,
   "size" | "recipe"
 > &
-  BaseInputGroupButtonProps;
+  InputGroupButtonRootContract;
 
 const {
   size = "xs",

@@ -1,4 +1,4 @@
-import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
+import type { ButtonGroupRootContract } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
@@ -16,11 +16,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot = withProvider("fieldset", {
+export const ButtonGroupRoot = withProvider("fieldset")({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  ComponentPropsWithRef<"fieldset"> & BaseButtonGroupProps
+  ComponentPropsWithRef<"fieldset"> & ButtonGroupRootContract
 >;
 
 export const ButtonGroupText = withContext("div", {

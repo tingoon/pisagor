@@ -1,9 +1,14 @@
 ---
-import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
+import type {
+  BreadcrumbItemRootContract,
+  BreadcrumbItemContract,
+} from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { withBreadcrumbItemProvider } from "./breadcrumb.context";
 
-type Props = HTMLAttributes<"li"> & BaseBreadcrumbItemProps;
+type Props = HTMLAttributes<"li"> &
+  BreadcrumbItemRootContract &
+  BreadcrumbItemContract;
 
 const item = withBreadcrumbItemProvider(Astro.props, {
   name: "Item",

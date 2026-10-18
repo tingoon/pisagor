@@ -1,6 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
+import type { PasswordInputRootContract } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -17,7 +17,7 @@ type ArkPart = Parameters<typeof h>[0];
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps extends BasePasswordInputProps {
+export interface PasswordInputProps extends PasswordInputRootContract {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;

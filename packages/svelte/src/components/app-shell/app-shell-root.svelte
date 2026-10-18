@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useHotkey } from "@ark-ui/svelte";
-  import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
+  import type { AppShellRootContract } from "@pisagor/props";
   import { appShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { untrack } from "svelte";
@@ -29,7 +29,7 @@
      * @defaultValue false
      */
     disableHotkey?: boolean;
-  } & BaseAppShellProps;
+  } & AppShellRootContract;
 
   let {
     disableHotkey = false,

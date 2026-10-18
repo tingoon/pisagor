@@ -1,5 +1,9 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/vue";
-import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
+import type {
+  TabsPresetItem as BaseTabsPresetItem,
+  TabsRootContract,
+  TabsContract,
+} from "@pisagor/props";
 import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -13,15 +17,23 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TabsPresetItem {
+export interface TabsPresetItem extends Omit<
+  BaseTabsPresetItem,
+  "label" | "content"
+> {
   content: VNodeChild;
   disabled?: boolean;
   label: VNodeChild;
   value: string;
 }
 
-export interface TabsRootProps extends BaseTabsRootProps {
+export interface TabsRootProps extends TabsRootContract {
   class?: unknown;
+}
+
+export interface TabsProps
+  extends Omit<TabsRootProps, "children">, TabsContract {
+  items?: TabsPresetItem[];
 }
 // #endregion
 

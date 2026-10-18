@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { StatTrendProps as BaseStatTrendProps } from "@pisagor/props";
+  import type { StatTrendRootContract } from "@pisagor/props";
   import { statTrendRecipe } from "@pisagor/recipes";
   import type { MessageKey } from "@pisagor/utils";
   import { cn } from "@pisagor/utils";
@@ -9,12 +9,8 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-    /**
-     * Icon shown before the content. Defaults to an arrow matching `trend`;
-     * pass `null` to hide it.
-     */
     icon?: import("svelte").Snippet | null;
-  } & BaseStatTrendProps;
+  } & StatTrendRootContract;
 
   let {
     trend = "neutral",

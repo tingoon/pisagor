@@ -1,4 +1,4 @@
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/props";
 import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
@@ -23,7 +23,7 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileInputProps extends BaseFileInputProps {
+export interface FileInputProps extends FileInputRootContract {
   accept?: string;
   /** Label for the browse button. */
   browseLabel?: string;

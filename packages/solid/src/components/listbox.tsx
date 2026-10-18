@@ -15,8 +15,11 @@ import type {
   ListboxValueTextProps,
 } from "@ark-ui/solid";
 import type {
-  ListboxItemProps as BaseListboxItemProps,
-  ListboxProps as BaseListboxRootProps,
+  ListboxItemRootContract,
+  ListboxItemContract,
+  ListboxPresetItem as BaseListboxPresetItem,
+  ListboxRootContract,
+  ListboxContract,
 } from "@pisagor/props";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -36,10 +39,9 @@ const { Context: ListboxItemStylesContext, useStyles: useListboxItem } =
   createSlotRecipeContext({ name: "Listbox", recipe: listboxItemRecipe });
 // #endregion
 
-interface ListboxPresetItem extends CollectionItem {
+interface ListboxPresetItem
+  extends CollectionItem, Omit<BaseListboxPresetItem, "label"> {
   label: string;
-  value: string;
-  disabled?: boolean;
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -47,20 +49,20 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-} & BaseListboxRootProps;
+} & Omit<ListboxRootContract, "emptyText" | "items">;
 
-export interface ListboxProps extends Omit<
-  ListboxRootProps,
-  "children" | "collection"
-> {
+export interface ListboxProps
+  extends Omit<ListboxRootProps, "children" | "collection">, ListboxContract {
   collection?: ListboxRootProps["collection"];
-  /** Content shown when there are no items. */
   emptyText?: JSX.Element;
   items?: ListboxPresetItem[];
 }
 
 export interface ListboxItemProps
-  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
+  extends
+    ListboxItemPrimitiveProps,
+    ListboxItemRootContract,
+    ListboxItemContract {}
 
 export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   heading?: string;

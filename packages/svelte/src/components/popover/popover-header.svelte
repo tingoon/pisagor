@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { PopoverHeaderContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./popover.context";
   import PopoverDescription from "./popover-description.svelte";
@@ -6,11 +7,9 @@
 
   type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
     children?: import("svelte").Snippet;
-    /** The description of the popover header */
     description?: string;
-    /** The title of the popover header */
     title?: string;
-  };
+  } & PopoverHeaderContract;
 
   let { children, description, title, ...rest }: Props = $props();
   const part = withContext(() => rest, { name: "Header" });

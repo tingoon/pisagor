@@ -1,6 +1,6 @@
+import type { PhoneInputContract } from "@pisagor/props";
 import type {
   PhoneInputRecipe,
-  PhoneInputRecipeSlot,
   PhoneInputVariantProps,
 } from "@pisagor/recipes";
 import type { ComponentProps } from "svelte";
@@ -9,13 +9,10 @@ import type Input from "../input/input.svelte";
 import { createContext } from "../../utils/create-context";
 
 type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = Partial<
-  Record<Exclude<PhoneInputRecipeSlot, "base">, string>
->;
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 export interface PhoneInputContextValue {
-  classNames?: PhoneInputClassNames;
+  classNames?: PhoneInputContract["classNames"];
   inputProps?: Omit<
     ComponentProps<typeof Input>,
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"

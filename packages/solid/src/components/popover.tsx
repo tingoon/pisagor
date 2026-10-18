@@ -10,7 +10,11 @@ import type {
   PopoverTitleProps,
   PopoverTriggerProps,
 } from "@ark-ui/solid";
-import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
+import type {
+  PopoverHeaderContract,
+  PopoverRootContract,
+  PopoverContract,
+} from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -32,17 +36,20 @@ const {
 // #endregion
 
 export interface PopoverContentProps
-  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, PopoverRootContract {
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentProps<"div"> {
+export interface PopoverHeaderProps
+  extends ComponentProps<"div">, PopoverHeaderContract {
   description?: string;
   title?: string;
 }
 
 export type PopoverBodyProps = ComponentProps<"div">;
 export type PopoverFooterProps = ComponentProps<"div">;
+
+export interface PopoverProps extends PopoverRootProps, PopoverContract {}
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);

@@ -1,22 +1,23 @@
 <script lang="ts">
-  import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
-  import type { EmptyStateRecipeSlot } from "@pisagor/recipes";
+  import type {
+    EmptyStateContract,
+    EmptyStateRootContract,
+  } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
   import EmptyStateActions from "./empty-state-actions.svelte";
   import EmptyStateDescription from "./empty-state-description.svelte";
   import EmptyStateMedia from "./empty-state-media.svelte";
   import EmptyStateRoot from "./empty-state-root.svelte";
   import EmptyStateTitle from "./empty-state-title.svelte";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
-    actions?: string | Snippet;
-    classNames?: VariantClassNames<EmptyStateRecipeSlot>;
-    description?: string | Snippet;
-    media?: Snippet;
-    title?: string | Snippet;
-  } & BaseEmptyStateProps;
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> &
+    EmptyStateRootContract & {
+      actions?: string | Snippet;
+      description?: string | Snippet;
+      media?: Snippet;
+      title?: string | Snippet;
+    } & EmptyStateContract;
 
   let {
     actions,

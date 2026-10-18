@@ -1,4 +1,4 @@
-import type { TableProps as BaseTableProps } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
@@ -13,7 +13,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TableProps
-  extends ComponentPropsWithRef<"table">, BaseTableProps {
+  extends ComponentPropsWithRef<"table">, TableRootContract {
   /**
    * The variant of the table.
    *

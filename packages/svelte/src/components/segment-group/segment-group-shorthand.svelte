@@ -1,17 +1,21 @@
 <script lang="ts">
+  import type {
+    SegmentGroupPresetItem,
+    SegmentGroupRootContract,
+    SegmentGroupContract,
+  } from "@pisagor/props";
   import type { ComponentProps } from "svelte";
   import SegmentGroupItem from "./segment-group-item.svelte";
   import SegmentGroupRoot from "./segment-group-root.svelte";
 
-  type PresetItem = {
-    disabled?: boolean;
+  type PresetItem = Omit<SegmentGroupPresetItem, "label"> & {
     label: string;
-    value: string;
   };
 
   type Props = Omit<ComponentProps<typeof SegmentGroupRoot>, "children"> & {
     items?: PresetItem[];
-  };
+  } & SegmentGroupRootContract &
+    SegmentGroupContract;
 
   let { items, ...rest }: Props = $props();
 </script>

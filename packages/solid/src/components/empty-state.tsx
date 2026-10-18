@@ -1,9 +1,12 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/props";
+import { emptyStateRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -13,26 +16,18 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type EmptyStateRootProps = HTMLArkProps<"div"> & BaseEmptyStateRootProps;
+export type EmptyStateRootProps = HTMLArkProps<"div"> & EmptyStateRootContract;
 export type EmptyStateMediaProps = ComponentProps<"div">;
 export type EmptyStateTitleProps = HTMLArkProps<"h3">;
 export type EmptyStateDescriptionProps = ComponentProps<"p">;
 export type EmptyStateActionsProps = ComponentProps<"div">;
 
-export interface EmptyStateProps extends Omit<
-  EmptyStateRootProps,
-  "children" | "title"
-> {
-  /** Action buttons or links. */
+export interface EmptyStateProps
+  extends Omit<EmptyStateRootProps, "children" | "title">, EmptyStateContract {
   actions?: JSX.Element;
-  /** Supporting copy. */
   description?: JSX.Element;
-  /** Icon or illustration shown above the title. */
   media?: JSX.Element;
-  /** Primary heading. */
   title?: JSX.Element;
-  /** Slot class names */
-  classNames?: VariantClassNames<EmptyStateRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "class">;
   /** Extra props forwarded to the description element */

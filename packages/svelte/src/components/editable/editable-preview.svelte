@@ -3,7 +3,7 @@
     Editable as EditablePrimitive,
     type EditablePreviewProps as ArkEditablePreviewProps,
   } from "@ark-ui/svelte";
-  import type { ButtonProps } from "@pisagor/props";
+  import type { ButtonRootContract } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -14,8 +14,8 @@
   type Props = ArkEditablePreviewProps & {
     buttonRecipe?: typeof buttonRecipe;
     controlVariant?: FormControlVariant;
-    size?: ButtonProps["size"];
-    variant?: ButtonProps["variant"];
+    size?: ButtonRootContract["size"];
+    variant?: ButtonRootContract["variant"];
   };
 
   let {

@@ -6,9 +6,8 @@
     SwitchRootProps,
     SwitchThumbProps,
   } from "@ark-ui/svelte";
-  import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
-  import type { SwitchRecipeSlot } from "@pisagor/recipes";
-  import type { VariantClassNames } from "../../internal";
+  import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+
   import SwitchControl from "./switch-control.svelte";
   import SwitchRoot from "./switch-root.svelte";
   import SwitchThumb from "./switch-thumb.svelte";
@@ -16,8 +15,6 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = Omit<SwitchRootProps, "children"> & {
-    /** Slot class names */
-    classNames?: VariantClassNames<SwitchRecipeSlot>;
     /** Extra props forwarded to the switch control element */
     controlProps?: Omit<SwitchControlProps, "children" | "class">;
     /** Extra props forwarded to the hidden input element (e.g. tabindex) */
@@ -27,7 +24,8 @@
     thumbProps?: Omit<SwitchThumbProps, "children" | "class">;
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseSwitchProps;
+  } & SwitchRootContract &
+    SwitchContract;
 
   let {
     controlProps,

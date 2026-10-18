@@ -3,14 +3,14 @@
     Checkbox as CheckboxPrimitive,
     type CheckboxGroupProps as ArkCheckboxGroupProps,
   } from "@ark-ui/svelte";
-  import type { CheckboxGroupProps as BaseCheckboxGroupProps } from "@pisagor/props";
+  import type { CheckboxGroupRootContract } from "@pisagor/props";
   import { checkboxGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
   type Props = Omit<ArkCheckboxGroupProps, "onValueChange"> & {
     children?: import("svelte").Snippet;
     onValueChange?: (value: string[]) => void;
-  } & BaseCheckboxGroupProps;
+  } & CheckboxGroupRootContract;
 
   let {
     onValueChange,

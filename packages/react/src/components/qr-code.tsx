@@ -4,7 +4,7 @@ import type {
   QrCodeFrameProps,
   QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
+import type { QrCodeRootContract } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -18,13 +18,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface QrCodeRootProps
-  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps {}
+  extends QrCodeRootPrimitiveProps, QrCodeRootContract {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion
 
 // #region Parts
-const QrCodeRootBase = withProvider(QrCodePrimitive.Root, {
+const QrCodeRootBase = withProvider(QrCodePrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<QrCodeRootProps>;

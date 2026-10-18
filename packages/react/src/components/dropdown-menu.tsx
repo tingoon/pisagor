@@ -16,12 +16,11 @@ import type {
 } from "@ark-ui/react";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import type {
-  DropdownMenuItemProps as BaseDropdownMenuCheckboxItemProps,
-  DropdownMenuProps as BaseDropdownMenuContentProps,
-  DropdownMenuItemProps as BaseDropdownMenuItemProps,
-  DropdownMenuItemProps as BaseDropdownMenuRadioItemProps,
-  DropdownMenuProps as BaseDropdownMenuSubContentProps,
-  DropdownMenuItemProps as BaseDropdownMenuTriggerItemProps,
+  DropdownMenuContract,
+  DropdownMenuItemContract,
+  DropdownMenuItemGroupContract,
+  DropdownMenuItemRootContract,
+  DropdownMenuRootContract,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
@@ -42,13 +41,16 @@ function useDropdownMenuSlots() {
 // #endregion
 
 // #region Types
-export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
-  /** The heading of the menu item group. */
+export interface DropdownMenuItemGroupProps
+  extends MenuItemGroupProps, DropdownMenuItemGroupContract {
   heading?: string;
 }
 
+export interface DropdownMenuItemRootProps
+  extends MenuItemProps, DropdownMenuItemRootContract {}
+
 export interface DropdownMenuItemProps
-  extends MenuItemProps, BaseDropdownMenuItemProps {}
+  extends DropdownMenuItemRootProps, DropdownMenuItemContract {}
 
 export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
@@ -62,27 +64,30 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
 export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps, BaseDropdownMenuCheckboxItemProps {}
+  extends MenuCheckboxItemProps, DropdownMenuItemRootContract {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
 export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps, BaseDropdownMenuRadioItemProps {}
+  extends MenuRadioItemProps, DropdownMenuItemRootContract {}
 
 export interface DropdownMenuSubContentProps
-  extends MenuContentProps, BaseDropdownMenuSubContentProps {}
+  extends MenuContentProps, DropdownMenuRootContract {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps, BaseDropdownMenuTriggerItemProps {}
+  extends MenuTriggerItemProps, DropdownMenuItemRootContract {}
 
 export interface DropdownMenuContentProps
-  extends MenuContentProps, BaseDropdownMenuContentProps {}
+  extends MenuContentProps, DropdownMenuRootContract {}
 
 export type DropdownMenuShortcutProps = ComponentPropsWithRef<"span">;
+
+export interface DropdownMenuProps
+  extends DropdownMenuRootProps, DropdownMenuContract {}
 // #endregion
 
 // #region Parts

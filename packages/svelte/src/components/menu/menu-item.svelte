@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { MenuItemProps as BaseMenuItemProps } from "@pisagor/props";
+  import type { MenuItemRootContract } from "@pisagor/props";
   import { menuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -10,7 +10,7 @@
   type Props = Omit<HTMLButtonAttributes, "type"> & {
     children?: Snippet;
     type?: "button" | "reset" | "submit";
-  } & BaseMenuItemProps;
+  } & MenuItemRootContract;
 
   let {
     variant = "default",

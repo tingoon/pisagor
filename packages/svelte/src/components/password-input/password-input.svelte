@@ -4,7 +4,7 @@
     type PasswordInputInputProps,
     type PasswordInputRootProps as PasswordInputRootPrimitiveProps,
   } from "@ark-ui/svelte";
-  import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
+  import type { PasswordInputRootContract } from "@pisagor/props";
   import {
     inputGroupButtonRecipe,
     inputGroupControlRecipe,
@@ -26,7 +26,7 @@
 
   type Props = PasswordInputRootProps &
     Omit<PasswordInputInputProps, "size" | "children"> &
-    BasePasswordInputProps & {
+    PasswordInputRootContract & {
       clearable?: boolean;
       disabled?: boolean | null;
       onValueChange?: (value: string) => void;

@@ -3,7 +3,7 @@
     Switch as SwitchPrimitive,
     type SwitchRootProps,
   } from "@ark-ui/svelte";
-  import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
+  import type { SwitchRootContract } from "@pisagor/props";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
@@ -15,7 +15,7 @@
   type Props = SwitchRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseSwitchProps;
+  } & SwitchRootContract;
 
   let {
     variant: variantProp,

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { type DialogRootProps, Portal } from "@ark-ui/svelte";
+  import type { DialogContract, DialogRootContract } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import DialogBackdrop from "./dialog-backdrop.svelte";
   import DialogBody from "./dialog-body.svelte";
@@ -12,13 +13,14 @@
   import DialogTitle from "./dialog-title.svelte";
   import DialogTrigger from "./dialog-trigger.svelte";
 
-  type Props = Omit<DialogRootProps, "title" | "children"> & {
-    actions?: Snippet;
-    children?: Snippet;
-    description?: string | Snippet;
-    title?: string | Snippet;
-    trigger?: Snippet;
-  };
+  type Props = Omit<DialogRootProps, "title" | "children"> &
+    DialogRootContract & {
+      actions?: Snippet;
+      children?: Snippet;
+      description?: string | Snippet;
+      title?: string | Snippet;
+      trigger?: Snippet;
+    } & DialogContract;
 
   let { actions, children, description, title, trigger, ...rest }: Props =
     $props();

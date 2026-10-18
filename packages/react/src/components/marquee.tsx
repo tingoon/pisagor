@@ -3,7 +3,7 @@ import {
   type MarqueeContentProps,
   type MarqueeRootProps as MarqueeRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { Children, isValidElement } from "react";
@@ -18,7 +18,9 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<MarqueeRootPrimitiveProps, "side">, BaseMarqueeRootProps {
+  extends
+    Omit<MarqueeRootPrimitiveProps, "side">,
+    Omit<MarqueeRootContract, "items"> {
   /** @defaultValue "horizontal" */
   orientation?: "horizontal" | "vertical";
   /**
@@ -29,20 +31,22 @@ export interface MarqueeRootProps
   showEdges?: boolean;
 }
 
-export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
-  /**
-   * Items to auto-render inside a MarqueeContent; each item is wrapped in
-   * MarqueeItem
-   */
+export interface MarqueeProps
+  extends
+    Omit<MarqueeRootProps, "children" | "recipe">,
+    MarqueeRootContract,
+    MarqueeContract {
   items?: ReactNode[];
 }
 // #endregion
 
 // #region Parts
-const MarqueeRootBase = withProvider(MarqueePrimitive.Root, {
+const MarqueeRootBase = withProvider(MarqueePrimitive.Root)({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<MarqueeRootPrimitiveProps & BaseMarqueeRootProps>;
+}) as FunctionComponent<
+  MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
+>;
 
 export function MarqueeRoot({
   orientation = "horizontal",

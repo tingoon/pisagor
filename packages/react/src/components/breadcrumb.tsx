@@ -1,16 +1,14 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbRootProps,
+  BreadcrumbContract,
+  BreadcrumbItemContract,
+  BreadcrumbItemRootContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -35,10 +33,8 @@ const {
 // #endregion
 
 // #region Types
-interface BreadcrumbPresetItem {
+interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
   label: ReactNode;
-  href?: string;
-  isCurrentPage?: boolean;
 }
 
 export type BreadcrumbListProps = ComponentPropsWithRef<"ol">;
@@ -48,7 +44,7 @@ export type BreadcrumbSeparatorProps = ComponentPropsWithRef<"li">;
 export type BreadcrumbEllipsisProps = ComponentPropsWithRef<"span">;
 
 export interface BreadcrumbRootProps
-  extends ComponentPropsWithRef<"nav">, BaseBreadcrumbRootProps {
+  extends ComponentPropsWithRef<"nav">, BreadcrumbRootContract {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -57,7 +53,8 @@ export interface BreadcrumbRootProps
   "aria-label"?: string;
 }
 
-export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
+export interface BreadcrumbProps
+  extends Omit<BreadcrumbRootProps, "children">, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 // #endregion
@@ -92,12 +89,16 @@ export const BreadcrumbList = withBreadcrumbContext("ol", {
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider("li", {
+export const BreadcrumbItem = withBreadcrumbItemProvider(
+  "li",
+)<BreadcrumbItemRootContract>({
   name: "Item",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"li"> & BaseBreadcrumbItemProps>;
+});
 
-export type BreadcrumbItemProps = ComponentProps<typeof BreadcrumbItem>;
+export type BreadcrumbItemRootProps = ComponentProps<typeof BreadcrumbItem>;
+export interface BreadcrumbItemProps
+  extends BreadcrumbItemRootProps, BreadcrumbItemContract {}
 
 export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
   name: "Link",

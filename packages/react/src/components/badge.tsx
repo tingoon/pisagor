@@ -1,12 +1,10 @@
-import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
+import type { BadgeRootContract } from "@pisagor/props";
+import { badgeRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
 // #region Types
-export type BadgeVariant = BadgeVariantProps["variant"];
-
 export interface BadgeProps
-  extends ComponentPropsWithRef<"span">, BaseBadgeProps {}
+  extends ComponentPropsWithRef<"span">, BadgeRootContract {}
 // #endregion
 
 // #region Component

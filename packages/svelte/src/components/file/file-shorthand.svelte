@@ -1,5 +1,7 @@
 <script lang="ts">
-  import type { ComponentProps, Snippet } from "svelte";
+  import type { FileContract, FileRootContract } from "@pisagor/props";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
   import FileActions from "./file-actions.svelte";
   import FileContent from "./file-content.svelte";
   import FileMedia from "./file-media.svelte";
@@ -8,13 +10,14 @@
   import FileRoot from "./file-root.svelte";
   import FileSize from "./file-size.svelte";
 
-  type Props = Omit<ComponentProps<typeof FileRoot>, "children" | "title"> & {
-    actions?: Snippet;
-    media?: Snippet;
-    meta?: Snippet | string;
-    name: Snippet | string;
-    size?: number;
-  };
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> &
+    FileRootContract & {
+      actions?: Snippet;
+      media?: Snippet;
+      meta?: Snippet | string;
+      name: Snippet | string;
+      size?: number;
+    } & FileContract;
 
   let { size, name, actions, media, meta, ...rest }: Props = $props();
 </script>

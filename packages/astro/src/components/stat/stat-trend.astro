@@ -1,9 +1,9 @@
 ---
-import type { StatTrendProps as BaseStatTrendProps } from "@pisagor/props";
+import type { StatTrendRootContract } from "@pisagor/props";
 import { statTrendRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div"> & BaseStatTrendProps;
+type Props = HTMLAttributes<"div"> & StatTrendRootContract;
 
 const {
   trend = "neutral",

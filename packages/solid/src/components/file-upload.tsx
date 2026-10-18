@@ -14,8 +14,8 @@ import type {
   FileUploadTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  FileUploadItemProps as BaseFileUploadItemRootProps,
-  FileUploadProps as BaseFileUploadProps,
+  FileUploadItemRootContract,
+  FileUploadRootContract,
 } from "@pisagor/props";
 import {
   fileUploadItemRecipe,
@@ -44,12 +44,12 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 type FormControlVariant = "primary" | "secondary";
 
 export interface FileUploadItemRootProps
-  extends FileUploadItemProps, BaseFileUploadItemRootProps {}
+  extends FileUploadItemProps, FileUploadItemRootContract {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadRootPrimitiveProps, BaseFileUploadProps {
+  extends FileUploadRootPrimitiveProps, FileUploadRootContract {
   onValueChange?: (value: File[]) => void;
 }
 

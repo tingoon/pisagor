@@ -7,10 +7,11 @@
     ToastRootProps,
     ToastTitleProps,
   } from "@ark-ui/svelte";
-  import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
-  import type { ToastItemRecipeSlot } from "@pisagor/recipes";
+  import type {
+    ToastItemContract,
+    ToastItemRootContract,
+  } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
   import ToastItemContent from "./toast-item-content.svelte";
   import ToastItemRoot from "./toast-item-root.svelte";
 
@@ -22,8 +23,6 @@
       ToastActionTriggerProps,
       "asChild" | "children" | "class" | "onclick"
     >;
-    /** Slot class names */
-    classNames?: VariantClassNames<ToastItemRecipeSlot>;
     /** Extra props forwarded to the toast close trigger element */
     closeTriggerProps?: Omit<
       ToastCloseTriggerProps,
@@ -37,7 +36,8 @@
     titleProps?: Omit<ToastTitleProps, "children" | "class">;
     /** The toast item data (accessor from `Toaster`) */
     toast: () => ToastOptions;
-  } & BaseToastItemProps;
+  } & ToastItemRootContract &
+    ToastItemContract;
 
   let {
     actionsProps,

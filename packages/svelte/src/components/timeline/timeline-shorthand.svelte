@@ -1,4 +1,9 @@
 <script lang="ts">
+  import type {
+    TimelinePresetItem,
+    TimelineRootContract,
+    TimelineContract,
+  } from "@pisagor/props";
   import type { ComponentProps, Snippet } from "svelte";
   import TimelineContent from "./timeline-content.svelte";
   import TimelineDescription from "./timeline-description.svelte";
@@ -8,16 +13,19 @@
   import TimelineSeparator from "./timeline-separator.svelte";
   import TimelineTitle from "./timeline-title.svelte";
 
-  type PresetItem = {
+  type PresetItem = Omit<
+    TimelinePresetItem,
+    "description" | "indicator" | "title"
+  > & {
     description?: string | Snippet;
-    id?: string;
     indicator?: Snippet;
     title: string | Snippet;
   };
 
   type Props = Omit<ComponentProps<typeof TimelineRoot>, "children"> & {
     items?: PresetItem[];
-  };
+  } & TimelineRootContract &
+    TimelineContract;
 
   let { items = [], ...rest }: Props = $props();
 </script>

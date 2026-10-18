@@ -14,8 +14,8 @@ import type {
   TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
-  TagsInputItemProps as BaseTagsInputItemProps,
-  TagsInputProps as BaseTagsInputProps,
+  TagsInputItemRootContract,
+  TagsInputRootContract,
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -36,7 +36,7 @@ export type TagsInputRootProps = Omit<
   TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  BaseTagsInputProps;
+  TagsInputRootContract;
 
 export interface TagsInputProps extends TagsInputRootProps {
   clearable?: boolean;
@@ -45,17 +45,17 @@ export interface TagsInputProps extends TagsInputRootProps {
 }
 
 export interface TagsInputControlProps
-  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
+  extends TagsInputControlPrimitiveProps, TagsInputRootContract {
   clearable?: boolean;
 }
 
 export interface TagsInputItemProps
-  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, TagsInputItemRootContract {
   showDelete?: boolean;
 }
 
 export interface TagsInputRootProviderProps
-  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputProps {
+  extends TagsInputRootProviderPrimitiveProps, TagsInputRootContract {
   clearable?: boolean;
 }
 

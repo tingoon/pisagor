@@ -4,13 +4,13 @@
     type MenuContentProps,
     Portal,
   } from "@ark-ui/svelte";
-  import type { DropdownMenuProps as BaseDropdownMenuProps } from "@pisagor/props";
+  import type { DropdownMenuRootContract } from "@pisagor/props";
   import { dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./dropdown-menu.context";
   import DropdownMenuPositioner from "./dropdown-menu-positioner.svelte";
 
-  type Props = MenuContentProps & BaseDropdownMenuProps;
+  type Props = MenuContentProps & DropdownMenuRootContract;
 
   let {
     recipe = dropdownMenuRecipe,

@@ -3,11 +3,11 @@
     QrCode as QrCodePrimitive,
     type QrCodeRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { QrCodeProps as BaseQrCodeProps } from "@pisagor/props";
+  import type { QrCodeRootContract } from "@pisagor/props";
   import { withProvider } from "./qr-code.context";
   import QrCodeFrame from "./qr-code-frame.svelte";
 
-  type Props = ArkRootProps & BaseQrCodeProps;
+  type Props = ArkRootProps & QrCodeRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

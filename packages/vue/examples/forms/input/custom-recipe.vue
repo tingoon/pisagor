@@ -13,5 +13,5 @@ const brandInputRecipe = tv({
 </script>
 
 <template>
-  <Input clearable default-value="Pisagor" :recipe="brandInputRecipe" />
+  <Input clearable default-value="Pisagor" :slot-recipe="brandInputRecipe" />
 </template>

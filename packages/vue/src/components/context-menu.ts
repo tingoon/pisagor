@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue";
-import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pisagor/props";
+import type { ContextMenuRootContract } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
@@ -36,7 +36,7 @@ function wrapDropdownMenuPart(
 }
 
 // #region Types
-export interface ContextMenuContextTriggerProps extends BaseContextMenuContextTriggerProps {
+export interface ContextMenuContextTriggerProps extends ContextMenuRootContract {
   class?: unknown;
 }
 // #endregion

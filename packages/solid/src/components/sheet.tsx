@@ -5,7 +5,7 @@ import type {
   DialogPositionerProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
-import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -39,7 +39,7 @@ export interface SheetContentProps
 }
 
 export interface SheetProps
-  extends Omit<DialogRootProps, "recipe">, BaseSheetProps {}
+  extends Omit<DialogRootProps, "recipe">, SheetRootContract, SheetContract {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 export type SheetCloseTriggerProps = DialogCloseTriggerProps;

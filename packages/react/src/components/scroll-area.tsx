@@ -5,10 +5,13 @@ import type {
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/react";
-import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
-import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
+import type {
+  ScrollAreaContract,
+  ScrollAreaRootContract,
+} from "@pisagor/props";
+import { scrollAreaRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -18,10 +21,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, {
+const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root)({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ScrollAreaRootPrimitiveProps & BaseScrollAreaRootProps>;
+}) as FunctionComponent<ScrollAreaRootPrimitiveProps & ScrollAreaRootContract>;
 
 function ScrollAreaViewport({
   children,
@@ -50,13 +53,11 @@ const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, {
 // #endregion
 
 // #region Types
-export interface ScrollAreaProps extends Omit<
-  ComponentProps<typeof ScrollAreaRoot>,
-  "children"
-> {
+export interface ScrollAreaProps
+  extends
+    Omit<ComponentProps<typeof ScrollAreaRoot>, "children">,
+    ScrollAreaContract {
   children?: React.ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<ScrollAreaRecipeSlot>;
   /** Extra props forwarded to each scroll area scrollbar element */
   scrollbarProps?: Omit<
     ScrollAreaScrollbarProps,

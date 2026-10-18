@@ -4,14 +4,14 @@
     Listbox as ListboxPrimitive,
     type ListboxRootProps as ArkListboxRootProps,
   } from "@ark-ui/svelte";
-  import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
+  import type { ListboxRootContract } from "@pisagor/props";
   import { listboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./listbox.context";
 
   type Props = Omit<ArkListboxRootProps<CollectionItem>, "onValueChange"> & {
     onValueChange?: (value: string[]) => void;
-  } & BaseListboxProps;
+  } & Omit<ListboxRootContract, "emptyText" | "items">;
 
   let {
     recipe = listboxRecipe,

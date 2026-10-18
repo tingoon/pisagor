@@ -1,9 +1,9 @@
 ---
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div"> & BaseItemProps;
+type Props = HTMLAttributes<"div"> & ItemRootContract;
 
 const {
   variant = "default",

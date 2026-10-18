@@ -1,9 +1,8 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue";
-import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
+import type { TextareaContract, TextareaRootContract } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
-  type TextareaRecipeSlot,
   textareaRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -12,11 +11,7 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { InputClearButton } from "./input/input-clear-button";
 import {
   InputGroupAddon,
@@ -34,15 +29,13 @@ const { Context: TextareaStylesContext } = createSlotRecipeContext({
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface TextareaProps
-  extends FormControlShellVariantProps, BaseTextareaProps {
+  extends FormControlShellVariantProps, TextareaRootContract, TextareaContract {
   class?: unknown;
-  classNames?: TextareaClassNames;
   clearable?: boolean;
   defaultValue?: string | number | readonly string[];
   disabled?: boolean;
@@ -64,7 +57,7 @@ export const Textarea = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<TextareaClassNames>,
+      type: Object as PropType<TextareaProps["classNames"]>,
     },
     clearable: { default: false, type: Boolean },
     defaultValue: {

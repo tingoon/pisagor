@@ -3,7 +3,13 @@ import {
   type AccordionItemProps as AccordionItemPrimitiveProps,
 } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
+import type {
+  AccordionItemRootContract,
+  AccordionItemContract,
+  AccordionPresetItem as BaseAccordionPresetItem,
+  AccordionRootContract,
+  AccordionContract,
+} from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -17,16 +23,23 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
+  extends
+    AccordionItemPrimitiveProps,
+    AccordionItemRootContract,
+    AccordionItemContract {}
 
-export interface AccordionPresetItem {
+export interface AccordionPresetItem extends Omit<
+  BaseAccordionPresetItem,
+  "title" | "content"
+> {
   value: string;
   title: VNodeChild;
   content: VNodeChild;
   disabled?: boolean;
 }
 
-export interface AccordionProps {
+export interface AccordionProps
+  extends AccordionRootContract, AccordionContract {
   items?: AccordionPresetItem[];
   collapsible?: boolean;
   /** Size scale applied to every item. */

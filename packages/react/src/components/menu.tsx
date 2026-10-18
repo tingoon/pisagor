@@ -1,12 +1,13 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
-  MenuItemProps as BaseMenuItemProps,
-  MenuProps as BaseMenuRootProps,
+  MenuContract,
+  MenuItemRootContract,
+  MenuRootContract,
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { createContext, use } from "react";
-import type { ComponentPropsWithRef, FunctionComponent } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -17,39 +18,16 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-// #region Types
-export interface MenuRootProps
-  extends ComponentPropsWithRef<"nav">, BaseMenuRootProps {}
-
-export type MenuPartProps = ComponentPropsWithRef<"div">;
-
-export type MenuListProps = ComponentPropsWithRef<"ul">;
-
-export interface MenuItemProps
-  extends HTMLArkProps<"button">, BaseMenuItemProps {}
-
-export interface MenuLinkProps extends HTMLArkProps<"a"> {
-  /** Whether the link represents the current page */
-  active?: boolean;
-}
-
-export type MenuGroupLabelProps = ComponentPropsWithRef<"div">;
-
-export type MenuSeparatorProps = ComponentPropsWithRef<"div">;
-
-export type MenuShortcutProps = ComponentPropsWithRef<"span">;
-// #endregion
-
 // #region Parts
-const MenuRootBase = withProvider("nav", {
+const MenuRootBase = withProvider("nav")<MenuRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<MenuRootProps>;
+});
 
 export function MenuRoot({
   "aria-label": ariaLabelProp,
   ...rest
-}: MenuRootProps) {
+}: ComponentProps<typeof MenuRootBase>) {
   const { m } = useLocale();
   const ariaLabel = m("menu.label", ariaLabelProp);
 
@@ -150,6 +128,26 @@ export function MenuSeparator(props: MenuSeparatorProps) {
 export const MenuShortcut = withContext("span", {
   name: "Shortcut",
 });
+// #endregion
+
+// #region Types
+export type MenuRootProps = ComponentProps<typeof MenuRoot>;
+export type MenuPartProps = ComponentPropsWithRef<"div">;
+export type MenuListProps = ComponentPropsWithRef<"ul">;
+
+export interface MenuItemProps
+  extends HTMLArkProps<"button">, MenuItemRootContract {}
+
+export interface MenuLinkProps extends HTMLArkProps<"a"> {
+  /** Whether the link represents the current page */
+  active?: boolean;
+}
+
+export type MenuGroupLabelProps = ComponentPropsWithRef<"div">;
+export type MenuSeparatorProps = ComponentPropsWithRef<"div">;
+export type MenuShortcutProps = ComponentPropsWithRef<"span">;
+
+export interface MenuProps extends MenuRootProps, MenuContract {}
 // #endregion
 
 // #region Display Names

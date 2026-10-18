@@ -1,7 +1,7 @@
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
-  SortableItemProps as BaseSortableItemProps,
-  SortableProps as BaseSortableRootProps,
+  SortableItemRootContract,
+  SortableRootContract,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { cn, formatMessage } from "@pisagor/utils";
@@ -64,7 +64,7 @@ interface SortableItemContextValue {
   isDragging: boolean;
 }
 
-export interface SortableRootProps extends BaseSortableRootProps {
+export interface SortableRootProps extends SortableRootContract {
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: SortableOrientation;
@@ -72,7 +72,7 @@ export interface SortableRootProps extends BaseSortableRootProps {
   class?: unknown;
 }
 
-export interface SortableItemProps extends BaseSortableItemProps {
+export interface SortableItemProps extends SortableItemRootContract {
   value: string;
   class?: unknown;
 }

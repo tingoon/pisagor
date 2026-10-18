@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { InputGroupButtonProps as BaseInputGroupButtonProps } from "@pisagor/props";
+  import type { InputGroupButtonRootContract } from "@pisagor/props";
   import { inputGroupButtonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import Button from "../button.svelte";
@@ -8,7 +8,7 @@
     import("svelte").ComponentProps<typeof Button>,
     "size" | "recipe"
   > &
-    BaseInputGroupButtonProps;
+    InputGroupButtonRootContract;
 
   let {
     size = "xs",

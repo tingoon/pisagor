@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
+  import type { ButtonRootContract } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAnchorAttributes } from "svelte/elements";
@@ -16,7 +16,7 @@
      * @defaultValue buttonRecipe
      */
     buttonRecipe?: typeof buttonRecipe;
-  } & BaseButtonProps;
+  } & ButtonRootContract;
 
   let {
     size = "md",

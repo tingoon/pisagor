@@ -5,7 +5,11 @@ import type {
   TabTriggerProps,
   TabsRootProps as TabsRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
+import type {
+  TabsPresetItem as BaseTabsPresetItem,
+  TabsRootContract,
+  TabsContract,
+} from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -19,13 +23,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface TabsRootProps
-  extends TabsRootPrimitiveProps, BaseTabsRootProps {}
+  extends TabsRootPrimitiveProps, TabsRootContract {}
 
-interface TabsPresetItem {
-  value: string;
+interface TabsPresetItem extends Omit<BaseTabsPresetItem, "label" | "content"> {
   label: ReactNode;
   content: ReactNode;
-  disabled?: boolean;
 }
 
 export interface TabsListProps extends TabListProps, TabsVariantProps {
@@ -41,7 +43,8 @@ export type TabsTriggerProps = TabTriggerProps;
 
 export type TabsContentProps = TabContentProps;
 
-export interface TabsProps extends Omit<TabsRootProps, "children"> {
+export interface TabsProps
+  extends Omit<TabsRootProps, "children">, TabsContract {
   items?: TabsPresetItem[];
   /** Whether to render the animated active-tab indicator. */
   showIndicator?: boolean;
@@ -49,7 +52,7 @@ export interface TabsProps extends Omit<TabsRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export const TabsRoot = withProvider(TabsPrimitive.Root, {
+export const TabsRoot = withProvider(TabsPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<TabsRootProps>;

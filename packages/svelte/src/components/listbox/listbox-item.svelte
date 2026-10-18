@@ -3,12 +3,17 @@
     Listbox as ListboxPrimitive,
     type ListboxItemProps as ArkListboxItemProps,
   } from "@ark-ui/svelte";
-  import type { ListboxItemProps as BaseListboxItemProps } from "@pisagor/props";
+  import type {
+    ListboxItemRootContract,
+    ListboxItemContract,
+  } from "@pisagor/props";
   import { listboxItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ListboxItemStylesContext } from "./listbox.context";
 
-  type Props = ArkListboxItemProps & BaseListboxItemProps;
+  type Props = ArkListboxItemProps &
+    ListboxItemRootContract &
+    ListboxItemContract;
 
   let {
     variant = "default",

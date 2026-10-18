@@ -3,12 +3,12 @@
     type TabListProps as ArkTabsListProps,
     Tabs as TabsPrimitive,
   } from "@ark-ui/svelte";
-  import type { TabsProps as BaseTabsProps } from "@pisagor/props";
+  import type { TabsRootContract } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./tabs.context";
 
   type Props = ArkTabsListProps &
-    BaseTabsProps & {
+    TabsRootContract & {
       /**
        * Whether to render the animated active-tab indicator.
        *

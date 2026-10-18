@@ -1,19 +1,16 @@
 <script lang="ts">
-  import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+  import type {
+    AspectRatioRootContract,
+    AspectRatioContract,
+  } from "@pisagor/props";
   import { aspectRatioRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-    /**
-     * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
-     * variable.
-     *
-     * @defaultValue 1
-     */
-    ratio?: number;
-  } & BaseAspectRatioProps;
+  } & AspectRatioRootContract &
+    AspectRatioContract;
 
   let {
     ratio,

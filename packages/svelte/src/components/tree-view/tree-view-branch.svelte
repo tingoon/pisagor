@@ -3,12 +3,12 @@
     TreeView as TreeViewPrimitive,
     type TreeViewBranchProps,
   } from "@ark-ui/svelte";
-  import type { TreeViewBranchProps as BaseTreeViewBranchProps } from "@pisagor/props";
+  import type { TreeViewBranchRootContract } from "@pisagor/props";
   import { treeViewBranchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { setTreeViewBranchContext } from "./tree-view.context";
 
-  type Props = TreeViewBranchProps & BaseTreeViewBranchProps;
+  type Props = TreeViewBranchProps & TreeViewBranchRootContract;
 
   let {
     children,

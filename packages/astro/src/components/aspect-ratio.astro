@@ -1,16 +1,14 @@
 ---
-import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+import type {
+  AspectRatioRootContract,
+  AspectRatioContract,
+} from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div">, BaseAspectRatioProps {
-  /**
-   * CSS aspect-ratio value applied via `--ratio`.
-   *
-   * @example "16/9"
-   */
-  ratio?: string | number;
-}
+type Props = HTMLAttributes<"div"> &
+  AspectRatioRootContract &
+  AspectRatioContract;
 
 const {
   ratio,

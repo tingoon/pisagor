@@ -5,8 +5,8 @@ import type {
   TimerSeparatorProps,
 } from "@ark-ui/react";
 import type {
-  TimerItemGroupProps as BaseTimerItemGroupProps,
-  TimerProps as BaseTimerRootProps,
+  TimerItemGroupRootContract,
+  TimerRootContract,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type {
@@ -43,7 +43,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentPropsWithRef<"div">, BaseTimerItemGroupProps {
+  extends ComponentPropsWithRef<"div">, TimerItemGroupRootContract {
   /**
    * The orientation of the timer item group.
    *
@@ -55,7 +55,7 @@ export interface TimerItemGroupProps
 export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
-  extends TimerRootPrimitiveProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, TimerRootContract {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
@@ -65,10 +65,10 @@ export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider(TimerPrimitive.Root, {
+const TimerRootBase = withTimerProvider(TimerPrimitive.Root)({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<TimerRootPrimitiveProps & BaseTimerRootProps>;
+}) as FunctionComponent<TimerRootPrimitiveProps & TimerRootContract>;
 
 export function TimerRoot({
   isControlsVisible,
@@ -110,10 +110,12 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider("div", {
+const TimerItemGroupBase = withTimerItemGroupProvider("div")({
   name: "ItemGroup",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"div"> & BaseTimerItemGroupProps>;
+}) as FunctionComponent<
+  ComponentPropsWithRef<"div"> & TimerItemGroupRootContract
+>;
 
 export function TimerItemGroup({
   orientation = "vertical",

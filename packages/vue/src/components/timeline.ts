@@ -1,6 +1,9 @@
 import type {
-  TimelineItemProps as BaseTimelineItemProps,
-  TimelineProps as BaseTimelineProps,
+  TimelineItemRootContract,
+  TimelineItemContract,
+  TimelinePresetItem as BaseTimelinePresetItem,
+  TimelineRootContract,
+  TimelineContract,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -14,7 +17,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TimelinePresetItem {
+export interface TimelinePresetItem extends Omit<
+  BaseTimelinePresetItem,
+  "title" | "description" | "indicator"
+> {
   /** Stable key for the item when title is not a string. */
   id?: string;
   title: VNodeChild;
@@ -22,12 +28,21 @@ export interface TimelinePresetItem {
   indicator?: VNodeChild;
 }
 
-export interface TimelineProps extends BaseTimelineProps {
+export interface TimelineRootProps extends Omit<TimelineRootContract, "items"> {
+  class?: unknown;
+}
+
+export interface TimelineProps
+  extends
+    TimelineRootProps,
+    Omit<TimelineRootContract, "items">,
+    TimelineContract {
   class?: unknown;
   items?: TimelinePresetItem[];
 }
 
-export interface TimelineItemProps extends BaseTimelineItemProps {
+export interface TimelineItemProps
+  extends TimelineItemRootContract, TimelineItemContract {
   class?: unknown;
 }
 // #endregion

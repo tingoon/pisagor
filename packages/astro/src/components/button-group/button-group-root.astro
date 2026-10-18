@@ -1,9 +1,9 @@
 ---
-import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
+import type { ButtonGroupRootContract } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./button-group.context";
 
-type Props = HTMLAttributes<"fieldset"> & BaseButtonGroupProps;
+type Props = HTMLAttributes<"fieldset"> & ButtonGroupRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

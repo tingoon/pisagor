@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+  import type { NavigationMenuRootContract } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -10,7 +10,7 @@
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: Snippet;
-  } & BaseNavigationMenuProps;
+  } & NavigationMenuRootContract;
 
   let { children, ...rest }: Props = $props();
   const { m } = useLocale();

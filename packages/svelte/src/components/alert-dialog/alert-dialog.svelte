@@ -1,5 +1,10 @@
 <script lang="ts">
-  import type { ComponentProps, Snippet } from "svelte";
+  import type { DialogRootProps } from "@ark-ui/svelte";
+  import type {
+    AlertDialogContract,
+    AlertDialogRootContract,
+  } from "@pisagor/props";
+  import type { Snippet } from "svelte";
   import AlertDialogContent from "./alert-dialog-content.svelte";
   import AlertDialogDescription from "./alert-dialog-description.svelte";
   import AlertDialogFooter from "./alert-dialog-footer.svelte";
@@ -8,15 +13,13 @@
   import AlertDialogTitle from "./alert-dialog-title.svelte";
   import AlertDialogTrigger from "./alert-dialog-trigger.svelte";
 
-  type Props = Omit<
-    ComponentProps<typeof AlertDialogRoot>,
-    "children" | "title"
-  > & {
-    actions?: Snippet;
-    description?: string | Snippet;
-    title?: string | Snippet;
-    trigger?: Snippet;
-  };
+  type Props = Omit<DialogRootProps, "children" | "title"> &
+    AlertDialogRootContract & {
+      actions?: Snippet;
+      description?: string | Snippet;
+      title?: string | Snippet;
+      trigger?: Snippet;
+    } & AlertDialogContract;
 
   let { actions, description, title, trigger, ...rest }: Props = $props();
 </script>

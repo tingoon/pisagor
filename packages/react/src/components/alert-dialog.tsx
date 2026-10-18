@@ -8,7 +8,11 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
+import type {
+  AlertDialogContract,
+  AlertDialogHeaderContract,
+  AlertDialogRootContract,
+} from "@pisagor/props";
 import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
@@ -32,7 +36,7 @@ AlertDialogModalContext.displayName = "AlertDialogModalContext";
 
 // #region Types
 export interface AlertDialogRootProps
-  extends DialogRootPrimitiveProps, BaseAlertDialogRootProps {}
+  extends DialogRootPrimitiveProps, AlertDialogRootContract {}
 
 export interface AlertDialogContentProps
   extends DialogContentPrimitiveProps, AlertDialogVariantProps {
@@ -59,7 +63,13 @@ export interface AlertDialogBodyProps extends ComponentPropsWithRef<"div"> {
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = ComponentPropsWithRef<"div">;
+export interface AlertDialogHeaderProps
+  extends
+    Omit<ComponentPropsWithRef<"div">, "title">,
+    AlertDialogHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
@@ -80,17 +90,13 @@ export interface AlertDialogActionProps
 export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps extends Omit<
-  AlertDialogRootProps,
-  "children" | "title"
-> {
-  /** Footer actions (typically Cancel / Action). */
+export interface AlertDialogProps
+  extends
+    Omit<AlertDialogRootProps, "children" | "title">,
+    AlertDialogContract {
   actions?: ReactNode;
-  /** Header description content. */
   description?: ReactNode;
-  /** Header title content. */
   title?: ReactNode;
-  /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
 // #endregion
@@ -213,6 +219,8 @@ export function AlertDialogBody({
 export function AlertDialogHeader({
   children,
   className,
+  description,
+  title,
   ...rest
 }: AlertDialogHeaderProps) {
   const { slots } = useStyles();
@@ -224,6 +232,12 @@ export function AlertDialogHeader({
       data-part="header"
       data-scope="alert-dialog"
     >
+      {title != null && <AlertDialogTitle>{title}</AlertDialogTitle>}
+
+      {description != null && (
+        <AlertDialogDescription>{description}</AlertDialogDescription>
+      )}
+
       {children}
     </div>
   );

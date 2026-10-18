@@ -1,7 +1,7 @@
 import type {
-  InputGroupAddonProps as BaseInputGroupAddonProps,
-  InputGroupButtonProps as BaseInputGroupButtonProps,
-  InputGroupTextProps as BaseInputGroupTextProps,
+  InputGroupAddonRootContract,
+  InputGroupButtonRootContract,
+  InputGroupTextRootContract,
 } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -27,18 +27,18 @@ export interface InputGroupProps extends FormControlGroupShellVariantProps {
   class?: unknown;
 }
 
-export interface InputGroupAddonProps extends BaseInputGroupAddonProps {
+export interface InputGroupAddonProps extends InputGroupAddonRootContract {
   align?: "block-end" | "block-start" | "inline-end" | "inline-start";
   class?: unknown;
 }
 
 export interface InputGroupButtonProps
-  extends Omit<ButtonProps, "size" | "recipe">, BaseInputGroupButtonProps {
+  extends Omit<ButtonProps, "size" | "recipe">, InputGroupButtonRootContract {
   onClick?: (event: MouseEvent) => void;
   size?: InputGroupButtonSize;
 }
 
-export interface InputGroupTextProps extends BaseInputGroupTextProps {
+export interface InputGroupTextProps extends InputGroupTextRootContract {
   class?: unknown;
 }
 // #endregion

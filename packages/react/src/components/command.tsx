@@ -6,8 +6,10 @@ import {
 } from "@ark-ui/react";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import type {
-  CommandProps as BaseCommandDialogContentProps,
-  CommandProps as BaseCommandProps,
+  CommandContract,
+  CommandDialogContract,
+  CommandPresetItem,
+  CommandRootContract,
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import { type ComponentProps, Fragment, type ReactNode } from "react";
@@ -43,19 +45,10 @@ const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
 
 // #region Types
 export interface CommandDialogContentProps
-  extends DialogContentProps, BaseCommandDialogContentProps {
-  /**
-   * The description of the dialog
-   *
-   * @defaultValue "Search for a command to run..."
-   */
+  extends DialogContentProps, CommandDialogContract {
   description?: string;
-  /**
-   * The title of the dialog
-   *
-   * @defaultValue "Command Palette"
-   */
   title?: string;
+  recipe?: typeof commandRecipe;
 }
 
 export interface CommandInputProps extends Omit<
@@ -74,9 +67,22 @@ export type CommandListProps = ComboboxListProps;
 
 export type CommandContentProps = ComboboxContentProps;
 
-export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {
+export interface CommandRootProps<T extends CollectionItem = CollectionItem>
+  extends
+    Omit<
+      ComboboxRootProps<T>,
+      "emptyText" | "items" | "placeholder" | "recipe"
+    >,
+    CommandRootContract {
   className?: string;
+}
+
+export interface CommandProps<T extends CollectionItem = CollectionItem>
+  extends
+    Omit<CommandRootProps<T>, "children">,
+    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
+  emptyText?: ReactNode;
+  placeholder?: string;
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;
@@ -85,28 +91,20 @@ export type CommandShortcutProps = ComponentProps<"span">;
 
 export type CommandFooterProps = ComponentProps<"div">;
 
-export interface CommandShorthandItem {
-  /** Optional group heading. */
-  group?: string;
-  /** Leading icon. */
+export interface CommandShorthandItem extends Omit<
+  CommandPresetItem,
+  "label" | "icon"
+> {
   icon?: ReactNode;
-  /** Visible label, also used for filtering. */
   label: string;
-  /** Keyboard shortcut hint. */
-  shortcut?: string;
-  /** Unique value. */
-  value: string;
 }
 
 export interface CommandShorthandProps extends Omit<
   CommandProps<CommandShorthandItem>,
   "collection" | "children"
 > {
-  /** Text shown when nothing matches. */
   emptyText?: ReactNode;
-  /** Items to render; filtering and grouping are handled for you. */
   items: CommandShorthandItem[];
-  /** Input placeholder. */
   placeholder?: string;
 }
 // #endregion
@@ -163,7 +161,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
   recipe = commandRecipe,
   className,
   ...rest
-}: CommandProps<T>) {
+}: CommandRootProps<T>) {
   const slots = recipe();
 
   return (

@@ -4,7 +4,7 @@ import {
   parseDate as arkParseDate,
 } from "@ark-ui/vue";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
+import type { CalendarRootContract } from "@pisagor/props";
 import {
   calendarRecipe,
   calendarTableCellRecipe,
@@ -65,7 +65,7 @@ interface CalendarTableNextMonthProps {
   tabIndex?: number | string;
 }
 
-export interface CalendarProps extends BaseCalendarProps {
+export interface CalendarProps extends CalendarRootContract {
   class?: unknown;
   /** Visual shell variant for embedded selects. Defaults to `primary`. */
   variant?: FormControlVariant;

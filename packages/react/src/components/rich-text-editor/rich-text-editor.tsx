@@ -5,7 +5,7 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
@@ -27,7 +27,7 @@ import {
 export interface RichTextEditorRootProps
   extends
     Omit<ComponentPropsWithRef<"div">, "defaultValue" | "onChange">,
-    BaseRichTextEditorRootProps {
+    RichTextEditorRootContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Initial HTML content for uncontrolled usage. */

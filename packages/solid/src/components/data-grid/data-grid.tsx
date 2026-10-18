@@ -1,4 +1,7 @@
-import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
+import type {
+  DataGridBodyContract,
+  DataGridRootContract,
+} from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
 import {
   cn,
@@ -45,7 +48,7 @@ export type DataGridProps<TData extends RowData> = {
   children: JSX.Element;
   class?: string;
   features?: DataGridFeatures;
-} & BaseDataGridProps &
+} & DataGridRootContract &
   Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeaderProps {
@@ -59,7 +62,7 @@ interface DataGridHeadProps extends TableHeadProps {
   filter?: boolean;
 }
 
-interface DataGridBodyProps {
+interface DataGridBodyProps extends DataGridBodyContract {
   children: JSX.Element;
   empty?: JSX.Element;
 }

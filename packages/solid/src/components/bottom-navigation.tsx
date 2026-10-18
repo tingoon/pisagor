@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  BottomNavigationItemProps as BaseBottomNavigationItemProps,
-  BottomNavigationProps as BaseBottomNavigationRootProps,
+  BottomNavigationItemRootContract,
+  BottomNavigationRootContract,
 } from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
@@ -36,7 +36,7 @@ const BottomNavigationValueContext = createContext<() => string | undefined>(
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends ComponentProps<"nav">, BaseBottomNavigationRootProps {
+  extends ComponentProps<"nav">, BottomNavigationRootContract {
   /**
    * Value of the item for the current page; that item gets
    * `aria-current="page"`.
@@ -49,7 +49,7 @@ export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = ComponentProps<"div">;
 
 export interface BottomNavigationItemProps
-  extends HTMLArkProps<"a">, BaseBottomNavigationItemProps {
+  extends HTMLArkProps<"a">, BottomNavigationItemRootContract {
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
   /** Whether the item is disabled. */

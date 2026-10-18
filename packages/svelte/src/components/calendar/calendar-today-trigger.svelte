@@ -1,12 +1,12 @@
 <script lang="ts">
   import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte";
-  import type { ButtonProps } from "@pisagor/props";
+  import type { ButtonRootContract } from "@pisagor/props";
   import type { ComponentProps } from "svelte";
   import Button from "../button.svelte";
 
   type Props = Omit<ComponentProps<typeof Button>, "size" | "variant"> & {
-    size?: ButtonProps["size"];
-    variant?: ButtonProps["variant"];
+    size?: ButtonRootContract["size"];
+    variant?: ButtonRootContract["variant"];
   };
 
   let { size = "lg", variant = "outline", children, ...rest }: Props = $props();

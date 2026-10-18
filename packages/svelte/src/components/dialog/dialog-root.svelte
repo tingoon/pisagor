@@ -3,11 +3,11 @@
     Dialog as DialogPrimitive,
     type DialogRootProps,
   } from "@ark-ui/svelte";
-  import type { DialogProps as BaseDialogProps } from "@pisagor/props";
+  import type { DialogRootContract } from "@pisagor/props";
   import { dialogRecipe } from "@pisagor/recipes";
   import { setDialogContext } from "./dialog.context";
 
-  type Props = DialogRootProps & BaseDialogProps;
+  type Props = DialogRootProps & DialogRootContract;
 
   let {
     modal = true,

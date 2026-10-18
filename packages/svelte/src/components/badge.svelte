@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
+  import type { BadgeRootContract } from "@pisagor/props";
   import { badgeRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLSpanElement> & {
     children?: import("svelte").Snippet;
-  } & BaseBadgeProps;
+  } & BadgeRootContract;
 
   let {
     pill = false,

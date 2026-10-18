@@ -15,8 +15,8 @@ import type {
 } from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
-  FileUploadItemProps as BaseFileUploadItemProps,
-  FileUploadProps as BaseFileUploadRootProps,
+  FileUploadItemRootContract,
+  FileUploadRootContract,
 } from "@pisagor/props";
 import {
   fileUploadItemRecipe,
@@ -47,12 +47,12 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 // #region Types
 
 export interface FileUploadItemRootProps
-  extends FileUploadItemProps, BaseFileUploadItemProps {}
+  extends FileUploadItemProps, FileUploadItemRootContract {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadRootPrimitiveProps, BaseFileUploadRootProps {
+  extends FileUploadRootPrimitiveProps, FileUploadRootContract {
   onValueChange?: (value: File[]) => void;
 }
 

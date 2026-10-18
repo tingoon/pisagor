@@ -13,7 +13,7 @@ import type {
   TourTitleProps,
   UseTourReturn,
 } from "@ark-ui/solid";
-import type { TourProps as BaseTourProps } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -77,7 +77,7 @@ export function useTourContext() {
 export type TourStepType = TourStepDetails;
 export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
-export interface TourProps extends TourRootProps, BaseTourProps {
+export interface TourProps extends TourRootProps, TourRootContract {
   keyboardNavigation?: boolean;
   steps: TourStepDetails[];
   onStatusChange?: (details: { status: string }) => void;
@@ -259,7 +259,12 @@ export function TourSpotlight(props: TourSpotlightProps): JSX.Element {
 }
 
 export function TourHeader(props: DialogHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "class",
+    "description",
+    "title",
+  ]);
   const dialogSlots = dialogRecipe();
 
   return (

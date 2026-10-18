@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { CardProps as BaseCardProps } from "@pisagor/props";
+  import type { CardRootContract } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./card.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseCardProps;
+  } & CardRootContract;
 
   let {
     variant = "default",

@@ -8,7 +8,11 @@ import type {
   DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTriggerProps,
 } from "@ark-ui/react";
-import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
+import type {
+  DrawerContract,
+  DrawerHeaderContract,
+  DrawerRootContract,
+} from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -27,7 +31,7 @@ const {
 
 // #region Types
 export interface DrawerRootProps
-  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, DrawerRootContract {}
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   DrawerVariantProps;
@@ -35,10 +39,9 @@ export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
 export type DrawerContentProps = DrawerContentPrimitiveProps &
   DrawerVariantProps;
 
-export interface DrawerHeaderProps extends ComponentPropsWithRef<"div"> {
-  /** The description of the drawer */
+export interface DrawerHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, DrawerHeaderContract {
   description?: string;
-  /** The title of the drawer */
   title?: string;
 }
 
@@ -58,6 +61,8 @@ export type DrawerDescriptionProps = ComponentProps<
 >;
 
 export type DrawerFooterProps = ComponentPropsWithRef<"div">;
+
+export interface DrawerProps extends DrawerRootProps, DrawerContract {}
 // #endregion
 
 // #region Parts

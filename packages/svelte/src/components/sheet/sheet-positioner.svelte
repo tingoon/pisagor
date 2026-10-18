@@ -3,11 +3,11 @@
     Dialog as DialogPrimitive,
     type DialogPositionerProps,
   } from "@ark-ui/svelte";
-  import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+  import type { SheetRootContract } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./sheet.context";
 
-  type Props = DialogPositionerProps & BaseSheetProps;
+  type Props = DialogPositionerProps & SheetRootContract;
 
   let {
     placement,

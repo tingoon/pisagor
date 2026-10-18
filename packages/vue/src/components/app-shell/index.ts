@@ -21,6 +21,8 @@ import {
 } from "./app-shell";
 
 export type {
+  AppShellInspectorTriggerProps,
+  AppShellPanelTriggerProps,
   AppShellPlacement,
   AppShellRailState,
   AppShellRegionPosition,

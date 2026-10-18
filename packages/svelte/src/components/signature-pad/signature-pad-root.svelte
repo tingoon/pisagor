@@ -3,7 +3,7 @@
     SignaturePad as SignaturePadPrimitive,
     type SignaturePadRootProps,
   } from "@ark-ui/svelte";
-  import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
+  import type { SignaturePadRootContract } from "@pisagor/props";
   import { signaturePadRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./signature-pad.context";
@@ -11,7 +11,7 @@
   type Props = SignaturePadRootProps & {
     /** Marks the control as invalid for styling and assistive tech. */
     invalid?: boolean;
-  } & BaseSignaturePadProps;
+  } & SignaturePadRootContract;
 
   let {
     invalid = false,

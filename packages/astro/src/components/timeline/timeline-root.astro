@@ -1,9 +1,9 @@
 ---
-import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
+import type { TimelineRootContract } from "@pisagor/props";
 import { timelineRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"ol"> & BaseTimelineProps;
+type Props = HTMLAttributes<"ol"> & Omit<TimelineRootContract, "items">;
 
 const {
   orientation = "vertical",

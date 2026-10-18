@@ -3,14 +3,14 @@
     FileUpload as FileUploadPrimitive,
     type FileUploadRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
+  import type { FileUploadRootContract } from "@pisagor/props";
   import { fileUploadRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./file-upload.context";
 
   type Props = ArkRootProps & {
     onValueChange?: (value: globalThis.File[]) => void;
-  } & BaseFileUploadProps;
+  } & FileUploadRootContract;
 
   let {
     children,

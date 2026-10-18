@@ -1,13 +1,13 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
+  import type { AnnouncementRootContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./announcement.context";
 
   type Props = Omit<HTMLAttributes<HTMLDivElement>, "role"> & {
     children?: import("svelte").Snippet;
     role?: "status" | "alert";
-  } & BaseAnnouncementProps;
+  } & AnnouncementRootContract;
 
   let { children, ...rest }: Props = $props();
 

@@ -1,16 +1,20 @@
 <script lang="ts">
+  import type {
+    RadioGroupPresetItem as BaseRadioGroupPresetItem,
+    RadioGroupRootContract,
+    RadioGroupContract,
+  } from "@pisagor/props";
   import type { ComponentProps } from "svelte";
   import RadioGroupItem from "./radio-group-item.svelte";
   import RadioGroupRoot from "./radio-group-root.svelte";
 
-  type RadioGroupPresetItem = {
-    disabled?: boolean;
+  type RadioGroupPresetItem = Omit<BaseRadioGroupPresetItem, "label"> & {
     label: string;
-    value: string;
   };
   type Props = ComponentProps<typeof RadioGroupRoot> & {
     items?: RadioGroupPresetItem[];
-  };
+  } & RadioGroupRootContract &
+    RadioGroupContract;
 
   let { items = [], children, ...rest }: Props = $props();
 </script>

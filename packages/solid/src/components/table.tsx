@@ -1,4 +1,4 @@
-import type { TableProps as BaseTableProps } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
@@ -11,7 +11,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface TableProps extends ComponentProps<"table">, BaseTableProps {
+export interface TableProps extends ComponentProps<"table">, TableRootContract {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }

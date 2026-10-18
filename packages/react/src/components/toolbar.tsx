@@ -1,8 +1,9 @@
 import { ark } from "@ark-ui/react";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/props";
+import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type { ComponentProps, KeyboardEvent, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -12,7 +13,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider("div", {
+export const ToolbarRoot = withProvider("div")<ToolbarRootContract>({
   name: "Root",
   slot: "base",
 });
@@ -46,18 +47,11 @@ export type ToolbarTitleProps = ComponentProps<typeof ToolbarTitle>;
 export type ToolbarDescriptionProps = ComponentProps<typeof ToolbarDescription>;
 export type ToolbarActionsProps = ComponentProps<typeof ToolbarActions>;
 
-export interface ToolbarProps extends Omit<
-  ToolbarRootProps,
-  "children" | "title"
-> {
-  /** Trailing action buttons or controls. */
+export interface ToolbarProps
+  extends Omit<ToolbarRootProps, "children" | "title">, ToolbarContract {
   actions?: ReactNode;
-  /** Supporting copy below the title. */
   description?: ReactNode;
-  /** Section heading. */
   title?: ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<ToolbarRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

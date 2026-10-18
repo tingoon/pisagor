@@ -1,8 +1,11 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import type {
-  DropdownMenuItemProps as BaseDropdownMenuItemProps,
-  DropdownMenuProps as BaseDropdownMenuPositionerProps,
+  DropdownMenuItemGroupContract,
+  DropdownMenuItemRootContract,
+  DropdownMenuItemContract,
+  DropdownMenuRootContract,
+  DropdownMenuContract,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -42,11 +45,12 @@ function useDropdownMenuStyles(): {
 // #endregion
 
 // #region Types
-export interface DropdownMenuItemGroupProps {
+export interface DropdownMenuItemGroupProps extends DropdownMenuItemGroupContract {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends BaseDropdownMenuItemProps {
+export interface DropdownMenuItemProps
+  extends DropdownMenuItemRootContract, DropdownMenuItemContract {
   class?: unknown;
 }
 
@@ -60,9 +64,12 @@ export interface DropdownMenuRootProps {
   unmountOnExit?: boolean;
 }
 
-export interface DropdownMenuPositionerProps extends BaseDropdownMenuPositionerProps {
+export interface DropdownMenuPositionerProps extends DropdownMenuRootContract {
   class?: unknown;
 }
+
+export interface DropdownMenuProps
+  extends DropdownMenuRootProps, DropdownMenuContract {}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

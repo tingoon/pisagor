@@ -1,9 +1,9 @@
 ---
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div">, BaseProseProps {
+interface Props extends HTMLAttributes<"div">, ProseRootContract {
   /**
    * Trusted HTML content. When set, the default slot is ignored.
    */

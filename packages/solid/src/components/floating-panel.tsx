@@ -12,7 +12,7 @@ import type {
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
 } from "@ark-ui/solid";
-import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
+import type { FloatingPanelRootContract } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
@@ -42,7 +42,7 @@ function useFloatingPanelSlots() {
 // #endregion
 
 export interface LocalFloatingPanelRootProps
-  extends FloatingPanelRootPrimitiveProps, BaseFloatingPanelRootProps {}
+  extends FloatingPanelRootPrimitiveProps, FloatingPanelRootContract {}
 
 export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   resizable?: boolean;

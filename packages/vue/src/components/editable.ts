@@ -2,7 +2,7 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue";
-import type { EditableProps as BaseEditableProps } from "@pisagor/props";
+import type { EditableRootContract } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
@@ -24,7 +24,7 @@ const {
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-export interface EditableProps extends BaseEditableProps {
+export interface EditableProps extends EditableRootContract {
   /** The activation mode for the preview element. */
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */

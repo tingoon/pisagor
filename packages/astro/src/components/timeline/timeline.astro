@@ -1,5 +1,9 @@
 ---
-import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
+import type {
+  TimelinePresetItem as BaseTimelinePresetItem,
+  TimelineRootContract,
+  TimelineContract,
+} from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import TimelineContent from "./timeline-content.astro";
 import TimelineDescription from "./timeline-description.astro";
@@ -9,14 +13,17 @@ import TimelineRoot from "./timeline-root.astro";
 import TimelineSeparator from "./timeline-separator.astro";
 import TimelineTitle from "./timeline-title.astro";
 
-interface TimelinePresetItem {
-  id?: string;
+interface TimelinePresetItem
+  extends Omit<BaseTimelinePresetItem, "title" | "description" | "indicator"> {
   title: string;
   description?: string;
   indicator?: string;
 }
 
-interface Props extends HTMLAttributes<"ol">, BaseTimelineProps {
+interface Props
+  extends HTMLAttributes<"ol">,
+    TimelineRootContract,
+    TimelineContract {
   items?: TimelinePresetItem[];
 }
 

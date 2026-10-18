@@ -3,7 +3,7 @@ import {
   type SwapIndicatorProps,
   type SwapRootProps,
 } from "@ark-ui/react";
-import type { SwapProps as BaseSwapProps } from "@pisagor/props";
+import type { SwapRootContract, SwapContract } from "@pisagor/props";
 import { swapRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 
@@ -12,10 +12,9 @@ export type SwapOnIndicatorProps = SwapIndicatorProps;
 
 export type SwapOffIndicatorProps = SwapIndicatorProps;
 
-export interface SwapProps extends SwapRootProps, BaseSwapProps {
-  /** Content shown when swapped off. */
+export interface SwapProps
+  extends SwapRootProps, SwapRootContract, SwapContract {
   off?: ReactNode;
-  /** Content shown when swapped on. */
   on?: ReactNode;
   /** Extra props forwarded to the off indicator element */
   offIndicatorProps?: Omit<

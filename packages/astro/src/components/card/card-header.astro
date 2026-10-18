@@ -1,13 +1,14 @@
 ---
+import type { CardHeaderContract } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { useStyles } from "./card.context";
 import CardDescription from "./card-description.astro";
 import CardTitle from "./card-title.astro";
 
-interface Props extends HTMLAttributes<"div"> {
-  /** The description of the card */
+interface Props
+  extends Omit<HTMLAttributes<"div">, "title">,
+    CardHeaderContract {
   description?: string;
-  /** The title of the card */
   title?: string;
 }
 

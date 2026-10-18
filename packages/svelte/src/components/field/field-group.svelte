@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+  import type { FieldRootContract } from "@pisagor/props";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -8,7 +8,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: Snippet;
-  } & BaseFieldProps;
+  } & FieldRootContract;
 
   let {
     recipe = fieldRecipe,

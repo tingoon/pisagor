@@ -5,7 +5,12 @@ import type {
   SegmentGroupItemTextProps,
   SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
+import type {
+  SegmentGroupItemContract,
+  SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
+  SegmentGroupRootContract,
+  SegmentGroupContract,
+} from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -20,33 +25,36 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 type SegmentGroupVariant = "default" | "underline";
 
-interface SegmentGroupPresetItem {
-  value: string;
+interface SegmentGroupPresetItem extends Omit<
+  BaseSegmentGroupPresetItem,
+  "label"
+> {
   label: JSX.Element;
-  disabled?: boolean;
 }
 
 export interface SegmentGroupRootProps
   extends
     Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
-    BaseSegmentGroupRootProps {
+    Omit<SegmentGroupRootContract, "items"> {
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
 }
 
-export interface SegmentGroupProps extends Omit<
-  SegmentGroupRootProps,
-  "children"
-> {
+export interface SegmentGroupProps
+  extends
+    Omit<SegmentGroupRootProps, "children" | "recipe">,
+    SegmentGroupRootContract,
+    SegmentGroupContract {
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupItemPrimitiveProps {
+export interface SegmentGroupItemProps
+  extends SegmentGroupItemPrimitiveProps, SegmentGroupItemContract {
   text?: JSX.Element;
 }
 
 const SegmentGroupRootBase: Component<
-  SegmentGroupRootPrimitiveProps & BaseSegmentGroupRootProps
+  SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 > = withProvider(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",

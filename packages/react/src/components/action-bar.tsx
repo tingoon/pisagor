@@ -7,7 +7,12 @@ import {
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+import type {
+  ActionBarActionItem as BaseActionBarActionItem,
+  ActionBarRootContract,
+  ActionBarContract,
+  ActionBarValueContract,
+} from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {
   ComponentPropsWithRef,
@@ -81,23 +86,20 @@ function useActionBar() {
 // #endregion
 
 // #region Types
-interface ActionBarActionItem {
-  /** Stable key; defaults to `label`. */
-  id?: string;
-  /** Icon rendered before the label */
+interface ActionBarActionItem extends Omit<
+  BaseActionBarActionItem,
+  "icon" | "label"
+> {
   icon?: ReactNode;
-  /** Button label */
   label: string;
-  /** Called when the button is clicked */
   onClick: () => void;
-  /** Whether the button is disabled */
-  disabled?: boolean;
 }
 
 export interface ActionBarProps
   extends
     Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
-    BaseActionBarProps {
+    ActionBarRootContract,
+    ActionBarContract {
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *
@@ -121,9 +123,7 @@ export interface ActionBarProps
   open?: boolean;
   /** Placement and gutter of the action bar. */
   positioning?: ActionBarStateValue["positioning"];
-  /** Action buttons rendered inside the auto-generated ActionBar.Content */
   actions?: ActionBarActionItem[];
-  /** Number of selected items rendered via ActionBar.Value */
   count?: number;
   /** The function to call when the open state of the action bar changes. */
   onOpenChange?: (open: boolean) => void;
@@ -137,10 +137,9 @@ export type ActionBarSeparatorProps = SeparatorProps;
 
 export type ActionBarCloseProps = HTMLArkProps<"button">;
 
-export interface ActionBarValueProps extends BadgeProps {
-  /** The number of items selected */
+export interface ActionBarValueProps
+  extends BadgeProps, ActionBarValueContract {
   count: number;
-  /** The label of the selection trigger */
   label?: string;
 }
 

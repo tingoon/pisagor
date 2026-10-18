@@ -4,14 +4,14 @@ import {
   type JsonTreeViewTreeProps,
 } from "@ark-ui/react";
 import { CaretRightIcon } from "@phosphor-icons/react";
-import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
-import {
-  type JsonTreeViewRecipeSlot,
-  jsonTreeViewRecipe,
-} from "@pisagor/recipes";
+import type {
+  JsonTreeViewContract,
+  JsonTreeViewRootContract,
+} from "@pisagor/props";
+import { jsonTreeViewRecipe } from "@pisagor/recipes";
 
 import type { FunctionComponent } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -22,15 +22,16 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
+  extends
+    JsonTreeViewRootPrimitiveProps,
+    JsonTreeViewRootContract,
+    JsonTreeViewContract {}
 
 export interface JsonTreeViewProps extends Omit<
   JsonTreeViewRootProps,
   "children"
 > {
   renderValue?: JsonTreeViewTreeProps["renderValue"];
-  /** Slot class names */
-  classNames?: VariantClassNames<JsonTreeViewRecipeSlot>;
   /** Extra props forwarded to the json tree view tree element */
   treeProps?: Omit<
     JsonTreeViewTreeProps,
@@ -40,7 +41,7 @@ export interface JsonTreeViewProps extends Omit<
 // #endregion
 
 // #region Parts
-const JsonTreeViewRoot = withProvider(JsonTreeViewPrimitive.Root, {
+const JsonTreeViewRoot = withProvider(JsonTreeViewPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<JsonTreeViewRootProps>;

@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
+  import type { TimelineRootContract } from "@pisagor/props";
   import { timelineRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
-  type Props = HTMLAttributes<HTMLOListElement> & BaseTimelineProps;
+  type Props = HTMLAttributes<HTMLOListElement> &
+    Omit<TimelineRootContract, "items">;
 
   let {
     orientation = "vertical",

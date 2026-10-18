@@ -1,25 +1,18 @@
 ---
-import type { AlertProps as BaseAlertProps } from "@pisagor/props";
-import type { AlertRecipeSlot } from "@pisagor/recipes";
+import type { AlertContract, AlertRootContract } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
-import type { VariantClassNames } from "../../internal";
 import AlertAction from "./alert-action.astro";
 import AlertDescription from "./alert-description.astro";
 import AlertRoot from "./alert-root.astro";
 import AlertTitle from "./alert-title.astro";
 
-interface Props extends Omit<HTMLAttributes<"div">, "title">, BaseAlertProps {
-  /** Bold title line. */
+interface Props
+  extends Omit<HTMLAttributes<"div">, "title">,
+    AlertRootContract,
+    AlertContract {
   title?: string;
-  /** Description content. */
   description?: string;
-  /**
-   * Status variants (info, success, warning, destructive) render a default
-   * icon. Pass `null` to hide it; the `icon` slot replaces it.
-   */
   icon?: null;
-  /** Slot class names */
-  classNames?: VariantClassNames<AlertRecipeSlot>;
 }
 
 const { title, description, classNames, icon, ...rest } = Astro.props;

@@ -6,8 +6,10 @@ import type {
   RadioGroupRootProps as RadioGroupRootPrimitiveProps,
 } from "@ark-ui/react";
 import type {
-  RadioGroupItemProps as BaseRadioGroupItemProps,
-  RadioGroupProps as BaseRadioGroupRootProps,
+  RadioGroupItemRootContract,
+  RadioGroupPresetItem as BaseRadioGroupPresetItem,
+  RadioGroupRootContract,
+  RadioGroupContract,
 } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -22,25 +24,24 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
 
-interface RadioGroupPresetItem {
-  disabled?: boolean;
+interface RadioGroupPresetItem extends Omit<BaseRadioGroupPresetItem, "label"> {
   label: ReactNode;
-  value: string;
 }
 
 export interface RadioGroupRootProps
   extends
     Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
-    BaseRadioGroupRootProps {
+    RadioGroupRootContract {
   onValueChange?: (value: string | null) => void;
 }
 
-export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
+export interface RadioGroupProps
+  extends Omit<RadioGroupRootProps, "children">, RadioGroupContract {
   items?: RadioGroupPresetItem[];
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupItemPrimitiveProps, BaseRadioGroupItemProps {
+  extends RadioGroupItemPrimitiveProps, RadioGroupItemRootContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

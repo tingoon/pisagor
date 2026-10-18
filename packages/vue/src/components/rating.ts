@@ -1,10 +1,10 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue";
 import { PhStar } from "@phosphor-icons/vue";
-import type { RatingProps as BaseRatingProps } from "@pisagor/props";
-import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
+import type { RatingContract, RatingRootContract } from "@pisagor/props";
+import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type Component, defineComponent, h, type PropType } from "vue";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -21,21 +21,14 @@ const {
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
-type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 
-export interface RatingProps extends BaseRatingProps {
+export interface RatingProps extends RatingRootContract, RatingContract {
   allowHalf?: boolean;
   class?: ClassValue;
-  classNames?: RatingClassNames;
   controlProps?: Record<string, unknown>;
   count?: number;
   defaultValue?: number;
   disabled?: boolean;
-  /**
-   * Icon component for each rating item.
-   *
-   * @defaultValue PhStar
-   */
   icon?: Component;
   indicatorProps?: Record<string, unknown>;
   itemProps?: Record<string, unknown>;
@@ -146,7 +139,7 @@ const RatingShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<RatingClassNames>,
+      type: Object as PropType<RatingProps["classNames"]>,
     },
     controlProps: {
       default: undefined,

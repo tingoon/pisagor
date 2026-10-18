@@ -9,16 +9,12 @@ import type {
   SliderTrackProps,
   SliderValueTextProps,
 } from "@ark-ui/solid";
-import type { SliderProps as BaseSliderProps } from "@pisagor/props";
-import {
-  fieldRecipe,
-  type SliderRecipeSlot,
-  sliderRecipe,
-} from "@pisagor/recipes";
+import type { SliderContract, SliderRootContract } from "@pisagor/props";
+import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Field } from "./field";
 
@@ -58,14 +54,12 @@ type FormControlVariant = "primary" | "secondary";
 type SliderValueProps = SliderValueTextProps;
 
 type SliderRootProps = SliderRootPrimitiveProps &
-  BaseSliderProps & {
+  SliderRootContract & {
     variant?: FormControlVariant;
   };
 
-export interface SliderProps extends Omit<
-  SliderRootProps,
-  "children" | "onValueChange"
-> {
+export interface SliderProps
+  extends Omit<SliderRootProps, "children" | "onValueChange">, SliderContract {
   markerInterval?: number;
   markerLabels?: string[];
   showMarkers?: boolean;
@@ -73,12 +67,11 @@ export interface SliderProps extends Omit<
   children?: JSX.Element;
   label?: JSX.Element;
   onValueChange?: (value: number[]) => void;
-  classNames?: VariantClassNames<SliderRecipeSlot>;
   controlProps?: Omit<SliderControlProps, "children" | "class">;
   rangeProps?: Omit<SliderRangeProps, "children" | "class">;
   thumbProps?: Omit<SliderThumbProps, "children" | "index" | "class">;
-  trackProps?: Omit<SliderTrackProps, "children" | "class">;
   valueProps?: Omit<SliderValueProps, "children" | "class">;
+  trackProps?: Omit<SliderTrackProps, "children" | "class">;
 }
 
 type SliderHeaderProps = ComponentProps<"div">;

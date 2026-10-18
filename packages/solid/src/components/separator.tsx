@@ -1,10 +1,10 @@
-import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface SeparatorProps
-  extends ComponentProps<"div">, BaseSeparatorProps {
+  extends ComponentProps<"div">, SeparatorRootContract {
   orientation?: "horizontal" | "vertical";
   /**
    * Purely visual separator: hidden from assistive tech (`role="none"`).

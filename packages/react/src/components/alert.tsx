@@ -4,9 +4,10 @@ import {
   WarningCircleIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
+import type { AlertContract, AlertRootContract } from "@pisagor/props";
+import { alertRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -16,7 +17,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const AlertRoot = withProvider("div", {
+export const AlertRoot = withProvider("div")<AlertRootContract>({
   name: "Root",
   slot: "base",
 });
@@ -43,20 +44,12 @@ export type AlertDescriptionProps = ComponentProps<typeof AlertDescription>;
 
 export type AlertActionProps = ComponentProps<typeof AlertAction>;
 
-export interface AlertProps extends Omit<AlertRootProps, "children" | "title"> {
-  /** Trailing action area. */
+export interface AlertProps
+  extends Omit<AlertRootProps, "children" | "title">, AlertContract {
   action?: ReactNode;
-  /** Description content. */
   description?: ReactNode;
-  /**
-   * Leading icon, rendered as a direct child so the grid layout aligns. Status
-   * variants get a default icon; pass `null` to hide it.
-   */
   icon?: ReactNode;
-  /** Bold title line. */
   title?: ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<AlertRecipeSlot>;
   /** Extra props forwarded to the alert action element */
   actionProps?: Omit<AlertActionProps, "children" | "className">;
   /** Extra props forwarded to the alert description element */

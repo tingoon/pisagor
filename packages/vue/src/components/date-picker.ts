@@ -4,7 +4,7 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import type { DatePickerProps as BaseDatePickerRootProps } from "@pisagor/props";
+import type { DatePickerRootContract } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -49,7 +49,7 @@ const [provideDatePickerVariant, , useDatePickerVariantRef] = createContext(
 // #endregion
 
 // #region Types
-export interface DatePickerRootProps extends BaseDatePickerRootProps {
+export interface DatePickerRootProps extends DatePickerRootContract {
   /** Calendar style recipe for `Calendar.*` parts inside the picker. */
   calendarRecipe?: typeof calendarRecipe;
   variant?: FormControlVariant;
@@ -59,7 +59,7 @@ export interface DatePickerRootProps extends BaseDatePickerRootProps {
   defaultValue?: unknown;
 }
 
-export interface DatePickerTriggerProps extends BaseDatePickerRootProps {
+export interface DatePickerTriggerProps extends DatePickerRootContract {
   clearable?: boolean;
 }
 

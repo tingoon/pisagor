@@ -1,7 +1,10 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbProps,
+  BreadcrumbItemRootContract,
+  BreadcrumbItemContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+  BreadcrumbContract,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -29,26 +32,31 @@ const {
 });
 // #endregion
 
-interface BreadcrumbPresetItem {
+interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
   label: JSX.Element;
-  href?: string;
-  isCurrentPage?: boolean;
 }
 
 export type BreadcrumbListProps = ComponentProps<"ol">;
 export interface BreadcrumbItemProps
-  extends ComponentProps<"li">, BaseBreadcrumbItemProps {}
+  extends
+    ComponentProps<"li">,
+    BreadcrumbItemRootContract,
+    BreadcrumbItemContract {}
 export type BreadcrumbLinkProps = HTMLArkProps<"a">;
 export type BreadcrumbPageProps = ComponentProps<"span">;
 export type BreadcrumbSeparatorProps = ComponentProps<"li">;
 export type BreadcrumbEllipsisProps = ComponentProps<"span">;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<"nav">, BaseBreadcrumbProps {
+  extends ComponentProps<"nav">, Omit<BreadcrumbRootContract, "items"> {
   "aria-label"?: string;
 }
 
-export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
+export interface BreadcrumbProps
+  extends
+    Omit<BreadcrumbRootProps, "children" | "recipe">,
+    BreadcrumbRootContract,
+    BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 

@@ -2,6 +2,7 @@ import {
   ArrowsInLineHorizontalIcon,
   ArrowsOutLineHorizontalIcon,
 } from "@phosphor-icons/react";
+import type { AppShellTriggerContract } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
@@ -60,10 +61,8 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps extends Omit<
-  ButtonProps,
-  "children"
-> {
+export interface AppShellInspectorTriggerProps
+  extends Omit<ButtonProps, "children">, AppShellTriggerContract {
   /**
    * Inspector side to toggle.
    *
@@ -72,9 +71,7 @@ export interface AppShellInspectorTriggerProps extends Omit<
   placement?: AppShellPlacement;
   /** Custom content when no `on` / `off` icons are provided. */
   children?: ReactNode;
-  /** Content shown when the region is closed. */
   off?: ReactNode;
-  /** Content shown when the region is open. */
   on?: ReactNode;
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
+  import type { RichTextEditorRootContract } from "@pisagor/props";
   import {
     formControlShellRecipe,
     richTextEditorRecipe,
@@ -31,7 +31,7 @@
     "aria-label"?: string | undefined | null;
     children?: import("svelte").Snippet;
     id?: string | undefined | null;
-  } & BaseRichTextEditorProps;
+  } & RichTextEditorRootContract;
 
   let {
     variant: variantProp,

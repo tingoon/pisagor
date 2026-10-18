@@ -27,10 +27,11 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
 
 export interface AutocompleteProps extends Omit<
   AutocompleteRootProps,
-  "children" | "collection"
+  "children" | "collection" | "items" | "placeholder"
 > {
   clearable?: boolean;
   items?: Array<AutocompletePresetItem | string>;
+  placeholder?: string;
 }
 
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(

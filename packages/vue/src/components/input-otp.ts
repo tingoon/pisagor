@@ -2,7 +2,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue";
-import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
+import type { InputOtpRootContract } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
@@ -38,7 +38,7 @@ const [provideInputOTPOptions, , useInputOTPOptionsRef] = createContext(
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface InputOTPProps extends BaseInputOTPProps {
+export interface InputOTPProps extends InputOtpRootContract {
   class?: unknown;
   otp?: boolean;
   placeholder?: string;

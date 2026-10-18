@@ -1,7 +1,11 @@
 import { ark } from "@ark-ui/react";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/props";
+import { emptyStateRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -11,7 +15,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const EmptyStateRoot = withProvider(ark.div, {
+export const EmptyStateRoot = withProvider(ark.div)<EmptyStateRootContract>({
   name: "Root",
   slot: "base",
 });
@@ -46,20 +50,12 @@ export type EmptyStateDescriptionProps = ComponentProps<
 >;
 export type EmptyStateActionsProps = ComponentProps<typeof EmptyStateActions>;
 
-export interface EmptyStateProps extends Omit<
-  EmptyStateRootProps,
-  "children" | "title"
-> {
-  /** Action buttons or links. */
+export interface EmptyStateProps
+  extends Omit<EmptyStateRootProps, "children" | "title">, EmptyStateContract {
   actions?: ReactNode;
-  /** Supporting copy. */
   description?: ReactNode;
-  /** Icon or illustration shown above the title. */
   media?: ReactNode;
-  /** Primary heading. */
   title?: ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<EmptyStateRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

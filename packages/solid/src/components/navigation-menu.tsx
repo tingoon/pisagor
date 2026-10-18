@@ -1,5 +1,8 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import {
   focusNavigationMenuContentLink,
@@ -58,7 +61,10 @@ function useNavigationMenuItem(part: string) {
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<"nav">, BaseNavigationMenuProps {}
+  extends
+    ComponentProps<"nav">,
+    NavigationMenuRootContract,
+    NavigationMenuContract {}
 
 export type NavigationMenuPartProps = ComponentProps<"ul">;
 export type NavigationMenuItemProps = ComponentProps<"li">;

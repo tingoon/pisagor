@@ -6,7 +6,7 @@ import type {
   PasswordInputVisibilityTriggerProps as PasswordInputVisibilityTriggerPrimitiveProps,
 } from "@ark-ui/react";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
-import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
+import type { PasswordInputRootContract } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
@@ -34,7 +34,7 @@ export interface PasswordInputProps
     PasswordInputRootProps,
     Omit<PasswordInputInputProps, "className" | "size">,
     RefAttributes<HTMLInputElement>,
-    BasePasswordInputProps {
+    PasswordInputRootContract {
   /**
    * Whether to show a clear button when the input has a value.
    *

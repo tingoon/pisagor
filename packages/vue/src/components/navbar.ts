@@ -1,4 +1,4 @@
-import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
+import type { NavbarRootContract, NavbarContract } from "@pisagor/props";
 import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -17,9 +17,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface NavbarRootProps extends BaseNavbarRootProps {
+export interface NavbarRootProps extends NavbarRootContract {
   class?: unknown;
 }
+
+export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 // #endregion
 
 // #region Parts

@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -12,10 +12,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const LinkBoxRoot = withProvider(ark.div, {
+export const LinkBoxRoot = withProvider(ark.div)({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseLinkBoxRootProps>;
+}) as FunctionComponent<HTMLArkProps<"div"> & LinkBoxRootContract>;
 
 export const LinkOverlayLink = withContext(ark.a, {
   name: "Overlay",

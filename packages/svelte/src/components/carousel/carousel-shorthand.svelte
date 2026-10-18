@@ -1,4 +1,9 @@
 <script lang="ts">
+  import type {
+    CarouselPresetItem,
+    CarouselRootContract,
+    CarouselContract,
+  } from "@pisagor/props";
   import type { ComponentProps, Snippet } from "svelte";
   import CarouselControl from "./carousel-control.svelte";
   import CarouselIndicator from "./carousel-indicator.svelte";
@@ -9,14 +14,17 @@
   import CarouselPrevTrigger from "./carousel-prev-trigger.svelte";
   import CarouselRoot from "./carousel-root.svelte";
 
-  type PresetItem = { content: Snippet | string; key?: string };
+  type PresetItem = Omit<CarouselPresetItem, "content"> & {
+    content: Snippet | string;
+  };
 
   type Props = Omit<
     ComponentProps<typeof CarouselRoot>,
     "children" | "slideCount"
   > & {
     slides?: PresetItem[];
-  };
+  } & CarouselRootContract &
+    CarouselContract;
 
   let { slides = [], ...rest }: Props = $props();
 </script>

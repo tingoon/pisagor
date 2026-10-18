@@ -1,5 +1,5 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue";
-import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -12,7 +12,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface MarqueeProps extends BaseMarqueeProps {
+export interface MarqueeProps extends MarqueeRootContract, MarqueeContract {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
   spacing?: string;

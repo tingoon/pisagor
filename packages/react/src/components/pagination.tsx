@@ -15,7 +15,7 @@ import {
   CaretRightIcon,
   DotsThreeIcon,
 } from "@phosphor-icons/react";
-import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
+import type { PaginationRootContract } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -30,7 +30,7 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface PaginationRootProps
-  extends PaginationRootPrimitiveProps, BasePaginationRootProps {}
+  extends PaginationRootPrimitiveProps, PaginationRootContract {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
@@ -47,7 +47,7 @@ export interface PaginationItemLinkProps extends ButtonProps {
 // #endregion
 
 // #region Parts
-const PaginationRootBase = withProvider(PaginationPrimitive.Root, {
+const PaginationRootBase = withProvider(PaginationPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<PaginationRootProps>;

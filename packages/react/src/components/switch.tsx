@@ -5,10 +5,10 @@ import type {
   SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/react";
-import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+import { switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
-import type { FormControlVariant, VariantClassNames } from "../internal";
+import type { FormControlVariant } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -22,11 +22,10 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 type SwitchRootProps = SwitchRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSwitchRootProps;
+} & SwitchRootContract;
 
-export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
-  /** Slot class names */
-  classNames?: VariantClassNames<SwitchRecipeSlot>;
+export interface SwitchProps
+  extends Omit<SwitchRootProps, "children">, SwitchContract {
   /** Extra props forwarded to the switch control element */
   controlProps?: Omit<SwitchControlProps, "children" | "className">;
   /** Extra props forwarded to the hidden input element (e.g. tabIndex) */

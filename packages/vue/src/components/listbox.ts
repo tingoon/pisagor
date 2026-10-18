@@ -6,8 +6,11 @@ import type {
 } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
-  ListboxItemProps as BaseListboxItemProps,
-  ListboxProps as BaseListboxRootProps,
+  ListboxItemRootContract,
+  ListboxItemContract,
+  ListboxPresetItem as BaseListboxPresetItem,
+  ListboxRootContract,
+  ListboxContract,
 } from "@pisagor/props";
 import {
   type ListboxItemVariantProps,
@@ -65,7 +68,7 @@ function useListboxSlots() {
 // #endregion
 
 // #region Types
-interface ListboxPresetItem {
+interface ListboxPresetItem extends Omit<BaseListboxPresetItem, "label"> {
   label: string;
   value: string;
   disabled?: boolean;
@@ -77,13 +80,16 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & BaseListboxRootProps;
+} & Omit<ListboxRootContract, "emptyText" | "items">;
 
-export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
+export interface ListboxProps
+  extends Omit<ListboxRootProps, "children">, ListboxContract {
+  emptyText?: string;
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps extends BaseListboxItemProps {
+export interface ListboxItemProps
+  extends ListboxItemRootContract, ListboxItemContract {
   class?: unknown;
 }
 // #endregion

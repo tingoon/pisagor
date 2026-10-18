@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
+  import type { InputGroupAddonRootContract } from "@pisagor/props";
   import { inputGroupAddonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseInputGroupAddonProps;
+  } & InputGroupAddonRootContract;
 
   let {
     align = "inline-start",

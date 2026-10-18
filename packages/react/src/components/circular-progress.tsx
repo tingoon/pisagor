@@ -9,17 +9,17 @@ import type {
   ProgressValueTextProps,
   UseProgressReturn,
 } from "@ark-ui/react";
-import type { CircularProgressProps as BaseCircularProgressRootProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/props";
+import { circularProgressRecipe } from "@pisagor/recipes";
 import type {
   ComponentPropsWithRef,
   FunctionComponent,
   ReactNode,
 } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -29,11 +29,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider, {
+const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  ProgressRootProviderProps & BaseCircularProgressRootProps
+  ProgressRootProviderProps & CircularProgressRootContract
 >;
 
 /**
@@ -129,7 +129,10 @@ function CircularProgressTrack({
 
 // #region Types
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">, BaseCircularProgressRootProps {
+  extends
+    Omit<ProgressRootProps, "children">,
+    CircularProgressRootContract,
+    CircularProgressContract {
   /**
    * Visual size preset for the progress circle.
    *
@@ -151,8 +154,6 @@ export interface CircularProgressProps
   /** When true, renders the numeric value text centered inside the circle. */
   isValueVisible?: boolean;
   children?: ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
     ComponentPropsWithRef<"svg">,

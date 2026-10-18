@@ -1,7 +1,9 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue";
 import type {
-  RadioGroupItemProps as BaseRadioGroupItemProps,
-  RadioGroupProps as BaseRadioGroupRootProps,
+  RadioGroupItemRootContract,
+  RadioGroupPresetItem as BaseRadioGroupPresetItem,
+  RadioGroupRootContract,
+  RadioGroupContract,
 } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -19,13 +21,16 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface RadioGroupPresetItem {
+export interface RadioGroupPresetItem extends Omit<
+  BaseRadioGroupPresetItem,
+  "label"
+> {
   disabled?: boolean;
   label: VNodeChild;
   value: string;
 }
 
-export interface RadioGroupRootProps extends BaseRadioGroupRootProps {
+export interface RadioGroupRootProps extends RadioGroupRootContract {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -35,11 +40,12 @@ export interface RadioGroupRootProps extends BaseRadioGroupRootProps {
   value?: string | null;
 }
 
-export interface RadioGroupProps extends Omit<RadioGroupRootProps, "class"> {
+export interface RadioGroupProps
+  extends Omit<RadioGroupRootProps, "class">, RadioGroupContract {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps extends BaseRadioGroupItemProps {
+export interface RadioGroupItemProps extends RadioGroupItemRootContract {
   class?: unknown;
   disabled?: boolean;
   tabIndex?: number;

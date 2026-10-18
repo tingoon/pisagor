@@ -1,9 +1,12 @@
 ---
-import type { BadgeVariant } from "@pisagor/astro";
 import { Badge, Table } from "@pisagor/astro";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { workspaceUsers } from "./helpers";
 
-const statusVariants: Record<string, BadgeVariant> = {
+const statusVariants: Record<
+  string,
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

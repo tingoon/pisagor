@@ -1,8 +1,11 @@
 import { ark } from "@ark-ui/vue";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbRootProps,
+  BreadcrumbItemRootContract,
+  BreadcrumbItemContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+  BreadcrumbContract,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import {
@@ -35,13 +38,19 @@ const {
 // #endregion
 
 // #region Types
-export interface BreadcrumbPresetItem {
+export interface BreadcrumbPresetItem extends Omit<
+  BaseBreadcrumbPresetItem,
+  "label"
+> {
   href?: string;
   isCurrentPage?: boolean;
   label: VNodeChild;
 }
 
-export interface BreadcrumbRootProps extends BaseBreadcrumbRootProps {
+export interface BreadcrumbRootProps extends Omit<
+  BreadcrumbRootContract,
+  "items"
+> {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -50,11 +59,13 @@ export interface BreadcrumbRootProps extends BaseBreadcrumbRootProps {
   ariaLabel?: string;
 }
 
-export interface BreadcrumbProps extends BreadcrumbRootProps {
+export interface BreadcrumbProps
+  extends BreadcrumbRootProps, BreadcrumbRootContract, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 
-export interface BreadcrumbItemProps extends BaseBreadcrumbItemProps {
+export interface BreadcrumbItemProps
+  extends BreadcrumbItemRootContract, BreadcrumbItemContract {
   class?: unknown;
 }
 // #endregion

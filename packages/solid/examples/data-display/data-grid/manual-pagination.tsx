@@ -1,4 +1,4 @@
-import type { BadgeVariant } from "@pisagor/solid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Button, Checkbox, Spinner, Table } from "@pisagor/solid";
 import type {
   ColumnDef,
@@ -50,7 +50,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<User["status"], BadgeVariant> = {
+const statusVariants: Record<
+  User["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

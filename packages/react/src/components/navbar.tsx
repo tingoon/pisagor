@@ -1,10 +1,6 @@
-import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
+import type { NavbarContract, NavbarRootContract } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-} from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -16,10 +12,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const NavbarRoot = withProvider("header", {
+export const NavbarRoot = withProvider("header")<NavbarRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"header"> & BaseNavbarRootProps>;
+});
 
 export const NavbarBrand = withContext("div", {
   name: "Brand",
@@ -52,6 +48,8 @@ export const NavbarActions = withContext("div", {
 export type NavbarRootProps = ComponentProps<typeof NavbarRoot>;
 export type NavbarPartProps = ComponentProps<typeof NavbarBrand>;
 export type NavbarNavProps = ComponentPropsWithRef<"nav">;
+
+export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 // #endregion
 
 // #region Display Names

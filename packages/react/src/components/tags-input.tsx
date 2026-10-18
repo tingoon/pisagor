@@ -15,9 +15,8 @@ import type {
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type {
-  TagsInputItemProps as BaseTagsInputItemProps,
-  TagsInputProps as BaseTagsInputProps,
-  TagsInputProps as BaseTagsInputRootProviderProps,
+  TagsInputItemRootContract,
+  TagsInputRootContract,
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -44,7 +43,7 @@ export type TagsInputRootProps = Omit<
   TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  BaseTagsInputProps;
+  TagsInputRootContract;
 
 export interface TagsInputProps extends TagsInputRootProps {
   /**
@@ -59,7 +58,7 @@ export interface TagsInputProps extends TagsInputRootProps {
 }
 
 export interface TagsInputControlProps
-  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
+  extends TagsInputControlPrimitiveProps, TagsInputRootContract {
   /**
    * Whether to show the clear button.
    *
@@ -69,7 +68,7 @@ export interface TagsInputControlProps
 }
 
 export interface TagsInputItemProps
-  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, TagsInputItemRootContract {
   /**
    * Whether to show the clear trigger.
    *
@@ -79,7 +78,7 @@ export interface TagsInputItemProps
 }
 
 export interface TagsInputRootProviderProps
-  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputRootProviderProps {
+  extends TagsInputRootProviderPrimitiveProps, TagsInputRootContract {
   /**
    * Whether to show the clear button.
    *

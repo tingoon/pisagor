@@ -21,7 +21,7 @@ import type {
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
+import type { ColorPickerRootContract } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useMemo } from "react";
@@ -48,7 +48,7 @@ export type ColorPickerRootProps = Omit<
 >;
 
 export interface ColorPickerProps
-  extends ColorPickerRootProps, BaseColorPickerProps {
+  extends ColorPickerRootProps, ColorPickerRootContract {
   /**
    * Visual shell variant for preset field input. When omitted, resolves from
    * `Surface`.

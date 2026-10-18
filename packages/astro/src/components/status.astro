@@ -1,9 +1,9 @@
 ---
-import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span"> & BaseStatusProps;
+type Props = HTMLAttributes<"span"> & StatusRootContract;
 
 const {
   size,

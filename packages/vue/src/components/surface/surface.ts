@@ -1,4 +1,4 @@
-import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/props";
 import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
@@ -26,7 +26,7 @@ export function useSurface() {
   return useSurfaceContext();
 }
 
-export interface SurfaceProps extends BaseSurfaceProps {
+export interface SurfaceProps extends SurfaceRootContract {
   class?: unknown;
 }
 

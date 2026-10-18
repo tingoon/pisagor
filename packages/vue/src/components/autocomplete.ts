@@ -27,7 +27,7 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
 
 export interface AutocompleteProps extends Omit<
   AutocompleteRootProps,
-  "children"
+  "children" | "items"
 > {
   items?: Array<AutocompletePresetItem | string>;
   /**

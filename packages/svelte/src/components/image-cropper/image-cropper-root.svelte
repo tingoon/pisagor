@@ -3,7 +3,7 @@
     ImageCropper as ImageCropperPrimitive,
     type ImageCropperRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
+  import type { ImageCropperRootContract } from "@pisagor/props";
   import { imageCropperRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./image-cropper.context";
@@ -14,7 +14,7 @@
     alt?: string;
     cropShape?: "rectangle" | "circle";
     src?: string;
-  } & BaseImageCropperProps;
+  } & ImageCropperRootContract;
 
   let {
     alt,

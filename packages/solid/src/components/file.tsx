@@ -1,4 +1,4 @@
-import type { FileProps as BaseFileRootProps } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -13,7 +13,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface FileRootProps
-  extends ComponentProps<"div">, BaseFileRootProps {}
+  extends ComponentProps<"div">, FileRootContract {}
 
 export interface FileMediaProps
   extends ComponentProps<"div">, FileVariantProps {}
@@ -27,7 +27,8 @@ export interface FileSizeProps extends Omit<ComponentProps<"div">, "children"> {
 export type FileActionsProps = ComponentProps<"div">;
 export type FileContentProps = ComponentProps<"div">;
 
-export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
+export interface FileProps
+  extends Omit<FileRootProps, "children">, FileContract {
   size?: number;
   meta?: JSX.Element;
   name: JSX.Element;

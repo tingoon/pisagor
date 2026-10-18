@@ -3,7 +3,7 @@
     ToggleGroup as ToggleGroupPrimitive,
     type ToggleGroupRootProps as ArkToggleGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { ToggleGroupProps as BaseToggleGroupProps } from "@pisagor/props";
+  import type { ToggleGroupRootContract } from "@pisagor/props";
   import {
     type ButtonVariantProps,
     type ToggleVariantProps,
@@ -19,7 +19,7 @@
     spacing?: number;
     variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
     style?: string | undefined;
-  } & BaseToggleGroupProps;
+  } & Omit<ToggleGroupRootContract, "items">;
 
   let {
     orientation = "horizontal",

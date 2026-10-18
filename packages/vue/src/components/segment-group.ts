@@ -1,5 +1,10 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue";
-import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
+import type {
+  SegmentGroupItemContract,
+  SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
+  SegmentGroupRootContract,
+  SegmentGroupContract,
+} from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -15,13 +20,19 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Types
 export type SegmentGroupVariant = "default" | "underline";
 
-export interface SegmentGroupPresetItem {
+export interface SegmentGroupPresetItem extends Omit<
+  BaseSegmentGroupPresetItem,
+  "label"
+> {
   disabled?: boolean;
   label: VNodeChild;
   value: string;
 }
 
-export interface SegmentGroupRootProps extends BaseSegmentGroupRootProps {
+export interface SegmentGroupRootProps extends Omit<
+  SegmentGroupRootContract,
+  "items"
+> {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -31,14 +42,15 @@ export interface SegmentGroupRootProps extends BaseSegmentGroupRootProps {
   variant?: SegmentGroupVariant;
 }
 
-export interface SegmentGroupProps extends Omit<
-  SegmentGroupRootProps,
-  "children"
-> {
+export interface SegmentGroupProps
+  extends
+    Omit<SegmentGroupRootProps, "children">,
+    SegmentGroupRootContract,
+    SegmentGroupContract {
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps {
+export interface SegmentGroupItemProps extends SegmentGroupItemContract {
   class?: unknown;
   disabled?: boolean;
   text?: VNodeChild;

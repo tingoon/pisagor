@@ -3,13 +3,18 @@
     Menu as MenuPrimitive,
     type MenuTriggerItemProps,
   } from "@ark-ui/svelte";
-  import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
+  import type {
+    DropdownMenuItemRootContract,
+    DropdownMenuItemContract,
+  } from "@pisagor/props";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CaretRightIcon } from "phosphor-svelte";
   import DropdownMenuShortcut from "./dropdown-menu-shortcut.svelte";
 
-  type Props = MenuTriggerItemProps & BaseDropdownMenuItemProps;
+  type Props = MenuTriggerItemProps &
+    DropdownMenuItemRootContract &
+    DropdownMenuItemContract;
 
   let {
     recipe = dropdownMenuItemRecipe,

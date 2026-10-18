@@ -2,9 +2,9 @@
   import { ToggleGroup } from "@pisagor/svelte";
 
   const items = [
-    { children: "Bold", value: "bold" },
-    { children: "Italic", value: "italic" },
-    { children: "Underline", value: "underline" },
+    { content: "Bold", value: "bold" },
+    { content: "Italic", value: "italic" },
+    { content: "Underline", value: "underline" },
   ];
 </script>
 

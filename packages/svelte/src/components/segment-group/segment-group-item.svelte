@@ -3,11 +3,14 @@
     SegmentGroup as SegmentGroupPrimitive,
     type SegmentGroupItemProps as ArkItemProps,
   } from "@ark-ui/svelte";
+  import type { SegmentGroupItemContract } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import { useStyles } from "./segment-group.context";
 
-  type Props = ArkItemProps & { text?: Snippet | string };
+  type Props = ArkItemProps & {
+    text?: Snippet | string;
+  } & SegmentGroupItemContract;
 
   let { children, text, class: className, ...rest }: Props = $props();
   const styles = useStyles();

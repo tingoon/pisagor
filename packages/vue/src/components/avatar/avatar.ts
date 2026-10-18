@@ -3,19 +3,11 @@ import {
   AvatarImage as AvatarImagePrimitive,
   AvatarRoot as AvatarRootPrimitive,
 } from "@ark-ui/vue";
-import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
-import {
-  type AvatarRecipeSlot,
-  type AvatarVariantProps,
-  avatarRecipe,
-} from "@pisagor/recipes";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/props";
+import { type AvatarVariantProps, avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../../internal";
+import { type ClassValue, createSlotRecipeContext } from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -43,20 +35,11 @@ const AvatarFallback = withContext(AvatarFallbackPrimitive, {
 export type AvatarShape = NonNullable<AvatarVariantProps["shape"]>;
 export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 
-export type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
-
-export interface AvatarProps extends BaseAvatarProps {
-  /**
-   * Person name; used as default alt text and to derive initials when no
-   * fallback is given
-   */
-  name?: string;
-  classNames?: AvatarClassNames;
+export interface AvatarProps extends AvatarRootContract, AvatarContract {
   /** Renders the avatar image with the provided src */
   src?: string;
   /** Alt text for the avatar image */
   alt?: string;
-  /** Renders the fallback content shown until the image loads */
   fallback?: VNodeChild;
   /** Extra props forwarded to the avatar image element */
   imageProps?: Record<string, unknown>;
@@ -78,7 +61,7 @@ const AvatarShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<AvatarClassNames>,
+      type: Object as PropType<AvatarProps["classNames"]>,
     },
     fallback: {
       default: undefined,

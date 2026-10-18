@@ -1,4 +1,7 @@
-import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
+import type {
+  DataTableBodyContract,
+  DataTableRootContract,
+} from "@pisagor/props";
 import { type DataTableRecipe, dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {
@@ -49,8 +52,12 @@ export type DataTableProps<TData extends RowData = RowData> = {
    * @defaultValue dataTableFeatures
    */
   features?: DataTableFeatures;
-} & BaseDataTableProps &
+} & DataTableRootContract &
   Omit<TableOptions<DataTableFeatures, TData>, "features">;
+
+interface DataTableBodyProps extends DataTableBodyContract {
+  empty?: VNodeChild;
+}
 // #endregion
 
 // #region Context + Hooks
@@ -301,7 +308,7 @@ export const DataTableBody = defineComponent({
     empty: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<
-        VNodeChild | undefined
+        DataTableBodyProps["empty"]
       >,
     },
   },

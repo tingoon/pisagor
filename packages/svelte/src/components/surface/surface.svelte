@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
+  import type { SurfaceRootContract } from "@pisagor/props";
   import { surfaceRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -18,7 +18,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseSurfaceProps;
+  } & SurfaceRootContract;
 
   let {
     bordered = false,

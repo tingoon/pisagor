@@ -1,8 +1,8 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
-  ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
-  ResizableProps as BaseResizableRootProps,
+  ResizableEdgeHandleRootContract,
+  ResizableRootContract,
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
@@ -20,7 +20,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps extends BaseResizableEdgeHandleProps {
+export interface ResizableEdgeHandleProps extends ResizableEdgeHandleRootContract {
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
   label: string;
@@ -38,7 +38,7 @@ export interface ResizableEdgeHandleProps extends BaseResizableEdgeHandleProps {
 }
 
 // We keep the primitive wrapper types intentionally loose; `h()` polymorphic casts.
-export interface ResizableRootProps extends BaseResizableRootProps {
+export interface ResizableRootProps extends ResizableRootContract {
   class?: unknown;
 }
 

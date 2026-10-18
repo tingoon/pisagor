@@ -1,5 +1,4 @@
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
-import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
 import type {
   ColumnDef,
@@ -11,6 +10,7 @@ import {
   renderDataGridCell,
   useDataGrid,
 } from "@pisagor/react/data-grid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import type { ExpandedState, RowData } from "@tanstack/react-table";
 import { Fragment, type ReactNode, useMemo, useState } from "react";
 
@@ -56,7 +56,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<User["status"], BadgeVariant> = {
+const statusVariants: Record<
+  User["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

@@ -1,5 +1,9 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue";
-import type { DialogProps as BaseDialogProps } from "@pisagor/props";
+import type {
+  DialogContract,
+  DialogHeaderContract,
+  DialogRootContract,
+} from "@pisagor/props";
 import {
   type DialogRecipe,
   type DialogVariantProps,
@@ -49,7 +53,7 @@ export interface DialogBodyProps {
   scrollFade?: boolean;
 }
 
-export interface DialogHeaderProps {
+export interface DialogHeaderProps extends DialogHeaderContract {
   class?: unknown;
   dataPart?: string;
   dataScope?: string;
@@ -57,10 +61,14 @@ export interface DialogHeaderProps {
   title?: string;
 }
 
-export interface DialogProps extends BaseDialogProps {
+export interface DialogProps extends DialogRootContract, DialogContract {
+  actions?: VNodeChild;
   collapsible?: boolean;
+  description?: string;
   lazyMount?: boolean;
   modal?: boolean;
+  title?: string;
+  trigger?: VNodeChild;
   unmountOnExit?: boolean;
 }
 // #endregion

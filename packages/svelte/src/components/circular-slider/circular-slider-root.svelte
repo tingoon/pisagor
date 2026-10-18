@@ -4,7 +4,7 @@
     type AngleSliderHiddenInputProps,
     type AngleSliderRootProps,
   } from "@ark-ui/svelte";
-  import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
+  import type { CircularSliderRootContract } from "@pisagor/props";
   import { circularSliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import {
@@ -20,7 +20,7 @@
       markers?: boolean | number[];
       markersAtSteps?: boolean;
       onValueChange?: (value: number) => void;
-    } & BaseCircularSliderProps;
+    } & CircularSliderRootContract;
 
   let {
     size = 100,

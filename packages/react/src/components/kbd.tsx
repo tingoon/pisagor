@@ -1,15 +1,13 @@
-import type {
-  KbdGroupProps as BaseKbdGroupProps,
-  KbdProps as BaseKbdProps,
-} from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
 // #region Types
-export interface KbdProps extends ComponentPropsWithRef<"kbd">, BaseKbdProps {}
+export interface KbdProps
+  extends ComponentPropsWithRef<"kbd">, KbdRootContract {}
 
 export interface KbdGroupProps
-  extends ComponentPropsWithRef<"div">, BaseKbdGroupProps {}
+  extends ComponentPropsWithRef<"div">, KbdGroupRootContract {}
 // #endregion
 
 // #region Parts

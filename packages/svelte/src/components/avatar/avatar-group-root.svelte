@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
+  import type { AvatarGroupRootContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./avatar-group.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & BaseAvatarGroupProps;
+  type Props = HTMLAttributes<HTMLDivElement> & AvatarGroupRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

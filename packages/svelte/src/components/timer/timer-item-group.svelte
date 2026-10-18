@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TimerItemGroupProps as BaseTimerItemGroupProps } from "@pisagor/props";
+  import type { TimerItemGroupRootContract } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withTimerItemGroupProvider } from "./timer.context";
 
@@ -10,7 +10,7 @@
      * @defaultValue "vertical"
      */
     orientation?: "horizontal" | "vertical";
-  } & BaseTimerItemGroupProps;
+  } & TimerItemGroupRootContract;
 
   let { orientation = "vertical", children, ...rest }: Props = $props();
   const root = withTimerItemGroupProvider(() => rest, {

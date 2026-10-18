@@ -1,18 +1,13 @@
-import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+import type {
+  AspectRatioRootContract,
+  AspectRatioContract,
+} from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface AspectRatioProps
-  extends ComponentProps<"div">, BaseAspectRatioProps {
-  /**
-   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
-   * variable.
-   *
-   * @defaultValue 1
-   */
-  ratio?: number;
-}
+  extends ComponentProps<"div">, AspectRatioRootContract, AspectRatioContract {}
 
 export function AspectRatio(props: AspectRatioProps): JSX.Element {
   const [local, rest] = splitProps(props, [

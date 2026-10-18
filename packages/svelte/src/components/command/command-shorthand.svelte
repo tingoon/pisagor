@@ -4,9 +4,7 @@
   export interface CommandShorthandItem {
     /** Optional group heading. */
     group?: string;
-    /** Leading icon component. */
     icon?: Component;
-    /** Visible label, also used for filtering. */
     label: string;
     /** Keyboard shortcut hint. */
     shortcut?: string;
@@ -17,6 +15,7 @@
 
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
+  import type { CommandRootContract, CommandContract } from "@pisagor/props";
   import type { ComponentProps } from "svelte";
   import { useLocale } from "../provider/context";
   import CommandContent from "./command-content.svelte";
@@ -33,13 +32,11 @@
     ComponentProps<typeof CommandRoot>,
     "collection" | "children"
   > & {
-    /** Text shown when nothing matches. */
     emptyText?: string;
-    /** Items to render; filtering and grouping are handled for you. */
     items: CommandShorthandItem[];
-    /** Input placeholder. */
     placeholder?: string;
-  };
+  } & CommandRootContract &
+    CommandContract;
 
   let { emptyText, items, placeholder, onInputValueChange, ...rest }: Props =
     $props();

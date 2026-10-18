@@ -1,9 +1,9 @@
 ---
-import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span"> & BaseVisuallyHiddenProps;
+type Props = HTMLAttributes<"span"> & VisuallyHiddenRootContract;
 
 const {
   recipe = visuallyHiddenRecipe,

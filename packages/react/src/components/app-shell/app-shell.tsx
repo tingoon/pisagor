@@ -1,5 +1,5 @@
 import { useHotkey } from "@ark-ui/react";
-import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
+import type { AppShellRootContract } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import {
   type ComponentProps,
@@ -70,7 +70,7 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
 }
 
 export interface AppShellRootProps
-  extends ComponentProps<"div">, BaseAppShellRootProps {
+  extends ComponentProps<"div">, AppShellRootContract {
   /**
    * Whether to disable the `mod+\` hotkey that toggles the start panel.
    *

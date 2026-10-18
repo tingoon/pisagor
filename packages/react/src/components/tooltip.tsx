@@ -7,11 +7,11 @@ import type {
   TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
 } from "@ark-ui/react";
-import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/props";
+import { tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactElement, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
@@ -22,7 +22,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipRootPrimitiveProps, BaseTooltipRootProps {}
+  extends TooltipRootPrimitiveProps, TooltipRootContract {}
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
@@ -34,18 +34,16 @@ export type TooltipTriggerHandle = (
   props: TooltipTriggerHandleProps,
 ) => ReactElement;
 
-export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
+export interface TooltipProps
+  extends Omit<TooltipRootProps, "children">, TooltipContract {
   /**
    * Trigger element or render function that receives trigger props from the
    * handle API
    */
   children: ReactElement | TooltipTriggerHandle;
-  /** Tooltip text or content */
   content: ReactNode;
   /** Class merged onto the tooltip content element */
   className?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<TooltipRecipeSlot>;
   /**
    * Whether to render the arrow pointing at the trigger.
    *

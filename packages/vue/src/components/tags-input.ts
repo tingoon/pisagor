@@ -5,8 +5,8 @@ import {
 } from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
 import type {
-  TagsInputItemProps as BaseTagsInputItemProps,
-  TagsInputProps as BaseTagsInputProps,
+  TagsInputItemRootContract,
+  TagsInputRootContract,
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -65,7 +65,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 type TagsInputSize = NonNullable<InputGroupProps["size"]>;
 
-export interface TagsInputProps extends BaseTagsInputProps {
+export interface TagsInputProps extends TagsInputRootContract {
   class?: ClassValue;
   clearable?: boolean;
   defaultValue?: string[];
@@ -79,7 +79,7 @@ export interface TagsInputProps extends BaseTagsInputProps {
   tabIndex?: number;
 }
 
-export interface TagsInputItemProps extends BaseTagsInputItemProps {
+export interface TagsInputItemProps extends TagsInputItemRootContract {
   class?: ClassValue;
   disabled?: boolean;
   showDelete?: boolean;
@@ -89,11 +89,11 @@ export interface TagsInputItemProps extends BaseTagsInputItemProps {
 // #endregion
 
 // #region Types
-export interface TagsInputItemDeleteTriggerProps extends BaseTagsInputItemProps {
+export interface TagsInputItemDeleteTriggerProps extends TagsInputItemRootContract {
   class?: unknown;
 }
 
-export interface TagsInputInputProps extends BaseTagsInputProps {
+export interface TagsInputInputProps extends TagsInputRootContract {
   class?: unknown;
 }
 // #endregion

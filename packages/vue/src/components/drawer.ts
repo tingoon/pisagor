@@ -1,5 +1,9 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue";
-import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+import type {
+  DrawerHeaderContract,
+  DrawerRootContract,
+  DrawerContract,
+} from "@pisagor/props";
 import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes";
 import {
   computed,
@@ -28,7 +32,7 @@ interface DrawerContextValue {
   slots: DrawerRecipe;
 }
 
-export interface DrawerHeaderProps {
+export interface DrawerHeaderProps extends DrawerHeaderContract {
   class?: unknown;
   description?: string;
   title?: string;
@@ -39,7 +43,7 @@ export interface DrawerBodyProps {
   scrollFade?: boolean;
 }
 
-export interface DrawerProps extends BaseDrawerProps {
+export interface DrawerProps extends DrawerRootContract, DrawerContract {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }

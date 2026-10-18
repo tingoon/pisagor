@@ -1,15 +1,14 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
-import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
+import type { ClipboardContract, ClipboardRootContract } from "@pisagor/props";
 import {
-  type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
   formControlShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { ClassValue, VariantClassNames } from "../internal";
+import type { ClassValue } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -17,19 +16,12 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
-
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export interface ClipboardProps extends BaseClipboardProps {
+export interface ClipboardProps
+  extends ClipboardRootContract, ClipboardContract {
   class?: unknown;
-  /** Slot class names */
-  classNames?: ClipboardClassNames;
-  /** Visual shell variant for input/value display modes. Defaults to `primary`. */
-  controlVariant?: FormControlVariant;
-  /** Icon shown after a successful copy */
   copiedIcon?: VNodeChild;
-  /** Icon shown before copying */
   copyIcon?: VNodeChild;
   /**
    * The initial value to be copied to the clipboard when rendered. Use when you
@@ -38,7 +30,6 @@ export interface ClipboardProps extends BaseClipboardProps {
   defaultValue?: string;
   /** The ids of the elements in the clipboard. Useful for composition. */
   ids?: Partial<{ input: string; label: string; root: string }>;
-  /** Optional label rendered above the control. */
   label?: string;
   /** Extra props forwarded to the label element */
   labelProps?: Record<string, unknown>;
@@ -59,12 +50,6 @@ export interface ClipboardProps extends BaseClipboardProps {
   translations?: { triggerLabel?: (copied: boolean) => string };
   /** The controlled value of the clipboard. */
   value?: string;
-  /**
-   * Display mode for the copy control.
-   *
-   * @defaultValue "input"
-   */
-  variant?: "button" | "input" | "value";
 }
 // #endregion
 
@@ -90,7 +75,7 @@ export const Clipboard = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<ClipboardClassNames>,
+      type: Object as PropType<ClipboardProps["classNames"]>,
     },
     controlVariant: {
       default: undefined,

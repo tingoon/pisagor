@@ -3,7 +3,12 @@ import {
   type SegmentGroupItemProps as SegmentGroupItemPrimitiveProps,
   type SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
+import type {
+  SegmentGroupItemContract,
+  SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
+  SegmentGroupRootContract,
+  SegmentGroupContract,
+} from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -18,16 +23,17 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Types
 type SegmentGroupVariant = "default" | "underline";
 
-interface SegmentGroupPresetItem {
-  value: string;
+interface SegmentGroupPresetItem extends Omit<
+  BaseSegmentGroupPresetItem,
+  "label"
+> {
   label: ReactNode;
-  disabled?: boolean;
 }
 
 export interface SegmentGroupRootProps
   extends
     Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
-    BaseSegmentGroupRootProps {
+    Omit<SegmentGroupRootContract, "items"> {
   /**
    * The visual variant of the segment group.
    *
@@ -37,24 +43,26 @@ export interface SegmentGroupRootProps
   onValueChange?: (value: string | null) => void;
 }
 
-export interface SegmentGroupProps extends Omit<
-  SegmentGroupRootProps,
-  "children"
-> {
+export interface SegmentGroupProps
+  extends
+    Omit<SegmentGroupRootProps, "children" | "recipe">,
+    SegmentGroupRootContract,
+    SegmentGroupContract {
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupItemPrimitiveProps {
+export interface SegmentGroupItemProps
+  extends SegmentGroupItemPrimitiveProps, SegmentGroupItemContract {
   text?: ReactNode;
 }
 // #endregion
 
 // #region Parts
-const SegmentGroupRootBase = withProvider(SegmentGroupPrimitive.Root, {
+const SegmentGroupRootBase = withProvider(SegmentGroupPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  SegmentGroupRootPrimitiveProps & BaseSegmentGroupRootProps
+  SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 >;
 
 export function SegmentGroupRoot({

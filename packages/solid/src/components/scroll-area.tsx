@@ -5,15 +5,17 @@ import type {
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/solid";
-import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
+import type {
+  ScrollAreaContract,
+  ScrollAreaRootContract,
+} from "@pisagor/props";
 import {
-  type ScrollAreaRecipeSlot,
   type ScrollAreaVariantProps,
   scrollAreaRecipe,
 } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -24,11 +26,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 type ScrollAreaRootProps = ScrollAreaRootPrimitiveProps &
   ScrollAreaVariantProps &
-  BaseScrollAreaRootProps;
+  ScrollAreaRootContract;
 
-export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
+export interface ScrollAreaProps
+  extends Omit<ScrollAreaRootProps, "children">, ScrollAreaContract {
   children?: JSX.Element;
-  classNames?: VariantClassNames<ScrollAreaRecipeSlot>;
   scrollbarProps?: Omit<
     ScrollAreaScrollbarProps,
     "children" | "class" | "orientation"

@@ -1,6 +1,11 @@
 import { ark } from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+import type {
+  ActionBarActionItem as BaseActionBarActionItem,
+  ActionBarRootContract,
+  ActionBarContract,
+  ActionBarValueContract,
+} from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import {
   computed,
@@ -75,7 +80,10 @@ function useActionBar() {
 // #endregion
 
 // #region Types
-interface ActionBarActionItem {
+interface ActionBarActionItem extends Omit<
+  BaseActionBarActionItem,
+  "icon" | "label"
+> {
   icon?: VNodeChild;
   /** Stable key; defaults to `label`. */
   id?: string;
@@ -87,7 +95,8 @@ interface ActionBarActionItem {
 export interface ActionBarProps
   extends
     Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
-    BaseActionBarProps {
+    ActionBarRootContract,
+    ActionBarContract {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -101,7 +110,7 @@ export interface ActionBarTriggerProps {
   onClick?: (event: MouseEvent) => void;
 }
 
-export interface ActionBarContentProps extends BaseActionBarProps {
+export interface ActionBarContentProps extends ActionBarRootContract {
   class?: unknown;
   "aria-labelledby"?: string;
 }
@@ -113,10 +122,10 @@ export interface ActionBarCloseProps {
   class?: unknown;
 }
 
-export interface ActionBarValueProps extends Pick<
-  BadgeProps,
-  "class" | "pill" | "size" | "variant"
-> {
+export interface ActionBarValueProps
+  extends
+    Pick<BadgeProps, "class" | "pill" | "size" | "variant">,
+    ActionBarValueContract {
   count: number;
   label?: string;
   children?: VNodeChild;

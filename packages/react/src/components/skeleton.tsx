@@ -1,14 +1,10 @@
-import type {
-  SkeletonProps as BaseSkeletonCircleProps,
-  SkeletonProps as BaseSkeletonRootProps,
-  SkeletonProps as BaseSkeletonTextProps,
-} from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface SkeletonTextProps
-  extends ComponentPropsWithRef<"div">, BaseSkeletonTextProps {
+  extends ComponentPropsWithRef<"div">, SkeletonRootContract {
   /**
    * The number of lines of the skeleton text.
    *
@@ -18,10 +14,10 @@ export interface SkeletonTextProps
 }
 
 export interface SkeletonRootProps
-  extends ComponentPropsWithRef<"div">, BaseSkeletonRootProps {}
+  extends ComponentPropsWithRef<"div">, SkeletonRootContract {}
 
 export interface SkeletonCircleProps
-  extends ComponentPropsWithRef<"div">, BaseSkeletonCircleProps {}
+  extends ComponentPropsWithRef<"div">, SkeletonRootContract {}
 // #endregion
 
 // #region Parts

@@ -3,13 +3,14 @@ import {
   type UseHighlightProps,
   useHighlight,
 } from "@ark-ui/vue";
-import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
+import type { HighlightRootContract } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
 import type { ClassValue } from "tailwind-variants";
 import { computed, defineComponent, Fragment, h, type PropType } from "vue";
 
 // #region Types
-export interface HighlightProps extends UseHighlightProps, BaseHighlightProps {
+export interface HighlightProps
+  extends UseHighlightProps, HighlightRootContract {
   class?: unknown;
 }
 // #endregion

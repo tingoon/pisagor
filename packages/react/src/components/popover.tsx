@@ -9,7 +9,11 @@ import type {
   PopoverTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
+import type {
+  PopoverContract,
+  PopoverHeaderContract,
+  PopoverRootContract,
+} from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -30,7 +34,7 @@ const {
 
 // #region Types
 export interface PopoverContentProps
-  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, PopoverRootContract {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -39,16 +43,17 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentPropsWithRef<"div"> {
-  /** The description of the popover header */
+export interface PopoverHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, PopoverHeaderContract {
   description?: string;
-  /** The title of the popover header */
   title?: string;
 }
 
 export type PopoverBodyProps = ComponentPropsWithRef<"div">;
 
 export type PopoverFooterProps = ComponentPropsWithRef<"div">;
+
+export interface PopoverProps extends PopoverRootProps, PopoverContract {}
 // #endregion
 
 // #region Parts

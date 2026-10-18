@@ -20,9 +20,9 @@ import type {
   TreeViewTreeProps,
 } from "@ark-ui/solid";
 import type {
-  TreeViewBranchProps as BaseTreeViewBranchProps,
-  TreeViewItemProps as BaseTreeViewItemProps,
-  TreeViewProps as BaseTreeViewProps,
+  TreeViewBranchRootContract,
+  TreeViewItemRootContract,
+  TreeViewRootContract,
 } from "@pisagor/props";
 import {
   formControlToggleRecipe,
@@ -83,13 +83,16 @@ export interface TreeNodeType<T = unknown> {
 export type TreeCollection = arkTreeCollection;
 
 export interface TreeViewProps
-  extends TreeViewRootComponentProps, TreeViewContextProps, BaseTreeViewProps {}
+  extends
+    TreeViewRootComponentProps,
+    TreeViewContextProps,
+    TreeViewRootContract {}
 
 export interface TreeViewBranchProps
-  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, TreeViewBranchRootContract {}
 
 export interface TreeViewItemProps
-  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, TreeViewItemRootContract {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;

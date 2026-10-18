@@ -7,10 +7,7 @@ import type {
   StepsRootProps as StepsRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
-import type {
-  StepsItemProps as BaseStepsItemProps,
-  StepsProps as BaseStepsRootProps,
-} from "@pisagor/props";
+import type { StepsItemRootContract, StepsRootContract } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -34,10 +31,10 @@ const {
 
 // #region Types
 export interface StepsRootProps
-  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, StepsRootContract {}
 
 export interface StepsItemProps
-  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, StepsItemRootContract {}
 
 export type StepsTitleProps = ComponentPropsWithRef<"span">;
 
@@ -45,7 +42,7 @@ export type StepsDescriptionProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
-export const StepsRoot = withStepsProvider(StepsPrimitive.Root, {
+export const StepsRoot = withStepsProvider(StepsPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<StepsRootProps>;
@@ -54,7 +51,7 @@ export const StepsList = withStepsContext(StepsPrimitive.List, {
   name: "List",
 });
 
-export const StepsItem = withStepsItemProvider(StepsPrimitive.Item, {
+export const StepsItem = withStepsItemProvider(StepsPrimitive.Item)({
   name: "Item",
   slot: "base",
 }) as FunctionComponent<StepsItemProps>;

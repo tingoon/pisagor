@@ -4,7 +4,7 @@
     type SwapIndicatorProps,
     type SwapRootProps,
   } from "@ark-ui/svelte";
-  import type { SwapProps as BaseSwapProps } from "@pisagor/props";
+  import type { SwapRootContract, SwapContract } from "@pisagor/props";
   import { swapRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -15,7 +15,8 @@
     on?: Snippet;
     offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
     onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
-  } & BaseSwapProps;
+  } & SwapRootContract &
+    SwapContract;
 
   let {
     variant = "fade",

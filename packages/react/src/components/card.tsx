@@ -1,12 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
-import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
+import { ark } from "@ark-ui/react";
 import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+  CardContract,
+  CardHeaderContract,
+  CardRootContract,
+} from "@pisagor/props";
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -17,10 +16,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider(ark.div, {
+export const CardRoot = withProvider(ark.div)<CardRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseCardRootProps>;
+});
 
 export function CardMedia({
   variant = "default",
@@ -46,15 +45,7 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & {
-  /** Supporting text rendered in `Card.Description`. */
-  description?: ReactNode;
-  /**
-   * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
-   * for another level).
-   */
-  title?: ReactNode;
-}) {
+}: CardHeaderProps) {
   const { slots } = useStyles();
 
   return (
@@ -102,12 +93,18 @@ export const CardFooter = withContext("div", {
 // #region Types
 export type CardRootProps = ComponentProps<typeof CardRoot>;
 export type CardMediaProps = ComponentProps<typeof CardMedia>;
-export type CardHeaderProps = ComponentProps<typeof CardHeader>;
+export interface CardHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, CardHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 export type CardTitleProps = ComponentProps<typeof CardTitle>;
 export type CardDescriptionProps = ComponentProps<typeof CardDescription>;
 export type CardActionProps = ComponentProps<typeof CardAction>;
 export type CardContentProps = ComponentProps<typeof CardContent>;
 export type CardFooterProps = ComponentProps<typeof CardFooter>;
+
+export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 CardMedia.displayName = "Card.Media";

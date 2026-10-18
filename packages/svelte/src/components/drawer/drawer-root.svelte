@@ -3,11 +3,11 @@
     Drawer as DrawerPrimitive,
     type DrawerRootProps,
   } from "@ark-ui/svelte";
-  import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+  import type { DrawerRootContract } from "@pisagor/props";
   import { drawerRecipe } from "@pisagor/recipes";
   import { Context } from "./drawer.context";
 
-  type Props = DrawerRootProps & BaseDrawerProps;
+  type Props = DrawerRootProps & DrawerRootContract;
 
   let { recipe = drawerRecipe, children, ...rest }: Props = $props();
   const slots = $derived(recipe());

@@ -1,4 +1,7 @@
-import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
+import type {
+  DataGridBodyContract,
+  DataGridRootContract,
+} from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";
@@ -43,7 +46,7 @@ export type DataGridProps<TData extends RowData> = {
    */
   features?: DataGridFeatures;
 } & Omit<TableOptions<DataGridFeatures, TData>, "features"> &
-  BaseDataGridProps;
+  DataGridRootContract;
 
 interface DataGridHeaderProps {
   children: ReactNode;
@@ -67,9 +70,8 @@ interface DataGridHeadProps extends TableHeadProps {
   filter?: boolean;
 }
 
-interface DataGridBodyProps {
+interface DataGridBodyProps extends DataGridBodyContract {
   children: ReactNode;
-  /** Shown when the row model is empty. */
   empty?: ReactNode;
 }
 

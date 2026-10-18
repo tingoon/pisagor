@@ -4,7 +4,7 @@
     Combobox as ComboboxPrimitive,
     type ComboboxRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
+  import type { ComboboxRootContract } from "@pisagor/props";
   import {
     comboboxRecipe,
     type FormControlGroupShellVariantProps,
@@ -19,7 +19,7 @@
     variant?: FormControlVariant;
     /** Input size. Defaults to `md`. */
     size?: FormControlGroupShellVariantProps["size"];
-  } & BaseComboboxProps;
+  } & Omit<ComboboxRootContract, "items">;
 
   let {
     openOnClick = true,

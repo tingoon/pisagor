@@ -1,9 +1,9 @@
 ---
-import type { LinkBoxProps as BaseLinkBoxProps } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./link-box.context";
 
-type Props = HTMLAttributes<"div"> & BaseLinkBoxProps;
+type Props = HTMLAttributes<"div"> & LinkBoxRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

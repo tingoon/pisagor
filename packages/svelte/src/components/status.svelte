@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+  import type { StatusRootContract } from "@pisagor/props";
   import { statusRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseStatusProps;
+  } & StatusRootContract;
 
   let {
     recipe = statusRecipe,

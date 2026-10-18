@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { BottomNavigationItemProps as BaseBottomNavigationItemProps } from "@pisagor/props";
+  import type { BottomNavigationItemRootContract } from "@pisagor/props";
   import type { HTMLAnchorAttributes } from "svelte/elements";
   import {
     useBottomNavigationValue,
@@ -8,7 +8,7 @@
   } from "./bottom-navigation.context";
 
   type Props = HTMLAnchorAttributes &
-    BaseBottomNavigationItemProps & {
+    BottomNavigationItemRootContract & {
       /** Marks the item as the current page. Defaults to `value === root value`. */
       current?: boolean;
       /** Whether the item is disabled. */

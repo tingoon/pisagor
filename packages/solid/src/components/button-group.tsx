@@ -1,4 +1,4 @@
-import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
+import type { ButtonGroupRootContract } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -14,7 +14,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface ButtonGroupProps
-  extends ComponentProps<"fieldset">, BaseButtonGroupProps {}
+  extends ComponentProps<"fieldset">, ButtonGroupRootContract {}
 
 export type ButtonGroupTextProps = ComponentProps<"div">;
 // #endregion

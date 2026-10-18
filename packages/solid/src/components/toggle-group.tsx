@@ -3,7 +3,11 @@ import {
   type ToggleGroupItemProps,
   type ToggleGroupRootProps as ToggleGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
+import type {
+  ToggleGroupPresetItem as BaseToggleGroupPresetItem,
+  ToggleGroupRootContract,
+  ToggleGroupContract,
+} from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
@@ -54,24 +58,26 @@ function useToggleGroup() {
 }
 // #endregion
 
-interface ToggleGroupPresetItem {
-  value: string;
-  children: JSX.Element;
-  disabled?: boolean;
+interface ToggleGroupPresetItem extends Omit<
+  BaseToggleGroupPresetItem,
+  "content"
+> {
+  content: JSX.Element;
 }
 
 export interface ToggleGroupRootProps
   extends
     Omit<ToggleGroupRootPrimitiveProps, "onValueChange">,
     ToggleGroupItemOptions,
-    BaseToggleGroupRootProps {
+    Omit<ToggleGroupRootContract, "items"> {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface ToggleGroupProps extends Omit<
-  ToggleGroupRootProps,
-  "children"
-> {
+export interface ToggleGroupProps
+  extends
+    Omit<ToggleGroupRootProps, "children" | "recipe">,
+    ToggleGroupRootContract,
+    ToggleGroupContract {
   items?: ToggleGroupPresetItem[];
 }
 
@@ -170,7 +176,7 @@ export function ToggleGroupShorthand(props: ToggleGroupProps): JSX.Element {
       <For each={local.items}>
         {(item) => (
           <ToggleGroupItem disabled={item.disabled} value={item.value}>
-            {item.children}
+            {item.content}
           </ToggleGroupItem>
         )}
       </For>

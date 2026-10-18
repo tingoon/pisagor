@@ -3,10 +3,13 @@
     Combobox as ComboboxPrimitive,
     type ComboboxItemGroupProps as ArkProps,
   } from "@ark-ui/svelte";
+  import type { ComboboxItemGroupContract } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import ComboboxItemGroupLabel from "./combobox-item-group-label.svelte";
 
-  type Props = ArkProps & { heading?: string | Snippet };
+  type Props = ArkProps & {
+    heading?: string | Snippet;
+  } & ComboboxItemGroupContract;
 
   let { children, heading, ...rest }: Props = $props();
 </script>

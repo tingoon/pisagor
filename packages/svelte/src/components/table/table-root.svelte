@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TableProps as BaseTableProps } from "@pisagor/props";
+  import type { TableRootContract } from "@pisagor/props";
   import { tableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@
   type Props = HTMLAttributes<HTMLTableElement> & {
     isHoverable?: boolean;
     variant?: "plain" | "striped";
-  } & BaseTableProps;
+  } & TableRootContract;
 
   let {
     variant = "plain",

@@ -3,7 +3,7 @@ import {
   usePaginationContext,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
+import type { PaginationRootContract } from "@pisagor/props";
 import { buttonRecipe, paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -29,7 +29,7 @@ export interface PaginationItemLinkProps extends ButtonProps {
   page?: "previous" | "next" | number;
 }
 
-export interface PaginationRootProps extends BasePaginationRootProps {
+export interface PaginationRootProps extends PaginationRootContract {
   class?: unknown;
 }
 // #endregion

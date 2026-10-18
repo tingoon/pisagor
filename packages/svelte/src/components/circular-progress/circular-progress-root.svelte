@@ -3,10 +3,10 @@
     Progress as ProgressPrimitive,
     type ProgressRootProviderProps,
   } from "@ark-ui/svelte";
-  import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
+  import type { CircularProgressRootContract } from "@pisagor/props";
   import { withProvider } from "./circular-progress.context";
 
-  type Props = ProgressRootProviderProps & BaseCircularProgressProps;
+  type Props = ProgressRootProviderProps & CircularProgressRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

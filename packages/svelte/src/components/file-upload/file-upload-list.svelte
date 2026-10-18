@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useFileUploadContext } from "@ark-ui/svelte";
-  import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
+  import type { FileUploadItemRootContract } from "@pisagor/props";
   import { fileUploadItemRecipe } from "@pisagor/recipes";
   import { cn, type MessageKey } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";
@@ -14,7 +14,7 @@
   import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
   import FileUploadItemSize from "./file-upload-item-size.svelte";
 
-  type Props = { class?: ClassValue } & BaseFileUploadItemProps;
+  type Props = { class?: ClassValue } & FileUploadItemRootContract;
 
   let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
   const api = useFileUploadContext();

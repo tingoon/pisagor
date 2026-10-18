@@ -5,7 +5,7 @@ import type {
   MarqueeItemProps,
   MarqueeRootProps as MarqueeRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -19,17 +19,23 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface MarqueeRootProps
-  extends Omit<MarqueeRootPrimitiveProps, "side">, BaseMarqueeRootProps {
+  extends
+    Omit<MarqueeRootPrimitiveProps, "side">,
+    Omit<MarqueeRootContract, "items"> {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
 }
 
-export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
+export interface MarqueeProps
+  extends
+    Omit<MarqueeRootProps, "children" | "recipe">,
+    MarqueeRootContract,
+    MarqueeContract {
   items?: JSX.Element[];
 }
 
 const MarqueeRootProvider: Component<
-  MarqueeRootPrimitiveProps & BaseMarqueeRootProps
+  MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
 > = withProvider(MarqueePrimitive.Root, { name: "Root", slot: "base" });
 
 export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
+  import type { DataTableRootContract } from "@pisagor/props";
   import { dataTableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { RowData, TableOptions } from "@tanstack/svelte-table";
@@ -17,7 +17,7 @@
     children?: import("svelte").Snippet;
     features?: DataTableFeatures;
   } & Omit<TableOptions<DataTableFeatures, RowData>, "features"> &
-    BaseDataTableProps;
+    DataTableRootContract;
 
   let {
     children,

@@ -3,18 +3,17 @@
     Slider as SliderPrimitive,
     type SliderRootProps,
   } from "@ark-ui/svelte";
-  import type { SliderProps as BaseSliderProps } from "@pisagor/props";
-  import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
+  import type { SliderContract, SliderRootContract } from "@pisagor/props";
+  import { sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal";
+
   import { setSliderContext } from "./slider.context";
 
   type FormControlVariant = "primary" | "secondary";
 
   type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
     children?: Snippet;
-    classNames?: VariantClassNames<SliderRecipeSlot>;
     label?: string;
     markerInterval?: number;
     markerLabels?: string[];
@@ -23,7 +22,8 @@
     showValue?: boolean;
     tabindex?: number | null;
     variant?: FormControlVariant;
-  } & BaseSliderProps;
+  } & SliderRootContract &
+    SliderContract;
 
   let {
     variant: variantProp,

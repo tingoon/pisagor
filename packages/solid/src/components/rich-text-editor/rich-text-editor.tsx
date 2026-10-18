@@ -1,4 +1,4 @@
-import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
@@ -34,7 +34,7 @@ type FormControlVariant = "primary" | "secondary";
 export interface RichTextEditorRootProps
   extends
     Omit<ComponentProps<"div">, "defaultValue" | "onChange">,
-    BaseRichTextEditorRootProps {
+    RichTextEditorRootContract {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;

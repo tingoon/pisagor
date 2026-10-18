@@ -1,17 +1,13 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue";
-import type { InputProps as BaseInputProps } from "@pisagor/props";
-import {
-  type InputRecipeSlot,
-  inputRecipe,
-  inputRootRecipe,
-} from "@pisagor/recipes";
+import type { InputContract, InputRootContract } from "@pisagor/props";
+import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../../hooks/use-clearable-input";
-import type { ClassValue, VariantClassNames } from "../../internal";
+import type { ClassValue } from "../../internal";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
@@ -19,27 +15,24 @@ import { InputClearAddon } from "./input-clear-button";
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type InputClassNames = VariantClassNames<InputRecipeSlot>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface InputProps extends BaseInputProps {
-  /**
-   * Style recipe. Defaults to `inputRootRecipe` from
-   * `@pisagor/recipes/input-root`.
-   *
-   * @defaultValue inputRootRecipe
-   */
-  rootRecipe?: typeof inputRootRecipe;
+export interface InputProps extends InputRootContract, InputContract {
   class?: unknown;
-  classNames?: InputClassNames;
   clearable?: boolean;
   defaultValue?: string | number | readonly string[];
   disabled?: boolean;
   onChange?: ClearableInputChangeHandler;
   onValueChange?: (value: string) => void;
   readOnly?: boolean;
+  /**
+   * Clearable-slot style recipe.
+   *
+   * @defaultValue inputRecipe
+   */
+  slotRecipe?: typeof inputRecipe;
   type?: string;
   value?: string | number | readonly string[];
 }
@@ -56,7 +49,7 @@ export const Input = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<InputClassNames>,
+      type: Object as PropType<InputProps["classNames"]>,
     },
     clearable: { default: false, type: Boolean },
     defaultValue: {
@@ -74,12 +67,12 @@ export const Input = defineComponent({
     },
     readOnly: { default: undefined, type: Boolean },
     recipe: {
-      default: inputRecipe,
-      type: Function as PropType<typeof inputRecipe>,
-    },
-    rootRecipe: {
       default: inputRootRecipe,
       type: Function as PropType<typeof inputRootRecipe>,
+    },
+    slotRecipe: {
+      default: inputRecipe,
+      type: Function as PropType<typeof inputRecipe>,
     },
     size: { default: "md", type: String as PropType<InputProps["size"]> },
     type: { default: "text", type: String },
@@ -126,7 +119,7 @@ export const Input = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = props.recipe();
+      const slots = props.slotRecipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange
@@ -143,7 +136,7 @@ export const Input = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            props.rootRecipe({ size: props.size, ...shellArgs }),
+            props.recipe({ size: props.size, ...shellArgs }),
             props.class,
           ),
           "data-size": props.size,

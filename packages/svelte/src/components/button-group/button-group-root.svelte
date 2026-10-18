@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
+  import type { ButtonGroupRootContract } from "@pisagor/props";
   import type { HTMLFieldsetAttributes } from "svelte/elements";
   import { withProvider } from "./button-group.context";
 
   type Props = HTMLFieldsetAttributes & {
     children?: import("svelte").Snippet;
-  } & BaseButtonGroupProps;
+  } & ButtonGroupRootContract;
 
   let { children, ...rest }: Props = $props();
 
