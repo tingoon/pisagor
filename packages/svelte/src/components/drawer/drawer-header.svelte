@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./drawer.context";
@@ -16,7 +15,7 @@
   const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   {#if title}
     <DrawerTitle>{title}</DrawerTitle>
   {/if}
@@ -24,4 +23,4 @@
     <DrawerDescription>{description}</DrawerDescription>
   {/if}
   {@render children?.()}
-</Ark>
+</div>

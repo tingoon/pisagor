@@ -1,9 +1,4 @@
-import {
-  Popover as PopoverPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Popover as PopoverPrimitive, Portal } from "@ark-ui/react";
 import type {
   PopoverAnchorProps,
   PopoverArrowProps,
@@ -16,7 +11,7 @@ import type {
 import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-
+import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -44,16 +39,16 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
+export interface PopoverHeaderProps extends ComponentPropsWithRef<"div"> {
   /** The description of the popover header */
   description?: string;
   /** The title of the popover header */
   title?: string;
 }
 
-export type PopoverBodyProps = HTMLArkProps<"div">;
+export type PopoverBodyProps = ComponentPropsWithRef<"div">;
 
-export type PopoverFooterProps = HTMLArkProps<"div">;
+export type PopoverFooterProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -122,7 +117,7 @@ export function PopoverHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -133,7 +128,7 @@ export function PopoverHeader({
       {!!description && <PopoverDescription>{description}</PopoverDescription>}
 
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -150,7 +145,7 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
 
   return (
     <ScrollArea>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({
           className: ["overflow-visible", className].filter(Boolean).join(" "),
@@ -162,7 +157,7 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
   );
 }
 
-export const PopoverFooter = withContext(ark.div, {
+export const PopoverFooter = withContext("div", {
   name: "Footer",
 });
 

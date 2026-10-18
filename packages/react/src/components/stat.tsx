@@ -1,4 +1,3 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   StatProps as BaseStatRootProps,
@@ -9,7 +8,12 @@ import {
   statRecipe,
   statTrendRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { useLocale, type MessageKey } from "./provider/context";
 
@@ -21,22 +25,22 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider(ark.div, {
+export const StatRoot = withProvider("div", {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseStatRootProps>;
+}) as FunctionComponent<ComponentPropsWithRef<"div"> & BaseStatRootProps>;
 
-export const StatLabel = withContext(ark.div, {
+export const StatLabel = withContext("div", {
   name: "Label",
   slot: "label",
 });
 
-export const StatValue = withContext(ark.div, {
+export const StatValue = withContext("div", {
   name: "Value",
   slot: "value",
 });
 
-export const StatDescription = withContext(ark.p, {
+export const StatDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
@@ -62,11 +66,11 @@ export function StatTrend({
   children,
   className,
   ...rest
-}: HTMLArkProps<"div"> & BaseStatTrendProps & StatTrendOwnProps) {
+}: ComponentPropsWithRef<"div"> & BaseStatTrendProps & StatTrendOwnProps) {
   const { m } = useLocale();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ className, trend })}
       data-part="trend"
@@ -76,7 +80,7 @@ export function StatTrend({
       {icon === undefined ? TREND_ICONS[trend] : icon}
       <span className="sr-only">{m(`stat.trend.${trend}` as MessageKey)}</span>
       {children}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

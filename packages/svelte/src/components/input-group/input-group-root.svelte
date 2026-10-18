@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import {
     type FormControlGroupShellVariantProps,
     formControlGroupShellRecipe,
@@ -28,8 +27,7 @@
   const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
-<Ark
-  as="fieldset"
+<fieldset
   {...rest}
   class={formControlGroupShellRecipe({
     class: cn(inputGroupRootRecipe(), className),
@@ -43,4 +41,4 @@
   data-variant={variant}
 >
   {@render children?.()}
-</Ark>
+</fieldset>

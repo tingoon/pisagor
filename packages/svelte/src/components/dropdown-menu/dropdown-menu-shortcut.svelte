@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -15,12 +14,11 @@
   const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   class={slots.shortcut({ class: cn(className) })}
   data-part="shortcut"
   data-scope="dropdown-menu"
 >
   {@render children?.()}
-</Ark>
+</span>

@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import { PhFile } from "@phosphor-icons/vue";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
@@ -15,8 +14,6 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 export type FileMediaVariant = NonNullable<FileVariantProps["variant"]>;
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Types
 export interface FileProps extends BaseFileProps {
   class?: unknown;
@@ -32,7 +29,7 @@ export interface FileProps extends BaseFileProps {
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider(ark.div, {
+export const FileRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });
@@ -57,7 +54,7 @@ export const FileMedia = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.media({
@@ -74,17 +71,17 @@ export const FileMedia = defineComponent({
   },
 });
 
-export const FileContent = withContext(ark.div, {
+export const FileContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const FileName = withContext(ark.div, {
+export const FileName = withContext("div", {
   name: "Name",
   slot: "name",
 });
 
-export const FileMeta = withContext(ark.div, {
+export const FileMeta = withContext("div", {
   name: "Meta",
   slot: "meta",
 });
@@ -106,7 +103,7 @@ export const FileSize = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.size({ class: props.class }),
@@ -119,7 +116,7 @@ export const FileSize = defineComponent({
   },
 });
 
-export const FileActions = withContext(ark.div, {
+export const FileActions = withContext("div", {
   name: "Actions",
   slot: "actions",
 });

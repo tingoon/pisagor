@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { FieldProps as BaseFieldProps } from "@pisagor/props";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -25,12 +24,11 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.group({ class: cn(className) })}
   data-part="group"
   data-scope="field"
 >
   {@render children?.()}
-</Ark>
+</div>

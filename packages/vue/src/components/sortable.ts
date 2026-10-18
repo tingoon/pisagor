@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   SortableItemProps as BaseSortableItemProps,
@@ -109,8 +108,6 @@ export function useSortable() {
 // #endregion
 
 // #region Parts
-type ArkPart = Parameters<typeof h>[0];
-
 export const SortableRoot = defineComponent({
   inheritAttrs: false,
   name: "SortableRoot",
@@ -299,7 +296,7 @@ export const SortableRoot = defineComponent({
 
     return () =>
       h(
-        ark.div as unknown as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(
@@ -361,7 +358,7 @@ export const SortableItem = defineComponent({
       const itemProps = sortable.getItemProps(props.value);
 
       return h(
-        ark.div as unknown as ArkPart,
+        "div",
         {
           ...attrs,
           ...itemProps,
@@ -409,7 +406,7 @@ export const SortableHandle = defineComponent({
 
     return () =>
       h(
-        ark.div as unknown as ArkPart,
+        "div",
         {
           ...attrs,
           "aria-disabled": sortable.disabled || undefined,
@@ -484,7 +481,7 @@ export const SortableItemContent = defineComponent({
 
     return () =>
       h(
-        ark.div as unknown as ArkPart,
+        "div",
         {
           ...attrs,
           class: getSlots().content({

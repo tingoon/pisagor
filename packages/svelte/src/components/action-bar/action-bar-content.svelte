@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark, Portal, Presence } from "@ark-ui/svelte";
+  import { Portal, Presence } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useActionBar } from "./action-bar.context";
@@ -26,8 +26,7 @@
     style={gutter ? `--gutter: ${gutter}` : undefined}
     unmountOnExit={ctx.unmountOnExit}
   >
-    <Ark
-      as="div"
+    <div
       {...rest}
       aria-labelledby={ariaLabelledby}
       class={ctx.slots.content({ class: cn(className) })}
@@ -36,6 +35,6 @@
       role="toolbar"
     >
       {@render children?.()}
-    </Ark>
+    </div>
   </Presence>
 </Portal>

@@ -5,7 +5,7 @@ import type {
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createContext, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -17,10 +17,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface MenuRootProps extends HTMLArkProps<"nav">, BaseMenuRootProps {}
+export interface MenuRootProps
+  extends ComponentProps<"nav">, BaseMenuRootProps {}
 
-export type MenuPartProps = HTMLArkProps<"div">;
-export type MenuListProps = HTMLArkProps<"ul">;
+export type MenuPartProps = ComponentProps<"div">;
+export type MenuListProps = ComponentProps<"ul">;
 
 export interface MenuItemProps
   extends HTMLArkProps<"button">, BaseMenuItemProps {}
@@ -29,11 +30,11 @@ export interface MenuLinkProps extends HTMLArkProps<"a"> {
   active?: boolean;
 }
 
-export type MenuGroupLabelProps = HTMLArkProps<"div">;
-export type MenuSeparatorProps = HTMLArkProps<"div">;
-export type MenuShortcutProps = HTMLArkProps<"span">;
+export type MenuGroupLabelProps = ComponentProps<"div">;
+export type MenuSeparatorProps = ComponentProps<"div">;
+export type MenuShortcutProps = ComponentProps<"span">;
 
-const MenuRootBase: Component<MenuRootProps> = withProvider(ark.nav, {
+const MenuRootBase: Component<MenuRootProps> = withProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -50,7 +51,7 @@ export function MenuRoot(props: MenuRootProps): JSX.Element {
 /** True inside `Menu.List`, so separators render as `<li>`. */
 const MenuInsideListContext = createContext(false);
 
-const MenuListBase: Component<MenuListProps> = withContext(ark.ul, {
+const MenuListBase: Component<MenuListProps> = withContext("ul", {
   defaultProps: { role: "list" },
   name: "List",
 });
@@ -63,13 +64,13 @@ export function MenuList(props: MenuListProps): JSX.Element {
   );
 }
 
-export const MenuGroup: Component<MenuPartProps> = withContext(ark.div, {
+export const MenuGroup: Component<MenuPartProps> = withContext("div", {
   defaultProps: { role: "group" },
   name: "Group",
 });
 
 export const MenuGroupLabel: Component<MenuGroupLabelProps> = withContext(
-  ark.div,
+  "div",
   {
     defaultProps: { "data-part": "group-label" },
     name: "GroupLabel",
@@ -89,7 +90,7 @@ export function MenuItem(props: MenuItemProps): JSX.Element {
   const recipe = () => local.recipe ?? menuItemRecipe;
 
   return (
-    <ark.li
+    <li
       class={styles.slots.wrapper()}
       data-part="item-wrapper"
       data-scope="menu"
@@ -102,7 +103,7 @@ export function MenuItem(props: MenuItemProps): JSX.Element {
         data-variant={variant()}
         type={local.type ?? "button"}
       />
-    </ark.li>
+    </li>
   );
 }
 
@@ -112,7 +113,7 @@ export function MenuLink(props: MenuLinkProps): JSX.Element {
   const active = () => local.active ?? false;
 
   return (
-    <ark.li
+    <li
       class={styles.slots.wrapper()}
       data-part="item-wrapper"
       data-scope="menu"
@@ -125,16 +126,16 @@ export function MenuLink(props: MenuLinkProps): JSX.Element {
         data-part="link"
         data-scope="menu"
       />
-    </ark.li>
+    </li>
   );
 }
 
-const MenuSeparatorDiv: Component<MenuSeparatorProps> = withContext(ark.div, {
+const MenuSeparatorDiv: Component<MenuSeparatorProps> = withContext("div", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
 
-const MenuSeparatorItem: Component<HTMLArkProps<"li">> = withContext(ark.li, {
+const MenuSeparatorItem: Component<ComponentProps<"li">> = withContext("li", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
@@ -143,16 +144,15 @@ export function MenuSeparator(props: MenuSeparatorProps): JSX.Element {
   const insideList = useContext(MenuInsideListContext);
 
   return insideList ? (
-    <MenuSeparatorItem {...(props as HTMLArkProps<"li">)} />
+    <MenuSeparatorItem {...(props as ComponentProps<"li">)} />
   ) : (
     <MenuSeparatorDiv {...props} />
   );
 }
 
-export const MenuShortcut: Component<MenuShortcutProps> = withContext(
-  ark.span,
-  { name: "Shortcut" },
-);
+export const MenuShortcut: Component<MenuShortcutProps> = withContext("span", {
+  name: "Shortcut",
+});
 
 export const Menu = Object.assign(MenuRoot, {
   Group: MenuGroup,

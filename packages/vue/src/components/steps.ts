@@ -1,4 +1,4 @@
-import { Steps as StepsPrimitive, ark } from "@ark-ui/vue";
+import { Steps as StepsPrimitive } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
   StepsItemProps as BaseStepsItemProps,
@@ -90,11 +90,11 @@ export const StepsSeparator = withStepsItemContext(StepsPrimitive.Separator, {
   name: "Separator",
 });
 
-export const StepsTitle = withStepsItemContext(ark.span, {
+export const StepsTitle = withStepsItemContext("span", {
   name: "Title",
 });
 
-export const StepsDescription = withStepsItemContext(ark.span, {
+export const StepsDescription = withStepsItemContext("span", {
   name: "Description",
 });
 

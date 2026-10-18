@@ -1,4 +1,3 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   InputGroupAddonProps as BaseInputGroupAddonProps,
   InputGroupButtonProps as BaseInputGroupButtonProps,
@@ -14,7 +13,7 @@ import {
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -22,10 +21,10 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 export interface InputGroupProps
-  extends HTMLArkProps<"div">, FormControlGroupShellVariantProps {}
+  extends ComponentProps<"div">, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends HTMLArkProps<"div">, BaseInputGroupAddonProps {}
+  extends ComponentProps<"div">, BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
   extends
@@ -34,7 +33,7 @@ export interface InputGroupButtonProps
     BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
-  extends HTMLArkProps<"span">, BaseInputGroupTextProps {}
+  extends ComponentProps<"span">, BaseInputGroupTextProps {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);
@@ -43,7 +42,7 @@ export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={formControlGroupShellRecipe({
         class: cn(inputGroupRootRecipe(), local.class),
@@ -81,7 +80,7 @@ export function InputGroupAddon(props: InputGroupAddonProps): JSX.Element {
   };
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={(local.recipe ?? inputGroupAddonRecipe)({
         align: align(),
@@ -123,7 +122,7 @@ export function InputGroupText(props: InputGroupTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={(local.recipe ?? inputGroupTextRecipe)({ class: local.class })}
       data-part="text"

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
   import { visuallyHiddenRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -17,12 +16,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="root"
   data-scope="visually-hidden"
 >
   {@render children?.()}
-</Ark>
+</span>

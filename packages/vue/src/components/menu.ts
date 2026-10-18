@@ -42,7 +42,7 @@ export interface MenuLinkProps {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const MenuRootBase = withProvider(ark.nav, {
+const MenuRootBase = withProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -68,7 +68,7 @@ export const MenuRoot = defineComponent({
 /** True inside `Menu.List`, so separators render as `<li>`. */
 const MenuInsideListKey: InjectionKey<boolean> = Symbol("MenuInsideList");
 
-const MenuListBase = withContext(ark.ul, {
+const MenuListBase = withContext("ul", {
   defaultProps: { role: "list" },
   name: "List",
 });
@@ -83,12 +83,12 @@ export const MenuList = defineComponent({
   },
 });
 
-export const MenuGroup = withContext(ark.div, {
+export const MenuGroup = withContext("div", {
   defaultProps: { role: "group" },
   name: "Group",
 });
 
-export const MenuGroupLabel = withContext(ark.div, {
+export const MenuGroupLabel = withContext("div", {
   defaultProps: { "data-part": "group-label" },
   name: "GroupLabel",
   slot: "groupLabel",
@@ -117,7 +117,7 @@ export const MenuItem = defineComponent({
 
     return () =>
       h(
-        ark.li as ArkPart,
+        "li",
         {
           class: styles.slots.wrapper(),
           "data-part": "item-wrapper",
@@ -155,7 +155,7 @@ export const MenuLink = defineComponent({
 
     return () =>
       h(
-        ark.li as ArkPart,
+        "li",
         {
           class: styles.slots.wrapper(),
           "data-part": "item-wrapper",
@@ -178,12 +178,12 @@ export const MenuLink = defineComponent({
   },
 });
 
-const MenuSeparatorDiv = withContext(ark.div, {
+const MenuSeparatorDiv = withContext("div", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
 
-const MenuSeparatorItem = withContext(ark.li, {
+const MenuSeparatorItem = withContext("li", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
@@ -198,7 +198,7 @@ export const MenuSeparator = defineComponent({
   },
 });
 
-export const MenuShortcut = withContext(ark.span, {
+export const MenuShortcut = withContext("span", {
   name: "Shortcut",
 });
 // #endregion

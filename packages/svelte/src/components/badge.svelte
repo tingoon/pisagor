@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
   import { badgeRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -20,8 +19,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   class={recipe({ class: cn(className), pill, size, variant })}
   data-part="root"
@@ -30,4 +28,4 @@
   data-variant={variant}
 >
   {@render children?.()}
-</Ark>
+</span>

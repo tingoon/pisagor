@@ -1,4 +1,4 @@
-import { Drawer as DrawerPrimitive, ark } from "@ark-ui/solid";
+import { Drawer as DrawerPrimitive } from "@ark-ui/solid";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
@@ -8,11 +8,10 @@ import type {
   DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
@@ -35,18 +34,18 @@ export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
 export type DrawerContentProps = DrawerContentPrimitiveProps &
   DrawerVariantProps;
 
-export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
+export interface DrawerHeaderProps extends ComponentProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export interface DrawerBodyProps extends HTMLArkProps<"div"> {
+export interface DrawerBodyProps extends ComponentProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = HTMLArkProps<"div">;
-export type DrawerDescriptionProps = HTMLArkProps<"div">;
-export type DrawerFooterProps = HTMLArkProps<"div">;
+export type DrawerContentInnerProps = ComponentProps<"div">;
+export type DrawerDescriptionProps = ComponentProps<"div">;
+export type DrawerFooterProps = ComponentProps<"div">;
 
 export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe"]);
@@ -141,7 +140,7 @@ export function DrawerContentInner(
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.contentInner({ class: local.class })}
       data-part="content-inner"
@@ -155,14 +154,14 @@ export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div class={styles.slots.grabberWrapper()}>
+    <div class={styles.slots.grabberWrapper()}>
       <DrawerPrimitive.Grabber
         {...rest}
         class={styles.slots.grabber({ class: local.class })}
       >
         <DrawerPrimitive.GrabberIndicator class={styles.slots.grabberIcon()} />
       </DrawerPrimitive.Grabber>
-    </ark.div>
+    </div>
   );
 }
 
@@ -176,7 +175,7 @@ export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.header({ class: local.class })}
       data-part="header"
@@ -189,7 +188,7 @@ export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
         <DrawerDescription>{local.description}</DrawerDescription>
       </Show>
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -203,7 +202,7 @@ export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.description({ class: local.class })}
       data-part="description"
@@ -218,7 +217,7 @@ export function DrawerBody(props: DrawerBodyProps): JSX.Element {
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <ark.div
+      <div
         {...rest}
         class={styles.slots.body({ class: local.class })}
         data-part="body"
@@ -239,7 +238,7 @@ export function DrawerFooter(props: DrawerFooterProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.footer({ class: local.class })}
       data-part="footer"

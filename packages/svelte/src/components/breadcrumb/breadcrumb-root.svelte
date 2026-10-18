@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
   import { breadcrumbRecipe } from "@pisagor/recipes";
   import type { HTMLAttributes } from "svelte/elements";
@@ -26,8 +25,7 @@
   });
 </script>
 
-<Ark
-  as="nav"
+<nav
   {...rest}
   aria-label={ariaLabel}
   class={className}
@@ -35,4 +33,4 @@
   data-scope="breadcrumb"
 >
   {@render children?.()}
-</Ark>
+</nav>

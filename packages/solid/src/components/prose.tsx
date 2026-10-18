@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
 export interface ProseProps
-  extends Omit<HTMLArkProps<"div">, "innerHTML">, BaseProseProps {
+  extends Omit<ComponentProps<"div">, "innerHTML">, BaseProseProps {
   html?: string;
   /**
    * Sanitizer applied to `html` before injection, e.g. `(html) =>
@@ -27,19 +26,19 @@ export function Prose(props: ProseProps): JSX.Element {
   return (
     <Show
       fallback={
-        <ark.div
+        <div
           {...rest}
           class={recipe()({ class: local.class })}
           data-part="root"
           data-scope="prose"
         >
           {local.children}
-        </ark.div>
+        </div>
       }
       when={local.html}
     >
       {(html) => (
-        <ark.div
+        <div
           {...rest}
           class={recipe()({ class: local.class })}
           data-part="root"

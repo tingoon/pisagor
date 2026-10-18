@@ -72,7 +72,7 @@ function callHandler(handler: unknown, event: Event) {
 }
 
 // #region Parts
-const NavigationMenuNav = withProvider(ark.nav, {
+const NavigationMenuNav = withProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -94,7 +94,7 @@ export const NavigationMenuRoot = defineComponent({
   },
 });
 
-const NavigationMenuListBase = withContext(ark.ul, {
+const NavigationMenuListBase = withContext("ul", {
   name: "List",
 });
 
@@ -119,7 +119,7 @@ export const NavigationMenuList = defineComponent({
   },
 });
 
-const NavigationMenuItemBase = withContext(ark.li, {
+const NavigationMenuItemBase = withContext("li", {
   name: "Item",
 });
 
@@ -229,7 +229,7 @@ export const NavigationMenuContent = defineComponent({
 
     return () =>
       h(
-        ark.ul as ArkPart,
+        "ul",
         {
           ...attrs,
           class: styles.slots.content({

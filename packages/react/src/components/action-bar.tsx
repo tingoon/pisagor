@@ -9,7 +9,12 @@ import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type { MouseEvent, PropsWithChildren, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  MouseEvent,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
@@ -126,7 +131,7 @@ export interface ActionBarProps
 
 export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export type ActionBarContentProps = HTMLArkProps<"div">;
+export type ActionBarContentProps = ComponentPropsWithRef<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
@@ -139,7 +144,7 @@ export interface ActionBarValueProps extends BadgeProps {
   label?: string;
 }
 
-export type ActionBarBodyProps = HTMLArkProps<"div">;
+export type ActionBarBodyProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Constants
@@ -297,14 +302,14 @@ export function ActionBarContent({
         present={isOpen}
         unmountOnExit={unmountOnExit}
       >
-        <ark.div
+        <div
           className={slots.positioner({ placement })}
           data-part="positioner"
           data-placement={placement}
           data-scope="action-bar"
           style={{ "--gutter": gutter }}
         >
-          <ark.div
+          <div
             {...rest}
             aria-labelledby={ariaLabelledby}
             className={slots.content({ className })}
@@ -312,7 +317,7 @@ export function ActionBarContent({
             data-scope="action-bar"
             role="toolbar"
           />
-        </ark.div>
+        </div>
       </Presence>
     </Portal>
   );
@@ -384,7 +389,7 @@ export function ActionBarValue({
   );
 }
 
-export const ActionBarBody = withContext(ark.div, {
+export const ActionBarBody = withContext("div", {
   name: "Body",
 });
 // #endregion

@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type {
   TimelineItemProps as BaseTimelineItemProps,
   TimelineProps as BaseTimelineProps,
@@ -13,8 +12,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
   recipe: timelineItemRecipe,
 });
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface TimelinePresetItem {
@@ -56,7 +53,7 @@ export const TimelineRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.ol as ArkPart,
+        "ol",
         {
           ...attrs,
           class: props.recipe({
@@ -72,7 +69,7 @@ export const TimelineRoot = defineComponent({
   },
 });
 
-export const TimelineItem = withProvider(ark.li, {
+export const TimelineItem = withProvider("li", {
   defaultProps: {
     "data-part": "item",
   },
@@ -80,12 +77,12 @@ export const TimelineItem = withProvider(ark.li, {
   slot: "base",
 });
 
-export const TimelineIndicator = withContext(ark.div, {
+export const TimelineIndicator = withContext("div", {
   name: "Indicator",
   slot: "indicator",
 });
 
-export const TimelineSeparator = withContext(ark.div, {
+export const TimelineSeparator = withContext("div", {
   defaultProps: {
     "aria-hidden": "true",
   },
@@ -93,17 +90,17 @@ export const TimelineSeparator = withContext(ark.div, {
   slot: "separator",
 });
 
-export const TimelineContent = withContext(ark.div, {
+export const TimelineContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const TimelineTitle = withContext(ark.div, {
+export const TimelineTitle = withContext("div", {
   name: "Title",
   slot: "title",
 });
 
-export const TimelineDescription = withContext(ark.div, {
+export const TimelineDescription = withContext("div", {
   name: "Description",
   slot: "description",
 });

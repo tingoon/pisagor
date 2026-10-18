@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./timeline.context";
 
@@ -10,4 +9,4 @@
   });
 </script>
 
-<Ark as="div" {...part.props} aria-hidden="true">{@render children?.()}</Ark>
+<div {...part.props} aria-hidden="true">{@render children?.()}</div>

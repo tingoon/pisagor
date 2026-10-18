@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Ark } from "@ark-ui/svelte";
   import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
 
@@ -13,6 +14,6 @@
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<div {...root.props}>
+<Ark as="div" {...root.props}>
   {@render children?.()}
-</div>
+</Ark>

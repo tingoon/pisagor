@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./frame.context";
 
@@ -16,4 +15,4 @@
   });
 </script>
 
-<Ark as="header" {...part.props}>{@render children?.()}</Ark>
+<header {...part.props}>{@render children?.()}</header>

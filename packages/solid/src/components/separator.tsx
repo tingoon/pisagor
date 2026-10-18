@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface SeparatorProps
-  extends HTMLArkProps<"div">, BaseSeparatorProps {
+  extends ComponentProps<"div">, BaseSeparatorProps {
   orientation?: "horizontal" | "vertical";
   /**
    * Purely visual separator: hidden from assistive tech (`role="none"`).
@@ -25,7 +24,7 @@ export function Separator(props: SeparatorProps): JSX.Element {
   const recipeFn = () => local.recipe ?? separatorRecipe;
 
   return (
-    <ark.div
+    <div
       {...rest}
       aria-orientation={
         local.decorative ? undefined : (local.orientation ?? "horizontal")

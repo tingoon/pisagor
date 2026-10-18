@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import {
     ListBulletsIcon,
@@ -61,8 +60,7 @@
 </script>
 
 {#if ctx.editor}
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={ctx.slots.toolbar({ class: cn(className) })}
     data-part="toolbar"
@@ -128,5 +126,4 @@
         </Toggle>
       </div>
     {/if}
-  </Ark>
-{/if}
+  </div>{/if}

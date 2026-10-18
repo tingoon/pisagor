@@ -1,9 +1,7 @@
 import {
   Progress as ProgressPrimitive,
-  ark,
   useProgress,
   useProgressContext,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   ProgressRootProps,
@@ -16,7 +14,11 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -66,7 +68,7 @@ interface CircularProgressTrackPartProps {
   className?: string;
   rangeClassName?: string;
   trackProps?: Omit<
-    HTMLArkProps<"svg">,
+    ComponentPropsWithRef<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
 }
@@ -90,7 +92,7 @@ function CircularProgressTrack({
   const dashOffset = circumference * (1 - percent);
 
   return (
-    <ark.svg
+    <svg
       {...trackProps}
       aria-hidden="true"
       className={slots.track({ className })}
@@ -120,7 +122,7 @@ function CircularProgressTrack({
         strokeLinecap="round"
         strokeWidth={thickness}
       />
-    </ark.svg>
+    </svg>
   );
 }
 // #endregion
@@ -155,7 +157,7 @@ export interface CircularProgressProps
   classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
-    HTMLArkProps<"svg">,
+    ComponentPropsWithRef<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
   /** Extra props forwarded to the circular progress value element */

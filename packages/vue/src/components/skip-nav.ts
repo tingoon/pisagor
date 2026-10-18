@@ -81,7 +81,7 @@ export const SkipNavContent = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(variantSlots.content(), props.class, attrs.class),

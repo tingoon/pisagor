@@ -1,7 +1,6 @@
 import {
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
-  ark,
   parseColor as parseColorArk,
   useColorPickerContext as useColorPicker,
 } from "@ark-ui/vue";
@@ -727,7 +726,7 @@ export const ColorPickerSwatchPreview = defineComponent({
       const slots = getSlots();
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: slots.inputSwatch({

@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { FileIcon, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
@@ -13,18 +12,20 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface FileRootProps extends HTMLArkProps<"div">, BaseFileRootProps {}
+export interface FileRootProps
+  extends ComponentProps<"div">, BaseFileRootProps {}
 
-export interface FileMediaProps extends HTMLArkProps<"div">, FileVariantProps {}
-export type FileNameProps = HTMLArkProps<"div">;
-export type FileMetaProps = HTMLArkProps<"div">;
+export interface FileMediaProps
+  extends ComponentProps<"div">, FileVariantProps {}
+export type FileNameProps = ComponentProps<"div">;
+export type FileMetaProps = ComponentProps<"div">;
 
-export interface FileSizeProps extends Omit<HTMLArkProps<"div">, "children"> {
+export interface FileSizeProps extends Omit<ComponentProps<"div">, "children"> {
   value: number;
 }
 
-export type FileActionsProps = HTMLArkProps<"div">;
-export type FileContentProps = HTMLArkProps<"div">;
+export type FileActionsProps = ComponentProps<"div">;
+export type FileContentProps = ComponentProps<"div">;
 
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   size?: number;
@@ -34,7 +35,7 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   media?: JSX.Element;
 }
 
-export const FileRoot: Component<FileRootProps> = withProvider(ark.div, {
+export const FileRoot: Component<FileRootProps> = withProvider("div", {
   name: "Root",
   slot: "base",
 });
@@ -45,7 +46,7 @@ export function FileMedia(props: FileMediaProps): JSX.Element {
   const variant = () => local.variant ?? "icon";
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.media({ class: local.class, variant: variant() })}
       data-part="media"
@@ -53,19 +54,19 @@ export function FileMedia(props: FileMediaProps): JSX.Element {
       data-variant={variant()}
     >
       {local.children ?? <FileIcon />}
-    </ark.div>
+    </div>
   );
 }
 
-export const FileContent: Component<FileContentProps> = withContext(ark.div, {
+export const FileContent: Component<FileContentProps> = withContext("div", {
   name: "Content",
 });
 
-export const FileName: Component<FileNameProps> = withContext(ark.div, {
+export const FileName: Component<FileNameProps> = withContext("div", {
   name: "Name",
 });
 
-export const FileMeta: Component<FileMetaProps> = withContext(ark.div, {
+export const FileMeta: Component<FileMetaProps> = withContext("div", {
   name: "Meta",
 });
 
@@ -74,18 +75,18 @@ export function FileSize(props: FileSizeProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.size({ class: local.class })}
       data-part="size"
       data-scope="file"
     >
       <Format.Byte value={local.value} />
-    </ark.div>
+    </div>
   );
 }
 
-export const FileActions: Component<FileActionsProps> = withContext(ark.div, {
+export const FileActions: Component<FileActionsProps> = withContext("div", {
   name: "Actions",
 });
 
@@ -93,9 +94,9 @@ export function FileShorthand(props: FileProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "size",
     "name",
+    "meta",
     "actions",
     "media",
-    "meta",
   ]);
 
   return (
@@ -106,7 +107,9 @@ export function FileShorthand(props: FileProps): JSX.Element {
         <Show when={local.meta}>
           <FileMeta>{local.meta}</FileMeta>
         </Show>
-        {local.size !== undefined ? <FileSize value={local.size} /> : null}
+        <Show when={local.size !== undefined}>
+          <FileSize value={local.size!} />
+        </Show>
       </FileContent>
       <Show when={local.actions}>
         <FileActions>{local.actions}</FileActions>
@@ -115,7 +118,7 @@ export function FileShorthand(props: FileProps): JSX.Element {
   );
 }
 
-const fileParts = {
+export const File = Object.assign(FileShorthand, {
   Actions: FileActions,
   Content: FileContent,
   Media: FileMedia,
@@ -123,9 +126,4 @@ const fileParts = {
   Name: FileName,
   Root: FileRoot,
   Size: FileSize,
-};
-
-export const FileItem = Object.assign(FileShorthand, fileParts);
-
-/** @deprecated Use `FileItem`. `File` shadows the global `File` constructor. */
-export const File = Object.assign(FileShorthand, fileParts);
+});

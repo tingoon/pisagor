@@ -256,7 +256,7 @@ export function TourBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={dialogSlots.body({ className })}
         data-part="body"
@@ -280,14 +280,14 @@ export function TourHeader({
   const dialogSlots = dialogRecipe();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={dialogSlots.header({ className })}
       data-part="header"
       data-scope="tour"
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -349,7 +349,7 @@ export function TourFooter({
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <ark.div
+      <div
         className={dialogSlots.footer({ className })}
         data-part="control"
         data-scope="tour"
@@ -357,7 +357,7 @@ export function TourFooter({
         <TourInsideControlContext value={true}>
           {children}
         </TourInsideControlContext>
-      </ark.div>
+      </div>
     </TourPrimitive.Control>
   );
 }
@@ -375,7 +375,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
   }
 
   const content = (
-    <ark.div
+    <div
       {...(insideControl ? rest : {})}
       className={cn(
         !insideControl && dialogSlots.footer(),
@@ -400,7 +400,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
           </Button>
         </TourActionTrigger>
       ))}
-    </ark.div>
+    </div>
   );
 
   if (insideControl) {

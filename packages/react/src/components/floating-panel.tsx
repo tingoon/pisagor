@@ -1,9 +1,4 @@
-import {
-  FloatingPanel as FloatingPanelPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { FloatingPanel as FloatingPanelPrimitive, Portal } from "@ark-ui/react";
 import type {
   FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
   FloatingPanelCloseTriggerProps,
@@ -21,7 +16,7 @@ import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 
-import { use } from "react";
+import { use, type ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
@@ -73,7 +68,7 @@ export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = HTMLArkProps<"div">;
+export type FloatingPanelFooterProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -297,14 +292,14 @@ export function FloatingPanelFooter({
   const slots = useFloatingPanelSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"
       data-scope="floating-panel"
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

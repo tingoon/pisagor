@@ -1,11 +1,9 @@
 import {
   Progress as ProgressPrimitive,
-  ark,
   useProgress,
   useProgressContext,
 } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   ProgressRootProps,
   ProgressRootProviderProps,
   ProgressValueTextProps,
@@ -16,7 +14,7 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
@@ -27,7 +25,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type CircularProgressTrackProps = HTMLArkProps<"svg">;
+type CircularProgressTrackProps = ComponentProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
@@ -114,7 +112,7 @@ function CircularProgressTrack(
   const dashOffset = () => circumference() * (1 - percent());
 
   return (
-    <ark.svg
+    <svg
       {...props.trackProps}
       aria-hidden="true"
       class={styles.slots.track({ class: props.class })}
@@ -146,7 +144,7 @@ function CircularProgressTrack(
         stroke-linecap="round"
         stroke-width={thickness()}
       />
-    </ark.svg>
+    </svg>
   );
 }
 

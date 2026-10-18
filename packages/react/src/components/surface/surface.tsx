@@ -1,8 +1,8 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";
+import type { ComponentPropsWithRef } from "react";
 import {
   SurfaceContext,
   type SurfaceVariant,
@@ -16,7 +16,8 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps extends HTMLArkProps<"div">, BaseSurfaceProps {}
+export interface SurfaceProps
+  extends ComponentPropsWithRef<"div">, BaseSurfaceProps {}
 // #endregion
 
 // #region Component
@@ -44,7 +45,7 @@ export function Surface({
 
   return (
     <SurfaceContext value={surface}>
-      <ark.div
+      <div
         {...rest}
         className={recipe({
           bordered,
@@ -59,7 +60,7 @@ export function Surface({
         data-variant={surface.variant}
       >
         {children}
-      </ark.div>
+      </div>
     </SurfaceContext>
   );
 }

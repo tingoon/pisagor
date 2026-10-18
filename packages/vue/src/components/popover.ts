@@ -1,4 +1,4 @@
-import { Popover as PopoverPrimitive, ark } from "@ark-ui/vue";
+import { Popover as PopoverPrimitive } from "@ark-ui/vue";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import {
@@ -232,7 +232,7 @@ export const PopoverBody = defineComponent({
   },
 });
 
-export const PopoverFooter = withContext(ark.div, {
+export const PopoverFooter = withContext("div", {
   name: "Footer",
 });
 

@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
@@ -21,12 +20,12 @@ export interface ButtonGroupProps extends BaseButtonGroupProps {
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot = withProvider(ark.fieldset, {
+export const ButtonGroupRoot = withProvider("fieldset", {
   name: "Root",
   slot: "base",
 });
 
-export const ButtonGroupText = withContext(ark.div, {
+export const ButtonGroupText = withContext("div", {
   name: "Text",
   slot: "text",
 });

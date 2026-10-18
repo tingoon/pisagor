@@ -2,11 +2,12 @@
 import type { HTMLAttributes } from "astro/types";
 import { withContext } from "./card.context";
 
-type Props = HTMLAttributes<"div">;
+type Props = HTMLAttributes<"h3">;
 
 const title = withContext(Astro.props, { name: "Title", slot: "title" });
 ---
 
-<div {...title.props}>
+{/* biome-ignore lint/a11y/useHeadingContent: content is the default slot */}
+<h3 {...title.props}>
   <slot />
-</div>
+</h3>

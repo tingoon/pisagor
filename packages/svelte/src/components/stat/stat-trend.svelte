@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { StatTrendProps as BaseStatTrendProps } from "@pisagor/props";
   import { statTrendRecipe } from "@pisagor/recipes";
   import type { MessageKey } from "@pisagor/utils";
@@ -28,8 +27,7 @@
   const { m } = useLocale();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({ class: cn(className), trend })}
   data-part="trend"
@@ -49,4 +47,4 @@
   {/if}
   <span class="sr-only">{m(`stat.trend.${trend}` as MessageKey)}</span>
   {@render children?.()}
-</Ark>
+</div>

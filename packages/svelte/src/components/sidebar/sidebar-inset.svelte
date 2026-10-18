@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useSidebar } from "./sidebar.context";
@@ -12,12 +11,11 @@
   const ctx = useSidebar();
 </script>
 
-<Ark
-  as="main"
+<main
   {...rest}
   class={ctx.slots.inset({ class: cn(className) })}
   data-part="inset"
   data-scope="sidebar"
 >
   {@render children?.()}
-</Ark>
+</main>

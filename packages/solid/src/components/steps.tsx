@@ -1,6 +1,5 @@
-import { Steps as StepsPrimitive, ark } from "@ark-ui/solid";
+import { Steps as StepsPrimitive } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
@@ -17,7 +16,7 @@ import type {
   StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CheckIcon, createSlotRecipeContext } from "../internal";
 
@@ -38,8 +37,8 @@ export interface LocalStepsRootProps
 export interface LocalStepsItemProps
   extends StepsItemPrimitiveProps, BaseStepsItemProps {}
 
-export type StepsTitleProps = HTMLArkProps<"span">;
-export type StepsDescriptionProps = HTMLArkProps<"span">;
+export type StepsTitleProps = ComponentProps<"span">;
+export type StepsDescriptionProps = ComponentProps<"span">;
 
 export const StepsRoot: Component<LocalStepsRootProps> = withStepsProvider(
   StepsPrimitive.Root,
@@ -80,12 +79,12 @@ export const StepsSeparator: Component<StepsSeparatorProps> =
   withStepsItemContext(StepsPrimitive.Separator, { name: "Separator" });
 
 export const StepsTitle: Component<StepsTitleProps> = withStepsItemContext(
-  ark.span,
+  "span",
   { name: "Title" },
 );
 
 export const StepsDescription: Component<StepsDescriptionProps> =
-  withStepsItemContext(ark.span, { name: "Description" });
+  withStepsItemContext("span", { name: "Description" });
 
 export const StepsContent: Component<StepsContentProps> = withStepsContext(
   StepsPrimitive.Content,

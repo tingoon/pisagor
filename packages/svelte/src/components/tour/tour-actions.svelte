@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    Ark,
-    Tour as TourPrimitive,
-    type TourControlProps,
-  } from "@ark-ui/svelte";
+  import { Tour as TourPrimitive, type TourControlProps } from "@ark-ui/svelte";
   import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
@@ -44,15 +40,14 @@
 
 {#if actions.length > 0}
   {#if insideControl}
-    <Ark
-      as="div"
+    <div
       {...rest}
       class={ctx.slots.actions({ class: cn(className) })}
       data-part="actions"
       data-scope="tour"
     >
       {@render items()}
-    </Ark>
+    </div>
   {:else}
     <TourPrimitive.Control
       {...rest}

@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
@@ -11,8 +10,6 @@ export interface BadgeProps extends BaseBadgeProps {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Component
 export const Badge = defineComponent({
@@ -37,7 +34,7 @@ export const Badge = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           class: props.recipe({

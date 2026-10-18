@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -25,19 +24,17 @@ export interface NavbarRootProps extends BaseNavbarRootProps {
 }
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Parts
-export const NavbarRoot = withProvider(ark.header, {
+export const NavbarRoot = withProvider("header", {
   name: "Root",
   slot: "base",
 });
 
-export const NavbarBrand = withContext(ark.div, {
+export const NavbarBrand = withContext("div", {
   name: "Brand",
 });
 
-export const NavbarContent = withContext(ark.div, {
+export const NavbarContent = withContext("div", {
   name: "Content",
 });
 
@@ -63,7 +60,7 @@ export const NavbarNav = defineComponent({
       const slots$ = styles.slots;
 
       return h(
-        ark.nav as ArkPart,
+        "nav",
         {
           ...attrs,
           "aria-label": m("navbar.label", props.ariaLabel),
@@ -79,7 +76,7 @@ export const NavbarNav = defineComponent({
   },
 });
 
-export const NavbarActions = withContext(ark.div, {
+export const NavbarActions = withContext("div", {
   name: "Actions",
 });
 // #endregion

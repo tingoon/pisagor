@@ -1,4 +1,3 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   InputGroupAddonProps as BaseInputGroupAddonProps,
   InputGroupButtonProps as BaseInputGroupButtonProps,
@@ -14,7 +13,7 @@ import {
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { MouseEvent } from "react";
+import type { ComponentPropsWithRef, MouseEvent } from "react";
 import type { FormControlVariant } from "../../internal";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -22,10 +21,10 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 // #region Types
 
 export interface InputGroupProps
-  extends HTMLArkProps<"div">, FormControlGroupShellVariantProps {}
+  extends ComponentPropsWithRef<"div">, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends HTMLArkProps<"div">, BaseInputGroupAddonProps {}
+  extends ComponentPropsWithRef<"div">, BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
   extends
@@ -34,7 +33,7 @@ export interface InputGroupButtonProps
     BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
-  extends HTMLArkProps<"span">, BaseInputGroupTextProps {}
+  extends ComponentPropsWithRef<"span">, BaseInputGroupTextProps {}
 // #endregion
 
 // #region Parts
@@ -55,7 +54,7 @@ export function InputGroupRoot({
   const controlProps = { "data-variant": resolved.variant };
 
   return (
-    <ark.div
+    <div
       {...rest}
       {...controlProps}
       className={formControlGroupShellRecipe({
@@ -91,7 +90,7 @@ export function InputGroupAddon({
   };
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ align, className })}
       data-align={align}
@@ -127,7 +126,7 @@ export function InputGroupText({
   ...rest
 }: InputGroupTextProps) {
   return (
-    <ark.span
+    <span
       {...rest}
       className={recipe({ className })}
       data-part="text"

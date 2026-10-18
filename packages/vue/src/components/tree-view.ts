@@ -1,7 +1,6 @@
 import {
   type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
-  ark,
   createTreeCollection as arkCreateTreeCollection,
 } from "@ark-ui/vue";
 import {
@@ -564,7 +563,7 @@ const TreeViewItemIcon = defineComponent({
       const variantSlots = getSlots();
 
       return h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           class: variantSlots.icon({

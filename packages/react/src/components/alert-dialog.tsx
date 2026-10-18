@@ -1,9 +1,4 @@
-import {
-  Dialog as AlertDialogPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Dialog as AlertDialogPrimitive, Portal } from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -18,7 +13,7 @@ import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
 } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -55,7 +50,7 @@ export interface AlertDialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
+export interface AlertDialogBodyProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -64,13 +59,13 @@ export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = HTMLArkProps<"div">;
+export type AlertDialogHeaderProps = ComponentPropsWithRef<"div">;
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type AlertDialogFooterProps = HTMLArkProps<"div">;
+export type AlertDialogFooterProps = ComponentPropsWithRef<"div">;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
@@ -205,7 +200,7 @@ export function AlertDialogBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({ className })}
         data-part="body"
@@ -223,14 +218,14 @@ export function AlertDialogHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
       data-scope="alert-dialog"
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -254,7 +249,7 @@ export function AlertDialogFooter({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"

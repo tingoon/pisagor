@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./avatar-group.context";
@@ -10,4 +9,4 @@
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark as="div" {...root.props}>{@render children?.()}</Ark>
+<div {...root.props}>{@render children?.()}</div>

@@ -1,8 +1,6 @@
 import {
   TreeView as TreeViewPrimitive,
-  ark,
   createTreeCollection as arkCreateTreeCollection,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   TreeCollection as arkTreeCollection,
@@ -40,7 +38,7 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
-import type { JSX } from "react";
+import type { ComponentPropsWithRef, JSX } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -143,7 +141,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-type TreeViewItemIconProps = HTMLArkProps<"span">;
+type TreeViewItemIconProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
@@ -391,7 +389,7 @@ function TreeViewItemIcon({ className, ...rest }: TreeViewItemIconProps) {
   const slots = item?.slots ?? treeViewItemRecipe();
 
   return (
-    <ark.span
+    <span
       {...rest}
       className={slots.icon({ className })}
       data-part="item-icon"

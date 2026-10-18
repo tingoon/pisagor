@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
   import {
     type FormControlGroupShellVariantProps,
@@ -85,8 +84,7 @@
   }
 </script>
 
-<Ark
-  as="fieldset"
+<fieldset
   class={formControlGroupShellRecipe({
     class: cn(slots.root(), className),
     size,
@@ -128,4 +126,4 @@
   >
     {fileLabel ?? placeholder}
   </InputGroup.Text>
-</Ark>
+</fieldset>

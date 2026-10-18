@@ -1,4 +1,4 @@
-import { Dialog as AlertDialogPrimitive, ark } from "@ark-ui/solid";
+import { Dialog as AlertDialogPrimitive } from "@ark-ui/solid";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -8,14 +8,13 @@ import type {
   DialogRootProps as DialogRootPrimitiveProps,
   DialogTitleProps,
   DialogTriggerProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
 import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, createMemo, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
@@ -47,17 +46,17 @@ export interface AlertDialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
+export interface AlertDialogBodyProps extends ComponentProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = HTMLArkProps<"div">;
+export type AlertDialogHeaderProps = ComponentProps<"div">;
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type AlertDialogFooterProps = HTMLArkProps<"div">;
+export type AlertDialogFooterProps = ComponentProps<"div">;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
@@ -208,7 +207,7 @@ export function AlertDialogBody(props: AlertDialogBodyProps): JSX.Element {
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <ark.div
+      <div
         {...rest}
         class={styles.slots.body({ class: local.class })}
         data-part="body"
@@ -223,7 +222,7 @@ export function AlertDialogHeader(props: AlertDialogHeaderProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.header({ class: local.class })}
       data-part="header"
@@ -251,7 +250,7 @@ export function AlertDialogFooter(props: AlertDialogFooterProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.footer({ class: local.class })}
       data-part="footer"
@@ -310,9 +309,9 @@ export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
             }
 
             return (
-              <ark.span {...triggerProps()} style={{ display: "contents" }}>
+              <span {...triggerProps()} style={{ display: "contents" }}>
                 {local.trigger}
-              </ark.span>
+              </span>
             );
           }}
         />

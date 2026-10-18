@@ -363,7 +363,7 @@ export const ActionBarContent = defineComponent({
             style: { "--gutter": gutter } as Record<string, unknown>,
           },
           h(
-            ark.div as ArkPart,
+            "div",
             {
               ...attrs,
               class: styleSlots.content({ class: props.class }),
@@ -469,7 +469,7 @@ export const ActionBarValue = defineComponent({
   },
 });
 
-export const ActionBarBody = withContext(ark.div, {
+export const ActionBarBody = withContext("div", {
   name: "Body",
 });
 // #endregion

@@ -1,10 +1,8 @@
 import {
   ColorPicker as ColorPickerPrimitive,
   Portal,
-  ark,
   parseColor as parseColorArk,
   useColorPickerContext,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
@@ -27,7 +25,7 @@ import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useMemo } from "react";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
@@ -126,7 +124,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
+export type ColorPickerSwatchPreviewProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -514,7 +512,7 @@ export function ColorPickerSwatchPreview({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.inputSwatch({ className })}
       data-part="input-swatch"
@@ -524,7 +522,7 @@ export function ColorPickerSwatchPreview({
         className={slots.inputSwatchGrid()}
       />
       <ColorPickerPrimitive.ValueSwatch className={slots.inputSwatchSwatch()} />
-    </ark.div>
+    </div>
   );
 }
 

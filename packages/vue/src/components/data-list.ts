@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type {
   DataListItemProps as BaseDataListItemProps,
   DataListProps as BaseDataListRootProps,
@@ -72,7 +71,7 @@ export const DataListRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.dl,
+        "dl",
         {
           ...attrs,
           class: props.recipe({ class: props.class }),
@@ -85,19 +84,19 @@ export const DataListRoot = defineComponent({
   },
 });
 
-const DataListItemRoot = withProvider(ark.div, {
+const DataListItemRoot = withProvider("div", {
   defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: { "data-part": "item-value" },
   name: "ItemValue",
   slot: "value",

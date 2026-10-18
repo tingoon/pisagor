@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type { ItemProps as BaseItemGroupProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -44,7 +43,7 @@ export const ItemGroup = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(itemSlots.group(), props.class),

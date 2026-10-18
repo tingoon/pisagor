@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { Format } from "../format";
   import { withContext } from "./file.context";
@@ -12,6 +11,6 @@
   const part = withContext(() => rest, { name: "Size" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   <Format.Byte {value} />
-</Ark>
+</div>

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./table.context";
 
@@ -7,4 +6,4 @@
   const part = withContext(() => rest, { name: "Caption" });
 </script>
 
-<Ark as="caption" {...part.props}>{@render children?.()}</Ark>
+<caption {...part.props}>{@render children?.()}</caption>

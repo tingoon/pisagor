@@ -1,6 +1,5 @@
 import {
   FileUpload as FileUploadPrimitive,
-  ark,
   useFileUploadContext,
 } from "@ark-ui/solid";
 import type {
@@ -13,7 +12,6 @@ import type {
   FileUploadItemSizeTextProps,
   FileUploadRootProps as FileUploadRootPrimitiveProps,
   FileUploadTriggerProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
 import type {
   FileUploadItemProps as BaseFileUploadItemRootProps,
@@ -66,10 +64,10 @@ export type FileUploadItemSizeProps = FileUploadItemSizeTextProps;
 export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
-export type FileUploadDropzoneIconProps = HTMLArkProps<"div">;
-export type FileUploadTitleProps = HTMLArkProps<"div">;
-export type FileUploadDescriptionProps = HTMLArkProps<"div">;
-export type FileUploadHelperProps = HTMLArkProps<"div">;
+export type FileUploadDropzoneIconProps = ComponentProps<"div">;
+export type FileUploadTitleProps = ComponentProps<"div">;
+export type FileUploadDescriptionProps = ComponentProps<"div">;
+export type FileUploadHelperProps = ComponentProps<"div">;
 
 export function FileUploadRoot(props: FileUploadRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -138,14 +136,14 @@ export function FileUploadDropzoneIcon(
   const styles = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.dropzoneIcon({ class: local.class })}
       data-part="dropzone-icon"
       data-scope="file-upload"
     >
       {local.children ?? <UploadIcon />}
-    </ark.div>
+    </div>
   );
 }
 
@@ -154,7 +152,7 @@ export function FileUploadTitle(props: FileUploadTitleProps): JSX.Element {
   const styles = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.title({ class: local.class })}
       data-part="title"
@@ -170,7 +168,7 @@ export function FileUploadDescription(
   const styles = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.description({ class: local.class })}
       data-part="description"
@@ -184,7 +182,7 @@ export function FileUploadHelper(props: FileUploadHelperProps): JSX.Element {
   const styles = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.helper({ class: local.class })}
       data-part="dropzone-helper"

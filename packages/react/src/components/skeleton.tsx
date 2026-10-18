@@ -1,14 +1,14 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   SkeletonProps as BaseSkeletonCircleProps,
   SkeletonProps as BaseSkeletonRootProps,
   SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface SkeletonTextProps
-  extends HTMLArkProps<"div">, BaseSkeletonTextProps {
+  extends ComponentPropsWithRef<"div">, BaseSkeletonTextProps {
   /**
    * The number of lines of the skeleton text.
    *
@@ -18,10 +18,10 @@ export interface SkeletonTextProps
 }
 
 export interface SkeletonRootProps
-  extends HTMLArkProps<"div">, BaseSkeletonRootProps {}
+  extends ComponentPropsWithRef<"div">, BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
-  extends HTMLArkProps<"div">, BaseSkeletonCircleProps {}
+  extends ComponentPropsWithRef<"div">, BaseSkeletonCircleProps {}
 // #endregion
 
 // #region Parts
@@ -34,7 +34,7 @@ export function SkeletonRoot({
   const slots = recipe({ size });
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.base({ className })}
       data-part="root"
@@ -52,7 +52,7 @@ export function SkeletonCircle({
   const slots = recipe({ size });
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.circle({ className })}
       data-part="circle"
@@ -71,7 +71,7 @@ export function SkeletonText({
   const slots = recipe({ size });
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.text({ className })}
       data-part="text"
@@ -82,7 +82,7 @@ export function SkeletonText({
 
         return <div className={slots.line()} key={key} />;
       })}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

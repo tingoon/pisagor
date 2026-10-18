@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { BottomNavigationProps as BaseBottomNavigationProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -26,6 +25,6 @@
   });
 </script>
 
-<Ark aria-label={m("bottomNavigation.label")} as="nav" {...root.props}>
+<nav aria-label={m("bottomNavigation.label")} {...root.props}>
   {@render children?.()}
-</Ark>
+</nav>

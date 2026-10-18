@@ -20,7 +20,7 @@ export const AnnouncementRoot = withProvider(ark.div, {
   slot: "base",
 });
 
-export const AnnouncementTitle = withContext(ark.span, {
+export const AnnouncementTitle = withContext("span", {
   name: "Title",
   slot: "title",
 });

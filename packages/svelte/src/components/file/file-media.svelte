@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { FileProps as BaseFileProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { FileIcon } from "phosphor-svelte";
@@ -18,8 +17,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.media({ class: cn(className), variant })}
   data-part="media"
@@ -31,4 +29,4 @@
   {:else}
     <FileIcon />
   {/if}
-</Ark>
+</div>

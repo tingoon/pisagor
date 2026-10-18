@@ -70,7 +70,7 @@ const {
 
 - Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
 - Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file. Public re-exports can use `export { useStyles as useFoo }`.
-- `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag / `ark.*` by default; use Ark primitives when `asChild` or polymorphism is required.
+- `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag string (`"div"`) for layout/presentational hosts; use `ark.*` only when `as-child` polymorphism is required; use Ark machine primitives for headless parts.
 - Hand-written roots that need dual providers: `h(FooStylesContext, { value: { get slots() { … }, variants } }, () => …)` (and a thin state context when needed). Mirror React dual-provider components (breadcrumb, timer, steps, bottom-navigation, listbox, tags-input, tree-view, file-upload, command, …) — do not lift every part recipe to the root.
 - Thin **non-style** state uses `createContext` from `../internal/utils/create-context` — keep it separate from the slot-recipe Context.
 - In hand-written parts call `const styles = useStyles()` in `setup` and read `styles.slots.foo()` in the **render** function (do not destructure slots in setup if reactivity is needed).
@@ -320,7 +320,7 @@ Behavior lives in the headless Ark Vue primitive — the styled layer adds visua
 ### Do
 
 - Type each part per [Types + runtime props](#types--runtime-props).
-- On **plain** nodes (`ark.div`, native tags) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
+- On **plain** nodes (native tags; `ark.*` only when polymorphic) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
 - Forward portal / `Teleport`, `lazyMount`, and `unmountOnExit` unchanged — keep Ark defaults; do not set library defaults for those presence props unless the sibling React component already does.
 - Keep event bridges thin: Ark `onValueChange: (details) => props.onValueChange?.(details.value)` when the public API exposes unwrapped values.
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { KbdGroupProps as BaseKbdGroupProps } from "@pisagor/props";
   import { kbdGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -17,12 +16,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="group"
   data-scope="kbd"
 >
   {@render children?.()}
-</Ark>
+</div>

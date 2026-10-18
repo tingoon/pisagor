@@ -1,16 +1,16 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   ItemProps as BaseItemGroupProps,
   ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
 export interface ItemGroupProps
-  extends HTMLArkProps<"div">, BaseItemGroupProps {}
+  extends ComponentPropsWithRef<"div">, BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
   extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
@@ -28,7 +28,7 @@ export function ItemGroup({
 
   return (
     <ItemGroupContext value={{ variant }}>
-      <ark.div
+      <div
         {...rest}
         className={slots.group({ className })}
         data-part="group"
@@ -36,7 +36,7 @@ export function ItemGroup({
         data-variant={variant}
       >
         {children}
-      </ark.div>
+      </div>
     </ItemGroupContext>
   );
 }

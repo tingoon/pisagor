@@ -1,6 +1,5 @@
 import {
   ColorPicker as ColorPickerPrimitive,
-  ark,
   parseColor as parseColorArk,
   useColorPickerContext,
 } from "@ark-ui/solid";
@@ -18,7 +17,6 @@ import type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
@@ -96,7 +94,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
+export type ColorPickerSwatchPreviewProps = ComponentProps<"div">;
 
 export const parseColor = parseColorArk;
 
@@ -478,7 +476,7 @@ export function ColorPickerSwatchPreview(
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.inputSwatch({ class: local.class })}
       data-part="input-swatch"
@@ -490,7 +488,7 @@ export function ColorPickerSwatchPreview(
       <ColorPickerPrimitive.ValueSwatch
         class={styles.slots.inputSwatchSwatch()}
       />
-    </ark.div>
+    </div>
   );
 }
 

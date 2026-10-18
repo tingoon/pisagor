@@ -4,7 +4,7 @@ import type {
   SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { useLocale } from "./provider/context";
 
@@ -16,7 +16,7 @@ export interface SkipNavLinkProps
 }
 
 export interface SkipNavContentProps
-  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
+  extends ComponentProps<"div">, BaseSkipNavContentProps {
   id?: string;
 }
 
@@ -49,7 +49,7 @@ export function SkipNavContent(props: SkipNavContentProps): JSX.Element {
   const slots = () => (local.recipe ?? skipNavRecipe)();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().content({ class: local.class })}
       data-part="content"

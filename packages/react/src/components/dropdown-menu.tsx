@@ -1,9 +1,4 @@
-import {
-  Menu as MenuPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Menu as MenuPrimitive, Portal } from "@ark-ui/react";
 import type {
   MenuArrowProps,
   MenuCheckboxItemProps,
@@ -29,7 +24,7 @@ import type {
   DropdownMenuItemProps as BaseDropdownMenuTriggerItemProps,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -87,7 +82,7 @@ export interface DropdownMenuTriggerItemProps
 export interface DropdownMenuContentProps
   extends MenuContentProps, BaseDropdownMenuContentProps {}
 
-export type DropdownMenuShortcutProps = HTMLArkProps<"span">;
+export type DropdownMenuShortcutProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
@@ -367,7 +362,7 @@ export function DropdownMenuShortcut({
   const slots = useDropdownMenuSlots();
 
   return (
-    <ark.span
+    <span
       {...rest}
       className={slots.shortcut({ className })}
       data-part="shortcut"

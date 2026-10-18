@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface AspectRatioProps
-  extends HTMLArkProps<"div">, BaseAspectRatioProps {
+  extends ComponentProps<"div">, BaseAspectRatioProps {
   /**
    * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
    * variable.
@@ -25,7 +24,7 @@ export function AspectRatio(props: AspectRatioProps): JSX.Element {
   const recipeFn = () => local.recipe ?? aspectRatioRecipe;
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={recipeFn()({ class: local.class })}
       data-part="root"

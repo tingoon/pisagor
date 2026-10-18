@@ -65,7 +65,7 @@ export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider(ark.nav, {
+const BottomNavigationNav = withBottomNavigationProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -92,7 +92,7 @@ export const BottomNavigationRoot = defineComponent({
   },
 });
 
-export const BottomNavigationList = withBottomNavigationContext(ark.div, {
+export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
@@ -137,7 +137,7 @@ export const BottomNavigationItem = defineComponent({
 });
 
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
-  ark.span,
+  "span",
   {
     defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
     name: "ItemIcon",
@@ -146,7 +146,7 @@ export const BottomNavigationItemIcon = withBottomNavigationItemContext(
 );
 
 export const BottomNavigationItemLabel = withBottomNavigationItemContext(
-  ark.span,
+  "span",
   {
     defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",

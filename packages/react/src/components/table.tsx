@@ -1,6 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 import { createSlotRecipeContext } from "../internal";
 
@@ -12,7 +12,8 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
+export interface TableProps
+  extends ComponentPropsWithRef<"table">, BaseTableProps {
   /**
    * The variant of the table.
    *
@@ -27,13 +28,13 @@ export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = HTMLArkProps<"thead">;
-export type TableBodyProps = HTMLArkProps<"tbody">;
-export type TableFooterProps = HTMLArkProps<"tfoot">;
-export type TableRowProps = HTMLArkProps<"tr">;
-export type TableHeadProps = HTMLArkProps<"th">;
-export type TableCellProps = HTMLArkProps<"td">;
-export type TableCaptionProps = HTMLArkProps<"caption">;
+export type TableHeaderProps = ComponentPropsWithRef<"thead">;
+export type TableBodyProps = ComponentPropsWithRef<"tbody">;
+export type TableFooterProps = ComponentPropsWithRef<"tfoot">;
+export type TableRowProps = ComponentPropsWithRef<"tr">;
+export type TableHeadProps = ComponentPropsWithRef<"th">;
+export type TableCellProps = ComponentPropsWithRef<"td">;
+export type TableCaptionProps = ComponentPropsWithRef<"caption">;
 // #endregion
 
 // #region Parts
@@ -50,7 +51,7 @@ export function TableRoot({
   return (
     <TableStylesContext value={{ slots, variants: {} as never }}>
       <div className={slots.wrapper()} data-part="wrapper" data-scope="table">
-        <ark.table
+        <table
           {...rest}
           className={slots.base({ className })}
           data-hoverable={isHoverable}
@@ -63,13 +64,13 @@ export function TableRoot({
   );
 }
 
-export const TableHeader = withContext(ark.thead, { name: "Header" });
-export const TableBody = withContext(ark.tbody, { name: "Body" });
-export const TableFooter = withContext(ark.tfoot, { name: "Footer" });
-export const TableRow = withContext(ark.tr, { name: "Row" });
-export const TableHead = withContext(ark.th, { name: "Head" });
-export const TableCell = withContext(ark.td, { name: "Cell" });
-export const TableCaption = withContext(ark.caption, { name: "Caption" });
+export const TableHeader = withContext("thead", { name: "Header" });
+export const TableBody = withContext("tbody", { name: "Body" });
+export const TableFooter = withContext("tfoot", { name: "Footer" });
+export const TableRow = withContext("tr", { name: "Row" });
+export const TableHead = withContext("th", { name: "Head" });
+export const TableCell = withContext("td", { name: "Cell" });
+export const TableCaption = withContext("caption", { name: "Caption" });
 // #endregion
 
 // #region Display Names

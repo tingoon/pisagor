@@ -1,10 +1,9 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface StatusProps extends HTMLArkProps<"span">, BaseStatusProps {
+export interface StatusProps extends ComponentProps<"span">, BaseStatusProps {
   size?: StatusVariantProps["size"];
   variant?: StatusVariantProps["variant"];
 }
@@ -19,7 +18,7 @@ export function Status(props: StatusProps): JSX.Element {
   const recipeFn = () => local.recipe ?? statusRecipe;
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={recipeFn()({
         class: local.class,

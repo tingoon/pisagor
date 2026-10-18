@@ -1,9 +1,4 @@
-import {
-  Timer as TimerPrimitive,
-  ark,
-  useTimerContext,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react";
 import type {
   TimerActionTriggerProps,
   TimerRootProps as TimerRootPrimitiveProps,
@@ -14,7 +9,11 @@ import type {
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -44,7 +43,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
+  extends ComponentPropsWithRef<"div">, BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
    *
@@ -62,7 +61,7 @@ export interface TimerRootProps
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = HTMLArkProps<"div">;
+export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -111,10 +110,10 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
+const TimerItemGroupBase = withTimerItemGroupProvider("div", {
   name: "ItemGroup",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseTimerItemGroupProps>;
+}) as FunctionComponent<ComponentPropsWithRef<"div"> & BaseTimerItemGroupProps>;
 
 export function TimerItemGroup({
   orientation = "vertical",
@@ -152,7 +151,7 @@ export function TimerItem({
 
 TimerItem.displayName = "Timer.Item";
 
-export const TimerItemLabel = withTimerItemGroupContext(ark.div, {
+export const TimerItemLabel = withTimerItemGroupContext("div", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",

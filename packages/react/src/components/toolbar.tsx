@@ -1,9 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark } from "@ark-ui/react";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type {
   ComponentProps,
+  ComponentPropsWithRef,
   FunctionComponent,
   KeyboardEvent,
   ReactNode,
@@ -18,14 +19,14 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider(ark.div, {
+export const ToolbarRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<HTMLArkProps<"div">, "title"> & BaseToolbarRootProps
+  Omit<ComponentPropsWithRef<"div">, "title"> & BaseToolbarRootProps
 >;
 
-export const ToolbarHeading = withContext(ark.div, {
+export const ToolbarHeading = withContext("div", {
   name: "Heading",
 });
 
@@ -33,11 +34,11 @@ export const ToolbarTitle = withContext(ark.h2, {
   name: "Title",
 });
 
-export const ToolbarDescription = withContext(ark.p, {
+export const ToolbarDescription = withContext("p", {
   name: "Description",
 });
 
-export const ToolbarActions = withContext(ark.div, {
+export const ToolbarActions = withContext("div", {
   defaultProps: {
     "aria-orientation": "horizontal",
     onKeyDown: (event: KeyboardEvent<HTMLDivElement>) =>

@@ -1,8 +1,7 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { useCallback, useEffect, useRef } from "react";
-import type { RefObject } from "react";
+import type { ComponentPropsWithRef, RefObject } from "react";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -12,7 +11,7 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
-  extends HTMLArkProps<"div">, BaseScrollspyProps {
+  extends ComponentPropsWithRef<"div">, BaseScrollspyProps {
   /**
    * Whether to update the URL hash when the active section changes.
    *
@@ -301,7 +300,7 @@ export function Scrollspy({
   }, [handleScroll, scrollTo, scrollToHashSection, targetRef]);
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ className })}
       data-part="root"
@@ -309,7 +308,7 @@ export function Scrollspy({
       ref={selfRef}
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

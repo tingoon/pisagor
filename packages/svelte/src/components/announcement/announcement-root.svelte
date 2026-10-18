@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Ark } from "@ark-ui/svelte";
   import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./announcement.context";
@@ -17,6 +18,6 @@
   });
 </script>
 
-<div {...root.props}>
+<Ark as="div" {...root.props}>
   {@render children?.()}
-</div>
+</Ark>

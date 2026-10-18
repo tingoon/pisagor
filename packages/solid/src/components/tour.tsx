@@ -242,7 +242,7 @@ export function TourBody(props: DialogBodyProps): JSX.Element {
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <ark.div
+      <div
         {...rest}
         class={dialogSlots.body({ class: local.class })}
         data-part="body"
@@ -263,14 +263,14 @@ export function TourHeader(props: DialogHeaderProps): JSX.Element {
   const dialogSlots = dialogRecipe();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={dialogSlots.header({ class: local.class })}
       data-part="header"
       data-scope="tour"
     >
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -334,7 +334,7 @@ export function TourFooter(props: DialogFooterProps): JSX.Element {
     <TourPrimitive.Control
       {...rest}
       asChild={(controlProps) => (
-        <ark.div
+        <div
           {...controlProps({
             class: dialogSlots.footer({ class: local.class }),
           })}
@@ -344,7 +344,7 @@ export function TourFooter(props: DialogFooterProps): JSX.Element {
           <TourInsideControlContext.Provider value={true}>
             {local.children}
           </TourInsideControlContext.Provider>
-        </ark.div>
+        </div>
       )}
     />
   );
@@ -358,7 +358,7 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
   const actions = () => ctx.tour().step?.actions ?? [];
 
   const content = (extra?: object) => (
-    <ark.div
+    <div
       {...extra}
       class={cn(
         !insideControl && dialogSlots.footer(),
@@ -393,7 +393,7 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
           />
         )}
       </For>
-    </ark.div>
+    </div>
   );
 
   return (

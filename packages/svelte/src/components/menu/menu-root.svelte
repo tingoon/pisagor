@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { MenuProps as BaseMenuProps } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
@@ -21,4 +20,4 @@
   });
 </script>
 
-<Ark as="nav" {...root.props}>{@render children?.()}</Ark>
+<nav {...root.props}>{@render children?.()}</nav>

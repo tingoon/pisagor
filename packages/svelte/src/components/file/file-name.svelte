@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./file.context";
 
@@ -7,4 +6,4 @@
   const part = withContext(() => rest, { name: "Name", slot: "name" });
 </script>
 
-<Ark as="div" {...part.props}>{@render children?.()}</Ark>
+<div {...part.props}>{@render children?.()}</div>

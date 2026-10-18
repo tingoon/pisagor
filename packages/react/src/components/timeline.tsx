@@ -1,10 +1,14 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   TimelineItemProps as BaseTimelineItemProps,
   TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -20,9 +24,9 @@ export function TimelineRoot({
   recipe = timelineRecipe,
   className,
   ...rest
-}: HTMLArkProps<"ol"> & BaseTimelineRootProps) {
+}: ComponentPropsWithRef<"ol"> & BaseTimelineRootProps) {
   return (
-    <ark.ol
+    <ol
       {...rest}
       className={recipe({ className, orientation })}
       data-orientation={orientation}
@@ -32,20 +36,20 @@ export function TimelineRoot({
   );
 }
 
-export const TimelineItem = withProvider(ark.li, {
+export const TimelineItem = withProvider("li", {
   defaultProps: {
     "data-part": "item",
   },
   name: "Item",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"li"> & BaseTimelineItemProps>;
+}) as FunctionComponent<ComponentPropsWithRef<"li"> & BaseTimelineItemProps>;
 
-export const TimelineIndicator = withContext(ark.div, {
+export const TimelineIndicator = withContext("div", {
   name: "Indicator",
   slot: "indicator",
 });
 
-export const TimelineSeparator = withContext(ark.div, {
+export const TimelineSeparator = withContext("div", {
   defaultProps: {
     "aria-hidden": "true",
   },
@@ -53,17 +57,17 @@ export const TimelineSeparator = withContext(ark.div, {
   slot: "separator",
 });
 
-export const TimelineContent = withContext(ark.div, {
+export const TimelineContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const TimelineTitle = withContext(ark.div, {
+export const TimelineTitle = withContext("div", {
   name: "Title",
   slot: "title",
 });
 
-export const TimelineDescription = withContext(ark.div, {
+export const TimelineDescription = withContext("div", {
   name: "Description",
   slot: "description",
 });

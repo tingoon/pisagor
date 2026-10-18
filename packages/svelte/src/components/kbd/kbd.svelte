@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { KbdProps as BaseKbdProps } from "@pisagor/props";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -19,12 +18,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="kbd"
+<kbd
   {...rest}
   class={recipe({ class: cn(className), size, variant })}
   data-part="root"
   data-scope="kbd"
 >
   {@render children?.()}
-</Ark>
+</kbd>

@@ -497,7 +497,7 @@ export const TourActions = defineComponent({
 
       const content = () =>
         h(
-          (insideControl ? ark.div : DialogFooter) as ArkPart,
+          (insideControl ? "div" : DialogFooter) as ArkPart,
           insideControl
             ? {
                 ...attrs,

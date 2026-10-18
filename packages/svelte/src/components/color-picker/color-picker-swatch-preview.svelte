@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark, ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
+  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./color-picker.context";
@@ -9,8 +9,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.inputSwatch({ class: cn(className) })}
   data-part="input-swatch"
@@ -18,4 +17,4 @@
 >
   <ColorPickerPrimitive.TransparencyGrid class={slots.inputSwatchGrid()} />
   <ColorPickerPrimitive.ValueSwatch class={slots.inputSwatchSwatch()} />
-</Ark>
+</div>

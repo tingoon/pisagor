@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { ProseProps as BaseProseProps } from "@pisagor/props";
   import { proseRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -26,23 +25,19 @@
 </script>
 
 {#if html}
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >
     {@html sanitize ? sanitize(html) : html}
-  </Ark>
-{:else}
-  <Ark
-    as="div"
+  </div>{:else}
+  <div
     {...rest}
     class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >
     {@render children?.()}
-  </Ark>
-{/if}
+  </div>{/if}

@@ -1,7 +1,6 @@
 import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
-  ark,
 } from "@ark-ui/vue";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
@@ -193,7 +192,7 @@ export const InputOTPSlot = defineComponent({
   },
 });
 
-export const InputOTPSeparator = withContext(ark.hr, {
+export const InputOTPSeparator = withContext("hr", {
   name: "Separator",
 });
 

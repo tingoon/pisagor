@@ -246,7 +246,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
       }}
     >
       <SidebarStateContext value={stateValue}>
-        <ark.div
+        <div
           {...rest}
           class={slots().wrapper({ class: local.class })}
           data-part="wrapper"
@@ -254,7 +254,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
           style={style()}
         >
           {local.children}
-        </ark.div>
+        </div>
       </SidebarStateContext>
     </SidebarStylesContext>
   );
@@ -280,7 +280,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
       fallback={
         <Show
           fallback={
-            <ark.div
+            <div
               {...rest}
               class={styles.slots.peer({ class: local.class })}
               data-collapsible={state() === "collapsed" ? collapsible() : ""}
@@ -290,7 +290,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
               data-state={state()}
               data-variant={variant()}
             >
-              <ark.div
+              <div
                 class={styles.slots.gap({
                   padded: padded(),
                   placement: placement(),
@@ -298,7 +298,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
                 data-part="gap"
                 data-scope="sidebar"
               />
-              <ark.div
+              <div
                 class={styles.slots.container({
                   class: local.class,
                   padded: padded(),
@@ -307,16 +307,16 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
                 data-part="container"
                 data-scope="sidebar"
               >
-                <ark.div
+                <div
                   class={styles.slots.inner()}
                   data-part="inner"
                   data-scope="sidebar"
                   data-sidebar="sidebar"
                 >
                   {local.children}
-                </ark.div>
-              </ark.div>
-            </ark.div>
+                </div>
+              </div>
+            </div>
           }
           when={isMobile()}
         >
@@ -338,23 +338,21 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
                   Displays the mobile sidebar.
                 </Sheet.Description>
               </Sheet.Header>
-              <ark.div class={styles.slots.mobileBody()}>
-                {local.children}
-              </ark.div>
+              <div class={styles.slots.mobileBody()}>{local.children}</div>
             </Sheet.Content>
           </Sheet>
         </Show>
       }
       when={collapsible() === "none"}
     >
-      <ark.div
+      <div
         {...rest}
         class={styles.slots.base({ class: local.class })}
         data-part="root"
         data-scope="sidebar"
       >
         {local.children}
-      </ark.div>
+      </div>
     </Show>
   );
 }
@@ -379,7 +377,7 @@ export function SidebarTrigger(props: ButtonProps): JSX.Element {
       variant="ghost"
     >
       <SidebarSimpleIcon class={styles.slots.triggerIcon()} />
-      <ark.span class={styles.slots.triggerLabel()}>Toggle sidebar</ark.span>
+      <span class={styles.slots.triggerLabel()}>Toggle sidebar</span>
     </Button>
   );
 }
@@ -411,7 +409,7 @@ export function SidebarInset(props: SidebarInsetProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.main
+    <main
       {...rest}
       class={styles.slots.inset({ class: local.class })}
       data-part="inset"
@@ -439,7 +437,7 @@ export function SidebarHeader(props: SidebarHeaderProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.header({ class: local.class })}
       data-part="header"
@@ -454,7 +452,7 @@ export function SidebarFooter(props: SidebarFooterProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.footer({ class: local.class })}
       data-part="footer"
@@ -488,7 +486,7 @@ export function SidebarContent(props: SidebarContentProps): JSX.Element {
       class={styles.slots.scrollArea()}
       scrollFade={local.scrollFade ?? false}
     >
-      <ark.div
+      <div
         {...rest}
         class={styles.slots.content({ class: local.class })}
         data-part="content"
@@ -504,7 +502,7 @@ export function SidebarGroup(props: SidebarGroupProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.group({ class: local.class })}
       data-part="group"
@@ -519,7 +517,7 @@ export function SidebarGroupLabel(props: SidebarGroupLabelProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.groupLabel({ class: local.class })}
       data-part="group-label"
@@ -563,7 +561,7 @@ export function SidebarGroupContent(
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.groupContent({ class: local.class })}
       data-part="group-content"
@@ -578,7 +576,7 @@ export function SidebarMenu(props: SidebarMenuProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       class={styles.slots.menu({ class: local.class })}
       data-part="menu"
@@ -593,7 +591,7 @@ export function SidebarMenuItem(props: SidebarMenuItemProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.li
+    <li
       {...rest}
       class={styles.slots.menuItem({ class: local.class })}
       data-part="menu-item"
@@ -696,7 +694,7 @@ export function SidebarMenuBadge(props: SidebarMenuBadgeProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.menuBadge({ class: local.class })}
       data-part="menu-badge"
@@ -713,7 +711,7 @@ export function SidebarMenuSkeleton(
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.menuSkeleton({ class: local.class })}
       data-part="menu-skeleton"
@@ -731,7 +729,7 @@ export function SidebarMenuSkeleton(
         data-sidebar="menu-skeleton-text"
         style={{ "--skeleton-width": "70%" }}
       />
-    </ark.div>
+    </div>
   );
 }
 
@@ -740,7 +738,7 @@ export function SidebarMenuSub(props: SidebarMenuSubProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       class={styles.slots.menuSub({ class: local.class })}
       data-part="menu-sub"
@@ -757,7 +755,7 @@ export function SidebarMenuSubItem(
   const styles = useStyles();
 
   return (
-    <ark.li
+    <li
       {...rest}
       class={styles.slots.menuSubItem({ class: local.class })}
       data-part="menu-sub-item"

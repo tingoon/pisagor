@@ -1,14 +1,15 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
-export interface KbdProps extends HTMLArkProps<"kbd">, BaseKbdProps {}
+export interface KbdProps extends ComponentPropsWithRef<"kbd">, BaseKbdProps {}
 
-export interface KbdGroupProps extends HTMLArkProps<"div">, BaseKbdGroupProps {}
+export interface KbdGroupProps
+  extends ComponentPropsWithRef<"div">, BaseKbdGroupProps {}
 // #endregion
 
 // #region Parts
@@ -20,7 +21,7 @@ export function KbdRoot({
   ...rest
 }: KbdProps) {
   return (
-    <ark.kbd
+    <kbd
       {...rest}
       className={recipe({ className, size, variant })}
       data-part="root"
@@ -35,7 +36,7 @@ export function KbdGroup({
   ...rest
 }: KbdGroupProps) {
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ className })}
       data-part="group"

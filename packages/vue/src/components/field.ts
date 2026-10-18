@@ -1,7 +1,6 @@
 import {
   Field as FieldPrimitive,
   Fieldset as FieldsetPrimitive,
-  ark,
   useFieldContext,
 } from "@ark-ui/vue";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
@@ -220,7 +219,7 @@ export const FieldLabel = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        (field ? FieldPrimitive.Label : ark.label) as ArkPart,
+        (field ? FieldPrimitive.Label : "label") as ArkPart,
         {
           ...attrs,
           asChild: props.asChild,

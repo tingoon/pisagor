@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { Sheet } from "../sheet";
@@ -29,8 +28,7 @@
 </script>
 
 {#if collapsible === "none"}
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={ctx.slots.base({ class: cn(className) })}
     data-part="root"
@@ -38,8 +36,7 @@
     {style}
   >
     {@render children?.()}
-  </Ark>
-{:else if ctx.isMobile}
+  </div>{:else if ctx.isMobile}
   <Sheet
     onOpenChange={(details) => ctx.setOpenMobile(details.open)}
     open={ctx.openMobile}
@@ -56,14 +53,13 @@
         <Sheet.Title>Sidebar</Sheet.Title>
         <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
       </Sheet.Header>
-      <Ark as="div" class={ctx.slots.mobileBody()}>
+      <div class={ctx.slots.mobileBody()}>
         {@render children?.()}
-      </Ark>
+      </div>
     </Sheet.Content>
   </Sheet>
 {:else}
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={ctx.slots.peer({ class: cn(className) })}
     data-collapsible={ctx.state === "collapsed" ? collapsible : ""}
@@ -74,27 +70,23 @@
     data-variant={variant}
     {style}
   >
-    <Ark
-      as="div"
+    <div
       class={ctx.slots.gap({ padded, placement })}
       data-part="gap"
       data-scope="sidebar"
     />
-    <Ark
-      as="div"
+    <div
       class={ctx.slots.container({ class: cn(className), padded, placement })}
       data-part="container"
       data-scope="sidebar"
     >
-      <Ark
-        as="div"
+      <div
         class={ctx.slots.inner()}
         data-part="inner"
         data-scope="sidebar"
         data-sidebar="sidebar"
       >
         {@render children?.()}
-      </Ark>
-    </Ark>
-  </Ark>
-{/if}
+      </div>
+    </div>
+  </div>{/if}

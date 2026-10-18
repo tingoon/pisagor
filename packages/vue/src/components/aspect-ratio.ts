@@ -1,11 +1,8 @@
-import { ark } from "@ark-ui/vue";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface AspectRatioProps extends BaseAspectRatioProps {
@@ -38,7 +35,7 @@ export const AspectRatio = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(props.recipe(), props.class),

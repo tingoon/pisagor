@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { DataListProps as BaseDataListRootProps } from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -22,12 +21,12 @@ export function DataListRoot({
   recipe = dataListRecipe,
   className,
   ...rest
-}: HTMLArkProps<"dl"> &
+}: ComponentPropsWithRef<"dl"> &
   BaseDataListRootProps & {
     orientation?: "horizontal" | "vertical";
   }) {
   return (
-    <ark.dl
+    <dl
       {...rest}
       className={recipe({ className })}
       data-orientation={orientation}
@@ -35,11 +34,11 @@ export function DataListRoot({
       data-scope="data-list"
     >
       {children}
-    </ark.dl>
+    </dl>
   );
 }
 
-const DataListItemRoot = withProvider(ark.div, {
+const DataListItemRoot = withProvider("div", {
   defaultProps: {
     "data-part": "item",
   },
@@ -47,7 +46,7 @@ const DataListItemRoot = withProvider(ark.div, {
   slot: "base",
 });
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: {
     "data-part": "item-label",
   },
@@ -55,7 +54,7 @@ const DataListItemLabel = withContext(ark.dt, {
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: {
     "data-part": "item-value",
   },

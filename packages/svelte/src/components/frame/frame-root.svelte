@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { FrameProps as BaseFrameProps } from "@pisagor/props";
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -30,12 +29,11 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="frame"
 >
   {@render children?.()}
-</Ark>
+</div>

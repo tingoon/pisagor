@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -20,8 +19,7 @@
   const slots = $derived(recipe({ size }));
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.text({ class: cn(className) })}
   data-part="text"
@@ -30,4 +28,4 @@
   {#each Array.from({ length: lines }) as _, index (index)}
     <div class={slots.line()}></div>
   {/each}
-</Ark>
+</div>

@@ -1,7 +1,12 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -21,11 +26,11 @@ export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: HTMLArkProps<"div"> & CardVariantProps) {
+}: ComponentPropsWithRef<"div"> & CardVariantProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.media({ className, variant })}
       data-part="media"
@@ -41,7 +46,7 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: HTMLArkProps<"div"> & {
+}: ComponentPropsWithRef<"div"> & {
   /** Supporting text rendered in `Card.Description`. */
   description?: ReactNode;
   /**
@@ -53,7 +58,7 @@ export function CardHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -64,7 +69,7 @@ export function CardHeader({
       {description != null && <CardDescription>{description}</CardDescription>}
 
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -73,22 +78,22 @@ export const CardTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.p, {
+export const CardDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const CardAction = withContext(ark.div, {
+export const CardAction = withContext("div", {
   name: "Action",
   slot: "action",
 });
 
-export const CardContent = withContext(ark.div, {
+export const CardContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const CardFooter = withContext(ark.div, {
+export const CardFooter = withContext("div", {
   name: "Footer",
   slot: "footer",
 });

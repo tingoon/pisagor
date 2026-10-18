@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,
@@ -17,8 +16,6 @@ export interface KbdGroupProps extends BaseKbdGroupProps {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 export const KbdRoot = defineComponent({
@@ -45,7 +42,7 @@ export const KbdRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.kbd as ArkPart,
+        "kbd",
         {
           ...attrs,
           class: cn(
@@ -76,7 +73,7 @@ export const KbdGroup = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(props.recipe(), props.class),

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { SortableItemProps as BaseSortableItemProps } from "@pisagor/props";
   import { sortableItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -36,8 +35,7 @@
   });
 </script>
 
-<Ark
-  as="li"
+<li
   {...rest}
   {...itemProps}
   class={slots.base({ class: cn(className), disabled: sortable.disabled })}
@@ -45,4 +43,4 @@
   data-scope="sortable"
 >
   {@render children?.()}
-</Ark>
+</li>

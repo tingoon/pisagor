@@ -59,8 +59,6 @@ export interface BreadcrumbItemProps extends BaseBreadcrumbItemProps {
 }
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Parts
 export const BreadcrumbRoot = defineComponent({
   inheritAttrs: false,
@@ -85,7 +83,7 @@ export const BreadcrumbRoot = defineComponent({
 
     return () =>
       h(
-        ark.nav as ArkPart,
+        "nav",
         {
           ...attrs,
           "aria-label": m("breadcrumb.label", props.ariaLabel),
@@ -97,12 +95,12 @@ export const BreadcrumbRoot = defineComponent({
   },
 });
 
-export const BreadcrumbList = withBreadcrumbContext(ark.ol, {
+export const BreadcrumbList = withBreadcrumbContext("ol", {
   defaultProps: { role: "list" },
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider(ark.li, {
+export const BreadcrumbItem = withBreadcrumbItemProvider("li", {
   name: "Item",
   slot: "base",
 });
@@ -111,7 +109,7 @@ export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
   name: "Link",
 });
 
-export const BreadcrumbPage = withBreadcrumbItemContext(ark.span, {
+export const BreadcrumbPage = withBreadcrumbItemContext("span", {
   defaultProps: { "aria-current": "page" },
   name: "Page",
 });
@@ -130,7 +128,7 @@ export const BreadcrumbSeparator = defineComponent({
 
     return () =>
       h(
-        ark.li as ArkPart,
+        "li",
         {
           ...attrs,
           "aria-hidden": "true",
@@ -152,7 +150,7 @@ export const BreadcrumbEllipsis = defineComponent({
 
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           "aria-hidden": "true",

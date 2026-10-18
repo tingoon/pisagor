@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
   import { surfaceRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -54,8 +53,7 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({
     bordered,
@@ -70,4 +68,4 @@
   data-variant={surface.variant}
 >
   {@render children?.()}
-</Ark>
+</div>

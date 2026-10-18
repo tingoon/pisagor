@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { type Snippet, setContext } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { MENU_INSIDE_LIST, withContext } from "./menu.context";
@@ -13,4 +12,4 @@
   const part = withContext(() => rest, { name: "List" });
 </script>
 
-<Ark as="ul" {...part.props}>{@render children?.()}</Ark>
+<ul {...part.props}>{@render children?.()}</ul>

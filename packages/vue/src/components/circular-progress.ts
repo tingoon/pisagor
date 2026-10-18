@@ -1,7 +1,6 @@
 import {
   ProgressRootProvider,
   ProgressValueText,
-  ark,
   useProgress,
   useProgressContext,
 } from "@ark-ui/vue";
@@ -61,8 +60,6 @@ const CircularProgressValue = withContext(ProgressValueText, {
   name: "Value",
 });
 
-type ArkPart = Parameters<typeof h>[0];
-
 const CircularProgressTrack = defineComponent({
   inheritAttrs: false,
   name: "CircularProgress.Track",
@@ -91,7 +88,7 @@ const CircularProgressTrack = defineComponent({
       const dashOffset = circumference * (1 - percent);
 
       return h(
-        ark.svg as ArkPart,
+        "svg",
         {
           ...props.trackProps,
           "aria-hidden": "true",

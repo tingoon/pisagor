@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
   import {
     formControlShellRecipe,
@@ -142,8 +141,8 @@
   });
 </script>
 
-<Ark
-  as="fieldset"
+<!-- biome-ignore lint/a11y/useAriaPropsSupportedByRole: mirrors React RTE root; aria-readonly flags the shell -->
+<fieldset
   {...rest}
   aria-disabled={disabled || undefined}
   aria-invalid={invalid || undefined}
@@ -166,4 +165,4 @@
     </VisuallyHidden>
   {/if}
   {@render children?.()}
-</Ark>
+</fieldset>

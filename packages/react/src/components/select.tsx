@@ -1,10 +1,8 @@
 import {
   Portal,
   Select as SelectPrimitive,
-  ark,
   createListCollection,
   useSelectContext,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   CollectionItem,
@@ -25,7 +23,7 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -98,7 +96,7 @@ export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   heading?: string | ReactNode;
 }
 
-export type SelectEmptyProps = HTMLArkProps<"div">;
+export type SelectEmptyProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -292,7 +290,7 @@ export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
 
   if (empty) {
     return (
-      <ark.div
+      <div
         {...rest}
         className={slots.empty({ className })}
         role="presentation"

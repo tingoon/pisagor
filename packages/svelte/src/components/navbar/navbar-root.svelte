@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { NavbarProps as BaseNavbarProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./navbar.context";
@@ -10,4 +9,4 @@
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark as="header" {...root.props}>{@render children?.()}</Ark>
+<header {...root.props}>{@render children?.()}</header>

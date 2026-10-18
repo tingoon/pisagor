@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
   import { timelineRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -16,8 +15,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="ol"
+<ol
   {...rest}
   class={recipe({ class: cn(className), orientation })}
   data-orientation={orientation}
@@ -25,4 +23,4 @@
   data-scope="timeline"
 >
   {@render children?.()}
-</Ark>
+</ol>

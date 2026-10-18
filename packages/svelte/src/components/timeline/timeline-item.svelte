@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./timeline.context";
@@ -15,4 +14,4 @@
   });
 </script>
 
-<Ark as="li" {...root.props}>{@render children?.()}</Ark>
+<li {...root.props}>{@render children?.()}</li>

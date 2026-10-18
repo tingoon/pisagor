@@ -13,7 +13,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const AvatarGroupRoot = withProvider(ark.div, {
+export const AvatarGroupRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });

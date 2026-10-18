@@ -1,4 +1,3 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   DataListItemProps as BaseDataListItemProps,
   DataListProps as BaseDataListRootProps,
@@ -8,7 +7,7 @@ import {
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
@@ -28,7 +27,7 @@ interface DataListPresetItem {
 }
 
 export interface DataListRootProps
-  extends HTMLArkProps<"dl">, BaseDataListRootProps {
+  extends ComponentProps<"dl">, BaseDataListRootProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -36,7 +35,7 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-type DataListItemRootProps = HTMLArkProps<"div"> & BaseDataListItemProps;
+type DataListItemRootProps = ComponentProps<"div"> & BaseDataListItemProps;
 
 export interface DataListItemProps extends Omit<
   DataListItemRootProps,
@@ -52,7 +51,7 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation", "recipe", "class"]);
 
   return (
-    <ark.dl
+    <dl
       {...rest}
       class={(local.recipe ?? dataListRecipe)({ class: local.class })}
       data-orientation={local.orientation ?? "horizontal"}
@@ -62,18 +61,19 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   );
 }
 
-const DataListItemRoot: Component<DataListItemRootProps> = withProvider(
-  ark.div,
-  { defaultProps: { "data-part": "item" }, name: "Item", slot: "base" },
-);
+const DataListItemRoot: Component<DataListItemRootProps> = withProvider("div", {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
+});
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: { "data-part": "item-value" },
   name: "ItemValue",
   slot: "value",

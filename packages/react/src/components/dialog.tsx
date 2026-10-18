@@ -1,9 +1,4 @@
-import {
-  Dialog as DialogPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Dialog as DialogPrimitive, Portal } from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -15,7 +10,7 @@ import type {
 import { XIcon } from "@phosphor-icons/react";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
@@ -56,7 +51,7 @@ export interface DialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface DialogBodyProps extends HTMLArkProps<"div"> {
+export interface DialogBodyProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -65,13 +60,13 @@ export interface DialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = HTMLArkProps<"div">;
+export type DialogHeaderProps = ComponentPropsWithRef<"div">;
 
 export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = HTMLArkProps<"div">;
+export type DialogFooterProps = ComponentPropsWithRef<"div">;
 
 export interface DialogProps extends Omit<DialogRootProps, "title"> {
   /** Footer actions. */
@@ -180,7 +175,7 @@ export function DialogBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({ className })}
         data-part="body"
@@ -198,14 +193,14 @@ export function DialogHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
       data-scope="dialog"
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -225,7 +220,7 @@ export function DialogFooter({ className, ...rest }: DialogFooterProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"

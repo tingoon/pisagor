@@ -12,7 +12,7 @@ cursor:
 
 # Astro Component Patterns
 
-How to build shared UI components in `packages/astro` (`@pisagor/astro`). Astro is the **static subset** of the catalog: no client JS, no Ark machines — only components that render meaningfully as HTML + CSS.
+How to build shared UI components in `packages/astro` (`@pisagor/astro`). Astro is the **static subset** of the catalog: no client JS, no Ark machines, **no `asChild` / polymorphism** — only components that render meaningfully as HTML + CSS. Hosts are always native tags typed with `HTMLAttributes<"tag">` from `astro/types`. Keep semantic tag parity with the React KEEP list (`h3` titles, `nav`, `a` overlays) when those parts exist.
 
 **References:** [Component](component.mdc) (product naming), [React Component Patterns](react-component.mdc) (source of truth for API + DOM), [Svelte Component Patterns](svelte-component.mdc) (closest file layout), [TypeScript Style Guide](../typescript.mdc).
 

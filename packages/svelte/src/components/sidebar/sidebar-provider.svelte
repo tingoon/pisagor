@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark, useHotkey } from "@ark-ui/svelte";
+  import { useHotkey } from "@ark-ui/svelte";
   import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
   import { sidebarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -134,8 +134,7 @@
   );
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.wrapper({ class: cn(className) })}
   data-part="wrapper"
@@ -143,4 +142,4 @@
   style={wrapperStyle}
 >
   {@render children?.()}
-</Ark>
+</div>

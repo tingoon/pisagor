@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import type { CSSProperties } from "react";
+import type { ComponentPropsWithRef, CSSProperties } from "react";
 
 // #region Types
 export interface AspectRatioProps
-  extends HTMLArkProps<"div">, BaseAspectRatioProps {
+  extends ComponentPropsWithRef<"div">, BaseAspectRatioProps {
   /**
    * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
    * variable.
@@ -25,7 +24,7 @@ export function AspectRatio({
   ...rest
 }: AspectRatioProps) {
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ className })}
       data-part="root"

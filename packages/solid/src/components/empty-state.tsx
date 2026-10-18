@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
@@ -15,10 +15,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Types
 export type EmptyStateRootProps = Omit<HTMLArkProps<"div">, "title"> &
   BaseEmptyStateRootProps;
-export type EmptyStateMediaProps = HTMLArkProps<"div">;
+export type EmptyStateMediaProps = ComponentProps<"div">;
 export type EmptyStateTitleProps = HTMLArkProps<"h3">;
-export type EmptyStateDescriptionProps = HTMLArkProps<"p">;
-export type EmptyStateActionsProps = HTMLArkProps<"div">;
+export type EmptyStateDescriptionProps = ComponentProps<"p">;
+export type EmptyStateActionsProps = ComponentProps<"div">;
 
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
@@ -50,15 +50,15 @@ export const EmptyStateRoot: Component<EmptyStateRootProps> = withProvider(
   { name: "Root", slot: "base" },
 );
 
-export const EmptyStateMedia = withContext(ark.div, { name: "Media" });
+export const EmptyStateMedia = withContext("div", { name: "Media" });
 
 export const EmptyStateTitle = withContext(ark.h3, { name: "Title" });
 
-export const EmptyStateDescription = withContext(ark.p, {
+export const EmptyStateDescription = withContext("p", {
   name: "Description",
 });
 
-export const EmptyStateActions = withContext(ark.div, { name: "Actions" });
+export const EmptyStateActions = withContext("div", { name: "Actions" });
 // #endregion
 
 // #region Shorthand

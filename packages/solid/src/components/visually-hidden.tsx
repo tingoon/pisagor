@@ -1,18 +1,17 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface VisuallyHiddenProps
-  extends HTMLArkProps<"span">, BaseVisuallyHiddenProps {}
+  extends ComponentProps<"span">, BaseVisuallyHiddenProps {}
 
 export function VisuallyHidden(props: VisuallyHiddenProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe"]);
   const recipeFn = () => local.recipe ?? visuallyHiddenRecipe;
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={recipeFn()({ class: local.class })}
       data-part="root"

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
   import {
     type DataListItemRecipeSlot,
@@ -37,8 +36,7 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.base({ class: cn(className) })}
   data-part="item"
@@ -58,4 +56,4 @@
       {/if}
     </DataListItemValue>
   {/if}
-</Ark>
+</div>

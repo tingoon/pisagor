@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { TimerItemGroupProps as BaseTimerItemGroupProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
   import { withTimerItemGroupProvider } from "./timer.context";
@@ -20,11 +19,6 @@
   });
 </script>
 
-<Ark
-  as="div"
-  {...root.props}
-  data-orientation={orientation}
-  data-part="item-group"
->
+<div {...root.props} data-orientation={orientation} data-part="item-group">
   {@render children?.()}
-</Ark>
+</div>

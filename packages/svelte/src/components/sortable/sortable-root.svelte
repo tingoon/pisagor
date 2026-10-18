@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { SortableProps as BaseSortableProps } from "@pisagor/props";
   import { sortableRecipe } from "@pisagor/recipes";
   import { cn, formatMessage } from "@pisagor/utils";
@@ -176,8 +175,7 @@
   });
 </script>
 
-<Ark
-  as="ul"
+<ul
   {...rest}
   class={recipe({ class: cn(className), orientation })}
   data-orientation={orientation}
@@ -185,5 +183,5 @@
   data-scope="sortable"
 >
   {@render children?.()}
-</Ark>
+</ul>
 <span aria-live="polite" class="sr-only">{moved}</span>

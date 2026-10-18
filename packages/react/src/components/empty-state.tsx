@@ -19,7 +19,7 @@ export const EmptyStateRoot = withProvider(ark.div, {
   Omit<HTMLArkProps<"div">, "title"> & BaseEmptyStateRootProps
 >;
 
-export const EmptyStateMedia = withContext(ark.div, {
+export const EmptyStateMedia = withContext("div", {
   name: "Media",
   slot: "media",
 });
@@ -29,12 +29,12 @@ export const EmptyStateTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const EmptyStateDescription = withContext(ark.p, {
+export const EmptyStateDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const EmptyStateActions = withContext(ark.div, {
+export const EmptyStateActions = withContext("div", {
   name: "Actions",
   slot: "actions",
 });

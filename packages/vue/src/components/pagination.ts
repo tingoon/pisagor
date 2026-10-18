@@ -1,6 +1,5 @@
 import {
   Pagination as PaginationPrimitive,
-  ark,
   usePaginationContext,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
@@ -220,7 +219,7 @@ export const PaginationItemLink = defineComponent({
         props.variant ?? (typeof props.page === "number" ? "outline" : "ghost");
 
       return h(
-        ark.a as ArkPart,
+        "a",
         {
           ...attrs,
           "aria-current":

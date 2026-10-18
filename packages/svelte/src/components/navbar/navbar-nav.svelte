@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
   import { withContext } from "./navbar.context";
@@ -14,6 +13,6 @@
   const part = withContext(() => rest, { name: "Nav" });
 </script>
 
-<Ark as="nav" {...part.props} aria-label={ariaLabel}>
+<nav {...part.props} aria-label={ariaLabel}>
   {@render children?.()}
-</Ark>
+</nav>

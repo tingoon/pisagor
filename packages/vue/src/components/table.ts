@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
@@ -77,7 +76,7 @@ export const TableRoot = defineComponent({
         },
         () =>
           h(
-            ark.table as ArkPart,
+            "table",
             {
               ...attrs,
               class: variantSlots.base({ class: props.class }),
@@ -93,19 +92,19 @@ export const TableRoot = defineComponent({
   },
 });
 
-export const TableHeader = withContext(ark.thead, { name: "Header" });
+export const TableHeader = withContext("thead", { name: "Header" });
 
-export const TableBody = withContext(ark.tbody, { name: "Body" });
+export const TableBody = withContext("tbody", { name: "Body" });
 
-export const TableFooter = withContext(ark.tfoot, { name: "Footer" });
+export const TableFooter = withContext("tfoot", { name: "Footer" });
 
-export const TableRow = withContext(ark.tr, { name: "Row" });
+export const TableRow = withContext("tr", { name: "Row" });
 
-export const TableHead = withContext(ark.th, { name: "Head" });
+export const TableHead = withContext("th", { name: "Head" });
 
-export const TableCell = withContext(ark.td, { name: "Cell" });
+export const TableCell = withContext("td", { name: "Cell" });
 
-export const TableCaption = withContext(ark.caption, { name: "Caption" });
+export const TableCaption = withContext("caption", { name: "Caption" });
 // #endregion
 
 export const Table = Object.assign(TableRoot, {

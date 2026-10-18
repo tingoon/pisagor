@@ -1,6 +1,5 @@
 import {
   Timer as TimerPrimitive,
-  ark,
   useTimerContext as useTimer,
 } from "@ark-ui/vue";
 import type {
@@ -67,7 +66,7 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
+const TimerItemGroupBase = withTimerItemGroupProvider("div", {
   defaultProps: { "data-part": "item-group" },
   name: "ItemGroup",
   slot: "base",
@@ -105,7 +104,7 @@ export const TimerItem = defineComponent({
   },
 });
 
-export const TimerItemLabel = withTimerItemGroupContext(ark.div, {
+export const TimerItemLabel = withTimerItemGroupContext("div", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",

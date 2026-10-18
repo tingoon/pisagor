@@ -1,6 +1,5 @@
-import { Popover as PopoverPrimitive, ark } from "@ark-ui/solid";
+import { Popover as PopoverPrimitive } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
@@ -13,7 +12,7 @@ import type {
 } from "@ark-ui/solid";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
@@ -37,13 +36,13 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
+export interface PopoverHeaderProps extends ComponentProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export type PopoverBodyProps = HTMLArkProps<"div">;
-export type PopoverFooterProps = HTMLArkProps<"div">;
+export type PopoverBodyProps = ComponentProps<"div">;
+export type PopoverFooterProps = ComponentProps<"div">;
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);
@@ -120,7 +119,7 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.header({ class: local.class })}
       data-part="header"
@@ -133,7 +132,7 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
         <PopoverDescription>{local.description}</PopoverDescription>
       </Show>
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -152,7 +151,7 @@ export function PopoverBody(props: PopoverBodyProps): JSX.Element {
 
   return (
     <ScrollArea>
-      <ark.div
+      <div
         {...rest}
         class={styles.slots.body({
           class: ["overflow-visible", local.class].filter(Boolean).join(" "),
@@ -164,7 +163,7 @@ export function PopoverBody(props: PopoverBodyProps): JSX.Element {
   );
 }
 
-export const PopoverFooter = withContext(ark.div, { name: "Footer" });
+export const PopoverFooter = withContext("div", { name: "Footer" });
 
 export function PopoverCloseTrigger(
   props: PopoverCloseTriggerProps,

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./popover.context";
   import PopoverDescription from "./popover-description.svelte";
@@ -17,7 +16,7 @@
   const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   {#if title}
     <PopoverTitle>{title}</PopoverTitle>
   {/if}
@@ -25,4 +24,4 @@
     <PopoverDescription>{description}</PopoverDescription>
   {/if}
   {@render children?.()}
-</Ark>
+</div>

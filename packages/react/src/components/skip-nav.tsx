@@ -4,6 +4,7 @@ import type {
   SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 import { useLocale } from "./provider/context";
 
@@ -21,7 +22,7 @@ export interface SkipNavLinkProps
 }
 
 export interface SkipNavContentProps
-  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
+  extends ComponentPropsWithRef<"div">, BaseSkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *
@@ -68,7 +69,7 @@ export function SkipNavContent({
   const slots = recipe();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="content"

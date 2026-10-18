@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withStepsItemContext } from "./steps.context";
@@ -12,4 +11,4 @@
   const part = withStepsItemContext(() => rest, { name: "Description" });
 </script>
 
-<Ark as="span" {...part.props}>{@render children?.()}</Ark>
+<span {...part.props}>{@render children?.()}</span>

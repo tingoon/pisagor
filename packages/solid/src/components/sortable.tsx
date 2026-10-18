@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SortableItemProps as BaseSortableItemProps,
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
-import type { Accessor, JSX } from "solid-js";
+import type { Accessor, ComponentProps, JSX } from "solid-js";
 import {
   createMemo,
   createSignal,
@@ -63,7 +62,7 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends Omit<HTMLArkProps<"div">, "onDragStart">, BaseSortableRootProps {
+  extends Omit<ComponentProps<"div">, "onDragStart">, BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -71,12 +70,12 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends HTMLArkProps<"div">, BaseSortableItemProps {
+  extends ComponentProps<"div">, BaseSortableItemProps {
   value: string;
 }
 
-export type SortableHandleProps = HTMLArkProps<"div">;
-export type SortableItemContentProps = HTMLArkProps<"div">;
+export type SortableHandleProps = ComponentProps<"div">;
+export type SortableItemContentProps = ComponentProps<"div">;
 
 function reorder(list: string[], from: number, to: number) {
   if (from === to || from < 0 || to < 0) return list;
@@ -258,7 +257,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
         unregisterHandle,
       }}
     >
-      <ark.div
+      <div
         {...rest}
         class={(local.recipe ?? sortableRecipe)({
           class: local.class,
@@ -273,7 +272,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
         <span aria-live="polite" class="sr-only">
           {moved()}
         </span>
-      </ark.div>
+      </div>
     </SortableContext>
   );
 }
@@ -307,7 +306,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
           isDragging,
         }}
       >
-        <ark.div
+        <div
           {...rest}
           {...itemProps()}
           class={slots().base({
@@ -322,7 +321,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
               `itemProps()` source would re-create (and re-register) handles
               whenever drag state changes, looping forever. */}
           {local.children}
-        </ark.div>
+        </div>
       </SortableItemStateContext>
     </SortableItemStylesContext>
   );
@@ -343,7 +342,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
   });
 
   return (
-    <ark.div
+    <div
       {...rest}
       aria-disabled={disabled() || undefined}
       aria-keyshortcuts={
@@ -384,7 +383,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       tabIndex={disabled() ? -1 : 0}
     >
       {local.children ?? <DotsSixVerticalIcon />}
-    </ark.div>
+    </div>
   );
 }
 
@@ -395,7 +394,7 @@ export function SortableItemContent(
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.content({ class: local.class })}
       data-part="item-content"

@@ -1,10 +1,9 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   TimelineItemProps as BaseTimelineItemProps,
   TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -17,16 +16,16 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface TimelineRootProps
-  extends HTMLArkProps<"ol">, BaseTimelineRootProps {}
+  extends ComponentProps<"ol">, BaseTimelineRootProps {}
 
 export interface TimelineItemProps
-  extends HTMLArkProps<"li">, BaseTimelineItemProps {}
+  extends ComponentProps<"li">, BaseTimelineItemProps {}
 
-export type TimelineIndicatorProps = HTMLArkProps<"div">;
-export type TimelineContentProps = HTMLArkProps<"div">;
-export type TimelineTitleProps = HTMLArkProps<"div">;
-export type TimelineDescriptionProps = HTMLArkProps<"div">;
-export type TimelineSeparatorProps = HTMLArkProps<"div">;
+export type TimelineIndicatorProps = ComponentProps<"div">;
+export type TimelineContentProps = ComponentProps<"div">;
+export type TimelineTitleProps = ComponentProps<"div">;
+export type TimelineDescriptionProps = ComponentProps<"div">;
+export type TimelineSeparatorProps = ComponentProps<"div">;
 
 export interface TimelinePresetItem {
   id?: string;
@@ -46,7 +45,7 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
   const orientation = () => local.orientation ?? "vertical";
 
   return (
-    <ark.ol
+    <ol
       {...rest}
       class={(local.recipe ?? timelineRecipe)({
         class: local.class,
@@ -59,24 +58,24 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
   );
 }
 
-export const TimelineItem: Component<TimelineItemProps> = withProvider(ark.li, {
+export const TimelineItem: Component<TimelineItemProps> = withProvider("li", {
   defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });
 
-export const TimelineIndicator = withContext(ark.div, { name: "Indicator" });
+export const TimelineIndicator = withContext("div", { name: "Indicator" });
 
-export const TimelineSeparator = withContext(ark.div, {
+export const TimelineSeparator = withContext("div", {
   defaultProps: { "aria-hidden": "true" },
   name: "Separator",
 });
 
-export const TimelineContent = withContext(ark.div, { name: "Content" });
+export const TimelineContent = withContext("div", { name: "Content" });
 
-export const TimelineTitle = withContext(ark.div, { name: "Title" });
+export const TimelineTitle = withContext("div", { name: "Title" });
 
-export const TimelineDescription = withContext(ark.div, {
+export const TimelineDescription = withContext("div", {
   name: "Description",
 });
 // #endregion

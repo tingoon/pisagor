@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -18,7 +18,7 @@ export type AnnouncementRootProps = Omit<HTMLArkProps<"div">, "title"> &
     role?: "status" | "alert";
   };
 
-export type AnnouncementTitleProps = HTMLArkProps<"span">;
+export type AnnouncementTitleProps = ComponentProps<"span">;
 
 export interface AnnouncementProps extends Omit<
   AnnouncementRootProps,
@@ -43,7 +43,7 @@ export const AnnouncementRoot: Component<AnnouncementRootProps> = withProvider(
   },
 );
 
-export const AnnouncementTitle = withContext(ark.span, { name: "Title" });
+export const AnnouncementTitle = withContext("span", { name: "Title" });
 // #endregion
 
 // #region Shorthand

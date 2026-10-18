@@ -17,12 +17,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider(ark.div, {
+export const ToolbarRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });
 
-export const ToolbarHeading = withContext(ark.div, {
+export const ToolbarHeading = withContext("div", {
   name: "Heading",
 });
 
@@ -30,11 +30,11 @@ export const ToolbarTitle = withContext(ark.h2, {
   name: "Title",
 });
 
-export const ToolbarDescription = withContext(ark.p, {
+export const ToolbarDescription = withContext("p", {
   name: "Description",
 });
 
-export const ToolbarActions = withContext(ark.div, {
+export const ToolbarActions = withContext("div", {
   defaultProps: {
     "aria-orientation": "horizontal",
     onKeydown: handleRovingFocusKeyDown,

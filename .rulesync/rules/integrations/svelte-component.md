@@ -49,7 +49,7 @@ Package UI is **Svelte 5 SFCs** (`.svelte`) with runes (`$props()`, `$derived`, 
 - One **file per part** for compounds; barrel `Object.assign`s them into `Foo.Root` / `Foo.Part`.
 - Destructure `$props()` with `class: className` when you need a local binding (Svelte reserves `class`); prefer `let { children, ...rest } = $props()` when using slot-recipe helpers.
 - Prefer `Snippet` for slot-like content on shorthand APIs; render with `{@render children?.()}`.
-- Alias Ark roots: `Accordion as AccordionPrimitive`; plain nodes via native elements or `Ark` from `@ark-ui/svelte` when `asChild` / polymorphism is needed.
+- Alias Ark roots: `Accordion as AccordionPrimitive`. Plain nodes: prefer native tags (`<div {...part.props}>`). Use `<Ark as="tag">` from `@ark-ui/svelte` only when `asChild` / polymorphism is needed (triggers, links, morphable roots/titles) — never for Badge, table cells, Dialog Body/Header/Footer, or similar leaves.
 - Styling prop is **`class`**, not React’s `className`.
 
 ### Slot recipe context (`createSlotRecipeContext`)
@@ -86,7 +86,7 @@ Svelte cannot use HOCs that return components; call the helpers **once in the pa
 
 - PascalCase `name`; part `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`); camelCase keys pass `slot` + kebab `data-part` via `defaultProps`.
 - Emitted `data-part` / `data-scope` and variant `data-*` must match React.
-- Prefer native hosts; Ark primitives when polymorphism / machine parts are required.
+- Prefer native hosts (`<div>` / `"div"`); `<Ark as>` only when polymorphism is required; Ark machine primitives for headless parts.
 - Hand-written parts: `Context.set({ get slots() { return slots }, get variants() { return variants } })` / `useStyles()` — read getters in markup (do not destructure once).
 - Thin non-style state uses package `createContext` from `utils` with getter values (Svelte idiom). Dual providers (breadcrumb, timer, steps, bottom-navigation, listbox, tags-input, tree-view, file-upload, …) share the React `name` / `data-scope` pattern — do not lift everything to the root.
 

@@ -1,7 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark } from "@ark-ui/react";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { createSlotRecipeContext } from "../../internal";
 import { Avatar } from "./avatar";
 
@@ -13,10 +17,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const AvatarGroupRoot = withProvider(ark.div, {
+export const AvatarGroupRoot = withProvider("div", {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseAvatarGroupRootProps>;
+}) as FunctionComponent<
+  ComponentPropsWithRef<"div"> & BaseAvatarGroupRootProps
+>;
 
 export const AvatarGroupCount = withContext(ark.div, {
   name: "Count",

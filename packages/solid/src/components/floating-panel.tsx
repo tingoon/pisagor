@@ -1,4 +1,4 @@
-import { FloatingPanel as FloatingPanelPrimitive, ark } from "@ark-ui/solid";
+import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/solid";
 import type {
   FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
   FloatingPanelCloseTriggerProps,
@@ -11,11 +11,10 @@ import type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
@@ -61,7 +60,7 @@ export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = HTMLArkProps<"div">;
+export type FloatingPanelFooterProps = ComponentProps<"div">;
 
 export function FloatingPanelRoot(
   props: LocalFloatingPanelRootProps,
@@ -295,14 +294,14 @@ export function FloatingPanelFooter(
   const slots = useFloatingPanelSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().footer({ class: local.class })}
       data-part="footer"
       data-scope="floating-panel"
     >
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 

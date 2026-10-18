@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
   import { inputGroupAddonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -25,8 +24,9 @@
   }
 </script>
 
-<Ark
-  as="div"
+<!-- biome-ignore lint/a11y/noStaticElementInteractions: click focuses sibling input; mirrors React InputGroup.Addon -->
+<!-- biome-ignore lint/a11y/useKeyWithClickEvents: focus helper only; not a keyboard-operated control -->
+<div
   {...rest}
   class={recipe({ align, class: cn(className) })}
   data-align={align}
@@ -35,4 +35,4 @@
   onclick={handleClick}
 >
   {@render children?.()}
-</Ark>
+</div>

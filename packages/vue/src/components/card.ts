@@ -19,8 +19,6 @@ export interface CardRootProps extends BaseCardRootProps {
 }
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Parts
 export const CardRoot = withProvider(ark.div, {
   name: "Root",
@@ -45,7 +43,7 @@ export const CardMedia = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: styleSlots.media({
@@ -77,7 +75,7 @@ export const CardHeader = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: styleSlots.header({ class: props.class }),
@@ -106,22 +104,22 @@ export const CardTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.p, {
+export const CardDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const CardAction = withContext(ark.div, {
+export const CardAction = withContext("div", {
   name: "Action",
   slot: "action",
 });
 
-export const CardContent = withContext(ark.div, {
+export const CardContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const CardFooter = withContext(ark.div, {
+export const CardFooter = withContext("div", {
   name: "Footer",
   slot: "footer",
 });

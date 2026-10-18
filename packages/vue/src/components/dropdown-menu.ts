@@ -1,4 +1,4 @@
-import { Menu as MenuPrimitive, ark } from "@ark-ui/vue";
+import { Menu as MenuPrimitive } from "@ark-ui/vue";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import type {
   DropdownMenuItemProps as BaseDropdownMenuItemProps,
@@ -539,7 +539,7 @@ export const DropdownMenuShortcut = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ark.span as ArkPart,
+        "span",
         {
           ...rest,
           class: variantSlots.shortcut({ class: cn(props.class, attrs.class) }),

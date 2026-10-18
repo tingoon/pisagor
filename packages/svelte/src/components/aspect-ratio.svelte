@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
   import { aspectRatioRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -26,8 +25,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="root"
@@ -35,4 +33,4 @@
   style={ratio === undefined ? style : `--ratio: ${ratio}; ${style ?? ""}`}
 >
   {@render children?.()}
-</Ark>
+</div>

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { handleRovingFocusKeyDown } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./toolbar.context";
@@ -15,4 +14,4 @@
   });
 </script>
 
-<Ark as="div" {...part.props}>{@render children?.()}</Ark>
+<div {...part.props}>{@render children?.()}</div>

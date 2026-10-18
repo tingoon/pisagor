@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./card.context";
   import CardDescription from "./card-description.svelte";
@@ -16,7 +15,7 @@
   const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   {#if title != null}
     <CardTitle
       >{#if typeof title === "string"}
@@ -38,4 +37,4 @@
   {/if}
 
   {@render children?.()}
-</Ark>
+</div>

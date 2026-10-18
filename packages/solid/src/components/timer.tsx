@@ -1,6 +1,5 @@
-import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/solid";
+import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   TimerActionTriggerProps,
   TimerAreaProps,
   TimerControlProps,
@@ -13,7 +12,7 @@ import type {
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -39,7 +38,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
+  extends ComponentProps<"div">, BaseTimerItemGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -51,7 +50,7 @@ export interface TimerRootProps
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = HTMLArkProps<"div">;
+export type TimerItemLabelProps = ComponentProps<"div">;
 
 const TimerRootProvider: Component<
   TimerRootPrimitiveProps & BaseTimerRootProps
@@ -100,8 +99,8 @@ export const TimerArea: Component<TimerAreaProps> = withTimerContext(
 );
 
 const TimerItemGroupBase: Component<
-  HTMLArkProps<"div"> & BaseTimerItemGroupProps
-> = withTimerItemGroupProvider(ark.div, {
+  ComponentProps<"div"> & BaseTimerItemGroupProps
+> = withTimerItemGroupProvider("div", {
   name: "ItemGroup",
   slot: "base",
 });
@@ -138,7 +137,7 @@ export function TimerItem(props: TimerItemProps): JSX.Element {
 }
 
 export const TimerItemLabel: Component<TimerItemLabelProps> =
-  withTimerItemGroupContext(ark.div, {
+  withTimerItemGroupContext("div", {
     defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",

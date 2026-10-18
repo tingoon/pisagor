@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
@@ -16,13 +16,13 @@ const {
 
 export interface ItemProps extends HTMLArkProps<"div">, BaseItemProps {}
 
-export type ItemMediaProps = HTMLArkProps<"div"> & ItemVariantProps;
-export type ItemHeaderProps = HTMLArkProps<"div">;
-export type ItemContentProps = HTMLArkProps<"div">;
-export type ItemTitleProps = HTMLArkProps<"div">;
-export type ItemDescriptionProps = HTMLArkProps<"p">;
-export type ItemActionsProps = HTMLArkProps<"div">;
-export type ItemFooterProps = HTMLArkProps<"div">;
+export type ItemMediaProps = ComponentProps<"div"> & ItemVariantProps;
+export type ItemHeaderProps = ComponentProps<"div">;
+export type ItemContentProps = ComponentProps<"div">;
+export type ItemTitleProps = ComponentProps<"div">;
+export type ItemDescriptionProps = ComponentProps<"p">;
+export type ItemActionsProps = ComponentProps<"div">;
+export type ItemFooterProps = ComponentProps<"div">;
 
 /** Inherits `variant` from the nearest ItemGroup when not set. */
 export function ItemRoot(props: ItemProps): JSX.Element {
@@ -70,7 +70,7 @@ export function ItemMedia(props: ItemMediaProps): JSX.Element {
   const variant = () => local.variant ?? "default";
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.media({ class: local.class, variant: variant() })}
       data-part="media"
@@ -78,31 +78,31 @@ export function ItemMedia(props: ItemMediaProps): JSX.Element {
       data-variant={variant()}
     >
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 
-export const ItemContent: Component<ItemContentProps> = withContext(ark.div, {
+export const ItemContent: Component<ItemContentProps> = withContext("div", {
   name: "Content",
 });
 
-export const ItemTitle: Component<ItemTitleProps> = withContext(ark.div, {
+export const ItemTitle: Component<ItemTitleProps> = withContext("div", {
   name: "Title",
 });
 
 export const ItemDescription: Component<ItemDescriptionProps> = withContext(
-  ark.p,
+  "p",
   { name: "Description" },
 );
 
-export const ItemActions: Component<ItemActionsProps> = withContext(ark.div, {
+export const ItemActions: Component<ItemActionsProps> = withContext("div", {
   name: "Actions",
 });
 
-export const ItemHeader: Component<ItemHeaderProps> = withContext(ark.div, {
+export const ItemHeader: Component<ItemHeaderProps> = withContext("div", {
   name: "Header",
 });
 
-export const ItemFooter: Component<ItemFooterProps> = withContext(ark.div, {
+export const ItemFooter: Component<ItemFooterProps> = withContext("div", {
   name: "Footer",
 });

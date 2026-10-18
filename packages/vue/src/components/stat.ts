@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import { PhArrowDown, PhArrowUp, PhMinus } from "@phosphor-icons/vue";
 import type {
   StatProps as BaseStatProps,
@@ -25,8 +24,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
   recipe: statRecipe,
 });
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
@@ -55,22 +52,22 @@ export interface StatTrendProps extends BaseStatTrendProps {
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider(ark.div, {
+export const StatRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });
 
-export const StatLabel = withContext(ark.div, {
+export const StatLabel = withContext("div", {
   name: "Label",
   slot: "label",
 });
 
-export const StatValue = withContext(ark.div, {
+export const StatValue = withContext("div", {
   name: "Value",
   slot: "value",
 });
 
-export const StatDescription = withContext(ark.p, {
+export const StatDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
@@ -105,7 +102,7 @@ export const StatTrend = defineComponent({
 
     return () => {
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(props.recipe({ trend: props.trend }), props.class),
