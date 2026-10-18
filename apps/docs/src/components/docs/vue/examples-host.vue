@@ -10,10 +10,10 @@ import {
 const globs: ExampleGlobs = {
   block: import.meta.glob("../../../blocks/vue/*/*.{ts,tsx,vue}"),
   component: import.meta.glob(
-    "../../../../../../packages/vue/examples/*/*.{ts,tsx,vue}",
+    "../../../../../../packages/vue/examples/*/*/*.{ts,tsx,vue}",
   ),
   form: import.meta.glob(
-    "../../../../../../packages/vue-form/examples/*/*.{ts,tsx,vue}",
+    "../../../../../../packages/vue-form/examples/*/*/*.{ts,tsx,vue}",
   ),
 };
 

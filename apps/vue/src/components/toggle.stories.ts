@@ -1,7 +1,7 @@
 import { Toggle } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/toggle";
+import * as Examples from "#/vue/examples/actions/toggle";
 
 const meta = preview.meta({
   component: Toggle,

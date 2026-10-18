@@ -1,6 +1,6 @@
 import { Resizable } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/resizable";
+import * as Examples from "#/react/examples/layout/resizable";
 
 const meta = preview.meta({
   component: Resizable,

@@ -1,7 +1,7 @@
 import { Clipboard } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/clipboard";
+import * as Examples from "#/vue/examples/actions/clipboard";
 
 const meta = preview.meta({
   component: Clipboard,

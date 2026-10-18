@@ -2,7 +2,7 @@ import { PasswordField } from "@pisagor/vue-form";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/password-field";
+import * as Examples from "#/vue-form/examples/fields/password-field";
 
 const meta = preview.meta({
   component: PasswordField,

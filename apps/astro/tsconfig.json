@@ -2,7 +2,22 @@
   "compilerOptions": {
     "jsx": "preserve",
     "paths": {
-      "#/astro/examples/*": ["../../packages/astro/examples/*"],
+      "#/astro/examples/actions/*": ["../../packages/astro/examples/actions/*"],
+      "#/astro/examples/data-display/*": [
+        "../../packages/astro/examples/data-display/*"
+      ],
+      "#/astro/examples/feedback/*": [
+        "../../packages/astro/examples/feedback/*"
+      ],
+      "#/astro/examples/forms/*": ["../../packages/astro/examples/forms/*"],
+      "#/astro/examples/layout/*": ["../../packages/astro/examples/layout/*"],
+      "#/astro/examples/media/*": ["../../packages/astro/examples/media/*"],
+      "#/astro/examples/navigation/*": [
+        "../../packages/astro/examples/navigation/*"
+      ],
+      "#/astro/examples/utilities/*": [
+        "../../packages/astro/examples/utilities/*"
+      ],
       "#/storybook/*": ["./.storybook/*"]
     },
     "types": ["astro/client", "vite/client", "bun"]

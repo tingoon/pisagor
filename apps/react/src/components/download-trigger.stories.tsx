@@ -1,6 +1,6 @@
 import { DownloadTrigger } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/download-trigger";
+import * as Examples from "#/react/examples/actions/download-trigger";
 
 const meta = preview.meta({
   component: DownloadTrigger,

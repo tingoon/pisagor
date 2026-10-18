@@ -1,7 +1,7 @@
 import { Button } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/button";
+import * as Examples from "#/vue/examples/actions/button";
 
 const meta = preview.meta({
   component: Button,

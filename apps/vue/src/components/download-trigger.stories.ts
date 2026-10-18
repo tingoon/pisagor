@@ -1,7 +1,7 @@
 import { DownloadTrigger } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/download-trigger";
+import * as Examples from "#/vue/examples/actions/download-trigger";
 
 const meta = preview.meta({
   component: DownloadTrigger,

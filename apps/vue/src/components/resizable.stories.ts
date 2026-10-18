@@ -1,7 +1,7 @@
 import { Resizable } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/resizable";
+import * as Examples from "#/vue/examples/layout/resizable";
 
 const meta = preview.meta({
   component: Resizable,

@@ -1,7 +1,7 @@
 import { SegmentGroup } from "@pisagor/react";
 import { segmentItems } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/segment-group";
+import * as Examples from "#/react/examples/actions/segment-group";
 
 const meta = preview.meta({
   component: SegmentGroup,

@@ -2,7 +2,7 @@ import { DateField } from "@pisagor/vue-form";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/date-field";
+import * as Examples from "#/vue-form/examples/fields/date-field";
 
 const meta = preview.meta({
   component: DateField,

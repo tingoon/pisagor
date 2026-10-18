@@ -1,6 +1,6 @@
 import { Status } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/status";
+import * as Examples from "#/react/examples/feedback/status";
 
 const meta = preview.meta({
   component: Status,

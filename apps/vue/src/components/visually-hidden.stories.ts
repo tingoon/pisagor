@@ -1,7 +1,7 @@
 import { VisuallyHidden } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/visually-hidden";
+import * as Examples from "#/vue/examples/utilities/visually-hidden";
 
 const meta = preview.meta({
   component: VisuallyHidden,

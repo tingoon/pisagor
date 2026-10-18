@@ -1,7 +1,7 @@
 import { ButtonGroup } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/button-group";
+import * as Examples from "#/vue/examples/actions/button-group";
 
 const meta = preview.meta({
   component: ButtonGroup,

@@ -1,7 +1,7 @@
 import { Progress } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/progress";
+import * as Examples from "#/vue/examples/feedback/progress";
 
 const meta = preview.meta({
   component: Progress,

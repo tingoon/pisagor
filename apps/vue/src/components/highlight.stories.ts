@@ -1,7 +1,7 @@
 import { Highlight } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/highlight";
+import * as Examples from "#/vue/examples/data-display/highlight";
 
 const meta = preview.meta({
   component: Highlight,

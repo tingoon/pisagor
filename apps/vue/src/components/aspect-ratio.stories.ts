@@ -1,7 +1,7 @@
 import { AspectRatio } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/aspect-ratio";
+import * as Examples from "#/vue/examples/layout/aspect-ratio";
 
 const meta = preview.meta({
   component: AspectRatio,

@@ -52,172 +52,6 @@ const importSnippet = {
   vue: `import { useAppForm } from "${pkg.tanstack}";`,
 }[framework];
 
-const quickStart = {
-  react: `import { useAppForm } from "${pkg.tanstack}";
-
-export function ProfileForm() {
-  const form = useAppForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: ({ value }) => {
-      console.log(value);
-    },
-  });
-
-  return (
-    <form.Root className="flex flex-col gap-4">
-      <form.AppField name="email">
-        {(field) => (
-          <field.TextField
-            autoComplete="email"
-            id="email"
-            label="Email"
-            type="email"
-          />
-        )}
-      </form.AppField>
-
-      <form.AppField name="password">
-        {(field) => (
-          <field.PasswordField
-            autoComplete="current-password"
-            id="password"
-            label="Password"
-          />
-        )}
-      </form.AppField>
-
-      <form.SubmitButton>Save</form.SubmitButton>
-    </form.Root>
-  );
-}`,
-  solid: `import { useAppForm } from "${pkg.tanstack}";
-
-export function ProfileForm() {
-  const form = useAppForm(() => ({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: ({ value }) => {
-      console.log(value);
-    },
-  }));
-
-  return (
-    <form.Root class="flex flex-col gap-4">
-      <form.AppField name="email">
-        {(field) => (
-          <field.TextField
-            autocomplete="email"
-            id="email"
-            label="Email"
-            type="email"
-          />
-        )}
-      </form.AppField>
-
-      <form.AppField name="password">
-        {(field) => (
-          <field.PasswordField
-            autocomplete="current-password"
-            id="password"
-            label="Password"
-          />
-        )}
-      </form.AppField>
-
-      <form.SubmitButton>Save</form.SubmitButton>
-    </form.Root>
-  );
-}`,
-  svelte: `<script lang="ts">
-  import { createAppForm, Root } from "${pkg.tanstack}";
-
-  const form = createAppForm(() => ({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: ({ value }) => {
-      console.log(value);
-    },
-  }));
-</script>
-
-<Root class="flex flex-col gap-4" {form}>
-  <form.AppField name="email">
-    {#snippet children(field)}
-      <field.TextField
-        autocomplete="email"
-        id="email"
-        label="Email"
-        type="email"
-      />
-    {/snippet}
-  </form.AppField>
-
-  <form.AppField name="password">
-    {#snippet children(field)}
-      <field.PasswordField
-        autocomplete="current-password"
-        id="password"
-        label="Password"
-      />
-    {/snippet}
-  </form.AppField>
-
-  <form.SubmitButton>Save</form.SubmitButton>
-</Root>`,
-  vue: `<script setup lang="ts">
-import { useAppForm } from "${pkg.tanstack}";
-
-const form = useAppForm({
-  defaultValues: {
-    email: "",
-    password: "",
-  },
-  onSubmit: ({ value }) => {
-    console.log(value);
-  },
-});
-</script>
-
-<template>
-  <component :is="form.Root" class="flex flex-col gap-4">
-    <component :is="form.AppField" name="email" v-slot="field">
-      <component
-        :is="field.TextField"
-        auto-complete="email"
-        id="email"
-        label="Email"
-        type="email"
-      />
-    </component>
-
-    <component :is="form.AppField" name="password" v-slot="field">
-      <component
-        :is="field.PasswordField"
-        auto-complete="current-password"
-        id="password"
-        label="Password"
-      />
-    </component>
-
-    <component :is="form.SubmitButton">Save</component>
-  </component>
-</template>`,
-}[framework];
-
-const quickStartLang = {
-  react: "tsx",
-  solid: "tsx",
-  svelte: "svelte",
-  vue: "vue",
-}[framework];
-
 const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
 ---
 
@@ -279,7 +113,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
     <code class={docsInlineCodeClass}>AppField</code>, and wrap everything in
     <code class={docsInlineCodeClass}>Root</code>.
   </p>
-  <CodeBlock code={quickStart} lang={quickStartLang} />
+  <Example name="QuickStart" title="Quick start" />
 </section>
 
 <section class="mb-10">
@@ -373,7 +207,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   <div
     data-component-id="tanstack"
     data-docs-examples-host
-    data-export-names={JSON.stringify(["Default"])}
+    data-export-names={JSON.stringify(["QuickStart", "Default"])}
     data-kind="form"
     hidden
   ></div>

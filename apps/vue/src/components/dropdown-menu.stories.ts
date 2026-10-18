@@ -1,7 +1,7 @@
 import { DropdownMenu } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/dropdown-menu";
+import * as Examples from "#/vue/examples/navigation/dropdown-menu";
 
 const meta = preview.meta({
   component: DropdownMenu,

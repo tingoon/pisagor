@@ -1,7 +1,7 @@
 import { Timer } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/timer";
+import * as Examples from "#/vue/examples/feedback/timer";
 
 const meta = preview.meta({
   component: Timer,

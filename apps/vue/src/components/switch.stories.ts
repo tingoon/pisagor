@@ -1,7 +1,7 @@
 import { Switch } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/switch";
+import * as Examples from "#/vue/examples/forms/switch";
 
 const meta = preview.meta({
   component: Switch,

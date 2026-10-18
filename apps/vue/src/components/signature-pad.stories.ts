@@ -1,7 +1,7 @@
 import { SignaturePad } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/signature-pad";
+import * as Examples from "#/vue/examples/forms/signature-pad";
 
 const meta = preview.meta({
   component: SignaturePad,

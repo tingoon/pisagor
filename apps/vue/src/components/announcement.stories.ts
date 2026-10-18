@@ -1,7 +1,7 @@
 import { Announcement } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/announcement";
+import * as Examples from "#/vue/examples/feedback/announcement";
 
 const meta = preview.meta({
   component: Announcement,

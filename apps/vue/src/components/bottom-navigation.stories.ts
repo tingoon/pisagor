@@ -1,7 +1,7 @@
 import { BottomNavigation } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/bottom-navigation";
+import * as Examples from "#/vue/examples/navigation/bottom-navigation";
 
 const meta = preview.meta({
   component: BottomNavigation,

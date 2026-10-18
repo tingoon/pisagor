@@ -1,6 +1,6 @@
 import { RichTextEditor } from "@pisagor/react/rich-text-editor";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/rich-text-editor";
+import * as Examples from "#/react/examples/forms/rich-text-editor";
 
 const meta = preview.meta({
   component: RichTextEditor,

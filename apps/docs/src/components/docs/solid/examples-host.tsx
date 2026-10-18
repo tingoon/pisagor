@@ -19,10 +19,10 @@ import {
 const globs: ExampleGlobs = {
   block: import.meta.glob("../../../blocks/solid/*/*.{ts,tsx}"),
   component: import.meta.glob(
-    "../../../../../../packages/solid/examples/*/*.{ts,tsx}",
+    "../../../../../../packages/solid/examples/*/*/*.{ts,tsx}",
   ),
   form: import.meta.glob(
-    "../../../../../../packages/solid-form/examples/*/*.{ts,tsx}",
+    "../../../../../../packages/solid-form/examples/*/*/*.{ts,tsx}",
   ),
 };
 

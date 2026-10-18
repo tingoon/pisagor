@@ -22,42 +22,42 @@ type RawLoaderMap = Record<string, () => Promise<string>>;
 
 const componentRaws: Record<string, RawLoaderMap> = {
   astro: import.meta.glob<string>(
-    "../../../../packages/astro/examples/*/*.{astro,ts,tsx}",
+    "../../../../packages/astro/examples/*/*/*.{astro,ts,tsx}",
     { import: "default", query: "?raw" },
   ),
   react: import.meta.glob<string>(
-    "../../../../packages/react/examples/*/*.{ts,tsx}",
+    "../../../../packages/react/examples/*/*/*.{ts,tsx}",
     { import: "default", query: "?raw" },
   ),
   solid: import.meta.glob<string>(
-    "../../../../packages/solid/examples/*/*.{ts,tsx}",
+    "../../../../packages/solid/examples/*/*/*.{ts,tsx}",
     { import: "default", query: "?raw" },
   ),
   svelte: import.meta.glob<string>(
-    "../../../../packages/svelte/examples/*/*.svelte",
+    "../../../../packages/svelte/examples/*/*/*.svelte",
     { import: "default", query: "?raw" },
   ),
   vue: import.meta.glob<string>(
-    "../../../../packages/vue/examples/*/*.{ts,tsx,vue}",
+    "../../../../packages/vue/examples/*/*/*.{ts,tsx,vue}",
     { import: "default", query: "?raw" },
   ),
 };
 
 const formRaws: Record<string, RawLoaderMap> = {
   react: import.meta.glob<string>(
-    "../../../../packages/react-form/examples/*/*.{ts,tsx}",
+    "../../../../packages/react-form/examples/*/*/*.{ts,tsx}",
     { import: "default", query: "?raw" },
   ),
   solid: import.meta.glob<string>(
-    "../../../../packages/solid-form/examples/*/*.{ts,tsx}",
+    "../../../../packages/solid-form/examples/*/*/*.{ts,tsx}",
     { import: "default", query: "?raw" },
   ),
   svelte: import.meta.glob<string>(
-    "../../../../packages/svelte-form/examples/*/*.svelte",
+    "../../../../packages/svelte-form/examples/*/*/*.svelte",
     { import: "default", query: "?raw" },
   ),
   vue: import.meta.glob<string>(
-    "../../../../packages/vue-form/examples/*/*.{ts,tsx,vue}",
+    "../../../../packages/vue-form/examples/*/*/*.{ts,tsx,vue}",
     { import: "default", query: "?raw" },
   ),
 };

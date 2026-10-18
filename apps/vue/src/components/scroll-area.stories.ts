@@ -1,7 +1,7 @@
 import { ScrollArea } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/scroll-area";
+import * as Examples from "#/vue/examples/layout/scroll-area";
 
 const meta = preview.meta({
   component: ScrollArea,

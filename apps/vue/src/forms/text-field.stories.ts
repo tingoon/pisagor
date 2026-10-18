@@ -2,7 +2,7 @@ import { TextField } from "@pisagor/vue-form";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/text-field";
+import * as Examples from "#/vue-form/examples/fields/text-field";
 
 const meta = preview.meta({
   component: TextField,

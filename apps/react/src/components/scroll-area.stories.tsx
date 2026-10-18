@@ -1,6 +1,6 @@
 import { ScrollArea } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/scroll-area";
+import * as Examples from "#/react/examples/layout/scroll-area";
 
 const meta = preview.meta({
   component: ScrollArea,

@@ -1,7 +1,7 @@
 import { Tabs } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/tabs";
+import * as Examples from "#/vue/examples/navigation/tabs";
 
 const meta = preview.meta({
   component: Tabs,

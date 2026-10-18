@@ -1,7 +1,7 @@
 import { OtpField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/otp-field";
+import * as Examples from "#/react-form/examples/fields/otp-field";
 
 const meta = preview.meta({
   component: OtpField,

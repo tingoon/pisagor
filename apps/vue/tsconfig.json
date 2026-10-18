@@ -3,8 +3,26 @@
     "jsx": "preserve",
     "paths": {
       "#/storybook/*": ["./.storybook/*"],
-      "#/vue-form/examples/*": ["../../packages/vue-form/examples/*"],
-      "#/vue/examples/*": ["../../packages/vue/examples/*"]
+      "#/vue-form/examples/fields/*": [
+        "../../packages/vue-form/examples/fields/*"
+      ],
+      "#/vue-form/examples/integrations/*": [
+        "../../packages/vue-form/examples/integrations/*"
+      ],
+      "#/vue/examples/actions/*": ["../../packages/vue/examples/actions/*"],
+      "#/vue/examples/data-display/*": [
+        "../../packages/vue/examples/data-display/*"
+      ],
+      "#/vue/examples/feedback/*": ["../../packages/vue/examples/feedback/*"],
+      "#/vue/examples/forms/*": ["../../packages/vue/examples/forms/*"],
+      "#/vue/examples/layout/*": ["../../packages/vue/examples/layout/*"],
+      "#/vue/examples/marketing/*": ["../../packages/vue/examples/marketing/*"],
+      "#/vue/examples/media/*": ["../../packages/vue/examples/media/*"],
+      "#/vue/examples/navigation/*": [
+        "../../packages/vue/examples/navigation/*"
+      ],
+      "#/vue/examples/overlay/*": ["../../packages/vue/examples/overlay/*"],
+      "#/vue/examples/utilities/*": ["../../packages/vue/examples/utilities/*"]
     },
     "types": ["vite/client", "bun"]
   },

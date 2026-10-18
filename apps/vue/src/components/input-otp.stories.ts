@@ -1,7 +1,7 @@
 import { InputOTP } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/input-otp";
+import * as Examples from "#/vue/examples/forms/input-otp";
 
 const meta = preview.meta({
   component: InputOTP,

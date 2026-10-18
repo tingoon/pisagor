@@ -1,7 +1,7 @@
 import { Combobox } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/combobox";
+import * as Examples from "#/vue/examples/forms/combobox";
 
 const meta = preview.meta({
   component: Combobox,

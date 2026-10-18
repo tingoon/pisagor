@@ -1,6 +1,6 @@
 import { Drawer } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/drawer";
+import * as Examples from "#/react/examples/overlay/drawer";
 
 const meta = preview.meta({
   component: Drawer,

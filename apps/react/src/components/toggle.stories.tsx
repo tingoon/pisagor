@@ -1,6 +1,6 @@
 import { Toggle } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/toggle";
+import * as Examples from "#/react/examples/actions/toggle";
 
 const meta = preview.meta({
   component: Toggle,

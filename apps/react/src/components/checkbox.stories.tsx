@@ -1,6 +1,6 @@
 import { Checkbox } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/checkbox";
+import * as Examples from "#/react/examples/forms/checkbox";
 
 const meta = preview.meta({
   component: Checkbox,

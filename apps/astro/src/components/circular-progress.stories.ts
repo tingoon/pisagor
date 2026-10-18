@@ -1,6 +1,6 @@
 import { CircularProgress } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/circular-progress";
+import * as Examples from "#/astro/examples/feedback/circular-progress";
 
 const meta = preview.meta({
   component: CircularProgress,

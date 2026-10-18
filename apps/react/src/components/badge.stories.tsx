@@ -1,6 +1,6 @@
 import { Badge } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/badge";
+import * as Examples from "#/react/examples/data-display/badge";
 
 const meta = preview.meta({
   component: Badge,

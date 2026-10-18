@@ -1,6 +1,6 @@
 import { Rating } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/rating";
+import * as Examples from "#/react/examples/forms/rating";
 
 const meta = preview.meta({
   component: Rating,

@@ -1,7 +1,7 @@
 import { Stat } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/stat";
+import * as Examples from "#/vue/examples/data-display/stat";
 
 const meta = preview.meta({
   component: Stat,

@@ -1,6 +1,6 @@
 import { FileInput } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/file-input";
+import * as Examples from "#/react/examples/forms/file-input";
 
 const meta = preview.meta({
   component: FileInput,

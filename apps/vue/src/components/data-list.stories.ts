@@ -1,7 +1,7 @@
 import { DataList } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/data-list";
+import * as Examples from "#/vue/examples/data-display/data-list";
 
 const meta = preview.meta({
   component: DataList,

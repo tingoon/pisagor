@@ -1,6 +1,6 @@
 import { AppShell } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/app-shell";
+import * as Examples from "#/react/examples/layout/app-shell";
 
 const meta = preview.meta({
   component: AppShell,

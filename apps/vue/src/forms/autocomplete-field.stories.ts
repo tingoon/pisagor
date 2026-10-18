@@ -3,7 +3,7 @@ import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import { cityOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/autocomplete-field";
+import * as Examples from "#/vue-form/examples/fields/autocomplete-field";
 
 const meta = preview.meta({
   component: AutocompleteField,

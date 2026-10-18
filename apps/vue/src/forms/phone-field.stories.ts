@@ -2,7 +2,7 @@ import { PhoneField } from "@pisagor/vue-form";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/phone-field";
+import * as Examples from "#/vue-form/examples/fields/phone-field";
 
 const meta = preview.meta({
   component: PhoneField,

@@ -1,6 +1,6 @@
 import { Separator } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/separator";
+import * as Examples from "#/react/examples/layout/separator";
 
 const meta = preview.meta({
   component: Separator,

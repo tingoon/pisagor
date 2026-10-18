@@ -1,7 +1,7 @@
 import { Pagination } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/pagination";
+import * as Examples from "#/vue/examples/navigation/pagination";
 
 const meta = preview.meta({
   component: Pagination,

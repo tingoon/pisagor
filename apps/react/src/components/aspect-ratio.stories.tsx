@@ -1,6 +1,6 @@
 import { AspectRatio } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/aspect-ratio";
+import * as Examples from "#/react/examples/layout/aspect-ratio";
 
 const meta = preview.meta({
   component: AspectRatio,

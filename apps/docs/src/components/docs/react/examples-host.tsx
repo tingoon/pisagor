@@ -10,10 +10,10 @@ import {
 const globs: ExampleGlobs = {
   block: import.meta.glob("../../../blocks/react/*/*.{ts,tsx}"),
   component: import.meta.glob(
-    "../../../../../../packages/react/examples/*/*.{ts,tsx}",
+    "../../../../../../packages/react/examples/*/*/*.{ts,tsx}",
   ),
   form: import.meta.glob(
-    "../../../../../../packages/react-form/examples/*/*.{ts,tsx}",
+    "../../../../../../packages/react-form/examples/*/*/*.{ts,tsx}",
   ),
 };
 

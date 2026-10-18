@@ -1,7 +1,7 @@
 import { TagsInputField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/tags-input-field";
+import * as Examples from "#/react-form/examples/fields/tags-input-field";
 
 const meta = preview.meta({
   component: TagsInputField,

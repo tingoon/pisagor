@@ -1,6 +1,6 @@
 import { DataTable } from "@pisagor/react/data-table";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/data-table";
+import * as Examples from "#/react/examples/data-display/data-table";
 
 const meta = preview.meta({
   component: DataTable,

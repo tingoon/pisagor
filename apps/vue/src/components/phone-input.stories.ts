@@ -1,7 +1,7 @@
 import { PhoneInput } from "@pisagor/vue/phone-input";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/phone-input";
+import * as Examples from "#/vue/examples/forms/phone-input";
 
 const meta = preview.meta({
   component: PhoneInput,

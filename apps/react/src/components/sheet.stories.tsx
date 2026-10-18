@@ -1,6 +1,6 @@
 import { Sheet } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/sheet";
+import * as Examples from "#/react/examples/overlay/sheet";
 
 const meta = preview.meta({
   component: Sheet,

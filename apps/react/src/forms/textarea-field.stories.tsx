@@ -1,7 +1,7 @@
 import { TextareaField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/textarea-field";
+import * as Examples from "#/react-form/examples/fields/textarea-field";
 
 const meta = preview.meta({
   component: TextareaField,

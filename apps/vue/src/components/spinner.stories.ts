@@ -1,7 +1,7 @@
 import { Spinner } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/spinner";
+import * as Examples from "#/vue/examples/feedback/spinner";
 
 const meta = preview.meta({
   component: Spinner,
