@@ -47,12 +47,72 @@ interface ComponentSpec {
 const COMPONENTS: ComponentSpec[] = [
   {
     id: "button",
-    interfaceName: "ButtonProps",
+    interfaceName: "ButtonRootContract",
     recipe: { constName: "buttonRecipe", fileName: "button.ts" },
   },
   {
     id: "accordion",
-    interfaceName: "AccordionProps",
+    interfaceName: "AccordionContract",
+  },
+  {
+    id: "alert",
+    interfaceName: "AlertContract",
+    recipe: { constName: "alertRecipe", fileName: "alert.ts" },
+  },
+  {
+    id: "alert-dialog",
+    interfaceName: "AlertDialogContract",
+    recipe: { constName: "alertDialogRecipe", fileName: "alert-dialog.ts" },
+  },
+  {
+    id: "announcement",
+    interfaceName: "AnnouncementContract",
+    recipe: { constName: "announcementRecipe", fileName: "announcement.ts" },
+  },
+  {
+    id: "avatar",
+    interfaceName: "AvatarContract",
+    recipe: { constName: "avatarRecipe", fileName: "avatar.ts" },
+  },
+  {
+    id: "clipboard",
+    interfaceName: "ClipboardContract",
+    recipe: { constName: "clipboardRecipe", fileName: "clipboard.ts" },
+  },
+  {
+    id: "dialog",
+    interfaceName: "DialogContract",
+    recipe: { constName: "dialogRecipe", fileName: "dialog.ts" },
+  },
+  {
+    id: "empty-state",
+    interfaceName: "EmptyStateContract",
+    recipe: { constName: "emptyStateRecipe", fileName: "empty-state.ts" },
+  },
+  {
+    id: "file",
+    interfaceName: "FileContract",
+    recipe: { constName: "fileRecipe", fileName: "file.ts" },
+  },
+  {
+    id: "progress",
+    interfaceName: "ProgressContract",
+    recipe: { constName: "progressRecipe", fileName: "progress.ts" },
+  },
+  {
+    id: "stat",
+    interfaceName: "StatContract",
+    recipe: { constName: "statRecipe", fileName: "stat.ts" },
+  },
+  {
+    id: "toolbar",
+    interfaceName: "ToolbarContract",
+    recipe: { constName: "toolbarRecipe", fileName: "toolbar.ts" },
+  },
+  {
+    id: "tooltip",
+    interfaceName: "TooltipContract",
+    recipe: { constName: "tooltipRecipe", fileName: "tooltip.ts" },
   },
 ];
 
@@ -233,18 +293,19 @@ function extractInterfaceProps(
     if (name.startsWith("__@")) continue;
 
     const own = iface.getProperty(name);
+    const inherited = symbol
+      .getDeclarations()
+      .find((d): d is PropertySignature => Node.isPropertySignature(d));
+    const decl =
+      own && Node.isPropertySignature(own) ? own : (inherited ?? undefined);
     const fromDocs = docs[name];
     const description =
-      fromDocs?.description ||
-      (own && Node.isPropertySignature(own) ? descriptionOf(own) : "");
+      fromDocs?.description || (decl ? descriptionOf(decl) : "");
     const defaultValue =
-      fromDocs?.defaultValue ??
-      (own && Node.isPropertySignature(own) ? defaultOf(own) : undefined);
+      fromDocs?.defaultValue ?? (decl ? defaultOf(decl) : undefined);
     const type =
       fromDocs?.type ??
-      (own && Node.isPropertySignature(own)
-        ? typeTextFromOwn(own)
-        : undefined) ??
+      (decl ? typeTextFromOwn(decl) : undefined) ??
       typeTextFromSymbol(symbol, iface);
 
     byName.set(name, {
@@ -304,11 +365,40 @@ function writeTypesFile(): void {
   );
 }
 
+function mergePropRows(
+  preferredOrder: string[],
+  ...groups: PropRow[][]
+): PropRow[] {
+  const byName = new Map<string, PropRow>();
+  for (const group of groups) {
+    for (const row of group) byName.set(row.name, row);
+  }
+  const rows: PropRow[] = [];
+  const seen = new Set<string>();
+  for (const name of preferredOrder) {
+    const row = byName.get(name);
+    if (!row) continue;
+    rows.push(row);
+    seen.add(name);
+  }
+  for (const [name, row] of byName) {
+    if (seen.has(name)) continue;
+    rows.push(row);
+  }
+  return rows;
+}
+
 function generateComponent(project: Project, spec: ComponentSpec): void {
   const source = project.getSourceFileOrThrow(
     path.join(propsDir, "src", `${spec.id}.ts`),
   );
   const iface = source.getInterfaceOrThrow(spec.interfaceName);
+  // `FooContract` → look up sibling `FooRootContract`. Already-root names stay solo.
+  const rootName = spec.interfaceName.endsWith("RootContract")
+    ? spec.interfaceName
+    : spec.interfaceName.replace(/Contract$/, "RootContract");
+  const rootIface =
+    rootName !== spec.interfaceName ? source.getInterface(rootName) : undefined;
 
   let docs: Record<string, PropDoc> = {};
   let preferredOrder: string[] = [];
@@ -319,22 +409,32 @@ function generateComponent(project: Project, spec: ComponentSpec): void {
     preferredOrder = fromRecipe.order;
   }
 
-  // Own interface members (declaration order) after recipe variants.
-  for (const member of iface.getMembers()) {
-    if (!Node.isPropertySignature(member)) continue;
-    preferredOrder.push(member.getName());
+  // Root shell members, then shorthand/content members (declaration order).
+  for (const target of [rootIface, iface]) {
+    if (!target) continue;
+    for (const member of target.getMembers()) {
+      if (!Node.isPropertySignature(member)) continue;
+      preferredOrder.push(member.getName());
+    }
   }
 
-  const rows = extractInterfaceProps(iface, docs, preferredOrder);
+  const rows = mergePropRows(
+    preferredOrder,
+    rootIface ? extractInterfaceProps(rootIface, docs, preferredOrder) : [],
+    extractInterfaceProps(iface, docs, preferredOrder),
+  );
 
   if (rows.length === 0) {
     throw new Error(`No props extracted from ${spec.interfaceName}`);
   }
 
-  const exportName = `${spec.id}Props`;
+  const sourceLabel = rootIface
+    ? `${rootName} + ${spec.interfaceName}`
+    : spec.interfaceName;
+  const exportName = `${kebabToCamel(spec.id)}Props`;
   const outPath = path.join(outDir, `${spec.id}.gen.ts`);
   const file = `/* eslint-disable */
-// Generated by \`bun run --filter @pisagor/scripts generate:props\` from @pisagor/props ${spec.interfaceName}. Do not edit.
+// Generated by \`bun run --filter @pisagor/scripts generate:props\` from @pisagor/props ${sourceLabel}. Do not edit.
 import type { PropRow } from "./types";
 
 export type { PropRow };
@@ -585,7 +685,7 @@ function parsePropsFile(
   const results: { interfaceName: string; fields: PropRow[] }[] = [];
 
   const ifaceRe =
-    /export\s+interface\s+([A-Za-z0-9_]+Props)\s*(?:extends\s+([^{]+))?\s*\{/g;
+    /export\s+interface\s+([A-Za-z0-9_]+(?:Props|Contract))\s*(?:extends\s+([^{]+))?\s*\{/g;
   let im: RegExpExecArray | null;
   while (true) {
     im = ifaceRe.exec(src);
@@ -614,6 +714,7 @@ function parsePropsFile(
 function emitFile(
   slug: string,
   primary: { interfaceName: string; fields: PropRow[] },
+  sourceLabel = primary.interfaceName,
 ): string {
   const exportName = `${kebabToCamel(slug)}Props`;
   const rows = primary.fields
@@ -632,7 +733,7 @@ function emitFile(
     .join(",\n");
 
   return `/* eslint-disable */
-// Generated by \`bun run --filter @pisagor/scripts generate:props\` from @pisagor/props ${primary.interfaceName}. Do not edit.
+// Generated by \`bun run --filter @pisagor/scripts generate:props\` from @pisagor/props ${sourceLabel}. Do not edit.
 import type { PropRow } from "./types";
 
 export type { PropRow };
@@ -642,6 +743,23 @@ export const ${exportName}: PropRow[] = [
 ${rows}
 ];
 `;
+}
+
+function mergeParsedFields(
+  ...parts: ({ interfaceName: string; fields: PropRow[] } | undefined)[]
+): { interfaceName: string; fields: PropRow[] } | undefined {
+  const present = parts.filter(
+    (p): p is { interfaceName: string; fields: PropRow[] } => p != null,
+  );
+  if (!present.length) return undefined;
+  const byName = new Map<string, PropRow>();
+  for (const part of present) {
+    for (const f of part.fields) byName.set(f.name, f);
+  }
+  return {
+    fields: [...byName.values()],
+    interfaceName: present.map((p) => p.interfaceName).join(" + "),
+  };
 }
 
 /**
@@ -683,14 +801,26 @@ function generateSourceTables(skip: Set<string>): void {
       }
     }
     if (!parsed.length) continue;
+    const shorthandContract = `${kebabToPascal(slug)}ShorthandContract`;
+    const shorthand = `${kebabToPascal(slug)}ShorthandProps`;
+    const rootContract = `${kebabToPascal(slug)}RootContract`;
+    const contract = `${kebabToPascal(slug)}Contract`;
     const prefer = `${kebabToPascal(slug)}Props`;
+    const root = parsed.find((p) => p.interfaceName === rootContract);
+    const content = parsed.find((p) => p.interfaceName === contract);
+    // Prefer RootContract + Contract merge (Alert pattern); else best single iface.
     const chosen =
+      mergeParsedFields(root, content) ??
+      parsed.find((p) => p.interfaceName === shorthandContract) ??
+      parsed.find((p) => p.interfaceName === shorthand) ??
       parsed.find((p) => p.interfaceName === prefer) ??
+      root ??
+      content ??
       [...parsed].sort((a, b) => b.fields.length - a.fields.length)[0];
     if (!chosen) continue;
     fs.writeFileSync(
       path.join(OUT_DIR, `${slug}.gen.ts`),
-      emitFile(slug, chosen),
+      emitFile(slug, chosen, chosen.interfaceName),
     );
     ok++;
   }
