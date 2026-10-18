@@ -1,8 +1,8 @@
 ---
 import RedirectPage from "#/components/docs/redirect-page.astro";
-import { frameworkPath } from "#/lib/nav";
+import { withDocsBase } from "#/lib/nav";
 
-const redirectTo = frameworkPath("astro");
+const redirectTo = withDocsBase("/astro/components");
 ---
 
 <RedirectPage to={redirectTo} />

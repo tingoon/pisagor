@@ -8,7 +8,7 @@ import type { NavSection } from "./nav";
 export const componentSections: NavSection[] = [
   {
     items: [
-      { slug: "", status: "ready", title: "Introduction" },
+      { slug: "components", status: "ready", title: "Introduction" },
       { slug: "styling", status: "ready", title: "Styling" },
       { slug: "changelog", status: "ready", title: "Changelog" },
     ],
@@ -268,7 +268,7 @@ export const componentSections: NavSection[] = [
 export const astroComponentSections: NavSection[] = [
   {
     items: [
-      { slug: "", status: "ready", title: "Introduction" },
+      { slug: "components", status: "ready", title: "Introduction" },
       { slug: "styling", status: "ready", title: "Styling" },
       { slug: "changelog", status: "ready", title: "Changelog" },
     ],
@@ -432,12 +432,17 @@ export const formSections: NavSection[] = [
 
 export const blockSections: NavSection[] = [
   {
+    items: [{ slug: "blocks", status: "ready", title: "Introduction" }],
+    title: "Getting started",
+  },
+  {
     items: [
       { slug: "blocks/app-shell", status: "ready", title: "App Shell" },
       { slug: "blocks/card", status: "ready", title: "Card" },
     ],
     title: "Layout",
   },
+
   {
     items: [{ slug: "blocks/editors", status: "ready", title: "Editors" }],
     title: "Editors",

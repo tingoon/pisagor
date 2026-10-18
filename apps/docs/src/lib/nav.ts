@@ -30,7 +30,7 @@ export const frameworks: { id: Framework; label: string }[] = [
 ];
 
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [
-  { id: "components", label: "Components", slug: "" },
+  { id: "components", label: "Components", slug: "components" },
   { id: "blocks", label: "Blocks", slug: "blocks" },
   { id: "forms", label: "Forms", slug: "forms" },
 ];
@@ -117,9 +117,9 @@ export function getMainNav(framework: Framework) {
 
 /** Intro slug for a docs area (used when a page has no counterpart). */
 function areaIntroSlug(area: DocsArea): string {
-  if (area === "blocks") return "blocks/app-shell";
+  if (area === "blocks") return "blocks";
   if (area === "forms") return "forms";
-  return "";
+  return "components";
 }
 
 /** Doc section tabs under `/components|forms/<id>/<tab>`. */
@@ -180,11 +180,13 @@ function sidebarHasSlug(
  */
 export function swapFrameworkPath(pathname: string, next: Framework) {
   const parts = stripDocsBase(pathname).split("/").filter(Boolean);
-  if (parts.length === 0) return frameworkPath(next);
+  if (parts.length === 0) {
+    return frameworkPath(next, areaIntroSlug("components"));
+  }
 
   const area = getDocsArea(pathname);
   if (!frameworkAreas[next].includes(area)) {
-    return frameworkPath(next);
+    return frameworkPath(next, areaIntroSlug("components"));
   }
 
   const slug = stripComponentDocTab(parts.slice(1).join("/"));

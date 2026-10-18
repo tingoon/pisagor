@@ -1,8 +1,38 @@
 ---
-import RedirectPage from "#/components/docs/redirect-page.astro";
-import { frameworkPath } from "#/lib/nav";
+import Installation from "#/components/docs/installation.astro";
+import PackageLinks from "#/components/docs/package-links.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { docsInlineCodeClass } from "#/lib/docs-prose";
 
-const redirectTo = frameworkPath("react");
+const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "install", text: "Install" },
+];
 ---
 
-<RedirectPage to={redirectTo} />
+<DocsLayout
+  description="Build with Pisagor React components and live docs demos."
+  framework="react"
+  headings={headings}
+  title="Introduction"
+>
+  <PackageLinks framework="react" slot="title-actions" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
+  <p class="mb-6 text-muted-foreground">
+    <code class={docsInlineCodeClass}>@pisagor/react</code>
+    is the React UI kit — accessible primitives on Ark UI and Tailwind v4,
+    styled with
+    <code class={docsInlineCodeClass}>@pisagor/recipes</code>
+    and typed via
+    <code class={docsInlineCodeClass}>@pisagor/props</code>. Browse a component
+    for when to use it, installation, and live examples you can copy into your
+    app.
+  </p>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="install">
+    Install
+  </h2>
+  <Installation class="mb-6" packages="@pisagor/react" />
+</DocsLayout>

@@ -13,7 +13,10 @@ const DEFAULT_DESCRIPTION =
   "Accessible, themeable UI components for React, Vue, Svelte, Solid, and Astro — built on Ark UI and Tailwind CSS v4.";
 
 const description = Astro.props.description?.trim() || DEFAULT_DESCRIPTION;
-const fullTitle = `${Astro.props.title} · ${SITE_NAME}`;
+const fullTitle =
+  Astro.props.title === SITE_NAME
+    ? SITE_NAME
+    : `${Astro.props.title} · ${SITE_NAME}`;
 
 /** Absolute URL from `site` + current path (Astro.url already includes `base`). */
 function absolute(path: string): string | undefined {

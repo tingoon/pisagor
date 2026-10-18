@@ -1,8 +1,21 @@
 ---
-import RedirectPage from "#/components/docs/redirect-page.astro";
-import { withDocsBase } from "#/lib/nav";
+import DocsLayout from "#/layouts/docs-layout.astro";
 
-const redirectTo = withDocsBase("/vue/blocks/app-shell");
+const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
 ---
 
-<RedirectPage to={redirectTo} />
+<DocsLayout
+  description="Copy composed Pisagor examples into your app and customize them."
+  framework="vue"
+  headings={headings}
+  title="Introduction"
+>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
+  <p class="mb-6 text-muted-foreground">
+    Blocks are composed examples built from Pisagor components. Copy an example
+    into your project and adapt the layout, copy, and behavior for your product.
+    They are not published as packages — customize them in your own codebase.
+  </p>
+</DocsLayout>

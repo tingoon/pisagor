@@ -308,11 +308,10 @@ const solidInclude = ownedGlobs("solid", JS_EXT);
 /** Keep redirects and standalone preview frames out of the sitemap. */
 function isSitemapPage(page: string): boolean {
   const path = new URL(page).pathname.slice(base.replace(/\/$/, "").length);
-  if (path === "/" || path === "/404/" || path.startsWith("/preview/"))
-    return false;
-  // `/x/components/`, `/x/blocks/`, `/x/components/<id>/`, `/x/forms/<id>/`
-  // only redirect to the real page.
-  if (/^\/[^/]+\/(components|blocks)\/$/.test(path)) return false;
+  if (path === "/404/" || path.startsWith("/preview/")) return false;
+  // `/x/` redirects to `/x/components/`. Intro pages live at
+  // `/x/components/` and `/x/blocks/`. `/x/components|<forms>/<id>/` redirect.
+  if (/^\/[^/]+\/$/.test(path)) return false;
   if (/^\/[^/]+\/(components|forms)\/[^/]+\/$/.test(path)) return false;
   return true;
 }

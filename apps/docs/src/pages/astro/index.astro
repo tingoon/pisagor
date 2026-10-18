@@ -1,34 +1,8 @@
 ---
-import Installation from "#/components/docs/installation.astro";
-import PackageLinks from "#/components/docs/package-links.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { docsInlineCodeClass } from "#/lib/docs-prose";
+import RedirectPage from "#/components/docs/redirect-page.astro";
+import { withDocsBase } from "#/lib/nav";
 
-const headings = [
-  { depth: 2, slug: "overview", text: "Overview" },
-  { depth: 2, slug: "install", text: "Install" },
-];
+const redirectTo = withDocsBase("/astro/components");
 ---
 
-<DocsLayout
-  description="Build with Pisagor Astro components and live docs demos."
-  framework="astro"
-  headings={headings}
-  title="Introduction"
->
-  <PackageLinks framework="astro" slot="title-actions" />
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
-    Overview
-  </h2>
-  <p class="mb-6 text-muted-foreground">
-    <code class={docsInlineCodeClass}>@pisagor/astro</code>
-    ships static Astro components on shared Pisagor tokens and recipes. Use them
-    for content-heavy pages with zero client JavaScript by default. Browse a
-    component for when to use it, installation, and examples.
-  </p>
-
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="install">
-    Install
-  </h2>
-  <Installation class="mb-6" packages="@pisagor/astro" />
-</DocsLayout>
+<RedirectPage to={redirectTo} />

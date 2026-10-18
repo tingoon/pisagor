@@ -1,8 +1,159 @@
 ---
-import RedirectPage from "#/components/docs/redirect-page.astro";
-import { withDocsBase } from "#/lib/nav";
+import { PiIcon } from "@phosphor-icons/react";
+import {
+  AstroBrandIcon,
+  ReactBrandIcon,
+  SolidBrandIcon,
+  SvelteBrandIcon,
+  VueBrandIcon,
+} from "#/components/docs/brand-icons";
+import HomeLayout from "#/layouts/home-layout.astro";
+import type { Framework } from "#/lib/nav";
+import { frameworkPath, frameworks } from "#/lib/nav";
 
-const redirectTo = withDocsBase("/react");
+const description =
+  "Accessible primitives on Ark UI and Tailwind v4 — React, Vue, Svelte, Solid, and Astro.";
+
+const frameworkIcons: Record<Framework, typeof ReactBrandIcon> = {
+  astro: AstroBrandIcon,
+  react: ReactBrandIcon,
+  solid: SolidBrandIcon,
+  svelte: SvelteBrandIcon,
+  vue: VueBrandIcon,
+};
 ---
 
-<RedirectPage to={redirectTo} />
+<HomeLayout description={description} title="Pisagor">
+  <main class="relative isolate overflow-hidden">
+    <div
+      aria-hidden
+      class="home-atmosphere pointer-events-none absolute inset-0 -z-10"
+    >
+      <div class="home-atmosphere-glow home-atmosphere-glow-a"></div>
+      <div class="home-atmosphere-glow home-atmosphere-glow-b"></div>
+      <PiIcon
+        className="home-atmosphere-mark absolute -end-8 top-16 size-[min(70vw,28rem)] text-foreground/[0.04] sm:top-8 dark:text-foreground/[0.06]"
+        weight="duotone"
+      />
+    </div>
+
+    <section
+      class="home-hero mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-6xl flex-col justify-center px-4 py-16 sm:px-5 sm:py-20"
+    >
+      <h1
+        class="home-hero-item font-bold text-[clamp(3rem,8vw+1rem,5.5rem)] tracking-tight text-foreground leading-[0.95]"
+      >
+        Pisagor
+      </h1>
+      <p
+        class="home-hero-item mt-5 max-w-2xl font-semibold text-[clamp(1.25rem,2vw+0.75rem,1.75rem)] tracking-tight text-foreground/90 leading-snug"
+      >
+        UI components for every framework
+      </p>
+      <p
+        class="home-hero-item mt-4 max-w-xl text-muted-foreground text-base leading-relaxed sm:text-lg"
+      >
+        {description}
+      </p>
+
+      <nav
+        aria-label="Frameworks"
+        class="home-hero-item mt-10 flex flex-wrap gap-2"
+      >
+        {frameworks.map((item) => {
+          const Icon = frameworkIcons[item.id];
+          return (
+            <a
+              class="docs-press inline-flex h-11 items-center gap-2 rounded-lg border border-border/70 bg-background/80 px-4 font-medium text-foreground text-sm hover:bg-accent/60"
+              href={frameworkPath(item.id, "components")}
+            >
+              <Icon className="opacity-90" size={16} />
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+    </section>
+  </main>
+</HomeLayout>
+
+<style>
+.home-atmosphere-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+
+.home-atmosphere-glow-a {
+  top: -10%;
+  left: -5%;
+  width: min(55vw, 28rem);
+  height: min(55vw, 28rem);
+  background: color-mix(in oklab, var(--foreground) 8%, transparent);
+  animation: home-drift-a 28s ease-in-out infinite alternate;
+}
+
+.home-atmosphere-glow-b {
+  right: -8%;
+  bottom: 10%;
+  width: min(50vw, 24rem);
+  height: min(50vw, 24rem);
+  background: color-mix(in oklab, var(--muted-foreground) 12%, transparent);
+  animation: home-drift-b 34s ease-in-out infinite alternate;
+}
+
+.home-hero-item {
+  animation: home-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-hero-item:nth-child(1) {
+  animation-delay: 40ms;
+}
+.home-hero-item:nth-child(2) {
+  animation-delay: 120ms;
+}
+.home-hero-item:nth-child(3) {
+  animation-delay: 200ms;
+}
+.home-hero-item:nth-child(4) {
+  animation-delay: 280ms;
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes home-drift-a {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(6%, 8%);
+  }
+}
+
+@keyframes home-drift-b {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-8%, -5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-atmosphere-glow-a,
+  .home-atmosphere-glow-b,
+  .home-hero-item {
+    animation: none;
+  }
+}
+</style>
