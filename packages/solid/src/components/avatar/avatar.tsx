@@ -29,7 +29,7 @@ export interface AvatarProps
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
 }
 
-const AvatarRoot: Component<AvatarRootProps> = withProvider(
+const AvatarRoot: Component<AvatarRootProps> = withProvider<AvatarRootContract>(
   AvatarPrimitive.Root,
   { name: "Root", slot: "base" },
 );

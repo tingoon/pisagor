@@ -35,14 +35,12 @@ export interface AnnouncementProps
 // #endregion
 
 // #region Parts
-export const AnnouncementRoot: Component<AnnouncementRootProps> = withProvider(
-  ark.div,
-  {
+export const AnnouncementRoot: Component<AnnouncementRootProps> =
+  withProvider<AnnouncementRootContract>(ark.div, {
     defaultProps: { role: "status" },
     name: "Root",
     slot: "base",
-  },
-);
+  });
 
 export const AnnouncementTitle = withContext("span", { name: "Title" });
 // #endregion

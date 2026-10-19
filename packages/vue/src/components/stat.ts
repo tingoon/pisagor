@@ -47,7 +47,7 @@ export interface StatTrendProps extends StatTrendRootContract {
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider("div", {
+export const StatRoot = withProvider<StatRootContract>("div", {
   name: "Root",
   slot: "base",
 });

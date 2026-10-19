@@ -93,7 +93,7 @@ export const BreadcrumbList: Component<BreadcrumbListProps> =
   });
 
 export const BreadcrumbItem: Component<BreadcrumbItemProps> =
-  withBreadcrumbItemProvider("li", {
+  withBreadcrumbItemProvider<BreadcrumbItemRootContract>("li", {
     name: "Item",
     slot: "base",
   });

@@ -14,7 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const AvatarRoot = withProvider(AvatarPrimitive.Root)<AvatarRootContract>({
+const AvatarRoot = withProvider<AvatarRootContract>(AvatarPrimitive.Root, {
   name: "Root",
   slot: "base",
 });

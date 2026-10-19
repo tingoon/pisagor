@@ -36,10 +36,11 @@ export interface FileProps
   media?: JSX.Element;
 }
 
-export const FileRoot: Component<FileRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const FileRoot: Component<FileRootProps> =
+  withProvider<FileRootContract>("div", {
+    name: "Root",
+    slot: "base",
+  });
 
 export function FileMedia(props: FileMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);

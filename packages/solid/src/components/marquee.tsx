@@ -36,7 +36,10 @@ export interface MarqueeProps
 
 const MarqueeRootProvider: Component<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
-> = withProvider(MarqueePrimitive.Root, { name: "Root", slot: "base" });
+> = withProvider<MarqueeRootContract>(MarqueePrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
 export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

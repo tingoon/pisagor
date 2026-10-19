@@ -13,7 +13,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider("div")<FileRootContract>({
+export const FileRoot = withProvider<FileRootContract>("div", {
   name: "Root",
   slot: "base",
 });

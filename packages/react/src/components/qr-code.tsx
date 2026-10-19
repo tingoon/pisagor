@@ -24,7 +24,7 @@ export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion
 
 // #region Parts
-const QrCodeRootBase = withProvider(QrCodePrimitive.Root)({
+const QrCodeRootBase = withProvider<QrCodeRootContract>(QrCodePrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<QrCodeRootProps>;

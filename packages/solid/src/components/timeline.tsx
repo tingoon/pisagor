@@ -70,11 +70,12 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
   );
 }
 
-export const TimelineItem: Component<TimelineItemProps> = withProvider("li", {
-  defaultProps: { "data-part": "item" },
-  name: "Item",
-  slot: "base",
-});
+export const TimelineItem: Component<TimelineItemProps> =
+  withProvider<TimelineItemRootContract>("li", {
+    defaultProps: { "data-part": "item" },
+    name: "Item",
+    slot: "base",
+  });
 
 export const TimelineIndicator = withContext("div", { name: "Indicator" });
 

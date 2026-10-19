@@ -16,7 +16,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider(ark.div)<CardRootContract>({
+export const CardRoot = withProvider<CardRootContract>(ark.div, {
   name: "Root",
   slot: "base",
 });

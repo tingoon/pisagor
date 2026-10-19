@@ -20,10 +20,11 @@ export type ButtonGroupTextProps = ComponentProps<"div">;
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot: Component<ButtonGroupProps> = withProvider(
-  "fieldset",
-  { name: "Root", slot: "base" },
-);
+export const ButtonGroupRoot: Component<ButtonGroupProps> =
+  withProvider<ButtonGroupRootContract>("fieldset", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const ButtonGroupText = withContext("div", { name: "Text" });
 

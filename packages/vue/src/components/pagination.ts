@@ -17,10 +17,13 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-const PaginationRootBase = withProvider(PaginationPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const PaginationRootBase = withProvider<PaginationRootContract>(
+  PaginationPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 type ArkPart = Parameters<typeof h>[0];
 

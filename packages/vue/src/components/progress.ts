@@ -15,10 +15,13 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ProgressRoot = withProvider(ProgressPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const ProgressRoot = withProvider<ProgressRootContract>(
+  ProgressPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 const ProgressHeader = withContext("div", {
   name: "Header",

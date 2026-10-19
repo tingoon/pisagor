@@ -12,7 +12,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const NavbarRoot = withProvider("header")<NavbarRootContract>({
+export const NavbarRoot = withProvider<NavbarRootContract>("header", {
   name: "Root",
   slot: "base",
 });

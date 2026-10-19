@@ -32,7 +32,7 @@ export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider(ark.div, {
+export const CardRoot = withProvider<CardRootContract>(ark.div, {
   name: "Root",
   slot: "base",
 });

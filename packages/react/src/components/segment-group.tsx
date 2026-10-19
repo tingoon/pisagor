@@ -58,10 +58,13 @@ export interface SegmentGroupItemProps
 // #endregion
 
 // #region Parts
-const SegmentGroupRootBase = withProvider(SegmentGroupPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+const SegmentGroupRootBase = withProvider<SegmentGroupRootContract>(
+  SegmentGroupPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 >;
 

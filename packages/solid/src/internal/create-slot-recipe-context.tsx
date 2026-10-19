@@ -38,14 +38,6 @@ export interface SlotRecipeStyles<
 type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
-/** Override must keep the same slot return shape as the default recipe. */
-export type CompatibleSlotRecipe<R extends SlotRecipeFn> = R &
-  ((props?: RecipeVariantProps<R>) => ReturnType<R>);
-
-export type SlotRecipeProps<R extends SlotRecipeFn> = RecipeVariantProps<R> & {
-  recipe?: CompatibleSlotRecipe<R>;
-};
-
 export interface WithSlotRecipeOptions<Slot extends string = string> {
   /** PascalCase part name (`Alert.Title`). */
   name: string;
@@ -128,12 +120,19 @@ export function createSlotRecipeContext<
 
   /**
    * Styled root: provides styles to descendants and renders `component` with
-   * the `slot` class, `data-scope` / `data-part` and variant `data-*`.
+   * the `slot` class, `data-scope` / `data-part` and variant `data-*`. Pass the
+   * shared root contract as `P` — variants / `recipe` are not inferred from the
+   * recipe:
+   *
+   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
    */
-  function withProvider<C extends ValidComponent>(
+  function withProvider<
+    P extends object,
+    C extends ValidComponent = ValidComponent,
+  >(
     component: C,
     options: WithSlotRecipeOptions<Slot>,
-  ): Component<ComponentProps<C> & SlotRecipeProps<R>> {
+  ): Component<ComponentProps<C> & P> {
     // Widen for `Dynamic`: props are forwarded untouched, typed by the return.
     const host: ValidComponent = component;
     const slot = slotOf(options);
@@ -191,11 +190,19 @@ export function createSlotRecipeContext<
     };
   }
 
-  /** Styled descendant part reading `slot` from the nearest provider. */
-  function withContext<C extends ValidComponent>(
+  /**
+   * Styled descendant. Optional `P` extends the host props (defaults to none):
+   *
+   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
+   * { name: "Title" })`
+   */
+  function withContext<
+    P extends object = Record<never, never>,
+    C extends ValidComponent = ValidComponent,
+  >(
     component: C,
     options: WithSlotRecipeOptions<Slot>,
-  ): Component<ComponentProps<C>> {
+  ): Component<ComponentProps<C> & P> {
     const host: ValidComponent = component;
     const slot = slotOf(options);
     const defaultClass = options.defaultProps?.class as ClassValue;

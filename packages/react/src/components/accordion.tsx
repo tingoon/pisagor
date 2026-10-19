@@ -61,10 +61,13 @@ export function AccordionRoot({
   );
 }
 
-export const AccordionItem = withProvider(AccordionPrimitive.Item)({
-  name: "Item",
-  slot: "base",
-}) as FunctionComponent<AccordionItemProps>;
+export const AccordionItem = withProvider<AccordionItemRootContract>(
+  AccordionPrimitive.Item,
+  {
+    name: "Item",
+    slot: "base",
+  },
+) as FunctionComponent<AccordionItemProps>;
 
 export function AccordionItemTrigger({
   children,

@@ -23,10 +23,11 @@ export interface LocalQrCodeRootProps
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 
-const QrCodeRootProvider: Component<LocalQrCodeRootProps> = withProvider(
-  QrCodePrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const QrCodeRootProvider: Component<LocalQrCodeRootProps> =
+  withProvider<QrCodeRootContract>(QrCodePrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);

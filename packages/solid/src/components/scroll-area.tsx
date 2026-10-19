@@ -39,10 +39,11 @@ export interface ScrollAreaProps
   viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
 }
 
-const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider(
-  ScrollAreaPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const ScrollAreaRoot: Component<ScrollAreaRootProps> =
+  withProvider<ScrollAreaRootContract>(ScrollAreaPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);

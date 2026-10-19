@@ -65,10 +65,13 @@ export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider(TimerPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<TimerRootPrimitiveProps & TimerRootContract>;
+const TimerRootBase = withTimerProvider<TimerRootContract>(
+  TimerPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<TimerRootPrimitiveProps & TimerRootContract>;
 
 export function TimerRoot({
   isControlsVisible,
@@ -110,12 +113,13 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider("div")({
-  name: "ItemGroup",
-  slot: "base",
-}) as FunctionComponent<
-  ComponentPropsWithRef<"div"> & TimerItemGroupRootContract
->;
+const TimerItemGroupBase =
+  withTimerItemGroupProvider<TimerItemGroupRootContract>("div", {
+    name: "ItemGroup",
+    slot: "base",
+  }) as FunctionComponent<
+    ComponentPropsWithRef<"div"> & TimerItemGroupRootContract
+  >;
 
 export function TimerItemGroup({
   orientation = "vertical",

@@ -65,10 +65,11 @@ export interface BottomNavigationItemProps extends BottomNavigationItemRootContr
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider("nav", {
-  name: "Root",
-  slot: "base",
-});
+const BottomNavigationNav =
+  withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const BottomNavigationRoot = defineComponent({
   inheritAttrs: false,
@@ -96,10 +97,11 @@ export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
-const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
-  name: "Item",
-  slot: "base",
-});
+const BottomNavigationItemBase =
+  withBottomNavigationItemProvider<BottomNavigationItemRootContract>(ark.a, {
+    name: "Item",
+    slot: "base",
+  });
 
 export const BottomNavigationItem = defineComponent({
   inheritAttrs: false,

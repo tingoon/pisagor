@@ -40,7 +40,7 @@ export interface TabsProps
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-export const TabsRoot = withProvider(TabsPrimitive.Root, {
+export const TabsRoot = withProvider<TabsRootContract>(TabsPrimitive.Root, {
   name: "Root",
   slot: "base",
 });

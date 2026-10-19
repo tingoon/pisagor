@@ -52,10 +52,11 @@ export interface CarouselProps
   slides?: CarouselPresetItem[];
 }
 
-const CarouselRootBase: Component<CarouselRootProps> = withProvider(
-  CarouselPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const CarouselRootBase: Component<CarouselRootProps> =
+  withProvider<CarouselRootContract>(CarouselPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 export function CarouselRoot(props: CarouselRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "spacing"]);

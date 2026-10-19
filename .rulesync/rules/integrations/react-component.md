@@ -57,6 +57,7 @@ const {
 - Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
 - Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file (e.g. `useStyles: useTagsInput` + `useStyles: useTagsInputItem`). Public re-exports can use `export { useStyles as useFoo }`.
 - `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag string (`"div"`) for layout/presentational hosts; use `ark.*` only when `asChild` polymorphism is required; use Ark machine primitives for headless parts.
+- `withProvider` requires the shared root contract as `P` (variants / `recipe` are not inferred from the recipe): `withProvider<FooRootContract>("div", { name: "Root", slot: "base" })`. `withContext` accepts an optional extra `P` (defaults to none). Same call shape as Vue / Solid.
 - Hand-written roots that need dual providers: `<FooStylesContext value={{ slots, variants }}>` around the primitive (and a thin state context when needed).
 - Thin **non-style** state uses `createContext` from package `utils` (or raw React `createContext`) — keep it separate from the slot-recipe Context.
 

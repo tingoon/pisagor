@@ -45,10 +45,11 @@ export interface StatProps
 // #endregion
 
 // #region Parts
-export const StatRoot: Component<StatRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const StatRoot: Component<StatRootProps> =
+  withProvider<StatRootContract>("div", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const StatLabel = withContext("div", { name: "Label" });
 

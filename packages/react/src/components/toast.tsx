@@ -120,7 +120,7 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-const ToastItemRoot = withProvider(ToastPrimitive.Root)({
+const ToastItemRoot = withProvider<ToastItemRootContract>(ToastPrimitive.Root, {
   name: "Item",
   slot: "base",
 }) as FunctionComponent<ToastItemRootProps>;

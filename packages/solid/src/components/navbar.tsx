@@ -20,10 +20,11 @@ export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 export type NavbarPartProps = ComponentProps<"div">;
 export type NavbarNavProps = ComponentProps<"nav">;
 
-export const NavbarRoot: Component<NavbarRootProps> = withProvider("header", {
-  name: "Root",
-  slot: "base",
-});
+export const NavbarRoot: Component<NavbarRootProps> =
+  withProvider<NavbarRootContract>("header", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const NavbarBrand: Component<NavbarPartProps> = withContext("div", {
   name: "Brand",

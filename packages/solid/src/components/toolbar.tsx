@@ -30,10 +30,11 @@ export interface ToolbarProps
   titleProps?: Omit<ToolbarTitleProps, "children" | "class">;
 }
 
-export const ToolbarRoot: Component<ToolbarRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const ToolbarRoot: Component<ToolbarRootProps> =
+  withProvider<ToolbarRootContract>("div", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const ToolbarHeading: Component<ToolbarHeadingProps> = withContext(
   "div",

@@ -111,10 +111,11 @@ const TOAST_ICONS = {
   warning: () => <WarningIcon />,
 } as const;
 
-const ToastItemRoot: Component<ToastItemRootProps> = withProvider(
-  ToastPrimitive.Root,
-  { name: "Item", slot: "base" },
-);
+const ToastItemRoot: Component<ToastItemRootProps> =
+  withProvider<ToastItemRootContract>(ToastPrimitive.Root, {
+    name: "Item",
+    slot: "base",
+  });
 
 function ToastItemContent(
   props: Omit<ToastItemProps, keyof ToastItemRootProps> &

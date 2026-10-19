@@ -27,14 +27,6 @@ export interface SlotRecipeStyles<
 type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
-/** Override must keep the same slot return shape as the default recipe. */
-export type CompatibleSlotRecipe<R extends SlotRecipeFn> = R &
-  ((props?: RecipeVariantProps<R>) => ReturnType<R>);
-
-export type SlotRecipeProps<R extends SlotRecipeFn> = RecipeVariantProps<R> & {
-  recipe?: CompatibleSlotRecipe<R>;
-};
-
 export interface WithSlotRecipeOptions<Slot extends string = string> {
   /** PascalCase part name (`Alert.Title`). */
   name: string;
@@ -136,8 +128,7 @@ export function createSlotRecipeContext<
       (partName === "Root" ? "base" : toKebabCase(partName))) as Slot;
 
     function ProviderComponent(props: ProviderProps<C, P>) {
-      const recipe = ((props as SlotRecipeProps<R>).recipe ??
-        defaultRecipe) as R;
+      const recipe = ((props as { recipe?: R }).recipe ?? defaultRecipe) as R;
       const { rest, variants } = splitRecipeProps(
         props as Record<string, unknown>,
         recipe,
@@ -184,45 +175,39 @@ export function createSlotRecipeContext<
   }
 
   /**
-   * Options → root component. Call-signature interface keeps `P`'s constraint /
-   * default visible to the language service (a returned generic function
-   * otherwise widens to bare `<P>`, which IDEs often surface as `any`).
+   * Styled root. Pass the shared root contract as `P` — variants / `recipe` are
+   * not inferred from the recipe (same shape as Vue / Solid):
+   *
+   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
    */
-  interface WithProviderBind<C extends ElementType> {
-    <P extends object = SlotRecipeProps<R>>(
-      options: WithSlotRecipeOptions<Slot>,
-    ): FunctionComponent<ProviderProps<C, P>>;
+  function withProvider<P extends object, C extends ElementType = ElementType>(
+    Component: C,
+    options: WithSlotRecipeOptions<Slot>,
+  ): FunctionComponent<ProviderProps<C, P>> {
+    return createProvider<C, P>(Component, options);
   }
 
   /**
-   * Host element first (inferred), optional root contract on the options call.
-   * TypeScript cannot express `withProvider<Contract>("div")({…})` (no partial
-   * type-argument inference), so the contract goes on the second call:
+   * Styled descendant. Optional `P` extends the host props (defaults to none):
    *
-   * `withProvider("div")<AlertRootContract>({ name: "Root", slot: "base" })`
-   * `withProvider("div")({ name: "Root", slot: "base" })`
+   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
+   * { name: "Title" })`
    */
-  function withProvider<C extends ElementType>(
-    Component: C,
-  ): WithProviderBind<C> {
-    return <P extends object = SlotRecipeProps<R>>(
-      options: WithSlotRecipeOptions<Slot>,
-    ) => createProvider<C, P>(Component, options);
-  }
-
-  function withContext<C extends ElementType>(
+  function withContext<
+    P extends object = Record<never, never>,
+    C extends ElementType = ElementType,
+  >(
     Component: C,
     options: WithSlotRecipeOptions<Slot>,
-  ): FunctionComponent<ComponentProps<C>> {
+  ): FunctionComponent<ComponentProps<C> & P> {
     const partName = options.name;
     const slot = (options.slot ??
       (partName === "Root" ? "base" : toKebabCase(partName))) as Slot;
 
-    function SlotComponent(props: ComponentProps<C>) {
+    function SlotComponent(props: ComponentProps<C> & P) {
       const { slots } = useStyles();
-      const { className, ...rest } = props as ComponentProps<C> & {
-        className?: ClassValue;
-      };
+      const { className, ...rest } = props as ComponentProps<C> &
+        P & { className?: ClassValue };
       const defaultClassName = options.defaultProps?.className as
         ClassValue | undefined;
 

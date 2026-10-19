@@ -48,14 +48,6 @@ export interface SlotRecipeStyles<
 type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
-/** Override must keep the same slot return shape as the default recipe. */
-export type CompatibleSlotRecipe<R extends SlotRecipeFn> = R &
-  ((props?: RecipeVariantProps<R>) => ReturnType<R>);
-
-export type SlotRecipeProps<R extends SlotRecipeFn> = RecipeVariantProps<R> & {
-  recipe?: CompatibleSlotRecipe<R>;
-};
-
 export interface WithSlotRecipeOptions<Slot extends string = string> {
   /** PascalCase part name (`Alert.Title`). */
   name: string;
@@ -218,13 +210,17 @@ export function createSlotRecipeContext<
 
   /**
    * Styled root: provides styles to descendants and renders `component` with
-   * the `slot` class, `data-scope` / `data-part` and variant `data-*`.
+   * the `slot` class, `data-scope` / `data-part` and variant `data-*`. Pass the
+   * shared root contract as `P` — variants / `recipe` are not inferred from the
+   * recipe:
+   *
+   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
    */
-  function withProvider<P extends object = Record<never, never>>(
+  function withProvider<P extends object>(
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,
-  ): SlotRecipePart<P & SlotRecipeProps<R> & PartClassProps> {
-    type Props = P & SlotRecipeProps<R> & PartClassProps;
+  ): SlotRecipePart<P & PartClassProps> {
+    type Props = P & PartClassProps;
 
     const partName = `${name}.${options.name}`;
 
@@ -302,7 +298,12 @@ export function createSlotRecipeContext<
     return Object.assign(part, { inheritAttrs: false, name: partName });
   }
 
-  /** Styled descendant part reading `slot` from the nearest provider. */
+  /**
+   * Styled descendant. Optional `P` extends the host props (defaults to none):
+   *
+   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
+   * { name: "Title" })`
+   */
   function withContext<P extends object = Record<never, never>>(
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,

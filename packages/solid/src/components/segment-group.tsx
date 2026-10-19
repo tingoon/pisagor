@@ -55,7 +55,7 @@ export interface SegmentGroupItemProps
 
 const SegmentGroupRootBase: Component<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
-> = withProvider(SegmentGroupPrimitive.Root, {
+> = withProvider<SegmentGroupRootContract>(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",
 });

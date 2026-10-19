@@ -65,7 +65,7 @@ export type BottomNavigationItemLabelProps = ComponentProps<"span">;
 
 // #region Parts
 const BottomNavigationNav: Component<ComponentProps<"nav">> =
-  withBottomNavigationProvider("nav", {
+  withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
     name: "Root",
     slot: "base",
   });
@@ -92,7 +92,7 @@ export const BottomNavigationList: Component<BottomNavigationListProps> =
   });
 
 const BottomNavigationItemBase: Component<HTMLArkProps<"a">> =
-  withBottomNavigationItemProvider(ark.a, {
+  withBottomNavigationItemProvider<BottomNavigationItemRootContract>(ark.a, {
     name: "Item",
     slot: "base",
   });

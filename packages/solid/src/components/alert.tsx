@@ -42,10 +42,11 @@ export interface AlertProps
 // #endregion
 
 // #region Parts
-export const AlertRoot: Component<AlertRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const AlertRoot: Component<AlertRootProps> =
+  withProvider<AlertRootContract>("div", {
+    name: "Root",
+    slot: "base",
+  });
 
 export const AlertTitle = withContext("div", { name: "Title" });
 

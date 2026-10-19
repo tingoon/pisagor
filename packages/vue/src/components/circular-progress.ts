@@ -25,10 +25,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressRootProvider, {
-  name: "Root",
-  slot: "base",
-});
+const CircularProgressRoot = withProvider<CircularProgressRootContract>(
+  ProgressRootProvider,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /

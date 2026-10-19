@@ -49,10 +49,13 @@ export interface CarouselProps
 // #endregion
 
 // #region Parts
-const CarouselRootBase = withProvider(CarouselPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<CarouselRootProps>;
+const CarouselRootBase = withProvider<CarouselRootContract>(
+  CarouselPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<CarouselRootProps>;
 
 export function CarouselRoot({
   children,

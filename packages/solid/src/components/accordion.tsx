@@ -60,10 +60,11 @@ export function AccordionRoot(props: AccordionRootProps): JSX.Element {
   );
 }
 
-export const AccordionItem: Component<LocalAccordionItemProps> = withProvider(
-  AccordionPrimitive.Item,
-  { name: "Item", slot: "base" },
-);
+export const AccordionItem: Component<LocalAccordionItemProps> =
+  withProvider<AccordionItemRootContract>(AccordionPrimitive.Item, {
+    name: "Item",
+    slot: "base",
+  });
 
 export function AccordionItemTrigger(
   props: AccordionItemTriggerProps,

@@ -37,10 +37,11 @@ export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 // #region Parts
-export const CardRoot: Component<CardRootProps> = withProvider(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+export const CardRoot: Component<CardRootProps> =
+  withProvider<CardRootContract>(ark.div, {
+    name: "Root",
+    slot: "base",
+  });
 
 /** Part-level `variant` stays on Media (not lifted to Root). */
 export function CardMedia(props: CardMediaProps): JSX.Element {

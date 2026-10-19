@@ -89,12 +89,11 @@ export const BreadcrumbList = withBreadcrumbContext("ol", {
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider(
-  "li",
-)<BreadcrumbItemRootContract>({
-  name: "Item",
-  slot: "base",
-});
+export const BreadcrumbItem =
+  withBreadcrumbItemProvider<BreadcrumbItemRootContract>("li", {
+    name: "Item",
+    slot: "base",
+  });
 
 export type BreadcrumbItemRootProps = ComponentProps<typeof BreadcrumbItem>;
 export interface BreadcrumbItemProps

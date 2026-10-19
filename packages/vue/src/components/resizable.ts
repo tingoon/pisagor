@@ -207,10 +207,13 @@ export const ResizableEdgeHandle = defineComponent({
   },
 });
 
-export const ResizableRoot = withProvider(SplitterPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+export const ResizableRoot = withProvider<ResizableRootContract>(
+  SplitterPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export const ResizablePanel = defineComponent({
   inheritAttrs: false,

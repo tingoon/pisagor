@@ -70,7 +70,7 @@ export type FieldSeparatorProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export const FieldRoot = withProvider(FieldPrimitive.Root)({
+export const FieldRoot = withProvider<FieldRootContract>(FieldPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<FieldRootProps>;

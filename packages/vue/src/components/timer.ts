@@ -57,20 +57,24 @@ export interface TimerItemGroupProps extends TimerItemGroupRootContract {
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider(TimerPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const TimerRootBase = withTimerProvider<TimerRootContract>(
+  TimerPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider("div", {
-  defaultProps: { "data-part": "item-group" },
-  name: "ItemGroup",
-  slot: "base",
-});
+const TimerItemGroupBase =
+  withTimerItemGroupProvider<TimerItemGroupRootContract>("div", {
+    defaultProps: { "data-part": "item-group" },
+    name: "ItemGroup",
+    slot: "base",
+  });
 
 /**
  * Usable inside or outside `Timer.ItemGroup` (falls back to the default

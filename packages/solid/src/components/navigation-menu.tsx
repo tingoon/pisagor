@@ -78,10 +78,11 @@ export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav: Component<NavigationMenuProps> = withProvider("nav", {
-  name: "Root",
-  slot: "base",
-});
+const NavigationMenuNav: Component<NavigationMenuProps> =
+  withProvider<NavigationMenuRootContract>("nav", {
+    name: "Root",
+    slot: "base",
+  });
 
 export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   const { m } = useLocale();

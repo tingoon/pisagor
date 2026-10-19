@@ -84,7 +84,7 @@ export const TimelineRoot = defineComponent({
   },
 });
 
-export const TimelineItem = withProvider("li", {
+export const TimelineItem = withProvider<TimelineItemRootContract>("li", {
   defaultProps: {
     "data-part": "item",
   },

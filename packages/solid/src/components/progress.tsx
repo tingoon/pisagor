@@ -41,10 +41,11 @@ export interface ProgressProps
   valueProps?: Omit<ProgressValueTextProps, "children" | "class">;
 }
 
-const ProgressRoot: Component<ProgressRootProps> = withProvider(
-  ProgressPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const ProgressRoot: Component<ProgressRootProps> =
+  withProvider<ProgressRootContract>(ProgressPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 const ProgressHeader: Component<ProgressHeaderProps> = withContext("div", {
   name: "Header",

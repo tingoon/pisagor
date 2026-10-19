@@ -43,10 +43,13 @@ type ArkPart = Parameters<typeof h>[0];
 // #endregion
 
 // #region Parts
-const CarouselRootBase = withProvider(CarouselPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const CarouselRootBase = withProvider<CarouselRootContract>(
+  CarouselPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export const CarouselRoot = defineComponent({
   inheritAttrs: false,

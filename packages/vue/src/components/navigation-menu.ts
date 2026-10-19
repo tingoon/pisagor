@@ -76,7 +76,7 @@ function callHandler(handler: unknown, event: Event) {
 }
 
 // #region Parts
-const NavigationMenuNav = withProvider("nav", {
+const NavigationMenuNav = withProvider<NavigationMenuRootContract>("nav", {
   name: "Root",
   slot: "base",
 });

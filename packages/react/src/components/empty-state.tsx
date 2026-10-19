@@ -15,7 +15,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const EmptyStateRoot = withProvider(ark.div)<EmptyStateRootContract>({
+export const EmptyStateRoot = withProvider<EmptyStateRootContract>(ark.div, {
   name: "Root",
   slot: "base",
 });

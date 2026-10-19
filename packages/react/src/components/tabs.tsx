@@ -52,7 +52,7 @@ export interface TabsProps
 // #endregion
 
 // #region Parts
-export const TabsRoot = withProvider(TabsPrimitive.Root)({
+export const TabsRoot = withProvider<TabsRootContract>(TabsPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<TabsRootProps>;

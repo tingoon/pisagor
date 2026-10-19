@@ -32,10 +32,8 @@ export interface AvatarGroupProps extends Omit<
 
 export type AvatarGroupCountProps = HTMLArkProps<"div">;
 
-export const AvatarGroupRoot: Component<AvatarGroupRootProps> = withProvider(
-  "div",
-  { name: "Root", slot: "base" },
-);
+export const AvatarGroupRoot: Component<AvatarGroupRootProps> =
+  withProvider<AvatarGroupRootContract>("div", { name: "Root", slot: "base" });
 
 export const AvatarGroupCount: Component<AvatarGroupCountProps> = withContext(
   ark.div,

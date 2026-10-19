@@ -53,10 +53,11 @@ export interface TabsProps
   showIndicator?: boolean;
 }
 
-export const TabsRoot: Component<LocalTabsRootProps> = withProvider(
-  TabsPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+export const TabsRoot: Component<LocalTabsRootProps> =
+  withProvider<TabsRootContract>(TabsPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 export function TabsList(props: TabsListProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -16,10 +16,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot = withProvider("fieldset")({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+export const ButtonGroupRoot = withProvider<ButtonGroupRootContract>(
+  "fieldset",
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<
   ComponentPropsWithRef<"fieldset"> & ButtonGroupRootContract
 >;
 

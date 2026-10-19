@@ -40,20 +40,22 @@ export interface LocalStepsItemProps
 export type StepsTitleProps = ComponentProps<"span">;
 export type StepsDescriptionProps = ComponentProps<"span">;
 
-export const StepsRoot: Component<LocalStepsRootProps> = withStepsProvider(
-  StepsPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+export const StepsRoot: Component<LocalStepsRootProps> =
+  withStepsProvider<StepsRootContract>(StepsPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 export const StepsList: Component<StepsListProps> = withStepsContext(
   StepsPrimitive.List,
   { name: "List" },
 );
 
-export const StepsItem: Component<LocalStepsItemProps> = withStepsItemProvider(
-  StepsPrimitive.Item,
-  { name: "Item", slot: "base" },
-);
+export const StepsItem: Component<LocalStepsItemProps> =
+  withStepsItemProvider<StepsItemRootContract>(StepsPrimitive.Item, {
+    name: "Item",
+    slot: "base",
+  });
 
 export const StepsTrigger: Component<StepsTriggerProps> = withStepsItemContext(
   StepsPrimitive.Trigger,

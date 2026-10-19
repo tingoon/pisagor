@@ -84,7 +84,7 @@ export const DataListRoot = defineComponent({
   },
 });
 
-const DataListItemRoot = withProvider("div", {
+const DataListItemRoot = withProvider<DataListItemRootContract>("div", {
   defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",

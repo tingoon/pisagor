@@ -59,10 +59,11 @@ interface CircularProgressTrackPartProps {
   >;
 }
 
-const CircularProgressRoot: Component<CircularProgressRootProps> = withProvider(
-  ProgressPrimitive.RootProvider,
-  { name: "Root", slot: "base" },
-);
+const CircularProgressRoot: Component<CircularProgressRootProps> =
+  withProvider<CircularProgressRootContract>(ProgressPrimitive.RootProvider, {
+    name: "Root",
+    slot: "base",
+  });
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /

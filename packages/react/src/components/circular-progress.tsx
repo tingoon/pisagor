@@ -29,10 +29,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+const CircularProgressRoot = withProvider<CircularProgressRootContract>(
+  ProgressPrimitive.RootProvider,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<
   ProgressRootProviderProps & CircularProgressRootContract
 >;
 

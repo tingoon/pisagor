@@ -40,7 +40,7 @@ export function DataListRoot({
   );
 }
 
-const DataListItemRoot = withProvider("div")({
+const DataListItemRoot = withProvider<DataListItemRootContract>("div", {
   defaultProps: {
     "data-part": "item",
   },

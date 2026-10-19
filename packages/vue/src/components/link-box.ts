@@ -11,7 +11,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const LinkBoxRoot = withProvider(ark.div, {
+export const LinkBoxRoot = withProvider<LinkBoxRootContract>(ark.div, {
   name: "Root",
   slot: "base",
 });

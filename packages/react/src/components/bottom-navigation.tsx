@@ -64,10 +64,11 @@ export type BottomNavigationItemLabelProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider("nav")({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"nav">>;
+const BottomNavigationNav =
+  withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
+    name: "Root",
+    slot: "base",
+  }) as FunctionComponent<ComponentPropsWithRef<"nav">>;
 
 export function BottomNavigationRoot({
   value,
@@ -90,10 +91,11 @@ export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
-const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a)({
-  name: "Item",
-  slot: "base",
-}) as FunctionComponent<HTMLArkProps<"a">>;
+const BottomNavigationItemBase =
+  withBottomNavigationItemProvider<BottomNavigationItemRootContract>(ark.a, {
+    name: "Item",
+    slot: "base",
+  }) as FunctionComponent<HTMLArkProps<"a">>;
 
 export function BottomNavigationItem({
   current,

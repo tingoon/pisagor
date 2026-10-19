@@ -26,7 +26,7 @@ export interface FileProps extends FileRootContract, FileContract {
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider("div", {
+export const FileRoot = withProvider<FileRootContract>("div", {
   name: "Root",
   slot: "base",
 });

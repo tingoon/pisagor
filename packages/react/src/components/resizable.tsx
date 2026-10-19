@@ -213,10 +213,13 @@ export function ResizableEdgeHandle({
   );
 }
 
-export const ResizableRoot = withProvider(SplitterPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as import("react").FunctionComponent<ResizableRootProps>;
+export const ResizableRoot = withProvider<ResizableRootContract>(
+  SplitterPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as import("react").FunctionComponent<ResizableRootProps>;
 
 export function ResizablePanel(props: ResizablePanelProps) {
   return <SplitterPrimitive.Panel {...props} />;

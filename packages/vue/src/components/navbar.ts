@@ -25,7 +25,7 @@ export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 // #endregion
 
 // #region Parts
-export const NavbarRoot = withProvider("header", {
+export const NavbarRoot = withProvider<NavbarRootContract>("header", {
   name: "Root",
   slot: "base",
 });

@@ -34,7 +34,7 @@ export function TimelineRoot({
   );
 }
 
-export const TimelineItem = withProvider("li")<TimelineItemRootContract>({
+export const TimelineItem = withProvider<TimelineItemRootContract>("li", {
   defaultProps: {
     "data-part": "item",
   },

@@ -45,7 +45,7 @@ export interface MenuProps extends MenuRootProps, MenuContract {}
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const MenuRootBase = withProvider("nav", {
+const MenuRootBase = withProvider<MenuRootContract>("nav", {
   name: "Root",
   slot: "base",
 });

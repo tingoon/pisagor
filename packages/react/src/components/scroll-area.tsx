@@ -21,10 +21,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<ScrollAreaRootPrimitiveProps & ScrollAreaRootContract>;
+const ScrollAreaRoot = withProvider<ScrollAreaRootContract>(
+  ScrollAreaPrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+) as FunctionComponent<ScrollAreaRootPrimitiveProps & ScrollAreaRootContract>;
 
 function ScrollAreaViewport({
   children,

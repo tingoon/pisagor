@@ -25,10 +25,13 @@ export interface MarqueeProps extends MarqueeRootContract, MarqueeContract {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const MarqueeRootBase = withProvider(MarqueePrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const MarqueeRootBase = withProvider<MarqueeRootContract>(
+  MarqueePrimitive.Root,
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export const MarqueeItem = withContext(MarqueePrimitive.Item, {
   name: "Item",

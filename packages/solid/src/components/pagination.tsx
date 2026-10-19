@@ -45,7 +45,10 @@ export interface PaginationItemLinkProps extends ButtonProps {
 }
 
 const PaginationRootProvider: Component<LocalPaginationRootProps> =
-  withProvider(PaginationPrimitive.Root, { name: "Root", slot: "base" });
+  withProvider<PaginationRootContract>(PaginationPrimitive.Root, {
+    name: "Root",
+    slot: "base",
+  });
 
 export function PaginationRoot(props: LocalPaginationRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);

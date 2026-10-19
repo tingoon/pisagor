@@ -19,7 +19,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const MenuRootBase = withProvider("nav")<MenuRootContract>({
+const MenuRootBase = withProvider<MenuRootContract>("nav", {
   name: "Root",
   slot: "base",
 });
