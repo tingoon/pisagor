@@ -4,5 +4,5 @@ export * from "./default";
 export * from "./disabled";
 export * from "./multiple";
 export * from "./non-collapsible";
-export * from "./sizes";
-export * from "./with-card";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";

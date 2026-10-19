@@ -14,7 +14,9 @@ const meta = preview.meta({
   },
   subcomponents: {
     Item: Accordion.Item,
+    ItemBody: Accordion.ItemBody,
     ItemContent: Accordion.ItemContent,
+    ItemIndicator: Accordion.ItemIndicator,
     ItemTrigger: Accordion.ItemTrigger,
     Root: Accordion.Root,
   },
@@ -86,8 +88,12 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const Sizes = meta.story({
-  render: Examples.Sizes,
+export const OrientationHorizontal = meta.story({
+  render: Examples.OrientationHorizontal,
+});
+
+export const OrientationVertical = meta.story({
+  render: Examples.OrientationVertical,
 });
 
 export const Multiple = meta.story({
@@ -108,10 +114,6 @@ export const Compound = meta.story({
     },
   },
   render: Examples.Compound,
-});
-
-export const WithCard = meta.story({
-  render: Examples.WithCard,
 });
 
 export const Controlled = meta.story({
