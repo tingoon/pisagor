@@ -1,9 +1,9 @@
-import { Command } from "@pisagor/solid";
 import {
   CalendarIcon,
   GearIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Command } from "@pisagor/solid";
 
 const items = [
   {
@@ -29,5 +29,5 @@ const items = [
 ];
 
 export function Shorthand() {
-  return <Command.Shorthand items={items} placeholder="Search…" />;
+  return <Command items={items} placeholder="Search…" />;
 }

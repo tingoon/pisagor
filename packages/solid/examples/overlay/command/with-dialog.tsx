@@ -1,6 +1,9 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
-import { Button, Command, Kbd } from "@pisagor/solid";
-import { ArrowBendDownLeftIcon } from "@squidlab/phosphor-solid/icons";
+import {
+  ArrowBendDownLeftIcon,
+  MagnifyingGlassIcon,
+} from "@squidlab/phosphor-solid/icons";
+import { Button, Command, Kbd, InputGroup } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
 export function WithDialog() {
@@ -17,58 +20,73 @@ export function WithDialog() {
   const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
+    filter: (itemText, query) => filterFn().contains(itemText, query),
     groupBy: (item) => item.group,
     initialItems,
   });
 
   return (
-    <Command.Dialog onOpenChange={({ open: o }) => setOpen(o)} open={open()}>
-      <Command.DialogTrigger
-        asChild={(props) => (
-          <Button {...props()} variant="outline">
-            Open Command Palette
-          </Button>
-        )}
-      />
-      <Command.DialogContent>
-        <Command
-          collection={collection()}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          onValueChange={() => setOpen(false)}
-        >
-          <Command.Input placeholder="Search commands..." />
-          <Command.Content>
-            <Command.Empty>
-              No results found. Try a different search.
-            </Command.Empty>
-            <Command.List>
-              <For each={collection().group()}>
-                {([group, items]) => (
-                  <Command.ItemGroup heading={group}>
-                    <For each={items}>
-                      {(item) => (
-                        <Command.Item item={item}>
-                          {item.label}
-                          <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                        </Command.Item>
-                      )}
-                    </For>
-                  </Command.ItemGroup>
-                )}
-              </For>
-            </Command.List>
-          </Command.Content>
-          <Command.Footer>
-            <div class="flex items-center gap-2">
-              <Kbd variant="outline">
-                <ArrowBendDownLeftIcon class="size-3" />
-              </Kbd>
-              <span class="text-muted-foreground">To select</span>
-            </div>
-          </Command.Footer>
-        </Command>
-      </Command.DialogContent>
+    <Command.Dialog
+      onOpenChange={({ open: o }) => setOpen(o)}
+      open={open()}
+      trigger={(props) => (
+        <Button {...props} variant="outline">
+          Open Command Palette
+        </Button>
+      )}
+    >
+      <Command.Root
+        collection={collection()}
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+        onValueChange={() => setOpen(false)}
+      >
+        <Command.Control>
+          <InputGroup class="bg-input/32 rounded-lg">
+            <InputGroup.Addon>
+              <MagnifyingGlassIcon aria-hidden class="opacity-64" />
+            </InputGroup.Addon>
+            <Command.Input
+              asChild={(props) => (
+                <InputGroup.Input
+                  {...props()}
+                  autofocus
+                  placeholder="Search commands..."
+                />
+              )}
+            />
+          </InputGroup>
+        </Command.Control>
+        <Command.Content>
+          <Command.Empty>
+            No results found. Try a different search.
+          </Command.Empty>
+          <Command.List>
+            <For each={collection().group()}>
+              {([group, items]) => (
+                <Command.ItemGroup>
+                  <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
+                  <For each={items}>
+                    {(item) => (
+                      <Command.Item item={item}>
+                        {item.label}
+                        <Command.Shortcut>{item.shortcut}</Command.Shortcut>
+                      </Command.Item>
+                    )}
+                  </For>
+                </Command.ItemGroup>
+              )}
+            </For>
+          </Command.List>
+        </Command.Content>
+        <Command.Footer>
+          <div class="flex items-center gap-2">
+            <Kbd variant="outline">
+              <ArrowBendDownLeftIcon class="size-3" />
+            </Kbd>
+            <span class="text-muted-foreground">To select</span>
+          </div>
+        </Command.Footer>
+      </Command.Root>
     </Command.Dialog>
   );
 }

@@ -1,7 +1,5 @@
-import { useFilter, useListCollection } from "@ark-ui/solid";
-import { commandRecipe } from "@pisagor/recipes";
 import { Command } from "@pisagor/solid";
-import { For } from "solid-js";
+import { commandRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandCommandRecipe = tv({
@@ -40,43 +38,6 @@ export function CustomRecipe() {
     { group: "Settings", label: "Sign out", shortcut: "⌘O", value: "sign out" },
     { group: "Settings", label: "Sign in", shortcut: "⌘I", value: "sign in" },
   ];
-  const filterFn = useFilter({ sensitivity: "base" });
 
-  const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
-
-  return (
-    <Command
-      collection={collection()}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-      recipe={brandCommandRecipe}
-    >
-      <Command.Input />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          <For each={collection().group()}>
-            {([group, items], index) => (
-              <>
-                {index() !== 0 && <Command.Separator />}
-                <Command.ItemGroup heading={group}>
-                  <For each={items}>
-                    {(item) => (
-                      <Command.Item item={item}>
-                        {item.label}
-                        <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                      </Command.Item>
-                    )}
-                  </For>
-                </Command.ItemGroup>
-              </>
-            )}
-          </For>
-        </Command.List>
-      </Command.Content>
-    </Command>
-  );
+  return <Command items={initialItems} recipe={brandCommandRecipe} />;
 }
