@@ -75,10 +75,7 @@ const Trigger = withContext<CollapsibleTriggerProps>(
 
 const Indicator = withContext<CollapsibleIndicatorProps>(
   CollapsiblePrimitive.Indicator,
-  {
-    defaultProps: { children: <CaretDownIcon /> },
-    name: "Indicator",
-  },
+  { name: "Indicator" },
 );
 
 const Content = withContext<CollapsibleContentProps>(
@@ -103,7 +100,11 @@ export function CollapsibleShorthand({
         <Trigger className={classNames?.trigger}>
           {trigger}
 
-          {showIndicator && <Indicator className={classNames?.indicator} />}
+          {showIndicator && (
+            <Indicator className={classNames?.indicator}>
+              <CaretDownIcon />
+            </Indicator>
+          )}
         </Trigger>
       )}
 

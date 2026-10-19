@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button, Collapsible } from "@pisagor/react";
 
 export function Disabled() {
@@ -7,7 +8,9 @@ export function Disabled() {
         <Collapsible.Trigger asChild>
           <Button className="w-full" variant="outline">
             Disabled collapsible
-            <Collapsible.Indicator />
+            <Collapsible.Indicator>
+              <CaretDownIcon />
+            </Collapsible.Indicator>
           </Button>
         </Collapsible.Trigger>
         <Collapsible.Content>

@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Badge, Button, Card, Collapsible } from "@pisagor/react";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -28,7 +29,9 @@ export function CustomRecipe() {
             <Collapsible.Trigger asChild>
               <Button size="sm" variant="outline">
                 Details
-                <Collapsible.Indicator />
+                <Collapsible.Indicator>
+                  <CaretDownIcon />
+                </Collapsible.Indicator>
               </Button>
             </Collapsible.Trigger>
           </Card.Action>

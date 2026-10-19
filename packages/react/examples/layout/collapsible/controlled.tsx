@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button, Collapsible } from "@pisagor/react";
 import { useState } from "react";
 
@@ -10,7 +11,9 @@ export function Controlled() {
         <Collapsible.Trigger asChild>
           <Button className="w-full" variant="outline">
             {open ? "Collapse" : "Expand"}
-            <Collapsible.Indicator />
+            <Collapsible.Indicator>
+              <CaretDownIcon />
+            </Collapsible.Indicator>
           </Button>
         </Collapsible.Trigger>
         <Collapsible.Content>

@@ -1,4 +1,8 @@
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  DotsThreeIcon,
+} from "@phosphor-icons/react";
 import { Button, Pagination } from "@pisagor/react";
 
 export function CustomComposition() {
@@ -26,7 +30,9 @@ export function CustomComposition() {
               </Pagination.Item>
             ) : (
               // biome-ignore lint/suspicious/noArrayIndexKey: ellipses are positional.
-              <Pagination.Ellipsis index={index} key={`ellipsis-${index}`} />
+              <Pagination.Ellipsis index={index} key={`ellipsis-${index}`}>
+                <DotsThreeIcon />
+              </Pagination.Ellipsis>
             ),
           )
         }

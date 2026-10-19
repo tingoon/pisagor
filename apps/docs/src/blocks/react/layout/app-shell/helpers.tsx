@@ -1,6 +1,7 @@
 import { useFilter, useHotkey, useListCollection, Portal } from "@ark-ui/react";
 import {
   BellIcon,
+  CaretDownIcon,
   CaretUpDownIcon,
   CreditCardIcon,
   GearIcon,
@@ -130,7 +131,9 @@ export function NavMain({
                     <span>{item.title}</span>
                     <Collapsible.Indicator
                       className={styles.collapsibleIndicator()}
-                    />
+                    >
+                      <CaretDownIcon />
+                    </Collapsible.Indicator>
                   </Sidebar.MenuButton>
                 </Collapsible.Trigger>
                 <Collapsible.Content>

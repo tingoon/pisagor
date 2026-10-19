@@ -1,5 +1,6 @@
 import { Portal } from "@ark-ui/react";
 import {
+  CaretRightIcon,
   FileIcon,
   FilePlusIcon,
   FolderIcon,
@@ -46,7 +47,9 @@ export function WithContextMenu() {
             <ContextMenu.Root>
               <ContextMenu.ContextTrigger asChild>
                 <TreeView.BranchControl>
-                  <TreeView.BranchIndicator />
+                  <TreeView.BranchIndicator>
+                    <CaretRightIcon />
+                  </TreeView.BranchIndicator>
                   <TreeView.BranchText>
                     <FolderIcon />
                     {node.name}

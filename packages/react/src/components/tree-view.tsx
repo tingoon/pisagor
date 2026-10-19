@@ -188,11 +188,7 @@ const BranchControl = withContext<TreeViewBranchControlProps>(
 
 const BranchIndicator = withBranchContext<TreeViewBranchIndicatorProps>(
   TreeViewPrimitive.BranchIndicator,
-  {
-    defaultProps: { children: <CaretRightIcon /> },
-    name: "BranchIndicator",
-    slot: "indicator",
-  },
+  { name: "BranchIndicator", slot: "indicator" },
 );
 
 const BranchText = withBranchContext<TreeViewBranchTextProps>(
@@ -346,7 +342,9 @@ function ShorthandNode({
       {node.children ? (
         <Branch className={options.branchClassNames?.base}>
           <BranchControl className={options.classNames?.control}>
-            <BranchIndicator className={options.branchClassNames?.indicator} />
+            <BranchIndicator className={options.branchClassNames?.indicator}>
+              <CaretRightIcon />
+            </BranchIndicator>
             <ShorthandBranchLabel node={node} options={options} />
           </BranchControl>
           <BranchContent className={options.branchClassNames?.content}>

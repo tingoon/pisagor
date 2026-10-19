@@ -102,18 +102,20 @@ const Trigger = withStepsItemContext<StepsTriggerProps>(
   { name: "Trigger" },
 );
 
-/** Step indicator; shows its children until complete, then a check. */
-function Indicator({ children, className, ...rest }: StepsIndicatorProps) {
+const Indicator = withStepsItemContext<StepsIndicatorProps>(
+  StepsPrimitive.Indicator,
+  { name: "Indicator" },
+);
+
+/** Shorthand indicator: shows its children until complete, then a check. */
+function ShorthandIndicator({ children }: { children: ReactNode }) {
   const { slots } = useStyles();
 
   return (
-    <StepsPrimitive.Indicator
-      {...rest}
-      className={slots.indicator({ className })}
-    >
+    <Indicator>
       <span className={slots.label()}>{children}</span>
       <CheckIcon className={slots.check()} />
-    </StepsPrimitive.Indicator>
+    </Indicator>
   );
 }
 
@@ -193,7 +195,7 @@ export function StepsShorthand({
         {items.map((item, index) => (
           <Item index={index} key={item.value ?? index}>
             <Trigger>
-              <Indicator>{item.icon ?? index + 1}</Indicator>
+              <ShorthandIndicator>{item.icon ?? index + 1}</ShorthandIndicator>
 
               {(item.title !== undefined || item.description !== undefined) && (
                 <ShorthandText>

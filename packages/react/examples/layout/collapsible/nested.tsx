@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button, Card, Clipboard, Collapsible } from "@pisagor/react";
 
 export function Nested() {
@@ -13,7 +14,9 @@ export function Nested() {
           <Collapsible.Trigger asChild>
             <Button className="w-full" variant="outline">
               View details
-              <Collapsible.Indicator />
+              <Collapsible.Indicator>
+                <CaretDownIcon />
+              </Collapsible.Indicator>
             </Button>
           </Collapsible.Trigger>
           <Collapsible.Content>
@@ -26,7 +29,9 @@ export function Nested() {
                 <Collapsible.Trigger asChild>
                   <Button className="w-full" size="sm" variant="outline">
                     Install dependencies
-                    <Collapsible.Indicator />
+                    <Collapsible.Indicator>
+                      <CaretDownIcon />
+                    </Collapsible.Indicator>
                   </Button>
                 </Collapsible.Trigger>
                 <Collapsible.Content>

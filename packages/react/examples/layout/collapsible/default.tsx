@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Badge, Button, Card, Collapsible } from "@pisagor/react";
 
 export function Default() {
@@ -17,7 +18,9 @@ export function Default() {
             <Collapsible.Trigger asChild>
               <Button size="sm" variant="outline">
                 Details
-                <Collapsible.Indicator />
+                <Collapsible.Indicator>
+                  <CaretDownIcon />
+                </Collapsible.Indicator>
               </Button>
             </Collapsible.Trigger>
           </Card.Action>

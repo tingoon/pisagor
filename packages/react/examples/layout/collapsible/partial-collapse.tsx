@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button, Collapsible } from "@pisagor/react";
 
 export function PartialCollapse() {
@@ -6,7 +7,9 @@ export function PartialCollapse() {
       <Collapsible.Trigger asChild>
         <Button className="w-full" variant="outline">
           Read more
-          <Collapsible.Indicator />
+          <Collapsible.Indicator>
+            <CaretDownIcon />
+          </Collapsible.Indicator>
         </Button>
       </Collapsible.Trigger>
       <Collapsible.Content>
@@ -30,7 +33,9 @@ export function PartialCollapse() {
           <Collapsible.Trigger asChild>
             <Button className="w-full" variant="outline">
               Collapse (cannot be focused when collapsed)
-              <Collapsible.Indicator />
+              <Collapsible.Indicator>
+                <CaretDownIcon />
+              </Collapsible.Indicator>
             </Button>
           </Collapsible.Trigger>
         </Collapsible.Body>

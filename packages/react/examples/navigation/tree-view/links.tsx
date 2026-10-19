@@ -1,4 +1,8 @@
-import { ArrowSquareOutIcon, LinkIcon } from "@phosphor-icons/react";
+import {
+  ArrowSquareOutIcon,
+  CaretRightIcon,
+  LinkIcon,
+} from "@phosphor-icons/react";
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 
@@ -52,7 +56,9 @@ export function Links() {
         {node.children ? (
           <TreeView.Branch>
             <TreeView.BranchControl>
-              <TreeView.BranchIndicator />
+              <TreeView.BranchIndicator>
+                <CaretRightIcon />
+              </TreeView.BranchIndicator>
               <TreeView.BranchText>{node.name}</TreeView.BranchText>
             </TreeView.BranchControl>
             <TreeView.BranchContent>

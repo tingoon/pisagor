@@ -71,7 +71,7 @@ const Item = withContext<PaginationItemProps>(PaginationPrimitive.Item, {
 
 const Ellipsis = withContext<PaginationEllipsisProps>(
   PaginationPrimitive.Ellipsis,
-  { defaultProps: { children: <DotsThreeIcon /> }, name: "Ellipsis" },
+  { name: "Ellipsis" },
 );
 
 /** Link styled as a page button; for URL-driven pagination. Not an Ark part. */
@@ -162,7 +162,9 @@ export function PaginationShorthand({ classNames, ...rest }: PaginationProps) {
                 className={classNames?.ellipsis}
                 index={index}
                 key={ellipsisKey}
-              />
+              >
+                <DotsThreeIcon />
+              </Ellipsis>
             );
           })
         }
