@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { Button, DataList, Popover } from "@pisagor/svelte";
   import { InfoIcon } from "phosphor-svelte";
 
@@ -24,7 +25,7 @@
       value={item.value}
     >
       {item.label}
-      <Popover modal={false} positioning={{ placement: "top" }}>
+      <Popover.Root modal={false} positioning={{ placement: "top" }}>
         <Popover.Trigger>
           {#snippet asChild(props)}
             <Button
@@ -37,8 +38,12 @@
             </Button>
           {/snippet}
         </Popover.Trigger>
-        <Popover.Content class="w-max text-sm">{item.info}</Popover.Content>
-      </Popover>
+        <Portal>
+          <Popover.Positioner>
+            <Popover.Content class="w-max text-sm">{item.info}</Popover.Content>
+          </Popover.Positioner>
+        </Portal>
+      </Popover.Root>
     </DataList.Item>
   {/each}
 </DataList.Root>

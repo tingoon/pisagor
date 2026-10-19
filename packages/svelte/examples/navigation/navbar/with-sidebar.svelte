@@ -5,6 +5,7 @@
     DatabaseIcon,
     HouseIcon,
     MagnifyingGlassIcon,
+    SidebarSimpleIcon,
     UserIcon,
   } from "phosphor-svelte";
 </script>
@@ -62,7 +63,9 @@
   <Sidebar.Inset>
     <Navbar>
       <Navbar.Brand class="gap-3">
-        <Sidebar.Trigger />
+        <Sidebar.Trigger>
+          <SidebarSimpleIcon class="rtl:rotate-180" />
+        </Sidebar.Trigger>
         <span class="text-sm font-medium">Dashboard</span>
       </Navbar.Brand>
 

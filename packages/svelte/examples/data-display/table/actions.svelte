@@ -26,36 +26,36 @@
         <Table.Cell class="font-medium">{user.name}</Table.Cell>
         <Table.Cell>{user.email}</Table.Cell>
         <Table.Cell class="text-right">
-          <DropdownMenu positioning={{ placement: "left-end" }}>
-            <DropdownMenu.Trigger>
-              {#snippet asChild(props)}
-                <Button
-                  {...props()}
-                  aria-label="More options"
-                  size="icon-sm"
-                  variant="outline"
-                >
-                  <DotsThreeVerticalIcon />
-                </Button>
-              {/snippet}
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content class="min-w-40">
-              <DropdownMenu.Item value="view">
-                <EyeIcon />
-                View
-                <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item value="edit">
-                <PencilSimpleIcon />
-                Edit
-                <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item value="delete" variant="destructive">
-                <TrashIcon />
-                Delete
-                <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
+          <DropdownMenu
+            classNames={{ content: "min-w-40" }}
+            positioning={{ placement: "left-end" }}
+          >
+            {#snippet trigger(props)}
+              <Button
+                {...props()}
+                aria-label="More options"
+                size="icon-sm"
+                variant="outline"
+              >
+                <DotsThreeVerticalIcon />
+              </Button>
+            {/snippet}
+
+            <DropdownMenu.Item value="view">
+              <EyeIcon />
+              View
+              <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="edit">
+              <PencilSimpleIcon />
+              Edit
+              <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="delete" variant="destructive">
+              <TrashIcon />
+              Delete
+              <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
+            </DropdownMenu.Item>
           </DropdownMenu>
         </Table.Cell>
       </Table.Row>
