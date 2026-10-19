@@ -7,11 +7,10 @@ import { InputOTP } from "@pisagor/react";
 ## Anatomy
 
 ```tsx
-<InputOTP>
-  <InputOTP.Slot />
-  <InputOTP.Separator />
-</InputOTP>
+<InputOTP length={6} groupSize={3} />
 ```
+
+The shorthand renders `Control` with `length` inputs (default 6) and a separator after every `groupSize` inputs. Compose `InputOTP.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

@@ -11,12 +11,7 @@ export function Controlled() {
       <p className="text-muted-foreground text-center text-sm">
         Enter the code 1234
       </p>
-      <InputOTP onValueChange={setValue} value={value}>
-        <InputOTP.Slot index={0} />
-        <InputOTP.Slot index={1} />
-        <InputOTP.Slot index={2} />
-        <InputOTP.Slot index={3} />
-      </InputOTP>
+      <InputOTP onValueChange={setValue} value={value} length={4} />
       <p className="text-muted-foreground text-center text-sm">
         {isCorrect ? "✅" : "❌"}
       </p>

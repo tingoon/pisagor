@@ -12,6 +12,7 @@ export const inputOtpRecipe = tv({
       "*:data-[scope=pin-input]:data-[part=input]:size-9",
     ],
     input: ["relative p-0 text-center text-base tabular-nums"],
+    label: [],
     separator: ["bg-foreground h-0.5 w-2 rounded-full"],
   },
   variants: {

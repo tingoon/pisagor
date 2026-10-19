@@ -1,100 +1,114 @@
 import { PinInput as PinInputPrimitive } from "@ark-ui/react";
-import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/react";
-import type { InputOtpRootContract } from "@pisagor/contracts";
+import type {
+  PinInputControlProps,
+  PinInputInputProps,
+  PinInputLabelProps,
+  PinInputRootProps,
+} from "@ark-ui/react";
+import type {
+  InputOtpContract,
+  InputOtpRootContract,
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes";
-
-import type { ComponentProps } from "react";
-import { createContext, use } from "react";
-import type { ComponentPropsWithRef } from "react";
+import {
+  type ComponentPropsWithRef,
+  Fragment,
+  createContext,
+  use,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const {
-  Context: InputOTPStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "InputOTP",
   recipe: inputOtpRecipe,
 });
 
 const InputOTPOptionsContext = createContext<FormControlShellVariantProps>({});
-
-function useInputOTP() {
-  return { ...useStyles(), ...use(InputOTPOptionsContext) };
-}
 // #endregion
 
 // #region Types
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  InputOtpRootContract;
+  InputOtpRootContract & {
+    /** Called with the slot values when they change. */
+    onValueChange?: (value: string[]) => void;
+  };
 
-export interface InputOTPProps extends InputOTPRootProps {
-  onValueChange?: (value: string[]) => void;
+export interface InputOTPProps
+  extends Omit<InputOTPRootProps, "children">, InputOtpContract {
+  /**
+   * Number of input slots.
+   *
+   * @defaultValue 6
+   */
+  length?: number;
+  /** Insert a separator after every `groupSize` slots. */
+  groupSize?: number;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & InputOtpRootContract;
+export type InputOTPInputProps = PinInputInputProps &
+  Pick<InputOtpRootContract, "size" | "variant">;
 
 export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr">;
 // #endregion
 
 // #region Parts
-export function InputOTPRoot({
-  size,
-  variant,
+const RootBase = withProvider<PinInputRootProps & InputOtpRootContract>(
+  PinInputPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+/** Root; renders the hidden form input and shares `size` / `variant`. */
+function Root({
   children,
   otp = true,
   placeholder,
   onValueChange,
-  recipe = inputOtpRecipe,
-  className,
+  size,
+  variant,
   ...rest
-}: InputOTPProps) {
-  const slots = recipe({ size });
-
+}: InputOTPRootProps) {
   return (
-    <InputOTPStylesContext value={{ slots, variants: {} as never }}>
-      <InputOTPOptionsContext value={{ size, variant }}>
-        <PinInputPrimitive.Root
-          {...rest}
-          className={slots.base({ className })}
-          onValueChange={
-            onValueChange
-              ? (details) => onValueChange(details.value)
-              : undefined
-          }
-          otp={otp}
-          placeholder={placeholder ?? ""}
-        >
-          <PinInputPrimitive.Control className={slots.control()}>
-            {children}
-          </PinInputPrimitive.Control>
+    <InputOTPOptionsContext value={{ size, variant }}>
+      <RootBase
+        {...rest}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
+        otp={otp}
+        placeholder={placeholder ?? ""}
+        size={size}
+      >
+        {children}
 
-          <PinInputPrimitive.HiddenInput />
-        </PinInputPrimitive.Root>
-      </InputOTPOptionsContext>
-    </InputOTPStylesContext>
+        <PinInputPrimitive.HiddenInput />
+      </RootBase>
+    </InputOTPOptionsContext>
   );
 }
 
-export function InputOTPSlot({
-  size,
-  variant,
-  className,
-  ...rest
-}: InputOTPSlotProps) {
-  const { size: contextSize, slots, variant: contextVariant } = useInputOTP();
-  const surfaceVariant = useFormControlSurface();
-  const resolvedSize = size ?? contextSize ?? "md";
-  const resolvedVariant = variant ?? contextVariant ?? "primary";
+const Label = withContext<PinInputLabelProps>(PinInputPrimitive.Label, {
+  name: "Label",
+});
 
-  // Render a plain input (not Field.Input) so each slot keeps its own pin-input id
-  // instead of every slot inheriting the surrounding Field's id.
+const Control = withContext<PinInputControlProps>(PinInputPrimitive.Control, {
+  name: "Control",
+});
+
+/** One character slot, styled like a form input. */
+function Input({ size, variant, className, ...rest }: InputOTPInputProps) {
+  const { slots } = useStyles();
+  const options = use(InputOTPOptionsContext);
+  const surfaceVariant = useFormControlSurface();
+  const resolvedSize = size ?? options.size ?? "md";
+  const resolvedVariant = variant ?? options.variant ?? "primary";
+
+  // Plain input (not Field.Input) so each slot keeps its own pin-input id.
   return (
     <PinInputPrimitive.Input
       {...rest}
@@ -110,17 +124,45 @@ export function InputOTPSlot({
   );
 }
 
-export const InputOTPSeparator = withContext<ComponentProps<"hr">>("hr", {
+const Separator = withContext<InputOTPSeparatorProps>("hr", {
   name: "Separator",
 });
 // #endregion
 
-// #region Display Names
-InputOTPRoot.displayName = "InputOTP";
-InputOTPSlot.displayName = "InputOTP.Slot";
+// #region Shorthand
+export function InputOTPShorthand({
+  classNames,
+  groupSize,
+  length = 6,
+  ...rest
+}: InputOTPProps) {
+  return (
+    <Root {...rest}>
+      <Control className={classNames?.control}>
+        {Array.from({ length }, (_, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: slots are positional.
+          <Fragment key={index}>
+            {groupSize !== undefined &&
+              index > 0 &&
+              index % groupSize === 0 && (
+                <Separator className={classNames?.separator} />
+              )}
+            <Input className={classNames?.input} index={index} />
+          </Fragment>
+        ))}
+      </Control>
+    </Root>
+  );
+}
 // #endregion
 
-export const InputOTP = Object.assign(InputOTPRoot, {
-  Separator: InputOTPSeparator,
-  Slot: InputOTPSlot,
+export type { PinInputControlProps as InputOTPControlProps } from "@ark-ui/react";
+export type { PinInputLabelProps as InputOTPLabelProps } from "@ark-ui/react";
+
+export const InputOTP = Object.assign(InputOTPShorthand, {
+  Control,
+  Input,
+  Label,
+  Root,
+  Separator,
 });
