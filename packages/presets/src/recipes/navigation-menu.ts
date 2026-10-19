@@ -9,7 +9,7 @@ export const navigationMenuRecipe = tv({
       "bg-popover text-popover-foreground rounded-lg border p-1 shadow-lg",
     ],
     indicator: [
-      "size-3.5 shrink-0",
+      "inline-flex size-3.5 shrink-0 items-center justify-center",
       "duration-fast transition-transform ease-out motion-reduce:transition-none!",
       "group-aria-expanded/navigation-menu-trigger:rotate-180",
     ],
