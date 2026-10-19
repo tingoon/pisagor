@@ -1,9 +1,10 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/solid";
 import type {
   AccordionItemContentProps,
+  AccordionItemIndicatorProps,
   AccordionItemProps as AccordionItemPrimitiveProps,
   AccordionItemTriggerProps,
-  AccordionRootProps,
+  AccordionRootProps as AccordionRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
   AccordionItemRootContract,
@@ -12,22 +13,34 @@ import type {
   AccordionRootContract,
   AccordionContract,
 } from "@pisagor/contracts";
-import { accordionItemRecipe } from "@pisagor/recipes";
-import type { Component, JSX, ComponentProps } from "solid-js";
+import { accordionItemRecipe, accordionRecipe } from "@pisagor/recipes";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withProvider } = createSlotRecipeContext({
+const { withProvider: withAccordionProvider } = createSlotRecipeContext({
   name: "Accordion",
-  recipe: accordionItemRecipe,
+  recipe: accordionRecipe,
 });
+
+const { withContext, withProvider: withItemProvider } = createSlotRecipeContext(
+  {
+    name: "Accordion",
+    recipe: accordionItemRecipe,
+  },
+);
 // #endregion
 
 // #region Types
-export type LocalAccordionItemProps = AccordionItemPrimitiveProps &
+export type AccordionRootProps = AccordionRootPrimitiveProps &
+  AccordionRootContract;
+
+export type AccordionItemProps = AccordionItemPrimitiveProps &
   AccordionItemRootContract &
   AccordionItemContract;
+
+export type AccordionItemBodyProps = ComponentProps<"div">;
 
 interface AccordionPresetItem extends Omit<
   BaseAccordionPresetItem,
@@ -40,66 +53,47 @@ interface AccordionPresetItem extends Omit<
 export interface AccordionProps
   extends
     Omit<AccordionRootProps, "children">,
-    AccordionRootContract,
     Omit<AccordionContract, "items"> {
   items?: AccordionPresetItem[];
 }
 // #endregion
 
 // #region Parts
+const Root = withAccordionProvider<AccordionRootProps>(
+  AccordionPrimitive.Root,
+  {
+    defaultProps: { collapsible: true },
+    name: "Root",
+    slot: "base",
+  },
+);
 
-export function AccordionRoot(props: AccordionRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["collapsible", "children"]);
-
-  return (
-    <AccordionPrimitive.Root {...rest} collapsible={local.collapsible ?? true}>
-      {local.children}
-    </AccordionPrimitive.Root>
-  );
-}
-
-export const AccordionItem: Component<LocalAccordionItemProps> = withProvider<
-  ComponentProps<typeof AccordionPrimitive.Item> & AccordionItemRootContract
->(AccordionPrimitive.Item, {
+const Item = withItemProvider<AccordionItemProps>(AccordionPrimitive.Item, {
   name: "Item",
   slot: "base",
+}) as Component<AccordionItemProps>;
+
+const ItemTrigger = withContext<AccordionItemTriggerProps>(
+  AccordionPrimitive.ItemTrigger,
+  { name: "ItemTrigger" },
+);
+
+const ItemIndicator = withContext<AccordionItemIndicatorProps>(
+  AccordionPrimitive.ItemIndicator,
+  {
+    defaultProps: { children: <CaretDownIcon /> },
+    name: "ItemIndicator",
+  },
+);
+
+const ItemContent = withContext<AccordionItemContentProps>(
+  AccordionPrimitive.ItemContent,
+  { name: "ItemContent" },
+);
+
+const ItemBody = withContext<AccordionItemBodyProps>("div", {
+  name: "ItemBody",
 });
-
-export function AccordionItemTrigger(
-  props: AccordionItemTriggerProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <AccordionPrimitive.ItemTrigger
-      {...rest}
-      class={styles.slots.trigger({ class: local.class })}
-    >
-      {local.children}
-      <AccordionPrimitive.ItemIndicator>
-        <CaretDownIcon class={styles.slots.indicator()} />
-      </AccordionPrimitive.ItemIndicator>
-    </AccordionPrimitive.ItemTrigger>
-  );
-}
-
-export function AccordionItemContent(
-  props: AccordionItemContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <AccordionPrimitive.ItemContent
-      {...rest}
-      class={styles.slots.content({ class: local.class })}
-    >
-      <div class={styles.slots.body()}>{local.children}</div>
-    </AccordionPrimitive.ItemContent>
-  );
-}
-
 // #endregion
 
 // #region Shorthand
@@ -107,34 +101,38 @@ export function AccordionShorthand(props: AccordionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items", "size"]);
 
   return (
-    <AccordionRoot {...rest}>
+    <Root {...rest}>
       <For each={local.items}>
         {(item) => (
-          <AccordionItem
-            disabled={item.disabled}
-            size={local.size}
-            value={item.value}
-          >
-            <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
-            <AccordionItemContent>{item.content}</AccordionItemContent>
-          </AccordionItem>
+          <Item disabled={item.disabled} size={local.size} value={item.value}>
+            <ItemTrigger>
+              {item.title}
+
+              <ItemIndicator />
+            </ItemTrigger>
+
+            <ItemContent>
+              <ItemBody>{item.content}</ItemBody>
+            </ItemContent>
+          </Item>
         )}
       </For>
-    </AccordionRoot>
+    </Root>
   );
 }
 // #endregion
 
 export type {
   AccordionItemContentProps,
-  AccordionItemProps,
+  AccordionItemIndicatorProps,
   AccordionItemTriggerProps,
-  AccordionRootProps,
 } from "@ark-ui/solid";
 
 export const Accordion = Object.assign(AccordionShorthand, {
-  Item: AccordionItem,
-  ItemContent: AccordionItemContent,
-  ItemTrigger: AccordionItemTrigger,
-  Root: AccordionRoot,
+  Item,
+  ItemBody,
+  ItemContent,
+  ItemIndicator,
+  ItemTrigger,
+  Root,
 });
