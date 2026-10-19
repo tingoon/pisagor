@@ -1,5 +1,7 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react";
 import type {
+  ScrollAreaContentProps,
+  ScrollAreaCornerProps,
   ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
@@ -14,7 +16,7 @@ import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -27,22 +29,20 @@ const ScrollAreaRoot = withProvider<
   ScrollAreaRootPrimitiveProps & ScrollAreaRootContract
 >;
 
-function ScrollAreaViewport({
-  children,
-  className,
-  ...rest
-}: ScrollAreaViewportProps) {
-  const { slots } = useStyles();
+const ScrollAreaViewport = withContext<ScrollAreaViewportProps>(
+  ScrollAreaPrimitive.Viewport,
+  { name: "Viewport" },
+);
 
-  return (
-    <ScrollAreaPrimitive.Viewport
-      {...rest}
-      className={slots.viewport({ className })}
-    >
-      <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
-    </ScrollAreaPrimitive.Viewport>
-  );
-}
+const ScrollAreaContent = withContext<ScrollAreaContentProps>(
+  ScrollAreaPrimitive.Content,
+  { name: "Content" },
+);
+
+const ScrollAreaCorner = withContext<ScrollAreaCornerProps>(
+  ScrollAreaPrimitive.Corner,
+  { name: "Corner" },
+);
 
 const ScrollAreaScrollbar = withContext<
   ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>
@@ -89,7 +89,9 @@ function ScrollAreaShorthand({
   return (
     <ScrollAreaRoot {...rest} className={className} scrollFade={scrollFade}>
       <ScrollAreaViewport {...viewportProps} className={classNames?.viewport}>
-        {children}
+        <ScrollAreaContent className={classNames?.content}>
+          {children}
+        </ScrollAreaContent>
       </ScrollAreaViewport>
 
       <ScrollAreaScrollbar
@@ -108,25 +110,28 @@ function ScrollAreaShorthand({
         <ScrollAreaThumb {...thumbProps} className={classNames?.thumb} />
       </ScrollAreaScrollbar>
 
-      <ScrollAreaPrimitive.Corner />
+      <ScrollAreaCorner className={classNames?.corner} />
     </ScrollAreaRoot>
   );
 }
 // #endregion
 
 // #region Display Names
-ScrollAreaViewport.displayName = "ScrollArea.Viewport";
+ScrollAreaShorthand.displayName = "ScrollArea";
 
 // #endregion
 
 export type {
+  ScrollAreaContentProps,
+  ScrollAreaCornerProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/react";
 
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
-  Corner: ScrollAreaPrimitive.Corner,
+  Content: ScrollAreaContent,
+  Corner: ScrollAreaCorner,
   Root: ScrollAreaRoot,
   Scrollbar: ScrollAreaScrollbar,
   Thumb: ScrollAreaThumb,

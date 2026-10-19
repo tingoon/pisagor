@@ -7,6 +7,8 @@ export const scrollAreaRecipe = tv({
   },
   slots: {
     base: ["size-full min-h-0 [--fade-size:1.5rem]"],
+    content: [],
+    corner: [],
     scrollbar: [
       "flex",
       "m-1",
