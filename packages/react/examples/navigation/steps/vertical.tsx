@@ -9,7 +9,7 @@ export function Vertical() {
   ];
 
   return (
-    <Steps className="h-64" count={items.length} orientation="vertical">
+    <Steps.Root className="h-64" count={items.length} orientation="vertical">
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index} key={item.title}>
@@ -52,6 +52,6 @@ export function Vertical() {
           </Steps.PrevTrigger>
         </div>
       </div>
-    </Steps>
+    </Steps.Root>
   );
 }

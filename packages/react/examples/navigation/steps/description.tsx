@@ -8,7 +8,7 @@ export function Description() {
   ];
 
   return (
-    <Steps count={items.length}>
+    <Steps.Root count={items.length}>
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index} key={item.title}>
@@ -23,6 +23,6 @@ export function Description() {
           </Steps.Item>
         ))}
       </Steps.List>
-    </Steps>
+    </Steps.Root>
   );
 }

@@ -4,7 +4,7 @@ export function Title() {
   const items = ["Info", "Docs", "Team"];
 
   return (
-    <Steps count={items.length}>
+    <Steps.Root count={items.length}>
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index} key={item}>
@@ -16,6 +16,6 @@ export function Title() {
           </Steps.Item>
         ))}
       </Steps.List>
-    </Steps>
+    </Steps.Root>
   );
 }

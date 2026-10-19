@@ -80,6 +80,8 @@ export const defaultMessages = {
   "sortable.dragHandle": "Drag to reorder",
   "sortable.moved": "Moved to position {position} of {total}",
   "spinner.loading": "Loading",
+  "steps.next": "Next",
+  "steps.previous": "Back",
   "stat.trend.down": "Decrease",
   "stat.trend.neutral": "No change",
   "stat.trend.up": "Increase",
