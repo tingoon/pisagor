@@ -1,10 +1,10 @@
-import { useFileUpload } from "@ark-ui/react";
-import { XIcon } from "@phosphor-icons/react";
+import { useFileUploadContext } from "@ark-ui/react";
+import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 
 export function CustomPreview() {
   const CustomPreviewList = () => {
-    const fileUpload = useFileUpload();
+    const fileUpload = useFileUploadContext();
 
     const files = fileUpload.acceptedFiles;
 
@@ -23,12 +23,7 @@ export function CustomPreview() {
               <FileUpload.ItemPreviewImage />
             </FileUpload.ItemPreview>
             <FileUpload.ItemDeleteTrigger asChild>
-              <Button
-                aria-label="Remove file"
-                className="absolute -top-2 -right-2"
-                pill
-                size="icon-xs"
-              >
+              <Button className="absolute -top-2 -right-2" pill size="icon-xs">
                 <XIcon />
               </Button>
             </FileUpload.ItemDeleteTrigger>
@@ -39,12 +34,12 @@ export function CustomPreview() {
   };
 
   return (
-    <FileUpload accept="image/*">
+    <FileUpload.Root accept="image/*">
       <FileUpload.Dropzone>
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop files here</FileUpload.Title>
+        <UploadIcon className="text-muted-foreground size-5" />
+        <span className="text-sm font-medium">Drop files here</span>
       </FileUpload.Dropzone>
       <CustomPreviewList />
-    </FileUpload>
+    </FileUpload.Root>
   );
 }

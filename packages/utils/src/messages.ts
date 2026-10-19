@@ -37,6 +37,7 @@ export const defaultMessages = {
   "editable.submit": "Save",
   "fileInput.browse": "Choose file",
   "fileInput.placeholder": "No file chosen",
+  "fileUpload.clearFiles": "Clear files",
   "fileUpload.error.FILE_EXISTS": "File already added.",
   "fileUpload.error.FILE_INVALID": "File is invalid.",
   "fileUpload.error.FILE_INVALID_TYPE": "File type is not accepted.",

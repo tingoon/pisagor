@@ -1,14 +1,23 @@
 ## Anatomy
 
 ```tsx
-<FileUpload>
+<FileUpload.Root>
+  <FileUpload.Label />
   <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title />
-    <FileUpload.Description />
     <FileUpload.Trigger />
-    <FileUpload.Helper />
   </FileUpload.Dropzone>
-  <FileUpload.List />
-</FileUpload>
+  <FileUpload.ClearTrigger />
+  <FileUpload.ItemGroup>
+    <FileUpload.Item>
+      <FileUpload.ItemPreview>
+        <FileUpload.ItemPreviewImage />
+      </FileUpload.ItemPreview>
+      <FileUpload.ItemName />
+      <FileUpload.ItemSizeText />
+      <FileUpload.ItemDeleteTrigger />
+    </FileUpload.Item>
+  </FileUpload.ItemGroup>
+</FileUpload.Root>
 ```
+
+Parts map 1:1 to Ark; `Root` renders the hidden input. Read files from `FileUpload.Context` (or `useFileUploadContext`) to render items.

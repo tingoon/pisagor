@@ -3,16 +3,16 @@ import { Button, FileUpload } from "@pisagor/react";
 
 export function DirectoryUpload() {
   return (
-    <FileUpload directory>
-      <div className="flex justify-center">
-        <FileUpload.Trigger asChild>
-          <Button size="sm" variant="outline">
-            <FolderIcon />
-            Select folder
-          </Button>
-        </FileUpload.Trigger>
-        <FileUpload.List />
-      </div>
-    </FileUpload>
+    <FileUpload
+      className="items-center"
+      directory
+      dropzone={false}
+      trigger={
+        <Button size="sm" variant="outline">
+          <FolderIcon />
+          Select folder
+        </Button>
+      }
+    />
   );
 }

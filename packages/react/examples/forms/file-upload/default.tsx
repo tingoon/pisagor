@@ -2,23 +2,17 @@ import { Button, FileUpload, Separator } from "@pisagor/react";
 
 export function Default() {
   return (
-    <FileUpload>
-      <FileUpload.Dropzone>
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop files here</FileUpload.Title>
+    <FileUpload
+      description={
         <div className="flex items-center justify-center gap-2">
           <Separator />
-          <FileUpload.Description>or</FileUpload.Description>
+          or
           <Separator />
         </div>
-        <FileUpload.Trigger asChild>
-          <Button>Browse files</Button>
-        </FileUpload.Trigger>
-        <FileUpload.Helper>
-          You can upload up to 2 files at a time.
-        </FileUpload.Helper>
-      </FileUpload.Dropzone>
-      <FileUpload.List />
-    </FileUpload>
+      }
+      helper="You can upload up to 2 files at a time."
+      title="Drop files here"
+      trigger={<Button>Browse files</Button>}
+    />
   );
 }
