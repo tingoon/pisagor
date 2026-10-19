@@ -5,6 +5,9 @@ targets:
 description: "Authoring rules for develop.mdx docs pages, their examples, and matching Storybook stories"
 globs:
   - apps/docs/src/content/**/develop.mdx
+  - apps/docs/src/content/**/compound.mdx
+  - apps/docs/src/content/components/**/design.mdx
+  - apps/docs/src/content/components/**/meta.md
   - apps/docs/src/content/**/forms/*.mdx
   - apps/docs/src/content/**/blocks/*.mdx
   - packages/*/examples/**/*
@@ -17,14 +20,14 @@ cursor:
 
 Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<group>/<id>/` (or `apps/docs/src/blocks/<framework>/<group>/<id>/` for blocks), and `<id>.stories.tsx`. Groups match docs sidebar sections (`actions`, `fields`, …). Judge each component on its own; never apply these rules mechanically.
 
-Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** + develop body (`## Import`, `## Examples`, …) — no design/develop tabs. Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
+Shared component copy lives in `apps/docs/src/content/components/<id>/`: `meta.md` (title, description, api, taxonomy — `api` is the same on every framework) and `design.mdx`. Framework folders `content/<framework>/components/<id>/` keep `develop.mdx` and, when there is a compound surface, `compound.mdx`. `compound.mdx` is the `/develop/compound` page: anatomy only for now (no examples). The develop page itself stays the shorthand surface. Design links to other components use `<DocLink id="…" />`, not a framework-prefixed path. Design copy does not name a framework or a framework-specific tool. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** + develop body (`## Import`, `## Examples`, …) — no design/develop tabs. Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
 
-In component `design.mdx`, use injected `<DoDont do="…" dont="…" />` for guideline pairs (optional `doSrc` / `dontSrc` + alt/size props). Do not hand-write Do/Don’t HTML or global CSS — the component is Tailwind-only and injected like `Example`.
+In component `design.mdx`, use injected `<DoDont do="…" dont="…" />` for guideline pairs (optional `doSrc` / `dontSrc` + alt/size props) and `<DocLink id="…" />` for links to other components. Do not hand-write Do/Don’t HTML or global CSS — the component is Tailwind-only and injected like `Example`.
 
 ## Page structure
 
 1. `## Import`
-2. `## Anatomy` — only for compound-only components (no shorthand). One short `tsx` block with the part tree, no props or content.
+2. `## Anatomy` — a single heading in both `develop.mdx` and `compound.mdx`. No Shorthand, Closed, or Compound subheadings. On the develop page the block is the shorthand (or the only public tree). `compound.mdx` holds the compound part tree. No props or content in the blocks.
 3. `## Examples` — `###` per example, each followed by one short description and an `<Example />`.
 4. `## Customization` — styling escape hatches (see below).
 5. `## Accessibility` — only when it adds real value (keyboard table, ARIA notes). Drop `## Usage` sections; their content belongs in examples.
@@ -66,9 +69,10 @@ Short description.
 
 ## Shorthand vs compound
 
-- Components with a shorthand API (`items`, `title`/`description` props…): write every example in shorthand. Add exactly one `### Compound` example — the Default rewritten with parts.
+- Components with a shorthand API (`items`, `title`/`description` props…): write every example in shorthand. Add exactly one `### Compound` example — the Default rewritten with parts. The develop anatomy is only the shorthand tree under `## Anatomy`. The compound part tree lives in `compound.mdx`, also under a single `## Anatomy`.
 - Things shorthand cannot do stay compound under concrete headings (`### Custom item`, `### Grouped`), not under "Compound".
-- Compound-only components: no `### Compound` heading — use `## Anatomy` instead.
+- Compound-only components: no `### Compound` example — the part tree is `## Anatomy` in `develop.mdx` and `compound.mdx`.
+- Closed components (single export, parts are not public): `## Anatomy` with the component tag.
 
 ## Polymorphism
 

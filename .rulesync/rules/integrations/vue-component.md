@@ -68,7 +68,7 @@ const {
 } = createSlotRecipeContext({ name: "Foo", recipe: fooRecipe });
 ```
 
-- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
+- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, part?, defaultProps? }` — only `name` is required. When omitted, `slot` = camelCase of `name` (`ClearTrigger` → `clearTrigger`; `Root` → `base`) and `part` (`data-part`) = kebab-case of `name` (`clear-trigger`; `Root` → `root`). Pass `slot` / `part` only when they differ from those defaults (e.g. `Header` → `slot: "panelHeader", part: "panel-header"`; `Indicator` → `part: "item-indicator"`).
 - Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file. Public re-exports can use `export { useStyles as useFoo }`.
 - `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag string (`"div"`) for layout/presentational hosts; use `ark.*` only when `as-child` polymorphism is required; use Ark machine primitives for headless parts.
 - `withProvider` / `withContext` take props type `P` (optional, defaults to `{}`): `withProvider<FooRootContract>("div", { name: "Root", slot: "base" })`, `withContext("div", { name: "Title" })`. The helper intersects `PartClassProps` (`class`) for you — pass the shared root contract (variants / `recipe`) as `P` on `withProvider`. Same call shape as React / Solid.
