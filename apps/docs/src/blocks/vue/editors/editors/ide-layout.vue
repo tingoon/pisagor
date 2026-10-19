@@ -53,35 +53,7 @@ function handleSelectNode(details: { selectedNodes?: TreeNodeType[] }) {
 <template>
   <div :class="cn(styles.root(), props.class)">
     <div :class="styles.sidebar()">
-      <TreeView :collection="collection" @selection-change="handleSelectNode">
-        <TreeView.Tree>
-          <TreeView.NodeProvider
-            v-for="(node, index) in collection.rootNode.children ?? []"
-            :key="node.id"
-            :index-path="[index]"
-            :node="node"
-          >
-            <TreeView.Branch v-if="node.children">
-              <TreeView.BranchControl>{{ node.name }}</TreeView.BranchControl>
-              <TreeView.BranchContent>
-                <TreeView.NodeProvider
-                  v-for="(child, childIndex) in node.children"
-                  :key="child.id"
-                  :index-path="[index, childIndex]"
-                  :node="child"
-                >
-                  <TreeView.Item>
-                    <TreeView.ItemText>{{ child.name }}</TreeView.ItemText>
-                  </TreeView.Item>
-                </TreeView.NodeProvider>
-              </TreeView.BranchContent>
-            </TreeView.Branch>
-            <TreeView.Item v-else>
-              <TreeView.ItemText>{{ node.name }}</TreeView.ItemText>
-            </TreeView.Item>
-          </TreeView.NodeProvider>
-        </TreeView.Tree>
-      </TreeView>
+      <TreeView :collection="collection" @selection-change="handleSelectNode" />
     </div>
     <div :class="styles.pane()">
       <Tabs.Root

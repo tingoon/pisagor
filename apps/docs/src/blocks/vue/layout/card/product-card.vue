@@ -8,9 +8,11 @@ const styles = productCardBlock();
 <template>
   <Card :class="styles.root()">
     <Card.Media variant="image" :class="styles.media()" />
-    <Card.Header
-      description="Soft lines and easy depth for modern living spaces."
-    >
+    <Card.Header>
+      <Card.Description>
+        Soft lines and easy depth for modern living spaces.
+      </Card.Description>
+
       <Card.Title>
         <a href="https://example.com/products/living-room-sofa">
           Living room sofa

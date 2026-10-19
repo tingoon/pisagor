@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { InputGroup, NumberInput } from "@pisagor/vue";
+import { Input, InputGroup, NumberInput } from "@pisagor/vue";
 </script>
 
 <template>
   <InputGroup>
-    <NumberInput aria-label="Enter the amount" default-value="10">
-      <NumberInput.Input />
-    </NumberInput>
+    <NumberInput.Root aria-label="Enter the amount" default-value="10">
+      <NumberInput.Input as-child>
+        <Input />
+      </NumberInput.Input>
+    </NumberInput.Root>
     <InputGroup.Addon>
       <InputGroup.Text>€</InputGroup.Text>
     </InputGroup.Addon>

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { Pagination, Select, Table } from "@pisagor/vue";
+import { Button, Pagination, Select, Table } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import { tablePaginationBlock } from "#/styles/recipes/table";
 
@@ -71,7 +72,7 @@ function onPageSizeSelect(details: string | string[] | { value: string[] }) {
           @value-change="onPageSizeSelect"
         />
       </div>
-      <Pagination
+      <Pagination.Root
         :class="styles.pagination()"
         :count="users.length"
         :page="page"
@@ -81,9 +82,19 @@ function onPageSizeSelect(details: string | string[] | { value: string[] }) {
           (details: { pageSize: number }) => (pageSize = details.pageSize)
         "
       >
-        <Pagination.PrevTrigger />
-        <Pagination.NextTrigger />
-      </Pagination>
+        <Pagination.PrevTrigger as-child>
+          <Button variant="ghost">
+            <PhCaretLeft />
+            Previous
+          </Button>
+        </Pagination.PrevTrigger>
+        <Pagination.NextTrigger as-child>
+          <Button variant="ghost">
+            Next
+            <PhCaretRight />
+          </Button>
+        </Pagination.NextTrigger>
+      </Pagination.Root>
     </div>
   </div>
 </template>

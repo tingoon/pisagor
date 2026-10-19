@@ -12,29 +12,33 @@ const people = [
 </script>
 
 <template>
-  <DropdownMenu>
+  <DropdownMenu.Root>
     <DropdownMenu.Trigger as-child>
       <Button type="button" variant="outline">Choose person</Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content :class="styles.content()">
-      <DropdownMenu.Item
-        v-for="person in people"
-        :key="person.id"
-        :value="person.username"
-      >
-        <div :class="styles.row()">
-          <Avatar
-            alt=""
-            size="sm"
-            :class="styles.avatar()"
-            :fallback="person.username.charAt(0).toUpperCase()"
-          />
-          <div :class="styles.meta()">
-            <div :class="styles.name()">{{ person.username }}</div>
-            <div :class="styles.email()">{{ person.email }}</div>
-          </div>
-        </div>
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
-  </DropdownMenu>
+    <Teleport to="body">
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content :class="styles.content()">
+          <DropdownMenu.Item
+            v-for="person in people"
+            :key="person.id"
+            :value="person.username"
+          >
+            <div :class="styles.row()">
+              <Avatar
+                alt=""
+                size="sm"
+                :class="styles.avatar()"
+                :fallback="person.username.charAt(0).toUpperCase()"
+              />
+              <div :class="styles.meta()">
+                <div :class="styles.name()">{{ person.username }}</div>
+                <div :class="styles.email()">{{ person.email }}</div>
+              </div>
+            </div>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Teleport>
+  </DropdownMenu.Root>
 </template>

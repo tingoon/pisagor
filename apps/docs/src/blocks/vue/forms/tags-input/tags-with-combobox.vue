@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useFilter, useListCollection, useTagsInput } from "@ark-ui/vue";
-import { Combobox, Field, TagsInput } from "@pisagor/vue";
+import { PhX } from "@phosphor-icons/vue";
+import { Combobox, Field, InputGroup, TagsInput } from "@pisagor/vue";
 import { computed, useId } from "vue";
 import { tagsWithComboboxBlock } from "#/styles/recipes/tags-input";
 
@@ -62,19 +63,35 @@ function onValueChange(details: string[] | { value: string[] }) {
       @value-change="onValueChange"
     >
       <TagsInput.RootProvider :class="styles.root()" :value="tagsInput">
-        <TagsInput.Context v-slot="api">
-          <TagsInput.Item
-            v-for="(tag, index) in api.value"
-            :key="tag"
-            :index="index"
-            :value="tag"
-          >
-            {{ tag }}
-          </TagsInput.Item>
-          <Combobox.Input as-child>
-            <TagsInput.Input placeholder="Search framework" />
-          </Combobox.Input>
-        </TagsInput.Context>
+        <TagsInput.Control as-child>
+          <InputGroup>
+            <TagsInput.Context v-slot="api">
+              <TagsInput.Item
+                v-for="(tag, index) in api.value"
+                :key="tag"
+                :index="index"
+                :value="tag"
+              >
+                <TagsInput.ItemPreview>
+                  <TagsInput.ItemText>{{ tag }}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger as-child>
+                    <InputGroup.Button size="icon-xs" variant="ghost">
+                      <PhX aria-hidden />
+                    </InputGroup.Button>
+                  </TagsInput.ItemDeleteTrigger>
+                </TagsInput.ItemPreview>
+                <TagsInput.ItemInput as-child>
+                  <InputGroup.Input />
+                </TagsInput.ItemInput>
+              </TagsInput.Item>
+              <Combobox.Input as-child>
+                <TagsInput.Input as-child>
+                  <InputGroup.Input placeholder="Search framework" />
+                </TagsInput.Input>
+              </Combobox.Input>
+            </TagsInput.Context>
+          </InputGroup>
+        </TagsInput.Control>
       </TagsInput.RootProvider>
       <Teleport to="body">
         <Combobox.Positioner>

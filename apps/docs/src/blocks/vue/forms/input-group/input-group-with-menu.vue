@@ -10,7 +10,7 @@ const styles = inputGroupWithMenuBlock();
   <InputGroup>
     <InputGroup.Input placeholder="Select file..." />
     <InputGroup.Addon align="inline-end">
-      <DropdownMenu>
+      <DropdownMenu.Root>
         <DropdownMenu.Trigger as-child>
           <InputGroup.Button
             aria-label="Open menu"
@@ -21,21 +21,25 @@ const styles = inputGroupWithMenuBlock();
             <PhDotsThree aria-hidden="true" />
           </InputGroup.Button>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content :class="styles.menu()">
-          <DropdownMenu.Item value="file">
-            <PhFile aria-hidden="true" />
-            Select file
-          </DropdownMenu.Item>
-          <DropdownMenu.Item value="folder">
-            <PhFolder aria-hidden="true" />
-            Select folder
-          </DropdownMenu.Item>
-          <DropdownMenu.Item value="copy-path">
-            <PhCopy aria-hidden="true" />
-            Copy path
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu>
+        <Teleport to="body">
+          <DropdownMenu.Positioner>
+            <DropdownMenu.Content :class="styles.menu()">
+              <DropdownMenu.Item value="file">
+                <PhFile aria-hidden="true" />
+                Select file
+              </DropdownMenu.Item>
+              <DropdownMenu.Item value="folder">
+                <PhFolder aria-hidden="true" />
+                Select folder
+              </DropdownMenu.Item>
+              <DropdownMenu.Item value="copy-path">
+                <PhCopy aria-hidden="true" />
+                Copy path
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Positioner>
+        </Teleport>
+      </DropdownMenu.Root>
     </InputGroup.Addon>
   </InputGroup>
 </template>
