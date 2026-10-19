@@ -4,30 +4,17 @@
     type TreeViewBranchProps,
   } from "@ark-ui/svelte";
   import type { TreeViewBranchRootContract } from "@pisagor/contracts";
-  import { treeViewBranchRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { setTreeViewBranchContext } from "./tree-view.context";
+  import { withTreeViewBranchProvider } from "./tree-view.context";
 
   type Props = TreeViewBranchProps & TreeViewBranchRootContract;
 
-  let {
-    children,
-    recipe = treeViewBranchRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  setTreeViewBranchContext({
-    get slots() {
-      return slots;
-    },
+  let { children, ...rest }: Props = $props();
+  const branch = withTreeViewBranchProvider(() => rest, {
+    name: "Branch",
+    slot: "base",
   });
 </script>
 
-<TreeViewPrimitive.Branch
-  {...rest}
-  class={slots.base({ class: cn(className) })}
->
+<TreeViewPrimitive.Branch {...branch.props}>
   {@render children?.()}
 </TreeViewPrimitive.Branch>

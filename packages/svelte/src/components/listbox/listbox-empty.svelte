@@ -3,17 +3,16 @@
     Listbox as ListboxPrimitive,
     type ListboxEmptyProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
   import { useLocale } from "../provider/context";
-  import { useStyles } from "./listbox.context";
+  import { withListboxContext } from "./listbox.context";
 
-  let { class: className, children, ...rest }: ListboxEmptyProps = $props();
-  const styles = useStyles();
+  /** Empty state with localized default text. */
+  let { children, ...rest }: ListboxEmptyProps = $props();
   const { m } = useLocale();
-  const slots = $derived(styles.slots);
+  const part = withListboxContext(() => rest, { name: "Empty" });
 </script>
 
-<ListboxPrimitive.Empty {...rest} class={slots.empty({ class: cn(className) })}>
+<ListboxPrimitive.Empty {...part.props}>
   {#if children}
     {@render children()}
   {:else}

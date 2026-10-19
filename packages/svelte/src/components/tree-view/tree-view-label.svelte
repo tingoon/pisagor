@@ -3,16 +3,12 @@
     TreeView as TreeViewPrimitive,
     type TreeViewLabelProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTreeView } from "./tree-view.context";
+  import { withTreeViewContext } from "./tree-view.context";
 
-  let { class: className, children, ...rest }: TreeViewLabelProps = $props();
-  const { slots } = useTreeView();
+  let { children, ...rest }: TreeViewLabelProps = $props();
+  const part = withTreeViewContext(() => rest, { name: "Label" });
 </script>
 
-<TreeViewPrimitive.Label
-  {...rest}
-  class={slots.label({ class: cn(className) })}
->
+<TreeViewPrimitive.Label {...part.props}>
   {@render children?.()}
 </TreeViewPrimitive.Label>

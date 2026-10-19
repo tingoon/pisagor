@@ -5,7 +5,6 @@
     TreeView,
   } from "@pisagor/svelte";
   import { FileCodeIcon, FileJsIcon, FileTextIcon } from "phosphor-svelte";
-  import TreeNode from "./tree-node.svelte";
 
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,
@@ -42,11 +41,5 @@
 </script>
 
 <div>
-  <TreeView {collection} {fileIcons}>
-    <TreeView.Tree>
-      {#each collection.rootNode.children ?? [] as node, index}
-        <TreeNode indexPath={[index]} {node} />
-      {/each}
-    </TreeView.Tree>
-  </TreeView>
+  <TreeView {collection} {fileIcons} />
 </div>

@@ -1,25 +1,14 @@
 <script lang="ts">
   import {
     Listbox as ListboxPrimitive,
-    type ListboxItemGroupProps as ArkProps,
+    type ListboxItemGroupProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./listbox.context";
-  import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
+  import { withListboxContext } from "./listbox.context";
 
-  type Props = ArkProps & { heading?: string };
-
-  let { children, heading, class: className, ...rest }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ListboxItemGroupProps = $props();
+  const part = withListboxContext(() => rest, { name: "ItemGroup" });
 </script>
 
-<ListboxPrimitive.ItemGroup
-  {...rest}
-  class={slots.itemGroup({ class: cn(className) })}
->
-  {#if heading}
-    <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>
-  {/if}
+<ListboxPrimitive.ItemGroup {...part.props}>
   {@render children?.()}
 </ListboxPrimitive.ItemGroup>

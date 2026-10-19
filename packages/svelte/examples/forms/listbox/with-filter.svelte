@@ -1,6 +1,7 @@
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Input, Item, Listbox } from "@pisagor/svelte";
+  import { CheckIcon } from "phosphor-svelte";
 
   let search = $state("");
   const filters = useFilter({ sensitivity: "base" });
@@ -32,7 +33,9 @@
         {#each collection().items as item}
           <Listbox.Item {item}>
             <Listbox.ItemText>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
+            <Listbox.ItemIndicator>
+              <CheckIcon />
+            </Listbox.ItemIndicator>
           </Listbox.Item>
         {/each}
         {#if isEmpty}

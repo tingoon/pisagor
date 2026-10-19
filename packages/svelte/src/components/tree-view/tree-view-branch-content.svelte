@@ -3,21 +3,15 @@
     TreeView as TreeViewPrimitive,
     type TreeViewBranchContentProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTreeViewBranch } from "./tree-view.context";
+  import { withTreeViewBranchContext } from "./tree-view.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: TreeViewBranchContentProps = $props();
-  const { slots } = useTreeViewBranch();
+  let { children, ...rest }: TreeViewBranchContentProps = $props();
+  const part = withTreeViewBranchContext(() => rest, {
+    name: "BranchContent",
+    slot: "content",
+  });
 </script>
 
-<TreeViewPrimitive.BranchContent
-  {...rest}
-  class={slots.content({ class: cn(className) })}
->
-  <TreeViewPrimitive.BranchIndentGuide class={slots.indentGuide()} />
+<TreeViewPrimitive.BranchContent {...part.props}>
   {@render children?.()}
 </TreeViewPrimitive.BranchContent>

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
+  import { Portal, useFilter, useListCollection } from "@ark-ui/svelte";
   import { Button, Input, Listbox, Popover } from "@pisagor/svelte";
-  import { CaretUpDownIcon } from "phosphor-svelte";
+  import { CaretUpDownIcon, CheckIcon } from "phosphor-svelte";
 
   let search = $state("");
   let isOpen = $state(false);
@@ -28,7 +28,7 @@
 </script>
 
 <Listbox.Root collection={collection()} onSelect={() => (isOpen = false)}>
-  <Popover onOpenChange={({ open }) => (isOpen = open)} open={isOpen}>
+  <Popover.Root onOpenChange={({ open }) => (isOpen = open)} open={isOpen}>
     <Popover.Trigger>
       {#snippet asChild(props)}
         <Button {...props()} class="justify-between" variant="outline">
@@ -37,21 +37,31 @@
         </Button>
       {/snippet}
     </Popover.Trigger>
-    <Popover.Content class="min-w-64 gap-2 p-1">
-      <Input oninput={onSearchInput} placeholder="Search..." value={search} />
-      <Listbox.Content>
-        {#each collection().items as item}
-          <Listbox.Item {item}>
-            <Listbox.ItemText>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
-          </Listbox.Item>
-        {/each}
-        {#if isEmpty}
-          <Listbox.Empty
-            >No results found. Try a different search.</Listbox.Empty
-          >
-        {/if}
-      </Listbox.Content>
-    </Popover.Content>
-  </Popover>
+    <Portal>
+      <Popover.Positioner>
+        <Popover.Content class="min-w-64 gap-2 p-1">
+          <Input
+            oninput={onSearchInput}
+            placeholder="Search..."
+            value={search}
+          />
+          <Listbox.Content>
+            {#each collection().items as item}
+              <Listbox.Item {item}>
+                <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
+              </Listbox.Item>
+            {/each}
+            {#if isEmpty}
+              <Listbox.Empty
+                >No results found. Try a different search.</Listbox.Empty
+              >
+            {/if}
+          </Listbox.Content>
+        </Popover.Content>
+      </Popover.Positioner>
+    </Portal>
+  </Popover.Root>
 </Listbox.Root>

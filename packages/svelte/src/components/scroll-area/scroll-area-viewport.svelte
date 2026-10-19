@@ -3,23 +3,12 @@
     ScrollArea as ScrollAreaPrimitive,
     type ScrollAreaViewportProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./scroll-area.context";
+  import { withContext } from "./scroll-area.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: ScrollAreaViewportProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ScrollAreaViewportProps = $props();
+  const part = withContext(() => rest, { name: "Viewport" });
 </script>
 
-<ScrollAreaPrimitive.Viewport
-  {...rest}
-  class={slots.viewport({ class: cn(className) })}
->
-  <ScrollAreaPrimitive.Content>
-    {@render children?.()}
-  </ScrollAreaPrimitive.Content>
+<ScrollAreaPrimitive.Viewport {...part.props}>
+  {@render children?.()}
 </ScrollAreaPrimitive.Viewport>

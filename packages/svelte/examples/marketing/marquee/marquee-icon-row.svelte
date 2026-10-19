@@ -26,14 +26,16 @@
   import { Card, Marquee } from "@pisagor/svelte";
 </script>
 
-<Marquee.Content>
-  {#each marqueeIcons as IconComponent}
-    <Marquee.Item>
-      <Card class="[--space:--spacing(8)]">
-        <Card.Content>
-          <IconComponent class="size-10" />
-        </Card.Content>
-      </Card>
-    </Marquee.Item>
-  {/each}
-</Marquee.Content>
+<Marquee.Viewport>
+  <Marquee.Content>
+    {#each marqueeIcons as IconComponent}
+      <Marquee.Item>
+        <Card class="[--space:--spacing(8)]">
+          <Card.Content>
+            <IconComponent class="size-10" />
+          </Card.Content>
+        </Card>
+      </Marquee.Item>
+    {/each}
+  </Marquee.Content>
+</Marquee.Viewport>

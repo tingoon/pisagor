@@ -13,15 +13,4 @@
   });
 </script>
 
-<TreeView {collection}>
-  <TreeView.Label>Files</TreeView.Label>
-  <TreeView.Tree>
-    {#each collection.rootNode.children ?? [] as node, index (node.id)}
-      <TreeView.NodeProvider indexPath={[index]} {node}>
-        <TreeView.Item>
-          <TreeView.ItemText>{node.name}</TreeView.ItemText>
-        </TreeView.Item>
-      </TreeView.NodeProvider>
-    {/each}
-  </TreeView.Tree>
-</TreeView>
+<TreeView {collection} label="Files" />

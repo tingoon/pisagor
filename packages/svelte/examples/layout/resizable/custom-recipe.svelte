@@ -3,6 +3,7 @@
   import { Resizable } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
   import { tv } from "tailwind-variants";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
 
   const brandResizableRecipe = tv({
     extend: resizableRecipe,
@@ -36,7 +37,11 @@
     recipe={brandResizableRecipe}
   >
     <Resizable.Panel class={panelClassName()} id="1">One</Resizable.Panel>
-    <Resizable.ResizeTrigger id="1:2" withHandle />
+    <Resizable.ResizeTrigger id="1:2">
+      <Resizable.ResizeTriggerHandle>
+        <DotsSixVerticalIcon class="size-2.5" />
+      </Resizable.ResizeTriggerHandle>
+    </Resizable.ResizeTrigger>
 
     <Resizable.Panel class="h-full min-h-0 min-w-0" id="2">
       <Resizable
@@ -51,7 +56,11 @@
         <Resizable.Panel class={panelClassName("vertical")} id="3">
           Two
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="3:4" withHandle />
+        <Resizable.ResizeTrigger id="3:4">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon class="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel class={panelClassName("vertical")} id="4">
           Three

@@ -3,16 +3,15 @@
     TreeView as TreeViewPrimitive,
     type TreeViewNodeRenameInputProps,
   } from "@ark-ui/svelte";
-  import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useTreeViewItem } from "./tree-view.context";
+  import { useTreeViewItemSlots } from "./tree-view.context";
 
+  /** Rename input; styled by the item recipe `renameInput` slot. */
   let { class: className, ...rest }: TreeViewNodeRenameInputProps = $props();
-  const item = useTreeViewItem();
-  const slots = $derived(item?.slots ?? treeViewItemRecipe());
+  const item = useTreeViewItemSlots();
 </script>
 
 <TreeViewPrimitive.NodeRenameInput
   {...rest}
-  class={slots.renameInput({ class: cn(className) })}
+  class={cn(item.slots.renameInput(), className)}
 />

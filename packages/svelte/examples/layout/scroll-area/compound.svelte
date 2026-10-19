@@ -6,11 +6,11 @@
 
 <ScrollArea.Root class="h-48 w-64 rounded-md border">
   <ScrollArea.Viewport>
-    <div class="p-4 text-sm">
+    <ScrollArea.Content class="p-4 text-sm">
       {#each items as item (item)}
         <p>{item}</p>
       {/each}
-    </div>
+    </ScrollArea.Content>
   </ScrollArea.Viewport>
   <ScrollArea.Scrollbar orientation="vertical">
     <ScrollArea.Thumb />

@@ -37,12 +37,12 @@
 </script>
 
 <div>
-  <TreeView {collection}>
+  <TreeView.Root {collection}>
     <TreeView.Label>Docs</TreeView.Label>
     <TreeView.Tree>
       {#each collection.rootNode.children ?? [] as node, index}
         <TreeNodeLink indexPath={[index]} {node} />
       {/each}
     </TreeView.Tree>
-  </TreeView>
+  </TreeView.Root>
 </div>

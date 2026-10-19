@@ -1,54 +1,16 @@
 <script lang="ts">
   import {
     TreeView as TreeViewPrimitive,
-    type TreeViewItemTextProps as ArkProps,
+    type TreeViewItemTextProps,
   } from "@ark-ui/svelte";
-  import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { FileIcon } from "phosphor-svelte";
-  import type { Component } from "svelte";
-  import { useTreeView, useTreeViewItem } from "./tree-view.context";
-  import TreeViewNodeInput from "./tree-view-node-input.svelte";
+  import { useTreeViewItemSlots } from "./tree-view.context";
 
-  type Props = ArkProps & { icon?: Component };
-
-  let {
-    children,
-    icon: Icon = FileIcon,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const { fileIcons } = useTreeView();
-  const item = useTreeViewItem();
-  const slots = $derived(item?.slots ?? treeViewItemRecipe());
-
-  function getFileIcon(value: string): Component {
-    const name = value.includes(".")
-      ? value.split(".").at(-1)?.toLowerCase()
-      : null;
-    const extension = name ? `.${name}` : null;
-    const resolved = extension ? fileIcons?.[extension] : undefined;
-
-    return (resolved ?? Icon) as Component;
-  }
+  /** Item text; styled by the item recipe `title` slot. */
+  let { children, class: className, ...rest }: TreeViewItemTextProps = $props();
+  const item = useTreeViewItemSlots();
 </script>
 
-<TreeViewPrimitive.NodeContext>
-  {#snippet render(nodeState)}
-    {const state = nodeState()}
-    {const ResolvedIcon = getFileIcon(state.value)}
-    <span class={slots.icon()} data-part="item-icon" data-scope="tree-view">
-      <ResolvedIcon />
-    </span>
-    {#if state.renaming}
-      <TreeViewNodeInput />
-    {:else}
-      <TreeViewPrimitive.ItemText
-        {...rest}
-        class={slots.title({ class: cn(className) })}
-      >
-        {@render children?.()}
-      </TreeViewPrimitive.ItemText>
-    {/if}
-  {/snippet}
-</TreeViewPrimitive.NodeContext>
+<TreeViewPrimitive.ItemText {...rest} class={cn(item.slots.title(), className)}>
+  {@render children?.()}
+</TreeViewPrimitive.ItemText>

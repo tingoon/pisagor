@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useSidebar } from "./sidebar.context";
+  import { withContext } from "./sidebar.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & {
-    children?: import("svelte").Snippet;
-  };
-
-  let { class: className, children, ...rest }: Props = $props();
-  const ctx = useSidebar();
+  let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-sidebar": "group-content" },
+    name: "GroupContent",
+  });
 </script>
 
-<div
-  {...rest}
-  class={ctx.slots.groupContent({ class: cn(className) })}
-  data-part="group-content"
-  data-scope="sidebar"
-  data-sidebar="group-content"
->
+<div {...part.props}>
   {@render children?.()}
 </div>

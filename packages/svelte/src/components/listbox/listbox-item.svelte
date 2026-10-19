@@ -4,37 +4,22 @@
     type ListboxItemProps as ArkListboxItemProps,
   } from "@ark-ui/svelte";
   import type {
-    ListboxItemRootContract,
     ListboxItemContract,
+    ListboxItemRootContract,
   } from "@pisagor/contracts";
-  import { listboxItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { ListboxItemStylesContext } from "./listbox.context";
+  import { withListboxItemProvider } from "./listbox.context";
 
   type Props = ArkListboxItemProps &
     ListboxItemRootContract &
     ListboxItemContract;
 
-  let {
-    variant = "default",
-    recipe = listboxItemRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe({ variant }));
-  ListboxItemStylesContext.set({
-    get slots() {
-      return slots;
-    },
+  let { children, ...rest }: Props = $props();
+  const item = withListboxItemProvider(() => rest, {
+    name: "Item",
+    slot: "base",
   });
 </script>
 
-<ListboxPrimitive.Item
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
->
+<ListboxPrimitive.Item {...item.props}>
   {@render children?.()}
 </ListboxPrimitive.Item>

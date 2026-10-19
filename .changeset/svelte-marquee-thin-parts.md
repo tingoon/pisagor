@@ -1,0 +1,12 @@
+---
+"@pisagor/svelte": minor
+---
+
+Svelte `Marquee` parts are thin. Adds `Marquee.Viewport`; the shorthand applies `classNames` and
+takes `showEdges`.
+
+**Breaking (Svelte):**
+
+- `Marquee.Root` no longer renders edges and drops `showEdges` (now a shorthand prop); add
+  `<Marquee.Edge side="start" />` / `<Marquee.Edge side="end" />` yourself.
+- `Marquee.Content` no longer wraps itself in the viewport; render `<Marquee.Viewport>` around it.

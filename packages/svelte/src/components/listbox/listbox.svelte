@@ -35,7 +35,7 @@
     collectionProp ??
       createListCollection({
         items,
-        itemToString: (item) => item.value,
+        itemToString: (item) => String(item.label),
         itemToValue: (item) => item.value,
       }),
   );

@@ -3,38 +3,21 @@
     Splitter as SplitterPrimitive,
     type SplitterResizeTriggerProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useStyles } from "./resizable.context";
-  import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
+  import { withContext } from "./resizable.context";
 
+  /**
+   * Resize trigger with a localized default `aria-label`; compose the indicator
+   * / handle yourself.
+   */
+  let { children, ...rest }: SplitterResizeTriggerProps = $props();
   const { m } = useLocale();
-
-  type Props = SplitterResizeTriggerProps & { withHandle?: boolean };
-
-  let {
-    children,
-    withHandle = false,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  const part = withContext(
+    () => ({ "aria-label": m("resizable.resize"), ...rest }),
+    { name: "ResizeTrigger" },
+  );
 </script>
 
-<SplitterPrimitive.ResizeTrigger
-  aria-label={m("resizable.resize")}
-  {...rest}
-  class={slots.resizeTrigger({ class: cn(className) })}
->
-  {#if withHandle}
-    <div class={slots.resizeTriggerHandle()}>
-      <DotsSixVerticalIcon class={slots.resizeTriggerIcon()} />
-    </div>
-  {:else if children}
-    {@render children()}
-  {:else}
-    <ResizableResizeTriggerIndicator />
-  {/if}
+<SplitterPrimitive.ResizeTrigger {...part.props}>
+  {@render children?.()}
 </SplitterPrimitive.ResizeTrigger>

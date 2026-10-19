@@ -5,8 +5,10 @@
   } from "@ark-ui/svelte";
   import { withContext } from "./marquee.context";
 
-  let { ...rest }: MarqueeEdgeProps = $props();
+  let { children, ...rest }: MarqueeEdgeProps = $props();
   const part = withContext(() => rest, { name: "Edge" });
 </script>
 
-<MarqueePrimitive.Edge {...part.props} />
+<MarqueePrimitive.Edge {...part.props}>
+  {@render children?.()}
+</MarqueePrimitive.Edge>

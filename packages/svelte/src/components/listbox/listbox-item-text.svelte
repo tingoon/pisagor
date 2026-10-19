@@ -3,18 +3,15 @@
     Listbox as ListboxPrimitive,
     type ListboxItemTextProps,
   } from "@ark-ui/svelte";
-  import { listboxItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useListboxItem } from "./listbox.context";
+  import { withListboxItemContext } from "./listbox.context";
 
-  let { class: className, children, ...rest }: ListboxItemTextProps = $props();
-  const ctx = useListboxItem();
-  const slots = $derived(ctx?.slots ?? listboxItemRecipe());
+  let { children, ...rest }: ListboxItemTextProps = $props();
+  const part = withListboxItemContext(() => rest, {
+    name: "ItemText",
+    slot: "text",
+  });
 </script>
 
-<ListboxPrimitive.ItemText
-  {...rest}
-  class={slots.text({ class: cn(className) })}
->
+<ListboxPrimitive.ItemText {...part.props}>
   {@render children?.()}
 </ListboxPrimitive.ItemText>

@@ -1,37 +1,18 @@
 <script lang="ts">
   import type { BreadcrumbRootContract } from "@pisagor/contracts";
-  import { breadcrumbRecipe } from "@pisagor/recipes";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
-  import { Context } from "./breadcrumb.context";
+  import { withBreadcrumbProvider } from "./breadcrumb.context";
 
+  type Props = HTMLAttributes<HTMLElement> & BreadcrumbRootContract;
+
+  let { "aria-label": ariaLabel, children, ...rest }: Props = $props();
   const { m } = useLocale();
-
-  type Props = HTMLAttributes<HTMLElement> &
-    Omit<BreadcrumbRootContract, "items">;
-
-  let {
-    "aria-label": ariaLabel = m("breadcrumb.label"),
-    children,
-    recipe = breadcrumbRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  const root = withBreadcrumbProvider(
+    () => ({ ...rest, "aria-label": m("breadcrumb.label", ariaLabel) }),
+    { name: "Root", slot: "base" },
+  );
 </script>
 
-<nav
-  {...rest}
-  aria-label={ariaLabel}
-  class={className}
-  data-part="root"
-  data-scope="breadcrumb"
->
-  {@render children?.()}
-</nav>
+<!-- Navigation landmark with a localized default `aria-label`. -->
+<nav {...root.props}>{@render children?.()}</nav>

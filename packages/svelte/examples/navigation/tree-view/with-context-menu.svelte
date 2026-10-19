@@ -7,11 +7,11 @@
 </script>
 
 <div>
-  <TreeView {collection}>
+  <TreeView.Root {collection}>
     <TreeView.Tree>
       {#each collection.rootNode.children ?? [] as node, index}
         <TreeNodeContext indexPath={[index]} {node} />
       {/each}
     </TreeView.Tree>
-  </TreeView>
+  </TreeView.Root>
 </div>

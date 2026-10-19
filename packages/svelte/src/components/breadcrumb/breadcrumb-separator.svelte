@@ -1,16 +1,12 @@
 <script lang="ts">
-  import { CaretRightIcon } from "phosphor-svelte";
-  import type { HTMLAttributes } from "svelte/elements";
+  import type { HTMLLiAttributes } from "svelte/elements";
   import { withBreadcrumbContext } from "./breadcrumb.context";
 
-  let { children, ...rest }: HTMLAttributes<HTMLLIElement> = $props();
-  const part = withBreadcrumbContext(() => rest, { name: "Separator" });
+  let { children, ...rest }: HTMLLiAttributes = $props();
+  const part = withBreadcrumbContext(() => rest, {
+    defaultProps: { "aria-hidden": "true", role: "presentation" },
+    name: "Separator",
+  });
 </script>
 
-<li {...part.props} aria-hidden="true" role="presentation">
-  {#if children}
-    {@render children()}
-  {:else}
-    <CaretRightIcon />
-  {/if}
-</li>
+<li {...part.props}>{@render children?.()}</li>

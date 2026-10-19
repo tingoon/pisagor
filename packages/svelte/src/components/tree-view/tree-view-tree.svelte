@@ -3,13 +3,12 @@
     TreeView as TreeViewPrimitive,
     type TreeViewTreeProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTreeView } from "./tree-view.context";
+  import { withTreeViewContext } from "./tree-view.context";
 
-  let { class: className, children, ...rest }: TreeViewTreeProps = $props();
-  const { slots } = useTreeView();
+  let { children, ...rest }: TreeViewTreeProps = $props();
+  const part = withTreeViewContext(() => rest, { name: "Tree" });
 </script>
 
-<TreeViewPrimitive.Tree {...rest} class={slots.tree({ class: cn(className) })}>
+<TreeViewPrimitive.Tree {...part.props}>
   {@render children?.()}
 </TreeViewPrimitive.Tree>

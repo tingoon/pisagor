@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Sortable } from "@pisagor/svelte";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
 
   const labels: Record<string, string> = {
     a: "Design system tokens",
@@ -15,7 +16,9 @@
   {#each items as id (id)}
     <Sortable.Item value={id}>
       <Sortable.ItemContent>
-        <Sortable.Handle />
+        <Sortable.Handle>
+          <DotsSixVerticalIcon />
+        </Sortable.Handle>
         <span class="text-sm font-medium">{labels[id]}</span>
       </Sortable.ItemContent>
     </Sortable.Item>

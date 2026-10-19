@@ -5,4 +5,6 @@
 
 <Marquee.Root>
   <MarqueeIconRow />
+  <Marquee.Edge side="start" />
+  <Marquee.Edge side="end" />
 </Marquee.Root>

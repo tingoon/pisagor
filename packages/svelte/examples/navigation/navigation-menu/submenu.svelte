@@ -1,5 +1,6 @@
 <script lang="ts">
   import { NavigationMenu } from "@pisagor/svelte";
+  import { CaretDownIcon } from "phosphor-svelte";
 </script>
 
 <NavigationMenu aria-label="Main">
@@ -9,7 +10,12 @@
       >
     </NavigationMenu.Item>
     <NavigationMenu.Item>
-      <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+      <NavigationMenu.Trigger>
+        Products
+        <NavigationMenu.Indicator>
+          <CaretDownIcon />
+        </NavigationMenu.Indicator>
+      </NavigationMenu.Trigger>
       <NavigationMenu.Content>
         <li>
           <NavigationMenu.Link href="#analytics">Analytics</NavigationMenu.Link>

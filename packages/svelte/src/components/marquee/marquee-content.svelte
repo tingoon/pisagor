@@ -3,19 +3,12 @@
     Marquee as MarqueePrimitive,
     type MarqueeContentProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./marquee.context";
+  import { withContext } from "./marquee.context";
 
-  let { class: className, children, ...rest }: MarqueeContentProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: MarqueeContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-<MarqueePrimitive.Viewport class={slots.viewport()}>
-  <MarqueePrimitive.Content
-    {...rest}
-    class={slots.content({ class: cn(className) })}
-  >
-    {@render children?.()}
-  </MarqueePrimitive.Content>
-</MarqueePrimitive.Viewport>
+<MarqueePrimitive.Content {...part.props}>
+  {@render children?.()}
+</MarqueePrimitive.Content>

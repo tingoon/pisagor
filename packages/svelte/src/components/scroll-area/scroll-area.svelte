@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte";
   import type {
     ScrollAreaRootProps,
     ScrollAreaScrollbarProps,
@@ -13,6 +12,8 @@
 
   import type { Snippet } from "svelte";
 
+  import ScrollAreaContent from "./scroll-area-content.svelte";
+  import ScrollAreaCorner from "./scroll-area-corner.svelte";
   import ScrollAreaRoot from "./scroll-area-root.svelte";
   import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
   import ScrollAreaThumb from "./scroll-area-thumb.svelte";
@@ -40,7 +41,9 @@
 
 <ScrollAreaRoot {...rest} class={className} {scrollFade}>
   <ScrollAreaViewport {...viewportProps} class={classNames?.viewport}>
-    {@render children?.()}
+    <ScrollAreaContent class={classNames?.content}>
+      {@render children?.()}
+    </ScrollAreaContent>
   </ScrollAreaViewport>
   <ScrollAreaScrollbar
     {...scrollbarProps}
@@ -56,5 +59,5 @@
   >
     <ScrollAreaThumb {...thumbProps} class={classNames?.thumb} />
   </ScrollAreaScrollbar>
-  <ScrollAreaPrimitive.Corner />
+  <ScrollAreaCorner class={classNames?.corner} />
 </ScrollAreaRoot>

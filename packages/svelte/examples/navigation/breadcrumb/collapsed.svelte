@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Breadcrumb } from "@pisagor/svelte";
+  import { CaretRightIcon, DotsThreeIcon } from "phosphor-svelte";
 </script>
 
 <Breadcrumb.Root>
@@ -7,15 +8,23 @@
     <Breadcrumb.Item>
       <Breadcrumb.Link href="https://example.com/">Home</Breadcrumb.Link>
     </Breadcrumb.Item>
-    <Breadcrumb.Separator />
+    <Breadcrumb.Separator>
+      <CaretRightIcon />
+    </Breadcrumb.Separator>
     <Breadcrumb.Item>
-      <Breadcrumb.Ellipsis />
+      <Breadcrumb.Ellipsis>
+        <DotsThreeIcon aria-hidden />
+      </Breadcrumb.Ellipsis>
     </Breadcrumb.Item>
-    <Breadcrumb.Separator />
+    <Breadcrumb.Separator>
+      <CaretRightIcon />
+    </Breadcrumb.Separator>
     <Breadcrumb.Item>
       <Breadcrumb.Link href="https://example.com/">Components</Breadcrumb.Link>
     </Breadcrumb.Item>
-    <Breadcrumb.Separator />
+    <Breadcrumb.Separator>
+      <CaretRightIcon />
+    </Breadcrumb.Separator>
     <Breadcrumb.Item>
       <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
     </Breadcrumb.Item>
