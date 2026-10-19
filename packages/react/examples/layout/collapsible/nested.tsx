@@ -9,45 +9,49 @@ export function Nested() {
       />
 
       <Card.Content>
-        <Collapsible>
+        <Collapsible.Root>
           <Collapsible.Trigger asChild>
             <Button className="w-full" variant="outline">
               View details
               <Collapsible.Indicator />
             </Button>
           </Collapsible.Trigger>
-          <Collapsible.Content className="flex flex-col gap-2 p-2">
-            <p className="text-muted-foreground text-sm">
-              Here you can find the documentation for all the components and how
-              to use them.
-            </p>
-            <Collapsible>
-              <Collapsible.Trigger asChild>
-                <Button className="w-full" size="sm" variant="outline">
-                  Install dependencies
-                  <Collapsible.Indicator />
-                </Button>
-              </Collapsible.Trigger>
-              <Collapsible.Content className="flex flex-col gap-2 p-2">
-                <p className="text-muted-foreground text-sm">
-                  Copy the following code:
-                </p>
+          <Collapsible.Content>
+            <Collapsible.Body className="flex flex-col gap-2 p-2">
+              <p className="text-muted-foreground text-sm">
+                Here you can find the documentation for all the components and
+                how to use them.
+              </p>
+              <Collapsible.Root>
+                <Collapsible.Trigger asChild>
+                  <Button className="w-full" size="sm" variant="outline">
+                    Install dependencies
+                    <Collapsible.Indicator />
+                  </Button>
+                </Collapsible.Trigger>
+                <Collapsible.Content>
+                  <Collapsible.Body className="flex flex-col gap-2 p-2">
+                    <p className="text-muted-foreground text-sm">
+                      Copy the following code:
+                    </p>
 
-                <pre className="bg-muted text-muted-foreground relative rounded-md p-2 text-xs">
-                  <code>bun add ui</code>
+                    <pre className="bg-muted text-muted-foreground relative rounded-md p-2 text-xs">
+                      <code>bun add ui</code>
 
-                  <Clipboard
-                    buttonSize="icon-sm"
-                    buttonVariant="ghost"
-                    className="absolute inset-e-1.5 top-0.5"
-                    value="bun add ui"
-                    variant="button"
-                  />
-                </pre>
-              </Collapsible.Content>
-            </Collapsible>
+                      <Clipboard
+                        buttonSize="icon-sm"
+                        buttonVariant="ghost"
+                        className="absolute inset-e-1.5 top-0.5"
+                        value="bun add ui"
+                        variant="button"
+                      />
+                    </pre>
+                  </Collapsible.Body>
+                </Collapsible.Content>
+              </Collapsible.Root>
+            </Collapsible.Body>
           </Collapsible.Content>
-        </Collapsible>
+        </Collapsible.Root>
       </Card.Content>
     </Card>
   );

@@ -118,7 +118,11 @@ export function NavMain({
       <Sidebar.Menu>
         {items.map((item) =>
           item.items ? (
-            <Collapsible asChild defaultOpen={item.isActive} key={item.title}>
+            <Collapsible.Root
+              asChild
+              defaultOpen={item.isActive}
+              key={item.title}
+            >
               <Sidebar.MenuItem>
                 <Collapsible.Trigger asChild>
                   <Sidebar.MenuButton isActive={item.isActive}>
@@ -130,18 +134,20 @@ export function NavMain({
                   </Sidebar.MenuButton>
                 </Collapsible.Trigger>
                 <Collapsible.Content>
-                  <Sidebar.MenuSub>
-                    {item.items.map((subItem) => (
-                      <Sidebar.MenuSubItem key={subItem.title}>
-                        <Sidebar.MenuSubButton href={subItem.href}>
-                          <span>{subItem.title}</span>
-                        </Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                    ))}
-                  </Sidebar.MenuSub>
+                  <Collapsible.Body>
+                    <Sidebar.MenuSub>
+                      {item.items.map((subItem) => (
+                        <Sidebar.MenuSubItem key={subItem.title}>
+                          <Sidebar.MenuSubButton href={subItem.href}>
+                            <span>{subItem.title}</span>
+                          </Sidebar.MenuSubButton>
+                        </Sidebar.MenuSubItem>
+                      ))}
+                    </Sidebar.MenuSub>
+                  </Collapsible.Body>
                 </Collapsible.Content>
               </Sidebar.MenuItem>
-            </Collapsible>
+            </Collapsible.Root>
           ) : (
             <Sidebar.MenuItem key={item.title}>
               <Sidebar.MenuButton isActive={item.isActive} tooltip={item.title}>

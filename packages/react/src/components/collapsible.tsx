@@ -1,21 +1,21 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react";
-import type { ComponentProps } from "react";
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
   CollapsibleRootProps as CollapsibleRootPrimitiveProps,
+  CollapsibleTriggerProps,
 } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { CollapsibleRootContract } from "@pisagor/contracts";
+import type {
+  CollapsibleContract,
+  CollapsibleRootContract,
+} from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: CollapsibleStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Collapsible",
   recipe: collapsibleRecipe,
 });
@@ -24,78 +24,95 @@ const {
 // #region Types
 export type CollapsibleRootProps = CollapsibleRootPrimitiveProps &
   CollapsibleRootContract;
+
+export type CollapsibleBodyProps = ComponentPropsWithRef<"div">;
+
+export interface CollapsibleProps
+  extends Omit<CollapsibleRootProps, "children">, CollapsibleContract {
+  /** Content revealed when open. */
+  children?: ReactNode;
+  /** Trigger label. */
+  trigger?: ReactNode;
+  /**
+   * Whether to render the caret indicator inside the trigger.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
+}
 // #endregion
 
 // #region Parts
-export function CollapsibleRoot({
-  lazyMount,
-  unmountOnExit,
-  children,
-  collapsedHeight,
-  recipe = collapsibleRecipe,
-  className,
-  ...rest
-}: CollapsibleRootProps) {
-  const slots = recipe();
-
-  return (
-    <CollapsibleStylesContext value={{ slots, variants: {} as never }}>
-      <CollapsiblePrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        collapsedHeight={collapsedHeight}
-        data-partial-collapse={collapsedHeight ? "" : undefined}
-        lazyMount={collapsedHeight ? false : lazyMount}
-        unmountOnExit={collapsedHeight ? false : unmountOnExit}
-      >
-        {children}
-      </CollapsiblePrimitive.Root>
-    </CollapsibleStylesContext>
-  );
-}
-
-export const CollapsibleTrigger = withContext<
-  ComponentProps<typeof CollapsiblePrimitive.Trigger>
->(CollapsiblePrimitive.Trigger, {
-  name: "Trigger",
+const RootBase = withProvider<CollapsibleRootProps>(CollapsiblePrimitive.Root, {
+  name: "Root",
+  slot: "base",
 });
 
-export function CollapsibleContent({
-  children,
-  className,
+/** Root; `collapsedHeight` keeps content mounted for partial collapse. */
+function Root({
+  collapsedHeight,
+  lazyMount,
+  unmountOnExit,
   ...rest
-}: CollapsibleContentProps) {
-  const { slots } = useStyles();
+}: CollapsibleRootProps) {
+  const partial = collapsedHeight !== undefined;
 
   return (
-    <CollapsiblePrimitive.Content {...rest} className={slots.content()}>
-      <div className={className}>{children}</div>
-    </CollapsiblePrimitive.Content>
-  );
-}
-
-export function CollapsibleIndicator({
-  className,
-  ...rest
-}: CollapsibleIndicatorProps) {
-  const { slots } = useStyles();
-
-  return (
-    <CollapsiblePrimitive.Indicator
+    <RootBase
       {...rest}
-      className={slots.indicator({ className })}
-    >
-      <CaretDownIcon className={slots.icon()} />
-    </CollapsiblePrimitive.Indicator>
+      collapsedHeight={collapsedHeight}
+      data-partial-collapse={partial ? "" : undefined}
+      lazyMount={partial ? false : lazyMount}
+      unmountOnExit={partial ? false : unmountOnExit}
+    />
   );
 }
+
+const Trigger = withContext<CollapsibleTriggerProps>(
+  CollapsiblePrimitive.Trigger,
+  { name: "Trigger" },
+);
+
+const Indicator = withContext<CollapsibleIndicatorProps>(
+  CollapsiblePrimitive.Indicator,
+  {
+    defaultProps: { children: <CaretDownIcon /> },
+    name: "Indicator",
+  },
+);
+
+const Content = withContext<CollapsibleContentProps>(
+  CollapsiblePrimitive.Content,
+  { name: "Content" },
+);
+
+const Body = withContext<CollapsibleBodyProps>("div", { name: "Body" });
 // #endregion
 
-// #region Display Names
-CollapsibleRoot.displayName = "Collapsible";
-CollapsibleContent.displayName = "Collapsible.Content";
-CollapsibleIndicator.displayName = "Collapsible.Indicator";
+// #region Shorthand
+export function CollapsibleShorthand({
+  children,
+  classNames,
+  showIndicator = true,
+  trigger,
+  ...rest
+}: CollapsibleProps) {
+  return (
+    <Root {...rest}>
+      {trigger !== undefined && (
+        <Trigger className={classNames?.trigger}>
+          {trigger}
 
+          {showIndicator && <Indicator className={classNames?.indicator} />}
+        </Trigger>
+      )}
+
+      <Content className={classNames?.content}>
+        <Body className={classNames?.body}>{children}</Body>
+      </Content>
+    </Root>
+  );
+}
 // #endregion
 
 export type {
@@ -104,8 +121,10 @@ export type {
   CollapsibleTriggerProps,
 } from "@ark-ui/react";
 
-export const Collapsible = Object.assign(CollapsibleRoot, {
-  Content: CollapsibleContent,
-  Indicator: CollapsibleIndicator,
-  Trigger: CollapsibleTrigger,
+export const Collapsible = Object.assign(CollapsibleShorthand, {
+  Body,
+  Content,
+  Indicator,
+  Root,
+  Trigger,
 });
