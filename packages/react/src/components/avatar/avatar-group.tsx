@@ -71,7 +71,3 @@ export function AvatarGroupShorthand({
   );
 }
 // #endregion
-
-// #region Display Names
-AvatarGroupShorthand.displayName = "AvatarGroup";
-// #endregion

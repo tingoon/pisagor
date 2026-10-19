@@ -132,7 +132,6 @@ export function AccordionShorthand({ items, size, ...rest }: AccordionProps) {
 AccordionRoot.displayName = "Accordion.Root";
 AccordionItemTrigger.displayName = "Accordion.ItemTrigger";
 AccordionItemContent.displayName = "Accordion.ItemContent";
-AccordionShorthand.displayName = "Accordion";
 
 // #endregion
 

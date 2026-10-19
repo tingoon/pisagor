@@ -294,7 +294,6 @@ DialogBody.displayName = "Dialog.Body";
 DialogHeader.displayName = "Dialog.Header";
 DialogCloseTrigger.displayName = "Dialog.CloseTrigger";
 DialogFooter.displayName = "Dialog.Footer";
-DialogShorthand.displayName = "Dialog";
 
 // #endregion
 

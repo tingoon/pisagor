@@ -75,11 +75,6 @@ function JsonTreeViewShorthand({
 }
 // #endregion
 
-// #region Display Names
-JsonTreeViewShorthand.displayName = "JsonTreeView";
-
-// #endregion
-
 export type { JsonTreeViewTreeProps } from "@ark-ui/react";
 
 export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {

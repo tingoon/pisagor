@@ -340,7 +340,6 @@ AlertDialogCloseTrigger.displayName = "AlertDialog.CloseTrigger";
 AlertDialogFooter.displayName = "AlertDialog.Footer";
 AlertDialogAction.displayName = "AlertDialog.Action";
 AlertDialogCancel.displayName = "AlertDialog.Cancel";
-AlertDialogShorthand.displayName = "AlertDialog";
 // #endregion
 
 export type {

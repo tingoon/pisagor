@@ -128,7 +128,6 @@ export function DataListShorthand({ items, ...rest }: DataListProps) {
 
 DataListRoot.displayName = "DataList.Root";
 DataListItem.displayName = "DataList.Item";
-DataListShorthand.displayName = "DataList";
 // #endregion
 
 export const DataList = Object.assign(DataListShorthand, {

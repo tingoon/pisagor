@@ -271,7 +271,6 @@ ListboxValueText.displayName = "Listbox.ValueText";
 ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 ListboxEmpty.displayName = "Listbox.Empty";
 ListboxShortcut.displayName = "Listbox.Shortcut";
-ListboxShorthand.displayName = "Listbox";
 
 // #endregion
 

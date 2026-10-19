@@ -140,7 +140,6 @@ export function StatShorthand({
   );
 }
 
-StatShorthand.displayName = "Stat";
 StatTrend.displayName = "Stat.Trend";
 // #endregion
 

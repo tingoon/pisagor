@@ -122,7 +122,6 @@ export function TabsShorthand({
 
 // #region Display Names
 TabsList.displayName = "Tabs.List";
-TabsShorthand.displayName = "Tabs";
 
 // #endregion
 

@@ -439,7 +439,6 @@ ComboboxItemGroupLabel.displayName = "Combobox.ItemGroupLabel";
 ComboboxItem.displayName = "Combobox.Item";
 ComboboxEmpty.displayName = "Combobox.Empty";
 ComboboxList.displayName = "Combobox.List";
-ComboboxShorthand.displayName = "Combobox";
 
 // #endregion
 

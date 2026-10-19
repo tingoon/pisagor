@@ -186,7 +186,6 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
 BreadcrumbRoot.displayName = "Breadcrumb.Root";
 BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
-BreadcrumbShorthand.displayName = "Breadcrumb";
 // #endregion
 
 export const Breadcrumb = Object.assign(BreadcrumbShorthand, {

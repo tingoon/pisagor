@@ -136,7 +136,6 @@ AutocompleteEmpty.displayName = "Autocomplete.Empty";
 AutocompleteList.displayName = "Autocomplete.List";
 AutocompleteCollection.displayName = "Autocomplete.Collection";
 AutocompleteSeparator.displayName = "Autocomplete.Separator";
-AutocompleteShorthand.displayName = "Autocomplete";
 // #endregion
 
 export const Autocomplete = Object.assign(AutocompleteShorthand, {

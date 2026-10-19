@@ -112,8 +112,6 @@ export function EmptyStateShorthand({
     </EmptyStateRoot>
   );
 }
-
-EmptyStateShorthand.displayName = "EmptyState";
 // #endregion
 
 export const EmptyState = Object.assign(EmptyStateShorthand, {

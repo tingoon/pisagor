@@ -106,10 +106,6 @@ export function ToolbarShorthand({
 }
 // #endregion
 
-// #region Display Names
-ToolbarShorthand.displayName = "Toolbar";
-// #endregion
-
 export const Toolbar = Object.assign(ToolbarShorthand, {
   Actions: ToolbarActions,
   Description: ToolbarDescription,

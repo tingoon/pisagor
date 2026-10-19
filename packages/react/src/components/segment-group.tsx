@@ -145,7 +145,6 @@ export function SegmentGroupShorthand({ items, ...rest }: SegmentGroupProps) {
 // #region Display Names
 SegmentGroupRoot.displayName = "SegmentGroup.Root";
 SegmentGroupItem.displayName = "SegmentGroup.Item";
-SegmentGroupShorthand.displayName = "SegmentGroup";
 
 // #endregion
 

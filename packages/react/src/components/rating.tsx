@@ -203,7 +203,6 @@ function RatingShorthand({
 // #region Display Names
 RatingRoot.displayName = "Rating.Root";
 RatingIndicator.displayName = "Rating.Indicator";
-RatingShorthand.displayName = "Rating";
 // #endregion
 
 export const Rating = Object.assign(RatingShorthand, {

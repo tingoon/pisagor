@@ -82,10 +82,6 @@ function AvatarShorthand({
 }
 // #endregion
 
-// #region Display Names
-AvatarShorthand.displayName = "Avatar";
-// #endregion
-
 export const Avatar = Object.assign(AvatarShorthand, {
   Fallback: AvatarFallback,
   Image: AvatarImage,

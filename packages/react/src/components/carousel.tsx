@@ -215,7 +215,6 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
 CarouselRoot.displayName = "Carousel.Root";
 CarouselPrevTrigger.displayName = "Carousel.PrevTrigger";
 CarouselNextTrigger.displayName = "Carousel.NextTrigger";
-CarouselShorthand.displayName = "Carousel";
 
 // #endregion
 

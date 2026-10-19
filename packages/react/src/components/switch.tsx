@@ -107,7 +107,6 @@ function SwitchShorthand({
 // #region Display Names
 SwitchRoot.displayName = "Switch.Root";
 SwitchHiddenInput.displayName = "Switch.HiddenInput";
-SwitchShorthand.displayName = "Switch";
 SwitchControl.displayName = "Switch.Control";
 SwitchThumb.displayName = "Switch.Thumb";
 

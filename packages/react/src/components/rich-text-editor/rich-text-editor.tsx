@@ -329,5 +329,4 @@ export function RichTextEditorShorthand(
 RichTextEditorRoot.displayName = "RichTextEditor.Root";
 RichTextEditorToolbar.displayName = "RichTextEditor.Toolbar";
 RichTextEditorContent.displayName = "RichTextEditor.Content";
-RichTextEditorShorthand.displayName = "RichTextEditor";
 // #endregion

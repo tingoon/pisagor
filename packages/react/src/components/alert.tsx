@@ -107,8 +107,6 @@ export function AlertShorthand({
     </AlertRoot>
   );
 }
-
-AlertShorthand.displayName = "Alert";
 // #endregion
 
 export const Alert = Object.assign(AlertShorthand, {

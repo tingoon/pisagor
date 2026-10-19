@@ -155,7 +155,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 
 **Shorthand:**
 
-- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`.
+- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`. Set the Vue `name` option on the shorthand `defineComponent` (e.g. `"Foo"`). Do **not** also assign `FooShorthand.displayName` — that is a React pattern; only set it when shorthand is a compound subpart (e.g. `Command.Shorthand`).
 - Type shorthand props without a default slot for manual subpart layout — no `default` slot composition API on the shorthand export.
 - Prefer `<Foo title="…" />` / `:title` over `<Foo.Root><Foo.Title>…</Foo.Title></Foo.Root>` when preset props are enough.
 - Composition uses `Foo.Root` only when flexibility is required (custom markup, slot order); never nest `Foo.Title` / `Foo.Description` under shorthand `<Foo>`.

@@ -125,7 +125,6 @@ export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
 // #region Display Names
 MarqueeRoot.displayName = "Marquee.Root";
 MarqueeContent.displayName = "Marquee.Content";
-MarqueeShorthand.displayName = "Marquee";
 
 // #endregion
 

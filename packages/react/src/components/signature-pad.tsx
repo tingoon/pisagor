@@ -169,7 +169,6 @@ function SignaturePadShorthand({
 SignaturePadRoot.displayName = "SignaturePad.Root";
 SignaturePadControl.displayName = "SignaturePad.Control";
 SignaturePadClear.displayName = "SignaturePad.Clear";
-SignaturePadShorthand.displayName = "SignaturePad";
 // #endregion
 
 export const SignaturePad = Object.assign(SignaturePadShorthand, {

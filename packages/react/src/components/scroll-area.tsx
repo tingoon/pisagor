@@ -114,7 +114,6 @@ function ScrollAreaShorthand({
 
 // #region Display Names
 ScrollAreaViewport.displayName = "ScrollArea.Viewport";
-ScrollAreaShorthand.displayName = "ScrollArea";
 
 // #endregion
 

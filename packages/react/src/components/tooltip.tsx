@@ -169,7 +169,6 @@ function TooltipShorthand({
 TooltipRoot.displayName = "Tooltip.Root";
 TooltipTrigger.displayName = "Tooltip.Trigger";
 TooltipPositioner.displayName = "Tooltip.Positioner";
-TooltipShorthand.displayName = "Tooltip";
 TooltipContent.displayName = "Tooltip.Content";
 TooltipArrow.displayName = "Tooltip.Arrow";
 

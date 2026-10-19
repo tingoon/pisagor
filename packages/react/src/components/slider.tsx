@@ -385,7 +385,6 @@ SliderMarkerGroup.displayName = "Slider.MarkerGroup";
 SliderMarker.displayName = "Slider.Marker";
 SliderMarkerTick.displayName = "Slider.MarkerTick";
 SliderMarkerLabel.displayName = "Slider.MarkerLabel";
-SliderShorthand.displayName = "Slider";
 
 // #endregion
 

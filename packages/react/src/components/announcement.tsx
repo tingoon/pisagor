@@ -65,8 +65,6 @@ export function AnnouncementShorthand({
     </AnnouncementRoot>
   );
 }
-
-AnnouncementShorthand.displayName = "Announcement";
 // #endregion
 
 export const Announcement = Object.assign(AnnouncementShorthand, {

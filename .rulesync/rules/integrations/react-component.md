@@ -134,7 +134,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 **Shorthand:**
 
-- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`.
+- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`. Do **not** set `FooShorthand.displayName = "Foo"` — the public export is already `Foo` via `Object.assign`. Only set `displayName` on shorthand when it is a compound subpart (e.g. `Command.Shorthand`), not the assign root.
 - Type shorthand props with `Omit<FooRootProps, "children">` — no `children` on the default export.
 - Prefer `<Foo title="…" />` over `<Foo.Root><Foo.Title>…</Foo.Title></Foo.Root>` when preset props are enough.
 - Composition uses `Foo.Root` only when flexibility is required (`asChild`, custom markup, slot order); never nest `Foo.Title` / `Foo.Description` under `<Foo>`.
@@ -214,14 +214,14 @@ In `FooShorthand` (and similar layout compose returns), leave a **blank line bet
 
 Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that do not apply; never reorder.
 
-| Order | Region                 | When                                                                                                                      |
-| ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 1     | `Context`              | `createSlotRecipeContext` + thin in-file state (single-file components)                                                   |
-| 2     | `Types`                | Props, variant prop types (imported from recipes), item interfaces (not context value types)                              |
-| 3     | `Hooks`                | File-local hooks not exported from the root barrel                                                                        |
-| 4     | `Component` / `Parts`  | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose                                        |
-| 5     | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`)                                                         |
-| 6     | `Display Names`        | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
+| Order | Region                 | When                                                                                                                  |
+| ----- | ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 1     | `Context`              | `createSlotRecipeContext` + thin in-file state (single-file components)                                               |
+| 2     | `Types`                | Props, variant prop types (imported from recipes), item interfaces (not context value types)                          |
+| 3     | `Hooks`                | File-local hooks not exported from the root barrel                                                                    |
+| 4     | `Component` / `Parts`  | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose                                    |
+| 5     | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`)                                                     |
+| 6     | `Display Names`        | All `displayName` assignments — last when needed (compound parts / labeled subparts). Skip for a single closed `Foo`. |
 
 Slot-recipe setup lives in `#region Context` in `<name>.tsx` (or `<name>.context.tsx` for foldered thin state — see [Context file](#context-file-namecontexttsx)). Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
 
@@ -231,7 +231,7 @@ Slot-recipe setup lives in `#region Context` in `<name>.tsx` (or `<name>.context
 - Use **`#region Parts`** (plural) when the file exports **two or more** component functions.
 - Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Parts`, not inside it.
 - Use **`#region Closed`** for closed multi-slot compose (`Foo` that wires private parts) — place it **after** `#region Parts`, not inside it. Parts stay file-private; do not barrel-export them.
-- Use **`#region Display Names`** when any export sets `displayName` — place it **last**, after Parts / Shorthand / Closed. Include every assignment in declaration order (parts first, then shorthand/closed). Spell the region exactly `Display Names` (with a space) — not `DisplayNames`. Skip the region for a single closed `export function Foo` (no `Foo.displayName = "Foo"`).
+- Use **`#region Display Names`** when any export sets `displayName` — place it **last**, after Parts / Shorthand / Closed. Include every assignment in declaration order (parts only; skip assign-root shorthand — see [Shorthand](#do)). Spell the region exactly `Display Names` (with a space) — not `DisplayNames`. Skip the region for a single closed `export function Foo` (no `Foo.displayName = "Foo"`).
 - Start at `Types` → `Component` / `Parts` (skip Hooks when none).
 - Put content on the line **immediately after** `// #region …` — no blank line after the region marker.
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.

@@ -131,7 +131,6 @@ export function TimelineShorthand({ items = [], ...rest }: TimelineProps) {
 }
 
 TimelineRoot.displayName = "Timeline.Root";
-TimelineShorthand.displayName = "Timeline";
 // #endregion
 
 export const Timeline = Object.assign(TimelineShorthand, {

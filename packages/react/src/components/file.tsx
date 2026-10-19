@@ -128,7 +128,6 @@ export function FileShorthand({
 
 FileMedia.displayName = "File.Media";
 FileSize.displayName = "File.Size";
-FileShorthand.displayName = "FileItem";
 // #endregion
 
 const fileParts = {

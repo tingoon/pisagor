@@ -228,7 +228,6 @@ function PasswordInputVisibilityTrigger({
 // #endregion
 
 // #region Display Names
-PasswordInputShorthand.displayName = "PasswordInput";
 PasswordInputRoot.displayName = "PasswordInput.Root";
 PasswordInputControl.displayName = "PasswordInput.Control";
 PasswordInputInput.displayName = "PasswordInput.Input";

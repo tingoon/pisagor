@@ -346,7 +346,6 @@ SelectItemGroupLabel.displayName = "Select.ItemGroupLabel";
 SelectItem.displayName = "Select.Item";
 SelectClearTrigger.displayName = "Select.ClearTrigger";
 SelectEmpty.displayName = "Select.Empty";
-SelectShorthand.displayName = "Select";
 
 // #endregion
 

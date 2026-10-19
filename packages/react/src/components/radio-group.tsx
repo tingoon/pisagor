@@ -155,7 +155,6 @@ RadioGroupRoot.displayName = "RadioGroup.Root";
 RadioGroupItem.displayName = "RadioGroup.Item";
 RadioGroupItemText.displayName = "RadioGroup.ItemText";
 RadioGroupLabel.displayName = "RadioGroup.Label";
-RadioGroupShorthand.displayName = "RadioGroup";
 
 // #endregion
 
