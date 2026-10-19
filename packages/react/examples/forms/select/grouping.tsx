@@ -1,4 +1,5 @@
-import { createListCollection } from "@ark-ui/react";
+import { Portal, createListCollection } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import { Select } from "@pisagor/react";
 
 export function Grouping() {
@@ -16,20 +17,33 @@ export function Grouping() {
 
   return (
     <Select.Root collection={collection}>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select framework" />
-      </Select.Trigger>
-      <Select.Content>
-        {collection.group().map(([category, items]) => (
-          <Select.ItemGroup heading={category} key={category}>
-            {items.map((item) => (
-              <Select.Item item={item} key={item.value}>
-                {item.label}
-              </Select.Item>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select framework" />
+          <Select.Indicator>
+            <CaretUpDownIcon />
+          </Select.Indicator>
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>
+            {collection.group().map(([category, items]) => (
+              <Select.ItemGroup key={category}>
+                <Select.ItemGroupLabel>{category}</Select.ItemGroupLabel>
+                {items.map((item) => (
+                  <Select.Item item={item} key={item.value}>
+                    {item.label}
+                    <Select.ItemIndicator>
+                      <CheckIcon />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+              </Select.ItemGroup>
             ))}
-          </Select.ItemGroup>
-        ))}
-      </Select.Content>
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
     </Select.Root>
   );
 }

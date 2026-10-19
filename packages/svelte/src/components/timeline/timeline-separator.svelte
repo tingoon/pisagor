@@ -3,10 +3,7 @@
   import { withContext } from "./timeline.context";
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-  const part = withContext(() => rest, {
-    name: "Separator",
-    slot: "separator",
-  });
+  const part = withContext(() => rest, { name: "Separator" });
 </script>
 
 <div {...part.props} aria-hidden="true">{@render children?.()}</div>

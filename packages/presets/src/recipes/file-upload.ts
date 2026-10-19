@@ -1,6 +1,23 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlSurfaceVariantOptions,
+  formControlZoneBase,
+} from "./form-control";
 
 export const fileUploadRecipe = tv({
+  compoundVariants: formControlFillCompounds({
+    primary: "bg-transparent",
+    raised: "bg-card/80",
+    secondary: "bg-muted/40",
+    slot: "dropzone",
+  }),
+  defaultVariants: {
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: [
       "group/file-upload",
@@ -9,6 +26,7 @@ export const fileUploadRecipe = tv({
     ],
     description: ["text-muted-foreground text-sm font-medium"],
     dropzone: [
+      ...formControlZoneBase,
       "[--space:--spacing(6)]",
       "p-(--space)",
       "flex flex-col items-center justify-center gap-2",
@@ -29,6 +47,13 @@ export const fileUploadRecipe = tv({
     helper: ["text-muted-foreground text-xs"],
     itemGroup: ["flex flex-col gap-2"],
     title: ["text-foreground text-sm font-medium"],
+  },
+  variants: {
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
   },
 });
 
@@ -64,13 +89,14 @@ export const fileUploadItemRecipe = tv({
       "rounded-full",
     ],
     previewImage: ["aspect-square size-full", "object-cover", "rounded-lg"],
-    size: ["text-muted-foreground text-xs"],
+    sizeText: ["text-muted-foreground text-xs"],
   },
 });
 
 export type FileUploadRecipeFn = typeof fileUploadRecipe;
 export type FileUploadRecipe = ReturnType<FileUploadRecipeFn>;
 export type FileUploadRecipeSlot = keyof FileUploadRecipe;
+export type FileUploadVariantProps = VariantProps<FileUploadRecipeFn>;
 
 export type FileUploadItemRecipeFn = typeof fileUploadItemRecipe;
 export type FileUploadItemRecipe = ReturnType<FileUploadItemRecipeFn>;

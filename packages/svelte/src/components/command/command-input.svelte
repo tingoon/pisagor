@@ -1,46 +1,31 @@
 <script lang="ts">
   import type { ComboboxInputProps } from "@ark-ui/svelte";
-  import {
-    type FormControlGroupShellVariantProps,
-    formControlGroupShellRecipe,
-    inputGroupControlRecipe,
-  } from "@pisagor/recipes";
+  import type { FormControlGroupShellVariantProps } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { MagnifyingGlassIcon } from "phosphor-svelte";
-  import { onMount } from "svelte";
   import ComboboxControl from "../combobox/combobox-control.svelte";
-  import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import ComboboxInput from "../combobox/combobox-input.svelte";
+  import { InputGroup } from "../input-group";
   import { useStyles } from "./command.context";
 
   type Props = Omit<ComboboxInputProps, "size"> &
-    FormControlGroupShellVariantProps;
+    Pick<FormControlGroupShellVariantProps, "size" | "variant">;
 
-  let { size = "md", class: className, ...rest }: Props = $props();
+  let { size = "md", variant, class: className, ...rest }: Props = $props();
   const styles = useStyles();
   const slots = $derived(styles.slots);
-  const surfaceVariant = useFormControlSurface();
-
-  let shellEl = $state<HTMLDivElement | null>(null);
-
-  onMount(() => {
-    shellEl?.querySelector("input")?.focus();
-  });
 </script>
 
 <ComboboxControl class={slots.control()}>
-  <div
-    class={cn(
-      formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
-      slots.input({ class: cn(className) }),
-    )}
-    data-part="root"
-    data-scope="input-group"
-    bind:this={shellEl}
-  >
-    <div class="ps-2" data-align="inline-start">
+  <InputGroup class={slots.input({ class: cn(className) })} {size} {variant}>
+    <InputGroup.Addon>
       <MagnifyingGlassIcon aria-hidden="true" class={slots.inputIcon()} />
-    </div>
-    <ComboboxFieldInput {...rest} class={inputGroupControlRecipe()} />
-  </div>
+    </InputGroup.Addon>
+    <ComboboxInput>
+      {#snippet asChild(props)}
+        <!-- biome-ignore lint/a11y/noAutofocus: command palette focuses search on open -->
+        <InputGroup.Input {...props(rest)} autofocus />
+      {/snippet}
+    </ComboboxInput>
+  </InputGroup>
 </ComboboxControl>

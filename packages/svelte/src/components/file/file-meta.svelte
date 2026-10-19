@@ -3,7 +3,7 @@
   import { withContext } from "./file.context";
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-  const part = withContext(() => rest, { name: "Meta", slot: "meta" });
+  const part = withContext(() => rest, { name: "Meta" });
 </script>
 
 <div {...part.props}>{@render children?.()}</div>

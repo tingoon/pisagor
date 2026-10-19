@@ -26,7 +26,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 type CircularProgressTrackProps = ComponentProps<"svg">;
-type CircularProgressValueProps = ProgressValueTextProps;
+type CircularProgressValueTextProps = ProgressValueTextProps;
 
 type CircularProgressRootProps = ProgressRootProviderProps &
   CircularProgressRootContract;
@@ -45,7 +45,7 @@ export interface CircularProgressProps
     CircularProgressTrackProps,
     "class" | "height" | "viewBox" | "width"
   >;
-  valueProps?: Omit<CircularProgressValueProps, "children" | "class">;
+  valueProps?: Omit<CircularProgressValueTextProps, "children" | "class">;
 }
 
 interface CircularProgressTrackPartProps {
@@ -59,10 +59,10 @@ interface CircularProgressTrackPartProps {
   >;
 }
 
-const CircularProgressRoot: Component<CircularProgressRootProps> = withProvider(
-  ProgressPrimitive.RootProvider,
-  { name: "Root", slot: "base" },
-);
+const CircularProgressRoot: Component<CircularProgressRootProps> = withProvider<
+  ComponentProps<typeof ProgressPrimitive.RootProvider> &
+    CircularProgressRootContract
+>(ProgressPrimitive.RootProvider, { name: "Root" });
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /
@@ -80,16 +80,16 @@ function getProgressbarProps(progress: ReturnType<UseProgressReturn>) {
   } as const;
 }
 
-const CircularProgressValueWrapper = withContext("span", {
-  defaultProps: { "data-part": "value-wrapper" },
-  name: "ValueWrapper",
-  slot: "valueWrapper",
-});
+const CircularProgressValueWrapper = withContext<ComponentProps<"span">>(
+  "span",
+  { name: "ValueWrapper" },
+);
 
-const CircularProgressValue: Component<CircularProgressValueProps> =
-  withContext(ProgressPrimitive.ValueText, {
-    name: "Value",
-  });
+const CircularProgressValueText: Component<CircularProgressValueTextProps> =
+  withContext<ComponentProps<typeof ProgressPrimitive.ValueText>>(
+    ProgressPrimitive.ValueText,
+    { name: "ValueText" },
+  );
 
 function CircularProgressTrack(
   props: CircularProgressTrackPartProps,
@@ -191,9 +191,9 @@ export function CircularProgress(props: CircularProgressProps): JSX.Element {
     >
       <Show when={local.isValueVisible}>
         <CircularProgressValueWrapper class={local.classNames?.valueWrapper}>
-          <CircularProgressValue
+          <CircularProgressValueText
             {...local.valueProps}
-            class={local.classNames?.value}
+            class={local.classNames?.valueText}
           />
         </CircularProgressValueWrapper>
       </Show>

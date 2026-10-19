@@ -16,7 +16,6 @@
   const root = withProvider(() => rest, {
     defaultProps: { "aria-label": m("menu.label") },
     name: "Root",
-    slot: "base",
   });
 </script>
 

@@ -1,5 +1,5 @@
 import { createListCollection } from "@ark-ui/vue";
-import { PhCaretUpDown, PhGlobe } from "@phosphor-icons/vue";
+import { PhCaretUpDown, PhCheck, PhGlobe } from "@phosphor-icons/vue";
 import type {
   PhoneInputContract,
   PhoneInputRootContract,
@@ -13,7 +13,15 @@ import {
   getCountryCallingCode,
   parsePhoneNumberFromString,
 } from "libphonenumber-js";
-import { computed, defineComponent, h, type PropType, ref, watch } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type PropType,
+  ref,
+  Teleport,
+  watch,
+} from "vue";
 import { Combobox } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
@@ -273,9 +281,9 @@ export const PhoneInput = defineComponent({
               class: slots.countryRoot(),
               collection: collection.value,
               disabled: isDisabled,
-              onValueChange: (nextValue: string[]) => {
+              onValueChange: (details: { value: string[] }) => {
                 const code =
-                  (nextValue[0] as Country | undefined) ??
+                  (details.value[0] as Country | undefined) ??
                   resolvedDefaultCountry.value;
                 internalCountry.value = code;
                 emitValue(display.value, code);
@@ -303,7 +311,7 @@ export const PhoneInput = defineComponent({
                         Combobox.Trigger as ArkPart,
                         {
                           "aria-label": m("phoneInput.selectCountry"),
-                          class: slots.countrySelect(),
+                          asChild: true,
                           disabled: isDisabled,
                           onBlur: props.onBlur,
                           onFocus: props.onFocus,
@@ -312,7 +320,10 @@ export const PhoneInput = defineComponent({
                           h(
                             InputGroup.Button as ArkPart,
                             {
-                              class: slots.countryButton(),
+                              class: cn(
+                                slots.countrySelect(),
+                                slots.countryButton(),
+                              ),
                               disabled: isDisabled,
                               size: "sm",
                               type: "button",
@@ -339,50 +350,66 @@ export const PhoneInput = defineComponent({
                       ),
                   ),
               ),
-              h(
-                Combobox.Content as ArkPart,
-                {
-                  ...props.popupProps,
-                  class: slots.popup({ class: classNames?.popup }),
-                },
-                () => [
+              h(Teleport, { to: "body" }, () =>
+                h(Combobox.Positioner as ArkPart, null, () =>
                   h(
-                    "div",
-                    { class: slots.searchGroup() },
-                    h(InputGroup as ArkPart, { size }, () =>
-                      h(Combobox.FieldInput as ArkPart, { asChild: true }, () =>
-                        h(InputGroup.Input as ArkPart, {
-                          class: slots.search({
-                            class: classNames?.search,
-                          }),
-                          placeholder: m("phoneInput.search"),
-                        }),
-                      ),
-                    ),
-                  ),
-                  h(Combobox.List as ArkPart, null, () =>
-                    options.value.map((item) =>
+                    Combobox.Content as ArkPart,
+                    {
+                      ...props.popupProps,
+                      class: slots.popup({ class: classNames?.popup }),
+                    },
+                    () => [
                       h(
-                        Combobox.Item as ArkPart,
-                        { item, key: item.value },
-                        () => [
-                          renderFlag(slots, classNames, item.value, item.label),
-                          h("span", { class: slots.itemLabel() }, item.label),
-                          h(
-                            "span",
-                            { class: slots.itemCode() },
-                            `+${getCountryCallingCode(item.value)}`,
+                        "div",
+                        { class: slots.searchGroup() },
+                        h(InputGroup as ArkPart, { size }, () =>
+                          h(Combobox.Input as ArkPart, { asChild: true }, () =>
+                            h(InputGroup.Input as ArkPart, {
+                              class: slots.search({
+                                class: classNames?.search,
+                              }),
+                              placeholder: m("phoneInput.search"),
+                            }),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                      h(Combobox.List as ArkPart, null, () =>
+                        options.value.map((item) =>
+                          h(
+                            Combobox.Item as ArkPart,
+                            { item, key: item.value },
+                            () => [
+                              renderFlag(
+                                slots,
+                                classNames,
+                                item.value,
+                                item.label,
+                              ),
+                              h(
+                                "span",
+                                { class: slots.itemLabel() },
+                                item.label,
+                              ),
+                              h(
+                                "span",
+                                { class: slots.itemCode() },
+                                `+${getCountryCallingCode(item.value)}`,
+                              ),
+                              h(Combobox.ItemIndicator as ArkPart, null, () =>
+                                h(PhCheck),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      h(
+                        Combobox.Empty as ArkPart,
+                        null,
+                        () => "No country found. Try a different search.",
+                      ),
+                    ],
                   ),
-                  h(
-                    Combobox.Empty as ArkPart,
-                    null,
-                    () => "No country found. Try a different search.",
-                  ),
-                ],
+                ),
               ),
             ],
           ),

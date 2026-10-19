@@ -1,42 +1,40 @@
 import { Editable as EditablePrimitive } from "@ark-ui/solid";
 import type {
-  EditableAreaProps,
   EditableCancelTriggerProps,
-  EditableControlProps,
   EditableEditTriggerProps,
   EditableInputProps as EditableInputPrimitiveProps,
   EditablePreviewProps as EditablePreviewPrimitiveProps,
   EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
+  EditableValueChangeDetails,
 } from "@ark-ui/solid";
 import type { EditableRootContract } from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
-import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
+
+type FormControlVariant = "primary" | "secondary";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const {
-  Context: EditableStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Editable",
   recipe: editableRecipe,
 });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
-export type EditableRootProps = Omit<
+// #region Types
+type EditableRootProps = Omit<
   EditableRootPrimitiveProps,
   "onValueChange" | "value" | "defaultValue"
->;
+> &
+  EditableRootContract;
 
-export interface EditableProps extends EditableRootProps, EditableRootContract {
+export interface EditableProps extends EditableRootProps {
+  /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   defaultValue?: string;
   value?: string;
@@ -46,56 +44,56 @@ export interface EditableProps extends EditableRootProps, EditableRootContract {
 export type EditableInputProps = Omit<EditableInputPrimitiveProps, "size">;
 
 export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
+  /** Form shell variant. Defaults to `primary`. */
   controlVariant?: FormControlVariant;
   size?: ButtonProps["size"];
   variant?: ButtonProps["variant"];
   buttonRecipe?: typeof buttonRecipe;
 }
+// #endregion
 
-/** Maps Ark's `{ value }` details to a plain string `onValueChange`. */
-export function EditableRoot(props: EditableProps): JSX.Element {
+// #region Parts
+type EditableRootProviderProps = EditableRootPrimitiveProps &
+  EditableRootContract;
+
+const RootBase = withProvider<EditableRootProviderProps>(
+  EditablePrimitive.Root,
+  { name: "Root" },
+);
+
+function Root(props: EditableProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "orientation",
+    "defaultValue",
+    "value",
     "onValueChange",
-    "recipe",
-    "class",
   ]);
 
-  const slots = createMemo(() => (local.recipe ?? editableRecipe)());
-
   return (
-    <EditableStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <EditablePrimitive.Root
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-orientation={local.orientation ?? "horizontal"}
-        onValueChange={
-          local.onValueChange
-            ? (details) => local.onValueChange?.(details.value)
-            : undefined
-        }
-      />
-    </EditableStylesContext>
+    <RootBase
+      {...rest}
+      data-orientation={local.orientation ?? "horizontal"}
+      defaultValue={local.defaultValue}
+      onValueChange={
+        local.onValueChange
+          ? (details: EditableValueChangeDetails) =>
+              local.onValueChange?.(details.value)
+          : undefined
+      }
+      value={local.value}
+    />
   );
 }
 
-export const EditableArea: Component<EditableAreaProps> = withContext(
-  EditablePrimitive.Area,
-  { name: "Area" },
-);
+const Area = withContext(EditablePrimitive.Area, {
+  name: "Area",
+});
 
-export function EditableInput(props: EditableInputProps): JSX.Element {
+function Input(props: EditableInputProps): JSX.Element {
   return <EditablePrimitive.Input {...props} />;
 }
 
-export function EditablePreview(props: EditablePreviewProps): JSX.Element {
+function Preview(props: EditablePreviewProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "controlVariant",
     "size",
@@ -103,70 +101,45 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     "buttonRecipe",
     "class",
   ]);
-  const styles = useStyles();
-  const size = () => local.size ?? "md";
-  const variant = () => local.variant ?? "outline";
-  const buttonRecipeProp = () => local.buttonRecipe ?? buttonRecipe;
   const surfaceVariant = useFormControlSurface();
-  const controlVariant = () =>
-    local.controlVariant ?? ("primary" as FormControlVariant);
-
-  const previewShellClass = () => {
-    const resolvedVariant = controlVariant();
-    if (resolvedVariant === "secondary" && surfaceVariant === "default") {
-      return "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40";
-    }
-    if (resolvedVariant === "secondary" && surfaceVariant) {
-      return "bg-background shadow-none hover:bg-background dark:hover:bg-background/90";
-    }
-    if (resolvedVariant === "secondary") {
-      return "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40";
-    }
-
-    return undefined;
-  };
+  const slots = editableRecipe({
+    surfaceVariant,
+    variant: local.controlVariant ?? "primary",
+  });
 
   return (
     <EditablePrimitive.Preview
       {...rest}
       class={cn(
-        buttonRecipeProp()({
+        (local.buttonRecipe ?? buttonRecipe)({
           clickEffect: false,
-          size: size(),
-          variant: variant(),
+          size: local.size ?? "md",
+          variant: local.variant ?? "outline",
         }).base(),
-        previewShellClass(),
-        styles.slots.preview(),
-        previewShellClass() ? "dark:hover:bg-transparent" : undefined,
+        slots.preview(),
         local.class,
       )}
-      data-variant={controlVariant()}
+      data-variant={local.controlVariant ?? "primary"}
     />
   );
 }
 
-export const EditableControl: Component<EditableControlProps> = withContext(
-  EditablePrimitive.Control,
-  { name: "Control" },
-);
+const Control = withContext(EditablePrimitive.Control, {
+  name: "Control",
+});
 
-export function EditableEditTrigger(
-  props: EditableEditTriggerProps,
-): JSX.Element {
+function EditTrigger(props: EditableEditTriggerProps): JSX.Element {
   return <EditablePrimitive.EditTrigger {...props} />;
 }
 
-export function EditableCancelTrigger(
-  props: EditableCancelTriggerProps,
-): JSX.Element {
+function CancelTrigger(props: EditableCancelTriggerProps): JSX.Element {
   return <EditablePrimitive.CancelTrigger {...props} />;
 }
 
-export function EditableSubmitTrigger(
-  props: EditableSubmitTriggerProps,
-): JSX.Element {
+function SubmitTrigger(props: EditableSubmitTriggerProps): JSX.Element {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }
+// #endregion
 
 export type {
   EditableAreaProps,
@@ -176,12 +149,12 @@ export type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/solid";
 
-export const Editable = Object.assign(EditableRoot, {
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Preview: EditablePreview,
-  SubmitTrigger: EditableSubmitTrigger,
+export const Editable = Object.assign(Root, {
+  Area,
+  CancelTrigger,
+  Control,
+  EditTrigger,
+  Input,
+  Preview,
+  SubmitTrigger,
 });

@@ -25,7 +25,7 @@ export interface ProviderProps extends ParentProps, LocaleConfig {
 }
 
 /** `locale` and partial `messages` merged over the parent `Provider`. */
-export interface LocaleProviderProps extends ParentProps, LocaleConfig {}
+export type LocaleProviderProps = ParentProps & LocaleConfig;
 
 export type MotionProviderProps = ParentProps & Partial<MotionConfig>;
 

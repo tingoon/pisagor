@@ -1,8 +1,4 @@
-import {
-  createListCollection,
-  Select,
-  type SelectRootProps,
-} from "@pisagor/react";
+import { Select, type SelectProps } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
@@ -15,8 +11,8 @@ export interface SelectFieldProps
   extends
     FieldPresentationProps,
     Omit<
-      SelectRootProps,
-      "children" | "collection" | "invalid" | "name" | "onValueChange" | "value"
+      SelectProps,
+      "invalid" | "name" | "onValueChange" | "value" | "items"
     > {
   name?: string;
   value?: string;
@@ -46,11 +42,6 @@ export function SelectField({
   labelProps,
   ...selectProps
 }: SelectFieldProps) {
-  const normalizedItems = items.map((item) =>
-    typeof item === "string" ? { label: item, value: item } : item,
-  );
-  const collection = createListCollection({ items: normalizedItems });
-
   return (
     <FieldShell
       className={className}
@@ -63,11 +54,12 @@ export function SelectField({
       labelProps={labelProps}
       orientation={orientation}
     >
-      <Select.Root
+      <Select
         {...selectProps}
         {...(value !== undefined ? { value: value ? [value] : [] } : {})}
-        collection={collection}
+        id={id}
         invalid={invalid}
+        items={items}
         name={name}
         onFocusOutside={onBlur}
         onValueChange={(nextValue) => {
@@ -75,18 +67,8 @@ export function SelectField({
             Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue,
           );
         }}
-      >
-        <Select.Trigger id={id}>
-          <Select.ValueText placeholder={placeholder} />
-        </Select.Trigger>
-        <Select.Content>
-          {normalizedItems.map((item) => (
-            <Select.Item item={item} key={item.value}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
+        placeholder={placeholder}
+      />
     </FieldShell>
   );
 }

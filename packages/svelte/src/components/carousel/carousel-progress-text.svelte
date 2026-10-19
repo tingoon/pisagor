@@ -6,11 +6,7 @@
   import { withContext } from "./carousel.context";
 
   let { children, ...rest }: CarouselProgressTextProps = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "progress-text" },
-    name: "ProgressText",
-    slot: "progressText",
-  });
+  const part = withContext(() => rest, { name: "ProgressText" });
 </script>
 
 <CarouselPrimitive.ProgressText {...part.props}>

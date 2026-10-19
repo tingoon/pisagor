@@ -1,4 +1,5 @@
-import { createListCollection } from "@ark-ui/react";
+import { Portal, createListCollection } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import { Select } from "@pisagor/react";
 
 export function WithScroll() {
@@ -11,16 +12,28 @@ export function WithScroll() {
 
   return (
     <Select.Root collection={collection} positioning={{ fitViewport: true }}>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select framework" />
-      </Select.Trigger>
-      <Select.Content className="max-h-56">
-        {collection.items.map((item) => (
-          <Select.Item item={item} key={item.value}>
-            {item.label}
-          </Select.Item>
-        ))}
-      </Select.Content>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select framework" />
+          <Select.Indicator>
+            <CaretUpDownIcon />
+          </Select.Indicator>
+        </Select.Trigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content className="max-h-56">
+            {collection.items.map((item) => (
+              <Select.Item item={item} key={item.value}>
+                {item.label}
+                <Select.ItemIndicator>
+                  <CheckIcon />
+                </Select.ItemIndicator>
+              </Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
     </Select.Root>
   );
 }

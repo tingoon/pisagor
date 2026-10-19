@@ -31,7 +31,7 @@
       spacing,
       speed,
     }),
-    { name: "Root", slot: "base" },
+    { name: "Root" },
   );
 </script>
 

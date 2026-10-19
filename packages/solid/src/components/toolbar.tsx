@@ -30,34 +30,33 @@ export interface ToolbarProps
   titleProps?: Omit<ToolbarTitleProps, "children" | "class">;
 }
 
-export const ToolbarRoot: Component<ToolbarRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const ToolbarRoot: Component<ToolbarRootProps> = withProvider<
+  ComponentProps<"div"> & ToolbarRootContract
+>("div", { name: "Root" });
 
-export const ToolbarHeading: Component<ToolbarHeadingProps> = withContext(
-  "div",
-  { name: "Heading" },
-);
+export const ToolbarHeading: Component<ToolbarHeadingProps> = withContext<
+  ComponentProps<"div">
+>("div", { name: "Heading" });
 
-export const ToolbarTitle: Component<ToolbarTitleProps> = withContext(ark.h2, {
+export const ToolbarTitle: Component<ToolbarTitleProps> = withContext<
+  ComponentProps<typeof ark.h2>
+>(ark.h2, {
   name: "Title",
 });
 
 export const ToolbarDescription: Component<ToolbarDescriptionProps> =
-  withContext("p", { name: "Description" });
+  withContext<ComponentProps<"p">>("p", { name: "Description" });
 
-export const ToolbarActions: Component<ToolbarActionsProps> = withContext(
-  "div",
-  {
-    defaultProps: {
-      "aria-orientation": "horizontal",
-      onKeyDown: handleRovingFocusKeyDown,
-      role: "toolbar",
-    },
-    name: "Actions",
+export const ToolbarActions: Component<ToolbarActionsProps> = withContext<
+  ComponentProps<"div">
+>("div", {
+  defaultProps: {
+    "aria-orientation": "horizontal",
+    onKeyDown: handleRovingFocusKeyDown,
+    role: "toolbar",
   },
-);
+  name: "Actions",
+});
 
 export function ToolbarShorthand(props: ToolbarProps): JSX.Element {
   const [local, rest] = splitProps(props, [

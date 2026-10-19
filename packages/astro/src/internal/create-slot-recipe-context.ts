@@ -26,10 +26,21 @@ type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
 export interface WithSlotRecipeOptions<Slot extends string = string> {
-  /** PascalCase part name (`Alert.Title`). */
+  /**
+   * PascalCase part name (`Alert.Title`). Only required field — `slot` and
+   * `part` are derived from this when omitted.
+   */
   name: string;
-  /** Recipe slot; defaults to kebab-case of `name` (`Root` → `base`). */
+  /**
+   * Recipe slot. When omitted: `Root` → `base`, otherwise camelCase of `name`
+   * (`ClearTrigger` → `clearTrigger`).
+   */
   slot?: Slot;
+  /**
+   * `data-part` value. When omitted: `Root` → `root`, otherwise kebab-case of
+   * `name` (`ClearTrigger` → `clear-trigger`).
+   */
+  part?: string;
   /** Attributes applied before consumer props (consumer wins); `class` merges. */
   defaultProps?: Record<string, unknown>;
 }
@@ -66,8 +77,9 @@ function toKebabCase(value: string) {
     .toLowerCase();
 }
 
-function dataPartOf(slot: string) {
-  return slot === "base" ? "root" : slot;
+/** PascalCase part name → recipe slot key (`ClearTrigger` → `clearTrigger`). */
+function toCamelCase(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
 /**
@@ -112,7 +124,14 @@ export function createSlotRecipeContext<
 
   function slotOf(options: WithSlotRecipeOptions<Slot>): Slot {
     return (options.slot ??
-      (options.name === "Root" ? "base" : toKebabCase(options.name))) as Slot;
+      (options.name === "Root" ? "base" : toCamelCase(options.name))) as Slot;
+  }
+
+  function partOf(options: WithSlotRecipeOptions<Slot>) {
+    return (
+      options.part ??
+      (options.name === "Root" ? "root" : toKebabCase(options.name))
+    );
   }
 
   /** Default-variant styles for hand-written parts (no runtime context). */
@@ -138,11 +157,11 @@ export function createSlotRecipeContext<
     const { class: defaultClass, ...defaultProps } = options.defaultProps ?? {};
 
     return {
-      "data-part": dataPartOf(slot),
       "data-scope": dataScope,
       ...dataAttrs,
       ...defaultProps,
       ...rest,
+      "data-part": partOf(options),
       class: (slots[slot] as SlotFn)({
         class: [defaultClass as ClassValue, className],
       }),

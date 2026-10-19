@@ -6,7 +6,7 @@ import { Slider } from "@pisagor/vue";
   <Slider.Root class="w-64" :default-value="[40]">
     <Slider.Header>
       <Slider.Label>Volume</Slider.Label>
-      <Slider.Value />
+      <Slider.ValueText />
     </Slider.Header>
     <Slider.Control>
       <Slider.Track>

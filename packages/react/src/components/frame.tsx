@@ -1,6 +1,6 @@
 import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
@@ -22,7 +22,7 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & FrameRootContract) {
+}: ComponentProps<"div"> & FrameRootContract) {
   const slots = recipe({ size });
 
   return (
@@ -45,7 +45,7 @@ export function FramePanel({
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div">) {
+}: ComponentProps<"div">) {
   const { slots } = useStyles();
 
   return (
@@ -62,35 +62,27 @@ export function FramePanel({
   );
 }
 
-export const FrameHeader = withContext("header", {
-  defaultProps: {
-    "data-part": "panel-header",
-  },
+export const FrameHeader = withContext<ComponentProps<"header">>("header", {
   name: "Header",
+  part: "panel-header",
   slot: "panelHeader",
 });
 
-export const FrameTitle = withContext("div", {
-  defaultProps: {
-    "data-part": "panel-title",
-  },
+export const FrameTitle = withContext<ComponentProps<"div">>("div", {
   name: "Title",
+  part: "panel-title",
   slot: "panelTitle",
 });
 
-export const FrameDescription = withContext("div", {
-  defaultProps: {
-    "data-part": "panel-description",
-  },
+export const FrameDescription = withContext<ComponentProps<"div">>("div", {
   name: "Description",
+  part: "panel-description",
   slot: "panelDescription",
 });
 
-export const FrameFooter = withContext("footer", {
-  defaultProps: {
-    "data-part": "panel-footer",
-  },
+export const FrameFooter = withContext<ComponentProps<"footer">>("footer", {
   name: "Footer",
+  part: "panel-footer",
   slot: "panelFooter",
 });
 // #endregion

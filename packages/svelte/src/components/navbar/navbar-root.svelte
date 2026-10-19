@@ -6,7 +6,7 @@
   type Props = HTMLAttributes<HTMLElement> & NavbarRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <header {...root.props}>{@render children?.()}</header>

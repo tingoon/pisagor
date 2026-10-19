@@ -1,4 +1,5 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react";
+import type { ComponentProps } from "react";
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
@@ -21,8 +22,8 @@ const {
 // #endregion
 
 // #region Types
-export interface CollapsibleRootProps
-  extends CollapsibleRootPrimitiveProps, CollapsibleRootContract {}
+export type CollapsibleRootProps = CollapsibleRootPrimitiveProps &
+  CollapsibleRootContract;
 // #endregion
 
 // #region Parts
@@ -53,7 +54,9 @@ export function CollapsibleRoot({
   );
 }
 
-export const CollapsibleTrigger = withContext(CollapsiblePrimitive.Trigger, {
+export const CollapsibleTrigger = withContext<
+  ComponentProps<typeof CollapsiblePrimitive.Trigger>
+>(CollapsiblePrimitive.Trigger, {
   name: "Trigger",
 });
 

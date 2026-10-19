@@ -196,7 +196,7 @@ function PasswordInputControl({ className, ...rest }: InputGroupProps) {
 function PasswordInputInput(props: PasswordInputInputProps) {
   return (
     <PasswordInputPrimitive.Input {...props} asChild>
-      <InputGroup.Input clearable={false} />
+      <InputGroup.Input />
     </PasswordInputPrimitive.Input>
   );
 }
@@ -228,7 +228,6 @@ function PasswordInputVisibilityTrigger({
 // #endregion
 
 // #region Display Names
-PasswordInputShorthand.displayName = "PasswordInput";
 PasswordInputRoot.displayName = "PasswordInput.Root";
 PasswordInputControl.displayName = "PasswordInput.Control";
 PasswordInputInput.displayName = "PasswordInput.Input";

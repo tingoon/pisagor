@@ -1,22 +1,24 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
-import { Combobox, Field } from "@pisagor/solid";
+import { CaretUpDownIcon, CheckIcon } from "@squidlab/phosphor-solid/icons";
+import { Combobox, Field, InputGroup } from "@pisagor/solid";
 import { For } from "solid-js";
+import { Portal } from "solid-js/web";
+
+const initialItems = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Orange", value: "orange" },
+  { label: "Grape", value: "grape" },
+  { label: "Strawberry", value: "strawberry" },
+  { label: "Mango", value: "mango" },
+  { label: "Pineapple", value: "pineapple" },
+  { label: "Kiwi", value: "kiwi" },
+  { label: "Peach", value: "peach" },
+  { label: "Pear", value: "pear" },
+];
 
 export function ComboboxMultipleField() {
-  const initialItems = [
-    { label: "Apple", value: "apple" },
-    { label: "Banana", value: "banana" },
-    { label: "Orange", value: "orange" },
-    { label: "Grape", value: "grape" },
-    { label: "Strawberry", value: "strawberry" },
-    { label: "Mango", value: "mango" },
-    { label: "Pineapple", value: "pineapple" },
-    { label: "Kiwi", value: "kiwi" },
-    { label: "Peach", value: "peach" },
-    { label: "Pear", value: "pear" },
-  ];
   const filterFn = useFilter({ sensitivity: "base" });
-
   const { collection, filter } = useListCollection({
     filter: filterFn().contains,
     initialItems,
@@ -30,16 +32,48 @@ export function ComboboxMultipleField() {
         multiple
         onInputValueChange={({ inputValue }) => filter(inputValue)}
       >
-        <Combobox.Input aria-label="Select items" placeholder="Select items…" />
-        <Combobox.Content>
-          <Combobox.List>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item item={item}>{item.label}</Combobox.Item>
+        <Combobox.Control>
+          <InputGroup>
+            <Combobox.Input
+              asChild={(inputProps) => (
+                <InputGroup.Input
+                  {...inputProps()}
+                  aria-label="Select items"
+                  placeholder="Select items…"
+                />
               )}
-            </For>
-          </Combobox.List>
-        </Combobox.Content>
+            />
+            <InputGroup.Addon align="inline-end">
+              <InputGroup.Button
+                asChild={(buttonProps) => (
+                  <Combobox.Trigger {...buttonProps()}>
+                    <CaretUpDownIcon aria-hidden />
+                  </Combobox.Trigger>
+                )}
+                size="icon-xs"
+                variant="ghost"
+              />
+            </InputGroup.Addon>
+          </InputGroup>
+        </Combobox.Control>
+        <Portal>
+          <Combobox.Positioner>
+            <Combobox.Content>
+              <Combobox.List>
+                <For each={collection().items}>
+                  {(item) => (
+                    <Combobox.Item item={item} persistFocus>
+                      {item.label}
+                      <Combobox.ItemIndicator>
+                        <CheckIcon />
+                      </Combobox.ItemIndicator>
+                    </Combobox.Item>
+                  )}
+                </For>
+              </Combobox.List>
+            </Combobox.Content>
+          </Combobox.Positioner>
+        </Portal>
       </Combobox.Root>
       <Field.Description>Select multiple items.</Field.Description>
     </Field>

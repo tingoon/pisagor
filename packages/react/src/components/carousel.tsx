@@ -3,8 +3,14 @@ import {
   useCarouselContext,
 } from "@ark-ui/react";
 import type {
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselItemGroupProps,
+  CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
+  CarouselProgressTextProps,
   CarouselRootProps as CarouselRootPrimitiveProps,
 } from "@ark-ui/react";
 import {
@@ -19,7 +25,7 @@ import type {
   CarouselContract,
 } from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -32,8 +38,8 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface CarouselRootProps
-  extends CarouselRootPrimitiveProps, Omit<CarouselRootContract, "slides"> {}
+export type CarouselRootProps = CarouselRootPrimitiveProps &
+  Omit<CarouselRootContract, "slides">;
 
 interface CarouselPresetItem extends Omit<BaseCarouselPresetItem, "content"> {
   content: ReactNode;
@@ -49,10 +55,10 @@ export interface CarouselProps
 // #endregion
 
 // #region Parts
-const CarouselRootBase = withProvider(CarouselPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<CarouselRootProps>;
+const CarouselRootBase = withProvider<CarouselRootProps>(
+  CarouselPrimitive.Root,
+  { name: "Root" },
+);
 
 export function CarouselRoot({
   children,
@@ -66,9 +72,12 @@ export function CarouselRoot({
   );
 }
 
-export const CarouselControl = withContext(CarouselPrimitive.Control, {
-  name: "Control",
-});
+export const CarouselControl = withContext<CarouselControlProps>(
+  CarouselPrimitive.Control,
+  {
+    name: "Control",
+  },
+);
 
 export function CarouselPrevTrigger({
   className,
@@ -148,37 +157,34 @@ export function CarouselAutoplayTrigger({
   );
 }
 
-export const CarouselProgressText = withContext(
+export const CarouselProgressText = withContext<CarouselProgressTextProps>(
   CarouselPrimitive.ProgressText,
-  {
-    defaultProps: { "data-part": "progress-text" },
-    name: "ProgressText",
-    slot: "progressText",
-  },
+  { name: "ProgressText" },
 );
 
-export const CarouselIndicatorGroup = withContext(
+export const CarouselIndicatorGroup = withContext<CarouselIndicatorGroupProps>(
   CarouselPrimitive.IndicatorGroup,
+  { name: "IndicatorGroup" },
+);
+
+export const CarouselIndicator = withContext<CarouselIndicatorProps>(
+  CarouselPrimitive.Indicator,
   {
-    defaultProps: { "data-part": "indicator-group" },
-    name: "IndicatorGroup",
-    slot: "indicatorGroup",
+    name: "Indicator",
   },
 );
 
-export const CarouselIndicator = withContext(CarouselPrimitive.Indicator, {
-  name: "Indicator",
-});
+export const CarouselItemGroup = withContext<CarouselItemGroupProps>(
+  CarouselPrimitive.ItemGroup,
+  { name: "ItemGroup" },
+);
 
-export const CarouselItemGroup = withContext(CarouselPrimitive.ItemGroup, {
-  defaultProps: { "data-part": "item-group" },
-  name: "ItemGroup",
-  slot: "itemGroup",
-});
-
-export const CarouselItem = withContext(CarouselPrimitive.Item, {
-  name: "Item",
-});
+export const CarouselItem = withContext<CarouselItemProps>(
+  CarouselPrimitive.Item,
+  {
+    name: "Item",
+  },
+);
 // #endregion
 
 // #region Shorthand
@@ -212,7 +218,6 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
 CarouselRoot.displayName = "Carousel.Root";
 CarouselPrevTrigger.displayName = "Carousel.PrevTrigger";
 CarouselNextTrigger.displayName = "Carousel.NextTrigger";
-CarouselShorthand.displayName = "Carousel";
 
 // #endregion
 

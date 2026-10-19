@@ -5,7 +5,7 @@ import type {
   CardContract,
 } from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -17,7 +17,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface CardRootProps extends HTMLArkProps<"div">, CardRootContract {}
+export type CardRootProps = HTMLArkProps<"div"> & CardRootContract;
 
 export type CardMediaProps = ComponentProps<"div"> & CardVariantProps;
 
@@ -33,14 +33,11 @@ export type CardActionProps = ComponentProps<"div">;
 export type CardContentProps = ComponentProps<"div">;
 export type CardFooterProps = ComponentProps<"div">;
 
-export interface CardProps extends CardRootProps, CardContract {}
+export type CardProps = CardRootProps & CardContract;
 // #endregion
 
 // #region Parts
-export const CardRoot: Component<CardRootProps> = withProvider(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+export const CardRoot = withProvider<CardRootProps>(ark.div, { name: "Root" });
 
 /** Part-level `variant` stays on Media (not lifted to Root). */
 export function CardMedia(props: CardMediaProps): JSX.Element {
@@ -59,15 +56,25 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
   );
 }
 
-export const CardTitle = withContext(ark.h3, { name: "Title" });
+export const CardTitle = withContext<CardTitleProps>(ark.h3, {
+  name: "Title",
+});
 
-export const CardDescription = withContext("p", { name: "Description" });
+export const CardDescription = withContext<CardDescriptionProps>("p", {
+  name: "Description",
+});
 
-export const CardAction = withContext("div", { name: "Action" });
+export const CardAction = withContext<CardActionProps>("div", {
+  name: "Action",
+});
 
-export const CardContent = withContext("div", { name: "Content" });
+export const CardContent = withContext<CardContentProps>("div", {
+  name: "Content",
+});
 
-export const CardFooter = withContext("div", { name: "Footer" });
+export const CardFooter = withContext<CardFooterProps>("div", {
+  name: "Footer",
+});
 
 export function CardHeader(props: CardHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, [

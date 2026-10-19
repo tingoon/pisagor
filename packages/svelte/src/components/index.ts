@@ -95,7 +95,7 @@ export * from "./switch";
 export * from "./table";
 export * from "./tabs";
 export * from "./tags-input";
-export { default as Textarea } from "./textarea.svelte";
+export * from "./textarea";
 export * from "./timeline";
 export * from "./timer";
 export * from "./toast";

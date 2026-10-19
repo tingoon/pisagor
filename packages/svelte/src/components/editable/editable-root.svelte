@@ -4,9 +4,8 @@
     type EditableRootProps as ArkEditableRootProps,
   } from "@ark-ui/svelte";
   import type { EditableRootContract } from "@pisagor/contracts";
-  import { editableRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./editable.context";
+
+  import { withProvider } from "./editable.context";
 
   type Props = Omit<
     ArkEditableRootProps,
@@ -23,32 +22,26 @@
     defaultValue,
     value,
     onValueChange,
-    recipe = editableRecipe,
-    class: className,
     children,
     ...rest
   }: Props = $props();
 
-  const slots = $derived(recipe());
-
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
-
   function handleValueChange(details: { value: string }) {
     onValueChange?.(details.value);
   }
+
+  const root = withProvider(
+    () => ({
+      ...rest,
+      "data-orientation": orientation,
+      defaultValue,
+      onValueChange: onValueChange ? handleValueChange : undefined,
+      value,
+    }),
+    { name: "Root" },
+  );
 </script>
 
-<EditablePrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-orientation={orientation}
-  {defaultValue}
-  onValueChange={onValueChange ? handleValueChange : undefined}
-  {value}
->
+<EditablePrimitive.Root {...root.props}>
   {@render children?.()}
 </EditablePrimitive.Root>

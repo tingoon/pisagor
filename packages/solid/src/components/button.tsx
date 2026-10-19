@@ -5,8 +5,7 @@ import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Spinner } from "./spinner";
 
-export interface ButtonProps
-  extends HTMLArkProps<"button">, ButtonRootContract {}
+export type ButtonProps = HTMLArkProps<"button"> & ButtonRootContract;
 
 export function Button(props: ButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -4,6 +4,12 @@
 import { Accordion } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<Accordion />
+```
+
 ## Examples
 
 ### Default
@@ -12,11 +18,17 @@ A single expandable section for grouping related content under a heading.
 
 <Example name="Default" />
 
-### Sizes
+### Orientation Horizontal
 
-Use `size` to pick the sm, md or lg scale. `md` is the default.
+Arrange sections in a row when the layout is wide.
 
-<Example name="Sizes" />
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Stack sections for the default top-to-bottom scan.
+
+<Example name="OrientationVertical" />
 
 ### Multiple
 
@@ -29,18 +41,6 @@ Allow several sections open at once when users compare content across panels.
 Keep at least one section open when collapsing everything would hide required content.
 
 <Example name="NonCollapsible" />
-
-### Compound
-
-Compose trigger and content parts when you need a custom section layout.
-
-<Example name="Compound" />
-
-### With Card
-
-Place accordion sections inside a card surface when the group should read as one unit.
-
-<Example name="WithCard" />
 
 ### Controlled
 

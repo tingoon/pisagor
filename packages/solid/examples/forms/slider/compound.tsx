@@ -5,7 +5,7 @@ export function Compound() {
     <Slider.Root class="w-64" defaultValue={[40]}>
       <Slider.Header>
         <Slider.Label>Volume</Slider.Label>
-        <Slider.Value />
+        <Slider.ValueText />
       </Slider.Header>
       <Slider.Control>
         <Slider.Track>

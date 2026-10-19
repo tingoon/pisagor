@@ -6,11 +6,7 @@
   import { withContext } from "./carousel.context";
 
   let { children, ...rest }: CarouselIndicatorGroupProps = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "indicator-group" },
-    name: "IndicatorGroup",
-    slot: "indicatorGroup",
-  });
+  const part = withContext(() => rest, { name: "IndicatorGroup" });
 </script>
 
 <CarouselPrimitive.IndicatorGroup {...part.props}>

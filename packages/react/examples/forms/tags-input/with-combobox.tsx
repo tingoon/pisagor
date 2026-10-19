@@ -1,4 +1,9 @@
-import { useFilter, useListCollection, useTagsInput } from "@ark-ui/react";
+import {
+  Portal,
+  useFilter,
+  useListCollection,
+  useTagsInput,
+} from "@ark-ui/react";
 import { Combobox, Field, TagsInput } from "@pisagor/react";
 import { useId } from "react";
 
@@ -37,8 +42,8 @@ export function WithCombobox() {
         collection={collection}
         ids={{ control: `tags-control-${uid}`, input: `tags-input-${uid}` }}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => {
-          const next = value[0];
+        onValueChange={(details) => {
+          const next = details.value[0];
           if (next && !tagsInput.value.includes(next)) {
             tagsInput.addValue(next);
           }
@@ -55,25 +60,29 @@ export function WithCombobox() {
                     {tag}
                   </TagsInput.Item>
                 ))}
-                <Combobox.FieldInput asChild>
+                <Combobox.Input asChild>
                   <TagsInput.Input placeholder="Search framework" />
-                </Combobox.FieldInput>
+                </Combobox.Input>
               </>
             )}
           </TagsInput.Context>
         </TagsInput.RootProvider>
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Empty>
-              No frameworks found. Try a different search.
-            </Combobox.Empty>
-            {availableItems.map((item) => (
-              <Combobox.Item item={item} key={item}>
-                {item}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
+        <Portal>
+          <Combobox.Positioner>
+            <Combobox.Content>
+              <Combobox.List>
+                <Combobox.Empty>
+                  No frameworks found. Try a different search.
+                </Combobox.Empty>
+                {availableItems.map((item) => (
+                  <Combobox.Item item={item} key={item}>
+                    {item}
+                  </Combobox.Item>
+                ))}
+              </Combobox.List>
+            </Combobox.Content>
+          </Combobox.Positioner>
+        </Portal>
       </Combobox.Root>
     </Field>
   );

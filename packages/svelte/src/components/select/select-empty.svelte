@@ -1,28 +1,24 @@
 <script lang="ts">
   import { Select as SelectPrimitive } from "@ark-ui/svelte";
-  import { selectRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useSelectRoot } from "./select.context";
+  import { withContext } from "./select.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: Snippet;
   };
 
-  let { class: className, children, ...rest }: Props = $props();
-  const ctx = useSelectRoot();
-  const slots = $derived(ctx?.slots ?? selectRecipe());
+  let { children, ...rest }: Props = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { role: "presentation" },
+    name: "Empty",
+  });
 </script>
 
 <SelectPrimitive.Context>
   {#snippet render(select)}
     {#if select().empty}
-      <div
-        {...rest}
-        class={slots.empty({ class: cn(className) })}
-        role="presentation"
-      >
+      <div {...part.props}>
         {@render children?.()}
       </div>
     {/if}

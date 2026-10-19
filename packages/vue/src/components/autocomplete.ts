@@ -1,4 +1,3 @@
-import { createListCollection } from "@ark-ui/vue";
 import type {
   CollectionItem,
   ComboboxInputValueChangeDetails,
@@ -6,7 +5,7 @@ import type {
 } from "@ark-ui/vue";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
-import type { ComboboxInputProps, ComboboxRootProps } from "./combobox";
+import type { ComboboxProps, ComboboxRootProps } from "./combobox";
 import { Combobox } from "./combobox";
 import { Separator } from "./separator";
 
@@ -27,15 +26,20 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
 
 export interface AutocompleteProps extends Omit<
   AutocompleteRootProps,
-  "children" | "items"
+  "children" | "collection"
 > {
-  items?: Array<AutocompletePresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  items?: Array<AutocompletePresetItem | string>;
+  placeholder?: string;
+  /** Input size. Defaults to `md`. */
+  size?: ComboboxProps["size"];
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: FormControlVariant;
 }
 // #endregion
 
@@ -77,22 +81,7 @@ export const AutocompleteControl = defineComponent({
   },
 });
 
-export const AutocompleteInput = defineComponent({
-  inheritAttrs: false,
-  name: "AutocompleteInput",
-  props: {
-    clearable: { default: false, type: Boolean },
-    showTrigger: { default: false, type: Boolean },
-  },
-  setup(props, { attrs }) {
-    return () =>
-      h(Combobox.Input as ArkPart, {
-        ...attrs,
-        clearable: props.clearable,
-        showTrigger: props.showTrigger,
-      });
-  },
-});
+export const AutocompleteInput = Combobox.Input;
 
 export const AutocompleteItemGroup = Combobox.ItemGroup;
 export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
@@ -136,53 +125,19 @@ export const AutocompleteShorthand = defineComponent({
     clearable: { default: false, type: Boolean },
     items: {
       default: undefined,
-      type: Array as PropType<
-        Array<AutocompletePresetItem | string> | undefined
-      >,
-    },
-    size: {
-      default: undefined,
-      type: String as PropType<ComboboxInputProps["size"]>,
-    },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
+      type: Array as PropType<AutocompleteProps["items"]>,
     },
   },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const items = props.items ?? [];
-      const normalized = items.map((item) =>
-        typeof item === "string" ? { label: item, value: item } : item,
-      );
-
-      const collection = createListCollection({ items: normalized });
-
-      return h(
-        AutocompleteRoot as ArkPart,
-        {
-          ...attrs,
-          collection,
-          size: props.size,
-          variant: props.variant,
-        },
-        () => [
-          h(AutocompleteInput as ArkPart, { clearable: props.clearable }),
-          h(AutocompleteContent as ArkPart, null, () =>
-            h(AutocompleteList as ArkPart, null, () =>
-              normalized.map((item) =>
-                h(
-                  AutocompleteItem as ArkPart,
-                  { item, key: item.value, value: item.value },
-                  () => item.label,
-                ),
-              ),
-            ),
-          ),
-          slots.default?.(),
-        ],
-      );
-    };
+  setup(props, { attrs }) {
+    return () =>
+      h(Combobox as ArkPart, {
+        ...attrs,
+        allowCustomValue: true,
+        clearable: props.clearable,
+        inputBehavior: "autocomplete",
+        items: props.items,
+        showTrigger: false,
+      });
   },
 });
 // #endregion

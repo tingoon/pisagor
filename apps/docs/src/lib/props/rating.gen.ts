@@ -13,6 +13,12 @@ export const ratingProps: PropRow[] = [
     description: "Size scale.",
   },
   {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "RatingRecipeFn | undefined",
     defaultValue: "ratingRecipe",

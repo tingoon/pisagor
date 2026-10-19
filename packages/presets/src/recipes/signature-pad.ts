@@ -1,7 +1,55 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
+const surfaceVariantOptions = {
+  default: "",
+  glass: "",
+  secondary: "",
+  tertiary: "",
+  transparent: "",
+} as const;
+
+const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = [
+  "secondary",
+  "tertiary",
+  "glass",
+];
+
 export const signaturePadRecipe = tv({
+  compoundVariants: [
+    {
+      class: { control: "bg-transparent" },
+      surfaceVariant: undefined,
+      variant: "primary",
+    },
+    {
+      class: { control: "bg-transparent" },
+      surfaceVariant: ["default", "transparent"],
+      variant: "primary",
+    },
+    {
+      class: { control: "bg-card/80" },
+      surfaceVariant: mutedSurfaces,
+      variant: "primary",
+    },
+    {
+      class: { control: "bg-muted/40" },
+      surfaceVariant: undefined,
+      variant: "secondary",
+    },
+    {
+      class: { control: "bg-muted/40" },
+      surfaceVariant: ["default", "transparent"],
+      variant: "secondary",
+    },
+    {
+      class: { control: "bg-card/80" },
+      surfaceVariant: mutedSurfaces,
+      variant: "secondary",
+    },
+  ],
   defaultVariants: {
+    /** Surface variant. */
+    surfaceVariant: undefined,
     /** Visual emphasis. */
     variant: "primary",
   },
@@ -11,7 +59,7 @@ export const signaturePadRecipe = tv({
       "flex flex-col gap-1.5",
       "data-disabled:opacity-64 data-disabled:grayscale",
     ],
-    clear: [
+    clearTrigger: [
       "absolute inset-e-2 top-2",
       "bg-muted",
       "text-muted-foreground",
@@ -23,7 +71,7 @@ export const signaturePadRecipe = tv({
       "relative",
       "size-full min-h-0 min-w-0",
       "flex flex-col",
-      "border-border/50 rounded-xl border",
+      "border-input rounded-2xl border-2 border-dashed",
       "data-disabled:cursor-not-allowed",
       "data-invalid:border-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
     ],
@@ -35,6 +83,7 @@ export const signaturePadRecipe = tv({
     segment: ["size-full", "min-h-0", "fill-foreground", "touch-none"],
   },
   variants: {
+    surfaceVariant: surfaceVariantOptions,
     variant: {
       primary: {
         control: "shadow-xs/5",

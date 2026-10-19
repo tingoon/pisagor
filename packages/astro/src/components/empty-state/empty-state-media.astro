@@ -4,7 +4,7 @@ import { withContext } from "./empty-state.context";
 
 type Props = HTMLAttributes<"div">;
 
-const media = withContext(Astro.props, { name: "Media", slot: "media" });
+const media = withContext(Astro.props, { name: "Media" });
 ---
 
 <div {...media.props}>

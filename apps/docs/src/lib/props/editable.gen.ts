@@ -7,6 +7,18 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/editable.ts`, native HTML attributes omitted). */
 export const editableProps: PropRow[] = [
   {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis (control shell).",
+  },
+  {
     name: "recipe",
     type: "EditableRecipeFn | undefined",
     defaultValue: "editableRecipe",

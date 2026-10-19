@@ -4,29 +4,16 @@
     type FileUploadRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
   import type { FileUploadRootContract } from "@pisagor/contracts";
-  import { fileUploadRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./file-upload.context";
+
+  import { withFileUploadProvider } from "./file-upload.context";
 
   type Props = ArkRootProps & {
     onValueChange?: (value: globalThis.File[]) => void;
   } & FileUploadRootContract;
 
-  let {
-    children,
-    onFileChange,
-    onValueChange,
-    recipe = fileUploadRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  let { children, onFileChange, onValueChange, ...rest }: Props = $props();
 
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  const root = withFileUploadProvider(() => rest, { name: "Root" });
 
   function handleFileChange(
     details: Parameters<NonNullable<Props["onFileChange"]>>[0],
@@ -36,11 +23,7 @@
   }
 </script>
 
-<FileUploadPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  onFileChange={handleFileChange}
->
+<FileUploadPrimitive.Root {...root.props} onFileChange={handleFileChange}>
   {@render children?.()}
   <FileUploadPrimitive.HiddenInput />
 </FileUploadPrimitive.Root>

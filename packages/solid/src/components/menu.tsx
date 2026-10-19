@@ -18,16 +18,14 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface MenuRootProps
-  extends ComponentProps<"nav">, MenuRootContract {}
+export type MenuRootProps = ComponentProps<"nav"> & MenuRootContract;
 
-export interface MenuProps extends MenuRootProps, MenuContract {}
+export type MenuProps = MenuRootProps & MenuContract;
 
 export type MenuPartProps = ComponentProps<"div">;
 export type MenuListProps = ComponentProps<"ul">;
 
-export interface MenuItemProps
-  extends HTMLArkProps<"button">, MenuItemRootContract {}
+export type MenuItemProps = HTMLArkProps<"button"> & MenuItemRootContract;
 
 export interface MenuLinkProps extends HTMLArkProps<"a"> {
   active?: boolean;
@@ -37,10 +35,9 @@ export type MenuGroupLabelProps = ComponentProps<"div">;
 export type MenuSeparatorProps = ComponentProps<"div">;
 export type MenuShortcutProps = ComponentProps<"span">;
 
-const MenuRootBase: Component<MenuRootProps> = withProvider("nav", {
-  name: "Root",
-  slot: "base",
-});
+const MenuRootBase: Component<MenuRootProps> = withProvider<
+  ComponentProps<"nav"> & MenuRootContract
+>("nav", { name: "Root" });
 
 export function MenuRoot(props: MenuRootProps): JSX.Element {
   const { m } = useLocale();
@@ -54,7 +51,9 @@ export function MenuRoot(props: MenuRootProps): JSX.Element {
 /** True inside `Menu.List`, so separators render as `<li>`. */
 const MenuInsideListContext = createContext(false);
 
-const MenuListBase: Component<MenuListProps> = withContext("ul", {
+const MenuListBase: Component<MenuListProps> = withContext<
+  ComponentProps<"ul">
+>("ul", {
   defaultProps: { role: "list" },
   name: "List",
 });
@@ -67,19 +66,16 @@ export function MenuList(props: MenuListProps): JSX.Element {
   );
 }
 
-export const MenuGroup: Component<MenuPartProps> = withContext("div", {
+export const MenuGroup: Component<MenuPartProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   defaultProps: { role: "group" },
   name: "Group",
 });
 
-export const MenuGroupLabel: Component<MenuGroupLabelProps> = withContext(
-  "div",
-  {
-    defaultProps: { "data-part": "group-label" },
-    name: "GroupLabel",
-    slot: "groupLabel",
-  },
-);
+export const MenuGroupLabel: Component<MenuGroupLabelProps> = withContext<
+  ComponentProps<"div">
+>("div", { name: "GroupLabel" });
 
 export function MenuItem(props: MenuItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -133,12 +129,16 @@ export function MenuLink(props: MenuLinkProps): JSX.Element {
   );
 }
 
-const MenuSeparatorDiv: Component<MenuSeparatorProps> = withContext("div", {
+const MenuSeparatorDiv: Component<MenuSeparatorProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
 
-const MenuSeparatorItem: Component<ComponentProps<"li">> = withContext("li", {
+const MenuSeparatorItem: Component<ComponentProps<"li">> = withContext<
+  ComponentProps<"li">
+>("li", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
@@ -153,7 +153,9 @@ export function MenuSeparator(props: MenuSeparatorProps): JSX.Element {
   );
 }
 
-export const MenuShortcut: Component<MenuShortcutProps> = withContext("span", {
+export const MenuShortcut: Component<MenuShortcutProps> = withContext<
+  ComponentProps<"span">
+>("span", {
   name: "Shortcut",
 });
 

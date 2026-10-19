@@ -4,7 +4,7 @@ import { withContext } from "./announcement.context";
 
 type Props = HTMLAttributes<"span">;
 
-const title = withContext(Astro.props, { name: "Title", slot: "title" });
+const title = withContext(Astro.props, { name: "Title" });
 ---
 
 <span {...title.props}>

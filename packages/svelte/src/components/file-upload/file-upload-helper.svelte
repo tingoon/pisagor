@@ -4,9 +4,8 @@
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
   const part = withFileUploadContext(() => rest, {
-    defaultProps: { "data-part": "dropzone-helper" },
     name: "Helper",
-    slot: "helper",
+    part: "dropzone-helper",
   });
 </script>
 

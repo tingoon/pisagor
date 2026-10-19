@@ -13,10 +13,7 @@
     spacing = "calc(var(--spacing) * 4)",
     ...rest
   }: Props = $props();
-  const root = withProvider(() => ({ ...rest, spacing }), {
-    name: "Root",
-    slot: "base",
-  });
+  const root = withProvider(() => ({ ...rest, spacing }), { name: "Root" });
 </script>
 
 <CarouselPrimitive.Root {...root.props}>

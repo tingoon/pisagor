@@ -20,15 +20,12 @@ export interface ButtonGroupProps extends ButtonGroupRootContract {
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot = withProvider("fieldset", {
-  name: "Root",
-  slot: "base",
-});
+export const ButtonGroupRoot = withProvider<ButtonGroupRootContract>(
+  "fieldset",
+  { name: "Root" },
+);
 
-export const ButtonGroupText = withContext("div", {
-  name: "Text",
-  slot: "text",
-});
+export const ButtonGroupText = withContext("div", { name: "Text" });
 
 export const ButtonGroupSeparator = defineComponent({
   inheritAttrs: false,

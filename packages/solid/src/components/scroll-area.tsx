@@ -13,7 +13,7 @@ import {
   type ScrollAreaVariantProps,
   scrollAreaRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -39,10 +39,9 @@ export interface ScrollAreaProps
   viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
 }
 
-const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider(
-  ScrollAreaPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider<
+  ComponentProps<typeof ScrollAreaPrimitive.Root> & ScrollAreaRootContract
+>(ScrollAreaPrimitive.Root, { name: "Root" });
 
 function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
@@ -60,15 +59,13 @@ function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   );
 }
 
-const ScrollAreaScrollbar: Component<ScrollAreaScrollbarProps> = withContext(
-  ScrollAreaPrimitive.Scrollbar,
-  { name: "Scrollbar" },
-);
+const ScrollAreaScrollbar: Component<ScrollAreaScrollbarProps> = withContext<
+  ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>
+>(ScrollAreaPrimitive.Scrollbar, { name: "Scrollbar" });
 
-const ScrollAreaThumb: Component<ScrollAreaThumbProps> = withContext(
-  ScrollAreaPrimitive.Thumb,
-  { name: "Thumb" },
-);
+const ScrollAreaThumb: Component<ScrollAreaThumbProps> = withContext<
+  ComponentProps<typeof ScrollAreaPrimitive.Thumb>
+>(ScrollAreaPrimitive.Thumb, { name: "Thumb" });
 
 function ScrollAreaShorthand(props: ScrollAreaProps): JSX.Element {
   const [local, rest] = splitProps(props, [

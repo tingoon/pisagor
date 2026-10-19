@@ -3,10 +3,7 @@
   import { withContext } from "./slider.context";
 
   let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
-  const part = withContext(() => rest, {
-    name: "MarkerTick",
-    slot: "markerTick",
-  });
+  const part = withContext(() => rest, { name: "MarkerTick" });
 </script>
 
 <span {...part.props}>{@render children?.()}</span>

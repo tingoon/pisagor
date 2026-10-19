@@ -8,7 +8,7 @@ import type {
   JsonTreeViewRootContract,
 } from "@pisagor/contracts";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { splitProps } from "solid-js";
 import { CaretRightIcon, createSlotRecipeContext } from "../internal";
 
@@ -19,11 +19,9 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface JsonTreeViewRootProps
-  extends
-    JsonTreeViewRootPrimitiveProps,
-    JsonTreeViewRootContract,
-    JsonTreeViewContract {}
+export type JsonTreeViewRootProps = JsonTreeViewRootPrimitiveProps &
+  JsonTreeViewRootContract &
+  JsonTreeViewContract;
 
 export interface JsonTreeViewProps extends Omit<
   JsonTreeViewRootProps,
@@ -33,15 +31,13 @@ export interface JsonTreeViewProps extends Omit<
   treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "class" | "renderValue">;
 }
 
-const JsonTreeViewRoot: Component<JsonTreeViewRootProps> = withProvider(
-  JsonTreeViewPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const JsonTreeViewRoot: Component<JsonTreeViewRootProps> = withProvider<
+  ComponentProps<typeof JsonTreeViewPrimitive.Root> & JsonTreeViewRootContract
+>(JsonTreeViewPrimitive.Root, { name: "Root" });
 
-const JsonTreeViewTree: Component<JsonTreeViewTreeProps> = withContext(
-  JsonTreeViewPrimitive.Tree,
-  { name: "Tree" },
-);
+const JsonTreeViewTree: Component<JsonTreeViewTreeProps> = withContext<
+  ComponentProps<typeof JsonTreeViewPrimitive.Tree>
+>(JsonTreeViewPrimitive.Tree, { name: "Tree" });
 
 function JsonTreeViewShorthand(props: JsonTreeViewProps): JSX.Element {
   const [local, rest] = splitProps(props, [

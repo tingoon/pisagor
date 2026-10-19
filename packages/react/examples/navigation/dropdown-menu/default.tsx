@@ -64,7 +64,8 @@ export function Default() {
             </DropdownMenu.SubContent>
           </DropdownMenu.Sub>
           <DropdownMenu.Separator />
-          <DropdownMenu.RadioItemGroup heading="Priority" value="medium">
+          <DropdownMenu.RadioItemGroup value="medium">
+            <DropdownMenu.ItemGroupLabel>Priority</DropdownMenu.ItemGroupLabel>
             <DropdownMenu.RadioItem value="low">Low</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="medium">
               Medium

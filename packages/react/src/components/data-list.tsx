@@ -6,7 +6,7 @@ import type {
   DataListRootContract,
 } from "@pisagor/contracts";
 import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -23,7 +23,7 @@ export function DataListRoot({
   recipe = dataListRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"dl"> &
+}: ComponentProps<"dl"> &
   DataListRootContract & {
     orientation?: "horizontal" | "vertical";
   }) {
@@ -40,26 +40,19 @@ export function DataListRoot({
   );
 }
 
-const DataListItemRoot = withProvider("div")({
-  defaultProps: {
-    "data-part": "item",
-  },
+const DataListItemRoot = withProvider<
+  ComponentProps<"div"> & DataListItemRootContract
+>("div", {
   name: "Item",
   slot: "base",
 });
 
-const DataListItemLabel = withContext("dt", {
-  defaultProps: {
-    "data-part": "item-label",
-  },
+const DataListItemLabel = withContext<ComponentProps<"dt">>("dt", {
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext("dd", {
-  defaultProps: {
-    "data-part": "item-value",
-  },
+const DataListItemValue = withContext<ComponentProps<"dd">>("dd", {
   name: "ItemValue",
   slot: "value",
 });
@@ -128,7 +121,6 @@ export function DataListShorthand({ items, ...rest }: DataListProps) {
 
 DataListRoot.displayName = "DataList.Root";
 DataListItem.displayName = "DataList.Item";
-DataListShorthand.displayName = "DataList";
 // #endregion
 
 export const DataList = Object.assign(DataListShorthand, {

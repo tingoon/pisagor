@@ -4,7 +4,6 @@
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
   const part = withTimerItemGroupContext(() => rest, {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   });

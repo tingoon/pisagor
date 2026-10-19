@@ -21,13 +21,12 @@ export interface NavbarRootProps extends NavbarRootContract {
   class?: unknown;
 }
 
-export interface NavbarProps extends NavbarRootProps, NavbarContract {}
+export type NavbarProps = NavbarRootProps & NavbarContract;
 // #endregion
 
 // #region Parts
-export const NavbarRoot = withProvider("header", {
+export const NavbarRoot = withProvider<NavbarRootContract>("header", {
   name: "Root",
-  slot: "base",
 });
 
 export const NavbarBrand = withContext("div", {

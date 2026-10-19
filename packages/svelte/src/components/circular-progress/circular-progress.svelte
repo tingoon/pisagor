@@ -15,7 +15,7 @@
   import { getProgressbarProps } from "./circular-progress.context";
   import CircularProgressRoot from "./circular-progress-root.svelte";
   import CircularProgressTrack from "./circular-progress-track.svelte";
-  import CircularProgressValue from "./circular-progress-value.svelte";
+  import CircularProgressValueText from "./circular-progress-value-text.svelte";
   import CircularProgressValueWrapper from "./circular-progress-value-wrapper.svelte";
 
   type Props = Omit<ProgressRootProps, "children"> & {
@@ -96,7 +96,10 @@
 >
   {#if isValueVisible}
     <CircularProgressValueWrapper class={classNames?.valueWrapper}>
-      <CircularProgressValue {...valueProps} class={classNames?.value} />
+      <CircularProgressValueText
+        {...valueProps}
+        class={classNames?.valueText}
+      />
     </CircularProgressValueWrapper>
   {/if}
 

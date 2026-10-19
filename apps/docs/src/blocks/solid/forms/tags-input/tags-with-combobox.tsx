@@ -2,6 +2,7 @@
 import { useFilter, useListCollection, useTagsInput } from "@ark-ui/solid";
 import { Combobox, Field, TagsInput } from "@pisagor/solid";
 import { createMemo, createUniqueId, For } from "solid-js";
+import { Portal } from "solid-js/web";
 import { tagsWithComboboxBlock } from "#/styles/recipes/tags-input";
 
 const styles = tagsWithComboboxBlock();
@@ -42,8 +43,8 @@ export function TagsWithCombobox() {
         collection={collection()}
         ids={{ control: `tags-control-${uid}`, input: `tags-input-${uid}` }}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => {
-          const next = value[0];
+        onValueChange={(details) => {
+          const next = details.value[0];
           if (next && !tagsInput().value.includes(next)) {
             tagsInput().addValue(next);
           }
@@ -62,7 +63,7 @@ export function TagsWithCombobox() {
                     </TagsInput.Item>
                   )}
                 </For>
-                <Combobox.FieldInput
+                <Combobox.Input
                   asChild={(props) => (
                     <TagsInput.Input
                       {...props()}
@@ -74,16 +75,20 @@ export function TagsWithCombobox() {
             )}
           </TagsInput.Context>
         </TagsInput.RootProvider>
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Empty>
-              No frameworks found. Try a different search.
-            </Combobox.Empty>
-            <For each={availableItems()}>
-              {(item) => <Combobox.Item item={item}>{item}</Combobox.Item>}
-            </For>
-          </Combobox.List>
-        </Combobox.Content>
+        <Portal>
+          <Combobox.Positioner>
+            <Combobox.Content>
+              <Combobox.List>
+                <Combobox.Empty>
+                  No frameworks found. Try a different search.
+                </Combobox.Empty>
+                <For each={availableItems()}>
+                  {(item) => <Combobox.Item item={item}>{item}</Combobox.Item>}
+                </For>
+              </Combobox.List>
+            </Combobox.Content>
+          </Combobox.Positioner>
+        </Portal>
       </Combobox.Root>
     </Field>
   );

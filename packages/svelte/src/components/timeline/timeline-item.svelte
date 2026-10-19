@@ -13,7 +13,6 @@
   let { children, ...rest }: Props = $props();
 
   const root = withProvider(() => rest, {
-    defaultProps: { "data-part": "item" },
     name: "Item",
     slot: "base",
   });

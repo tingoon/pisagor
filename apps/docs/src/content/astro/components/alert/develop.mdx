@@ -2,7 +2,6 @@ import Variants from "#examples/astro/feedback/alert/variants.astro";
 import WithIcon from "#examples/astro/feedback/alert/with-icon.astro";
 import WithoutIcon from "#examples/astro/feedback/alert/without-icon.astro";
 import WithAction from "#examples/astro/feedback/alert/with-action.astro";
-import Compound from "#examples/astro/feedback/alert/compound.astro";
 import CustomColor from "#examples/astro/feedback/alert/custom-color.astro";
 import CustomRecipe from "#examples/astro/feedback/alert/custom-recipe.astro";
 
@@ -10,6 +9,12 @@ import CustomRecipe from "#examples/astro/feedback/alert/custom-recipe.astro";
 
 ```ts
 import { Alert } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Alert />
 ```
 
 ## Examples
@@ -44,14 +49,6 @@ Add a follow-up action when the message should lead somewhere, such as Undo or V
 
 <Example name="WithAction">
   <WithAction />
-</Example>
-
-### Compound
-
-Compose title, description, and actions from parts for a custom alert layout.
-
-<Example name="Compound">
-  <Compound />
 </Example>
 
 ## Customization

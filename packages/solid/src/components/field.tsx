@@ -32,8 +32,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 }
 // #endregion
 
-export interface FieldRootProps
-  extends FieldRootPrimitiveProps, FieldRootContract {}
+export type FieldRootProps = FieldRootPrimitiveProps & FieldRootContract;
 
 export type FieldProps = FieldRootProps;
 
@@ -41,13 +40,12 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, FieldRootContract {}
+export type FieldSetProps = FieldsetRootProps & FieldRootContract;
 
 export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
-export interface FieldGroupProps
-  extends ComponentProps<"div">, FieldRootContract {}
+export type FieldGroupProps = ComponentProps<"div"> & FieldRootContract;
 
 export type FieldContentProps = ComponentProps<"div">;
 export type FieldRequiredIndicatorProps = ComponentProps<"span">;
@@ -55,10 +53,8 @@ export type FieldTitleProps = ComponentProps<"div">;
 export type FieldDescriptionProps = ComponentProps<"p">;
 export type FieldSeparatorProps = ComponentProps<"div">;
 
-export const FieldRoot: Component<FieldRootProps> = withProvider(
-  FieldPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+export const FieldRoot: Component<FieldRootProps> =
+  withProvider<FieldRootContract>(FieldPrimitive.Root, { name: "Root" });
 
 function FieldSetElement(props: FieldsetRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);

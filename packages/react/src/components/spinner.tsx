@@ -5,8 +5,7 @@ import type { ComponentProps } from "react";
 import { useLocale } from "./provider/context";
 
 // #region Types
-export interface SpinnerProps
-  extends ComponentProps<"svg">, SpinnerRootContract {}
+export type SpinnerProps = ComponentProps<"svg"> & SpinnerRootContract;
 // #endregion
 
 // #region Component

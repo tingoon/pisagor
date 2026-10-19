@@ -1,9 +1,10 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react";
 import type {
   AccordionItemContentProps,
+  AccordionItemIndicatorProps,
   AccordionItemProps as AccordionItemPrimitiveProps,
   AccordionItemTriggerProps,
-  AccordionRootProps,
+  AccordionRootProps as AccordionRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type {
@@ -13,23 +14,33 @@ import type {
   AccordionRootContract,
   AccordionContract,
 } from "@pisagor/contracts";
-import { accordionItemRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import { accordionItemRecipe, accordionRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withProvider } = createSlotRecipeContext({
+const { withProvider: withAccordionProvider } = createSlotRecipeContext({
   name: "Accordion",
-  recipe: accordionItemRecipe,
+  recipe: accordionRecipe,
 });
+
+const { withContext, withProvider: withItemProvider } = createSlotRecipeContext(
+  {
+    name: "Accordion",
+    recipe: accordionItemRecipe,
+  },
+);
 // #endregion
 
 // #region Types
-export interface AccordionItemProps
-  extends
-    AccordionItemPrimitiveProps,
-    AccordionItemRootContract,
-    AccordionItemContract {}
+export type AccordionRootProps = AccordionRootPrimitiveProps &
+  AccordionRootContract;
+
+export type AccordionItemProps = AccordionItemPrimitiveProps &
+  AccordionItemRootContract &
+  AccordionItemContract;
+
+export type AccordionItemBodyProps = ComponentProps<"div">;
 
 interface AccordionPresetItem extends Omit<
   BaseAccordionPresetItem,
@@ -40,108 +51,87 @@ interface AccordionPresetItem extends Omit<
 }
 
 export interface AccordionProps
-  extends
-    Omit<AccordionRootProps, "children">,
-    AccordionRootContract,
-    AccordionContract {
+  extends Omit<AccordionRootProps, "children">, AccordionContract {
   items?: AccordionPresetItem[];
 }
 // #endregion
 
 // #region Parts
-export function AccordionRoot({
-  collapsible = true,
-  children,
-  ...rest
-}: AccordionRootProps) {
-  return (
-    <AccordionPrimitive.Root {...rest} collapsible={collapsible}>
-      {children}
-    </AccordionPrimitive.Root>
-  );
-}
+const Root = withAccordionProvider<AccordionRootProps>(
+  AccordionPrimitive.Root,
+  {
+    defaultProps: { collapsible: true },
+    name: "Root",
+    slot: "base",
+  },
+);
 
-export const AccordionItem = withProvider(AccordionPrimitive.Item)({
+const Item = withItemProvider<AccordionItemProps>(AccordionPrimitive.Item, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<AccordionItemProps>;
+});
 
-export function AccordionItemTrigger({
-  children,
-  className,
-  ...rest
-}: AccordionItemTriggerProps) {
-  const { slots } = useStyles();
+const ItemTrigger = withContext<AccordionItemTriggerProps>(
+  AccordionPrimitive.ItemTrigger,
+  { name: "ItemTrigger" },
+);
 
-  return (
-    <AccordionPrimitive.ItemTrigger
-      {...rest}
-      className={slots.trigger({ className })}
-    >
-      {children}
+const ItemIndicator = withContext<AccordionItemIndicatorProps>(
+  AccordionPrimitive.ItemIndicator,
+  {
+    defaultProps: { children: <CaretDownIcon /> },
+    name: "ItemIndicator",
+  },
+);
 
-      <AccordionPrimitive.ItemIndicator>
-        <CaretDownIcon className={slots.indicator()} />
-      </AccordionPrimitive.ItemIndicator>
-    </AccordionPrimitive.ItemTrigger>
-  );
-}
+const ItemContent = withContext<AccordionItemContentProps>(
+  AccordionPrimitive.ItemContent,
+  { name: "ItemContent" },
+);
 
-export function AccordionItemContent({
-  children,
-  className,
-  ...rest
-}: AccordionItemContentProps) {
-  const { slots } = useStyles();
-
-  return (
-    <AccordionPrimitive.ItemContent
-      {...rest}
-      className={slots.content({ className })}
-    >
-      <div className={slots.body()}>{children}</div>
-    </AccordionPrimitive.ItemContent>
-  );
-}
+const ItemBody = withContext<AccordionItemBodyProps>("div", {
+  name: "ItemBody",
+});
 // #endregion
 
 // #region Shorthand
 export function AccordionShorthand({ items, size, ...rest }: AccordionProps) {
   return (
-    <AccordionRoot {...rest}>
+    <Root {...rest}>
       {items?.map((item) => (
-        <AccordionItem
+        <Item
           disabled={item.disabled}
           key={item.value}
           size={size}
           value={item.value}
         >
-          <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
-          <AccordionItemContent>{item.content}</AccordionItemContent>
-        </AccordionItem>
+          <ItemTrigger>
+            {item.title}
+
+            <ItemIndicator />
+          </ItemTrigger>
+
+          <ItemContent>
+            <ItemBody>{item.content}</ItemBody>
+          </ItemContent>
+        </Item>
       ))}
-    </AccordionRoot>
+    </Root>
   );
 }
 // #endregion
 
-// #region Display Names
-AccordionRoot.displayName = "Accordion.Root";
-AccordionItemTrigger.displayName = "Accordion.ItemTrigger";
-AccordionItemContent.displayName = "Accordion.ItemContent";
-AccordionShorthand.displayName = "Accordion";
-
-// #endregion
-
 export type {
   AccordionItemContentProps,
+  AccordionItemIndicatorProps,
   AccordionItemTriggerProps,
-  AccordionRootProps,
 } from "@ark-ui/react";
 
 export const Accordion = Object.assign(AccordionShorthand, {
-  Item: AccordionItem,
-  ItemContent: AccordionItemContent,
-  ItemTrigger: AccordionItemTrigger,
-  Root: AccordionRoot,
+  Item,
+  ItemBody,
+  ItemContent,
+  ItemIndicator,
+  ItemTrigger,
+  Root,
 });

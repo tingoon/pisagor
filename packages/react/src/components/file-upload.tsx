@@ -18,199 +18,123 @@ import type {
   FileUploadItemRootContract,
   FileUploadRootContract,
 } from "@pisagor/contracts";
-import {
-  fileUploadItemRecipe,
-  fileUploadRecipe,
-  formControlZoneRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
-import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { type MessageKey, useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileUploadStylesContext, useStyles: useFileUpload } =
-  createSlotRecipeContext({
-    name: "FileUpload",
-    recipe: fileUploadRecipe,
-  });
+const {
+  withContext,
+  withProvider,
+  useStyles: useFileUpload,
+} = createSlotRecipeContext({
+  name: "FileUpload",
+  recipe: fileUploadRecipe,
+});
 
-const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
+const { withContext: withItemContext, withProvider: withItemProvider } =
   createSlotRecipeContext({
-    name: "FileUpload",
+    name: "FileUploadItem",
     recipe: fileUploadItemRecipe,
   });
 // #endregion
 
 // #region Types
+type FileUploadItemRootProps = FileUploadItemProps & FileUploadItemRootContract;
 
-export interface FileUploadItemRootProps
-  extends FileUploadItemProps, FileUploadItemRootContract {}
+type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
-export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
+type FileUploadRootProps = FileUploadRootPrimitiveProps &
+  FileUploadRootContract & {
+    onValueChange?: (value: File[]) => void;
+  };
 
-export interface FileUploadRootProps
-  extends FileUploadRootPrimitiveProps, FileUploadRootContract {
-  onValueChange?: (value: File[]) => void;
-}
+type FileUploadDropzoneProps = FileUploadDropzonePrimitiveProps;
 
-export interface FileUploadDropzoneProps extends FileUploadDropzonePrimitiveProps {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-}
-
-export type FileUploadItemPreviewImageProps = ComponentProps<
+type FileUploadItemPreviewImageProps = ComponentProps<
   typeof FileUploadPrimitive.ItemPreviewImage
 >;
 
-export type FileUploadItemSizeProps = FileUploadItemSizeTextProps;
-
-export type FileUploadItemDeleteTriggerProps = ComponentProps<
+type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
 
-export type FileUploadDropzoneIconProps = ComponentPropsWithRef<"div">;
+type FileUploadDropzoneIconProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadTitleProps = ComponentPropsWithRef<"div">;
+type FileUploadTitleProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadDescriptionProps = ComponentPropsWithRef<"div">;
+type FileUploadDescriptionProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadHelperProps = ComponentPropsWithRef<"div">;
+type FileUploadHelperProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export function FileUploadRoot({
+const RootBase = withProvider<FileUploadRootProps>(FileUploadPrimitive.Root, {
+  name: "Root",
+});
+
+function Root({
   children,
   onFileChange,
   onValueChange,
-  recipe = fileUploadRecipe,
-  className,
   ...rest
 }: FileUploadRootProps) {
-  const slots = recipe();
-
   return (
-    <FileUploadStylesContext value={{ slots, variants: {} as never }}>
-      <FileUploadPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        onFileChange={(details) => {
-          onFileChange?.(details);
-          onValueChange?.(details.acceptedFiles);
-        }}
-      >
-        {children}
+    <RootBase
+      {...rest}
+      onFileChange={(details) => {
+        onFileChange?.(details);
+        onValueChange?.(details.acceptedFiles);
+      }}
+    >
+      {children}
 
-        <FileUploadPrimitive.HiddenInput />
-      </FileUploadPrimitive.Root>
-    </FileUploadStylesContext>
+      <FileUploadPrimitive.HiddenInput />
+    </RootBase>
   );
 }
 
-export function FileUploadTrigger(props: FileUploadTriggerProps) {
+function Trigger(props: FileUploadTriggerProps) {
   return <FileUploadPrimitive.Trigger {...props} />;
 }
 
-export function FileUploadDropzone({
-  variant: variantProp,
-  className,
-  ...rest
-}: FileUploadDropzoneProps) {
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-  const { slots } = useFileUpload();
+const Dropzone = withContext<FileUploadDropzoneProps>(
+  FileUploadPrimitive.Dropzone,
+  {
+    name: "Dropzone",
+  },
+);
 
+const DropzoneIconBase = withContext<FileUploadDropzoneIconProps>("div", {
+  name: "DropzoneIcon",
+});
+
+function DropzoneIcon({ children, ...rest }: FileUploadDropzoneIconProps) {
   return (
-    <FileUploadPrimitive.Dropzone
-      {...rest}
-      {...controlProps}
-      className={cn(
-        formControlZoneRecipe({ ...shellArgs }),
-        slots.dropzone(),
-        className,
-      )}
-    />
+    <DropzoneIconBase {...rest}>{children || <UploadIcon />}</DropzoneIconBase>
   );
 }
 
-export function FileUploadDropzoneIcon({
-  children,
-  className,
-  ...rest
-}: FileUploadDropzoneIconProps) {
-  const { slots } = useFileUpload();
+const Title = withContext<FileUploadTitleProps>("div", {
+  name: "Title",
+});
 
-  return (
-    <div
-      {...rest}
-      className={slots.dropzoneIcon({ className })}
-      data-part="dropzone-icon"
-      data-scope="file-upload"
-    >
-      {children || <UploadIcon />}
-    </div>
-  );
-}
+const Description = withContext<FileUploadDescriptionProps>("div", {
+  name: "Description",
+});
 
-export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
-  const { slots } = useFileUpload();
+const Helper = withContext<FileUploadHelperProps>("div", {
+  name: "Helper",
+  part: "dropzone-helper",
+});
 
-  return (
-    <div
-      {...rest}
-      className={slots.title({ className })}
-      data-part="title"
-      data-scope="file-upload"
-    />
-  );
-}
-
-export function FileUploadDescription({
-  className,
-  ...rest
-}: FileUploadDescriptionProps) {
-  const { slots } = useFileUpload();
-
-  return (
-    <div
-      {...rest}
-      className={slots.description({ className })}
-      data-part="description"
-      data-scope="file-upload"
-    />
-  );
-}
-
-export function FileUploadHelper({
-  className,
-  ...rest
-}: FileUploadHelperProps) {
-  const { slots } = useFileUpload();
-
-  return (
-    <div
-      {...rest}
-      className={slots.helper({ className })}
-      data-part="dropzone-helper"
-      data-scope="file-upload"
-    />
-  );
-}
-
-export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
+function ItemGroup(props: FileUploadItemGroupProps) {
   return <FileUploadPrimitive.ItemGroup {...props} />;
 }
 
-export function FileUploadList({
+function List({
   className,
   recipe = fileUploadItemRecipe,
   ...rest
@@ -228,31 +152,30 @@ export function FileUploadList({
 
   const renderItem = (file: File, key: string, errors?: string[]) => {
     const isImage = file.type.startsWith("image/");
-
     const extension = file.name.split(".").pop();
 
     return (
-      <FileUploadItem
+      <Item
         {...rest}
         className={itemSlots.listItem({ className })}
         file={file}
         key={key}
         recipe={recipe}
       >
-        <FileUploadItemPreview
+        <ItemPreview
           {...(isImage ? { type: "image/*" } : { type: ".*" })}
           className={itemSlots.listPreview()}
         >
           {isImage ? (
-            <FileUploadItemPreviewImage />
+            <ItemPreviewImage />
           ) : (
             <span className={itemSlots.extension()}>{extension}</span>
           )}
-        </FileUploadItemPreview>
+        </ItemPreview>
 
         <div className={itemSlots.content()}>
-          <FileUploadItemName />
-          <FileUploadItemSize />
+          <ItemName />
+          <ItemSizeText />
           {errors?.map((code) => (
             <div className={itemSlots.error()} key={code}>
               {m(`fileUpload.error.${code}` as MessageKey) ?? code}
@@ -260,7 +183,7 @@ export function FileUploadList({
           ))}
         </div>
 
-        <FileUploadItemDeleteTrigger asChild>
+        <ItemDeleteTrigger asChild>
           <Button
             aria-label={m("fileUpload.removeFile")}
             className={itemSlots.deleteButton()}
@@ -269,142 +192,87 @@ export function FileUploadList({
           >
             <XIcon aria-hidden />
           </Button>
-        </FileUploadItemDeleteTrigger>
-      </FileUploadItem>
+        </ItemDeleteTrigger>
+      </Item>
     );
   };
 
   return (
     <>
       {acceptedFiles.length > 0 && (
-        <FileUploadItemGroup className={slots.itemGroup()}>
+        <ItemGroup className={slots.itemGroup()}>
           {acceptedFiles.map((file, index) =>
             renderItem(file, `${file.name}-${index}`),
           )}
-        </FileUploadItemGroup>
+        </ItemGroup>
       )}
 
       {rejectedFiles.length > 0 && (
-        <FileUploadItemGroup className={slots.itemGroup()} type="rejected">
+        <ItemGroup className={slots.itemGroup()} type="rejected">
           {rejectedFiles.map(({ file, errors }, index) =>
             renderItem(file, `${file.name}-${index}`, errors),
           )}
-        </FileUploadItemGroup>
+        </ItemGroup>
       )}
     </>
   );
 }
 
-export function FileUploadItem({
-  children,
-  recipe = fileUploadItemRecipe,
-  className,
-  ...rest
-}: FileUploadItemRootProps) {
-  const slots = recipe();
+const Item = withItemProvider<FileUploadItemRootProps>(
+  FileUploadPrimitive.Item,
+  {
+    name: "Item",
+    slot: "base",
+  },
+);
 
-  return (
-    <FileUploadItemStylesContext value={{ slots, variants: {} as never }}>
-      <FileUploadPrimitive.Item {...rest} className={slots.base({ className })}>
-        {children}
-      </FileUploadPrimitive.Item>
-    </FileUploadItemStylesContext>
-  );
-}
+const ItemPreview = withItemContext<FileUploadItemPreviewProps>(
+  FileUploadPrimitive.ItemPreview,
+  {
+    name: "ItemPreview",
+    part: "preview",
+    slot: "preview",
+  },
+);
 
-export function FileUploadItemPreview({
-  className,
-  ...rest
-}: FileUploadItemPreviewProps) {
-  const { slots } = useFileUploadItem();
+const ItemPreviewImage = withItemContext<FileUploadItemPreviewImageProps>(
+  FileUploadPrimitive.ItemPreviewImage,
+  {
+    name: "ItemPreviewImage",
+    part: "preview-image",
+    slot: "previewImage",
+  },
+);
 
-  return (
-    <FileUploadPrimitive.ItemPreview
-      {...rest}
-      className={slots.preview({ className })}
-    />
-  );
-}
+const ItemName = withItemContext<FileUploadItemNameProps>(
+  FileUploadPrimitive.ItemName,
+  {
+    name: "ItemName",
+    part: "name",
+    slot: "name",
+  },
+);
 
-export function FileUploadItemPreviewImage({
-  className,
-  ...rest
-}: FileUploadItemPreviewImageProps) {
-  const { slots } = useFileUploadItem();
+const ItemSizeText = withItemContext<FileUploadItemSizeTextProps>(
+  FileUploadPrimitive.ItemSizeText,
+  {
+    name: "ItemSizeText",
+    slot: "sizeText",
+  },
+);
 
-  return (
-    <FileUploadPrimitive.ItemPreviewImage
-      {...rest}
-      className={slots.previewImage({ className })}
-    />
-  );
-}
+const ItemDeleteTrigger = withItemContext<FileUploadItemDeleteTriggerProps>(
+  FileUploadPrimitive.ItemDeleteTrigger,
+  {
+    name: "ItemDeleteTrigger",
+    part: "delete-trigger",
+    slot: "deleteTrigger",
+  },
+);
 
-export function FileUploadItemName({
-  className,
-  ...rest
-}: FileUploadItemNameProps) {
-  const { slots } = useFileUploadItem();
-
-  return (
-    <FileUploadPrimitive.ItemName
-      {...rest}
-      className={slots.name({ className })}
-    />
-  );
-}
-
-export function FileUploadItemSize({
-  className,
-  ...rest
-}: FileUploadItemSizeProps) {
-  const { slots } = useFileUploadItem();
-
-  return (
-    <FileUploadPrimitive.ItemSizeText
-      {...rest}
-      className={slots.size({ className })}
-    />
-  );
-}
-
-export function FileUploadItemDeleteTrigger({
-  className,
-  ...rest
-}: FileUploadItemDeleteTriggerProps) {
-  const { slots } = useFileUploadItem();
-
-  return (
-    <FileUploadPrimitive.ItemDeleteTrigger
-      {...rest}
-      className={slots.deleteTrigger({ className })}
-    />
-  );
-}
-
-export function FileUploadClearTrigger(props: FileUploadClearTriggerProps) {
+function ClearTrigger(props: FileUploadClearTriggerProps) {
   return <FileUploadPrimitive.ClearTrigger {...props} />;
 }
-// #endregion
-
-// #region Display Names
-FileUploadRoot.displayName = "FileUpload";
-FileUploadTrigger.displayName = "FileUpload.Trigger";
-FileUploadDropzone.displayName = "FileUpload.Dropzone";
-FileUploadDropzoneIcon.displayName = "FileUpload.DropzoneIcon";
-FileUploadTitle.displayName = "FileUpload.Title";
-FileUploadDescription.displayName = "FileUpload.Description";
-FileUploadHelper.displayName = "FileUpload.Helper";
-FileUploadItemGroup.displayName = "FileUpload.ItemGroup";
-FileUploadList.displayName = "FileUpload.List";
-FileUploadItem.displayName = "FileUpload.Item";
-FileUploadItemPreview.displayName = "FileUpload.ItemPreview";
-FileUploadItemPreviewImage.displayName = "FileUpload.ItemPreviewImage";
-FileUploadItemName.displayName = "FileUpload.ItemName";
-FileUploadItemSize.displayName = "FileUpload.ItemSize";
-FileUploadItemDeleteTrigger.displayName = "FileUpload.ItemDeleteTrigger";
-FileUploadClearTrigger.displayName = "FileUpload.ClearTrigger";
-
 // #endregion
 
 export type {
@@ -417,20 +285,20 @@ export type {
   FileUploadTriggerProps,
 } from "@ark-ui/react";
 
-export const FileUpload = Object.assign(FileUploadRoot, {
-  ClearTrigger: FileUploadClearTrigger,
-  Description: FileUploadDescription,
-  Dropzone: FileUploadDropzone,
-  DropzoneIcon: FileUploadDropzoneIcon,
-  Helper: FileUploadHelper,
-  Item: FileUploadItem,
-  ItemDeleteTrigger: FileUploadItemDeleteTrigger,
-  ItemGroup: FileUploadItemGroup,
-  ItemName: FileUploadItemName,
-  ItemPreview: FileUploadItemPreview,
-  ItemPreviewImage: FileUploadItemPreviewImage,
-  ItemSize: FileUploadItemSize,
-  List: FileUploadList,
-  Title: FileUploadTitle,
-  Trigger: FileUploadTrigger,
+export const FileUpload = Object.assign(Root, {
+  ClearTrigger,
+  Description,
+  Dropzone,
+  DropzoneIcon,
+  Helper,
+  Item,
+  ItemDeleteTrigger,
+  ItemGroup,
+  ItemName,
+  ItemPreview,
+  ItemPreviewImage,
+  ItemSizeText,
+  List,
+  Title,
+  Trigger,
 });

@@ -84,8 +84,8 @@ const title = withContext(Astro.props, { name: "Title" });
 <div {...title.props}><slot /></div>
 ```
 
-- PascalCase `name`; `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`).
-- camelCase slots (`panelHeader`) pass `slot` plus a kebab `data-part` via `defaultProps`.
+- Only `name` is required; `slot` / `part` derive from `name` when omitted (`ClearTrigger` → slot `clearTrigger` + part `clear-trigger`; `Root` → `base` / `root`).
+- Pass `slot` / `part` only when they differ from those defaults (e.g. `Header` → `slot: "panelHeader", part: "panel-header"`; `Indicator` → `part: "item-indicator"`).
 - `defaultProps` go before consumer props (consumer wins); `class` merges.
 - Dual scopes mirror React (e.g. `breadcrumb` + `breadcrumb-item` get two helper instances in one context file).
 - Single-file components may call the helper in-file (`avatar.astro`) or use the recipe directly when there is one element.

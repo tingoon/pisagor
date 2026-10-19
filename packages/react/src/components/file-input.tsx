@@ -1,17 +1,12 @@
 import type { FileInputRootContract } from "@pisagor/contracts";
-import {
-  type FormControlGroupShellVariantProps,
-  fileInputRecipe,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { fileInputRecipe } from "@pisagor/recipes";
 import { useRef, useState } from "react";
 import type {
   ChangeEventHandler,
   ComponentProps,
   ComponentPropsWithRef,
 } from "react";
-import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,
@@ -19,33 +14,28 @@ import {
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
 import { useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "FileInput",
   recipe: fileInputRecipe,
 });
 // #endregion
 
 // #region Types
-
-type FileInputVariantProps = FormControlGroupShellVariantProps;
-
 type NativeFileInputProps = Omit<
   ComponentProps<"input">,
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
 type FileInputRootProps = ComponentPropsWithRef<"div"> &
-  FileInputVariantProps &
   FileInputRootContract & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
+  extends NativeFileInputProps, FileInputRootContract {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -81,75 +71,36 @@ function formatFileLabel(files: File[]): string | undefined {
 // #endregion
 
 // #region Parts
-function FileInputRoot({
-  size = "md",
-  variant: variantProp,
-  disabled,
-  children,
-  recipe = fileInputRecipe,
-  className,
-  ...rest
-}: FileInputRootProps) {
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-  const slots = recipe();
+const RootBase = withProvider<FileInputRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+  slot: "root",
+});
 
-  return (
-    <FileInputStylesContext value={{ slots, variants: {} as never }}>
-      <div
-        {...rest}
-        {...controlProps}
-        className={formControlGroupShellRecipe({
-          className: cn(slots.root(), className),
-          size,
-          ...shellArgs,
-        })}
-        data-disabled={disabled ? true : undefined}
-        data-part="root"
-        data-scope="file-input"
-        data-size={size}
-        role="group"
-      >
-        {children}
-      </div>
-    </FileInputStylesContext>
-  );
+function Root({ disabled, ...rest }: FileInputRootProps) {
+  return <RootBase {...rest} data-disabled={disabled ? true : undefined} />;
 }
 
-function FileInputControl({ className, ...rest }: FileInputControlProps) {
-  const { slots } = useStyles();
+const Control = withContext<FileInputControlProps>("input", {
+  defaultProps: {
+    type: "file",
+  },
+  name: "Control",
+});
 
-  return (
-    <input
-      {...rest}
-      className={slots.control({ className })}
-      data-part="control"
-      data-scope="file-input"
-      type="file"
-    />
-  );
-}
+const LabelBase = withContext<FileInputLabelProps>(InputGroupText, {
+  name: "Label",
+});
 
-function FileInputLabel({ children, className, ...rest }: FileInputLabelProps) {
-  const { slots } = useStyles();
-
-  return (
-    <InputGroupText {...rest} className={slots.label({ className })}>
-      {children}
-    </InputGroupText>
-  );
+function Label(props: FileInputLabelProps) {
+  return <LabelBase {...props} />;
 }
 // #endregion
 
 // #region Closed
-export function FileInput({
+function FileInputShorthand({
   size = "md",
   variant,
   accept,
@@ -201,14 +152,14 @@ export function FileInput({
   };
 
   return (
-    <FileInputRoot
+    <Root
       className={className}
       disabled={disabled}
       recipe={recipe}
       size={size}
       variant={variant}
     >
-      <FileInputControl
+      <Control
         tabIndex={-1}
         {...rest}
         accept={accept}
@@ -234,17 +185,16 @@ export function FileInput({
         </InputGroupButton>
       </InputGroupAddon>
 
-      <FileInputLabel onClick={disabled ? undefined : openPicker}>
+      <Label onClick={disabled ? undefined : openPicker}>
         {fileLabel ?? placeholder}
-      </FileInputLabel>
-    </FileInputRoot>
+      </Label>
+    </Root>
   );
 }
 // #endregion
 
-// #region Display Names
-FileInputRoot.displayName = "FileInput.Root";
-FileInputControl.displayName = "FileInput.Control";
-FileInputLabel.displayName = "FileInput.Label";
-FileInput.displayName = "FileInput";
-// #endregion
+export const FileInput = Object.assign(FileInputShorthand, {
+  Control,
+  Label,
+  Root,
+});

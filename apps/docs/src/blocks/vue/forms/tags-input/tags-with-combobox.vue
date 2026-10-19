@@ -71,23 +71,27 @@ function onValueChange(details: string[] | { value: string[] }) {
           >
             {{ tag }}
           </TagsInput.Item>
-          <Combobox.FieldInput as-child>
+          <Combobox.Input as-child>
             <TagsInput.Input placeholder="Search framework" />
-          </Combobox.FieldInput>
+          </Combobox.Input>
         </TagsInput.Context>
       </TagsInput.RootProvider>
-      <Combobox.Content>
-        <Combobox.List>
-          <Combobox.Empty>No frameworks found</Combobox.Empty>
-          <Combobox.Item
-            v-for="item in availableItems"
-            :key="item"
-            :item="item"
-          >
-            {{ item }}
-          </Combobox.Item>
-        </Combobox.List>
-      </Combobox.Content>
+      <Teleport to="body">
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.List>
+              <Combobox.Empty>No frameworks found</Combobox.Empty>
+              <Combobox.Item
+                v-for="item in availableItems"
+                :key="item"
+                :item="item"
+              >
+                {{ item }}
+              </Combobox.Item>
+            </Combobox.List>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Teleport>
     </Combobox.Root>
   </Field>
 </template>

@@ -15,24 +15,19 @@ import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const {
-  Context: EditableStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Editable",
   recipe: editableRecipe,
 });
 // #endregion
 
 // #region Types
+type EditableRootBaseProps = EditableRootPrimitiveProps & EditableRootContract;
 
-export type EditableRootProps = Omit<
-  EditableRootPrimitiveProps,
+export interface EditableProps extends Omit<
+  EditableRootBaseProps,
   "onValueChange" | "value" | "defaultValue"
->;
-
-export interface EditableProps extends EditableRootProps, EditableRootContract {
+> {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**
@@ -59,6 +54,8 @@ export interface EditableProps extends EditableRootProps, EditableRootContract {
   onValueChange?: (value: string) => void;
 }
 
+export type EditableRootProps = EditableProps;
+
 export type EditableInputProps = Omit<EditableInputPrimitiveProps, "size">;
 
 export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
@@ -84,114 +81,89 @@ export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
    */
   buttonRecipe?: typeof buttonRecipe;
 }
-
 // #endregion
 
 // #region Parts
-export function EditableRoot({
+const RootBase = withProvider<EditableRootBaseProps>(EditablePrimitive.Root, {
+  name: "Root",
+});
+
+function Root({
   orientation = "horizontal",
   defaultValue,
   value,
   onValueChange,
-  recipe = editableRecipe,
-  className,
   ...rest
 }: EditableProps) {
-  const handleValueChange = onValueChange
-    ? (
-        details: Parameters<
-          NonNullable<EditableRootPrimitiveProps["onValueChange"]>
-        >[0],
-      ) => onValueChange(details.value)
-    : undefined;
-
-  const slots = recipe();
-
   return (
-    <EditableStylesContext value={{ slots, variants: {} as never }}>
-      <EditablePrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        data-orientation={orientation}
-        defaultValue={defaultValue}
-        onValueChange={handleValueChange}
-        value={value}
-      />
-    </EditableStylesContext>
+    <RootBase
+      {...rest}
+      data-orientation={orientation}
+      defaultValue={defaultValue}
+      onValueChange={
+        onValueChange
+          ? (
+              details: Parameters<
+                NonNullable<EditableRootPrimitiveProps["onValueChange"]>
+              >[0],
+            ) => onValueChange(details.value)
+          : undefined
+      }
+      value={value}
+    />
   );
 }
 
-export const EditableArea = withContext(EditablePrimitive.Area, {
+const Area = withContext(EditablePrimitive.Area, {
   name: "Area",
 });
 
-export function EditableInput(props: EditableInputProps) {
+function Input(props: EditableInputProps) {
   return <EditablePrimitive.Input {...props} />;
 }
 
-export function EditablePreview({
-  controlVariant,
+function Preview({
+  controlVariant = "primary",
   size = "md",
   variant = "outline",
   buttonRecipe: buttonRecipeProp = buttonRecipe,
   className,
   ...rest
 }: EditablePreviewProps) {
-  const { slots } = useStyles();
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: controlVariant ?? ("primary" as FormControlVariant),
-  };
-  const controlProps = { "data-variant": resolved.variant };
-  const previewShellClass =
-    resolved.variant === "secondary" && resolved.surfaceVariant === "default"
-      ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-      : resolved.variant === "secondary" && resolved.surfaceVariant
-        ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
-        : resolved.variant === "secondary"
-          ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-          : undefined;
+  const surfaceVariant = useFormControlSurface();
+  const slots = editableRecipe({
+    surfaceVariant,
+    variant: controlVariant,
+  });
 
   return (
     <EditablePrimitive.Preview
       {...rest}
-      {...controlProps}
       className={cn(
         buttonRecipeProp({ clickEffect: false, size, variant }).base(),
-        previewShellClass,
         slots.preview(),
-        previewShellClass ? "dark:hover:bg-transparent" : undefined,
         className,
       )}
+      data-variant={controlVariant}
     />
   );
 }
 
-export const EditableControl = withContext(EditablePrimitive.Control, {
+const Control = withContext(EditablePrimitive.Control, {
   name: "Control",
 });
 
-export function EditableEditTrigger(props: EditableEditTriggerProps) {
+function EditTrigger(props: EditableEditTriggerProps) {
   return <EditablePrimitive.EditTrigger {...props} />;
 }
 
-export function EditableCancelTrigger(props: EditableCancelTriggerProps) {
+function CancelTrigger(props: EditableCancelTriggerProps) {
   return <EditablePrimitive.CancelTrigger {...props} />;
 }
 
-export function EditableSubmitTrigger(props: EditableSubmitTriggerProps) {
+function SubmitTrigger(props: EditableSubmitTriggerProps) {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }
-// #endregion
-
-// #region Display Names
-EditableRoot.displayName = "Editable";
-EditableInput.displayName = "Editable.Input";
-EditablePreview.displayName = "Editable.Preview";
-EditableEditTrigger.displayName = "Editable.EditTrigger";
-EditableCancelTrigger.displayName = "Editable.CancelTrigger";
-EditableSubmitTrigger.displayName = "Editable.SubmitTrigger";
-
 // #endregion
 
 export type {
@@ -202,12 +174,12 @@ export type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/react";
 
-export const Editable = Object.assign(EditableRoot, {
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Preview: EditablePreview,
-  SubmitTrigger: EditableSubmitTrigger,
+export const Editable = Object.assign(Root, {
+  Area,
+  CancelTrigger,
+  Control,
+  EditTrigger,
+  Input,
+  Preview,
+  SubmitTrigger,
 });

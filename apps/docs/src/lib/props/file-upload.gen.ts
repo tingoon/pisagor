@@ -7,6 +7,18 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/file-upload.ts`, native HTML attributes omitted). */
 export const fileUploadProps: PropRow[] = [
   {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "FileUploadRecipeFn | undefined",
     defaultValue: "fileUploadRecipe",

@@ -1,129 +1,68 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue";
+import type {
+  RatingGroupControlProps,
+  RatingGroupItemProps,
+  RatingGroupRootProps,
+} from "@ark-ui/vue";
 import { PhStar } from "@phosphor-icons/vue";
 import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 import { ratingRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { type Component, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: RatingStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Rating",
   recipe: ratingRecipe,
 });
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
-type ClassValue = Parameters<typeof cn>[0];
+type RatingControlProps = RatingGroupControlProps;
 
-export interface RatingProps extends RatingRootContract, RatingContract {
-  allowHalf?: boolean;
+type RatingItemProps = RatingGroupItemProps;
+
+type RatingIndicatorProps = {
   class?: ClassValue;
-  controlProps?: Record<string, unknown>;
-  count?: number;
+  half?: boolean;
+  highlighted?: boolean;
+};
+
+type RatingRootProps = RatingGroupRootProps & RatingRootContract;
+
+export interface RatingProps
+  extends Omit<RatingRootProps, "children" | "onValueChange">, RatingContract {
   defaultValue?: number;
-  disabled?: boolean;
-  icon?: Component;
-  indicatorProps?: Record<string, unknown>;
-  itemProps?: Record<string, unknown>;
-  onValueChange?: (value: number) => void;
-  readOnly?: boolean;
-  variant?: FormControlVariant;
   value?: number;
+  icon?: Component;
+  onValueChange?: (value: number) => void;
+  /** Extra props forwarded to the rating control element */
+  controlProps?: Omit<RatingControlProps, "children" | "class">;
+  /** Extra props forwarded to each rating item indicator element */
+  indicatorProps?: Omit<RatingIndicatorProps, "children" | "class">;
+  /** Extra props forwarded to each rating item element */
+  itemProps?: Omit<RatingItemProps, "children" | "index" | "class">;
 }
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const RatingControl = withContext(RatingGroupPrimitive.Control, {
+const Root = withProvider<RatingRootProps>(RatingGroupPrimitive.Root, {
+  name: "Root",
+});
+
+const Control = withContext<RatingControlProps>(RatingGroupPrimitive.Control, {
   name: "Control",
 });
 
-const RatingItem = withContext(RatingGroupPrimitive.Item, {
+const Item = withContext<RatingItemProps>(RatingGroupPrimitive.Item, {
   name: "Item",
 });
 
-const RatingIndicator = defineComponent({
-  inheritAttrs: false,
-  name: "Rating.Indicator",
-  props: {
-    class: { default: undefined, type: String as PropType<string> },
-    half: { default: false, type: Boolean },
-    highlighted: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        "span",
-        {
-          ...attrs,
-          class: styles.slots.indicator({ class: props.class }),
-          "data-half": props.half ? "" : undefined,
-          "data-highlighted": props.highlighted ? "" : undefined,
-          "data-part": "item-indicator",
-          "data-scope": "rating",
-        },
-        slots,
-      );
-  },
-});
-
-const RatingRoot = defineComponent({
-  inheritAttrs: false,
-  name: "Rating.Root",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    recipe: {
-      default: ratingRecipe,
-      type: Function as PropType<typeof ratingRecipe>,
-    },
-    size: {
-      default: "md",
-      type: String as PropType<"sm" | "md" | "lg">,
-    },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const variant = props.variant ?? ("primary" as FormControlVariant);
-      const styles = props.recipe({ size: props.size });
-
-      return h(
-        RatingStylesContext,
-        { value: { slots: styles, variants: {} } },
-        () =>
-          h(
-            RatingGroupPrimitive.Root as ArkPart,
-            {
-              ...attrs,
-              class: styles.base({
-                class: cn(
-                  variant === "secondary" ? "opacity-90" : undefined,
-                  props.class,
-                ),
-              }),
-              "data-variant": variant,
-            },
-            slots,
-          ),
-      );
-    };
-  },
+const Indicator = withContext<RatingIndicatorProps>("span", {
+  name: "Indicator",
+  part: "item-indicator",
 });
 // #endregion
 
@@ -143,7 +82,7 @@ const RatingShorthand = defineComponent({
     },
     controlProps: {
       default: undefined,
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<RatingProps["controlProps"]>,
     },
     count: { default: 5, type: Number },
     defaultValue: { default: undefined, type: Number },
@@ -154,112 +93,86 @@ const RatingShorthand = defineComponent({
     },
     indicatorProps: {
       default: undefined,
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<RatingProps["indicatorProps"]>,
     },
     itemProps: {
       default: undefined,
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<RatingProps["itemProps"]>,
     },
     onValueChange: {
       default: undefined,
       type: Function as PropType<RatingProps["onValueChange"]>,
     },
     readOnly: { default: undefined, type: Boolean },
-    recipe: {
-      default: ratingRecipe,
-      type: Function as PropType<typeof ratingRecipe>,
-    },
-    size: {
-      default: "md",
-      type: String as PropType<"sm" | "md" | "lg">,
-    },
     value: { default: undefined, type: Number },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
   },
   setup(props, { attrs }) {
-    const surfaceVariant = useFormControlSurface();
-
     return () => {
-      const resolved = {
-        surfaceVariant,
-        variant: props.variant ?? ("primary" as FormControlVariant),
-      };
-      const slots = props.recipe({ size: props.size });
-      const surfaceTone =
-        resolved.variant === "secondary" ? "opacity-90" : undefined;
       const icon = props.icon ?? PhStar;
 
-      return h(RatingStylesContext, { value: { slots, variants: {} } }, () =>
-        h(
-          RatingGroupPrimitive.Root as ArkPart,
-          {
-            ...attrs,
-            allowHalf: props.allowHalf,
-            class: slots.base({
-              class: cn(surfaceTone, props.class),
-            }),
-            count: props.count,
-            "data-variant": resolved.variant,
-            defaultValue: props.defaultValue,
-            disabled: props.disabled,
-            modelValue: props.value,
-            onValueChange: props.onValueChange
-              ? (details: { value: number }) =>
-                  props.onValueChange?.(details.value)
-              : undefined,
-            readOnly: props.readOnly,
-          },
-          () =>
-            h(
-              RatingControl,
-              { ...props.controlProps, class: props.classNames?.control },
-              () => [
-                ...Array.from({ length: props.count }, (_, i) => i + 1).map(
-                  (index) =>
-                    h(
-                      RatingItem,
-                      {
-                        ...props.itemProps,
-                        class: props.classNames?.item,
-                        index,
-                        key: index,
-                      },
-                      () =>
-                        h(RatingGroupPrimitive.ItemContext as ArkPart, null, {
-                          default: (itemState: {
-                            half: boolean;
-                            highlighted: boolean;
-                          }) =>
-                            h(
-                              RatingIndicator,
-                              {
-                                ...props.indicatorProps,
-                                class: props.classNames?.indicator,
-                                half: itemState.half,
-                                highlighted: itemState.highlighted,
-                              },
-                              () => [
-                                h(icon as ArkPart, {
-                                  "aria-hidden": true,
-                                  "data-bg": "",
-                                }),
-                                h(icon as ArkPart, {
-                                  "aria-hidden": true,
-                                  "data-fg": "",
-                                  weight: "fill",
-                                }),
-                              ],
-                            ),
-                        }),
-                    ),
-                ),
-                h(RatingGroupPrimitive.HiddenInput as ArkPart),
-              ],
-            ),
-        ),
+      return h(
+        Root,
+        {
+          ...attrs,
+          allowHalf: props.allowHalf,
+          class: props.class as string | undefined,
+          count: props.count,
+          defaultValue: props.defaultValue,
+          disabled: props.disabled,
+          modelValue: props.value,
+          onValueChange: props.onValueChange
+            ? (details: { value: number }) =>
+                props.onValueChange?.(details.value)
+            : undefined,
+          readOnly: props.readOnly,
+        },
+        () =>
+          h(
+            Control,
+            { ...props.controlProps, class: props.classNames?.control },
+            () => [
+              ...Array.from({ length: props.count }, (_, i) => i + 1).map(
+                (index) =>
+                  h(
+                    Item,
+                    {
+                      ...props.itemProps,
+                      class: props.classNames?.item,
+                      index,
+                      key: index,
+                    },
+                    () =>
+                      h(RatingGroupPrimitive.ItemContext as ArkPart, null, {
+                        default: (itemState: {
+                          half: boolean;
+                          highlighted: boolean;
+                        }) =>
+                          h(
+                            Indicator,
+                            {
+                              ...props.indicatorProps,
+                              class: props.classNames?.indicator,
+                              half: itemState.half,
+                              highlighted: itemState.highlighted,
+                            },
+                            () => [
+                              h(icon as ArkPart, {
+                                "aria-hidden": true,
+                                "data-bg": "",
+                              }),
+                              h(icon as ArkPart, {
+                                "aria-hidden": true,
+                                "data-fg": "",
+                                weight: "fill",
+                              }),
+                            ],
+                          ),
+                      }),
+                  ),
+              ),
+              h(RatingGroupPrimitive.HiddenInput as ArkPart),
+            ],
+          ),
       );
     };
   },
@@ -268,10 +181,10 @@ const RatingShorthand = defineComponent({
 
 export const Rating = Object.assign(RatingShorthand, {
   Context: RatingGroupPrimitive.Context,
-  Control: RatingControl,
+  Control,
   HiddenInput: RatingGroupPrimitive.HiddenInput,
-  Indicator: RatingIndicator,
-  Item: RatingItem,
+  Indicator,
+  Item,
   ItemContext: RatingGroupPrimitive.ItemContext,
-  Root: RatingRoot,
+  Root,
 });

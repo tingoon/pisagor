@@ -57,35 +57,14 @@ export interface TagsInputProps extends TagsInputRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface TagsInputControlProps
-  extends TagsInputControlPrimitiveProps, TagsInputRootContract {
-  /**
-   * Whether to show the clear button.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
-}
+export type TagsInputControlProps = TagsInputControlPrimitiveProps &
+  TagsInputRootContract;
 
-export interface TagsInputItemProps
-  extends TagsInputItemPrimitiveProps, TagsInputItemRootContract {
-  /**
-   * Whether to show the clear trigger.
-   *
-   * @defaultValue false
-   */
-  showDelete?: boolean;
-}
+export type TagsInputItemProps = TagsInputItemPrimitiveProps &
+  TagsInputItemRootContract;
 
-export interface TagsInputRootProviderProps
-  extends TagsInputRootProviderPrimitiveProps, TagsInputRootContract {
-  /**
-   * Whether to show the clear button.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
-}
+export type TagsInputRootProviderProps = TagsInputRootProviderPrimitiveProps &
+  TagsInputRootContract;
 
 export type TagsInputItemDeleteTriggerProps = ComponentProps<
   typeof TagsInputPrimitive.ItemDeleteTrigger
@@ -122,7 +101,7 @@ export function TagsInputRoot({
           onValueChange ? (details) => onValueChange(details.value) : undefined
         }
       >
-        <TagsInputControl clearable={clearable} size={size} variant={variant}>
+        <TagsInputControl size={size} variant={variant}>
           <TagsInputPrimitive.Context>
             {(api) =>
               api.value.map((value, index) => (
@@ -132,6 +111,7 @@ export function TagsInputRoot({
           </TagsInputPrimitive.Context>
           {children}
           <TagsInputInput placeholder={placeholder} />
+          {clearable ? <TagsInputClearAll /> : null}
         </TagsInputControl>
 
         <TagsInputPrimitive.HiddenInput tabIndex={tabIndex} />
@@ -140,16 +120,23 @@ export function TagsInputRoot({
   );
 }
 
+function TagsInputClearAll() {
+  const api = useTagsInputContext();
+
+  if (api.value.length === 0) {
+    return null;
+  }
+
+  return <TagsInputClearTrigger />;
+}
+
 export function TagsInputControl({
   size,
   variant,
-  clearable = false,
   children,
   className,
   ...rest
 }: TagsInputControlProps) {
-  const { m } = useLocale();
-  const api = useTagsInputContext();
   const { slots } = useTagsInput();
 
   return (
@@ -161,16 +148,12 @@ export function TagsInputControl({
         variant={variant}
       >
         {children}
-        {clearable && api.value.length > 0 && (
-          <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
-        )}
       </InputGroup>
     </TagsInputPrimitive.Control>
   );
 }
 
 export function TagsInputItem({
-  showDelete = true,
   children,
   recipe = tagsInputItemRecipe,
   className,
@@ -183,7 +166,7 @@ export function TagsInputItem({
       <TagsInputPrimitive.Item {...rest} className={slots.base({ className })}>
         <TagsInputItemPreview>
           <TagsInputItemText>{children}</TagsInputItemText>
-          {showDelete && <TagsInputItemDeleteTrigger />}
+          <TagsInputItemDeleteTrigger />
         </TagsInputItemPreview>
         <TagsInputItemInput />
       </TagsInputPrimitive.Item>
@@ -285,7 +268,6 @@ export function TagsInputClearTrigger({
 
 export function TagsInputRootProvider({
   size = "md",
-  clearable,
   children,
   recipe = tagsInputRecipe,
   className,
@@ -300,7 +282,7 @@ export function TagsInputRootProvider({
         className={slots.base({ className })}
         data-size={size}
       >
-        <TagsInputControl clearable={clearable}>{children}</TagsInputControl>
+        <TagsInputControl>{children}</TagsInputControl>
         <TagsInputPrimitive.HiddenInput />
       </TagsInputPrimitive.RootProvider>
     </TagsInputStylesContext>

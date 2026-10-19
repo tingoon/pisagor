@@ -1,21 +1,18 @@
 import {
   Editable as EditablePrimitive,
+  type EditableRootProps as EditableRootPrimitiveProps,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue";
 import type { EditableRootContract } from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType } from "vue";
+import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
-// #region Slot recipe context
-const {
-  provideStyles: provideEditableStyles,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Editable",
   recipe: editableRecipe,
 });
@@ -24,7 +21,14 @@ const {
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-export interface EditableProps extends EditableRootContract {
+type EditableRootProps = Omit<
+  EditableRootPrimitiveProps,
+  "onValueChange" | "value" | "defaultValue"
+> &
+  EditableRootContract;
+
+export interface EditableProps
+  extends Omit<EditableRootProps, "class">, EditableRootContract {
   /** The activation mode for the preview element. */
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */
@@ -32,12 +36,6 @@ export interface EditableProps extends EditableRootContract {
   class?: unknown;
   /** Whether the editable is in edit mode by default. */
   defaultEdit?: boolean;
-  /**
-   * Initial text value when uncontrolled.
-   *
-   * @remarks
-   *   Ignored when `value` is set.
-   */
   defaultValue?: string;
   /** Whether the editable is disabled. */
   disabled?: boolean;
@@ -47,12 +45,6 @@ export interface EditableProps extends EditableRootContract {
   invalid?: boolean;
   /** The maximum number of characters allowed in the editable */
   maxLength?: number;
-  /**
-   * Called when the text value changes.
-   *
-   * @remarks
-   *   Receives the string value directly, not Ark UI event details.
-   */
   onValueChange?: (value: string) => void;
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
@@ -66,13 +58,6 @@ export interface EditableProps extends EditableRootContract {
   selectOnFocus?: boolean;
   /** The action that triggers submit in the edit mode. */
   submitMode?: "enter" | "blur" | "both" | "none";
-  /**
-   * Controlled text value.
-   *
-   * @remarks
-   *   When set, `defaultValue` is ignored. Pair with `onValueChange` to handle
-   *   updates.
-   */
   value?: string;
 }
 
@@ -92,15 +77,26 @@ export interface EditablePreviewProps {
    * @defaultValue "outline"
    */
   variant?: ButtonProps["variant"];
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
 }
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-export const EditableRoot = defineComponent({
+const RootBase = withProvider<EditableRootContract>(EditablePrimitive.Root, {
+  name: "Root",
+});
+
+const Root = defineComponent({
   inheritAttrs: false,
-  name: "EditableRoot",
+  name: "Editable.Root",
   props: {
     activationMode: {
       default: undefined,
@@ -130,10 +126,6 @@ export const EditableRoot = defineComponent({
       type: [String, Object] as PropType<EditableProps["placeholder"]>,
     },
     readOnly: { default: undefined, type: Boolean },
-    recipe: {
-      default: editableRecipe,
-      type: Function as PropType<typeof editableRecipe>,
-    },
     required: { default: undefined, type: Boolean },
     selectOnFocus: { default: undefined, type: Boolean },
     submitMode: {
@@ -143,25 +135,14 @@ export const EditableRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideEditableStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () => {
-      const variantSlots = recipeSlots.value;
-
-      return h(
-        EditablePrimitive.Root as ArkPart,
+    return () =>
+      h(
+        RootBase,
         {
           ...attrs,
           activationMode: props.activationMode,
           autoResize: props.autoResize,
-          class: variantSlots.base({ class: props.class }),
+          class: props.class,
           "data-orientation": props.orientation,
           defaultEdit: props.defaultEdit,
           defaultValue: props.defaultValue,
@@ -182,15 +163,14 @@ export const EditableRoot = defineComponent({
         },
         slots,
       );
-    };
   },
 });
 
-export const EditableArea = withContext(EditablePrimitive.Area, {
+const Area = withContext(EditablePrimitive.Area, {
   name: "Area",
 });
 
-export const EditableInput = defineComponent({
+const Input = defineComponent({
   inheritAttrs: false,
   name: "Editable.Input",
   setup(_, { attrs, slots }) {
@@ -198,7 +178,7 @@ export const EditableInput = defineComponent({
   },
 });
 
-export const EditablePreview = defineComponent({
+const Preview = defineComponent({
   inheritAttrs: false,
   name: "Editable.Preview",
   props: {
@@ -218,45 +198,38 @@ export const EditablePreview = defineComponent({
       default: "outline",
       type: String as PropType<EditablePreviewProps["variant"]>,
     },
+    buttonRecipe: {
+      default: buttonRecipe,
+      type: Function as PropType<typeof buttonRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
     const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const variantSlots = styles.slots;
-      const resolved = {
+      const controlVariant =
+        props.controlVariant ?? ("primary" as FormControlVariant);
+      const slots_ = editableRecipe({
         surfaceVariant,
-        variant: props.controlVariant ?? ("primary" as FormControlVariant),
-      };
-      const controlProps = { "data-variant": resolved.variant };
-      const previewShellClass =
-        resolved.variant === "secondary" &&
-        resolved.surfaceVariant === "default"
-          ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-          : resolved.variant === "secondary" && resolved.surfaceVariant
-            ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
-            : resolved.variant === "secondary"
-              ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-              : undefined;
+        variant: controlVariant,
+      });
 
       return h(
         EditablePrimitive.Preview as ArkPart,
         {
           ...attrs,
-          ...controlProps,
           class: cn(
-            buttonRecipe({
-              clickEffect: false,
-              size: props.size,
-              variant: props.variant,
-            }).base(),
-            previewShellClass,
-            variantSlots.preview(),
-            previewShellClass ? "dark:hover:bg-transparent" : undefined,
+            props
+              .buttonRecipe({
+                clickEffect: false,
+                size: props.size,
+                variant: props.variant,
+              })
+              .base(),
+            slots_.preview(),
             props.class,
           ),
+          "data-variant": controlVariant,
         },
         slots,
       );
@@ -264,11 +237,11 @@ export const EditablePreview = defineComponent({
   },
 });
 
-export const EditableControl = withContext(EditablePrimitive.Control, {
+const Control = withContext(EditablePrimitive.Control, {
   name: "Control",
 });
 
-export const EditableEditTrigger = defineComponent({
+const EditTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.EditTrigger",
   setup(_, { attrs, slots }) {
@@ -277,7 +250,7 @@ export const EditableEditTrigger = defineComponent({
   },
 });
 
-export const EditableCancelTrigger = defineComponent({
+const CancelTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.CancelTrigger",
   setup(_, { attrs, slots }) {
@@ -286,7 +259,7 @@ export const EditableCancelTrigger = defineComponent({
   },
 });
 
-export const EditableSubmitTrigger = defineComponent({
+const SubmitTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.SubmitTrigger",
   setup(_, { attrs, slots }) {
@@ -296,12 +269,12 @@ export const EditableSubmitTrigger = defineComponent({
 });
 // #endregion
 
-export const Editable = Object.assign(EditableRoot, {
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Preview: EditablePreview,
-  SubmitTrigger: EditableSubmitTrigger,
+export const Editable = Object.assign(Root, {
+  Area,
+  CancelTrigger,
+  Control,
+  EditTrigger,
+  Input,
+  Preview,
+  SubmitTrigger,
 });

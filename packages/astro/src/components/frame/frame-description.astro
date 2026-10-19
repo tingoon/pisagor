@@ -5,8 +5,8 @@ import { withContext } from "./frame.context";
 type Props = HTMLAttributes<"div">;
 
 const description = withContext(Astro.props, {
-  defaultProps: { "data-part": "panel-description" },
   name: "Description",
+  part: "panel-description",
   slot: "panelDescription",
 });
 ---

@@ -84,41 +84,25 @@ export const TimelineRoot = defineComponent({
   },
 });
 
-export const TimelineItem = withProvider("li", {
-  defaultProps: {
-    "data-part": "item",
-  },
+export const TimelineItem = withProvider<TimelineItemRootContract>("li", {
   name: "Item",
   slot: "base",
 });
 
-export const TimelineIndicator = withContext("div", {
-  name: "Indicator",
-  slot: "indicator",
-});
+export const TimelineIndicator = withContext("div", { name: "Indicator" });
 
 export const TimelineSeparator = withContext("div", {
   defaultProps: {
     "aria-hidden": "true",
   },
   name: "Separator",
-  slot: "separator",
 });
 
-export const TimelineContent = withContext("div", {
-  name: "Content",
-  slot: "content",
-});
+export const TimelineContent = withContext("div", { name: "Content" });
 
-export const TimelineTitle = withContext("div", {
-  name: "Title",
-  slot: "title",
-});
+export const TimelineTitle = withContext("div", { name: "Title" });
 
-export const TimelineDescription = withContext("div", {
-  name: "Description",
-  slot: "description",
-});
+export const TimelineDescription = withContext("div", { name: "Description" });
 
 export const TimelineShorthand = defineComponent({
   inheritAttrs: false,

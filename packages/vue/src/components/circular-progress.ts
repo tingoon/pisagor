@@ -25,10 +25,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressRootProvider, {
-  name: "Root",
-  slot: "base",
-});
+const CircularProgressRoot = withProvider<CircularProgressRootContract>(
+  ProgressRootProvider,
+  { name: "Root" },
+);
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /
@@ -47,13 +47,11 @@ function getProgressbarProps(progress: UseProgressReturn["value"]) {
 }
 
 const CircularProgressValueWrapper = withContext("span", {
-  defaultProps: { "data-part": "value-wrapper" },
   name: "ValueWrapper",
-  slot: "valueWrapper",
 });
 
-const CircularProgressValue = withContext(ProgressValueText, {
-  name: "Value",
+const CircularProgressValueText = withContext(ProgressValueText, {
+  name: "ValueText",
 });
 
 const CircularProgressTrack = defineComponent({
@@ -233,9 +231,9 @@ export const CircularProgress = defineComponent({
             CircularProgressValueWrapper,
             { class: props.classNames?.valueWrapper },
             () =>
-              h(CircularProgressValue, {
+              h(CircularProgressValueText, {
                 ...props.valueProps,
-                class: props.classNames?.value,
+                class: props.classNames?.valueText,
               }),
           ),
         );

@@ -1,11 +1,21 @@
 import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlShellBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const textareaRecipe = tv({
+  compoundVariants: formControlFillCompounds({ slot: "rootLayout" }),
   defaultVariants: {
     /** Reserve end padding for the clear control. */
     clearable: false,
     /** Size scale. */
     size: "md",
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
   },
   slots: {
     clearAddon: ["absolute inset-e-1.5 top-1.5 self-start p-0"],
@@ -25,6 +35,7 @@ export const textareaRecipe = tv({
     ],
     group: ["relative", "h-auto", "items-start"],
     rootLayout: [
+      ...formControlShellBase,
       "field-sizing-content min-h-16 w-full",
       "flex h-auto px-3 py-2",
     ],
@@ -45,6 +56,11 @@ export const textareaRecipe = tv({
         clearableRoot: "min-h-12 px-2.5 py-1.5 text-sm",
         rootLayout: "min-h-12 px-2.5 py-1.5",
       },
+    },
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
     },
   },
 });

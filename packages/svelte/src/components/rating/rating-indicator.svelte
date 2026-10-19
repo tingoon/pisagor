@@ -1,21 +1,15 @@
 <script lang="ts">
-  import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useStyles } from "./rating.context";
+  import { withContext } from "./rating.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: HTMLAttributes<HTMLSpanElement> = $props();
-  const styles = useStyles();
+  let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
+
+  const part = withContext(() => rest, {
+    name: "Indicator",
+    part: "item-indicator",
+  });
 </script>
 
-<span
-  {...rest}
-  class={styles.slots.indicator({ class: cn(className) })}
-  data-part="item-indicator"
-  data-scope="rating"
->
+<span {...part.props}>
   {@render children?.()}
 </span>

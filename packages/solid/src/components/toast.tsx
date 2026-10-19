@@ -40,17 +40,17 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface ToasterRootProps
-  extends
-    Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    ToastRootContract {}
+export type ToasterRootProps = Omit<
+  ToasterPrimitiveProps,
+  "toaster" | "children"
+> &
+  ToastRootContract;
 
 export interface ToasterProps extends ToasterRootProps {
   toaster?: CreateToasterReturn<JSX.Element>;
 }
 
-export interface ToastItemRootProps
-  extends ToastRootProps, ToastItemRootContract {}
+export type ToastItemRootProps = ToastRootProps & ToastItemRootContract;
 
 export interface ToastItemProps extends ToastItemRootProps, ToastItemContract {
   actionsProps?: Omit<ComponentProps<"div">, "class">;
@@ -111,10 +111,11 @@ const TOAST_ICONS = {
   warning: () => <WarningIcon />,
 } as const;
 
-const ToastItemRoot: Component<ToastItemRootProps> = withProvider(
-  ToastPrimitive.Root,
-  { name: "Item", slot: "base" },
-);
+const ToastItemRoot: Component<ToastItemRootProps> =
+  withProvider<ToastItemRootContract>(ToastPrimitive.Root, {
+    name: "Item",
+    slot: "base",
+  });
 
 function ToastItemContent(
   props: Omit<ToastItemProps, keyof ToastItemRootProps> &

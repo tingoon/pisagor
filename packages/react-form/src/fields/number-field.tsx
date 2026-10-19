@@ -59,7 +59,7 @@ export function NumberField({
         onBlur={onBlur}
         onValueChange={onValueChange}
       >
-        <NumberInput.Control clearable={clearable}>
+        <NumberInput.Control data-clearable={clearable || undefined}>
           <NumberInput.DecrementTrigger />
           <NumberInput.Input placeholder={placeholder} />
           {clearable ? <NumberInput.ClearTrigger /> : null}

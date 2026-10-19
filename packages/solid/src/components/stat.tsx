@@ -45,16 +45,21 @@ export interface StatProps
 // #endregion
 
 // #region Parts
-export const StatRoot: Component<StatRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
+export const StatRoot: Component<StatRootProps> = withProvider<
+  ComponentProps<"div"> & StatRootContract
+>("div", { name: "Root" });
+
+export const StatLabel = withContext<ComponentProps<"div">>("div", {
+  name: "Label",
 });
 
-export const StatLabel = withContext("div", { name: "Label" });
+export const StatValue = withContext<ComponentProps<"div">>("div", {
+  name: "Value",
+});
 
-export const StatValue = withContext("div", { name: "Value" });
-
-export const StatDescription = withContext("p", { name: "Description" });
+export const StatDescription = withContext<ComponentProps<"p">>("p", {
+  name: "Description",
+});
 
 /** Leaf with its own recipe (`trend` variant stays on the part). */
 export function StatTrend(props: StatTrendProps): JSX.Element {

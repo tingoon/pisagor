@@ -6,12 +6,7 @@ import {
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
 import type { RichTextEditorRootContract } from "@pisagor/contracts";
-import {
-  formControlShellRecipe,
-  type RichTextEditorRecipe,
-  richTextEditorRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { richTextEditorRecipe } from "@pisagor/recipes";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
 import {
@@ -22,22 +17,37 @@ import {
   watch,
   watchEffect,
 } from "vue";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../../internal";
 import { useLocale } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
-import { type ClassValue, createContext } from "../../internal";
 
-type FormControlVariant = "primary" | "secondary";
+// #region Context
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
+  name: "RichTextEditor",
+  recipe: richTextEditorRecipe,
+});
+
+interface RichTextEditorStateValue {
+  editor: Editor | null;
+}
+
+const [provideRichTextEditorState, useRichTextEditorState] =
+  createContext("RichTextEditor")<RichTextEditorStateValue>();
+
+/** Access the TipTap editor instance from the nearest RichTextEditor root. */
+export function useRichTextEditor() {
+  return useRichTextEditorState()?.editor ?? null;
+}
+// #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-interface RichTextEditorContextValue {
-  editor: Editor | null;
-  slots: RichTextEditorRecipe;
-}
-
 export interface RichTextEditorRootProps extends RichTextEditorRootContract {
   "aria-label"?: string;
   /** Initial HTML content for uncontrolled usage. */
@@ -57,8 +67,6 @@ export interface RichTextEditorRootProps extends RichTextEditorRootContract {
   readOnly?: boolean;
   /** Controlled HTML content. */
   value?: string;
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
   class?: unknown;
 }
 
@@ -68,16 +76,6 @@ export interface RichTextEditorToolbarProps {
 
 export interface RichTextEditorContentProps {
   class?: unknown;
-}
-// #endregion
-
-// #region Context
-const [provideRichTextEditorContext, useRichTextEditorContext] =
-  createContext("RichTextEditor")<RichTextEditorContextValue>();
-
-/** Access the TipTap editor instance from the nearest RichTextEditor root. */
-export function useRichTextEditor() {
-  return useRichTextEditorContext()?.editor ?? null;
 }
 // #endregion
 
@@ -105,20 +103,24 @@ const richTextEditorRootProps = {
   value: { default: undefined, type: String },
   variant: {
     default: undefined,
-    type: String as PropType<FormControlVariant | undefined>,
+    type: String as PropType<RichTextEditorRootContract["variant"]>,
   },
 };
 
 // #region Parts
+const RootBase = withProvider<RichTextEditorRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+});
+
 export const RichTextEditorRoot = defineComponent({
   inheritAttrs: false,
-  name: "RichTextEditorRoot",
+  name: "RichTextEditor.Root",
   props: richTextEditorRootProps,
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const surfaceVariant = useFormControlSurface();
-
-    const recipeSlots = props.recipe();
 
     const editor = useEditor({
       content: props.value ?? props.defaultValue ?? "<p></p>",
@@ -175,50 +177,35 @@ export const RichTextEditorRoot = defineComponent({
       });
     });
 
-    const contextValue = shallowReactive<RichTextEditorContextValue>({
+    const stateValue = shallowReactive<RichTextEditorStateValue>({
       editor: null,
-      slots: recipeSlots,
     });
 
     watchEffect(() => {
-      contextValue.editor = editor.value ?? null;
+      stateValue.editor = editor.value ?? null;
     });
 
-    provideRichTextEditorContext(contextValue);
+    provideRichTextEditorState(stateValue);
 
     return () => {
-      const resolved = {
-        surfaceVariant,
-        variant: props.variant ?? ("primary" as FormControlVariant),
-      };
-      const shellArgs = {
-        surfaceVariant: resolved.surfaceVariant,
-        variant: resolved.variant,
-      };
-      const controlProps = { "data-variant": resolved.variant };
       const resolvedAriaLabel =
         props["aria-label"] ??
         (props.id ? undefined : m("richTextEditor.label"));
 
       return h(
-        "div",
+        RootBase,
         {
           ...attrs,
-          ...controlProps,
           "aria-disabled": props.disabled || undefined,
           "aria-invalid": props.invalid || undefined,
           "aria-label": resolvedAriaLabel,
           "aria-readonly": props.readOnly || undefined,
-          class: cn(
-            formControlShellRecipe({ ...shellArgs }),
-            recipeSlots.base({ class: props.class }),
-          ),
+          class: props.class,
           "data-disabled": props.disabled ? "true" : undefined,
           "data-invalid": props.invalid ? "true" : undefined,
-          "data-part": "root",
           "data-readonly": props.readOnly ? "true" : undefined,
-          "data-scope": "rich-text-editor",
-          role: "group",
+          recipe: props.recipe,
+          variant: props.variant,
         },
         () => [
           props.name
@@ -243,21 +230,25 @@ export const RichTextEditorRoot = defineComponent({
   },
 });
 
+const ToolbarBase = withContext<RichTextEditorToolbarProps>("div", {
+  name: "Toolbar",
+});
+
 export const RichTextEditorToolbar = defineComponent({
   inheritAttrs: false,
-  name: "RichTextEditorToolbar",
+  name: "RichTextEditor.Toolbar",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const context = useRichTextEditorContext();
+    const styles = useStyles();
+    const state = useRichTextEditorState();
 
     return () => {
-      const editor = context?.editor;
-      const recipeSlots = context?.slots;
+      const editor = state?.editor;
 
-      if (!editor || !recipeSlots) {
+      if (!editor) {
         return null;
       }
 
@@ -270,141 +261,114 @@ export const RichTextEditorToolbar = defineComponent({
       };
 
       return h(
-        "div",
+        ToolbarBase,
         {
           ...attrs,
-          class: recipeSlots.toolbar({ class: props.class }),
-          "data-part": "toolbar",
-          "data-scope": "rich-text-editor",
+          class: props.class,
         },
         () =>
-          slots.default?.() ?? [
-            h("div", { class: recipeSlots.inline() }, [
-              h(
-                Toggle as ArkPart,
-                {
-                  "aria-label": m("richTextEditor.bold"),
-                  onPressedChange: () =>
-                    editor.chain().focus().toggleBold().run(),
-                  pressed: activeMarks.bold,
-                  size: "sm",
-                  variant: "ghost",
-                },
-                () => [
-                  h(PhTextB),
-                  h(VisuallyHidden as ArkPart, {}, () =>
-                    m("richTextEditor.bold"),
-                  ),
-                ],
-              ),
-              h(
-                Toggle as ArkPart,
-                {
-                  "aria-label": m("richTextEditor.italic"),
-                  onPressedChange: () =>
-                    editor.chain().focus().toggleItalic().run(),
-                  pressed: activeMarks.italic,
-                  size: "sm",
-                  variant: "ghost",
-                },
-                () => [
-                  h(PhTextItalic),
-                  h(VisuallyHidden as ArkPart, {}, () =>
-                    m("richTextEditor.italic"),
-                  ),
-                ],
-              ),
-              h(
-                Toggle as ArkPart,
-                {
-                  "aria-label": m("richTextEditor.strikethrough"),
-                  onPressedChange: () =>
-                    editor.chain().focus().toggleStrike().run(),
-                  pressed: activeMarks.strike,
-                  size: "sm",
-                  variant: "ghost",
-                },
-                () => [
-                  h(PhTextStrikethrough),
-                  h(VisuallyHidden as ArkPart, {}, () =>
-                    m("richTextEditor.strikethrough"),
-                  ),
-                ],
-              ),
-              h(
-                Toggle as ArkPart,
-                {
-                  "aria-label": m("richTextEditor.bulletList"),
-                  onPressedChange: () =>
-                    editor.chain().focus().toggleBulletList().run(),
-                  pressed: activeMarks.bulletList,
-                  size: "sm",
-                  variant: "ghost",
-                },
-                () => [
-                  h(PhListBullets),
-                  h(VisuallyHidden as ArkPart, {}, () =>
-                    m("richTextEditor.bulletList"),
-                  ),
-                ],
-              ),
-              h(
-                Toggle as ArkPart,
-                {
-                  "aria-label": m("richTextEditor.orderedList"),
-                  onPressedChange: () =>
-                    editor.chain().focus().toggleOrderedList().run(),
-                  pressed: activeMarks.orderedList,
-                  size: "sm",
-                  variant: "ghost",
-                },
-                () => [
-                  h(PhListNumbers),
-                  h(VisuallyHidden as ArkPart, {}, () =>
-                    m("richTextEditor.orderedList"),
-                  ),
-                ],
-              ),
-            ]),
-          ],
+          slots.default?.() ??
+          h("div", { class: styles.slots.inline() }, [
+            h(
+              Toggle as ArkPart,
+              {
+                "aria-label": m("richTextEditor.bold"),
+                onPressedChange: () =>
+                  editor.chain().focus().toggleBold().run(),
+                pressed: activeMarks.bold,
+                size: "sm",
+                variant: "ghost",
+              },
+              () => h(PhTextB),
+            ),
+            h(
+              Toggle as ArkPart,
+              {
+                "aria-label": m("richTextEditor.italic"),
+                onPressedChange: () =>
+                  editor.chain().focus().toggleItalic().run(),
+                pressed: activeMarks.italic,
+                size: "sm",
+                variant: "ghost",
+              },
+              () => h(PhTextItalic),
+            ),
+            h(
+              Toggle as ArkPart,
+              {
+                "aria-label": m("richTextEditor.strikethrough"),
+                onPressedChange: () =>
+                  editor.chain().focus().toggleStrike().run(),
+                pressed: activeMarks.strike,
+                size: "sm",
+                variant: "ghost",
+              },
+              () => h(PhTextStrikethrough),
+            ),
+            h(
+              Toggle as ArkPart,
+              {
+                "aria-label": m("richTextEditor.bulletList"),
+                onPressedChange: () =>
+                  editor.chain().focus().toggleBulletList().run(),
+                pressed: activeMarks.bulletList,
+                size: "sm",
+                variant: "ghost",
+              },
+              () => h(PhListBullets),
+            ),
+            h(
+              Toggle as ArkPart,
+              {
+                "aria-label": m("richTextEditor.orderedList"),
+                onPressedChange: () =>
+                  editor.chain().focus().toggleOrderedList().run(),
+                pressed: activeMarks.orderedList,
+                size: "sm",
+                variant: "ghost",
+              },
+              () => h(PhListNumbers),
+            ),
+          ]),
       );
     };
   },
+});
+
+const ContentBase = withContext<RichTextEditorContentProps>("div", {
+  name: "Content",
 });
 
 export const RichTextEditorContent = defineComponent({
   inheritAttrs: false,
-  name: "RichTextEditorContent",
+  name: "RichTextEditor.Content",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    const context = useRichTextEditorContext();
+    const state = useRichTextEditorState();
 
-    return () => {
-      const recipeSlots = context?.slots;
-
-      return h(
-        "div",
+    return () =>
+      h(
+        ContentBase,
         {
           ...attrs,
-          class: recipeSlots?.content({ class: props.class }),
-          "data-part": "content",
-          "data-scope": "rich-text-editor",
+          class: props.class,
         },
-        () => h(EditorContent as ArkPart, { editor: context?.editor }),
+        () => h(EditorContent as ArkPart, { editor: state?.editor }),
       );
-    };
   },
 });
+// #endregion
 
+// #region Shorthand
 export const RichTextEditorShorthand = defineComponent({
   inheritAttrs: false,
   name: "RichTextEditor",
   props: richTextEditorRootProps,
   setup(props, { attrs }) {
     return () =>
-      h(RichTextEditorRoot as ArkPart, { ...attrs, ...props }, () => [
+      h(RichTextEditorRoot, { ...attrs, ...props }, () => [
         h(RichTextEditorToolbar),
         h(RichTextEditorContent),
       ]);

@@ -29,46 +29,42 @@ const blockDocsSchema = z.object({
   title: z.string(),
 });
 
-function metaCollection(
-  framework: string,
-  area: "components" | "forms" | "blocks",
-) {
-  // Components: folder page (`accordion/meta.md` + design/develop).
-  // Forms / blocks: single page file (`text-field.mdx`, `app-shell.mdx`).
-  const singleMdx = area === "blocks" || area === "forms";
-
+function pageCollection(framework: string, area: "forms" | "blocks") {
   return defineCollection({
     loader: glob({
       // Relative to the docs project root (not import.meta.url — that breaks when
       // the config is bundled and leaves collections empty).
       base: `./src/content/${framework}/${area}`,
-      generateId: ({ entry }) => {
-        const normalized = entry.replace(/\\/g, "/");
-        if (singleMdx) return normalized.replace(/\.mdx$/, "");
-
-        // `accordion/meta.md` → `accordion`
-        return normalized.replace(/\/meta\.md$/, "").replace(/\.md$/, "");
-      },
-      // Nested meta lives one level down; `*/meta.md` is not matched by the
-      // content glob loader in this Astro version — use `**/meta.md`.
-      pattern: singleMdx ? "*.mdx" : "**/meta.md",
+      generateId: ({ entry }) =>
+        entry.replace(/\\/g, "/").replace(/\.mdx$/, ""),
+      pattern: "*.mdx",
     }),
     schema: area === "blocks" ? blockDocsSchema : componentDocsSchema,
   });
 }
 
+/** Shared component meta. `api` is the same on every framework. */
+const components = defineCollection({
+  loader: glob({
+    base: "./src/content/components",
+    generateId: ({ entry }) =>
+      entry
+        .replace(/\\/g, "/")
+        .replace(/\/meta\.md$/, "")
+        .replace(/\.md$/, ""),
+    pattern: "**/meta.md",
+  }),
+  schema: componentDocsSchema,
+});
+
 export const collections = {
-  astroComponents: metaCollection("astro", "components"),
-  reactBlocks: metaCollection("react", "blocks"),
-  reactComponents: metaCollection("react", "components"),
-  reactForms: metaCollection("react", "forms"),
-  solidBlocks: metaCollection("solid", "blocks"),
-  solidComponents: metaCollection("solid", "components"),
-  solidForms: metaCollection("solid", "forms"),
-  svelteBlocks: metaCollection("svelte", "blocks"),
-  svelteComponents: metaCollection("svelte", "components"),
-  svelteForms: metaCollection("svelte", "forms"),
-  vueBlocks: metaCollection("vue", "blocks"),
-  vueComponents: metaCollection("vue", "components"),
-  vueForms: metaCollection("vue", "forms"),
+  components,
+  reactBlocks: pageCollection("react", "blocks"),
+  reactForms: pageCollection("react", "forms"),
+  solidBlocks: pageCollection("solid", "blocks"),
+  solidForms: pageCollection("solid", "forms"),
+  svelteBlocks: pageCollection("svelte", "blocks"),
+  svelteForms: pageCollection("svelte", "forms"),
+  vueBlocks: pageCollection("vue", "blocks"),
+  vueForms: pageCollection("vue", "forms"),
 };

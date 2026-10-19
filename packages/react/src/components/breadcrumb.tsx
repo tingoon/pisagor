@@ -84,30 +84,40 @@ export function BreadcrumbRoot({
   );
 }
 
-export const BreadcrumbList = withBreadcrumbContext("ol", {
-  defaultProps: { role: "list" },
-  name: "List",
-});
+export const BreadcrumbList = withBreadcrumbContext<ComponentProps<"ol">>(
+  "ol",
+  {
+    defaultProps: { role: "list" },
+    name: "List",
+  },
+);
 
-export const BreadcrumbItem = withBreadcrumbItemProvider(
-  "li",
-)<BreadcrumbItemRootContract>({
-  name: "Item",
-  slot: "base",
-});
+export type BreadcrumbItemRootProps = ComponentProps<"li"> &
+  BreadcrumbItemRootContract;
 
-export type BreadcrumbItemRootProps = ComponentProps<typeof BreadcrumbItem>;
-export interface BreadcrumbItemProps
-  extends BreadcrumbItemRootProps, BreadcrumbItemContract {}
+export type BreadcrumbItemProps = BreadcrumbItemRootProps &
+  BreadcrumbItemContract;
 
-export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
-  name: "Link",
-});
+export const BreadcrumbItem =
+  withBreadcrumbItemProvider<BreadcrumbItemRootProps>("li", {
+    name: "Item",
+    slot: "base",
+  });
 
-export const BreadcrumbPage = withBreadcrumbItemContext("span", {
-  defaultProps: { "aria-current": "page" },
-  name: "Page",
-});
+export const BreadcrumbLink = withBreadcrumbItemContext<BreadcrumbLinkProps>(
+  ark.a,
+  {
+    name: "Link",
+  },
+);
+
+export const BreadcrumbPage = withBreadcrumbItemContext<BreadcrumbPageProps>(
+  "span",
+  {
+    defaultProps: { "aria-current": "page" },
+    name: "Page",
+  },
+);
 
 export function BreadcrumbSeparator({
   children,
@@ -187,7 +197,6 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
 BreadcrumbRoot.displayName = "Breadcrumb.Root";
 BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
-BreadcrumbShorthand.displayName = "Breadcrumb";
 // #endregion
 
 export const Breadcrumb = Object.assign(BreadcrumbShorthand, {

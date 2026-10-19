@@ -9,7 +9,7 @@ import FileUploadItemGroup from "./file-upload-item-group.svelte";
 import FileUploadItemName from "./file-upload-item-name.svelte";
 import FileUploadItemPreview from "./file-upload-item-preview.svelte";
 import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
-import FileUploadItemSize from "./file-upload-item-size.svelte";
+import FileUploadItemSizeText from "./file-upload-item-size-text.svelte";
 import FileUploadList from "./file-upload-list.svelte";
 import FileUploadRoot from "./file-upload-root.svelte";
 import FileUploadTitle from "./file-upload-title.svelte";
@@ -27,7 +27,7 @@ export const FileUpload = Object.assign(FileUploadRoot, {
   ItemName: FileUploadItemName,
   ItemPreview: FileUploadItemPreview,
   ItemPreviewImage: FileUploadItemPreviewImage,
-  ItemSize: FileUploadItemSize,
+  ItemSizeText: FileUploadItemSizeText,
   List: FileUploadList,
   Title: FileUploadTitle,
   Trigger: FileUploadTrigger,

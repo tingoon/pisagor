@@ -10,7 +10,12 @@ export interface CheckboxFieldProps
     FieldPresentationProps,
     Omit<
       CheckboxProps,
-      "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"
+      | "checked"
+      | "class"
+      | "invalid"
+      | "name"
+      | "onCheckedChange"
+      | "onValueChange"
     > {
   checked?: boolean;
   name?: string;

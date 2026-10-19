@@ -5,8 +5,8 @@ import { withContext } from "./frame.context";
 type Props = HTMLAttributes<"footer">;
 
 const footer = withContext(Astro.props, {
-  defaultProps: { "data-part": "panel-footer" },
   name: "Footer",
+  part: "panel-footer",
   slot: "panelFooter",
 });
 ---

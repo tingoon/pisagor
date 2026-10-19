@@ -28,13 +28,12 @@ export interface CardHeaderProps extends CardHeaderContract {
   title?: string;
 }
 
-export interface CardProps extends CardRootProps, CardContract {}
+export type CardProps = CardRootProps & CardContract;
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider(ark.div, {
+export const CardRoot = withProvider<CardRootContract>(ark.div, {
   name: "Root",
-  slot: "base",
 });
 
 export const CardMedia = defineComponent({
@@ -111,30 +110,15 @@ export const CardHeader = defineComponent({
   },
 });
 
-export const CardTitle = withContext(ark.h3, {
-  name: "Title",
-  slot: "title",
-});
+export const CardTitle = withContext(ark.h3, { name: "Title" });
 
-export const CardDescription = withContext("p", {
-  name: "Description",
-  slot: "description",
-});
+export const CardDescription = withContext("p", { name: "Description" });
 
-export const CardAction = withContext("div", {
-  name: "Action",
-  slot: "action",
-});
+export const CardAction = withContext("div", { name: "Action" });
 
-export const CardContent = withContext("div", {
-  name: "Content",
-  slot: "content",
-});
+export const CardContent = withContext("div", { name: "Content" });
 
-export const CardFooter = withContext("div", {
-  name: "Footer",
-  slot: "footer",
-});
+export const CardFooter = withContext("div", { name: "Footer" });
 // #endregion
 
 export const Card = Object.assign(CardRoot, {

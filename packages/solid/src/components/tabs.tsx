@@ -11,7 +11,7 @@ import type {
   TabsContract,
 } from "@pisagor/contracts";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -22,8 +22,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface LocalTabsRootProps
-  extends TabsRootPrimitiveProps, TabsRootContract {}
+export type LocalTabsRootProps = TabsRootPrimitiveProps & TabsRootContract;
 
 interface TabsPresetItem extends Omit<BaseTabsPresetItem, "label" | "content"> {
   label: JSX.Element;
@@ -53,10 +52,9 @@ export interface TabsProps
   showIndicator?: boolean;
 }
 
-export const TabsRoot: Component<LocalTabsRootProps> = withProvider(
-  TabsPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+export const TabsRoot: Component<LocalTabsRootProps> = withProvider<
+  ComponentProps<typeof TabsPrimitive.Root> & TabsRootContract
+>(TabsPrimitive.Root, { name: "Root" });
 
 export function TabsList(props: TabsListProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -83,15 +81,13 @@ export function TabsList(props: TabsListProps): JSX.Element {
   );
 }
 
-export const TabsTrigger: Component<TabsTriggerProps> = withContext(
-  TabsPrimitive.Trigger,
-  { name: "Trigger" },
-);
+export const TabsTrigger: Component<TabsTriggerProps> = withContext<
+  ComponentProps<typeof TabsPrimitive.Trigger>
+>(TabsPrimitive.Trigger, { name: "Trigger" });
 
-export const TabsContent: Component<TabsContentProps> = withContext(
-  TabsPrimitive.Content,
-  { name: "Content" },
-);
+export const TabsContent: Component<TabsContentProps> = withContext<
+  ComponentProps<typeof TabsPrimitive.Content>
+>(TabsPrimitive.Content, { name: "Content" });
 
 export function TabsShorthand(props: TabsProps): JSX.Element {
   const [local, rest] = splitProps(props, [

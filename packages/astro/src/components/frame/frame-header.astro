@@ -5,8 +5,8 @@ import { withContext } from "./frame.context";
 type Props = HTMLAttributes<"header">;
 
 const header = withContext(Astro.props, {
-  defaultProps: { "data-part": "panel-header" },
   name: "Header",
+  part: "panel-header",
   slot: "panelHeader",
 });
 ---

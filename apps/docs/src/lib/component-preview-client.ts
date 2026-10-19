@@ -1,42 +1,14 @@
 /**
- * Client behavior for `component-preview.astro`: Preview/Code tabs, lazy code
- * blocks, and "open in new tab". Surface / viewport / theme controls are React
- * islands (`PreviewToolbarControls`, `PreviewThemeToggle`).
+ * Client behavior for `component-preview.astro`: "open in new tab".
+ * Preview/Code tabs, surface / viewport / theme controls are React islands.
  */
-import { ensureLazyCodeBlock } from "#/lib/ensure-lazy-codeblock";
 
 function bindPreview(root: HTMLElement) {
   if (root.dataset.bound === "1") return;
   root.dataset.bound = "1";
 
-  const tabs = [...root.querySelectorAll<HTMLElement>("[data-view-tab]")];
-  const previewPanel = root.querySelector<HTMLElement>(
-    '[data-panel="preview"]',
-  );
-  const codePanel = root.querySelector<HTMLElement>('[data-panel="code"]');
   const stage = root.querySelector<HTMLElement>("[data-preview-stage]");
   const openTabBtn = root.querySelector<HTMLElement>("[data-open-tab]");
-
-  function setView(view: "preview" | "code") {
-    for (const tab of tabs) {
-      const active = tab.dataset.view === view;
-      tab.toggleAttribute("data-active", active);
-      tab.setAttribute("aria-selected", active ? "true" : "false");
-    }
-    // HTML `hidden` beats layout `display` utilities / `.docs-preview-frame`.
-    if (previewPanel) previewPanel.hidden = view !== "preview";
-    if (codePanel) codePanel.hidden = view !== "code";
-    if (view === "code" && codePanel) {
-      void ensureLazyCodeBlock(codePanel);
-    }
-  }
-
-  for (const tab of tabs) {
-    tab.addEventListener("click", () => {
-      setView(tab.dataset.view === "code" ? "code" : "preview");
-    });
-  }
-
   const previewThemeRoot = root.querySelector<HTMLElement>(
     '[data-panel="preview"]',
   );

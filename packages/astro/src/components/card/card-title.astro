@@ -4,7 +4,7 @@ import { withContext } from "./card.context";
 
 type Props = HTMLAttributes<"h3">;
 
-const title = withContext(Astro.props, { name: "Title", slot: "title" });
+const title = withContext(Astro.props, { name: "Title" });
 ---
 
 {/* biome-ignore lint/a11y/useHeadingContent: content is the default slot */}

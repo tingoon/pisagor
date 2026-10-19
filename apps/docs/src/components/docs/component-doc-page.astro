@@ -1,18 +1,24 @@
 ---
 import ComponentHeader from "#/components/docs/component-header.astro";
+import DocLink from "#/components/docs/doc-link.astro";
 import DoDont from "#/components/docs/do-dont.astro";
 import Example from "#/components/docs/example.astro";
 import PropsTable from "#/components/docs/props-table.astro";
+import { DocsNavSegmentGroup } from "#/components/docs/react/docs-nav-segment-group";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { resolveAnatomySrc } from "#/lib/anatomy";
 import {
   defaultPackageName,
   extractExampleNames,
+  hasCompoundDoc,
   listComponentDocTabs,
+  loadCompoundBody,
+  loadCompoundDoc,
   loadProps,
   loadSkillBody,
   loadSkillMd,
   loadSkillPane,
+  type DevelopSurface,
   type SkillPaneId,
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
@@ -25,11 +31,14 @@ interface Props {
   id: string;
   framework: Framework;
   tab: SkillPaneId;
+  /** Develop surface. `shorthand` is the existing develop page. */
+  surface?: DevelopSurface;
 }
 
 const id = Astro.props.id;
 const framework = Astro.props.framework;
 const activeTab = Astro.props.tab;
+const surface = Astro.props.surface ?? "shorthand";
 const anatomySrc = resolveAnatomySrc(id);
 
 setDocsExampleContext(Astro.locals, {
@@ -39,7 +48,10 @@ setDocsExampleContext(Astro.locals, {
 });
 
 const { frontmatter } = await loadSkillMd(framework, id);
-const pane = await loadSkillPane(framework, id, activeTab);
+const showCompound = activeTab === "develop" && surface === "compound";
+const pane = showCompound
+  ? await loadCompoundDoc(framework, id)
+  : await loadSkillPane(framework, id, activeTab);
 const docs = frontmatter as ComponentDocs;
 const propsRows = loadProps(id);
 const pkg = docs.packageName ?? defaultPackageName(framework);
@@ -53,22 +65,35 @@ if (!tabs.some((t) => t.id === activeTab)) {
 const PaneContent = pane.Content as (props?: {
   components?: Record<string, unknown>;
 }) => unknown;
-const mdxComponents = { DoDont, Example };
+const mdxComponents = { DocLink, DoDont, Example };
 
 const paneHeadings = pane
   .getHeadings()
   .filter((h) => h.depth === 2 || h.depth === 3);
 const headings = [
   ...paneHeadings,
-  ...(activeTab === "develop"
+  ...(activeTab === "develop" && !showCompound
     ? [{ depth: 2, slug: "props", text: "Props" }]
     : []),
 ];
 
 const exampleExportNames =
   activeTab === "develop"
-    ? extractExampleNames(await loadSkillBody(framework, id, "develop"))
+    ? extractExampleNames(
+        showCompound
+          ? await loadCompoundBody(framework, id)
+          : await loadSkillBody(framework, id, "develop"),
+      )
     : [];
+
+const compoundHref = `${tabHref("develop")}/compound`;
+const surfaces = hasCompoundDoc(framework, id)
+  ? {
+      active: activeTab === "develop" ? surface : undefined,
+      compoundHref,
+      shorthandHref: tabHref("develop"),
+    }
+  : undefined;
 
 function tabHref(tabId: SkillPaneId): string {
   return withDocsBase(`/${framework}/components/${id}/${tabId}`);
@@ -76,19 +101,18 @@ function tabHref(tabId: SkillPaneId): string {
 
 const frameworkLabel =
   frameworks.find((item) => item.id === framework)?.label ?? framework;
-const tabLabel = tabs.find((t) => t.id === activeTab)?.label ?? activeTab;
+const tabLabel = showCompound
+  ? "Compound"
+  : (tabs.find((t) => t.id === activeTab)?.label ?? activeTab);
 const metaTitle = `${docs.title} ${tabLabel} – ${frameworkLabel}`;
 
 const proseClass = docsProseClass;
 
-const tablistClass =
-  "inline-flex flex-wrap rounded-lg border border-border/70 bg-muted/30 p-0.5";
-const tabLinkClass =
-  "rounded-md px-3 py-1.5 font-medium text-muted-foreground text-sm transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
-const tocTablistClass =
-  "flex w-full rounded-lg border border-border/70 bg-muted/30 p-0.5";
-const tocTabLinkClass =
-  "min-w-0 flex-1 rounded-md px-2 py-1.5 text-center font-medium text-muted-foreground text-sm transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
+const sectionItems = tabs.map((tab) => ({
+  href: tabHref(tab.id),
+  label: tab.label,
+  value: tab.id,
+}));
 ---
 
 <DocsLayout
@@ -111,64 +135,51 @@ const tocTabLinkClass =
     </figure>
   )}
 
-  <div
-    aria-label="Documentation sections"
-    class={tocTablistClass}
-    role="tablist"
-    slot="toc-actions"
-  >
-    {tabs.map((tab) => (
-      <a
-        aria-controls={`doc-panel-${tab.id}`}
-        aria-selected={tab.id === activeTab ? "true" : "false"}
-        class={tocTabLinkClass}
-        data-active={tab.id === activeTab ? "" : undefined}
-        href={tabHref(tab.id)}
-        id={`doc-tab-${tab.id}`}
-        role="tab"
-      >
-        {tab.label}
-      </a>
-    ))}
+  <div slot="toc-actions">
+    <DocsNavSegmentGroup
+      client:only="react"
+      aria-label="Documentation sections"
+      className="w-full [&_[data-part=item]]:min-w-0 [&_[data-part=item]]:flex-1"
+      items={sectionItems}
+      value={activeTab}
+    />
   </div>
 
   <div class="mb-8 xl:hidden" slot="nav">
-    <div
+    <DocsNavSegmentGroup
+      client:only="react"
       aria-label="Documentation sections"
-      class={tablistClass}
-      role="tablist"
-    >
-      {tabs.map((tab) => (
-        <a
-          aria-controls={`doc-panel-${tab.id}`}
-          aria-selected={tab.id === activeTab ? "true" : "false"}
-          class={tabLinkClass}
-          data-active={tab.id === activeTab ? "" : undefined}
-          href={tabHref(tab.id)}
-          role="tab"
-        >
-          {tab.label}
-        </a>
-      ))}
-    </div>
+      items={sectionItems}
+      value={activeTab}
+    />
   </div>
 
   <ComponentHeader
-    aliases={docs.aliases}
-    api={docs.api}
     framework={framework}
     packageName={pkg}
     slot="title-actions"
-    taxonomy={docs.taxonomy}
+    surfaces={surfaces}
   />
 
   <div>
-    {activeTab === "develop" ? (
-      <div
-        aria-labelledby="doc-tab-develop"
-        id="doc-panel-develop"
-        role="tabpanel"
-      >
+    {showCompound ? (
+      <div aria-label="Develop" id="doc-panel-develop" role="tabpanel">
+        <div class={proseClass}>
+          <PaneContent components={mdxComponents} />
+        </div>
+
+        {framework !== "astro" && exampleExportNames.length > 0 ? (
+          <div
+            data-component-id={id}
+            data-docs-examples-host
+            data-export-names={JSON.stringify(exampleExportNames)}
+            data-kind="component"
+            hidden
+          />
+        ) : null}
+      </div>
+    ) : activeTab === "develop" ? (
+      <div aria-label="Develop" id="doc-panel-develop" role="tabpanel">
         <div class={proseClass}>
           <PaneContent components={mdxComponents} />
         </div>
@@ -199,7 +210,7 @@ const tocTabLinkClass =
       </div>
     ) : (
       <div
-        aria-labelledby="doc-tab-design"
+        aria-label="Design"
         class:list={[proseClass, "[&>h2:first-child]:!mt-0"]}
         id="doc-panel-design"
         role="tabpanel"

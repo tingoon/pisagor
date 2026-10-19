@@ -4,7 +4,7 @@ import { withContext } from "./item.context";
 
 type Props = HTMLAttributes<"div">;
 
-const header = withContext(Astro.props, { name: "Header", slot: "header" });
+const header = withContext(Astro.props, { name: "Header" });
 ---
 
 <div {...header.props}>

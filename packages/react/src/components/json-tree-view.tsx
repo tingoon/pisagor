@@ -10,7 +10,7 @@ import type {
 } from "@pisagor/contracts";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
 
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -21,11 +21,9 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface JsonTreeViewRootProps
-  extends
-    JsonTreeViewRootPrimitiveProps,
-    JsonTreeViewRootContract,
-    JsonTreeViewContract {}
+export type JsonTreeViewRootProps = JsonTreeViewRootPrimitiveProps &
+  JsonTreeViewRootContract &
+  JsonTreeViewContract;
 
 export interface JsonTreeViewProps extends Omit<
   JsonTreeViewRootProps,
@@ -41,12 +39,15 @@ export interface JsonTreeViewProps extends Omit<
 // #endregion
 
 // #region Parts
-const JsonTreeViewRoot = withProvider(JsonTreeViewPrimitive.Root)({
+const JsonTreeViewRoot = withProvider<
+  ComponentProps<typeof JsonTreeViewPrimitive.Root> & JsonTreeViewRootContract
+>(JsonTreeViewPrimitive.Root, {
   name: "Root",
-  slot: "base",
 }) as FunctionComponent<JsonTreeViewRootProps>;
 
-const JsonTreeViewTree = withContext(JsonTreeViewPrimitive.Tree, {
+const JsonTreeViewTree = withContext<
+  ComponentProps<typeof JsonTreeViewPrimitive.Tree>
+>(JsonTreeViewPrimitive.Tree, {
   name: "Tree",
 });
 // #endregion
@@ -70,11 +71,6 @@ function JsonTreeViewShorthand({
     </JsonTreeViewRoot>
   );
 }
-// #endregion
-
-// #region Display Names
-JsonTreeViewShorthand.displayName = "JsonTreeView";
-
 // #endregion
 
 export type { JsonTreeViewTreeProps } from "@ark-ui/react";

@@ -1,7 +1,7 @@
 import type {
   CheckboxGroupRecipeFn,
   CheckboxRecipeFn,
-  FormControlToggleVariantProps,
+  CheckboxVariantProps,
 } from "@pisagor/recipes";
 
 /**
@@ -18,10 +18,10 @@ export interface CheckboxGroupRootContract {
 }
 
 /**
- * Shared Checkbox root contract: shell variants from `formControlToggleRecipe`
- * and recipe override. Used by compound roots; excludes host DOM attributes.
+ * Shared Checkbox root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
  */
-export interface CheckboxRootContract extends FormControlToggleVariantProps {
+export interface CheckboxRootContract extends CheckboxVariantProps {
   /**
    * Style recipe override.
    *

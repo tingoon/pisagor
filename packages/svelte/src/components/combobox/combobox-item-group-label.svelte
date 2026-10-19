@@ -3,22 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxItemGroupLabelProps,
   } from "@ark-ui/svelte";
-  import { comboboxRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useComboboxRoot } from "./combobox.context";
+  import { withContext } from "./combobox.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: ComboboxItemGroupLabelProps = $props();
-  const ctx = useComboboxRoot();
-  const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let { children, ...rest }: ComboboxItemGroupLabelProps = $props();
+  const part = withContext(() => rest, { name: "ItemGroupLabel" });
 </script>
 
-<ComboboxPrimitive.ItemGroupLabel
-  {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
->
+<ComboboxPrimitive.ItemGroupLabel {...part.props}>
   {@render children?.()}
 </ComboboxPrimitive.ItemGroupLabel>

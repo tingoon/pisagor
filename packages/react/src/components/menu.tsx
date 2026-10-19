@@ -19,10 +19,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const MenuRootBase = withProvider("nav")<MenuRootContract>({
-  name: "Root",
-  slot: "base",
-});
+const MenuRootBase = withProvider<ComponentProps<"nav"> & MenuRootContract>(
+  "nav",
+  { name: "Root" },
+);
 
 export function MenuRoot({
   "aria-label": ariaLabelProp,
@@ -37,7 +37,7 @@ export function MenuRoot({
 /** True inside `Menu.List`, so separators render as `<li>`. */
 const MenuInsideListContext = createContext(false);
 
-const MenuListBase = withContext("ul", {
+const MenuListBase = withContext<ComponentProps<"ul">>("ul", {
   defaultProps: { role: "list" },
   name: "List",
 });
@@ -50,15 +50,13 @@ export function MenuList(props: MenuListProps) {
   );
 }
 
-export const MenuGroup = withContext("div", {
+export const MenuGroup = withContext<ComponentProps<"div">>("div", {
   defaultProps: { role: "group" },
   name: "Group",
 });
 
-export const MenuGroupLabel = withContext("div", {
-  defaultProps: { "data-part": "group-label" },
+export const MenuGroupLabel = withContext<ComponentProps<"div">>("div", {
   name: "GroupLabel",
-  slot: "groupLabel",
 });
 
 export function MenuItem({
@@ -105,12 +103,12 @@ export function MenuLink({
   );
 }
 
-const MenuSeparatorDiv = withContext("div", {
+const MenuSeparatorDiv = withContext<ComponentProps<"div">>("div", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
 
-const MenuSeparatorItem = withContext("li", {
+const MenuSeparatorItem = withContext<ComponentProps<"li">>("li", {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
 });
@@ -125,7 +123,7 @@ export function MenuSeparator(props: MenuSeparatorProps) {
   );
 }
 
-export const MenuShortcut = withContext("span", {
+export const MenuShortcut = withContext<ComponentProps<"span">>("span", {
   name: "Shortcut",
 });
 // #endregion
@@ -135,8 +133,7 @@ export type MenuRootProps = ComponentProps<typeof MenuRoot>;
 export type MenuPartProps = ComponentPropsWithRef<"div">;
 export type MenuListProps = ComponentPropsWithRef<"ul">;
 
-export interface MenuItemProps
-  extends HTMLArkProps<"button">, MenuItemRootContract {}
+export type MenuItemProps = HTMLArkProps<"button"> & MenuItemRootContract;
 
 export interface MenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
@@ -147,7 +144,7 @@ export type MenuGroupLabelProps = ComponentPropsWithRef<"div">;
 export type MenuSeparatorProps = ComponentPropsWithRef<"div">;
 export type MenuShortcutProps = ComponentPropsWithRef<"span">;
 
-export interface MenuProps extends MenuRootProps, MenuContract {}
+export type MenuProps = MenuRootProps & MenuContract;
 // #endregion
 
 // #region Display Names

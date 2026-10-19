@@ -207,10 +207,10 @@ export const ResizableEdgeHandle = defineComponent({
   },
 });
 
-export const ResizableRoot = withProvider(SplitterPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+export const ResizableRoot = withProvider<ResizableRootContract>(
+  SplitterPrimitive.Root,
+  { name: "Root" },
+);
 
 export const ResizablePanel = defineComponent({
   inheritAttrs: false,
@@ -229,11 +229,7 @@ export const ResizablePanel = defineComponent({
 
 export const ResizableResizeTriggerIndicator = withContext(
   SplitterPrimitive.ResizeTriggerIndicator,
-  {
-    defaultProps: { "data-part": "resize-trigger-indicator" },
-    name: "ResizeTriggerIndicator",
-    slot: "resizeTriggerIndicator",
-  },
+  { name: "ResizeTriggerIndicator" },
 );
 
 export const ResizableResizeTrigger = defineComponent({

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue";
-import { Combobox } from "@pisagor/vue";
+import { PhCaretUpDown, PhCheck } from "@phosphor-icons/vue";
+import { Combobox, InputGroup } from "@pisagor/vue";
 import { computed } from "vue";
 
 const initialItems = [
@@ -30,19 +31,44 @@ function filter(_inputValue: string) {}
     :collection="collection"
     @input-value-change="({ inputValue }) => filter(inputValue)"
   >
-    <Combobox.Input placeholder="Select a timezone" />
-    <Combobox.Content class="w-60">
-      <Combobox.List>
-        <Combobox.ItemGroup
-          v-for="[continent, group] in groups"
-          :key="continent"
-          :heading="continent"
-        >
-          <Combobox.Item v-for="item in group" :key="item.value" :item="item">
-            {{ item.label }}
-          </Combobox.Item>
-        </Combobox.ItemGroup>
-      </Combobox.List>
-    </Combobox.Content>
+    <Combobox.Control>
+      <InputGroup>
+        <Combobox.Input as-child>
+          <InputGroup.Input placeholder="Select a timezone" />
+        </Combobox.Input>
+        <InputGroup.Addon align="inline-end">
+          <InputGroup.Button as-child size="icon-xs" variant="ghost">
+            <Combobox.Trigger>
+              <PhCaretUpDown aria-hidden />
+            </Combobox.Trigger>
+          </InputGroup.Button>
+        </InputGroup.Addon>
+      </InputGroup>
+    </Combobox.Control>
+    <Teleport to="body">
+      <Combobox.Positioner>
+        <Combobox.Content class="w-60">
+          <Combobox.List>
+            <Combobox.ItemGroup
+              v-for="[continent, group] in groups"
+              :key="continent"
+            >
+              <Combobox.ItemGroupLabel>{{ continent }}</Combobox.ItemGroupLabel>
+              <Combobox.Item
+                v-for="item in group"
+                :key="item.value"
+                :item="item"
+                persist-focus
+              >
+                {{ item.label }}
+                <Combobox.ItemIndicator>
+                  <PhCheck />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            </Combobox.ItemGroup>
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Positioner>
+    </Teleport>
   </Combobox.Root>
 </template>

@@ -38,19 +38,22 @@ export interface StepsRootProps extends StepsRootContract {
 // #endregion
 
 // #region Parts
-export const StepsRoot = withStepsProvider(StepsPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+export const StepsRoot = withStepsProvider<StepsRootContract>(
+  StepsPrimitive.Root,
+  { name: "Root" },
+);
 
 export const StepsList = withStepsContext(StepsPrimitive.List, {
   name: "List",
 });
 
-export const StepsItem = withStepsItemProvider(StepsPrimitive.Item, {
-  name: "Item",
-  slot: "base",
-});
+export const StepsItem = withStepsItemProvider<StepsItemRootContract>(
+  StepsPrimitive.Item,
+  {
+    name: "Item",
+    slot: "base",
+  },
+);
 
 export const StepsTrigger = withStepsItemContext(StepsPrimitive.Trigger, {
   name: "Trigger",
@@ -104,11 +107,7 @@ export const StepsContent = withStepsContext(StepsPrimitive.Content, {
 
 export const StepsCompletedContent = withStepsContext(
   StepsPrimitive.CompletedContent,
-  {
-    defaultProps: { "data-part": "completed-content" },
-    name: "CompletedContent",
-    slot: "completedContent",
-  },
+  { name: "CompletedContent" },
 );
 
 export const StepsPrevTrigger = defineComponent({

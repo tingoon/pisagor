@@ -7,89 +7,53 @@ import type {
 } from "@ark-ui/solid";
 import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
-import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Switch",
   recipe: switchRecipe,
 });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
-type SwitchRootProps = SwitchRootPrimitiveProps & {
-  variant?: FormControlVariant;
-} & SwitchRootContract;
+// #region Types
+type SwitchRootProps = SwitchRootPrimitiveProps & SwitchRootContract;
 
 export interface SwitchProps
   extends Omit<SwitchRootProps, "children">, SwitchContract {
   onValueChange?: (value: boolean) => void;
+  /** Extra props forwarded to the switch control element */
   controlProps?: Omit<SwitchControlProps, "children" | "class">;
+  /** Extra props forwarded to the hidden input element (e.g. tabIndex) */
   hiddenInputProps?: Omit<SwitchHiddenInputProps, "class">;
+  /** Extra props forwarded to the switch thumb element */
   thumbProps?: Omit<SwitchThumbProps, "children" | "class">;
 }
+// #endregion
 
-/** Surface variant comes from the nearest form-control surface. */
-function SwitchRoot(props: SwitchRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "variant",
-    "recipe",
-    "size",
-    "class",
-  ]);
-  const surfaceVariant = useFormControlSurface();
-  const shellArgs = () => ({
-    surfaceVariant,
-    variant: local.variant ?? ("primary" as FormControlVariant),
-  });
-  const slots = createMemo(() =>
-    (local.recipe ?? switchRecipe)({
-      ...shellArgs(),
-      size: local.size ?? "md",
-    }),
-  );
+// #region Parts
+const Root = withProvider<SwitchRootProps>(SwitchPrimitive.Root, {
+  name: "Root",
+});
 
-  return (
-    <SwitchStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        get variants() {
-          return shellArgs();
-        },
-      }}
-    >
-      <SwitchPrimitive.Root
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-variant={shellArgs().variant}
-      />
-    </SwitchStylesContext>
-  );
-}
+const Control = withContext<SwitchControlProps>(SwitchPrimitive.Control, {
+  name: "Control",
+});
 
-const SwitchControl: Component<SwitchControlProps> = withContext(
-  SwitchPrimitive.Control,
-  { name: "Control" },
-);
+const Thumb = withContext<SwitchThumbProps>(SwitchPrimitive.Thumb, {
+  name: "Thumb",
+});
 
-const SwitchThumb: Component<SwitchThumbProps> = withContext(
-  SwitchPrimitive.Thumb,
-  { name: "Thumb" },
-);
-
-function SwitchHiddenInput(props: SwitchHiddenInputProps): JSX.Element {
+function HiddenInput(props: SwitchHiddenInputProps): JSX.Element {
   return <SwitchPrimitive.HiddenInput {...props} />;
 }
+// #endregion
 
+// #region Closed
 function SwitchShorthand(props: SwitchProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "variant",
     "controlProps",
     "hiddenInputProps",
     "thumbProps",
@@ -100,7 +64,7 @@ function SwitchShorthand(props: SwitchProps): JSX.Element {
   ]);
 
   return (
-    <SwitchRoot
+    <Root
       {...rest}
       class={local.class}
       onCheckedChange={
@@ -111,15 +75,15 @@ function SwitchShorthand(props: SwitchProps): JSX.Element {
             }
           : undefined
       }
-      variant={local.variant}
     >
-      <SwitchControl {...local.controlProps} class={local.classNames?.control}>
-        <SwitchThumb {...local.thumbProps} class={local.classNames?.thumb} />
-      </SwitchControl>
-      <SwitchHiddenInput {...local.hiddenInputProps} />
-    </SwitchRoot>
+      <Control {...local.controlProps} class={local.classNames?.control}>
+        <Thumb {...local.thumbProps} class={local.classNames?.thumb} />
+      </Control>
+      <HiddenInput {...local.hiddenInputProps} />
+    </Root>
   );
 }
+// #endregion
 
 export type {
   SwitchControlProps,
@@ -128,8 +92,8 @@ export type {
 } from "@ark-ui/solid";
 
 export const Switch = Object.assign(SwitchShorthand, {
-  Control: SwitchControl,
-  HiddenInput: SwitchHiddenInput,
-  Root: SwitchRoot,
-  Thumb: SwitchThumb,
+  Control,
+  HiddenInput,
+  Root,
+  Thumb,
 });

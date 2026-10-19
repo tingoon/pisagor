@@ -6,11 +6,7 @@
   import { withContext } from "./carousel.context";
 
   let { children, ...rest }: CarouselItemGroupProps = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "item-group" },
-    name: "ItemGroup",
-    slot: "itemGroup",
-  });
+  const part = withContext(() => rest, { name: "ItemGroup" });
 </script>
 
 <CarouselPrimitive.ItemGroup {...part.props}>

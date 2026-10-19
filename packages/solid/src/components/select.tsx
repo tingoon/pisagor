@@ -15,26 +15,14 @@ import type {
   SelectValueTextProps,
 } from "@ark-ui/solid";
 import type {
+  SelectContract,
   SelectItemGroupContract,
   SelectPresetItem as BaseSelectPresetItem,
   SelectRootContract,
-  SelectContract,
 } from "@pisagor/contracts";
-import {
-  type FormControlShellVariantProps,
-  formControlShellRecipe,
-  selectRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { selectRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
-import {
-  createContext,
-  createMemo,
-  For,
-  Show,
-  splitProps,
-  useContext,
-} from "solid-js";
+import { createMemo, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
   CaretUpDownIcon,
@@ -44,27 +32,15 @@ import {
 } from "../internal";
 import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SelectStylesContext } = createSlotRecipeContext({
+const { Context, withContext, useStyles } = createSlotRecipeContext({
   name: "Select",
   recipe: selectRecipe,
 });
-
-/** Parts may render under a bare Ark root, so fall back to the default recipe. */
-function useSelectSlots() {
-  const styles = useContext(SelectStylesContext);
-
-  return () => styles?.slots ?? selectRecipe();
-}
-
-/** Root-level control props (`variant`, `size`) read by `Select.Trigger`. */
-const SelectControlContext = createContext<FormControlShellVariantProps>({});
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
+// #region Types
 interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
 }
@@ -72,256 +48,232 @@ interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   SelectRootPrimitiveProps<T>,
   "onValueChange"
-> & {
-  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
-  variant?: FormControlVariant;
-  /** Trigger size. Defaults to `md`. */
-  size?: FormControlShellVariantProps["size"];
-  onValueChange?: (value: string | string[]) => void;
-} & Omit<SelectRootContract, "items">;
+> &
+  SelectRootContract & {
+    onValueChange?: (value: string | string[]) => void;
+  };
 
 export interface SelectProps
   extends
-    Omit<SelectRootProps, "children" | "collection" | "items" | "placeholder">,
-    Omit<SelectContract, "items"> {
+    Omit<SelectRootProps, "children" | "collection">,
+    Omit<SelectContract, "items" | "placeholder"> {
+  /**
+   * Whether to show a clear button when a value is selected.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
 }
 
-export interface SelectTriggerProps
-  extends
-    Omit<SelectTriggerPrimitiveProps, "size">,
-    FormControlShellVariantProps {
+type SelectTriggerProps = Omit<SelectTriggerPrimitiveProps, "size"> & {
+  /**
+   * Whether to show a clear button when a value is selected.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
-}
+};
 
-export interface SelectItemGroupProps
-  extends SelectItemGroupPrimitiveProps, SelectItemGroupContract {
-  heading?: string | JSX.Element;
-}
+type SelectItemGroupProps = SelectItemGroupPrimitiveProps &
+  SelectItemGroupContract & {
+    heading?: string | JSX.Element;
+  };
 
-export type SelectEmptyProps = ComponentProps<"div">;
+type SelectEmptyProps = ComponentProps<"div">;
+// #endregion
 
-export const SelectContext = SelectPrimitive.Context;
+// #region Parts
+const SelectContext = SelectPrimitive.Context;
 
-export function SelectRoot<T extends CollectionItem = CollectionItem>(
+function Root<T extends CollectionItem = CollectionItem>(
   props: SelectRootProps<T>,
 ): JSX.Element {
   const [local, rest] = splitProps(props as SelectRootProps, [
     "children",
     "onValueChange",
-    "variant",
     "size",
+    "variant",
+    "surfaceVariant",
     "recipe",
   ]);
-
-  const slots = createMemo(() => (local.recipe ?? selectRecipe)());
-  const control: FormControlShellVariantProps = {
-    get size() {
-      return local.size;
-    },
-    get variant() {
-      return local.variant;
-    },
-  };
+  const recipe = () => local.recipe ?? selectRecipe;
+  const resolved = () => ({
+    size: local.size ?? "md",
+    surfaceVariant: local.surfaceVariant,
+    variant: local.variant,
+  });
+  const slots = createMemo(() => recipe()(resolved()));
 
   return (
-    <SelectStylesContext
+    <Context
       value={{
         get slots() {
           return slots();
         },
-        variants: {},
+        get variants() {
+          return resolved() as never;
+        },
       }}
     >
-      <SelectControlContext.Provider value={control}>
-        <SelectPrimitive.Root
-          {...rest}
-          onValueChange={
-            local.onValueChange
-              ? (details) => local.onValueChange?.(details.value)
-              : undefined
-          }
-        >
-          {local.children}
-          <SelectPrimitive.HiddenSelect />
-        </SelectPrimitive.Root>
-      </SelectControlContext.Provider>
-    </SelectStylesContext>
+      <SelectPrimitive.Root
+        {...rest}
+        onValueChange={
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
+        }
+      >
+        {local.children}
+
+        <SelectPrimitive.HiddenSelect />
+      </SelectPrimitive.Root>
+    </Context>
   );
 }
 
-export function SelectTrigger(props: SelectTriggerProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "size",
-    "variant",
-    "clearable",
-    "children",
-    "class",
-  ]);
-  const slots = useSelectSlots();
-  const control = useContext(SelectControlContext);
-  const size = () => local.size ?? control.size ?? "md";
-  const surfaceVariant = useFormControlSurface();
-  const variant = () =>
-    local.variant ?? control.variant ?? ("primary" as FormControlVariant);
+const Control = withContext<ComponentProps<"div">>(SelectPrimitive.Control, {
+  name: "Control",
+});
+
+const TriggerBase = withContext<SelectTriggerProps>(SelectPrimitive.Trigger, {
+  name: "Trigger",
+});
+
+function Trigger(props: SelectTriggerProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
+  const { slots } = useStyles();
   const clearable = () => local.clearable ?? false;
 
   return (
-    <SelectPrimitive.Control>
-      <SelectPrimitive.Trigger
+    <Control>
+      <TriggerBase
         {...rest}
-        class={cn(
-          formControlShellRecipe({
-            size: size(),
-            surfaceVariant,
-            variant: variant(),
-          }),
-          slots().trigger(),
-          local.class,
-        )}
-        data-variant={variant()}
+        class={local.class}
+        data-clearable={clearable() || undefined}
       >
         {local.children}
-        <div class={slots().triggerActions()}>
-          <Show when={clearable()}>
-            <SelectClearTrigger>
-              <XIcon />
-            </SelectClearTrigger>
-          </Show>
+
+        <div class={slots.triggerActions()}>
           <SelectPrimitive.Indicator>
             <CaretUpDownIcon />
           </SelectPrimitive.Indicator>
         </div>
-      </SelectPrimitive.Trigger>
-    </SelectPrimitive.Control>
+      </TriggerBase>
+      <Show when={clearable()}>
+        <ClearTrigger>
+          <XIcon />
+        </ClearTrigger>
+      </Show>
+    </Control>
   );
 }
 
-export function SelectSeparator(props: SeparatorProps): JSX.Element {
+const SeparatorPart = withContext<SeparatorProps>(Separator, {
+  defaultProps: { "data-scope": "select" },
+  name: "Separator",
+});
+
+const ValueText = withContext<SelectValueTextProps>(SelectPrimitive.ValueText, {
+  name: "ValueText",
+});
+
+const ContentBase = withContext<SelectContentProps>(SelectPrimitive.Content, {
+  name: "Content",
+});
+
+function Content(props: SelectContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const slots = useSelectSlots();
-
-  return (
-    <Separator
-      {...rest}
-      class={slots().separator({ class: local.class })}
-      data-part="separator"
-      data-scope="select"
-    />
-  );
-}
-
-export function SelectValueText(props: SelectValueTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useSelectSlots();
-
-  return (
-    <SelectPrimitive.ValueText
-      {...rest}
-      class={slots().valueText({ class: local.class })}
-    />
-  );
-}
-
-export function SelectContent(props: SelectContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useSelectSlots();
 
   return (
     <Portal>
       <SelectPrimitive.Positioner>
-        <SelectPrimitive.Content
-          {...rest}
-          class={slots().content({ class: local.class })}
-        />
+        <ContentBase {...rest} class={local.class} />
       </SelectPrimitive.Positioner>
     </Portal>
   );
 }
 
-export function SelectItemGroup(props: SelectItemGroupProps): JSX.Element {
+function ItemGroup(props: SelectItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
 
   return (
     <SelectPrimitive.ItemGroup {...rest}>
       <Show when={local.heading !== undefined && local.heading !== false}>
-        <SelectItemGroupLabel>{local.heading}</SelectItemGroupLabel>
+        <ItemGroupLabel>{local.heading}</ItemGroupLabel>
       </Show>
+
       {local.children}
     </SelectPrimitive.ItemGroup>
   );
 }
 
-export function SelectItemGroupLabel(
-  props: SelectItemGroupLabelProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useSelectSlots();
+const ItemGroupLabel = withContext<SelectItemGroupLabelProps>(
+  SelectPrimitive.ItemGroupLabel,
+  { name: "ItemGroupLabel" },
+);
 
-  return (
-    <SelectPrimitive.ItemGroupLabel
-      {...rest}
-      class={slots().itemGroupLabel({ class: local.class })}
-    />
-  );
-}
+const ItemBase = withContext<SelectItemProps>(SelectPrimitive.Item, {
+  name: "Item",
+});
 
-export function SelectItem(props: SelectItemProps): JSX.Element {
+function Item(props: SelectItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const slots = useSelectSlots();
+  const { slots } = useStyles();
 
   return (
-    <SelectPrimitive.Item
-      {...rest}
-      class={slots().item({ class: local.class })}
-    >
-      <SelectPrimitive.ItemText class={slots().itemText()}>
+    <ItemBase {...rest} class={local.class}>
+      <SelectPrimitive.ItemText class={slots.itemText()}>
         {local.children}
       </SelectPrimitive.ItemText>
-      <span class={slots().itemIndicator()}>
+
+      <span class={slots.itemIndicator()}>
         <SelectPrimitive.ItemIndicator>
           <CheckIcon />
         </SelectPrimitive.ItemIndicator>
       </span>
-    </SelectPrimitive.Item>
+    </ItemBase>
   );
 }
 
-export function SelectClearTrigger(
-  props: SelectClearTriggerProps,
-): JSX.Element {
+const ClearTriggerBase = withContext<SelectClearTriggerProps>(
+  SelectPrimitive.ClearTrigger,
+  { name: "ClearTrigger" },
+);
+
+function ClearTrigger(props: SelectClearTriggerProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const slots = useSelectSlots();
 
   return (
-    <SelectPrimitive.ClearTrigger
+    <ClearTriggerBase
       aria-label={m("select.clear")}
+      class={local.class}
       {...rest}
-      class={slots().clearTrigger({ class: local.class })}
     />
   );
 }
 
-export function SelectEmpty(props: SelectEmptyProps): JSX.Element {
+const EmptyBase = withContext<SelectEmptyProps>("div", {
+  defaultProps: { role: "presentation" },
+  name: "Empty",
+});
+
+function Empty(props: SelectEmptyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const select = useSelectContext();
-  const slots = useSelectSlots();
 
   return (
     <Show when={select().empty}>
-      <div
-        {...rest}
-        class={slots().empty({ class: local.class })}
-        role="presentation"
-      />
+      <EmptyBase {...rest} class={local.class} />
     </Show>
   );
 }
+// #endregion
 
-export function SelectShorthand(props: SelectProps): JSX.Element {
+// #region Shorthand
+function SelectShorthand(props: SelectProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "clearable",
     "items",
@@ -337,18 +289,19 @@ export function SelectShorthand(props: SelectProps): JSX.Element {
   );
 
   return (
-    <SelectRoot {...rest} collection={collection()}>
-      <SelectTrigger clearable={local.clearable ?? false}>
-        <SelectValueText placeholder={local.placeholder} />
-      </SelectTrigger>
-      <SelectContent>
+    <Root {...rest} collection={collection()}>
+      <Trigger clearable={local.clearable ?? false}>
+        <ValueText placeholder={local.placeholder} />
+      </Trigger>
+      <Content>
         <For each={normalized()}>
-          {(item) => <SelectItem item={item}>{item.label}</SelectItem>}
+          {(item) => <Item item={item}>{item.label}</Item>}
         </For>
-      </SelectContent>
-    </SelectRoot>
+      </Content>
+    </Root>
   );
 }
+// #endregion
 
 export type {
   SelectClearTriggerProps,
@@ -359,15 +312,15 @@ export type {
 } from "@ark-ui/solid";
 
 export const Select = Object.assign(SelectShorthand, {
-  ClearTrigger: SelectClearTrigger,
-  Content: SelectContent,
+  ClearTrigger,
+  Content,
   Context: SelectContext,
-  Empty: SelectEmpty,
-  Item: SelectItem,
-  ItemGroup: SelectItemGroup,
-  ItemGroupLabel: SelectItemGroupLabel,
-  Root: SelectRoot,
-  Separator: SelectSeparator,
-  Trigger: SelectTrigger,
-  ValueText: SelectValueText,
+  Empty,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  Root,
+  Separator: SeparatorPart,
+  Trigger,
+  ValueText,
 });

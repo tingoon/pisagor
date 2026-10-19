@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte";
+  import { createListCollection, Portal } from "@ark-ui/svelte";
   import type {
     PhoneInputContract,
     PhoneInputRootContract,
@@ -16,7 +16,7 @@
     getCountryCallingCode,
     parsePhoneNumberFromString,
   } from "libphonenumber-js";
-  import { CaretUpDownIcon, GlobeIcon } from "phosphor-svelte";
+  import { CaretUpDownIcon, CheckIcon, GlobeIcon } from "phosphor-svelte";
   import { type ComponentProps, untrack } from "svelte";
   import type { ClassValue } from "svelte/elements";
   import { Combobox } from "../combobox";
@@ -179,8 +179,8 @@
     onChange?.(number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""));
   }
 
-  function handleCountryChange(nextValue: string[]) {
-    const code = (nextValue[0] as Country | undefined) ?? defaultCountry;
+  function handleCountryChange(details: { value: string[] }) {
+    const code = (details.value[0] as Country | undefined) ?? defaultCountry;
     internalCountry = code;
     emitValue(display, code);
   }
@@ -212,86 +212,102 @@
       <Combobox.Control class={slots.countryControl()}>
         <Combobox.Trigger
           aria-label={m("phoneInput.selectCountry")}
-          class={slots.countrySelect()}
           disabled={isDisabled}
           onblur={onBlur}
           onfocus={onFocus}
         >
-          <InputGroup.Button
-            class={slots.countryButton()}
-            disabled={isDisabled}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            {#if country}
-              {#if phoneInputFlags[country]}
-                <span
-                  aria-label={country}
-                  class={cn(
-                    slots.flagEmoji(),
-                    slots.flag({ class: classNames?.flag }),
-                  )}
-                  role="img"
-                >
-                  {phoneInputFlags[country]}
-                </span>
-              {:else}
-                <GlobeIcon
-                  aria-hidden
-                  class={cn(
-                    slots.flagIcon(),
-                    slots.flag({ class: classNames?.flag }),
-                  )}
-                />
+          {#snippet asChild(props)}
+            <InputGroup.Button
+              {...props({ class: slots.countrySelect() })}
+              class={slots.countryButton()}
+              disabled={isDisabled}
+              size="sm"
+              type="button"
+              variant="ghost"
+            >
+              {#if country}
+                {#if phoneInputFlags[country]}
+                  <span
+                    aria-label={country}
+                    class={cn(
+                      slots.flagEmoji(),
+                      slots.flag({ class: classNames?.flag }),
+                    )}
+                    role="img"
+                  >
+                    {phoneInputFlags[country]}
+                  </span>
+                {:else}
+                  <GlobeIcon
+                    aria-hidden
+                    class={cn(
+                      slots.flagIcon(),
+                      slots.flag({ class: classNames?.flag }),
+                    )}
+                  />
+                {/if}
               {/if}
-            {/if}
-            {#if callingCode}
-              <span>+{callingCode}</span>
-            {/if}
-            <CaretUpDownIcon aria-hidden class={slots.countryCaret()} />
-          </InputGroup.Button>
+              {#if callingCode}
+                <span>+{callingCode}</span>
+              {/if}
+              <CaretUpDownIcon aria-hidden class={slots.countryCaret()} />
+            </InputGroup.Button>
+          {/snippet}
         </Combobox.Trigger>
       </Combobox.Control>
     </InputGroup.Addon>
-    <Combobox.Content
-      {...popupProps}
-      class={slots.popup({ class: classNames?.popup })}
-    >
-      <div class={slots.searchGroup()}>
-        <InputGroup {size}>
-          <Combobox.Input
-            class={slots.search({ class: classNames?.search })}
-            placeholder={m("phoneInput.search")}
-          />
-        </InputGroup>
-      </div>
-      <Combobox.List>
-        {#each options as item (item.value)}
-          <Combobox.Item {item}>
-            {#if phoneInputFlags[item.value]}
-              <span
-                aria-label={item.label}
-                class={cn(slots.flagEmoji(), slots.flag())}
-                role="img"
-              >
-                {phoneInputFlags[item.value]}
-              </span>
-            {:else}
-              <GlobeIcon
-                aria-hidden
-                class={cn(slots.flagIcon(), slots.flag())}
-              />
-            {/if}
-            <span class={slots.itemLabel()}>{item.label}</span>
-            <span class={slots.itemCode()}
-              >+{getCountryCallingCode(item.value)}</span
-            >
-          </Combobox.Item>
-        {/each}
-      </Combobox.List>
-      <Combobox.Empty>No country found. Try a different search.</Combobox.Empty>
-    </Combobox.Content>
+    <Portal>
+      <Combobox.Positioner>
+        <Combobox.Content
+          {...popupProps}
+          class={slots.popup({ class: classNames?.popup })}
+        >
+          <div class={slots.searchGroup()}>
+            <InputGroup {size}>
+              <Combobox.Input>
+                {#snippet asChild(props)}
+                  <InputGroup.Input
+                    {...props()}
+                    class={slots.search({ class: classNames?.search })}
+                    placeholder={m("phoneInput.search")}
+                  />
+                {/snippet}
+              </Combobox.Input>
+            </InputGroup>
+          </div>
+          <Combobox.List>
+            {#each options as item (item.value)}
+              <Combobox.Item {item}>
+                {#if phoneInputFlags[item.value]}
+                  <span
+                    aria-label={item.label}
+                    class={cn(slots.flagEmoji(), slots.flag())}
+                    role="img"
+                  >
+                    {phoneInputFlags[item.value]}
+                  </span>
+                {:else}
+                  <GlobeIcon
+                    aria-hidden
+                    class={cn(slots.flagIcon(), slots.flag())}
+                  />
+                {/if}
+                <span class={slots.itemLabel()}>{item.label}</span>
+                <span class={slots.itemCode()}
+                  >+{getCountryCallingCode(item.value)}</span
+                >
+                <Combobox.ItemIndicator>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            {/each}
+          </Combobox.List>
+          <Combobox.Empty
+            >No country found. Try a different search.</Combobox.Empty
+          >
+        </Combobox.Content>
+      </Combobox.Positioner>
+    </Portal>
   </Combobox.Root>
 
   <InputGroup.Input

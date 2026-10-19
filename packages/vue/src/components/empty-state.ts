@@ -15,30 +15,17 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const EmptyStateRoot = withProvider(ark.div, {
+export const EmptyStateRoot = withProvider<EmptyStateRootContract>(ark.div, {
   name: "Root",
-  slot: "base",
 });
 
-export const EmptyStateMedia = withContext("div", {
-  name: "Media",
-  slot: "media",
-});
+export const EmptyStateMedia = withContext("div", { name: "Media" });
 
-export const EmptyStateTitle = withContext(ark.h3, {
-  name: "Title",
-  slot: "title",
-});
+export const EmptyStateTitle = withContext(ark.h3, { name: "Title" });
 
-export const EmptyStateDescription = withContext("p", {
-  name: "Description",
-  slot: "description",
-});
+export const EmptyStateDescription = withContext("p", { name: "Description" });
 
-export const EmptyStateActions = withContext("div", {
-  name: "Actions",
-  slot: "actions",
-});
+export const EmptyStateActions = withContext("div", { name: "Actions" });
 // #endregion
 
 // #region Types

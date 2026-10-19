@@ -45,7 +45,8 @@ export function TransferList() {
             value={availableValue}
           >
             <Listbox.Content>
-              <Listbox.ItemGroup heading="Available">
+              <Listbox.ItemGroup>
+                <Listbox.ItemGroupLabel>Available</Listbox.ItemGroupLabel>
                 {availableCollection.items.map((item) => (
                   <Listbox.Item item={item} key={item.value}>
                     <Listbox.ItemText>{item.label}</Listbox.ItemText>
@@ -89,7 +90,8 @@ export function TransferList() {
             value={selectedValue}
           >
             <Listbox.Content className="max-h-48 min-h-40">
-              <Listbox.ItemGroup heading="Selected">
+              <Listbox.ItemGroup>
+                <Listbox.ItemGroupLabel>Selected</Listbox.ItemGroupLabel>
                 {selectedCollection.items.map((item) => (
                   <Listbox.Item item={item} key={item.value}>
                     <Listbox.ItemText>{item.label}</Listbox.ItemText>

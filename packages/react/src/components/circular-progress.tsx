@@ -14,11 +14,7 @@ import type {
   CircularProgressRootContract,
 } from "@pisagor/contracts";
 import { circularProgressRecipe } from "@pisagor/recipes";
-import type {
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -29,10 +25,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+const CircularProgressRoot = withProvider<
+  ComponentProps<typeof ProgressPrimitive.RootProvider> &
+    CircularProgressRootContract
+>(ProgressPrimitive.RootProvider, { name: "Root" }) as FunctionComponent<
   ProgressRootProviderProps & CircularProgressRootContract
 >;
 
@@ -52,15 +48,14 @@ function getProgressbarProps(progress: UseProgressReturn) {
   } as const;
 }
 
-const CircularProgressValueWrapper = withContext("span", {
-  defaultProps: { "data-part": "value-wrapper" },
-  name: "ValueWrapper",
-  slot: "valueWrapper",
-});
+const CircularProgressValueWrapper = withContext<ComponentProps<"span">>(
+  "span",
+  { name: "ValueWrapper" },
+);
 
-const CircularProgressValue = withContext(ProgressPrimitive.ValueText, {
-  name: "Value",
-});
+const CircularProgressValueText = withContext<
+  ComponentProps<typeof ProgressPrimitive.ValueText>
+>(ProgressPrimitive.ValueText, { name: "ValueText" });
 
 interface CircularProgressTrackPartProps {
   size?: number;
@@ -68,7 +63,7 @@ interface CircularProgressTrackPartProps {
   className?: string;
   rangeClassName?: string;
   trackProps?: Omit<
-    ComponentPropsWithRef<"svg">,
+    ComponentProps<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
 }
@@ -156,7 +151,7 @@ export interface CircularProgressProps
   children?: ReactNode;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
-    ComponentPropsWithRef<"svg">,
+    ComponentProps<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
   /** Extra props forwarded to the circular progress value element */
@@ -211,9 +206,9 @@ export function CircularProgress({
     >
       {isValueVisible && (
         <CircularProgressValueWrapper className={classNames?.valueWrapper}>
-          <CircularProgressValue
+          <CircularProgressValueText
             {...valueProps}
-            className={classNames?.value}
+            className={classNames?.valueText}
           />
         </CircularProgressValueWrapper>
       )}

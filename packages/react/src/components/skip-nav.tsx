@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 
 import { useLocale } from "./provider/context";
 
@@ -19,7 +19,7 @@ export interface SkipNavLinkProps
 }
 
 export interface SkipNavContentProps
-  extends ComponentPropsWithRef<"div">, SkipNavRootContract {
+  extends ComponentProps<"div">, SkipNavRootContract {
   /**
    * The id that SkipNavLink links to.
    *

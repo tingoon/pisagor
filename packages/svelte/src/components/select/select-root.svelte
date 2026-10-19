@@ -5,44 +5,39 @@
     type SelectRootProps as ArkSelectRootProps,
   } from "@ark-ui/svelte";
   import type { SelectRootContract } from "@pisagor/contracts";
-  import {
-    type FormControlShellVariantProps,
-    selectRecipe,
-  } from "@pisagor/recipes";
-  import { Context, setSelectControlContext } from "./select.context";
+  import { selectRecipe } from "@pisagor/recipes";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { Context } from "./select.context";
 
-  type FormControlVariant = "primary" | "secondary";
-
-  type Props = Omit<ArkSelectRootProps<CollectionItem>, "onValueChange"> & {
-    onValueChange?: (value: string[]) => void;
-    /** Visual shell variant applied to the trigger. Defaults to `primary`. */
-    variant?: FormControlVariant;
-    /** Trigger size. Defaults to `md`. */
-    size?: FormControlShellVariantProps["size"];
-  } & Omit<SelectRootContract, "items">;
+  type Props = Omit<ArkSelectRootProps<CollectionItem>, "onValueChange"> &
+    SelectRootContract & {
+      onValueChange?: (value: string | string[]) => void;
+    };
 
   let {
     onValueChange,
+    size = "md",
     variant,
-    size,
+    surfaceVariant,
     recipe = selectRecipe,
     children,
     ...rest
   }: Props = $props();
 
-  const slots = $derived(recipe());
+  const surfaceFromContext = useFormControlSurface();
+  const resolved = $derived({
+    size,
+    surfaceVariant: surfaceVariant ?? surfaceFromContext,
+    variant,
+  });
+  const slots = $derived(recipe(resolved));
 
   Context.set({
     get slots() {
       return slots;
     },
-  });
-  setSelectControlContext({
-    get size() {
-      return size;
-    },
-    get variant() {
-      return variant;
+    get variants() {
+      return resolved as never;
     },
   });
 

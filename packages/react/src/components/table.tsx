@@ -64,13 +64,19 @@ export function TableRoot({
   );
 }
 
-export const TableHeader = withContext("thead", { name: "Header" });
-export const TableBody = withContext("tbody", { name: "Body" });
-export const TableFooter = withContext("tfoot", { name: "Footer" });
-export const TableRow = withContext("tr", { name: "Row" });
-export const TableHead = withContext("th", { name: "Head" });
-export const TableCell = withContext("td", { name: "Cell" });
-export const TableCaption = withContext("caption", { name: "Caption" });
+export const TableHeader = withContext<TableHeaderProps>("thead", {
+  name: "Header",
+});
+export const TableBody = withContext<TableBodyProps>("tbody", { name: "Body" });
+export const TableFooter = withContext<TableFooterProps>("tfoot", {
+  name: "Footer",
+});
+export const TableRow = withContext<TableRowProps>("tr", { name: "Row" });
+export const TableHead = withContext<TableHeadProps>("th", { name: "Head" });
+export const TableCell = withContext<TableCellProps>("td", { name: "Cell" });
+export const TableCaption = withContext<TableCaptionProps>("caption", {
+  name: "Caption",
+});
 // #endregion
 
 // #region Display Names

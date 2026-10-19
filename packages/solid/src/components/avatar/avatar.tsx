@@ -7,7 +7,7 @@ import type {
 import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
 import { avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../../internal";
 
@@ -29,20 +29,17 @@ export interface AvatarProps
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
 }
 
-const AvatarRoot: Component<AvatarRootProps> = withProvider(
-  AvatarPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+const AvatarRoot: Component<AvatarRootProps> = withProvider<
+  ComponentProps<typeof AvatarPrimitive.Root> & AvatarRootContract
+>(AvatarPrimitive.Root, { name: "Root" });
 
-const AvatarImage: Component<AvatarImageProps> = withContext(
-  AvatarPrimitive.Image,
-  { name: "Image" },
-);
+const AvatarImage: Component<AvatarImageProps> = withContext<
+  ComponentProps<typeof AvatarPrimitive.Image>
+>(AvatarPrimitive.Image, { name: "Image" });
 
-const AvatarFallback: Component<AvatarFallbackProps> = withContext(
-  AvatarPrimitive.Fallback,
-  { name: "Fallback" },
-);
+const AvatarFallback: Component<AvatarFallbackProps> = withContext<
+  ComponentProps<typeof AvatarPrimitive.Fallback>
+>(AvatarPrimitive.Fallback, { name: "Fallback" });
 
 function AvatarShorthand(props: AvatarProps): JSX.Element {
   const [local, rest] = splitProps(props, [

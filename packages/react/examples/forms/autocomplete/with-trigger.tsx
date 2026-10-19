@@ -1,5 +1,6 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { Autocomplete } from "@pisagor/react";
+import { Portal, useFilter, useListCollection } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
+import { Autocomplete, Combobox, InputGroup } from "@pisagor/react";
 
 export function WithTrigger() {
   const initialItems = [
@@ -19,17 +20,39 @@ export function WithTrigger() {
       collection={collection}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Autocomplete.Input placeholder="Select a fruit..." showTrigger />
-      <Autocomplete.Content>
-        <Autocomplete.Empty />
-        <Autocomplete.List>
-          {collection.items.map((item) => (
-            <Autocomplete.Item item={item} key={item.value}>
-              {item.label}
-            </Autocomplete.Item>
-          ))}
-        </Autocomplete.List>
-      </Autocomplete.Content>
+      <Autocomplete.Control>
+        <InputGroup>
+          <Autocomplete.Input asChild>
+            <InputGroup.Input placeholder="Select a fruit..." />
+          </Autocomplete.Input>
+          <InputGroup.Addon align="inline-end">
+            <InputGroup.Button asChild size="icon-xs" variant="ghost">
+              <Autocomplete.Trigger>
+                <CaretUpDownIcon aria-hidden />
+              </Autocomplete.Trigger>
+            </InputGroup.Button>
+          </InputGroup.Addon>
+        </InputGroup>
+      </Autocomplete.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Autocomplete.Content>
+            <Autocomplete.Empty>
+              No results found. Try a different search.
+            </Autocomplete.Empty>
+            <Autocomplete.List>
+              {collection.items.map((item) => (
+                <Autocomplete.Item item={item} key={item.value} persistFocus>
+                  {item.label}
+                  <Combobox.ItemIndicator>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Autocomplete.Item>
+              ))}
+            </Autocomplete.List>
+          </Autocomplete.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Autocomplete.Root>
   );
 }

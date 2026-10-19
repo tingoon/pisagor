@@ -14,8 +14,8 @@ const collection = computed(() =>
 function onTagsChange(value: string[]) {
   tags.value = value;
 }
-function onComboboxChange(value: string[]) {
-  const next = value[0];
+function onComboboxChange(details: { value: string[] }) {
+  const next = details.value[0];
   if (!next || tags.value.includes(next)) return;
   tags.value = [...tags.value, next];
 }
@@ -40,20 +40,29 @@ function onComboboxChange(value: string[]) {
           >
             {{ tag }}
           </TagsInput.Item>
-          <Combobox.Control>
+          <Combobox.Input as-child>
             <TagsInput.Input placeholder="Add framework" />
-          </Combobox.Control>
+          </Combobox.Input>
         </TagsInput.Context>
       </TagsInput>
-      <Combobox.Content>
-        <Combobox.Item
-          v-for="item in collection.items"
-          :key="item"
-          :item="item"
-        >
-          {{ item }}
-        </Combobox.Item>
-      </Combobox.Content>
+      <Teleport to="body">
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.List>
+              <Combobox.Empty>
+                No frameworks found. Try a different search.
+              </Combobox.Empty>
+              <Combobox.Item
+                v-for="item in collection.items"
+                :key="item"
+                :item="item"
+              >
+                {{ item }}
+              </Combobox.Item>
+            </Combobox.List>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Teleport>
     </Combobox.Root>
   </Field>
 </template>

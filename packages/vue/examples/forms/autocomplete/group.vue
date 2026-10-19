@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue";
-import { Autocomplete } from "@pisagor/vue";
+import { PhCheck } from "@phosphor-icons/vue";
+import { Autocomplete, Combobox, InputGroup } from "@pisagor/vue";
 import { computed } from "vue";
 
 const initialItems = [
@@ -30,24 +31,42 @@ function filter(_inputValue: string) {}
     :collection="collection"
     @input-value-change="({ inputValue }) => filter(inputValue)"
   >
-    <Autocomplete.Input placeholder="Select a timezone" />
-    <Autocomplete.Content class="w-60">
-      <Autocomplete.Empty />
-      <Autocomplete.List>
-        <Autocomplete.ItemGroup
-          v-for="[continent, group] in groups"
-          :key="continent"
-          :heading="continent"
-        >
-          <Autocomplete.Item
-            v-for="item in group"
-            :key="item.value"
-            :item="item"
-          >
-            {{ item.label }}
-          </Autocomplete.Item>
-        </Autocomplete.ItemGroup>
-      </Autocomplete.List>
-    </Autocomplete.Content>
+    <Autocomplete.Control>
+      <InputGroup>
+        <Autocomplete.Input as-child>
+          <InputGroup.Input placeholder="Select a timezone" />
+        </Autocomplete.Input>
+      </InputGroup>
+    </Autocomplete.Control>
+    <Teleport to="body">
+      <Combobox.Positioner>
+        <Autocomplete.Content class="w-60">
+          <Autocomplete.Empty>
+            No results found. Try a different search.
+          </Autocomplete.Empty>
+          <Autocomplete.List>
+            <Autocomplete.ItemGroup
+              v-for="[continent, group] in groups"
+              :key="continent"
+            >
+              <Autocomplete.ItemGroupLabel>
+                {{ continent }}
+              </Autocomplete.ItemGroupLabel>
+              <Autocomplete.Item
+                v-for="item in group"
+                :key="item.value"
+                :item="item"
+                persist-focus
+              >
+                {{ item.label }}
+                <Combobox.ItemIndicator>
+                  <PhCheck />
+                </Combobox.ItemIndicator>
+              </Autocomplete.Item>
+            </Autocomplete.ItemGroup>
+          </Autocomplete.List>
+        </Autocomplete.Content>
+      </Combobox.Positioner>
+    </Teleport>
   </Autocomplete.Root>
 </template>

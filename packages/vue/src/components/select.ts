@@ -1,133 +1,94 @@
 import {
   Select as SelectPrimitive,
   createListCollection,
-  useSelectContext as useSelect,
+  useSelectContext,
 } from "@ark-ui/vue";
 import type {
   CollectionItem,
-  ListCollection,
-  SelectRootProps as ArkSelectRootProps,
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectItemGroupLabelProps,
+  SelectItemProps,
+  SelectRootProps as SelectRootPrimitiveProps,
+  SelectTriggerProps as SelectTriggerPrimitiveProps,
+  SelectValueTextProps,
 } from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type {
-  SelectItemGroupContract,
+  SelectContract,
   SelectPresetItem as BaseSelectPresetItem,
   SelectRootContract,
-  SelectContract,
 } from "@pisagor/contracts";
+import { selectRecipe } from "@pisagor/recipes";
 import {
-  type FormControlShellVariantProps,
-  formControlShellRecipe,
-  selectRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import {
-  computed,
   defineComponent,
   h,
   type PropType,
   Teleport,
-  unref,
   type VNodeChild,
 } from "vue";
-import {
-  type ClassValue,
-  type LoosePropValue,
-  createContext,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
-import { Separator } from "./separator";
+import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const {
-  provideStyles: provideSelectStyles,
-  useOptionalStyles: useOptionalSelectStyles,
-} = createSlotRecipeContext({
+const { Context, withContext, useStyles } = createSlotRecipeContext({
   name: "Select",
   recipe: selectRecipe,
 });
-
-/**
- * Slots from the nearest Select root, or the default recipe when used
- * standalone.
- */
-function useSelectSlots() {
-  const styles = useOptionalSelectStyles();
-
-  return () => styles?.slots ?? selectRecipe();
-}
 // #endregion
-
-type FormControlVariant = "primary" | "secondary";
-
-/** Root-level control props (`variant`, `size`) read by `Select.Trigger`. */
-const [provideSelectControl, , useSelectControlRef] = createContext(
-  "SelectControl",
-)<FormControlShellVariantProps>({ defaultValue: {}, strict: false });
 
 // #region Types
 interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
-export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ArkSelectRootProps<T>,
-  "collection" | "onValueChange"
-> & {
-  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
-  variant?: FormControlVariant;
-  /** Trigger size. Defaults to `md`. */
-  size?: FormControlShellVariantProps["size"];
-  collection?: ListCollection<T>;
-  onValueChange?: (value: string | string[]) => void;
-} & Omit<SelectRootContract, "items">;
+type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
+  SelectRootPrimitiveProps<T>,
+  "onValueChange"
+> &
+  SelectRootContract & {
+    onValueChange?: (value: string | string[]) => void;
+  };
 
 export interface SelectProps
   extends
-    Omit<SelectRootProps, "children" | "items">,
-    Omit<SelectContract, "items"> {
-  items?: Array<SelectPresetItem | string>;
+    Omit<SelectRootProps, "children" | "collection">,
+    Omit<SelectContract, "items" | "placeholder"> {
   /**
    * Whether to show a clear button when a value is selected.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  items?: Array<SelectPresetItem | string>;
   placeholder?: string;
 }
 
-export type SelectTriggerSize = FormControlShellVariantProps["size"];
+type SelectTriggerProps = Omit<SelectTriggerPrimitiveProps, "size"> & {
+  /**
+   * Whether to show a clear button when a value is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+};
 
-export interface SelectTriggerProps extends Omit<
-  SelectRootContract,
-  "items" | "placeholder"
-> {
+type SelectEmptyProps = {
   class?: unknown;
-}
-
-export interface SelectItemGroupProps extends SelectItemGroupContract {
-  class?: unknown;
-  heading?: string | VNodeChild;
-}
+};
 // #endregion
 
-// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
-export const SelectContext = SelectPrimitive.Context;
+// #region Parts
+const SelectContext = SelectPrimitive.Context;
 
-export const SelectRoot = defineComponent({
+const Root = defineComponent({
   inheritAttrs: false,
-  name: "SelectRoot",
+  name: "Select.Root",
   props: {
-    collection: {
-      default: undefined,
-      type: Object as PropType<ListCollection<CollectionItem> | undefined>,
-    },
-    lazyMount: { default: true, type: Boolean },
     onValueChange: {
       default: undefined,
       type: Function as PropType<SelectRootProps["onValueChange"]>,
@@ -137,120 +98,112 @@ export const SelectRoot = defineComponent({
       type: Function as PropType<typeof selectRecipe>,
     },
     size: {
-      default: undefined,
-      type: String as PropType<SelectTriggerSize>,
+      default: "md",
+      type: String as PropType<SelectRootContract["size"]>,
     },
-    unmountOnExit: { default: true, type: Boolean },
+    surfaceVariant: {
+      default: undefined,
+      type: String as PropType<SelectRootContract["surfaceVariant"]>,
+    },
     variant: {
       default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
+      type: String as PropType<SelectRootContract["variant"]>,
     },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideSelectControl(
-      computed(() => ({ size: props.size, variant: props.variant })),
-    );
-
-    provideSelectStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
+    const surfaceFromContext = useFormControlSurface();
 
     return () => {
+      const resolved = {
+        size: props.size,
+        surfaceVariant: props.surfaceVariant ?? surfaceFromContext,
+        variant: props.variant,
+      };
+      const recipeSlots = props.recipe(resolved);
+
       return h(
-        SelectPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          collection: props.collection,
-          lazyMount: props.lazyMount,
-          onValueChange: props.onValueChange
-            ? (details: { value: string | string[] }) =>
-                props.onValueChange?.(details.value)
-            : undefined,
-          unmountOnExit: props.unmountOnExit,
-        },
-        () => [slots.default?.(), h(SelectPrimitive.HiddenSelect as ArkPart)],
+        Context,
+        { value: { slots: recipeSlots, variants: resolved as never } },
+        () =>
+          h(
+            SelectPrimitive.Root as ArkPart,
+            {
+              ...attrs,
+              onValueChange: props.onValueChange
+                ? (details: { value: string | string[] }) =>
+                    props.onValueChange?.(details.value)
+                : undefined,
+            },
+            () => [
+              slots.default?.(),
+              h(SelectPrimitive.HiddenSelect as ArkPart),
+            ],
+          ),
       );
     };
   },
 });
 
-export const SelectTrigger = defineComponent({
+const Control = withContext(SelectPrimitive.Control, {
+  name: "Control",
+});
+
+const TriggerBase = withContext<SelectTriggerProps>(SelectPrimitive.Trigger, {
+  name: "Trigger",
+});
+
+const Trigger = defineComponent({
   inheritAttrs: false,
-  name: "SelectTrigger",
+  name: "Select.Trigger",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
-    size: { default: undefined, type: String as PropType<SelectTriggerSize> },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
   },
   setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
+    const styles = useStyles();
 
-    const surfaceVariant = useFormControlSurface();
-    const controlRef = useSelectControlRef();
-
-    return () => {
-      const control = unref(controlRef);
-      const size = props.size ?? control.size ?? "md";
-      const resolved = {
-        surfaceVariant,
-        variant:
-          props.variant ?? control.variant ?? ("primary" as FormControlVariant),
-      };
-      const shellArgs = {
-        surfaceVariant: resolved.surfaceVariant,
-        variant: resolved.variant,
-      };
-      const controlProps = { "data-variant": resolved.variant };
-      const styleSlots = getSlots();
-
-      return h(SelectPrimitive.Control as ArkPart, {}, () =>
+    return () =>
+      h(Control, null, () => [
         h(
-          SelectPrimitive.Trigger as ArkPart,
+          TriggerBase,
           {
             ...attrs,
-            ...controlProps,
-            class: cn(
-              formControlShellRecipe({ size, ...shellArgs }),
-              styleSlots.trigger(),
-              props.class,
-              attrs.class,
-            ),
-            "data-size": size,
+            class: props.class as string | undefined,
+            "data-clearable": props.clearable || undefined,
           },
           () => [
             slots.default?.(),
-            h("div", { class: styleSlots.triggerActions() }, [
-              props.clearable
-                ? h(SelectClearTrigger as ArkPart, null, () =>
-                    h(PhX, { "aria-hidden": true }),
-                  )
-                : null,
-              h(SelectPrimitive.Indicator as ArkPart, {}, () =>
-                h(PhCaretUpDown, { "aria-hidden": true }),
+            h("div", { class: styles.slots.triggerActions() }, [
+              h(SelectPrimitive.Indicator as ArkPart, null, () =>
+                h(PhCaretUpDown),
               ),
             ]),
           ],
         ),
-      );
-    };
+        props.clearable ? h(ClearTrigger, null, () => h(PhX)) : null,
+      ]);
   },
 });
 
-export const SelectSeparator = defineComponent({
+const SeparatorPart = withContext<SeparatorProps>(Separator, {
+  defaultProps: { "data-scope": "select" },
+  name: "Separator",
+});
+
+const ValueText = withContext<SelectValueTextProps>(SelectPrimitive.ValueText, {
+  name: "ValueText",
+});
+
+const ContentBase = withContext<SelectContentProps>(SelectPrimitive.Content, {
+  name: "Content",
+});
+
+const Content = defineComponent({
   inheritAttrs: false,
-  name: "SelectSeparator",
+  name: "Select.Content",
   props: {
     class: {
       default: undefined,
@@ -258,99 +211,25 @@ export const SelectSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        Separator as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.separator(), props.class, attrs.class),
-          dataPart: "separator",
-          dataScope: "select",
-          orientation: "horizontal",
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const SelectValueText = defineComponent({
-  inheritAttrs: false,
-  name: "SelectValueText",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    placeholder: {
-      default: undefined,
-      type: String as PropType<string | undefined>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        SelectPrimitive.ValueText as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.valueText(), props.class, attrs.class),
-          placeholder: props.placeholder,
-        },
-        // Only forward a default slot when given, so Ark falls back to the selected value / placeholder.
-        slots.default ? () => slots.default?.() : undefined,
-      );
-    };
-  },
-});
-
-function selectTeleport(
-  content: ReturnType<typeof h> | Array<ReturnType<typeof h>>,
-) {
-  return h(Teleport, { to: "body" }, [content]);
-}
-
-export const SelectContent = defineComponent({
-  inheritAttrs: false,
-  name: "SelectContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return selectTeleport(
-        h(SelectPrimitive.Positioner as ArkPart, {}, () =>
+    return () =>
+      h(Teleport, { to: "body" }, [
+        h(SelectPrimitive.Positioner as ArkPart, null, () =>
           h(
-            SelectPrimitive.Content as ArkPart,
+            ContentBase,
             {
               ...attrs,
-              class: cn(styleSlots.content(), props.class, attrs.class),
+              class: props.class as string | undefined,
             },
-            () => slots.default?.(),
+            slots,
           ),
         ),
-      );
-    };
+      ]);
   },
 });
 
-export const SelectItemGroup = defineComponent({
+const ItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "SelectItemGroup",
+  name: "Select.ItemGroup",
   props: {
     heading: {
       default: undefined,
@@ -359,24 +238,27 @@ export const SelectItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(
-        SelectPrimitive.ItemGroup as ArkPart,
-        {
-          ...attrs,
-        },
-        () => [
-          props.heading !== undefined
-            ? h(SelectItemGroupLabel, null, () => props.heading)
-            : null,
-          slots.default?.(),
-        ],
-      );
+      h(SelectPrimitive.ItemGroup as ArkPart, { ...attrs }, () => [
+        props.heading !== undefined
+          ? h(ItemGroupLabel, null, () => props.heading)
+          : null,
+        slots.default?.(),
+      ]);
   },
 });
 
-export const SelectItemGroupLabel = defineComponent({
+const ItemGroupLabel = withContext<SelectItemGroupLabelProps>(
+  SelectPrimitive.ItemGroupLabel,
+  { name: "ItemGroupLabel" },
+);
+
+const ItemBase = withContext<SelectItemProps>(SelectPrimitive.Item, {
+  name: "Item",
+});
+
+const Item = defineComponent({
   inheritAttrs: false,
-  name: "SelectItemGroupLabel",
+  name: "Select.Item",
   props: {
     class: {
       default: undefined,
@@ -384,73 +266,38 @@ export const SelectItemGroupLabel = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
+    const styles = useStyles();
 
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        SelectPrimitive.ItemGroupLabel as ArkPart,
+    return () =>
+      h(
+        ItemBase as ArkPart,
         {
           ...attrs,
-          class: cn(styleSlots.itemGroupLabel(), props.class, attrs.class),
-        },
-        () => slots.default?.(),
-      );
-    };
-  },
-});
-
-export const SelectItem = defineComponent({
-  inheritAttrs: false,
-  name: "SelectItem",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    // Ark uses `item` for collection items.
-    item: { default: undefined, type: Object as PropType<LoosePropValue> },
-  },
-  setup(props, { attrs, slots: children }) {
-    const getSlots = useSelectSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        SelectPrimitive.Item as ArkPart,
-        {
-          ...attrs,
-          class: styleSlots.item({ class: cn(props.class, attrs.class) }),
-          item: props.item,
+          class: props.class as string | undefined,
         },
         () => [
           h(
             SelectPrimitive.ItemText as ArkPart,
-            {
-              class: styleSlots.itemText(),
-            },
-            children.default?.(),
+            { class: styles.slots.itemText() },
+            slots.default,
           ),
-          h(
-            "span",
-            { class: styleSlots.itemIndicator() },
-            h(SelectPrimitive.ItemIndicator as ArkPart, {}, () =>
-              h(PhCheck, { "aria-hidden": true }),
-            ),
-          ),
+          h("span", { class: styles.slots.itemIndicator() }, [
+            h(SelectPrimitive.ItemIndicator as ArkPart, null, () => h(PhCheck)),
+          ]),
         ],
       );
-    };
   },
 });
 
-export const SelectClearTrigger = defineComponent({
+const ClearTriggerBase = withContext<SelectClearTriggerProps>(
+  SelectPrimitive.ClearTrigger,
+  { name: "ClearTrigger" },
+);
+
+const ClearTrigger = defineComponent({
   inheritAttrs: false,
-  name: "SelectClearTrigger",
+  name: "Select.ClearTrigger",
   props: {
-    "aria-label": { default: undefined, type: String },
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
@@ -458,27 +305,28 @@ export const SelectClearTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const getSlots = useSelectSlots();
 
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        SelectPrimitive.ClearTrigger as ArkPart,
+    return () =>
+      h(
+        ClearTriggerBase,
         {
           ...attrs,
-          "aria-label": m("select.clear", props["aria-label"]),
-          class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
+          "aria-label": m("select.clear"),
+          class: props.class as string | undefined,
         },
-        () => slots.default?.(),
+        slots,
       );
-    };
   },
 });
 
-export const SelectEmpty = defineComponent({
+const EmptyBase = withContext<SelectEmptyProps>("div", {
+  defaultProps: { role: "presentation" },
+  name: "Empty",
+});
+
+const Empty = defineComponent({
   inheritAttrs: false,
-  name: "SelectEmpty",
+  name: "Select.Empty",
   props: {
     class: {
       default: undefined,
@@ -486,80 +334,58 @@ export const SelectEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const getSlots = useSelectSlots();
-
     return () => {
-      const api = useSelect();
-      const styleSlots = getSlots();
+      const api = useSelectContext();
 
-      if (api.value.empty) {
-        return h(
-          "div",
-          {
-            ...attrs,
-            class: cn(styleSlots.empty(), props.class, attrs.class),
-            "data-part": "empty",
-            "data-scope": "select",
-            role: "presentation",
-          },
-          slots.default?.(),
-        );
+      if (!api.value.empty) {
+        return null;
       }
 
-      return null;
+      return h(
+        EmptyBase,
+        {
+          ...attrs,
+          class: props.class as string | undefined,
+        },
+        slots,
+      );
     };
   },
 });
+// #endregion
 
-export const SelectShorthand = defineComponent({
+// #region Shorthand
+const SelectShorthand = defineComponent({
   inheritAttrs: false,
-  name: "PisagorSelect",
+  name: "Select",
   props: {
     clearable: { default: false, type: Boolean },
     items: {
-      default: undefined,
-      type: Array as PropType<Array<SelectPresetItem | string> | undefined>,
+      default: () => [],
+      type: Array as PropType<Array<SelectPresetItem | string>>,
     },
-    placeholder: {
-      default: undefined,
-      type: String as PropType<string | undefined>,
-    },
-    size: {
-      default: undefined,
-      type: String as PropType<SelectTriggerSize>,
-    },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
+    placeholder: { default: undefined, type: String },
   },
   setup(props, { attrs }) {
     return () => {
-      const items = props.items ?? [];
-      const normalized = items.map((item) =>
+      const normalized = props.items.map((item) =>
         typeof item === "string" ? { label: item, value: item } : item,
       );
       const collection = createListCollection({ items: normalized });
 
       return h(
-        SelectRoot as ArkPart,
+        Root,
         {
           ...attrs,
           collection,
-          size: props.size,
-          variant: props.variant,
         },
         () => [
-          h(SelectTrigger as ArkPart, { clearable: props.clearable }, () =>
-            h(SelectValueText as ArkPart, { placeholder: props.placeholder }),
+          h(Trigger, { clearable: props.clearable }, () =>
+            h(ValueText, { placeholder: props.placeholder }),
           ),
-          h(SelectContent as ArkPart, null, () =>
+          h(Content, null, () =>
             normalized.map((item) =>
-              h(
-                SelectItem as ArkPart,
-                { item, key: item.value, value: item.value },
-                () => item.label,
-              ),
+              h(Item, { item, key: item.value }, () => item.label),
             ),
           ),
         ],
@@ -569,16 +395,24 @@ export const SelectShorthand = defineComponent({
 });
 // #endregion
 
+export type {
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectItemGroupLabelProps,
+  SelectItemProps,
+  SelectValueTextProps,
+} from "@ark-ui/vue";
+
 export const Select = Object.assign(SelectShorthand, {
-  ClearTrigger: SelectClearTrigger,
-  Content: SelectContent,
+  ClearTrigger,
+  Content,
   Context: SelectContext,
-  Empty: SelectEmpty,
-  Item: SelectItem,
-  ItemGroup: SelectItemGroup,
-  ItemGroupLabel: SelectItemGroupLabel,
-  Root: SelectRoot,
-  Separator: SelectSeparator,
-  Trigger: SelectTrigger,
-  ValueText: SelectValueText,
+  Empty,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  Root,
+  Separator: SeparatorPart,
+  Trigger,
+  ValueText,
 });

@@ -501,7 +501,6 @@ export const ListboxShorthand = defineComponent({
     };
   },
 });
-ListboxShorthand.displayName = "Listbox";
 // #endregion
 
 export const Listbox = Object.assign(ListboxShorthand, {

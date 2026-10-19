@@ -11,43 +11,19 @@ import type {
 } from "@ark-ui/react";
 import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { createContext, use, useMemo } from "react";
-import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { useMemo } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Slider",
   recipe: sliderRecipe,
 });
-
-interface SliderExtras {
-  thumbShadowClass?: string;
-  trackVariantClass: string;
-}
-
-const SliderExtrasContext = createContext<SliderExtras | undefined>(undefined);
-SliderExtrasContext.displayName = "SliderExtrasContext";
-
-function useSlider() {
-  const styles = useStyles();
-  const extras = use(SliderExtrasContext);
-  if (extras === undefined) {
-    throw new Error("useSlider must be used within SliderExtrasContext.");
-  }
-
-  return { ...styles, ...extras };
-}
 // #endregion
 
 // #region Types
-type SliderValueProps = SliderValueTextProps;
-
-type SliderRootProps = SliderRootPrimitiveProps & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-} & SliderRootContract;
+type SliderRootProps = SliderRootPrimitiveProps & SliderRootContract;
 
 export interface SliderProps
   extends Omit<SliderRootProps, "children" | "onValueChange">, SliderContract {
@@ -93,7 +69,7 @@ export interface SliderProps
   /** Extra props forwarded to the slider track element */
   trackProps?: Omit<SliderTrackProps, "children" | "className">;
   /** Extra props forwarded to the slider value text element */
-  valueProps?: Omit<SliderValueProps, "children" | "className">;
+  valueTextProps?: Omit<SliderValueTextProps, "children" | "className">;
 }
 
 type SliderHeaderProps = ComponentProps<"div">;
@@ -104,152 +80,53 @@ type SliderMarkerLabelProps = ComponentProps<"span">;
 // #endregion
 
 // #region Parts
-function SliderRoot({
-  variant: variantProp,
-  children,
-  recipe = sliderRecipe,
-  className,
-  ...rest
-}: SliderRootProps) {
-  const resolved = {
-    surfaceVariant: undefined,
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellControlProps = { "data-variant": resolved.variant };
-  const slots = recipe();
-  const thumbShadowClass =
-    resolved.variant === "secondary" ? "shadow-none" : undefined;
-  const trackVariantClass =
-    resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
+const Root = withProvider<SliderRootProps>(SliderPrimitive.Root, {
+  name: "Root",
+});
 
-  return (
-    <SliderStylesContext value={{ slots, variants: {} as never }}>
-      <SliderExtrasContext value={{ thumbShadowClass, trackVariantClass }}>
-        <SliderPrimitive.Root
-          {...rest}
-          {...shellControlProps}
-          className={slots.base({ className })}
-        >
-          {children}
-        </SliderPrimitive.Root>
-      </SliderExtrasContext>
-    </SliderStylesContext>
-  );
-}
+const Header = withContext<SliderHeaderProps>("div", {
+  name: "Header",
+});
 
-function SliderHeader({ children, className, ...rest }: SliderHeaderProps) {
-  const { slots } = useSlider();
+const ValueText = withContext<SliderValueTextProps>(SliderPrimitive.ValueText, {
+  name: "ValueText",
+  slot: "value",
+});
 
-  return (
-    <div {...rest} className={slots.header({ className })}>
-      {children}
-    </div>
-  );
-}
+const Control = withContext<SliderControlProps>(SliderPrimitive.Control, {
+  name: "Control",
+});
 
-function SliderValue({ className, ...rest }: SliderValueProps) {
-  const { slots } = useSlider();
+const Track = withContext<SliderTrackProps>(SliderPrimitive.Track, {
+  name: "Track",
+});
 
-  return (
-    <SliderPrimitive.ValueText
-      {...rest}
-      className={slots.value({ className })}
-    />
-  );
-}
+const Range = withContext<SliderRangeProps>(SliderPrimitive.Range, {
+  name: "Range",
+});
 
-function SliderControl({ children, className, ...rest }: SliderControlProps) {
-  const { slots } = useSlider();
+const Thumb = withContext<SliderThumbProps>(SliderPrimitive.Thumb, {
+  name: "Thumb",
+});
 
-  return (
-    <SliderPrimitive.Control {...rest} className={slots.control({ className })}>
-      {children}
-    </SliderPrimitive.Control>
-  );
-}
+const MarkerGroup = withContext<SliderMarkerGroupProps>(
+  SliderPrimitive.MarkerGroup,
+  { name: "MarkerGroup" },
+);
 
-function SliderTrack({ children, className, ...rest }: SliderTrackProps) {
-  const { slots, trackVariantClass } = useSlider();
+const Marker = withContext<SliderMarkerProps>(SliderPrimitive.Marker, {
+  name: "Marker",
+});
 
-  return (
-    <SliderPrimitive.Track
-      {...rest}
-      className={slots.track({ className: cn(trackVariantClass, className) })}
-    >
-      {children}
-    </SliderPrimitive.Track>
-  );
-}
+const MarkerTick = withContext<SliderMarkerTickProps>("span", {
+  name: "MarkerTick",
+});
 
-function SliderRange({ className, ...rest }: SliderRangeProps) {
-  const { slots } = useSlider();
+const MarkerLabel = withContext<SliderMarkerLabelProps>("span", {
+  name: "MarkerLabel",
+});
 
-  return (
-    <SliderPrimitive.Range {...rest} className={slots.range({ className })} />
-  );
-}
-
-function SliderThumb({ className, ...rest }: SliderThumbProps) {
-  const { slots, thumbShadowClass } = useSlider();
-
-  return (
-    <SliderPrimitive.Thumb
-      {...rest}
-      className={slots.thumb({ className: cn(thumbShadowClass, className) })}
-    />
-  );
-}
-
-function SliderMarkerGroup({
-  children,
-  className,
-  ...rest
-}: SliderMarkerGroupProps) {
-  const { slots } = useSlider();
-
-  return (
-    <SliderPrimitive.MarkerGroup
-      {...rest}
-      className={slots.markerGroup({ className })}
-    >
-      {children}
-    </SliderPrimitive.MarkerGroup>
-  );
-}
-
-function SliderMarker({ children, className, ...rest }: SliderMarkerProps) {
-  const { slots } = useSlider();
-
-  return (
-    <SliderPrimitive.Marker {...rest} className={slots.marker({ className })}>
-      {children}
-    </SliderPrimitive.Marker>
-  );
-}
-
-function SliderMarkerTick({ className, ...rest }: SliderMarkerTickProps) {
-  const { slots } = useSlider();
-
-  return <span {...rest} className={slots.markerTick({ className })} />;
-}
-
-function SliderMarkerLabel({
-  children,
-  className,
-  ...rest
-}: SliderMarkerLabelProps) {
-  const { slots } = useSlider();
-
-  return (
-    <span {...rest} className={slots.markerLabel({ className })}>
-      {children}
-    </span>
-  );
-}
-// #endregion
-
-// #region Closed
-function SliderLabel({
+function Label({
   className,
   ...rest
 }: ComponentProps<typeof SliderPrimitive.Label>) {
@@ -260,7 +137,9 @@ function SliderLabel({
     />
   );
 }
+// #endregion
 
+// #region Closed
 function SliderShorthand({
   variant,
   defaultValue,
@@ -278,7 +157,7 @@ function SliderShorthand({
   rangeProps,
   thumbProps,
   trackProps,
-  valueProps,
+  valueTextProps,
   onValueChange,
   className,
   classNames,
@@ -302,7 +181,7 @@ function SliderShorthand({
     : undefined;
 
   return (
-    <SliderRoot
+    <Root
       {...rest}
       className={className}
       defaultValue={defaultValue}
@@ -313,7 +192,7 @@ function SliderShorthand({
       variant={variant}
     >
       {(label !== undefined || showValue) && (
-        <SliderHeader className={classNames?.header}>
+        <Header className={classNames?.header}>
           {label !== undefined && (
             <SliderPrimitive.Label className={fieldRecipe().label()}>
               {label}
@@ -321,23 +200,23 @@ function SliderShorthand({
           )}
 
           {showValue && (
-            <SliderValue {...valueProps} className={classNames?.value} />
+            <ValueText {...valueTextProps} className={classNames?.value} />
           )}
-        </SliderHeader>
+        </Header>
       )}
 
       {children}
 
-      <SliderControl {...controlProps} className={classNames?.control}>
-        <SliderTrack {...trackProps} className={classNames?.track}>
-          <SliderRange {...rangeProps} className={classNames?.range} />
-        </SliderTrack>
+      <Control {...controlProps} className={classNames?.control}>
+        <Track {...trackProps} className={classNames?.track}>
+          <Range {...rangeProps} className={classNames?.range} />
+        </Track>
 
         {Array.from({ length: _values.length }, (_, index) => {
           const key = `slider-thumb-${index}`;
 
           return (
-            <SliderThumb
+            <Thumb
               {...thumbProps}
               className={classNames?.thumb}
               index={index}
@@ -345,48 +224,32 @@ function SliderShorthand({
               tabIndex={tabIndex ?? undefined}
             >
               <SliderPrimitive.HiddenInput />
-            </SliderThumb>
+            </Thumb>
           );
         })}
-      </SliderControl>
+      </Control>
 
       {showMarkers && (
-        <SliderMarkerGroup className={classNames?.markerGroup}>
+        <MarkerGroup className={classNames?.markerGroup}>
           {Array.from({ length: max - min + 1 }, (_, index) => (
-            <SliderMarker
+            <Marker
               className={classNames?.marker}
               data-interval={index % markerInterval === 0 ? undefined : ""}
               key={String(min + index)}
               value={min + index}
             >
-              <SliderMarkerTick className={classNames?.markerTick} />
+              <MarkerTick className={classNames?.markerTick} />
 
-              <SliderMarkerLabel className={classNames?.markerLabel}>
+              <MarkerLabel className={classNames?.markerLabel}>
                 {markerLabels?.[index] ?? min + index}
-              </SliderMarkerLabel>
-            </SliderMarker>
+              </MarkerLabel>
+            </Marker>
           ))}
-        </SliderMarkerGroup>
+        </MarkerGroup>
       )}
-    </SliderRoot>
+    </Root>
   );
 }
-// #endregion
-
-// #region Display Names
-SliderRoot.displayName = "Slider.Root";
-SliderHeader.displayName = "Slider.Header";
-SliderValue.displayName = "Slider.Value";
-SliderControl.displayName = "Slider.Control";
-SliderTrack.displayName = "Slider.Track";
-SliderRange.displayName = "Slider.Range";
-SliderThumb.displayName = "Slider.Thumb";
-SliderMarkerGroup.displayName = "Slider.MarkerGroup";
-SliderMarker.displayName = "Slider.Marker";
-SliderMarkerTick.displayName = "Slider.MarkerTick";
-SliderMarkerLabel.displayName = "Slider.MarkerLabel";
-SliderShorthand.displayName = "Slider";
-
 // #endregion
 
 export type {
@@ -394,19 +257,20 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderValueTextProps,
 } from "@ark-ui/react";
 
 export const Slider = Object.assign(SliderShorthand, {
-  Control: SliderControl,
-  Header: SliderHeader,
-  Label: SliderLabel,
-  Marker: SliderMarker,
-  MarkerGroup: SliderMarkerGroup,
-  MarkerLabel: SliderMarkerLabel,
-  MarkerTick: SliderMarkerTick,
-  Range: SliderRange,
-  Root: SliderRoot,
-  Thumb: SliderThumb,
-  Track: SliderTrack,
-  Value: SliderValue,
+  Control,
+  Header,
+  Label,
+  Marker,
+  MarkerGroup,
+  MarkerLabel,
+  MarkerTick,
+  Range,
+  Root,
+  Thumb,
+  Track,
+  ValueText,
 });

@@ -20,9 +20,8 @@ export interface QrCodeRootProps extends QrCodeRootContract {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const QrCodeRootBase = withProvider(QrCodePrimitive.Root, {
+const QrCodeRootBase = withProvider<QrCodeRootContract>(QrCodePrimitive.Root, {
   name: "Root",
-  slot: "base",
 });
 
 export const QrCodeRoot = defineComponent({

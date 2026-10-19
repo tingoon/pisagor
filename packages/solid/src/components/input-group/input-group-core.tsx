@@ -20,20 +20,18 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-export interface InputGroupProps
-  extends ComponentProps<"div">, FormControlGroupShellVariantProps {}
+export type InputGroupProps = ComponentProps<"div"> &
+  FormControlGroupShellVariantProps;
 
-export interface InputGroupAddonProps
-  extends ComponentProps<"div">, InputGroupAddonRootContract {}
+export type InputGroupAddonProps = ComponentProps<"div"> &
+  InputGroupAddonRootContract;
 
-export interface InputGroupButtonProps
-  extends
-    Omit<ButtonProps, "size" | "recipe">,
-    InputGroupButtonVariantProps,
-    InputGroupButtonRootContract {}
+export type InputGroupButtonProps = Omit<ButtonProps, "size" | "recipe"> &
+  InputGroupButtonVariantProps &
+  InputGroupButtonRootContract;
 
-export interface InputGroupTextProps
-  extends ComponentProps<"span">, InputGroupTextRootContract {}
+export type InputGroupTextProps = ComponentProps<"span"> &
+  InputGroupTextRootContract;
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

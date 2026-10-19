@@ -128,7 +128,7 @@ export const ToasterRoot = defineComponent({
   },
 });
 
-const ToastItemRoot = withProvider(ToastPrimitive.Root, {
+const ToastItemRoot = withProvider<ToastItemRootContract>(ToastPrimitive.Root, {
   name: "Item",
   slot: "base",
 });

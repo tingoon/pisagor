@@ -1,13 +1,18 @@
 import Default from "#examples/astro/data-display/stat/default.astro";
 import Variants from "#examples/astro/data-display/stat/variants.astro";
 import WithTrend from "#examples/astro/data-display/stat/with-trend.astro";
-import Compound from "#examples/astro/data-display/stat/compound.astro";
 import CustomRecipe from "#examples/astro/data-display/stat/custom-recipe.astro";
 
 ## Import
 
 ```ts
 import { Stat } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Stat />
 ```
 
 ## Examples
@@ -34,14 +39,6 @@ Show direction of change when trend matters alongside the value.
 
 <Example name="WithTrend">
   <WithTrend />
-</Example>
-
-### Compound
-
-Assemble from parts when you need a custom layout beyond the shorthand API.
-
-<Example name="Compound">
-  <Compound />
 </Example>
 
 ## Customization

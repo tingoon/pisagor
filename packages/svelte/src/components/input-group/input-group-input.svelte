@@ -5,7 +5,12 @@
 
   type Props = import("svelte").ComponentProps<typeof Input>;
 
-  let { class: className, classNames, ...rest }: Props = $props();
+  let {
+    class: className,
+    classNames,
+    value = $bindable<string | number | undefined>(undefined),
+    ...rest
+  }: Props = $props();
 </script>
 
 <Input
@@ -15,4 +20,5 @@
     ...classNames,
     clearableRoot: cn(inputGroupControlRecipe(), classNames?.clearableRoot),
   }}
+  bind:value
 />

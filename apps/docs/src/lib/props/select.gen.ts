@@ -7,6 +7,24 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/select.ts`, native HTML attributes omitted). */
 export const selectProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Control size.",
+  },
+  {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "SelectRecipeFn | undefined",
     defaultValue: "selectRecipe",

@@ -1,6 +1,5 @@
 import {
   type CollectionItem,
-  Combobox as ComboboxPrimitive,
   Dialog as DialogPrimitive,
   type ListCollection,
   useFilter,
@@ -13,7 +12,7 @@ import type {
   CommandRootContract,
   CommandContract,
 } from "@pisagor/contracts";
-import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
+import { commandRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -198,7 +197,7 @@ export const CommandRoot = defineComponent({
     lazyMount: { default: true, type: Boolean },
     onValueChange: {
       default: undefined,
-      type: Function as PropType<CommandProps["onValueChange"]>,
+      type: Function as PropType<(details: { value: string[] }) => void>,
     },
     recipe: {
       default: commandRecipe,
@@ -230,6 +229,7 @@ export const CommandRoot = defineComponent({
           collection: props.collection,
           disableLayer: true,
           inputBehavior: "autohighlight",
+          showIndicator: false,
           lazyMount: props.lazyMount,
           loopFocus: false,
           onValueChange: props.onValueChange,
@@ -260,7 +260,7 @@ export const CommandContent = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ComboboxPrimitive.Content as ArkPart,
+        Combobox.Content as ArkPart,
         {
           ...attrs,
           class: cn(variantSlots.content(), props.class, attrs.class),
@@ -292,7 +292,7 @@ export const CommandInput = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ComboboxPrimitive.Control as ArkPart,
+        Combobox.Control as ArkPart,
         { class: variantSlots.control() },
         () =>
           h(
@@ -308,7 +308,7 @@ export const CommandInput = defineComponent({
                   class: variantSlots.inputIcon(),
                 }),
               ),
-              h(ComboboxPrimitive.Input as ArkPart, { asChild: true }, () =>
+              h(Combobox.Input as ArkPart, { asChild: true }, () =>
                 h(InputGroup.Input as ArkPart, {
                   ...attrs,
                   autofocus: true,
@@ -398,11 +398,12 @@ export const CommandItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(
-        Combobox.ItemGroup as ArkPart,
-        { ...attrs, class: props.class, heading: props.heading },
+      h(Combobox.ItemGroup as ArkPart, { ...attrs, class: props.class }, () => [
+        props.heading
+          ? h(Combobox.ItemGroupLabel as ArkPart, null, () => props.heading)
+          : null,
         slots.default?.(),
-      );
+      ]);
   },
 });
 CommandItemGroup.displayName = "Command.ItemGroup";
@@ -440,14 +441,11 @@ export const CommandItem = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ComboboxPrimitive.Item as ArkPart,
+        Combobox.Item as ArkPart,
         {
           ...attrs,
-          class: comboboxRecipe({ showIndicator: false }).item({
-            class: props.class,
-          }),
+          class: props.class,
           item: props.item,
-          persistFocus: true,
         },
         slots.default?.(),
       );

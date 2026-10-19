@@ -13,27 +13,25 @@ import {
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentPropsWithRef, MouseEvent } from "react";
+import type { ComponentProps, MouseEvent } from "react";
 import type { FormControlVariant } from "../../internal";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 // #region Types
 
-export interface InputGroupProps
-  extends ComponentPropsWithRef<"div">, FormControlGroupShellVariantProps {}
+export type InputGroupProps = ComponentProps<"div"> &
+  FormControlGroupShellVariantProps;
 
-export interface InputGroupAddonProps
-  extends ComponentPropsWithRef<"div">, InputGroupAddonRootContract {}
+export type InputGroupAddonProps = ComponentProps<"div"> &
+  InputGroupAddonRootContract;
 
-export interface InputGroupButtonProps
-  extends
-    Omit<ButtonProps, "size" | "recipe">,
-    InputGroupButtonVariantProps,
-    InputGroupButtonRootContract {}
+export type InputGroupButtonProps = Omit<ButtonProps, "size" | "recipe"> &
+  InputGroupButtonVariantProps &
+  InputGroupButtonRootContract;
 
-export interface InputGroupTextProps
-  extends ComponentPropsWithRef<"span">, InputGroupTextRootContract {}
+export type InputGroupTextProps = ComponentProps<"span"> &
+  InputGroupTextRootContract;
 // #endregion
 
 // #region Parts

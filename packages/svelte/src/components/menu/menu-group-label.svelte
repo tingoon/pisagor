@@ -8,11 +8,7 @@
   };
 
   let { children, ...rest }: Props = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "group-label" },
-    name: "GroupLabel",
-    slot: "groupLabel",
-  });
+  const part = withContext(() => rest, { name: "GroupLabel" });
 </script>
 
 <div {...part.props}>{@render children?.()}</div>

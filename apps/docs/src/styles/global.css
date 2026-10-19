@@ -473,6 +473,55 @@ html[data-framework="svelte"] [data-preview-theme="dark"] {
 }
 
 /*
+ * Storybook-style canvas layouts for component previews.
+ * @see https://storybook.js.org/docs/configure/story-layout
+ */
+.docs-preview-canvas[data-preview-layout="centered"]:not(
+    [data-preview-framed]
+  ) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.docs-preview-canvas[data-preview-layout="padded"]:not([data-preview-framed]) {
+  display: block;
+  padding: 2rem 1rem;
+}
+
+.docs-preview-canvas[data-preview-layout="fullscreen"]:not(
+    [data-preview-framed]
+  ) {
+  display: block;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .docs-preview-canvas[data-preview-layout="centered"]:not(
+      [data-preview-framed]
+    ),
+  .docs-preview-canvas[data-preview-layout="padded"]:not(
+      [data-preview-framed]
+    ) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.docs-preview-canvas[data-preview-layout="centered"] .docs-preview-slot {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.docs-preview-canvas[data-preview-layout="padded"] .docs-preview-slot,
+.docs-preview-canvas[data-preview-layout="fullscreen"] .docs-preview-slot {
+  display: block;
+  min-height: 3rem;
+}
+
+/*
  * Framed previews (app-shell style examples). A fixed-height scroll box; the
  * transform makes it the containing block for `position: fixed` descendants,
  * and viewport-height utilities resolve to the frame instead of the window.

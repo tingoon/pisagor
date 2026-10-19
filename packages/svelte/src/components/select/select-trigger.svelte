@@ -3,65 +3,44 @@
     Select as SelectPrimitive,
     type SelectTriggerProps as ArkSelectTriggerProps,
   } from "@ark-ui/svelte";
-  import {
-    type FormControlShellVariantProps,
-    formControlShellRecipe,
-    selectRecipe,
-  } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CaretUpDownIcon, XIcon } from "phosphor-svelte";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useSelectControl, useSelectRoot } from "./select.context";
+  import { useStyles, withContext } from "./select.context";
   import SelectClearTrigger from "./select-clear-trigger.svelte";
+  import SelectControl from "./select-control.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
+  type Props = Omit<ArkSelectTriggerProps, "size"> & {
+    /**
+     * Whether to show a clear button when a value is selected.
+     *
+     * @defaultValue false
+     */
+    clearable?: boolean;
+  };
 
-  type Props = Omit<ArkSelectTriggerProps, "size"> &
-    FormControlShellVariantProps & { clearable?: boolean };
+  let { clearable = false, children, ...rest }: Props = $props();
 
-  let {
-    size: sizeProp,
-    variant: variantProp,
-    clearable = false,
-    children,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const ctx = useSelectRoot();
-  const control = useSelectControl();
-  const size = $derived(sizeProp ?? control.size ?? "md");
-  const slots = $derived(ctx?.slots ?? selectRecipe());
-  const surfaceVariant = useFormControlSurface();
-  const resolvedVariant = $derived(
-    variantProp ?? control.variant ?? ("primary" as FormControlVariant),
+  const styles = useStyles();
+  const trigger = withContext(
+    () => ({
+      ...rest,
+      "data-clearable": clearable || undefined,
+    }),
+    { name: "Trigger" },
   );
 </script>
 
-<SelectPrimitive.Control>
-  <SelectPrimitive.Trigger
-    {...rest}
-    class={cn(
-      formControlShellRecipe({
-        size,
-        surfaceVariant,
-        variant: resolvedVariant,
-      }),
-      slots.trigger(),
-      className,
-    )}
-    data-variant={resolvedVariant}
-  >
+<SelectControl>
+  <SelectPrimitive.Trigger {...trigger.props}>
     {@render children?.()}
-    <div class={slots.triggerActions()}>
-      {#if clearable}
-        <SelectClearTrigger>
-          <XIcon />
-        </SelectClearTrigger>
-      {/if}
+    <div class={styles.slots.triggerActions()}>
       <SelectPrimitive.Indicator>
         <CaretUpDownIcon />
       </SelectPrimitive.Indicator>
     </div>
   </SelectPrimitive.Trigger>
-</SelectPrimitive.Control>
+  {#if clearable}
+    <SelectClearTrigger>
+      <XIcon />
+    </SelectClearTrigger>
+  {/if}
+</SelectControl>

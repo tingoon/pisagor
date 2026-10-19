@@ -3,41 +3,22 @@
     DatePicker as CalendarPrimitive,
     type DatePickerMonthSelectProps,
   } from "@ark-ui/svelte";
-  import { formControlShellRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CaretDownIcon } from "phosphor-svelte";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useStyles } from "./calendar.context";
+  import { useStyles, withContext } from "./calendar.context";
 
-  let { class: className, ...rest }: DatePickerMonthSelectProps = $props();
+  let { ...rest }: DatePickerMonthSelectProps = $props();
   const styles = useStyles();
-  const slots = $derived(styles.slots);
-  const surfaceVariant = useFormControlSurface();
-  const selectClassName = $derived(
-    cn(
-      formControlShellRecipe({
-        size: "md",
-        surfaceVariant,
-        variant: "primary",
-      }),
-      slots.select(),
-      className,
-    ),
-  );
+  const part = withContext(() => rest, { name: "MonthSelect", slot: "select" });
 </script>
 
 <div
-  class={slots.selectWrapper()}
+  class={styles.slots.selectWrapper()}
   data-part="month-select-wrapper"
   data-scope="calendar"
 >
-  <CalendarPrimitive.MonthSelect
-    {...rest}
-    class={selectClassName}
-    data-variant="primary"
-  />
+  <CalendarPrimitive.MonthSelect {...part.props} />
   <CaretDownIcon
-    class={slots.selectIcon()}
+    class={styles.slots.selectIcon()}
     data-part="month-select-icon"
     data-scope="calendar"
   />

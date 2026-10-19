@@ -26,10 +26,7 @@ export interface FileProps extends FileRootContract, FileContract {
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider("div", {
-  name: "Root",
-  slot: "base",
-});
+export const FileRoot = withProvider<FileRootContract>("div", { name: "Root" });
 
 export const FileMedia = defineComponent({
   inheritAttrs: false,
@@ -68,20 +65,11 @@ export const FileMedia = defineComponent({
   },
 });
 
-export const FileContent = withContext("div", {
-  name: "Content",
-  slot: "content",
-});
+export const FileContent = withContext("div", { name: "Content" });
 
-export const FileName = withContext("div", {
-  name: "Name",
-  slot: "name",
-});
+export const FileName = withContext("div", { name: "Name" });
 
-export const FileMeta = withContext("div", {
-  name: "Meta",
-  slot: "meta",
-});
+export const FileMeta = withContext("div", { name: "Meta" });
 
 export const FileSize = defineComponent({
   inheritAttrs: false,
@@ -113,10 +101,7 @@ export const FileSize = defineComponent({
   },
 });
 
-export const FileActions = withContext("div", {
-  name: "Actions",
-  slot: "actions",
-});
+export const FileActions = withContext("div", { name: "Actions" });
 
 export const FileShorthand = defineComponent({
   inheritAttrs: false,

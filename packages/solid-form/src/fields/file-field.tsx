@@ -5,14 +5,15 @@ import { type FieldPresentationProps, FieldShell } from "../internal";
 // #region Types
 type FileInputControlProps = Omit<
   FileInputProps,
-  "invalid" | "name" | "onFilesChange" | "onValueChange"
->;
+  "invalid" | "name" | "onFilesChange"
+> & {
+  onValueChange?: (files: File[]) => void;
+};
 
 export interface FileFieldProps
   extends FieldPresentationProps, FileInputControlProps {
   name?: string;
   onBlur?: () => void;
-  onValueChange?: (files: File[]) => void;
 }
 // #endregion
 
@@ -51,7 +52,7 @@ export function FileField(props: FileFieldProps) {
         invalid={local.invalid}
         name={local.name}
         onBlur={local.onBlur}
-        onValueChange={local.onValueChange}
+        onFilesChange={local.onValueChange}
       />
     </FieldShell>
   );

@@ -20,26 +20,27 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ProgressRoot = withProvider(ProgressPrimitive.Root)<ProgressRootContract>(
-  {
-    name: "Root",
-    slot: "base",
-  },
-);
+const ProgressRoot = withProvider<
+  ComponentProps<typeof ProgressPrimitive.Root> & ProgressRootContract
+>(ProgressPrimitive.Root, { name: "Root" });
 
-const ProgressHeader = withContext("div", {
+const ProgressHeader = withContext<ComponentProps<"div">>("div", {
   name: "Header",
 });
 
-const ProgressValue = withContext(ProgressPrimitive.ValueText, {
-  name: "Value",
-});
+const ProgressValueText = withContext<
+  ComponentProps<typeof ProgressPrimitive.ValueText>
+>(ProgressPrimitive.ValueText, { name: "ValueText" });
 
-const ProgressTrack = withContext(ProgressPrimitive.Track, {
+const ProgressTrack = withContext<
+  ComponentProps<typeof ProgressPrimitive.Track>
+>(ProgressPrimitive.Track, {
   name: "Track",
 });
 
-const ProgressRange = withContext(ProgressPrimitive.Range, {
+const ProgressRange = withContext<
+  ComponentProps<typeof ProgressPrimitive.Range>
+>(ProgressPrimitive.Range, {
   name: "Range",
 });
 // #endregion
@@ -104,7 +105,10 @@ export function Progress({
         <ProgressHeader className={classNames?.header}>
           {label && <ProgressPrimitive.Label>{label}</ProgressPrimitive.Label>}
           {isValueVisible && (
-            <ProgressValue {...valueProps} className={classNames?.value} />
+            <ProgressValueText
+              {...valueProps}
+              className={classNames?.valueText}
+            />
           )}
         </ProgressHeader>
       )}

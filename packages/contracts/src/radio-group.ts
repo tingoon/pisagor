@@ -1,5 +1,6 @@
 import type {
   RadioGroupItemRecipeFn,
+  RadioGroupItemVariantProps,
   RadioGroupRecipeFn,
 } from "@pisagor/recipes";
 
@@ -34,10 +35,10 @@ export interface RadioGroupContract {
 }
 
 /**
- * Shared RadioGroupItem root contract: recipe override. Used by compound roots;
- * excludes host DOM attributes.
+ * Shared RadioGroupItem root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
  */
-export interface RadioGroupItemRootContract {
+export interface RadioGroupItemRootContract extends RadioGroupItemVariantProps {
   /**
    * Style recipe override.
    *

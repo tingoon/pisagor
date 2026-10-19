@@ -61,18 +61,14 @@ export interface SegmentGroupItemProps extends SegmentGroupItemContract {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const SegmentGroupRootBase = withProvider(SegmentGroupPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+const SegmentGroupRootBase = withProvider<SegmentGroupRootContract>(
+  SegmentGroupPrimitive.Root,
+  { name: "Root" },
+);
 
 export const SegmentGroupItemText = withContext(
   SegmentGroupPrimitive.ItemText,
-  {
-    defaultProps: { "data-part": "item-text" },
-    name: "ItemText",
-    slot: "itemText",
-  },
+  { name: "ItemText" },
 );
 
 export const SegmentGroupIndicator = withContext(

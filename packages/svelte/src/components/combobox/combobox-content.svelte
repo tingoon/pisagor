@@ -1,42 +1,14 @@
 <script lang="ts">
   import {
     Combobox as ComboboxPrimitive,
-    type ComboboxContentProps as ArkContentProps,
-    Portal,
+    type ComboboxContentProps,
   } from "@ark-ui/svelte";
-  import { comboboxRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useComboboxRoot } from "./combobox.context";
-  import ComboboxPositioner from "./combobox-positioner.svelte";
+  import { withContext } from "./combobox.context";
 
-  type Props = ArkContentProps & { portalled?: boolean };
-
-  let {
-    portalled = true,
-    children,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const ctx = useComboboxRoot();
-  const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let { children, ...rest }: ComboboxContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-{#if portalled}
-  <Portal>
-    <ComboboxPositioner>
-      <ComboboxPrimitive.Content
-        {...rest}
-        class={slots.content({ class: cn(className) })}
-      >
-        {@render children?.()}
-      </ComboboxPrimitive.Content>
-    </ComboboxPositioner>
-  </Portal>
-{:else}
-  <ComboboxPrimitive.Content
-    {...rest}
-    class={slots.content({ class: cn(className) })}
-  >
-    {@render children?.()}
-  </ComboboxPrimitive.Content>
-{/if}
+<ComboboxPrimitive.Content {...part.props}>
+  {@render children?.()}
+</ComboboxPrimitive.Content>

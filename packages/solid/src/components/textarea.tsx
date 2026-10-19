@@ -6,10 +6,9 @@ import type {
   TextareaContract,
   TextareaRootContract,
 } from "@pisagor/contracts";
-import { formControlShellRecipe, textareaRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { textareaRecipe } from "@pisagor/recipes";
 import type { JSX, ParentProps } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
@@ -18,21 +17,18 @@ import {
   InputGroupAddon,
   InputGroupRoot,
 } from "./input-group/input-group-core";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
-  name: "Textarea",
-  recipe: textareaRecipe,
-});
+const { Context, withContext, withProvider, useStyles } =
+  createSlotRecipeContext({
+    name: "Textarea",
+    recipe: textareaRecipe,
+  });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
+// #region Types
 type TextareaRootProps = FieldTextareaProps &
-  TextareaRootContract &
-  TextareaContract & {
-    variant?: FormControlVariant;
+  TextareaRootContract & {
     /**
      * Initial value when uncontrolled. Solid has no native defaultValue on
      * textareas.
@@ -40,50 +36,39 @@ type TextareaRootProps = FieldTextareaProps &
     defaultValue?: string | number | readonly string[];
   };
 
-export interface TextareaProps extends TextareaRootProps {
+export interface TextareaProps extends TextareaRootProps, TextareaContract {
+  /**
+   * Whether to show a clear button when the textarea has a value.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
+  /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
 }
 
-function TextareaProvider(
-  props: ParentProps<{
-    /**
-     * Style recipe. Defaults to `textareaRecipe` from
-     * `@pisagor/recipes/textarea`.
-     *
-     * @defaultValue textareaRecipe
-     */
-    recipe?: typeof textareaRecipe;
-  }>,
+type TextareaGroupProps = ParentProps<{
+  class?: string;
+  variant?: TextareaRootContract["variant"];
+}>;
+// #endregion
+
+// #region Parts
+const Root = withProvider<TextareaRootProps>(FieldPrimitive.Textarea, {
+  name: "Root",
+  slot: "rootLayout",
+});
+
+function ClearableRoot(
+  props: TextareaRootProps & { clearable?: boolean },
 ): JSX.Element {
-  const slots = createMemo(() => (props.recipe ?? textareaRecipe)());
-
-  return (
-    <TextareaStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      {props.children}
-    </TextareaStylesContext>
-  );
-}
-
-function TextareaField(props: TextareaRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "variant",
+    "clearable",
     "class",
-    "classNames",
     "defaultValue",
-    "size",
     "ref",
   ]);
-  const styles = useStyles();
-  const surfaceVariant = useFormControlSurface();
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
+  const { slots } = useStyles();
 
   const applyDefaultValueRef = (el: HTMLTextAreaElement) => {
     if (
@@ -101,73 +86,84 @@ function TextareaField(props: TextareaRootProps): JSX.Element {
   return (
     <FieldPrimitive.Textarea
       {...rest}
-      class={cn(
-        formControlShellRecipe({
-          size: local.size ?? "md",
-          surfaceVariant,
-          variant: variant(),
-        }),
-        styles.slots.rootLayout({
-          class: cn(local.class, local.classNames?.rootLayout),
-        }),
-      )}
-      data-variant={variant()}
+      class={slots.clearableRoot({
+        class: local.class,
+        clearable: local.clearable,
+      })}
+      data-part="clearable-root"
+      data-scope="textarea"
       ref={applyDefaultValueRef}
     />
   );
 }
 
-function TextareaGroup(
-  props: ParentProps<{ class?: string; variant?: FormControlVariant }>,
-): JSX.Element {
-  const styles = useStyles();
+const GroupBase = withContext<TextareaGroupProps>(InputGroupRoot, {
+  name: "Group",
+});
+
+function Group(props: TextareaGroupProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["variant", "children", "class"]);
 
   return (
-    <InputGroupRoot
-      class={styles.slots.group({ class: props.class })}
-      variant={props.variant}
-    >
-      {props.children}
-    </InputGroupRoot>
+    <GroupBase {...rest} class={local.class} variant={local.variant}>
+      {local.children}
+    </GroupBase>
   );
 }
 
-function TextareaClearableField(
-  props: TextareaRootProps & {
-    canClear?: boolean;
-  },
-): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "canClear",
-    "class",
-    "classNames",
-    "defaultValue",
-  ]);
-  const styles = useStyles();
+function ClearAddon(props: { onClear: () => void }): JSX.Element {
+  const { slots } = useStyles();
 
   return (
-    <FieldPrimitive.Textarea
-      {...rest}
-      class={styles.slots.clearableRoot({
-        class: cn(local.class, local.classNames?.clearableRoot),
-        clearable: local.canClear,
-      })}
-    />
-  );
-}
-
-function TextareaClearAddon(props: { onClear: () => void }): JSX.Element {
-  const styles = useStyles();
-
-  return (
-    <InputGroupAddon align="inline-end" class={styles.slots.clearAddon()}>
+    <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
       <Input.ClearButton onClear={props.onClear} />
     </InputGroupAddon>
   );
 }
 
-export function Textarea(props: TextareaProps): JSX.Element {
+function Provider(
+  props: ParentProps<
+    TextareaRootContract & {
+      recipe?: typeof textareaRecipe;
+    }
+  >,
+): JSX.Element {
+  const [local] = splitProps(props, [
+    "children",
+    "size",
+    "variant",
+    "surfaceVariant",
+    "recipe",
+  ]);
+  const recipe = () => local.recipe ?? textareaRecipe;
+  const resolved = () => ({
+    size: local.size ?? "md",
+    surfaceVariant: local.surfaceVariant,
+    variant: local.variant,
+  });
+  const slots = () => recipe()(resolved());
+
+  return (
+    <Context
+      value={{
+        get slots() {
+          return slots();
+        },
+        get variants() {
+          return resolved() as never;
+        },
+      }}
+    >
+      {local.children}
+    </Context>
+  );
+}
+// #endregion
+
+// #region Closed
+function TextareaShorthand(props: TextareaProps): JSX.Element {
   const [local, rest] = splitProps(props, [
+    "size",
     "variant",
     "clearable",
     "defaultValue",
@@ -221,37 +217,41 @@ export function Textarea(props: TextareaProps): JSX.Element {
     });
 
   return (
-    <TextareaProvider recipe={local.recipe}>
-      <Show
-        fallback={
-          <TextareaField
-            {...rest}
-            class={local.class}
-            classNames={local.classNames}
-            defaultValue={local.defaultValue}
-            disabled={local.disabled}
-            onChange={
-              local.onChange || local.onValueChange
-                ? (event) => {
-                    callEventHandler(local.onChange, event);
-                    local.onValueChange?.(event.currentTarget.value);
-                  }
-                : undefined
-            }
-            readOnly={local.readOnly}
-            ref={typeof local.ref === "function" ? local.ref : undefined}
-            value={local.value}
-            variant={local.variant}
-          />
-        }
-        when={!skipClearable()}
+    <Show
+      fallback={
+        <Root
+          {...rest}
+          class={local.class}
+          defaultValue={local.defaultValue}
+          disabled={local.disabled}
+          onChange={
+            local.onChange || local.onValueChange
+              ? (event) => {
+                  callEventHandler(local.onChange, event);
+                  local.onValueChange?.(event.currentTarget.value);
+                }
+              : undefined
+          }
+          readOnly={local.readOnly}
+          recipe={local.recipe}
+          ref={typeof local.ref === "function" ? local.ref : undefined}
+          size={local.size ?? "md"}
+          value={local.value}
+          variant={local.variant}
+        />
+      }
+      when={!skipClearable()}
+    >
+      <Provider
+        recipe={local.recipe}
+        size={local.size ?? "md"}
+        variant={local.variant}
       >
-        <TextareaGroup class={local.classNames?.group} variant={local.variant}>
-          <TextareaClearableField
+        <Group class={local.classNames?.group} variant={local.variant}>
+          <ClearableRoot
             {...rest}
-            canClear={canClear()}
             class={local.class}
-            classNames={local.classNames}
+            clearable={canClear()}
             defaultValue={local.defaultValue}
             disabled={local.disabled}
             onChange={handleChange}
@@ -260,10 +260,17 @@ export function Textarea(props: TextareaProps): JSX.Element {
             value={local.value}
           />
           <Show when={canClear()}>
-            <TextareaClearAddon onClear={handleClear} />
+            <ClearAddon onClear={handleClear} />
           </Show>
-        </TextareaGroup>
-      </Show>
-    </TextareaProvider>
+        </Group>
+      </Provider>
+    </Show>
   );
 }
+// #endregion
+
+export const Textarea = Object.assign(TextareaShorthand, {
+  ClearableRoot,
+  Group,
+  Root,
+});

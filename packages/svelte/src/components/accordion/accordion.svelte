@@ -6,7 +6,9 @@
     AccordionContract,
   } from "@pisagor/contracts";
   import AccordionItem from "./accordion-item.svelte";
+  import AccordionItemBody from "./accordion-item-body.svelte";
   import AccordionItemContent from "./accordion-item-content.svelte";
+  import AccordionItemIndicator from "./accordion-item-indicator.svelte";
   import AccordionItemTrigger from "./accordion-item-trigger.svelte";
   import AccordionRoot from "./accordion-root.svelte";
 
@@ -31,8 +33,13 @@
 <AccordionRoot {...rest}>
   {#each items ?? [] as item (item.value)}
     <AccordionItem disabled={item.disabled} {size} value={item.value}>
-      <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
-      <AccordionItemContent>{item.content}</AccordionItemContent>
+      <AccordionItemTrigger>
+        {item.title}
+        <AccordionItemIndicator />
+      </AccordionItemTrigger>
+      <AccordionItemContent>
+        <AccordionItemBody>{item.content}</AccordionItemBody>
+      </AccordionItemContent>
     </AccordionItem>
   {/each}
 </AccordionRoot>

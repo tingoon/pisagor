@@ -6,37 +6,32 @@ import type {
 } from "@ark-ui/solid";
 import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 import { ratingRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, For, splitProps } from "solid-js";
+import { For, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { StarIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: RatingStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Rating",
   recipe: ratingRecipe,
 });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
+// #region Types
 type RatingControlProps = RatingGroupControlProps;
+
 type RatingItemProps = RatingGroupItemProps;
+
 type RatingIndicatorProps = ComponentProps<"span">;
+
 type RatingIconProps = {
   "data-bg"?: string;
   "data-fg"?: string;
   weight?: "fill" | "regular";
 };
 
-type RatingRootProps = RatingGroupRootProps &
-  RatingRootContract & {
-    variant?: FormControlVariant;
-  };
+type RatingRootProps = RatingGroupRootProps & RatingRootContract;
 
 export interface RatingProps
   extends Omit<RatingRootProps, "children" | "onValueChange">, RatingContract {
@@ -44,74 +39,39 @@ export interface RatingProps
   value?: number;
   icon?: Component<RatingIconProps>;
   onValueChange?: (value: number) => void;
+  /** Extra props forwarded to the rating control element */
   controlProps?: Omit<RatingControlProps, "children" | "class">;
+  /** Extra props forwarded to each rating item indicator element */
   indicatorProps?: Omit<RatingIndicatorProps, "children" | "class">;
+  /** Extra props forwarded to each rating item element */
   itemProps?: Omit<RatingItemProps, "children" | "index" | "class">;
 }
+// #endregion
 
-function RatingRoot(props: RatingRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "variant",
-    "allowHalf",
-    "count",
-    "recipe",
-    "size",
-    "class",
-  ]);
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
-  const slots = createMemo(() =>
-    (local.recipe ?? ratingRecipe)({ size: local.size ?? "md" }),
-  );
-  const surfaceTone = () =>
-    variant() === "secondary" ? "opacity-90" : undefined;
+// #region Parts
+const Root = withProvider<RatingRootProps>(RatingGroupPrimitive.Root, {
+  name: "Root",
+});
 
-  return (
-    <RatingStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <RatingGroupPrimitive.Root
-        {...rest}
-        allowHalf={local.allowHalf ?? false}
-        class={slots().base({ class: cn(surfaceTone(), local.class) })}
-        count={local.count ?? 5}
-        data-variant={variant()}
-      />
-    </RatingStylesContext>
-  );
-}
+const Control = withContext<RatingControlProps>(RatingGroupPrimitive.Control, {
+  name: "Control",
+});
 
-const RatingControl: Component<RatingControlProps> = withContext(
-  RatingGroupPrimitive.Control,
-  { name: "Control" },
-);
+const Item = withContext<RatingItemProps>(RatingGroupPrimitive.Item, {
+  name: "Item",
+});
 
-const RatingItem: Component<RatingItemProps> = withContext(
-  RatingGroupPrimitive.Item,
-  { name: "Item" },
-);
+const Indicator = withContext<RatingIndicatorProps>("span", {
+  name: "Indicator",
+  part: "item-indicator",
+});
+// #endregion
 
-function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <span
-      {...rest}
-      class={styles.slots.indicator({ class: local.class })}
-      data-part="item-indicator"
-      data-scope="rating"
-    />
-  );
-}
-
+// #region Closed
 function RatingShorthand(props: RatingProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "variant",
+    "allowHalf",
+    "count",
     "controlProps",
     "icon",
     "indicatorProps",
@@ -123,22 +83,23 @@ function RatingShorthand(props: RatingProps): JSX.Element {
   const Icon = () => local.icon ?? StarIcon;
 
   return (
-    <RatingRoot
+    <Root
       {...rest}
+      allowHalf={local.allowHalf ?? false}
       class={local.class}
+      count={local.count ?? 5}
       onValueChange={
         local.onValueChange
           ? (details) => local.onValueChange?.(details.value)
           : undefined
       }
-      variant={local.variant}
     >
-      <RatingControl {...local.controlProps} class={local.classNames?.control}>
+      <Control {...local.controlProps} class={local.classNames?.control}>
         <RatingGroupPrimitive.Context>
           {(api) => (
             <For each={api().items}>
               {(item) => (
-                <RatingItem
+                <Item
                   {...local.itemProps}
                   class={local.classNames?.item}
                   index={item}
@@ -148,7 +109,7 @@ function RatingShorthand(props: RatingProps): JSX.Element {
                       const state = () => itemApi();
 
                       return (
-                        <RatingIndicator
+                        <Indicator
                           {...local.indicatorProps}
                           class={local.classNames?.indicator}
                           data-half={state().half ? "" : undefined}
@@ -162,27 +123,28 @@ function RatingShorthand(props: RatingProps): JSX.Element {
                             data-fg=""
                             weight="fill"
                           />
-                        </RatingIndicator>
+                        </Indicator>
                       );
                     }}
                   </RatingGroupPrimitive.ItemContext>
-                </RatingItem>
+                </Item>
               )}
             </For>
           )}
         </RatingGroupPrimitive.Context>
         <RatingGroupPrimitive.HiddenInput />
-      </RatingControl>
-    </RatingRoot>
+      </Control>
+    </Root>
   );
 }
+// #endregion
 
 export const Rating = Object.assign(RatingShorthand, {
   Context: RatingGroupPrimitive.Context,
-  Control: RatingControl,
+  Control,
   HiddenInput: RatingGroupPrimitive.HiddenInput,
-  Indicator: RatingIndicator,
-  Item: RatingItem,
+  Indicator,
+  Item,
   ItemContext: RatingGroupPrimitive.ItemContext,
-  Root: RatingRoot,
+  Root,
 });

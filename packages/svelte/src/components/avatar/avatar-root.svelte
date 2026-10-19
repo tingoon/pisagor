@@ -9,7 +9,7 @@
   type Props = AvatarRootProps & AvatarRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <AvatarPrimitive.Root {...root.props}>

@@ -7,7 +7,8 @@ export function Checkboxes() {
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.ItemGroup heading="Appearance">
+        <DropdownMenu.ItemGroup>
+          <DropdownMenu.ItemGroupLabel>Appearance</DropdownMenu.ItemGroupLabel>
           <DropdownMenu.CheckboxItem checked value="save">
             Status bar
           </DropdownMenu.CheckboxItem>

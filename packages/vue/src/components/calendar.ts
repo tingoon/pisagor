@@ -5,43 +5,32 @@ import {
 } from "@ark-ui/vue";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import type { CalendarRootContract } from "@pisagor/contracts";
-import {
-  calendarRecipe,
-  calendarTableCellRecipe,
-  formControlShellRecipe,
-} from "@pisagor/recipes";
+import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  computed,
-  defineComponent,
-  h,
-  type PropType,
-  type UnwrapRef,
-} from "vue";
-import { createSlotRecipeContext } from "../internal";
+import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
-// #region Slot recipe context
-const { provideStyles: provideCalendarStyles, useStyles } =
-  createSlotRecipeContext({
-    name: "Calendar",
-    recipe: calendarRecipe,
-  });
+// #region Context
+const {
+  provideStyles: provideCalendarStyles,
+  useStyles,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Calendar",
+  recipe: calendarRecipe,
+});
 
 /**
  * Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside
  * `DatePicker.Content` (React parity).
  */
 export { provideCalendarStyles };
-
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
 type ArkPart = Parameters<typeof h>[0];
-type ClassValue = Parameters<typeof cn>[0];
 type CalendarApi = UnwrapRef<UseDatePickerContext>;
 type CalendarDay = CalendarApi["weeks"][number][number];
 
@@ -67,74 +56,37 @@ interface CalendarTableNextMonthProps {
 
 export interface CalendarProps extends CalendarRootContract {
   class?: unknown;
-  /** Visual shell variant for embedded selects. Defaults to `primary`. */
-  variant?: FormControlVariant;
 }
 // #endregion
 
 // #region Parts
-function getCalendarSelectShell(
-  className: ClassValue | undefined,
-  selectSlot: () => string,
-  surfaceVariant: ReturnType<typeof useFormControlSurface>,
-) {
-  const resolved = { surfaceVariant, variant: "primary" as FormControlVariant };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-
-  return {
-    className: cn(
-      formControlShellRecipe({ size: "md", ...shellArgs }),
-      selectSlot(),
-      className,
-    ),
-    controlProps,
-  };
-}
-
 export const parseDate = arkParseDate;
 
 const getWeekRowKey = (week: CalendarDay[]) =>
   week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
+const RootBase = withProvider<CalendarProps>(DatePickerPrimitive.Root, {
+  name: "Root",
+});
+
 export const CalendarRoot = defineComponent({
   inheritAttrs: false,
-  name: "CalendarRoot",
+  name: "Calendar.Root",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
     lazyMount: { default: true, type: Boolean },
-    recipe: {
-      default: calendarRecipe,
-      type: Function as PropType<typeof calendarRecipe>,
-    },
     unmountOnExit: { default: true, type: Boolean },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideCalendarStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
     return () =>
       h(
-        DatePickerPrimitive.Root as ArkPart,
+        RootBase,
         {
           ...attrs,
-          class: cn(recipeSlots.value.base(), props.class),
+          class: props.class,
           inline: true,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
@@ -250,6 +202,18 @@ export const CalendarClearTrigger = defineComponent({
   },
 });
 
+const YearSelectBase = withContext(DatePickerPrimitive.YearSelect, {
+  name: "YearSelect",
+  part: "select",
+  slot: "select",
+});
+
+const MonthSelectBase = withContext(DatePickerPrimitive.MonthSelect, {
+  name: "MonthSelect",
+  part: "select",
+  slot: "select",
+});
+
 export const CalendarYearSelect = defineComponent({
   inheritAttrs: false,
   name: "Calendar.YearSelect",
@@ -262,39 +226,27 @@ export const CalendarYearSelect = defineComponent({
   setup(props, { attrs }) {
     const styles = useStyles();
 
-    const surfaceVariant = useFormControlSurface();
-
-    return () => {
-      const { className: selectClassName, controlProps } =
-        getCalendarSelectShell(
-          props.class,
-          styles.slots.select,
-          surfaceVariant,
-        );
-      const slots = styles.slots;
-
-      return h(
+    return () =>
+      h(
         "div",
         {
-          class: slots.selectWrapper(),
+          class: styles.slots.selectWrapper(),
           "data-part": "year-select-wrapper",
           "data-scope": "calendar",
         },
         [
-          h(DatePickerPrimitive.YearSelect as ArkPart, {
+          h(YearSelectBase, {
             ...attrs,
-            ...controlProps,
-            class: selectClassName,
+            class: props.class,
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: slots.selectIcon(),
+            class: styles.slots.selectIcon(),
             "data-part": "year-select-icon",
             "data-scope": "calendar",
           }),
         ],
       );
-    };
   },
 });
 
@@ -310,39 +262,27 @@ export const CalendarMonthSelect = defineComponent({
   setup(props, { attrs }) {
     const styles = useStyles();
 
-    const surfaceVariant = useFormControlSurface();
-
-    return () => {
-      const { className: selectClassName, controlProps } =
-        getCalendarSelectShell(
-          props.class,
-          styles.slots.select,
-          surfaceVariant,
-        );
-      const slots = styles.slots;
-
-      return h(
+    return () =>
+      h(
         "div",
         {
-          class: slots.selectWrapper(),
+          class: styles.slots.selectWrapper(),
           "data-part": "month-select-wrapper",
           "data-scope": "calendar",
         },
         [
-          h(DatePickerPrimitive.MonthSelect as ArkPart, {
+          h(MonthSelectBase, {
             ...attrs,
-            ...controlProps,
-            class: selectClassName,
+            class: props.class,
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: slots.selectIcon(),
+            class: styles.slots.selectIcon(),
             "data-part": "month-select-icon",
             "data-scope": "calendar",
           }),
         ],
       );
-    };
   },
 });
 

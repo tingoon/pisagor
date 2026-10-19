@@ -9,6 +9,7 @@ import type {
   Slots,
   VNode,
 } from "vue";
+import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 
 type SlotClassProps = {
   class?: ClassValue;
@@ -48,19 +49,22 @@ export interface SlotRecipeStyles<
 type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
-/** Override must keep the same slot return shape as the default recipe. */
-export type CompatibleSlotRecipe<R extends SlotRecipeFn> = R &
-  ((props?: RecipeVariantProps<R>) => ReturnType<R>);
-
-export type SlotRecipeProps<R extends SlotRecipeFn> = RecipeVariantProps<R> & {
-  recipe?: CompatibleSlotRecipe<R>;
-};
-
 export interface WithSlotRecipeOptions<Slot extends string = string> {
-  /** PascalCase part name (`Alert.Title`). */
+  /**
+   * PascalCase part name (`Alert.Title`). Only required field — `slot` and
+   * `part` are derived from this when omitted.
+   */
   name: string;
-  /** Recipe slot; defaults to kebab-case of `name` (`Root` → `base`). */
+  /**
+   * Recipe slot. When omitted: `Root` → `base`, otherwise camelCase of `name`
+   * (`ClearTrigger` → `clearTrigger`).
+   */
   slot?: Slot;
+  /**
+   * `data-part` value. When omitted: `Root` → `root`, otherwise kebab-case of
+   * `name` (`ClearTrigger` → `clear-trigger`).
+   */
+  part?: string;
   defaultProps?: Record<string, unknown>;
 }
 
@@ -95,6 +99,11 @@ function toKebabCase(value: string) {
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
+}
+
+/** PascalCase part name → recipe slot key (`ClearTrigger` → `clearTrigger`). */
+function toCamelCase(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
 /**
@@ -167,7 +176,14 @@ export function createSlotRecipeContext<
 
   function slotOf(options: WithSlotRecipeOptions<Slot>): Slot {
     return (options.slot ??
-      (options.name === "Root" ? "base" : toKebabCase(options.name))) as Slot;
+      (options.name === "Root" ? "base" : toCamelCase(options.name))) as Slot;
+  }
+
+  function partOf(options: WithSlotRecipeOptions<Slot>) {
+    return (
+      options.part ??
+      (options.name === "Root" ? "root" : toKebabCase(options.name))
+    );
   }
 
   function useStyles(): Styles {
@@ -218,14 +234,16 @@ export function createSlotRecipeContext<
 
   /**
    * Styled root: provides styles to descendants and renders `component` with
-   * the `slot` class, `data-scope` / `data-part` and variant `data-*`.
+   * the `slot` class, `data-scope` / `data-part` and variant `data-*`. Pass the
+   * shared root contract as `P` — variants / `recipe` are not inferred from the
+   * recipe (same call shape as React / Solid):
+   *
+   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
    */
   function withProvider<P extends object = Record<never, never>>(
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,
-  ): SlotRecipePart<P & SlotRecipeProps<R> & PartClassProps> {
-    type Props = P & SlotRecipeProps<R> & PartClassProps;
-
+  ): SlotRecipePart<P & PartClassProps> {
     const partName = `${name}.${options.name}`;
 
     const slot = slotOf(options);
@@ -233,11 +251,12 @@ export function createSlotRecipeContext<
     const runtimeProps = runtimePropsOf(
       defaultRecipe,
       true,
-    ) as ComponentObjectPropsOptions<Props>;
+    ) as ComponentObjectPropsOptions<P & PartClassProps>;
 
-    const part = defineComponent<Props>(
+    const part = defineComponent<P & PartClassProps>(
       (props, { attrs, slots: children }) => {
         const values = props as Record<string, unknown>;
+        const surfaceFromContext = useFormControlSurface();
         const recipe = computed(() => (values.recipe ?? defaultRecipe) as R);
         const variants = computed(() => {
           const own: Record<string, unknown> = {};
@@ -246,11 +265,20 @@ export function createSlotRecipeContext<
             own[variantKey] = values[variantKey];
           }
 
-          return {
+          const resolved = {
             ...defaultRecipe.defaultVariants,
             ...recipe.value.defaultVariants,
             ...definedOnly(own),
-          } as Variants;
+          } as Variants & { surfaceVariant?: unknown };
+
+          if (
+            variantKeys.includes("surfaceVariant") &&
+            resolved.surfaceVariant === undefined
+          ) {
+            resolved.surfaceVariant = surfaceFromContext;
+          }
+
+          return resolved as Variants;
         });
         const slots = computed(
           () => recipe.value(variants.value as never) as Slots,
@@ -279,11 +307,11 @@ export function createSlotRecipeContext<
           return renderSlotHost(
             component,
             {
-              "data-part": slot === "base" ? "root" : slot,
               "data-scope": dataScope,
               ...dataAttrs,
               ...options.defaultProps,
               ...attrs,
+              "data-part": partOf(options),
               class: (slots.value[slot] as SlotFn)({
                 class: [defaultClass, values.class as ClassValue],
               }),
@@ -302,13 +330,16 @@ export function createSlotRecipeContext<
     return Object.assign(part, { inheritAttrs: false, name: partName });
   }
 
-  /** Styled descendant part reading `slot` from the nearest provider. */
+  /**
+   * Styled descendant. Optional `P` extends the host props (defaults to none):
+   *
+   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
+   * { name: "Title" })`
+   */
   function withContext<P extends object = Record<never, never>>(
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,
   ): SlotRecipePart<P & PartClassProps> {
-    type Props = P & PartClassProps;
-
     const partName = `${name}.${options.name}`;
 
     const slot = slotOf(options);
@@ -316,9 +347,9 @@ export function createSlotRecipeContext<
     const runtimeProps = runtimePropsOf(
       defaultRecipe,
       false,
-    ) as ComponentObjectPropsOptions<Props>;
+    ) as ComponentObjectPropsOptions<P & PartClassProps>;
 
-    const part = defineComponent<Props>(
+    const part = defineComponent<P & PartClassProps>(
       (props, { attrs, slots: children }) => {
         const styles = useStyles();
         const values = props as Record<string, unknown>;
@@ -327,10 +358,10 @@ export function createSlotRecipeContext<
           renderSlotHost(
             component,
             {
-              "data-part": slot === "base" ? "root" : slot,
               "data-scope": dataScope,
               ...options.defaultProps,
               ...attrs,
+              "data-part": partOf(options),
               class: (styles.slots[slot] as SlotFn)({
                 class: [defaultClass, values.class as ClassValue],
               }),

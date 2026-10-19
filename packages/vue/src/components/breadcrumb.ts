@@ -111,10 +111,11 @@ export const BreadcrumbList = withBreadcrumbContext("ol", {
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider("li", {
-  name: "Item",
-  slot: "base",
-});
+export const BreadcrumbItem =
+  withBreadcrumbItemProvider<BreadcrumbItemRootContract>("li", {
+    name: "Item",
+    slot: "base",
+  });
 
 export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
   name: "Link",

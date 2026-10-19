@@ -8,7 +8,7 @@
 
   let { children, ...rest }: Props = $props();
 
-  const part = withContext(() => rest, { name: "Content", slot: "content" });
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
 <div {...part.props}>{@render children?.()}</div>

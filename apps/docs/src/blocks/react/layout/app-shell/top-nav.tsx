@@ -136,8 +136,9 @@ export function TopNav() {
             className={styles.tabsDesktop()}
             onValueChange={(details) => setView(details.value)}
             value={view}
+            variant="underline"
           >
-            <Tabs.List variant="underline">
+            <Tabs.List>
               {views.map((item) => (
                 <Tabs.Trigger key={item} value={item}>
                   {item}

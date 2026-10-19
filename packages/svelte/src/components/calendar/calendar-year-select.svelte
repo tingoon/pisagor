@@ -3,41 +3,22 @@
     DatePicker as CalendarPrimitive,
     type DatePickerYearSelectProps,
   } from "@ark-ui/svelte";
-  import { formControlShellRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CaretDownIcon } from "phosphor-svelte";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useStyles } from "./calendar.context";
+  import { useStyles, withContext } from "./calendar.context";
 
-  let { class: className, ...rest }: DatePickerYearSelectProps = $props();
+  let { ...rest }: DatePickerYearSelectProps = $props();
   const styles = useStyles();
-  const slots = $derived(styles.slots);
-  const surfaceVariant = useFormControlSurface();
-  const selectClassName = $derived(
-    cn(
-      formControlShellRecipe({
-        size: "md",
-        surfaceVariant,
-        variant: "primary",
-      }),
-      slots.select(),
-      className,
-    ),
-  );
+  const part = withContext(() => rest, { name: "YearSelect", slot: "select" });
 </script>
 
 <div
-  class={slots.selectWrapper()}
+  class={styles.slots.selectWrapper()}
   data-part="year-select-wrapper"
   data-scope="calendar"
 >
-  <CalendarPrimitive.YearSelect
-    {...rest}
-    class={selectClassName}
-    data-variant="primary"
-  />
+  <CalendarPrimitive.YearSelect {...part.props} />
   <CaretDownIcon
-    class={slots.selectIcon()}
+    class={styles.slots.selectIcon()}
     data-part="year-select-icon"
     data-scope="calendar"
   />

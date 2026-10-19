@@ -21,8 +21,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TooltipRootProps
-  extends TooltipRootPrimitiveProps, TooltipRootContract {}
+export type TooltipRootProps = TooltipRootPrimitiveProps & TooltipRootContract;
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
@@ -109,11 +108,14 @@ function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
   );
 }
 
-const TooltipContent = withContext(TooltipPrimitive.Content, {
-  name: "Content",
-});
+const TooltipContent = withContext<TooltipContentProps>(
+  TooltipPrimitive.Content,
+  {
+    name: "Content",
+  },
+);
 
-const TooltipArrow = withContext(TooltipPrimitive.Arrow, {
+const TooltipArrow = withContext<TooltipArrowProps>(TooltipPrimitive.Arrow, {
   name: "Arrow",
 });
 // #endregion
@@ -169,7 +171,6 @@ function TooltipShorthand({
 TooltipRoot.displayName = "Tooltip.Root";
 TooltipTrigger.displayName = "Tooltip.Trigger";
 TooltipPositioner.displayName = "Tooltip.Positioner";
-TooltipShorthand.displayName = "Tooltip";
 TooltipContent.displayName = "Tooltip.Content";
 TooltipArrow.displayName = "Tooltip.Arrow";
 

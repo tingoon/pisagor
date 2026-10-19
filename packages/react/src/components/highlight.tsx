@@ -6,8 +6,7 @@ import type { HighlightRootContract } from "@pisagor/contracts";
 import { highlightRecipe } from "@pisagor/recipes";
 
 // #region Types
-export interface HighlightProps
-  extends HighlightPrimitiveProps, HighlightRootContract {}
+export type HighlightProps = HighlightPrimitiveProps & HighlightRootContract;
 // #endregion
 
 // #region Component

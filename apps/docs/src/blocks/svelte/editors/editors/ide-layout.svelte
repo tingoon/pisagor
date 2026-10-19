@@ -92,8 +92,8 @@
   </div>
   <div class={styles.pane()}>
     {#if activeItem}
-      <Tabs.Root class={styles.tabs()} value={activeItem}>
-        <Tabs.List variant="underline">
+      <Tabs.Root class={styles.tabs()} value={activeItem} variant="underline">
+        <Tabs.List>
           <Tabs.Trigger value={activeItem}>
             {activeItem}
             <Button

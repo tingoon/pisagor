@@ -4,5 +4,5 @@ export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as Multiple } from "./multiple.vue";
 export { default as NonCollapsible } from "./non-collapsible.vue";
-export { default as Sizes } from "./sizes.vue";
-export { default as WithCard } from "./with-card.vue";
+export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
+export { default as OrientationVertical } from "./orientation-vertical.vue";

@@ -30,8 +30,7 @@ const {
 // #endregion
 
 // #region Types
-export interface DrawerRootProps
-  extends DrawerRootPrimitiveProps, DrawerRootContract {}
+export type DrawerRootProps = DrawerRootPrimitiveProps & DrawerRootContract;
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   DrawerVariantProps;
@@ -62,7 +61,7 @@ export type DrawerDescriptionProps = ComponentProps<
 
 export type DrawerFooterProps = ComponentPropsWithRef<"div">;
 
-export interface DrawerProps extends DrawerRootProps, DrawerContract {}
+export type DrawerProps = DrawerRootProps & DrawerContract;
 // #endregion
 
 // #region Parts

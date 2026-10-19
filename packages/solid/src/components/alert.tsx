@@ -1,6 +1,6 @@
 import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
 import { alertRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import {
   CheckCircleIcon,
@@ -42,16 +42,19 @@ export interface AlertProps
 // #endregion
 
 // #region Parts
-export const AlertRoot: Component<AlertRootProps> = withProvider("div", {
-  name: "Root",
-  slot: "base",
+export const AlertRoot = withProvider<AlertRootProps>("div", { name: "Root" });
+
+export const AlertTitle = withContext<AlertTitleProps>("div", {
+  name: "Title",
 });
 
-export const AlertTitle = withContext("div", { name: "Title" });
+export const AlertDescription = withContext<AlertDescriptionProps>("div", {
+  name: "Description",
+});
 
-export const AlertDescription = withContext("div", { name: "Description" });
-
-export const AlertAction = withContext("div", { name: "Action" });
+export const AlertAction = withContext<AlertActionProps>("div", {
+  name: "Action",
+});
 // #endregion
 
 // #region Shorthand

@@ -11,7 +11,6 @@ type Props = HTMLAttributes<"li"> &
   TimelineItemContract;
 
 const item = withProvider(Astro.props, {
-  defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });

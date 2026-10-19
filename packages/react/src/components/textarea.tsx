@@ -6,12 +6,10 @@ import type {
   TextareaContract,
   TextareaRootContract,
 } from "@pisagor/contracts";
-import { formControlShellRecipe, textareaRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { textareaRecipe } from "@pisagor/recipes";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
-import type { FormControlVariant } from "../internal";
 import { Input } from "./input";
 import {
   InputGroupAddon,
@@ -20,22 +18,19 @@ import {
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
-  name: "Textarea",
-  recipe: textareaRecipe,
-});
+const { Context, withContext, withProvider, useStyles } =
+  createSlotRecipeContext({
+    name: "Textarea",
+    recipe: textareaRecipe,
+  });
 // #endregion
 
 // #region Types
-
 type TextareaRootProps = FieldTextareaProps &
-  RefAttributes<HTMLTextAreaElement> & {
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
-  };
+  RefAttributes<HTMLTextAreaElement> &
+  TextareaRootContract;
 
-export interface TextareaProps
-  extends TextareaRootProps, TextareaRootContract, TextareaContract {
+export interface TextareaProps extends TextareaRootProps, TextareaContract {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -45,95 +40,37 @@ export interface TextareaProps
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
 }
+
+type TextareaGroupProps = {
+  children: ReactNode;
+  className?: string;
+  variant?: TextareaRootContract["variant"];
+};
 // #endregion
 
 // #region Parts
-function TextareaProvider({
-  children,
-  size = "md",
-  recipe = textareaRecipe,
-}: TextareaRootContract & {
-  children: ReactNode;
-}) {
-  const slots = recipe({ size });
+const Root = withProvider<TextareaRootProps>(FieldPrimitive.Textarea, {
+  name: "Root",
+  slot: "rootLayout",
+});
 
+const ClearableRoot = withContext<TextareaRootProps>(FieldPrimitive.Textarea, {
+  name: "ClearableRoot",
+});
+
+const GroupBase = withContext<TextareaGroupProps>(InputGroupRoot, {
+  name: "Group",
+});
+
+function Group({ variant, children, className }: TextareaGroupProps) {
   return (
-    <TextareaStylesContext value={{ slots, variants: {} as never }}>
+    <GroupBase className={className} variant={variant}>
       {children}
-    </TextareaStylesContext>
+    </GroupBase>
   );
 }
 
-function TextareaField({
-  variant: variantProp,
-  className,
-  classNames,
-  ...rest
-}: TextareaRootProps & Pick<TextareaContract, "classNames">) {
-  const { slots } = useStyles();
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-
-  return (
-    <FieldPrimitive.Textarea
-      {...rest}
-      {...controlProps}
-      className={cn(
-        formControlShellRecipe({ size: "md", ...shellArgs }),
-        slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
-      )}
-    />
-  );
-}
-
-function TextareaGroup({
-  variant,
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-  variant?: FormControlVariant;
-}) {
-  const { slots } = useStyles();
-
-  return (
-    <InputGroupRoot className={slots.group({ className })} variant={variant}>
-      {children}
-    </InputGroupRoot>
-  );
-}
-
-function TextareaClearableField({
-  canClear,
-  className,
-  classNames,
-  ...rest
-}: TextareaRootProps &
-  Pick<TextareaContract, "classNames"> & {
-    canClear?: boolean;
-  }) {
-  const { slots } = useStyles();
-
-  return (
-    <FieldPrimitive.Textarea
-      {...rest}
-      className={slots.clearableRoot({
-        className: cn(className, classNames?.clearableRoot),
-        clearable: canClear,
-      })}
-    />
-  );
-}
-
-function TextareaClearAddon({ onClear }: { onClear: () => void }) {
+function ClearAddon({ onClear }: { onClear: () => void }) {
   const { slots } = useStyles();
 
   return (
@@ -142,12 +79,34 @@ function TextareaClearAddon({ onClear }: { onClear: () => void }) {
     </InputGroupAddon>
   );
 }
+
+function Provider({
+  children,
+  clearable,
+  size = "md",
+  variant,
+  surfaceVariant,
+  recipe = textareaRecipe,
+}: TextareaRootContract & { children: ReactNode }) {
+  const surfaceFromContext = useFormControlSurface();
+  const resolved = {
+    clearable,
+    size,
+    surfaceVariant: surfaceVariant ?? surfaceFromContext,
+    variant,
+  };
+  const slots = recipe(resolved);
+
+  return (
+    <Context value={{ slots, variants: resolved as never }}>{children}</Context>
+  );
+}
 // #endregion
 
 // #region Closed
-export function Textarea({
+function TextareaShorthand({
   size = "md",
-  variant: variantProp,
+  variant,
   clearable = false,
   defaultValue,
   disabled,
@@ -184,48 +143,51 @@ export function Textarea({
         : undefined
       : handleChange;
 
+  if (skipClearable) {
+    return (
+      <Root
+        {...rest}
+        className={className}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        onChange={changeHandler}
+        readOnly={readOnly}
+        recipe={recipe}
+        ref={ref}
+        size={size}
+        value={value}
+        variant={variant}
+      />
+    );
+  }
+
   return (
-    <TextareaProvider recipe={recipe} size={size}>
-      {skipClearable ? (
-        <TextareaField
+    <Provider
+      clearable={canClear}
+      recipe={recipe}
+      size={size}
+      variant={variant}
+    >
+      <Group className={classNames?.group} variant={variant}>
+        <ClearableRoot
           {...rest}
           className={className}
-          classNames={classNames}
           defaultValue={defaultValue}
           disabled={disabled}
-          onChange={changeHandler}
+          onChange={handleChange}
           readOnly={readOnly}
-          ref={ref}
+          ref={mergedRef}
           value={value}
-          variant={variantProp}
         />
-      ) : (
-        <TextareaGroup className={classNames?.group} variant={variantProp}>
-          <TextareaClearableField
-            {...rest}
-            canClear={canClear}
-            className={className}
-            classNames={classNames}
-            defaultValue={defaultValue}
-            disabled={disabled}
-            onChange={handleChange}
-            readOnly={readOnly}
-            ref={mergedRef}
-            value={value}
-          />
-          {canClear ? <TextareaClearAddon onClear={handleClear} /> : null}
-        </TextareaGroup>
-      )}
-    </TextareaProvider>
+        {canClear ? <ClearAddon onClear={handleClear} /> : null}
+      </Group>
+    </Provider>
   );
 }
 // #endregion
 
-// #region Display Names
-TextareaProvider.displayName = "Textarea.Provider";
-TextareaField.displayName = "Textarea.Field";
-TextareaGroup.displayName = "Textarea.Group";
-TextareaClearableField.displayName = "Textarea.ClearableField";
-TextareaClearAddon.displayName = "Textarea.ClearAddon";
-Textarea.displayName = "Textarea";
-// #endregion
+export const Textarea = Object.assign(TextareaShorthand, {
+  ClearableRoot,
+  Group,
+  Root,
+});

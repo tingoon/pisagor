@@ -1,37 +1,15 @@
-import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Autocomplete } from "@pisagor/solid";
-import { For } from "solid-js";
 
 export function WithClearButton() {
-  const initialItems = [
-    { label: "Apple", value: "apple" },
-    { label: "Banana", value: "banana" },
-    { label: "Cherry", value: "cherry" },
-  ];
-  const filterFn = useFilter({ sensitivity: "base" });
-
-  const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
-    initialItems,
-  });
-
   return (
-    <Autocomplete.Root
-      collection={collection()}
+    <Autocomplete
+      clearable
       defaultValue={["apple"]}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Autocomplete.Input clearable placeholder="Select a fruit..." />
-      <Autocomplete.Content>
-        <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-        <Autocomplete.List>
-          <For each={collection().items}>
-            {(item) => (
-              <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
-            )}
-          </For>
-        </Autocomplete.List>
-      </Autocomplete.Content>
-    </Autocomplete.Root>
+      items={[
+        { label: "Apple", value: "apple" },
+        { label: "Banana", value: "banana" },
+        { label: "Cherry", value: "cherry" },
+      ]}
+    />
   );
 }

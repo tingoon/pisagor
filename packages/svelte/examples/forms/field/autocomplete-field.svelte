@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import { Autocomplete, Combobox, Field } from "@pisagor/svelte";
+  import { Portal, useFilter, useListCollection } from "@ark-ui/svelte";
+  import { CheckIcon } from "phosphor-svelte";
+  import { Autocomplete, Combobox, Field, InputGroup } from "@pisagor/svelte";
 
   const initialItems = [
     { label: "Apple", value: "apple" },
@@ -30,17 +31,36 @@
     {collection}
     onInputValueChange={({ inputValue }) => filter(inputValue)}
   >
-    <Autocomplete.Input aria-label="Search items" placeholder="Search items…" />
-    <Autocomplete.Content>
-      <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-      <Combobox.List>
-        {#each collection().items as item}
-          <Autocomplete.Item {item}>
-            {item.label}
-          </Autocomplete.Item>
-        {/each}
-      </Combobox.List>
-    </Autocomplete.Content>
+    <Autocomplete.Control>
+      <InputGroup>
+        <Autocomplete.Input>
+          {#snippet asChild(props)}
+            <InputGroup.Input
+              {...props()}
+              aria-label="Search items"
+              placeholder="Search items…"
+            />
+          {/snippet}
+        </Autocomplete.Input>
+      </InputGroup>
+    </Autocomplete.Control>
+    <Portal>
+      <Combobox.Positioner>
+        <Autocomplete.Content>
+          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
+          <Autocomplete.List>
+            {#each collection().items as item (item.value)}
+              <Autocomplete.Item {item} persistFocus>
+                {item.label}
+                <Combobox.ItemIndicator>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Autocomplete.Item>
+            {/each}
+          </Autocomplete.List>
+        </Autocomplete.Content>
+      </Combobox.Positioner>
+    </Portal>
   </Autocomplete.Root>
   <Field.Description>Select an item.</Field.Description>
 </Field>

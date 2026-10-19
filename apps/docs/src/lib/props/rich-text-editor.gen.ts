@@ -7,6 +7,18 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/rich-text-editor.ts`, native HTML attributes omitted). */
 export const richTextEditorProps: PropRow[] = [
   {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "RichTextEditorRecipeFn | undefined",
     defaultValue: "richTextEditorRecipe",

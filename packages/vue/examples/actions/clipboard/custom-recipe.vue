@@ -7,7 +7,7 @@ const brandClipboardRecipe = tv({
   extend: clipboardRecipe,
   slots: {
     indicator: "text-emerald-600",
-    value: "font-medium text-emerald-700 dark:text-emerald-300",
+    valueText: "font-medium text-emerald-700 dark:text-emerald-300",
   },
   variants: {},
 });

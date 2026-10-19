@@ -1,0 +1,37 @@
+File Upload lets people choose files with drag-and-drop or a picker and shows upload progress and previews. It supports workflows where transferring files is a primary task, not a single hidden input.
+
+Prefer File Upload for dashboards, attachments, and media intake. Prefer <DocLink id="file-input">File Input</DocLink> for compact forms where a native picker alone is enough.
+
+## Best practices
+
+**Make both drop and browse available.** A drop zone with an explicit Browse button covers pointer and keyboard paths.
+
+**Show progress per file.** Individual bars or rows communicate which uploads succeed, fail, or remain queued.
+
+**Validate early.** Reject disallowed types and sizes at drop time with actionable messages; keep rejected files out of the success list.
+
+**Allow remove and retry.** Let people cancel in-flight uploads, remove completed items before submit, and retry failures without re-selecting everything.
+
+**Preview when it helps.** Thumbnails for images and icons for documents aid verification; skip previews for sensitive content unless required.
+
+<DoDont
+  do={
+    "Provide a drop zone, file rows with progress, and Retry on failed uploads."
+  }
+  dont={
+    "Hide upload failures behind a generic “Something went wrong” with no per-file detail."
+  }
+/>
+
+## Completion
+
+When uploads must finish before submit, disable the primary button until required files complete or explain which attachments are optional. After submit, show <DocLink id="file">File</DocLink> rows for persisted attachments.
+
+## Related patterns
+
+| Need                            | Prefer                                        |
+| ------------------------------- | --------------------------------------------- |
+| Drop zone + progress + previews | **File Upload**                               |
+| Minimal form picker             | <DocLink id="file-input">File Input</DocLink> |
+| Attachment row UI               | <DocLink id="file">File</DocLink>             |
+| Form labels and errors          | <DocLink id="field">Field</DocLink>           |

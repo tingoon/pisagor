@@ -14,7 +14,7 @@
 
   let { children, ...rest }: Props = $props();
   const { m } = useLocale();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 
   let openId = $state<string | null>(null);
   setNavigationMenuOpenState({

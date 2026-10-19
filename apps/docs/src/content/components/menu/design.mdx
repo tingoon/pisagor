@@ -1,0 +1,34 @@
+Menu is an always-visible list of navigation links or actions—typically in a sidebar or panel—not a popup triggered from a button.
+
+Prefer <DocLink id="dropdown-menu">Dropdown Menu</DocLink> for overflow actions opened from a trigger. Prefer <DocLink id="navigation-menu">Navigation Menu</DocLink> for marketing-style mega-nav with flyouts. Prefer <DocLink id="navbar">Navbar</DocLink> for the top application bar that combines brand, section links, and global actions. Prefer <DocLink id="bottom-navigation">Bottom Navigation</DocLink> for three to five primary mobile destinations fixed to the screen edge.
+
+## Best practices
+
+**Name destinations specifically.** Use labels like “Billing” and “Team members”, not vague “Settings” buckets that hide multiple routes.
+
+**Show current location.** Highlight the active item so people always know where they are in the hierarchy.
+
+**Keep lists shallow.** Prefer one level of items; nest sparingly and consider <DocLink id="tree-view">Tree View</DocLink> for deep hierarchies.
+
+**Separate navigation from destructive actions.** Put Delete account and similar items away from routine links, with confirmation when needed.
+
+**Match density to context.** Sidebar menus can be comfortable; compact menus suit inspector panels.
+
+<DoDont
+  do={"Show persistent section links in a sidebar with a clear active state."}
+  dont={"Use Menu for a popup “More” button— that is Dropdown Menu."}
+/>
+
+## Composition
+
+Build rows with <DocLink id="item">Item</DocLink> for consistent icon, label, and badge slots. Icons aid scanability but should not replace readable labels.
+
+## Related patterns
+
+| Need                            | Prefer                                                      |
+| ------------------------------- | ----------------------------------------------------------- |
+| Persistent link or action list  | **Menu**                                                    |
+| Popup from a trigger            | <DocLink id="dropdown-menu">Dropdown Menu</DocLink>         |
+| Top bar with brand + nav        | <DocLink id="navbar">Navbar</DocLink>                       |
+| Site-wide sections with flyouts | <DocLink id="navigation-menu">Navigation Menu</DocLink>     |
+| Mobile primary destinations     | <DocLink id="bottom-navigation">Bottom Navigation</DocLink> |

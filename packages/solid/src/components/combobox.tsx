@@ -6,39 +6,27 @@ import {
 import type {
   CollectionItem,
   ComboboxClearTriggerProps,
-  ComboboxContentProps as ComboboxContentPrimitiveProps,
+  ComboboxContentProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
-  ComboboxInputProps as ComboboxInputPrimitiveProps,
+  ComboboxInputProps,
   ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps as ComboboxItemGroupPrimitiveProps,
-  ComboboxItemProps as ComboboxItemPrimitiveProps,
+  ComboboxItemGroupProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  ComboboxItemGroupContract,
+  ComboboxContract,
   ComboboxPresetItem as BaseComboboxPresetItem,
   ComboboxRootContract,
-  ComboboxContract,
 } from "@pisagor/contracts";
-import {
-  type ComboboxVariantProps,
-  comboboxRecipe,
-  type InputRootVariantProps,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { comboboxRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
-import {
-  createContext,
-  createMemo,
-  For,
-  Show,
-  splitProps,
-  useContext,
-} from "solid-js";
+import { createMemo, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
   CaretUpDownIcon,
@@ -51,386 +39,158 @@ import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: ComboboxStylesContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Combobox",
   recipe: comboboxRecipe,
 });
-
-/** Parts may render under a bare Ark root, so fall back to the default recipe. */
-function useComboboxSlots() {
-  const styles = useContext(ComboboxStylesContext);
-
-  return () => styles?.slots ?? comboboxRecipe();
-}
-
-/** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
-const ComboboxControlContext = createContext<InputRootVariantProps>({});
-/**
- * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
- * control.
- */
-const ComboboxInsideControlContext = createContext(false);
-
-/** @deprecated Prefer composing within Combobox.Root; kept for public API. */
-export function useComboboxRoot() {
-  const styles = useContext(ComboboxStylesContext);
-  if (!styles) return undefined;
-
-  return {
-    get slots() {
-      return styles.slots;
-    },
-  };
-}
 // #endregion
 
+// #region Types
 type FormControlVariant = "primary" | "secondary";
 
 interface ComboboxPresetItem extends Omit<BaseComboboxPresetItem, "label"> {
   label: string;
 }
 
-export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxRootPrimitiveProps<T>,
-  "onValueChange"
-> & {
-  /** Visual shell variant applied to the input. Defaults to `primary`. */
-  variant?: FormControlVariant;
-  /** Input size. Defaults to `md`. */
-  size?: InputRootVariantProps["size"];
-  onValueChange?: (value: string[]) => void;
-} & Omit<ComboboxRootContract, "items">;
+export type ComboboxRootProps<T extends CollectionItem = CollectionItem> =
+  ComboboxRootPrimitiveProps<T> & ComboboxRootContract;
 
 export interface ComboboxProps
   extends
-    Omit<
-      ComboboxRootProps,
-      "children" | "collection" | "items" | "placeholder"
-    >,
-    Omit<ComboboxContract, "items"> {
+    Omit<ComboboxRootProps, "children" | "collection" | "onValueChange">,
+    Omit<ComboboxContract, "items" | "placeholder"> {
+  /**
+   * Whether to show a clear button when the input has a value.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
+  /** Input id forwarded to the shorthand field. */
+  id?: string;
   items?: Array<ComboboxPresetItem | string>;
+  /** Placeholder for the shorthand field. */
   placeholder?: string;
-}
-
-export interface ComboboxInputProps
-  extends Omit<ComboboxInputPrimitiveProps, "size">, InputRootVariantProps {
-  clearable?: boolean;
-  disabled?: boolean;
+  /**
+   * Whether to show the toggle trigger.
+   *
+   * @defaultValue true
+   */
   showTrigger?: boolean;
+  /** Input size. Defaults to `md`. */
+  size?: "sm" | "md" | "lg";
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: FormControlVariant;
+  onValueChange?: (value: string[]) => void;
 }
+// #endregion
 
-export interface ComboboxItemGroupProps
-  extends ComboboxItemGroupPrimitiveProps, ComboboxItemGroupContract {
-  heading?: string | JSX.Element;
-}
+// #region Parts
+const Root = withProvider<ComboboxRootProps>(ComboboxPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export interface ComboboxItemProps
-  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
+const Control = withContext<ComboboxControlProps>(ComboboxPrimitive.Control, {
+  name: "Control",
+});
 
-export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
+const Input = withContext<ComboboxInputProps>(ComboboxPrimitive.Input, {
+  name: "Input",
+});
 
-export interface ComboboxContentProps extends ComboboxContentPrimitiveProps {
-  portalled?: boolean;
-}
+const Trigger = withContext<ComboboxTriggerProps>(ComboboxPrimitive.Trigger, {
+  name: "Trigger",
+});
 
-export function ComboboxRoot<T extends CollectionItem = CollectionItem>(
-  props: ComboboxRootProps<T>,
-): JSX.Element {
-  const [local, rest] = splitProps(props as ComboboxRootProps, [
-    "openOnClick",
-    "children",
-    "onValueChange",
-    "variant",
-    "size",
-    "recipe",
-  ]);
+const ClearTrigger = withContext<ComboboxClearTriggerProps>(
+  ComboboxPrimitive.ClearTrigger,
+  {
+    name: "ClearTrigger",
+  },
+);
 
-  const slots = createMemo(() => (local.recipe ?? comboboxRecipe)());
-  const control: InputRootVariantProps = {
-    get size() {
-      return local.size;
-    },
-    get variant() {
-      return local.variant;
-    },
-  };
+const Positioner = withContext<ComboboxPositionerProps>(
+  ComboboxPrimitive.Positioner,
+  {
+    name: "Positioner",
+  },
+);
 
-  return (
-    <ComboboxStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <ComboboxControlContext.Provider value={control}>
-        <ComboboxPrimitive.Root
-          {...rest}
-          onValueChange={
-            local.onValueChange
-              ? (details) => local.onValueChange?.(details.value)
-              : undefined
-          }
-          openOnClick={local.openOnClick ?? true}
-        >
-          {local.children}
-        </ComboboxPrimitive.Root>
-      </ComboboxControlContext.Provider>
-    </ComboboxStylesContext>
-  );
-}
+const Content = withContext<ComboboxContentProps>(ComboboxPrimitive.Content, {
+  name: "Content",
+});
 
-export const ComboboxContext = ComboboxPrimitive.Context;
+const ItemGroup = withContext<ComboboxItemGroupProps>(
+  ComboboxPrimitive.ItemGroup,
+  {
+    name: "ItemGroup",
+  },
+);
 
-export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useComboboxSlots();
+const ItemGroupLabel = withContext<ComboboxItemGroupLabelProps>(
+  ComboboxPrimitive.ItemGroupLabel,
+  {
+    name: "ItemGroupLabel",
+  },
+);
 
-  return (
-    <ComboboxInsideControlContext.Provider value={true}>
-      <ComboboxPrimitive.Control
-        {...rest}
-        class={slots().control({ class: local.class })}
-      />
-    </ComboboxInsideControlContext.Provider>
-  );
-}
+const Item = withContext<ComboboxItemProps>(ComboboxPrimitive.Item, {
+  name: "Item",
+});
 
-export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
+const ItemIndicator = withContext<ComboboxItemIndicatorProps>(
+  ComboboxPrimitive.ItemIndicator,
+  {
+    name: "ItemIndicator",
+  },
+);
+
+const Empty = withContext<ComboboxEmptyProps>(ComboboxPrimitive.Empty, {
+  name: "Empty",
+});
+
+const List = withContext<ComboboxListProps>(ComboboxPrimitive.List, {
+  name: "List",
+});
+// #endregion
+
+// #region Shorthand
+function ComboboxClearButton(): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, [
-    "size",
-    "variant",
-    "clearable",
-    "showTrigger",
-    "children",
-    "class",
-  ]);
   const combobox = useComboboxContext();
-  const slots = useComboboxSlots();
-  const control = useContext(ComboboxControlContext);
-  const size = () => local.size ?? control.size ?? "md";
-  const variant = () => local.variant ?? control.variant;
-  const clearable = () => local.clearable ?? false;
-  const showTrigger = () => local.showTrigger ?? true;
-  const insideControl = useContext(ComboboxInsideControlContext);
 
-  const group = () => (
-    <InputGroup class={local.class} size={size()} variant={variant()}>
-      {local.children}
-      <ComboboxPrimitive.Input
-        asChild={(inputProps) => (
-          <InputGroup.Input {...inputProps()} {...rest} />
+  return (
+    <Show when={combobox().inputValue}>
+      <ClearTrigger
+        asChild={(triggerProps) => (
+          <InputGroup.Button
+            {...triggerProps()}
+            aria-label={m("combobox.clear")}
+            size="icon-xs"
+            variant="ghost"
+          >
+            <XIcon aria-hidden />
+          </InputGroup.Button>
         )}
       />
-      <InputGroup.Addon align="inline-end">
-        <Show when={showTrigger()}>
-          <ComboboxPrimitive.Trigger
-            asChild={(triggerProps) => (
-              <InputGroup.Button
-                {...triggerProps({ class: slots().triggerHidden() })}
-                size="icon-xs"
-                variant="ghost"
-              >
-                <CaretUpDownIcon aria-hidden />
-              </InputGroup.Button>
-            )}
-          />
-        </Show>
-        <Show when={clearable() && !!combobox().inputValue}>
-          <ComboboxClearTrigger
-            asChild={(triggerProps) => (
-              <InputGroup.Button
-                {...triggerProps()}
-                aria-label={m("combobox.clear")}
-                size="icon-xs"
-                variant="ghost"
-              >
-                <XIcon aria-hidden />
-              </InputGroup.Button>
-            )}
-          />
-        </Show>
-      </InputGroup.Addon>
-    </InputGroup>
-  );
-
-  if (insideControl) {
-    return group();
-  }
-
-  return <ComboboxControl data-size={size()}>{group()}</ComboboxControl>;
-}
-
-export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["children", "class", "asChild"]);
-  const slots = useComboboxSlots();
-
-  if (local.asChild) {
-    return (
-      <ComboboxPrimitive.Trigger
-        {...rest}
-        asChild={local.asChild}
-        class={slots().trigger({ class: local.class })}
-      />
-    );
-  }
-
-  return (
-    <ComboboxPrimitive.Trigger
-      {...rest}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label={m("combobox.toggle")}
-          class={slots().triggerButton()}
-          variant="ghost"
-        >
-          {local.children ?? <CaretUpDownIcon aria-hidden />}
-        </Button>
-      )}
-    />
-  );
-}
-
-export function ComboboxClearTrigger(
-  props: ComboboxClearTriggerProps,
-): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["aria-label"]);
-
-  return (
-    <ComboboxPrimitive.ClearTrigger
-      {...rest}
-      aria-label={m("select.clear", local["aria-label"])}
-    />
-  );
-}
-
-export function ComboboxFieldInput(
-  props: ComboboxFieldInputProps,
-): JSX.Element {
-  return <ComboboxPrimitive.Input {...props} />;
-}
-
-export function ComboboxPositioner(
-  props: ComboboxPositionerProps,
-): JSX.Element {
-  return <ComboboxPrimitive.Positioner {...props} />;
-}
-
-export function ComboboxContent(props: ComboboxContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["portalled", "children", "class"]);
-  const slots = useComboboxSlots();
-  const portalled = () => local.portalled ?? true;
-
-  const content = (
-    <ComboboxPrimitive.Content
-      {...rest}
-      class={slots().content({ class: local.class })}
-    >
-      {local.children}
-    </ComboboxPrimitive.Content>
-  );
-
-  return (
-    <Show fallback={content} when={portalled()}>
-      <Portal>
-        <ComboboxPositioner>{content}</ComboboxPositioner>
-      </Portal>
     </Show>
   );
 }
 
-export function ComboboxItemGroup(props: ComboboxItemGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "heading"]);
-
-  return (
-    <ComboboxPrimitive.ItemGroup {...rest}>
-      <Show when={!!local.heading}>
-        <ComboboxItemGroupLabel>{local.heading}</ComboboxItemGroupLabel>
-      </Show>
-      {local.children}
-    </ComboboxPrimitive.ItemGroup>
-  );
-}
-
-export function ComboboxItemGroupLabel(
-  props: ComboboxItemGroupLabelProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useComboboxSlots();
-
-  return (
-    <ComboboxPrimitive.ItemGroupLabel
-      {...rest}
-      class={slots().itemGroupLabel({ class: local.class })}
-    />
-  );
-}
-
-export function ComboboxItem(props: ComboboxItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "showIndicator",
-    "children",
-    "class",
-  ]);
-  const slots = useComboboxSlots();
-  const showIndicator = () => local.showIndicator ?? true;
-
-  return (
-    <ComboboxPrimitive.Item
-      {...rest}
-      class={slots().item({
-        class: local.class,
-        showIndicator: showIndicator(),
-      })}
-      persistFocus
-    >
-      {local.children}
-      <Show when={showIndicator()}>
-        <span class={slots().itemIndicator()}>
-          <ComboboxPrimitive.ItemIndicator>
-            <CheckIcon />
-          </ComboboxPrimitive.ItemIndicator>
-        </span>
-      </Show>
-    </ComboboxPrimitive.Item>
-  );
-}
-
-export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
+function ComboboxShorthand(props: ComboboxProps): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const slots = useComboboxSlots();
-
-  return (
-    <ComboboxPrimitive.Empty
-      {...rest}
-      class={slots().empty({ class: local.class })}
-    >
-      {local.children || m("combobox.empty")}
-    </ComboboxPrimitive.Empty>
-  );
-}
-
-export function ComboboxList(props: ComboboxListProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useComboboxSlots();
-
-  return (
-    <ComboboxPrimitive.List
-      {...rest}
-      class={slots().list({ class: local.class })}
-    />
-  );
-}
-
-export function ComboboxShorthand(props: ComboboxProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "items", "id"]);
+  const [local, rest] = splitProps(props, [
+    "clearable",
+    "showTrigger",
+    "items",
+    "id",
+    "placeholder",
+    "size",
+    "variant",
+    "class",
+    "classNames",
+    "onValueChange",
+  ]);
   const normalized = createMemo(() =>
     (local.items ?? []).map((item) =>
       typeof item === "string" ? { label: item, value: item } : item,
@@ -439,44 +199,112 @@ export function ComboboxShorthand(props: ComboboxProps): JSX.Element {
   const collection = createMemo(() =>
     createListCollection({ items: normalized() }),
   );
+  const showTrigger = () => local.showTrigger ?? true;
 
   return (
-    <ComboboxRoot {...rest} collection={collection()}>
-      <ComboboxInput clearable={local.clearable ?? false} id={local.id} />
-      <ComboboxContent>
-        <ComboboxList>
-          <For each={normalized()}>
-            {(item) => <ComboboxItem item={item}>{item.label}</ComboboxItem>}
-          </For>
-        </ComboboxList>
-      </ComboboxContent>
-    </ComboboxRoot>
+    <Root
+      {...rest}
+      collection={collection()}
+      onValueChange={
+        local.onValueChange
+          ? (details) => local.onValueChange?.(details.value)
+          : undefined
+      }
+      openOnClick
+    >
+      <Control>
+        <InputGroup
+          class={local.class}
+          size={local.size ?? "md"}
+          variant={local.variant}
+        >
+          <Input
+            asChild={(inputProps) => (
+              <InputGroup.Input
+                {...inputProps()}
+                id={local.id}
+                placeholder={local.placeholder}
+              />
+            )}
+          />
+          <InputGroup.Addon align="inline-end">
+            <Show when={showTrigger()}>
+              <InputGroup.Button
+                asChild={(buttonProps) => (
+                  <Trigger
+                    {...buttonProps({ class: local.classNames?.triggerHidden })}
+                  >
+                    <Button
+                      aria-label={m("combobox.toggle")}
+                      class={local.classNames?.triggerButton}
+                      variant="ghost"
+                    >
+                      <CaretUpDownIcon aria-hidden />
+                    </Button>
+                  </Trigger>
+                )}
+                size="icon-xs"
+                variant="ghost"
+              />
+            </Show>
+            <Show when={local.clearable ?? false}>
+              <ComboboxClearButton />
+            </Show>
+          </InputGroup.Addon>
+        </InputGroup>
+      </Control>
+      <Portal>
+        <Positioner>
+          <Content class={local.classNames?.content}>
+            <List class={local.classNames?.list}>
+              <For each={normalized()}>
+                {(item) => (
+                  <Item class={local.classNames?.item} item={item} persistFocus>
+                    {item.label}
+                    <ItemIndicator class={local.classNames?.itemIndicator}>
+                      <CheckIcon />
+                    </ItemIndicator>
+                  </Item>
+                )}
+              </For>
+            </List>
+            <Empty class={local.classNames?.empty}>{m("combobox.empty")}</Empty>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
+// #endregion
 
 export type {
   ComboboxClearTriggerProps,
+  ComboboxContentProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
+  ComboboxInputProps,
   ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
 } from "@ark-ui/solid";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
-  ClearTrigger: ComboboxClearTrigger,
-  Content: ComboboxContent,
-  Context: ComboboxContext,
-  Control: ComboboxControl,
-  Empty: ComboboxEmpty,
-  FieldInput: ComboboxFieldInput,
-  Input: ComboboxInput,
-  Item: ComboboxItem,
-  ItemGroup: ComboboxItemGroup,
-  ItemGroupLabel: ComboboxItemGroupLabel,
-  List: ComboboxList,
-  Positioner: ComboboxPositioner,
-  Root: ComboboxRoot,
-  Trigger: ComboboxTrigger,
+  ClearTrigger,
+  Content,
+  Context: ComboboxPrimitive.Context,
+  Control,
+  Empty,
+  Input,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemIndicator,
+  List,
+  Positioner,
+  Root,
+  Trigger,
 });

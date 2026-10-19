@@ -5,7 +5,7 @@ import {
 } from "@ark-ui/react";
 import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type { FunctionComponent, ReactNode, ComponentProps } from "react";
 import { Children, isValidElement } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -41,10 +41,9 @@ export interface MarqueeProps
 // #endregion
 
 // #region Parts
-const MarqueeRootBase = withProvider(MarqueePrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+const MarqueeRootBase = withProvider<
+  ComponentProps<typeof MarqueePrimitive.Root> & MarqueeRootContract
+>(MarqueePrimitive.Root, { name: "Root" }) as FunctionComponent<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
 >;
 
@@ -90,11 +89,15 @@ export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
   );
 }
 
-export const MarqueeItem = withContext(MarqueePrimitive.Item, {
+export const MarqueeItem = withContext<
+  ComponentProps<typeof MarqueePrimitive.Item>
+>(MarqueePrimitive.Item, {
   name: "Item",
 });
 
-export const MarqueeEdge = withContext(MarqueePrimitive.Edge, {
+export const MarqueeEdge = withContext<
+  ComponentProps<typeof MarqueePrimitive.Edge>
+>(MarqueePrimitive.Edge, {
   name: "Edge",
 });
 // #endregion
@@ -122,7 +125,6 @@ export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
 // #region Display Names
 MarqueeRoot.displayName = "Marquee.Root";
 MarqueeContent.displayName = "Marquee.Content";
-MarqueeShorthand.displayName = "Marquee";
 
 // #endregion
 

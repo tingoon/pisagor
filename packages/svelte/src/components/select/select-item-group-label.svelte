@@ -3,22 +3,12 @@
     Select as SelectPrimitive,
     type SelectItemGroupLabelProps,
   } from "@ark-ui/svelte";
-  import { selectRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useSelectRoot } from "./select.context";
+  import { withContext } from "./select.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: SelectItemGroupLabelProps = $props();
-  const ctx = useSelectRoot();
-  const slots = $derived(ctx?.slots ?? selectRecipe());
+  let { children, ...rest }: SelectItemGroupLabelProps = $props();
+  const part = withContext(() => rest, { name: "ItemGroupLabel" });
 </script>
 
-<SelectPrimitive.ItemGroupLabel
-  {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
->
+<SelectPrimitive.ItemGroupLabel {...part.props}>
   {@render children?.()}
 </SelectPrimitive.ItemGroupLabel>

@@ -49,7 +49,7 @@ export interface PopoverHeaderProps
 export type PopoverBodyProps = ComponentProps<"div">;
 export type PopoverFooterProps = ComponentProps<"div">;
 
-export interface PopoverProps extends PopoverRootProps, PopoverContract {}
+export type PopoverProps = PopoverRootProps & PopoverContract;
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);

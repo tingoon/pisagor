@@ -9,8 +9,8 @@
   let { children, ...rest }: Props = $props();
 
   const part = withContext(() => rest, {
-    defaultProps: { "data-part": "item-label" },
     name: "Label",
+    part: "item-label",
   });
 </script>
 

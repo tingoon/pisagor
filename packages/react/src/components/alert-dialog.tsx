@@ -35,8 +35,8 @@ AlertDialogModalContext.displayName = "AlertDialogModalContext";
 // #endregion
 
 // #region Types
-export interface AlertDialogRootProps
-  extends DialogRootPrimitiveProps, AlertDialogRootContract {}
+export type AlertDialogRootProps = DialogRootPrimitiveProps &
+  AlertDialogRootContract;
 
 export interface AlertDialogContentProps
   extends DialogContentPrimitiveProps, AlertDialogVariantProps {
@@ -87,8 +87,8 @@ export interface AlertDialogActionProps
   variant?: "default" | "destructive";
 }
 
-export interface AlertDialogCancelProps
-  extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
+export type AlertDialogCancelProps = DialogCloseTriggerProps &
+  Omit<ButtonProps, "variant">;
 
 export interface AlertDialogProps
   extends
@@ -340,7 +340,6 @@ AlertDialogCloseTrigger.displayName = "AlertDialog.CloseTrigger";
 AlertDialogFooter.displayName = "AlertDialog.Footer";
 AlertDialogAction.displayName = "AlertDialog.Action";
 AlertDialogCancel.displayName = "AlertDialog.Cancel";
-AlertDialogShorthand.displayName = "AlertDialog";
 // #endregion
 
 export type {

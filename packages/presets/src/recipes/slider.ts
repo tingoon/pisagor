@@ -1,6 +1,10 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const sliderRecipe = tv({
+  defaultVariants: {
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: [
       "flex flex-col gap-3",
@@ -57,7 +61,6 @@ export const sliderRecipe = tv({
     ],
     track: [
       "grow",
-      "bg-input/64",
       "rounded-full",
       "overflow-hidden select-none",
       "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
@@ -65,8 +68,20 @@ export const sliderRecipe = tv({
     ],
     value: ["ms-auto tabular-nums"],
   },
+  variants: {
+    variant: {
+      primary: {
+        track: "bg-input/64",
+      },
+      secondary: {
+        thumb: "shadow-none",
+        track: "bg-muted/40",
+      },
+    },
+  },
 });
 
 export type SliderRecipeFn = typeof sliderRecipe;
+export type SliderVariantProps = VariantProps<SliderRecipeFn>;
 export type SliderRecipe = ReturnType<SliderRecipeFn>;
 export type SliderRecipeSlot = keyof SliderRecipe;

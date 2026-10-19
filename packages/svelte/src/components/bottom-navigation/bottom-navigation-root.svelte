@@ -19,10 +19,7 @@
   let { children, value, ...rest }: Props = $props();
   const { m } = useLocale();
   setBottomNavigationValue(() => value);
-  const root = withBottomNavigationProvider(() => rest, {
-    name: "Root",
-    slot: "base",
-  });
+  const root = withBottomNavigationProvider(() => rest, { name: "Root" });
 </script>
 
 <nav aria-label={m("bottomNavigation.label")} {...root.props}>

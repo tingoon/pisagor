@@ -1,8 +1,21 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlShellBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const richTextEditorRecipe = tv({
+  compoundVariants: formControlFillCompounds({ slot: "base" }),
+  defaultVariants: {
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: [
+      ...formControlShellBase,
       "m-0 min-w-0 border-solid p-0",
       "flex h-auto min-h-32 flex-col gap-0 overflow-hidden p-0",
       "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/32",
@@ -21,8 +34,16 @@ export const richTextEditorRecipe = tv({
       "border-border bg-muted/30 flex flex-wrap items-center gap-1 border-b px-2 py-1.5",
     ],
   },
+  variants: {
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
+  },
 });
 
 export type RichTextEditorRecipeFn = typeof richTextEditorRecipe;
 export type RichTextEditorRecipe = ReturnType<RichTextEditorRecipeFn>;
 export type RichTextEditorRecipeSlot = keyof RichTextEditorRecipe;
+export type RichTextEditorVariantProps = VariantProps<RichTextEditorRecipeFn>;

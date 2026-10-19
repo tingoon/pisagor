@@ -85,7 +85,7 @@ const rootStyle = indeterminate
 
 const fieldLabelClass = fieldRecipe().label();
 const { slots } = useStyles();
-const root = withProvider(rest, { name: "Root", slot: "base" });
+const root = withProvider(rest, { name: "Root" });
 const header = withContext({ class: classNames?.header }, { name: "Header" });
 const track = withContext({ class: classNames?.track }, { name: "Track" });
 const range = withContext({ class: classNames?.range }, { name: "Range" });
@@ -109,8 +109,8 @@ const showHeader = Boolean(label) || isValueVisible;
       {isValueVisible && (
         <span
           aria-live="polite"
-          class={`${slots.value({ class: classNames?.value })} ${fieldLabelClass}`}
-          data-part="value"
+          class={`${slots.valueText({ class: classNames?.valueText })} ${fieldLabelClass}`}
+          data-part="value-text"
           data-scope="progress"
         >
           {valueText}

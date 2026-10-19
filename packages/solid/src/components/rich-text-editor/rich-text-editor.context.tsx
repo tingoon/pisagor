@@ -1,4 +1,3 @@
-import type { RichTextEditorRecipe } from "@pisagor/recipes";
 import type { Editor } from "@tiptap/core";
 import type { Accessor } from "solid-js";
 import { createContext } from "../../utils";
@@ -6,7 +5,6 @@ import { createContext } from "../../utils";
 interface RichTextEditorContextValue {
   editor: Accessor<Editor | undefined>;
   registerHost: (el: HTMLDivElement | undefined) => void;
-  slots: RichTextEditorRecipe;
 }
 
 export const {

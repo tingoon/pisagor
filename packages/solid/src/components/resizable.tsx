@@ -63,16 +63,15 @@ export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps 
   withHandle?: boolean;
 }
 
-export interface ResizableRootProps
-  extends SplitterRootProps, ResizableRootContract {}
+export type ResizableRootProps = SplitterRootProps & ResizableRootContract;
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
   SplitterResizeTriggerIndicatorProps;
 export type ResizableContextProps = SplitterContextProps;
 
-export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps, ResizableRootContract {}
+export type ResizableRootProviderProps = SplitterRootProviderProps &
+  ResizableRootContract;
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,
@@ -201,10 +200,8 @@ export function ResizableEdgeHandle(
   );
 }
 
-export const ResizableRoot: Component<ResizableRootProps> = withProvider(
-  SplitterPrimitive.Root,
-  { name: "Root", slot: "base" },
-);
+export const ResizableRoot: Component<ResizableRootProps> =
+  withProvider<ResizableRootContract>(SplitterPrimitive.Root, { name: "Root" });
 
 export function ResizablePanel(props: ResizablePanelProps): JSX.Element {
   return <SplitterPrimitive.Panel {...props} />;
@@ -212,9 +209,7 @@ export function ResizablePanel(props: ResizablePanelProps): JSX.Element {
 
 export const ResizableResizeTriggerIndicator: Component<ResizableResizeTriggerIndicatorProps> =
   withContext(SplitterPrimitive.ResizeTriggerIndicator, {
-    defaultProps: { "data-part": "resize-trigger-indicator" },
     name: "ResizeTriggerIndicator",
-    slot: "resizeTriggerIndicator",
   });
 
 export function ResizableResizeTrigger(

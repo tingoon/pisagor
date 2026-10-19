@@ -62,20 +62,19 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   );
 }
 
-const DataListItemRoot: Component<DataListItemRootProps> = withProvider("div", {
-  defaultProps: { "data-part": "item" },
+const DataListItemRoot: Component<DataListItemRootProps> = withProvider<
+  ComponentProps<"div"> & DataListItemRootContract
+>("div", {
   name: "Item",
   slot: "base",
 });
 
-const DataListItemLabel = withContext("dt", {
-  defaultProps: { "data-part": "item-label" },
+const DataListItemLabel = withContext<ComponentProps<"dt">>("dt", {
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext("dd", {
-  defaultProps: { "data-part": "item-value" },
+const DataListItemValue = withContext<ComponentProps<"dd">>("dd", {
   name: "ItemValue",
   slot: "value",
 });

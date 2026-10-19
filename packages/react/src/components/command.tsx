@@ -17,7 +17,7 @@ import { createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,
-  ComboboxFieldInputProps,
+  ComboboxInputProps,
   ComboboxItemGroupLabelProps,
   ComboboxItemGroupProps,
   ComboboxItemProps,
@@ -51,10 +51,7 @@ export interface CommandDialogContentProps
   recipe?: typeof commandRecipe;
 }
 
-export interface CommandInputProps extends Omit<
-  ComboboxFieldInputProps,
-  "size"
-> {
+export interface CommandInputProps extends Omit<ComboboxInputProps, "size"> {
   /**
    * The size of the input
    *
@@ -170,6 +167,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
         {...rest}
         className={slots.base({ className })}
         closeOnSelect={false}
+        showIndicator={false}
         disableLayer
         inputBehavior="autohighlight"
         loopFocus={false}
@@ -184,11 +182,7 @@ export function CommandContent({ className, ...rest }: CommandContentProps) {
   const { slots } = useStyles();
 
   return (
-    <Combobox.Content
-      {...rest}
-      className={slots.content({ className })}
-      portalled={false}
-    />
+    <Combobox.Content {...rest} className={slots.content({ className })} />
   );
 }
 
@@ -201,9 +195,9 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
         <InputGroup.Addon>
           <MagnifyingGlassIcon aria-hidden className={slots.inputIcon()} />
         </InputGroup.Addon>
-        <Combobox.FieldInput asChild>
+        <Combobox.Input asChild>
           <InputGroup.Input autoFocus {...rest} />
-        </Combobox.FieldInput>
+        </Combobox.Input>
       </InputGroup>
     </Combobox.Control>
   );
@@ -243,9 +237,7 @@ export function CommandItemGroupLabel(props: ComboboxItemGroupLabelProps) {
 }
 
 export function CommandItem({ className, ...rest }: ComboboxItemProps) {
-  return (
-    <Combobox.Item {...rest} className={className} showIndicator={false} />
-  );
+  return <Combobox.Item {...rest} className={className} />;
 }
 
 export function CommandSeparator({
@@ -352,7 +344,8 @@ export function CommandShorthand({
             ));
 
             return group ? (
-              <CommandItemGroup heading={group} key={group}>
+              <CommandItemGroup key={group}>
+                <CommandItemGroupLabel>{group}</CommandItemGroupLabel>
                 {content}
                 {index < groups.length - 1 && <CommandSeparator />}
               </CommandItemGroup>

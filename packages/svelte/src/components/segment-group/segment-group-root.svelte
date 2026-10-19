@@ -36,7 +36,7 @@
       onValueChange: onValueChange ? handleValueChange : undefined,
       orientation,
     }),
-    { name: "Root", slot: "base" },
+    { name: "Root" },
   );
 </script>
 

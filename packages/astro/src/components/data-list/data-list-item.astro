@@ -18,14 +18,12 @@ interface Props
 
 const { value, classNames, ...rest } = Astro.props;
 const item = withProvider(rest, {
-  defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });
 const label = withContext(
   { class: classNames?.label },
   {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   },
@@ -33,7 +31,6 @@ const label = withContext(
 const valuePart = withContext(
   { class: classNames?.value },
   {
-    defaultProps: { "data-part": "item-value" },
     name: "ItemValue",
     slot: "value",
   },

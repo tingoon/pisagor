@@ -7,6 +7,24 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/checkbox.ts`, native HTML attributes omitted). */
 export const checkboxProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "CheckboxRecipeFn | undefined",
     defaultValue: "checkboxRecipe",

@@ -6,11 +6,10 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
-export interface ItemGroupProps
-  extends ComponentPropsWithRef<"div">, ItemRootContract {}
+export type ItemGroupProps = ComponentPropsWithRef<"div"> & ItemRootContract;
 
-export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">, ItemRootContract {}
+export type ItemSeparatorProps = Omit<SeparatorProps, "recipe"> &
+  ItemRootContract;
 // #endregion
 
 // #region Parts

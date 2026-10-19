@@ -26,12 +26,7 @@ import type {
   ToastRootContract,
 } from "@pisagor/contracts";
 import { toastItemRecipe, toastRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  CSSProperties,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -45,18 +40,18 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface ToasterRootProps
-  extends
-    Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    ToastRootContract {}
+export type ToasterRootProps = Omit<
+  ToasterPrimitiveProps,
+  "toaster" | "children"
+> &
+  ToastRootContract;
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
   toaster?: CreateToasterReturn<ReactNode>;
 }
 
-export interface ToastItemRootProps
-  extends ToastRootProps, ToastItemRootContract {}
+export type ToastItemRootProps = ToastRootProps & ToastItemRootContract;
 
 export interface ToastItemProps extends ToastItemRootProps, ToastItemContract {
   /** Extra props forwarded to the toast actions container element */
@@ -120,10 +115,10 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-const ToastItemRoot = withProvider(ToastPrimitive.Root)({
+const ToastItemRoot = withProvider<ToastItemRootProps>(ToastPrimitive.Root, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<ToastItemRootProps>;
+});
 
 function ToastItemContent({
   actionsProps,

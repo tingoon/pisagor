@@ -10,7 +10,7 @@ const raisedFill = "bg-card shadow-sm dark:bg-input/30";
 /** Quieter secondary shell — muted inset with the same edge treatment. */
 const softFillQuiet = "bg-muted shadow-sm dark:bg-input/32";
 
-const surfaceVariantOptions = {
+export const formControlSurfaceVariantOptions = {
   default: "",
   glass: "",
   secondary: "",
@@ -19,61 +19,141 @@ const surfaceVariantOptions = {
 } as const;
 
 /** Surfaces where controls need a raised (page/card) fill to stay visible. */
-const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = [
-  "secondary",
-  "tertiary",
-  "glass",
-];
+export const formControlMutedSurfaces: Array<
+  "secondary" | "tertiary" | "glass"
+> = ["secondary", "tertiary", "glass"];
+
+const surfaceVariantOptions = formControlSurfaceVariantOptions;
+const mutedSurfaces = formControlMutedSurfaces;
+
+/**
+ * Shared surface×variant fill compounds for form-control shells. Pass `slot`
+ * when embedding into a slot recipe (`class: { [slot]: fill }`).
+ */
+export function formControlFillCompounds(
+  options: {
+    slot?: string;
+    primary?: string;
+    secondary?: string;
+    raised?: string;
+  } = {},
+) {
+  const {
+    slot,
+    primary = softFill,
+    secondary = softFillQuiet,
+    raised = raisedFill,
+  } = options;
+  const wrap = (cls: string) => (slot ? { [slot]: cls } : cls);
+
+  const defaultSurfaces: Array<"default" | "transparent"> = [
+    "default",
+    "transparent",
+  ];
+
+  return [
+    {
+      class: wrap(primary),
+      surfaceVariant: undefined,
+      variant: "primary" as const,
+    },
+    {
+      class: wrap(primary),
+      surfaceVariant: defaultSurfaces,
+      variant: "primary" as const,
+    },
+    {
+      class: wrap(raised),
+      surfaceVariant: mutedSurfaces,
+      variant: "primary" as const,
+    },
+    {
+      class: wrap(secondary),
+      surfaceVariant: undefined,
+      variant: "secondary" as const,
+    },
+    {
+      class: wrap(secondary),
+      surfaceVariant: defaultSurfaces,
+      variant: "secondary" as const,
+    },
+    {
+      class: wrap(raised),
+      surfaceVariant: mutedSurfaces,
+      variant: "secondary" as const,
+    },
+  ];
+}
+
+/** Base classes shared by single-field shells (input, textarea, select trigger). */
+export const formControlShellBase = [
+  "peer",
+  "w-full min-w-0",
+  "px-3",
+  "text-base md:text-sm",
+  "border-foreground/20 dark:border-input rounded-lg border",
+  "placeholder:text-muted-foreground/64",
+  "file:inline-flex file:h-7 file:items-center file:border-0",
+  "file:text-foreground file:text-sm file:font-medium",
+  "duration-fast transition ease-out",
+  "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
+  "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-0.75 aria-invalid:ring-destructive/24",
+  "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
+  "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
+  "motion-reduce:transition-none!",
+] as const;
+
+/** Base classes for grouped shells (number-input, file-input, input-group). */
+export const formControlGroupShellBase = [
+  "group/input-group",
+  "relative",
+  "w-full min-w-0",
+  "flex items-center",
+  "border-foreground/20 dark:border-input rounded-lg border",
+  "duration-fast transition ease-out",
+  "has-[>textarea]:h-auto",
+  "has-[>[data-align=inline-start]]:[&>input]:ps-2",
+  "has-[>[data-align=inline-end]]:[&>input]:pe-2",
+  "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
+  "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
+  "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/24 outline-hidden",
+  "has-[[data-part][aria-invalid=true]]:border-destructive has-[[data-part][aria-invalid=true]]:ring-0.75 has-[[data-part][aria-invalid=true]]:ring-destructive/24",
+  "motion-reduce:transition-none!",
+] as const;
+
+/** Base classes for dashed zone shells (file-upload dropzone). */
+export const formControlZoneBase = [
+  "border-input rounded-2xl border-2 border-dashed",
+] as const;
+
+/** Base classes for checkbox-style toggles. */
+export const formControlToggleBase = [
+  "relative",
+  "inline-flex shrink-0 items-center justify-center",
+  "border-foreground/20 dark:border-input border",
+  "duration-fast transition-shadow ease-out",
+  "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
+  "data-disabled:opacity-64",
+  "motion-reduce:transition-none!",
+] as const;
+
+/** Base classes for radio toggles. */
+export const formControlRadioToggleBase = [
+  "relative",
+  "inline-flex shrink-0 items-center justify-center",
+  "size-4",
+  "border-input rounded-full border",
+  "before:size-1.5 before:rounded-full",
+  "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
+  "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
+  "data-[state=checked]:bg-primary data-[state=checked]:before:bg-primary-foreground",
+  "data-invalid:data-[state=checked]:before:bg-destructive data-invalid:data-[state=checked]:bg-transparent",
+  "motion-reduce:transition-none!",
+] as const;
 
 export const formControlShellRecipe = tv({
-  base: [
-    "peer",
-    "w-full min-w-0",
-    "px-3",
-    "text-base md:text-sm",
-    "border-foreground/20 dark:border-input rounded-lg border",
-    "placeholder:text-muted-foreground/64",
-    "file:inline-flex file:h-7 file:items-center file:border-0",
-    "file:text-foreground file:text-sm file:font-medium",
-    "duration-fast transition ease-out",
-    "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
-    "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-0.75 aria-invalid:ring-destructive/24",
-    "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
-    "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
-    "motion-reduce:transition-none!",
-  ],
-  compoundVariants: [
-    {
-      class: softFill,
-      surfaceVariant: undefined,
-      variant: "primary",
-    },
-    {
-      class: softFill,
-      surfaceVariant: ["default", "transparent"],
-      variant: "primary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "primary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: undefined,
-      variant: "secondary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: ["default", "transparent"],
-      variant: "secondary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "secondary",
-    },
-  ],
+  base: [...formControlShellBase],
+  compoundVariants: formControlFillCompounds(),
   defaultVariants: {
     /** Control size. */
     size: "md",
@@ -97,54 +177,8 @@ export const formControlShellRecipe = tv({
 });
 
 export const formControlGroupShellRecipe = tv({
-  base: [
-    "group/input-group",
-    "relative",
-    "w-full min-w-0",
-    "flex items-center",
-    "border-foreground/20 dark:border-input rounded-lg border",
-    "duration-fast transition ease-out",
-    "has-[>textarea]:h-auto",
-    "has-[>[data-align=inline-start]]:[&>input]:ps-2",
-    "has-[>[data-align=inline-end]]:[&>input]:pe-2",
-    "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
-    "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
-    "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/24 outline-hidden",
-    "has-[[data-part][aria-invalid=true]]:border-destructive has-[[data-part][aria-invalid=true]]:ring-0.75 has-[[data-part][aria-invalid=true]]:ring-destructive/24",
-    "motion-reduce:transition-none!",
-  ],
-  compoundVariants: [
-    {
-      class: softFill,
-      surfaceVariant: undefined,
-      variant: "primary",
-    },
-    {
-      class: softFill,
-      surfaceVariant: ["default", "transparent"],
-      variant: "primary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "primary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: undefined,
-      variant: "secondary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: ["default", "transparent"],
-      variant: "secondary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "secondary",
-    },
-  ],
+  base: [...formControlGroupShellBase],
+  compoundVariants: formControlFillCompounds(),
   defaultVariants: {
     /** Control size. */
     size: "md",
@@ -168,47 +202,8 @@ export const formControlGroupShellRecipe = tv({
 });
 
 export const formControlToggleRecipe = tv({
-  base: [
-    "relative",
-    "inline-flex shrink-0 items-center justify-center",
-    "border-foreground/20 dark:border-input border",
-    "duration-fast transition-shadow ease-out",
-    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
-    "data-disabled:opacity-64",
-    "motion-reduce:transition-none!",
-  ],
-  compoundVariants: [
-    {
-      class: softFill,
-      surfaceVariant: undefined,
-      variant: "primary",
-    },
-    {
-      class: softFill,
-      surfaceVariant: ["default", "transparent"],
-      variant: "primary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "primary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: undefined,
-      variant: "secondary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: ["default", "transparent"],
-      variant: "secondary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "secondary",
-    },
-  ],
+  base: [...formControlToggleBase],
+  compoundVariants: formControlFillCompounds(),
   defaultVariants: {
     /** Surface variant. */
     surfaceVariant: undefined,
@@ -230,50 +225,10 @@ export const formControlToggleRecipe = tv({
 });
 
 export const formControlRadioToggleRecipe = tv({
-  base: [
-    "relative",
-    "inline-flex shrink-0 items-center justify-center",
-    "size-4",
-    "border-input rounded-full border",
-    "before:size-1.5 before:rounded-full",
-    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
-    "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
-    "data-[state=checked]:bg-primary data-[state=checked]:before:bg-primary-foreground",
-    "data-invalid:data-[state=checked]:before:bg-destructive data-invalid:data-[state=checked]:bg-transparent",
-    "motion-reduce:transition-none!",
-  ],
-  compoundVariants: [
-    {
-      class: "bg-input/30 shadow-xs/5",
-      surfaceVariant: undefined,
-      variant: "primary",
-    },
-    {
-      class: "bg-input/30 shadow-xs/5",
-      surfaceVariant: ["default", "transparent"],
-      variant: "primary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "primary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: undefined,
-      variant: "secondary",
-    },
-    {
-      class: softFillQuiet,
-      surfaceVariant: ["default", "transparent"],
-      variant: "secondary",
-    },
-    {
-      class: raisedFill,
-      surfaceVariant: mutedSurfaces,
-      variant: "secondary",
-    },
-  ],
+  base: [...formControlRadioToggleBase],
+  compoundVariants: formControlFillCompounds({
+    primary: "bg-input/30 shadow-xs/5",
+  }),
   defaultVariants: {
     /** Surface variant. */
     surfaceVariant: undefined,
@@ -339,39 +294,12 @@ export const formControlSeparatorRecipe = tv({
 });
 
 export const formControlZoneRecipe = tv({
-  base: ["border-input rounded-2xl border-2 border-dashed"],
-  compoundVariants: [
-    {
-      class: "bg-transparent",
-      surfaceVariant: undefined,
-      variant: "primary",
-    },
-    {
-      class: "bg-transparent",
-      surfaceVariant: ["default", "transparent"],
-      variant: "primary",
-    },
-    {
-      class: "bg-card/80",
-      surfaceVariant: mutedSurfaces,
-      variant: "primary",
-    },
-    {
-      class: "bg-muted/40",
-      surfaceVariant: undefined,
-      variant: "secondary",
-    },
-    {
-      class: "bg-muted/40",
-      surfaceVariant: ["default", "transparent"],
-      variant: "secondary",
-    },
-    {
-      class: "bg-card/80",
-      surfaceVariant: mutedSurfaces,
-      variant: "secondary",
-    },
-  ],
+  base: [...formControlZoneBase],
+  compoundVariants: formControlFillCompounds({
+    primary: "bg-transparent",
+    raised: "bg-card/80",
+    secondary: "bg-muted/40",
+  }),
   defaultVariants: {
     /** Surface variant. */
     surfaceVariant: undefined,

@@ -4,6 +4,7 @@ import {
 } from "@ark-ui/react";
 import type {
   CollectionItem,
+  ListboxContentProps,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
   ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
@@ -65,16 +66,9 @@ export interface ListboxProps
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps
-  extends
-    ListboxItemPrimitiveProps,
-    ListboxItemRootContract,
-    ListboxItemContract {}
-
-export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
-  /** The heading of the listbox item group. */
-  heading?: string;
-}
+export type ListboxItemProps = ListboxItemPrimitiveProps &
+  ListboxItemRootContract &
+  ListboxItemContract;
 
 // #endregion
 
@@ -103,9 +97,12 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   );
 }
 
-export const ListboxContent = withListboxContext(ListboxPrimitive.Content, {
-  name: "Content",
-});
+export const ListboxContent = withListboxContext<ListboxContentProps>(
+  ListboxPrimitive.Content,
+  {
+    name: "Content",
+  },
+);
 
 export function ListboxItem({
   variant = "default",
@@ -140,24 +137,11 @@ export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
   );
 }
 
-export function ListboxItemGroup({
-  children,
-  heading,
-  className,
-  ...rest
-}: ListboxItemGroupProps) {
-  const { slots } = useListbox();
-
-  return (
-    <ListboxPrimitive.ItemGroup
-      {...rest}
-      className={slots.itemGroup({ className })}
-    >
-      {!!heading && <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>}
-      {children}
-    </ListboxPrimitive.ItemGroup>
+export const ListboxItemGroup =
+  withListboxContext<ListboxItemGroupPrimitiveProps>(
+    ListboxPrimitive.ItemGroup,
+    { name: "ItemGroup" },
   );
-}
 
 export function ListboxItemGroupLabel({
   className,
@@ -271,13 +255,13 @@ ListboxValueText.displayName = "Listbox.ValueText";
 ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 ListboxEmpty.displayName = "Listbox.Empty";
 ListboxShortcut.displayName = "Listbox.Shortcut";
-ListboxShorthand.displayName = "Listbox";
 
 // #endregion
 
 export type {
   ListboxContentProps,
   ListboxEmptyProps,
+  ListboxItemGroupProps,
   ListboxItemGroupLabelProps,
   ListboxItemIndicatorProps,
   ListboxItemTextProps,

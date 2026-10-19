@@ -4,47 +4,26 @@
     type RadioGroupItemProps as ArkRadioGroupItemProps,
   } from "@ark-ui/svelte";
   import type { RadioGroupItemRootContract } from "@pisagor/contracts";
-  import {
-    formControlRadioToggleRecipe,
-    radioGroupItemRecipe,
-  } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
 
-  type FormControlVariant = "primary" | "secondary";
+  import { withProvider } from "./radio-group.context";
+  import RadioGroupItemControl from "./radio-group-item-control.svelte";
+  import RadioGroupItemHiddenInput from "./radio-group-item-hidden-input.svelte";
+  import RadioGroupItemText from "./radio-group-item-text.svelte";
 
-  type Props = ArkRadioGroupItemProps & {
-    variant?: FormControlVariant;
-    tabindex?: number | null;
-  } & RadioGroupItemRootContract;
+  type Props = ArkRadioGroupItemProps &
+    RadioGroupItemRootContract & {
+      tabindex?: number | null;
+    };
 
-  let {
-    variant: variantProp,
-    tabindex,
-    children,
-    recipe = radioGroupItemRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  let { tabindex, children, ...rest }: Props = $props();
 
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
+  const item = withProvider(() => rest, { name: "Item", slot: "base" });
 </script>
 
-<RadioGroupPrimitive.Item
-  {...rest}
-  class={slots.base({ class: cn(className) })}
->
-  <RadioGroupPrimitive.ItemControl
-    class={cn(
-      formControlRadioToggleRecipe({ surfaceVariant, variant }),
-      slots.control(),
-    )}
-    data-variant={variant}
-  />
-  <RadioGroupPrimitive.ItemText>
+<RadioGroupPrimitive.Item {...item.props}>
+  <RadioGroupItemControl />
+  <RadioGroupItemText>
     {@render children?.()}
-  </RadioGroupPrimitive.ItemText>
-  <RadioGroupPrimitive.ItemHiddenInput {tabindex} />
+  </RadioGroupItemText>
+  <RadioGroupItemHiddenInput {tabindex} />
 </RadioGroupPrimitive.Item>

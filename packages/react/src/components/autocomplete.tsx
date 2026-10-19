@@ -1,17 +1,6 @@
 import type { CollectionItem } from "@ark-ui/react";
-import type {
-  ComboboxClearTriggerProps,
-  ComboboxContentProps,
-  ComboboxControlProps,
-  ComboboxEmptyProps,
-  ComboboxInputProps,
-  ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps,
-  ComboboxItemProps,
-  ComboboxListProps,
-  ComboboxRootProps,
-  ComboboxTriggerProps,
-} from "./combobox";
+import type { FormControlVariant } from "../internal";
+import type { ComboboxRootProps } from "./combobox";
 import { Combobox } from "./combobox";
 import { Separator, type SeparatorProps } from "./separator";
 
@@ -26,7 +15,7 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
 
 export interface AutocompleteProps extends Omit<
   AutocompleteRootProps,
-  "children" | "collection"
+  "children" | "collection" | "onValueChange"
 > {
   /**
    * Whether to show a clear button when the input has a value.
@@ -35,6 +24,13 @@ export interface AutocompleteProps extends Omit<
    */
   clearable?: boolean;
   items?: Array<AutocompletePresetItem | string>;
+  /** Placeholder for the shorthand field. */
+  placeholder?: string;
+  /** Input size. Defaults to `md`. */
+  size?: "sm" | "md" | "lg";
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: FormControlVariant;
+  onValueChange?: (value: string[]) => void;
 }
 // #endregion
 
@@ -47,55 +43,17 @@ export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
   );
 }
 
-export function AutocompleteControl(props: ComboboxControlProps) {
-  return <Combobox.Control {...props} />;
-}
-
-export function AutocompleteInput({
-  clearable = false,
-  showTrigger = false,
-  ...rest
-}: ComboboxInputProps) {
-  return (
-    <Combobox.Input {...rest} clearable={clearable} showTrigger={showTrigger} />
-  );
-}
-
-export function AutocompleteItemGroupLabel(props: ComboboxItemGroupLabelProps) {
-  return <Combobox.ItemGroupLabel {...props} />;
-}
-
-export function AutocompleteItem(props: ComboboxItemProps) {
-  return <Combobox.Item {...props} />;
-}
-
-export function AutocompleteContent(props: ComboboxContentProps) {
-  return <Combobox.Content {...props} />;
-}
-
-export function AutocompleteTrigger(props: ComboboxTriggerProps) {
-  return <Combobox.Trigger {...props} />;
-}
-
-export function AutocompleteClearTrigger(props: ComboboxClearTriggerProps) {
-  return <Combobox.ClearTrigger {...props} />;
-}
-
-export function AutocompleteItemGroup(props: ComboboxItemGroupProps) {
-  return <Combobox.ItemGroup {...props} />;
-}
-
-export function AutocompleteEmpty(props: ComboboxEmptyProps) {
-  return <Combobox.Empty {...props} />;
-}
-
-export function AutocompleteList(props: ComboboxListProps) {
-  return <Combobox.List {...props} />;
-}
-
-export function AutocompleteCollection(props: ComboboxListProps) {
-  return <Combobox.List {...props} />;
-}
+export const AutocompleteControl = Combobox.Control;
+export const AutocompleteInput = Combobox.Input;
+export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
+export const AutocompleteItem = Combobox.Item;
+export const AutocompleteContent = Combobox.Content;
+export const AutocompleteTrigger = Combobox.Trigger;
+export const AutocompleteClearTrigger = Combobox.ClearTrigger;
+export const AutocompleteItemGroup = Combobox.ItemGroup;
+export const AutocompleteEmpty = Combobox.Empty;
+export const AutocompleteList = Combobox.List;
+export const AutocompleteCollection = Combobox.List;
 
 export function AutocompleteSeparator(props: SeparatorProps) {
   return (
@@ -108,6 +66,10 @@ export function AutocompleteSeparator(props: SeparatorProps) {
 export function AutocompleteShorthand({
   clearable,
   items,
+  placeholder,
+  size,
+  variant,
+  onValueChange,
   ...rest
 }: AutocompleteProps) {
   return (
@@ -117,6 +79,11 @@ export function AutocompleteShorthand({
       clearable={clearable}
       inputBehavior="autocomplete"
       items={items}
+      onValueChange={onValueChange}
+      placeholder={placeholder}
+      showTrigger={false}
+      size={size}
+      variant={variant}
     />
   );
 }
@@ -124,19 +91,7 @@ export function AutocompleteShorthand({
 
 // #region Display Names
 AutocompleteRoot.displayName = "Autocomplete.Root";
-AutocompleteControl.displayName = "Autocomplete.Control";
-AutocompleteInput.displayName = "Autocomplete.Input";
-AutocompleteItemGroupLabel.displayName = "Autocomplete.ItemGroupLabel";
-AutocompleteItem.displayName = "Autocomplete.Item";
-AutocompleteContent.displayName = "Autocomplete.Content";
-AutocompleteTrigger.displayName = "Autocomplete.Trigger";
-AutocompleteClearTrigger.displayName = "Autocomplete.ClearTrigger";
-AutocompleteItemGroup.displayName = "Autocomplete.ItemGroup";
-AutocompleteEmpty.displayName = "Autocomplete.Empty";
-AutocompleteList.displayName = "Autocomplete.List";
-AutocompleteCollection.displayName = "Autocomplete.Collection";
 AutocompleteSeparator.displayName = "Autocomplete.Separator";
-AutocompleteShorthand.displayName = "Autocomplete";
 // #endregion
 
 export const Autocomplete = Object.assign(AutocompleteShorthand, {

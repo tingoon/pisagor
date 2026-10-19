@@ -158,7 +158,6 @@ export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
 // #region Display Names
 ToggleGroupRoot.displayName = "ToggleGroup.Root";
 ToggleGroupItem.displayName = "ToggleGroup.Item";
-ToggleGroupShorthand.displayName = "ToggleGroup";
 
 // #endregion
 

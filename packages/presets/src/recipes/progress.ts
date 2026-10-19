@@ -20,7 +20,7 @@ export const progressRecipe = tv({
       "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
       "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2",
     ],
-    value: ["ms-auto tabular-nums"],
+    valueText: ["ms-auto tabular-nums"],
   },
 });
 

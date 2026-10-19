@@ -4,37 +4,19 @@
     type DatePickerRootProps,
   } from "@ark-ui/svelte";
   import type { CalendarRootContract } from "@pisagor/contracts";
-  import { calendarRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./calendar.context";
+
+  import { withProvider } from "./calendar.context";
   import CalendarDefaultView from "./calendar-default-view.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
+  type Props = DatePickerRootProps & CalendarRootContract;
 
-  type Props = DatePickerRootProps & {
-    variant?: FormControlVariant;
-  } & CalendarRootContract;
+  let { children, ...rest }: Props = $props();
 
-  let {
-    variant: _variant,
-    recipe = calendarRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
+  const root = withProvider(() => ({ ...rest, inline: true }), {
+    name: "Root",
   });
 </script>
 
-<CalendarPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  inline
->
+<CalendarPrimitive.Root {...root.props}>
   <CalendarDefaultView>{@render children?.()}</CalendarDefaultView>
 </CalendarPrimitive.Root>

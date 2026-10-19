@@ -55,9 +55,8 @@ export interface FieldLabelProps {
 // #endregion
 
 // #region Parts
-export const FieldRoot = withProvider(FieldPrimitive.Root, {
+export const FieldRoot = withProvider<FieldRootContract>(FieldPrimitive.Root, {
   name: "Root",
-  slot: "base",
 });
 
 export const FieldSet = defineComponent({

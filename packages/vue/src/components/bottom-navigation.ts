@@ -65,10 +65,10 @@ export interface BottomNavigationItemProps extends BottomNavigationItemRootContr
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider("nav", {
-  name: "Root",
-  slot: "base",
-});
+const BottomNavigationNav =
+  withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
+    name: "Root",
+  });
 
 export const BottomNavigationRoot = defineComponent({
   inheritAttrs: false,
@@ -96,10 +96,11 @@ export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
-const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
-  name: "Item",
-  slot: "base",
-});
+const BottomNavigationItemBase =
+  withBottomNavigationItemProvider<BottomNavigationItemRootContract>(ark.a, {
+    name: "Item",
+    slot: "base",
+  });
 
 export const BottomNavigationItem = defineComponent({
   inheritAttrs: false,
@@ -139,7 +140,7 @@ export const BottomNavigationItem = defineComponent({
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
   "span",
   {
-    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+    defaultProps: { "aria-hidden": true },
     name: "ItemIcon",
     slot: "icon",
   },
@@ -148,7 +149,6 @@ export const BottomNavigationItemIcon = withBottomNavigationItemContext(
 export const BottomNavigationItemLabel = withBottomNavigationItemContext(
   "span",
   {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   },

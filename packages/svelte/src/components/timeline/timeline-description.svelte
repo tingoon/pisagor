@@ -3,10 +3,7 @@
   import { withContext } from "./timeline.context";
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-  const part = withContext(() => rest, {
-    name: "Description",
-    slot: "description",
-  });
+  const part = withContext(() => rest, { name: "Description" });
 </script>
 
 <div {...part.props}>{@render children?.()}</div>

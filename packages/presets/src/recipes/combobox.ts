@@ -6,6 +6,8 @@ export const comboboxRecipe = tv({
     showIndicator: true,
   },
   slots: {
+    base: [],
+    clearTrigger: [],
     content: [
       "z-popover relative",
       "max-h-96 min-w-48",
@@ -31,6 +33,8 @@ export const comboboxRecipe = tv({
       "relative flex flex-wrap items-center gap-1",
     ],
     empty: ["px-2 py-1.5", "text-muted-foreground text-center text-sm"],
+    input: [],
+    itemGroup: [],
     item: [
       "relative",
       "py-1.5 ps-2",
@@ -50,6 +54,7 @@ export const comboboxRecipe = tv({
       "absolute inset-e-2 flex size-3.5 items-center justify-center",
     ],
     list: ["flex flex-col"],
+    positioner: [],
     trigger: ["absolute inset-y-0 inset-e-1"],
     triggerButton: "size-4",
     triggerHidden:

@@ -5,9 +5,8 @@
     parseColor,
   } from "@ark-ui/svelte";
   import type { ColorPickerRootContract } from "@pisagor/contracts";
-  import { colorPickerRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./color-picker.context";
+
+  import { withProvider } from "./color-picker.context";
 
   type Props = Omit<
     ArkRootProps,
@@ -24,17 +23,16 @@
     value = $bindable(defaultValue),
     children,
     onValueChange,
-    recipe = colorPickerRecipe,
-    class: className,
     ...rest
   }: Props = $props();
 
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  const root = withProvider(
+    () => ({
+      ...rest,
+      positioning,
+    }),
+    { name: "Root" },
+  );
 
   const parsed = $derived(value ? parseColor(value) : undefined);
 
@@ -45,10 +43,8 @@
 </script>
 
 <ColorPickerPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
+  {...root.props}
   onValueChange={handleValueChange}
-  {positioning}
   value={parsed}
 >
   {@render children?.()}

@@ -68,9 +68,10 @@ const {
 } = createSlotRecipeContext({ name: "Foo", recipe: fooRecipe });
 ```
 
-- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
+- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, part?, defaultProps? }` — only `name` is required. When omitted, `slot` = camelCase of `name` (`ClearTrigger` → `clearTrigger`; `Root` → `base`) and `part` (`data-part`) = kebab-case of `name` (`clear-trigger`; `Root` → `root`). Pass `slot` / `part` only when they differ from those defaults (e.g. `Header` → `slot: "panelHeader", part: "panel-header"`; `Indicator` → `part: "item-indicator"`).
 - Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file. Public re-exports can use `export { useStyles as useFoo }`.
 - `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag string (`"div"`) for layout/presentational hosts; use `ark.*` only when `as-child` polymorphism is required; use Ark machine primitives for headless parts.
+- `withProvider` / `withContext` take props type `P` (optional, defaults to `{}`): `withProvider<FooRootContract>("div", { name: "Root", slot: "base" })`, `withContext("div", { name: "Title" })`. The helper intersects `PartClassProps` (`class`) for you — pass the shared root contract (variants / `recipe`) as `P` on `withProvider`. Same call shape as React / Solid.
 - Hand-written roots that need dual providers: `h(FooStylesContext, { value: { get slots() { … }, variants } }, () => …)` (and a thin state context when needed). Mirror React dual-provider components (breadcrumb, timer, steps, bottom-navigation, listbox, tags-input, tree-view, file-upload, command, …) — do not lift every part recipe to the root.
 - Thin **non-style** state uses `createContext` from `../internal/utils/create-context` — keep it separate from the slot-recipe Context.
 - In hand-written parts call `const styles = useStyles()` in `setup` and read `styles.slots.foo()` in the **render** function (do not destructure slots in setup if reactivity is needed).
@@ -154,7 +155,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 
 **Shorthand:**
 
-- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`.
+- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`. Set the Vue `name` option on the shorthand `defineComponent` (e.g. `"Foo"`). Do **not** also assign `FooShorthand.displayName` — that is a React pattern; only set it when shorthand is a compound subpart (e.g. `Command.Shorthand`).
 - Type shorthand props without a default slot for manual subpart layout — no `default` slot composition API on the shorthand export.
 - Prefer `<Foo title="…" />` / `:title` over `<Foo.Root><Foo.Title>…</Foo.Title></Foo.Root>` when preset props are enough.
 - Composition uses `Foo.Root` only when flexibility is required (custom markup, slot order); never nest `Foo.Title` / `Foo.Description` under shorthand `<Foo>`.
@@ -268,8 +269,8 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 
 ### Do
 
-- Export `interface FooProps` when props are part of the public API.
-- Prefer extending `@pisagor/contracts` shared props: `export interface ButtonProps extends BaseButtonProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
+- Prefer `type` for prop aliases and empty intersections (`type FooRootProps = FooRootContract & { class?: unknown }`). Use `export interface FooProps` only when the declaration adds its own members.
+- Prefer composing `@pisagor/contracts` shared props: `type ButtonProps = BaseButtonProps & { … }` or `interface ButtonProps extends BaseButtonProps { … }` when adding fields. Combine with recipe types only when a shared module does not exist yet.
 - Use `Omit<…>` when a convenience prop conflicts with an Ark prop signature.
 - Prefer extending `@pisagor/contracts` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.

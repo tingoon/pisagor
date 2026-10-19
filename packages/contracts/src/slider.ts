@@ -1,11 +1,15 @@
-import type { SliderRecipeFn, SliderRecipeSlot } from "@pisagor/recipes";
+import type {
+  SliderRecipeFn,
+  SliderRecipeSlot,
+  SliderVariantProps,
+} from "@pisagor/recipes";
 import type { SlotClassNames } from "./internal";
 
 /**
- * Shared Slider root contract: recipe override. Used by compound roots;
- * excludes host DOM attributes.
+ * Shared Slider root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
  */
-export interface SliderRootContract {
+export interface SliderRootContract extends SliderVariantProps {
   /**
    * Style recipe override.
    *

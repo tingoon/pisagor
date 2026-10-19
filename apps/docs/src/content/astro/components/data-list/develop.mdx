@@ -2,12 +2,17 @@ import Default from "#examples/astro/data-display/data-list/default.astro";
 import OrientationHorizontal from "#examples/astro/data-display/data-list/orientation-horizontal.astro";
 import OrientationVertical from "#examples/astro/data-display/data-list/orientation-vertical.astro";
 import Separator from "#examples/astro/data-display/data-list/separator.astro";
-import Compound from "#examples/astro/data-display/data-list/compound.astro";
 
 ## Import
 
 ```ts
 import { DataList } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<DataList />
 ```
 
 ## Examples
@@ -42,12 +47,4 @@ Separate groups of pairs so sections stay scannable.
 
 <Example name="Separator">
   <Separator />
-</Example>
-
-### Compound
-
-Compose term and value parts for a custom list layout.
-
-<Example name="Compound">
-  <Compound />
 </Example>

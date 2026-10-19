@@ -2,7 +2,6 @@ import type {
   ClipboardRecipeFn,
   ClipboardRecipeSlot,
   ClipboardVariantProps,
-  FormControlShellVariantProps,
 } from "@pisagor/recipes";
 import type { ButtonRootContract } from "./button";
 import type { SlotClassNames } from "./internal";
@@ -44,7 +43,7 @@ export interface ClipboardContract {
    *
    * @defaultValue "primary"
    */
-  controlVariant?: FormControlShellVariantProps["variant"];
+  controlVariant?: ClipboardVariantProps["variant"];
   /** Icon shown after a successful copy. */
   copiedIcon?: unknown;
   /** Icon shown before copying. */

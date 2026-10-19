@@ -5,29 +5,53 @@
     SignaturePadRootContract,
   } from "@pisagor/contracts";
 
-  import SignaturePadClear from "./signature-pad-clear.svelte";
+  import { ArrowCounterClockwiseIcon } from "phosphor-svelte";
+  import Button from "../button.svelte";
+  import { useLocale } from "../provider/context";
+  import SignaturePadClearTrigger from "./signature-pad-clear-trigger.svelte";
   import SignaturePadControl from "./signature-pad-control.svelte";
   import SignaturePadGuide from "./signature-pad-guide.svelte";
   import SignaturePadRoot from "./signature-pad-root.svelte";
   import SignaturePadSegment from "./signature-pad-segment.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
-
   type Props = Omit<SignaturePadRootProps, "children"> & {
+    /**
+     * Whether to show the clear button.
+     *
+     * @defaultValue true
+     */
+    clearable?: boolean;
     /** Marks the control as invalid for styling and assistive tech. */
     invalid?: boolean;
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
   } & SignaturePadRootContract &
     SignaturePadContract;
 
-  let { variant, invalid = false, classNames, ...rest }: Props = $props();
+  let {
+    clearable = true,
+    invalid = false,
+    classNames,
+    ...rest
+  }: Props = $props();
+  const { m } = useLocale();
 </script>
 
 <SignaturePadRoot {...rest} {invalid}>
-  <SignaturePadControl class={classNames?.control} {invalid} {variant}>
+  <SignaturePadControl class={classNames?.control} {invalid}>
     <SignaturePadSegment class={classNames?.segment} />
-    <SignaturePadClear class={classNames?.clear} />
+    {#if clearable}
+      <SignaturePadClearTrigger class={classNames?.clearTrigger}>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label={m("signaturePad.clearSignature")}
+            size="icon-md"
+            variant="ghost"
+          >
+            <ArrowCounterClockwiseIcon />
+          </Button>
+        {/snippet}
+      </SignaturePadClearTrigger>
+    {/if}
     <SignaturePadGuide class={classNames?.guide} />
   </SignaturePadControl>
 </SignaturePadRoot>

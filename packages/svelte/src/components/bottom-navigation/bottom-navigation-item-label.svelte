@@ -4,7 +4,6 @@
 
   let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
   const part = withBottomNavigationItemContext(() => rest, {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   });

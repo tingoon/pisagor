@@ -12,7 +12,7 @@ import type {
   StepsRootContract,
 } from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef, FunctionComponent } from "react";
+import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -33,33 +33,36 @@ const {
 // #endregion
 
 // #region Types
-export interface StepsRootProps
-  extends StepsRootPrimitiveProps, StepsRootContract {}
+export type StepsRootProps = StepsRootPrimitiveProps & StepsRootContract;
 
-export interface StepsItemProps
-  extends StepsItemPrimitiveProps, StepsItemRootContract {}
+export type StepsItemProps = StepsItemPrimitiveProps & StepsItemRootContract;
 
-export type StepsTitleProps = ComponentPropsWithRef<"span">;
+export type StepsTitleProps = ComponentProps<"span">;
 
-export type StepsDescriptionProps = ComponentPropsWithRef<"span">;
+export type StepsDescriptionProps = ComponentProps<"span">;
 // #endregion
 
 // #region Parts
-export const StepsRoot = withStepsProvider(StepsPrimitive.Root)({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<StepsRootProps>;
+export const StepsRoot = withStepsProvider<
+  ComponentProps<typeof StepsPrimitive.Root> & StepsRootContract
+>(StepsPrimitive.Root, { name: "Root" }) as FunctionComponent<StepsRootProps>;
 
-export const StepsList = withStepsContext(StepsPrimitive.List, {
+export const StepsList = withStepsContext<
+  ComponentProps<typeof StepsPrimitive.List>
+>(StepsPrimitive.List, {
   name: "List",
 });
 
-export const StepsItem = withStepsItemProvider(StepsPrimitive.Item)({
+export const StepsItem = withStepsItemProvider<
+  ComponentProps<typeof StepsPrimitive.Item> & StepsItemRootContract
+>(StepsPrimitive.Item, {
   name: "Item",
   slot: "base",
 }) as FunctionComponent<StepsItemProps>;
 
-export const StepsTrigger = withStepsItemContext(StepsPrimitive.Trigger, {
+export const StepsTrigger = withStepsItemContext<
+  ComponentProps<typeof StepsPrimitive.Trigger>
+>(StepsPrimitive.Trigger, {
   name: "Trigger",
 });
 
@@ -81,30 +84,32 @@ export function StepsIndicator({
   );
 }
 
-export const StepsSeparator = withStepsItemContext(StepsPrimitive.Separator, {
+export const StepsSeparator = withStepsItemContext<
+  ComponentProps<typeof StepsPrimitive.Separator>
+>(StepsPrimitive.Separator, {
   name: "Separator",
 });
 
-export const StepsTitle = withStepsItemContext("span", {
+export const StepsTitle = withStepsItemContext<ComponentProps<"span">>("span", {
   name: "Title",
 });
 
-export const StepsDescription = withStepsItemContext("span", {
-  name: "Description",
-});
+export const StepsDescription = withStepsItemContext<ComponentProps<"span">>(
+  "span",
+  {
+    name: "Description",
+  },
+);
 
-export const StepsContent = withStepsContext(StepsPrimitive.Content, {
+export const StepsContent = withStepsContext<
+  ComponentProps<typeof StepsPrimitive.Content>
+>(StepsPrimitive.Content, {
   name: "Content",
 });
 
-export const StepsCompletedContent = withStepsContext(
-  StepsPrimitive.CompletedContent,
-  {
-    defaultProps: { "data-part": "completed-content" },
-    name: "CompletedContent",
-    slot: "completedContent",
-  },
-);
+export const StepsCompletedContent = withStepsContext<
+  ComponentProps<typeof StepsPrimitive.CompletedContent>
+>(StepsPrimitive.CompletedContent, { name: "CompletedContent" });
 
 export function StepsPrevTrigger(props: StepsPrevTriggerProps) {
   return <StepsPrimitive.PrevTrigger {...props} />;

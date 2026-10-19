@@ -29,8 +29,8 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface LocalPaginationRootProps
-  extends PaginationRootPrimitiveProps, PaginationRootContract {}
+export type LocalPaginationRootProps = PaginationRootPrimitiveProps &
+  PaginationRootContract;
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
@@ -45,7 +45,9 @@ export interface PaginationItemLinkProps extends ButtonProps {
 }
 
 const PaginationRootProvider: Component<LocalPaginationRootProps> =
-  withProvider(PaginationPrimitive.Root, { name: "Root", slot: "base" });
+  withProvider<PaginationRootContract>(PaginationPrimitive.Root, {
+    name: "Root",
+  });
 
 export function PaginationRoot(props: LocalPaginationRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);

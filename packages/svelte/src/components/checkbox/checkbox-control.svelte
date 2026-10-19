@@ -4,47 +4,34 @@
     type CheckboxControlProps,
   } from "@ark-ui/svelte";
   import type { CheckboxRootContract } from "@pisagor/contracts";
-  import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CheckIcon, MinusIcon } from "phosphor-svelte";
 
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { withContext } from "./checkbox.context";
   import CheckboxIndicator from "./checkbox-indicator.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
-
   type Props = CheckboxControlProps &
-    CheckboxRootContract & {
-      recipe?: typeof checkboxRecipe;
-    };
+    Pick<CheckboxRootContract, "size" | "variant">;
 
-  let {
-    children,
-    size = "md",
-    variant: variantProp,
-    recipe = checkboxRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  let { children, ...rest }: Props = $props();
 
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
+  const part = withContext(
+    () => ({
+      ...rest,
+      "data-variant": rest.variant ?? "primary",
+    }),
+    { name: "Control", slot: "base" },
+  );
 </script>
 
-<CheckboxPrimitive.Control
-  {...rest}
-  class={cn(
-    formControlToggleRecipe({ size, surfaceVariant, variant }),
-    slots.base(),
-    slots.control({ class: cn(className) }),
-  )}
-  data-variant={variant}
->
+<CheckboxPrimitive.Control {...part.props}>
   {#if children}
     {@render children()}
   {:else}
-    <CheckboxIndicator {recipe}><CheckIcon /></CheckboxIndicator>
-    <CheckboxIndicator indeterminate {recipe}><MinusIcon /></CheckboxIndicator>
+    <CheckboxIndicator>
+      <CheckIcon />
+    </CheckboxIndicator>
+    <CheckboxIndicator indeterminate>
+      <MinusIcon />
+    </CheckboxIndicator>
   {/if}
 </CheckboxPrimitive.Control>

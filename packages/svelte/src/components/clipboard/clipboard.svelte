@@ -9,48 +9,44 @@
     ClipboardContract,
     ClipboardRootContract,
   } from "@pisagor/contracts";
-  import { clipboardRecipe, formControlShellRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CheckIcon, ClipboardIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { Context } from "./clipboard.context";
   import ClipboardControl from "./clipboard-control.svelte";
   import ClipboardField from "./clipboard-field.svelte";
   import ClipboardIndicator from "./clipboard-indicator.svelte";
   import ClipboardInput from "./clipboard-input.svelte";
   import ClipboardLabel from "./clipboard-label.svelte";
   import ClipboardRoot from "./clipboard-root.svelte";
-  import ClipboardValue from "./clipboard-value.svelte";
+  import ClipboardValueText from "./clipboard-value-text.svelte";
 
   const { m } = useLocale();
 
-  type FormControlVariant = "primary" | "secondary";
-
-  type Props = Omit<ClipboardRootProps, "children"> &
-    ClipboardRootContract & {
+  type Props = Omit<ClipboardRootProps, "children" | "variant"> &
+    Omit<ClipboardRootContract, "variant"> &
+    ClipboardContract & {
       copiedIcon?: Snippet;
       copyIcon?: Snippet;
       label?: string;
       /** Extra props forwarded to the label element */
       labelProps?: Omit<ClipboardLabelProps, "children" | "class">;
-    } & ClipboardContract;
+    };
 
   let {
     size = "md",
     buttonSize: buttonSizeProp,
     buttonVariant,
-    controlVariant: controlVariantProp,
+    controlVariant,
     valueSize: valueSizeProp,
-    variant = "input",
-    buttonAriaLabel = m("clipboard.copy"),
+    variant: displayVariant = "input",
+    buttonAriaLabel: buttonAriaLabelProp,
     copiedIcon,
     copyIcon,
     label,
     labelProps,
-    recipe = clipboardRecipe,
+    recipe,
+    class: className,
     classNames,
     ...rest
   }: Props = $props();
@@ -59,43 +55,16 @@
     buttonSizeProp ?? (`icon-${size}` as ButtonRootContract["size"]),
   );
   const valueSize = $derived(valueSizeProp ?? size);
-  const slots = $derived(recipe({ size, valueSize }));
-  Context.set({
-    get slots() {
-      return slots;
-    },
-    get variants() {
-      return { size, valueSize };
-    },
-  });
-
-  const surfaceVariant = useFormControlSurface();
-  const controlVariant = $derived(
-    controlVariantProp ?? ("primary" as FormControlVariant),
-  );
-  const shellClassName = $derived(
-    formControlShellRecipe({
-      size,
-      surfaceVariant,
-      variant: controlVariant,
-    }),
-  );
+  const buttonAriaLabel = $derived(m("clipboard.copy", buttonAriaLabelProp));
 </script>
 
 {#snippet control()}
   <ClipboardControl class={classNames?.control}>
-    {#if variant === "input"}
-      <ClipboardInput
-        class={cn(shellClassName, classNames?.input)}
-        data-variant={controlVariant}
-        readonly
-      />
+    {#if displayVariant === "input"}
+      <ClipboardInput class={classNames?.input} readonly />
     {/if}
-    {#if variant === "value"}
-      <ClipboardValue
-        class={cn(shellClassName, classNames?.value)}
-        data-variant={controlVariant}
-      />
+    {#if displayVariant === "value"}
+      <ClipboardValueText class={classNames?.valueText} />
     {/if}
     <ClipboardPrimitive.Trigger>
       {#snippet asChild(props)}
@@ -126,7 +95,14 @@
   </ClipboardControl>
 {/snippet}
 
-<ClipboardRoot {...rest}>
+<ClipboardRoot
+  {...rest}
+  class={className}
+  {recipe}
+  {size}
+  {valueSize}
+  variant={controlVariant}
+>
   {#if label}
     <ClipboardField class={classNames?.field}>
       <ClipboardLabel {...labelProps} class={classNames?.label}>

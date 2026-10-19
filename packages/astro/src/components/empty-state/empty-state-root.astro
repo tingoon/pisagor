@@ -5,7 +5,7 @@ import { withProvider } from "./empty-state.context";
 
 type Props = HTMLAttributes<"div"> & EmptyStateRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <div {...root.props}>

@@ -3,22 +3,12 @@
     Checkbox as CheckboxPrimitive,
     type CheckboxLabelProps,
   } from "@ark-ui/svelte";
-  import { checkboxRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import { withContext } from "./checkbox.context";
 
-  type Props = CheckboxLabelProps & { recipe?: typeof checkboxRecipe };
-
-  let {
-    children,
-    recipe = checkboxRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  let { children, ...rest }: CheckboxLabelProps = $props();
+  const part = withContext(() => rest, { name: "Label" });
 </script>
 
-<CheckboxPrimitive.Label
-  {...rest}
-  class={recipe().label({ class: cn(className) })}
->
+<CheckboxPrimitive.Label {...part.props}>
   {@render children?.()}
 </CheckboxPrimitive.Label>

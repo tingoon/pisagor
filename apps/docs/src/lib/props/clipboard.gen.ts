@@ -13,6 +13,18 @@ export const clipboardProps: PropRow[] = [
     description: "Size scale of the input, label, and copy control.",
   },
   {
+    name: "surfaceVariant",
+    type: "\"default\" | \"secondary\" | \"transparent\" | \"tertiary\" | \"glass\" | undefined",
+    defaultValue: "`undefined`",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"button\" | \"input\" | \"value\" | undefined",
+    defaultValue: "`\"primary\"`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "valueSize",
     type: "\"md\" | \"lg\" | \"sm\" | \"xl\" | \"xs\" | undefined",
     defaultValue: "`\"md\"`",
@@ -47,7 +59,7 @@ export const clipboardProps: PropRow[] = [
   },
   {
     name: "controlVariant",
-    type: "FormControlShellVariantProps[\"variant\"] | undefined",
+    type: "ClipboardVariantProps[\"variant\"] | undefined",
     defaultValue: "\"primary\"",
     description: "Visual shell variant for input/value display modes.",
   },
@@ -69,7 +81,7 @@ export const clipboardProps: PropRow[] = [
   {
     name: "variant",
     type: "\"button\" | \"input\" | \"value\" | undefined",
-    defaultValue: "\"input\"",
-    description: "Display mode for the copy control.",
+    defaultValue: "`\"primary\"`",
+    description: "Visual emphasis.",
   },
 ];

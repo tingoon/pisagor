@@ -6,11 +6,7 @@ import type {
 } from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
-import type {
-  ComponentPropsWithRef,
-  FunctionComponent,
-  KeyboardEvent,
-} from "react";
+import type { ComponentProps, FunctionComponent, KeyboardEvent } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -43,19 +39,17 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 // #endregion
 
 // #region Types
-export interface NavigationMenuProps
-  extends
-    ComponentPropsWithRef<"nav">,
-    NavigationMenuRootContract,
-    NavigationMenuContract {}
+export type NavigationMenuProps = ComponentProps<"nav"> &
+  NavigationMenuRootContract &
+  NavigationMenuContract;
 
-export type NavigationMenuPartProps = ComponentPropsWithRef<"ul">;
+export type NavigationMenuPartProps = ComponentProps<"ul">;
 
-export type NavigationMenuItemProps = ComponentPropsWithRef<"li">;
+export type NavigationMenuItemProps = ComponentProps<"li">;
 
 export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
 
-export type NavigationMenuContentProps = ComponentPropsWithRef<"ul">;
+export type NavigationMenuContentProps = ComponentProps<"ul">;
 
 export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
@@ -112,10 +106,9 @@ function focusContentLink(contentId: string, position: "first" | "last") {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav = withProvider("nav")({
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<NavigationMenuProps>;
+const NavigationMenuNav = withProvider<
+  ComponentProps<"nav"> & NavigationMenuRootContract
+>("nav", { name: "Root" }) as FunctionComponent<NavigationMenuProps>;
 
 export function NavigationMenuRoot({
   "aria-label": ariaLabel,
@@ -134,7 +127,7 @@ export function NavigationMenuRoot({
   );
 }
 
-const NavigationMenuListBase = withContext("ul", {
+const NavigationMenuListBase = withContext<ComponentProps<"ul">>("ul", {
   name: "List",
 });
 
@@ -155,7 +148,7 @@ export function NavigationMenuList({
   );
 }
 
-const NavigationMenuItemBase = withContext("li", {
+const NavigationMenuItemBase = withContext<ComponentProps<"li">>("li", {
   name: "Item",
 });
 

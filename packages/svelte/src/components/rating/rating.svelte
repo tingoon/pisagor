@@ -16,8 +16,6 @@
   import RatingItem from "./rating-item.svelte";
   import RatingRoot from "./rating-root.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
-
   type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
     /** Extra props forwarded to the rating control element */
     controlProps?: Omit<RatingGroupControlProps, "children" | "class">;
@@ -35,8 +33,6 @@
      * Receives the numeric value directly, not Ark UI event details.
      */
     onValueChange?: (value: number) => void;
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
   } & RatingRootContract &
     RatingContract;
 

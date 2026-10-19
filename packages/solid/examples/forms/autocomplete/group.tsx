@@ -1,6 +1,8 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
-import { Autocomplete } from "@pisagor/solid";
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
+import { Autocomplete, Combobox, InputGroup } from "@pisagor/solid";
 import { For } from "solid-js";
+import { Portal } from "solid-js/web";
 
 export function Group() {
   const initialItems = [
@@ -15,7 +17,6 @@ export function Group() {
     { continent: "Asia", label: "China", value: "cn" },
   ];
   const filterFn = useFilter({ sensitivity: "base" });
-
   const { collection, filter } = useListCollection({
     filter: filterFn().contains,
     groupBy: (item) => item.continent,
@@ -27,25 +28,48 @@ export function Group() {
       collection={collection()}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Autocomplete.Input placeholder="Select a timezone" />
-      <Autocomplete.Content class="w-60">
-        <Autocomplete.Empty />
-        <Autocomplete.List>
-          <For each={collection().group()}>
-            {([continent, group]) => (
-              <Autocomplete.ItemGroup heading={continent}>
-                <For each={group}>
-                  {(item) => (
-                    <Autocomplete.Item item={item}>
-                      {item.label}
-                    </Autocomplete.Item>
-                  )}
-                </For>
-              </Autocomplete.ItemGroup>
+      <Autocomplete.Control>
+        <InputGroup>
+          <Autocomplete.Input
+            asChild={(inputProps) => (
+              <InputGroup.Input
+                {...inputProps()}
+                placeholder="Select a timezone"
+              />
             )}
-          </For>
-        </Autocomplete.List>
-      </Autocomplete.Content>
+          />
+        </InputGroup>
+      </Autocomplete.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Autocomplete.Content class="w-60">
+            <Autocomplete.Empty>
+              No results found. Try a different search.
+            </Autocomplete.Empty>
+            <Autocomplete.List>
+              <For each={collection().group()}>
+                {([continent, group]) => (
+                  <Autocomplete.ItemGroup>
+                    <Autocomplete.ItemGroupLabel>
+                      {continent}
+                    </Autocomplete.ItemGroupLabel>
+                    <For each={group}>
+                      {(item) => (
+                        <Autocomplete.Item item={item} persistFocus>
+                          {item.label}
+                          <Combobox.ItemIndicator>
+                            <CheckIcon />
+                          </Combobox.ItemIndicator>
+                        </Autocomplete.Item>
+                      )}
+                    </For>
+                  </Autocomplete.ItemGroup>
+                )}
+              </For>
+            </Autocomplete.List>
+          </Autocomplete.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Autocomplete.Root>
   );
 }

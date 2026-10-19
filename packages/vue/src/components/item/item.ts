@@ -127,33 +127,15 @@ export const ItemMedia = defineComponent({
   },
 });
 
-export const ItemContent = withContext("div", {
-  name: "Content",
-  slot: "content",
-});
+export const ItemContent = withContext("div", { name: "Content" });
 
-export const ItemTitle = withContext("div", {
-  name: "Title",
-  slot: "title",
-});
+export const ItemTitle = withContext("div", { name: "Title" });
 
-export const ItemDescription = withContext("p", {
-  name: "Description",
-  slot: "description",
-});
+export const ItemDescription = withContext("p", { name: "Description" });
 
-export const ItemActions = withContext("div", {
-  name: "Actions",
-  slot: "actions",
-});
+export const ItemActions = withContext("div", { name: "Actions" });
 
-export const ItemHeader = withContext("div", {
-  name: "Header",
-  slot: "header",
-});
+export const ItemHeader = withContext("div", { name: "Header" });
 
-export const ItemFooter = withContext("div", {
-  name: "Footer",
-  slot: "footer",
-});
+export const ItemFooter = withContext("div", { name: "Footer" });
 // #endregion

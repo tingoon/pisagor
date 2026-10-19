@@ -1,11 +1,11 @@
 import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 
 // #region Types
 export interface ProseProps
   extends
-    Omit<ComponentPropsWithRef<"div">, "dangerouslySetInnerHTML">,
+    Omit<ComponentProps<"div">, "dangerouslySetInnerHTML">,
     ProseRootContract {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.

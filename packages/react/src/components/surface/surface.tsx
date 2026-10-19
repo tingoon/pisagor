@@ -2,7 +2,7 @@ import type { SurfaceRootContract } from "@pisagor/contracts";
 import { surfaceRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import {
   SurfaceContext,
   type SurfaceVariant,
@@ -16,8 +16,7 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps
-  extends ComponentPropsWithRef<"div">, SurfaceRootContract {}
+export type SurfaceProps = ComponentProps<"div"> & SurfaceRootContract;
 // #endregion
 
 // #region Component

@@ -1,26 +1,44 @@
 ---
-import type { ComponentDocs } from "#/lib/component-docs-types";
 import type { Framework } from "#/lib/nav";
-import ComponentMeta from "./component-meta.astro";
 import PackageLinks from "./package-links.astro";
+import { DocsNavSegmentGroup } from "./react/docs-nav-segment-group";
 
 interface Props {
   framework: Framework;
   /** Override npm package shown in PackageLinks (forms). */
   packageName?: string;
-  api?: ComponentDocs["api"];
-  taxonomy?: ComponentDocs["taxonomy"];
-  aliases?: string[];
+  /** Shorthand / Compound switch. */
+  surfaces?: {
+    shorthandHref: string;
+    compoundHref: string;
+    active?: "shorthand" | "compound";
+  };
 }
 
-const { api, taxonomy, aliases } = Astro.props;
+const { surfaces } = Astro.props;
 ---
 
 <div
   class="flex max-w-full flex-wrap items-center justify-between gap-x-4 gap-y-2"
 >
-  {api && taxonomy ? (
-    <ComponentMeta api={api} taxonomy={taxonomy} aliases={aliases} />
+  {surfaces ? (
+    <DocsNavSegmentGroup
+      client:only="react"
+      aria-label="Component surfaces"
+      items={[
+        {
+          href: surfaces.shorthandHref,
+          label: "Shorthand",
+          value: "shorthand",
+        },
+        {
+          href: surfaces.compoundHref,
+          label: "Compound",
+          value: "compound",
+        },
+      ]}
+      value={surfaces.active ?? "shorthand"}
+    />
   ) : null}
   <PackageLinks
     class="ms-auto"

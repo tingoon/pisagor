@@ -3,15 +3,10 @@
     Slider as SliderPrimitive,
     type SliderThumbProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useSliderExtras, withContext } from "./slider.context";
+  import { withContext } from "./slider.context";
 
-  let { children, class: className, ...rest }: SliderThumbProps = $props();
-  const extras = useSliderExtras();
-  const part = withContext(
-    () => ({ ...rest, class: cn(extras.thumbShadowClass, className) }),
-    { name: "Thumb" },
-  );
+  let { children, ...rest }: SliderThumbProps = $props();
+  const part = withContext(() => rest, { name: "Thumb" });
 </script>
 
 <SliderPrimitive.Thumb {...part.props}>

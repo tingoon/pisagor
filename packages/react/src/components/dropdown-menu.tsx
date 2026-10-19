@@ -18,7 +18,6 @@ import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import type {
   DropdownMenuContract,
   DropdownMenuItemContract,
-  DropdownMenuItemGroupContract,
   DropdownMenuItemRootContract,
   DropdownMenuRootContract,
 } from "@pisagor/contracts";
@@ -41,21 +40,15 @@ function useDropdownMenuSlots() {
 // #endregion
 
 // #region Types
-export interface DropdownMenuItemGroupProps
-  extends MenuItemGroupProps, DropdownMenuItemGroupContract {
-  heading?: string;
-}
+export type DropdownMenuItemGroupProps = MenuItemGroupProps;
 
-export interface DropdownMenuItemRootProps
-  extends MenuItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuItemRootProps = MenuItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuItemProps
-  extends DropdownMenuItemRootProps, DropdownMenuItemContract {}
+export type DropdownMenuItemProps = DropdownMenuItemRootProps &
+  DropdownMenuItemContract;
 
-export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
-  /** The heading of the menu radio item group. */
-  heading?: string;
-}
+export type DropdownMenuRadioItemGroupProps = MenuRadioItemGroupProps;
 
 export type DropdownMenuRootProps = MenuRootProps;
 
@@ -63,31 +56,30 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps &
+  DropdownMenuItemRootContract;
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuRadioItemProps = MenuRadioItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuSubContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuSubContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuTriggerItemProps = MenuTriggerItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuShortcutProps = ComponentPropsWithRef<"span">;
 
-export interface DropdownMenuProps
-  extends DropdownMenuRootProps, DropdownMenuContract {}
+export type DropdownMenuProps = DropdownMenuRootProps & DropdownMenuContract;
 // #endregion
 
 // #region Parts
@@ -140,20 +132,8 @@ export function DropdownMenuContent({
   );
 }
 
-export function DropdownMenuItemGroup({
-  children,
-  heading,
-  ...rest
-}: DropdownMenuItemGroupProps) {
-  return (
-    <MenuPrimitive.ItemGroup {...rest}>
-      {!!heading && (
-        <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>
-      )}
-
-      {children}
-    </MenuPrimitive.ItemGroup>
-  );
+export function DropdownMenuItemGroup(props: DropdownMenuItemGroupProps) {
+  return <MenuPrimitive.ItemGroup {...props} />;
 }
 
 export function DropdownMenuSeparator({
@@ -256,20 +236,10 @@ export function DropdownMenuItemIndicator({
   );
 }
 
-export function DropdownMenuRadioItemGroup({
-  children,
-  heading,
-  ...rest
-}: DropdownMenuRadioItemGroupProps) {
-  return (
-    <MenuPrimitive.RadioItemGroup {...rest}>
-      {!!heading && (
-        <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>
-      )}
-
-      {children}
-    </MenuPrimitive.RadioItemGroup>
-  );
+export function DropdownMenuRadioItemGroup(
+  props: DropdownMenuRadioItemGroupProps,
+) {
+  return <MenuPrimitive.RadioItemGroup {...props} />;
 }
 
 export function DropdownMenuItemGroupLabel({

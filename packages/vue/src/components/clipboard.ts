@@ -1,67 +1,130 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue";
+import type { ClipboardRootProps as ClipboardRootPrimitiveProps } from "@ark-ui/vue";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
 import type {
   ClipboardContract,
   ClipboardRootContract,
 } from "@pisagor/contracts";
-import {
-  type ClipboardVariantProps,
-  clipboardRecipe,
-  formControlShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { clipboardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { ClassValue } from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
-type FormControlVariant = "primary" | "secondary";
+// #region Context
+const { Context, withContext } = createSlotRecipeContext({
+  name: "Clipboard",
+  recipe: clipboardRecipe,
+});
+// #endregion
 
 // #region Types
-type ClipboardValueSize = ClipboardVariantProps["valueSize"];
+type ClipboardRootProps = ClipboardRootPrimitiveProps & ClipboardRootContract;
 
 export interface ClipboardProps
-  extends ClipboardRootContract, ClipboardContract {
-  class?: unknown;
+  extends
+    Omit<ClipboardRootProps, "children" | "variant">,
+    Omit<ClipboardRootContract, "variant">,
+    ClipboardContract {
   copiedIcon?: VNodeChild;
   copyIcon?: VNodeChild;
-  /**
-   * The initial value to be copied to the clipboard when rendered. Use when you
-   * don't need to control the value of the clipboard.
-   */
-  defaultValue?: string;
-  /** The ids of the elements in the clipboard. Useful for composition. */
-  ids?: Partial<{ input: string; label: string; root: string }>;
-  label?: string;
+  label?: VNodeChild;
   /** Extra props forwarded to the label element */
   labelProps?: Record<string, unknown>;
-  /** The function to be called when the value is copied to the clipboard */
-  onStatusChange?: (details: { copied: boolean }) => void;
-  /** The function to be called when the value changes */
-  onValueChange?: (details: { value: string }) => void;
-  /**
-   * The timeout for the copy operation
-   *
-   * @defaultValue 3000
-   */
-  timeout?: number;
-  /**
-   * Specifies the localized strings that identifies the accessibility elements
-   * and their states
-   */
-  translations?: { triggerLabel?: (copied: boolean) => string };
-  /** The controlled value of the clipboard. */
-  value?: string;
 }
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
-export const Clipboard = defineComponent({
+// #region Parts
+const Root = defineComponent({
   inheritAttrs: false,
-  name: "PisagorClipboard",
+  name: "Clipboard.Root",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    recipe: {
+      default: clipboardRecipe,
+      type: Function as PropType<typeof clipboardRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<ClipboardRootContract["size"]>,
+    },
+    surfaceVariant: {
+      default: undefined,
+      type: String as PropType<ClipboardRootContract["surfaceVariant"]>,
+    },
+    valueSize: {
+      default: undefined,
+      type: String as PropType<ClipboardRootContract["valueSize"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<ClipboardRootContract["variant"]>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const surfaceFromContext = useFormControlSurface();
+
+    return () => {
+      const resolved = {
+        size: props.size,
+        surfaceVariant: props.surfaceVariant ?? surfaceFromContext,
+        valueSize: props.valueSize ?? props.size,
+        variant: props.variant,
+      };
+      const recipeSlots = props.recipe(resolved);
+
+      return h(
+        Context,
+        { value: { slots: recipeSlots, variants: resolved as never } },
+        () =>
+          h(
+            ClipboardPrimitive.Root as ArkPart,
+            {
+              ...attrs,
+              class: props.class,
+            },
+            slots,
+          ),
+      );
+    };
+  },
+});
+
+const Control = withContext(ClipboardPrimitive.Control as ArkPart, {
+  name: "Control",
+});
+
+const Input = withContext(ClipboardPrimitive.Input as ArkPart, {
+  name: "Input",
+});
+
+const ValueText = withContext(ClipboardPrimitive.ValueText as ArkPart, {
+  name: "ValueText",
+});
+
+const Indicator = withContext(ClipboardPrimitive.Indicator as ArkPart, {
+  name: "Indicator",
+});
+
+const Field = withContext("div", {
+  name: "Field",
+});
+
+const Label = withContext(ClipboardPrimitive.Label, {
+  name: "Label",
+});
+// #endregion
+
+// #region Closed
+const ClipboardShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "Clipboard",
   props: {
     buttonAriaLabel: { default: undefined, type: String },
     buttonSize: {
@@ -82,7 +145,7 @@ export const Clipboard = defineComponent({
     },
     controlVariant: {
       default: undefined,
-      type: String as PropType<FormControlVariant>,
+      type: String as PropType<ClipboardRootContract["variant"]>,
     },
     copiedIcon: {
       default: undefined,
@@ -92,162 +155,114 @@ export const Clipboard = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<VNodeChild>,
     },
-    defaultValue: { default: undefined, type: String },
-    ids: {
+    label: {
       default: undefined,
-      type: Object as PropType<ClipboardProps["ids"]>,
+      type: [String, Object, Array] as PropType<VNodeChild>,
     },
-    label: { default: undefined, type: String },
     labelProps: {
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    onStatusChange: {
-      default: undefined,
-      type: Function as PropType<ClipboardProps["onStatusChange"]>,
-    },
-    onValueChange: {
-      default: undefined,
-      type: Function as PropType<ClipboardProps["onValueChange"]>,
-    },
     recipe: {
-      default: clipboardRecipe,
+      default: undefined,
       type: Function as PropType<typeof clipboardRecipe>,
     },
     size: {
       default: "md",
       type: String as PropType<"sm" | "md" | "lg">,
     },
-    timeout: { default: undefined, type: Number },
-    translations: {
-      default: undefined,
-      type: Object as PropType<ClipboardProps["translations"]>,
-    },
-    value: { default: undefined, type: String },
     valueSize: {
       default: undefined,
-      type: String as PropType<ClipboardValueSize>,
+      type: String as PropType<ClipboardRootContract["valueSize"]>,
     },
     variant: {
       default: "input",
-      type: String as PropType<ClipboardProps["variant"]>,
+      type: String as PropType<ClipboardContract["variant"]>,
     },
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const resolved = {
-        surfaceVariant,
-        variant: props.controlVariant ?? ("primary" as FormControlVariant),
-      };
-      const shellArgs = {
-        surfaceVariant: resolved.surfaceVariant,
-        variant: resolved.variant,
-      };
-      const controlProps = { "data-variant": resolved.variant };
-      const shellClassName = formControlShellRecipe({
-        size: props.size,
-        ...shellArgs,
-      });
-      const slots_ = props.recipe({
-        size: props.size,
-        valueSize: props.valueSize ?? props.size,
-      });
-
+      const buttonAriaLabel = m("clipboard.copy", props.buttonAriaLabel);
+      const buttonSize =
+        props.buttonSize ??
+        (`icon-${props.size ?? "md"}` as ButtonProps["size"]);
       const copiedIcon = props.copiedIcon ?? h(PhCheck);
       const copyIcon = props.copyIcon ?? h(PhClipboard);
-
-      const root = (children: () => VNodeChild) =>
-        h(
-          ClipboardPrimitive.Root as ArkPart,
-          {
-            ...attrs,
-            class: props.class,
-            defaultValue: props.defaultValue,
-            ids: props.ids,
-            modelValue: props.value,
-            onStatusChange: props.onStatusChange,
-            onValueChange: props.onValueChange,
-            timeout: props.timeout,
-            translations: props.translations,
-          },
-          children,
-        );
+      const displayVariant = props.variant ?? "input";
 
       const control = () =>
-        h(
-          ClipboardPrimitive.Control as ArkPart,
-          {
-            class: slots_.control({ class: props.classNames?.control }),
-          },
-          () => [
-            props.variant === "input"
-              ? h(ClipboardPrimitive.Input as ArkPart, {
-                  ...controlProps,
-                  class: cn(
-                    shellClassName,
-                    slots_.input({ class: props.classNames?.input }),
-                  ),
-                  readOnly: true,
-                })
-              : null,
+        h(Control, { class: props.classNames?.control }, () => [
+          displayVariant === "input"
+            ? h(Input, {
+                class: props.classNames?.input,
+                readOnly: true,
+              })
+            : null,
 
-            props.variant === "value"
-              ? h(ClipboardPrimitive.ValueText as ArkPart, {
-                  ...controlProps,
-                  class: cn(
-                    shellClassName,
-                    slots_.value({ class: props.classNames?.value }),
-                  ),
-                })
-              : null,
+          displayVariant === "value"
+            ? h(ValueText, { class: props.classNames?.valueText })
+            : null,
 
-            h(ClipboardPrimitive.Trigger as ArkPart, { asChild: true }, () =>
-              h(
-                Button,
-                {
-                  "aria-label": m("clipboard.copy", props.buttonAriaLabel),
-                  size:
-                    props.buttonSize ??
-                    (`icon-${props.size}` as ButtonProps["size"]),
-                  type: "button",
-                  variant: props.buttonVariant,
-                },
-                () =>
-                  h(
-                    ClipboardPrimitive.Indicator as ArkPart,
-                    {
-                      class: slots_.indicator({
-                        class: props.classNames?.indicator,
-                      }),
-                    },
-                    { copied: () => copiedIcon, default: () => copyIcon },
-                  ),
-              ),
+          h(ClipboardPrimitive.Trigger as ArkPart, { asChild: true }, () =>
+            h(
+              Button,
+              {
+                "aria-label": buttonAriaLabel,
+                size: buttonSize,
+                type: "button",
+                variant: props.buttonVariant,
+              },
+              () =>
+                h(
+                  Indicator,
+                  { class: props.classNames?.indicator },
+                  {
+                    copied: () => copiedIcon,
+                    default: () => copyIcon,
+                  },
+                ),
             ),
-          ],
-        );
-
-      if (!props.label) {
-        return root(control);
-      }
-
-      return root(() =>
-        h("div", { class: slots_.field({ class: props.classNames?.field }) }, [
-          h(
-            ClipboardPrimitive.Label as ArkPart,
-            {
-              ...props.labelProps,
-              class: slots_.label({ class: props.classNames?.label }),
-            },
-            () => props.label,
           ),
-          control(),
-        ]),
+        ]);
+
+      return h(
+        Root,
+        {
+          ...attrs,
+          class: props.class,
+          recipe: props.recipe,
+          size: props.size,
+          valueSize: props.valueSize ?? props.size,
+          variant: props.controlVariant,
+        },
+        () =>
+          props.label
+            ? h(Field, { class: props.classNames?.field }, () => [
+                h(
+                  Label,
+                  {
+                    ...props.labelProps,
+                    class: props.classNames?.label,
+                  },
+                  () => props.label,
+                ),
+                control(),
+              ])
+            : control(),
       );
     };
   },
 });
 // #endregion
+
+export const Clipboard = Object.assign(ClipboardShorthand, {
+  Control,
+  Field,
+  Indicator,
+  Input,
+  Label,
+  Root,
+  ValueText,
+});

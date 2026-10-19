@@ -4,7 +4,7 @@
 
   let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
   const part = withBottomNavigationItemContext(() => rest, {
-    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+    defaultProps: { "aria-hidden": true },
     name: "ItemIcon",
     slot: "icon",
   });

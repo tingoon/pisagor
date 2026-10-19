@@ -12,7 +12,7 @@ import type {
   SegmentGroupContract,
 } from "@pisagor/contracts";
 import { segmentGroupRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -55,10 +55,9 @@ export interface SegmentGroupItemProps
 
 const SegmentGroupRootBase: Component<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
-> = withProvider(SegmentGroupPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+> = withProvider<
+  ComponentProps<typeof SegmentGroupPrimitive.Root> & SegmentGroupRootContract
+>(SegmentGroupPrimitive.Root, { name: "Root" });
 
 export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -104,17 +103,15 @@ export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
   );
 }
 
-const SegmentGroupItemText: Component<SegmentGroupItemTextProps> = withContext(
-  SegmentGroupPrimitive.ItemText,
-  {
-    defaultProps: { "data-part": "item-text" },
-    name: "ItemText",
-    slot: "itemText",
-  },
-);
+const SegmentGroupItemText: Component<SegmentGroupItemTextProps> = withContext<
+  ComponentProps<typeof SegmentGroupPrimitive.ItemText>
+>(SegmentGroupPrimitive.ItemText, { name: "ItemText" });
 
 export const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
-  withContext(SegmentGroupPrimitive.Indicator, { name: "Indicator" });
+  withContext<ComponentProps<typeof SegmentGroupPrimitive.Indicator>>(
+    SegmentGroupPrimitive.Indicator,
+    { name: "Indicator" },
+  );
 
 export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);

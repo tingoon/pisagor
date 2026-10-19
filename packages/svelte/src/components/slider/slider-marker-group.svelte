@@ -6,10 +6,7 @@
   import { withContext } from "./slider.context";
 
   let { children, ...rest }: SliderMarkerGroupProps = $props();
-  const part = withContext(() => rest, {
-    name: "MarkerGroup",
-    slot: "markerGroup",
-  });
+  const part = withContext(() => rest, { name: "MarkerGroup" });
 </script>
 
 <SliderPrimitive.MarkerGroup {...part.props}>

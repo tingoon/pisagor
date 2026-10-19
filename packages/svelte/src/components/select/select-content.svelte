@@ -4,21 +4,15 @@
     Select as SelectPrimitive,
     type SelectContentProps,
   } from "@ark-ui/svelte";
-  import { selectRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useSelectRoot } from "./select.context";
+  import { withContext } from "./select.context";
 
-  let { class: className, children, ...rest }: SelectContentProps = $props();
-  const ctx = useSelectRoot();
-  const slots = $derived(ctx?.slots ?? selectRecipe());
+  let { children, ...rest }: SelectContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
 <Portal>
   <SelectPrimitive.Positioner>
-    <SelectPrimitive.Content
-      {...rest}
-      class={slots.content({ class: cn(className) })}
-    >
+    <SelectPrimitive.Content {...part.props}>
       {@render children?.()}
     </SelectPrimitive.Content>
   </SelectPrimitive.Positioner>

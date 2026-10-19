@@ -91,18 +91,14 @@ const rootStyle = indeterminate
       .join(";");
 
 const { slots } = useStyles();
-const root = withProvider(rest, { name: "Root", slot: "base" });
+const root = withProvider(rest, { name: "Root" });
 const valueWrapper = withContext(
   { class: classNames?.valueWrapper },
-  {
-    defaultProps: { "data-part": "value-wrapper" },
-    name: "ValueWrapper",
-    slot: "valueWrapper",
-  },
+  { name: "ValueWrapper" },
 );
 const valuePart = withContext(
-  { "aria-live": "polite" as const, class: classNames?.value },
-  { name: "Value" },
+  { "aria-live": "polite" as const, class: classNames?.valueText },
+  { name: "ValueText" },
 );
 ---
 

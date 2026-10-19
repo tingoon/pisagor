@@ -19,6 +19,18 @@ export const textareaProps: PropRow[] = [
     description: "Size scale.",
   },
   {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "TextareaRecipeFn | undefined",
     defaultValue: "textareaRecipe",

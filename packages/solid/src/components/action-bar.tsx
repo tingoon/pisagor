@@ -335,7 +335,9 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
   );
 }
 
-export const ActionBarBody: Component<ActionBarBodyProps> = withContext("div", {
+export const ActionBarBody: Component<ActionBarBodyProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Body",
 });
 

@@ -73,6 +73,14 @@ export const Default = meta.story({
   render: exampleRender(Examples.Default),
 });
 
+export const OrientationHorizontal = meta.story({
+  render: exampleRender(Examples.OrientationHorizontal),
+});
+
+export const OrientationVertical = meta.story({
+  render: exampleRender(Examples.OrientationVertical),
+});
+
 export const Multiple = meta.story({
   render: exampleRender(Examples.Multiple),
 });
@@ -93,18 +101,10 @@ export const Compound = meta.story({
   render: exampleRender(Examples.Compound),
 });
 
-export const WithCard = meta.story({
-  render: exampleRender(Examples.WithCard),
-});
-
 export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
-});
-
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
 });

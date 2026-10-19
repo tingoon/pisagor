@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
@@ -55,7 +55,7 @@ export function ItemMedia({
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & ItemVariantProps) {
+}: ComponentProps<"div"> & ItemVariantProps) {
   const { slots } = useStyles();
 
   return (
@@ -71,34 +71,28 @@ export function ItemMedia({
   );
 }
 
-export const ItemContent = withContext("div", {
+export const ItemContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
-  slot: "content",
 });
 
-export const ItemTitle = withContext("div", {
+export const ItemTitle = withContext<ComponentProps<"div">>("div", {
   name: "Title",
-  slot: "title",
 });
 
-export const ItemDescription = withContext("p", {
+export const ItemDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
-  slot: "description",
 });
 
-export const ItemActions = withContext("div", {
+export const ItemActions = withContext<ComponentProps<"div">>("div", {
   name: "Actions",
-  slot: "actions",
 });
 
-export const ItemHeader = withContext("div", {
+export const ItemHeader = withContext<ComponentProps<"div">>("div", {
   name: "Header",
-  slot: "header",
 });
 
-export const ItemFooter = withContext("div", {
+export const ItemFooter = withContext<ComponentProps<"div">>("div", {
   name: "Footer",
-  slot: "footer",
 });
 // #endregion
 

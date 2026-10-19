@@ -84,7 +84,7 @@ Svelte cannot use HOCs that return components; call the helpers **once in the pa
 </div>
 ```
 
-- PascalCase `name`; part `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`); camelCase keys pass `slot` + kebab `data-part` via `defaultProps`.
+- Only `name` is required; `slot` / `part` derive from `name` when omitted (`ClearTrigger` → slot `clearTrigger` + part `clear-trigger`; `Root` → `base` / `root`). Pass `slot` / `part` only when they differ from those defaults.
 - Emitted `data-part` / `data-scope` and variant `data-*` must match React.
 - Prefer native hosts (`<div>` / `"div"`); `<Ark as>` only when polymorphism is required; Ark machine primitives for headless parts.
 - Hand-written parts: `Context.set({ get slots() { return slots }, get variants() { return variants } })` / `useStyles()` — read getters in markup (do not destructure once).
