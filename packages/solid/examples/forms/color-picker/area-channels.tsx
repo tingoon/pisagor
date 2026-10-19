@@ -2,10 +2,11 @@ import { ColorPicker } from "@pisagor/solid";
 
 export function AreaChannels() {
   return (
-    <ColorPicker>
+    <ColorPicker.Root>
       <ColorPicker.Area xChannel="hue" yChannel="alpha">
+        <ColorPicker.AreaBackground />
         <ColorPicker.AreaThumb />
       </ColorPicker.Area>
-    </ColorPicker>
+    </ColorPicker.Root>
   );
 }

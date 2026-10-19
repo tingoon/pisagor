@@ -6,11 +6,11 @@ export function InputControlled() {
 
   return (
     <div class="flex flex-col gap-2">
-      <ColorPicker onValueChange={setValue} value={value()}>
+      <ColorPicker.Root onValueChange={setValue} value={value()}>
         <ColorPicker.Control>
           <ColorPicker.Input asChild={(props) => <Input {...props()} />} />
         </ColorPicker.Control>
-      </ColorPicker>
+      </ColorPicker.Root>
       <p class="text-muted-foreground text-center text-sm">
         {parseColor(value()).toString("hex")}
       </p>

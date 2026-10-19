@@ -1,8 +1,9 @@
+import { Portal } from "solid-js/web";
 import { Button, ColorPicker } from "@pisagor/solid";
 
 export function PopoverDisabled() {
   return (
-    <ColorPicker defaultValue="#eb5e41" disabled>
+    <ColorPicker.Root defaultValue="#eb5e41" disabled>
       <ColorPicker.Control>
         <ColorPicker.Trigger
           asChild={(props) => (
@@ -13,9 +14,15 @@ export function PopoverDisabled() {
           )}
         />
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area />
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+            </ColorPicker.Area>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }
