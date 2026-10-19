@@ -1,6 +1,10 @@
+import {
+  ArrowSquareOutIcon,
+  CaretRightIcon,
+  LinkIcon,
+} from "@squidlab/phosphor-solid/icons";
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
-import { ArrowSquareOutIcon, LinkIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Links() {
   interface TreeNodeWithLinks extends TreeNodeType<unknown> {
@@ -51,10 +55,14 @@ export function Links() {
       <TreeView.NodeProvider indexPath={indexPath} node={node}>
         {node.children ? (
           <TreeView.Branch>
-            <TreeView.BranchControl icon={null}>
-              {node.name}
+            <TreeView.BranchControl>
+              <TreeView.BranchIndicator>
+                <CaretRightIcon />
+              </TreeView.BranchIndicator>
+              <TreeView.BranchText>{node.name}</TreeView.BranchText>
             </TreeView.BranchControl>
             <TreeView.BranchContent>
+              <TreeView.BranchIndentGuide />
               {node.children.map((child, index) => (
                 <TreeNode indexPath={[...indexPath, index]} node={child} />
               ))}
@@ -73,7 +81,8 @@ export function Links() {
                 }
                 target={node.href?.startsWith("http") ? "_blank" : undefined}
               >
-                <TreeView.ItemText icon={LinkIcon}>
+                <LinkIcon />
+                <TreeView.ItemText>
                   {node.name}
                   {node.href?.startsWith("http") && <ArrowSquareOutIcon />}
                 </TreeView.ItemText>
@@ -87,14 +96,14 @@ export function Links() {
 
   return (
     <div>
-      <TreeView collection={collection}>
+      <TreeView.Root collection={collection}>
         <TreeView.Label>Docs</TreeView.Label>
         <TreeView.Tree>
           {collection.rootNode.children?.map((node, index) => (
             <TreeNode indexPath={[index]} node={node} />
           ))}
         </TreeView.Tree>
-      </TreeView>
+      </TreeView.Root>
     </div>
   );
 }

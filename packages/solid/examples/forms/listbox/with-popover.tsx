@@ -1,6 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Button, Input, Listbox, Popover } from "@pisagor/solid";
-import { CaretUpDownIcon } from "@squidlab/phosphor-solid/icons";
+import { CaretUpDownIcon, CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal, For } from "solid-js";
 
 export function WithPopover() {
@@ -52,7 +52,9 @@ export function WithPopover() {
               {(item) => (
                 <Listbox.Item item={item}>
                   <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
+                  <Listbox.ItemIndicator>
+                    <CheckIcon />
+                  </Listbox.ItemIndicator>
                 </Listbox.Item>
               )}
             </For>

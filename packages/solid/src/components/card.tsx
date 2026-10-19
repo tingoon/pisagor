@@ -1,12 +1,8 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type {
-  CardHeaderContract,
-  CardRootContract,
-  CardContract,
-} from "@pisagor/contracts";
+import type { CardContract, CardRootContract } from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
-import { Show, splitProps } from "solid-js";
+import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -21,11 +17,7 @@ export type CardRootProps = HTMLArkProps<"div"> & CardRootContract;
 
 export type CardMediaProps = ComponentProps<"div"> & CardVariantProps;
 
-export interface CardHeaderProps
-  extends Omit<ComponentProps<"div">, "title">, CardHeaderContract {
-  description?: JSX.Element;
-  title?: JSX.Element;
-}
+export type CardHeaderProps = HTMLArkProps<"div">;
 
 export type CardTitleProps = HTMLArkProps<"h3">;
 export type CardDescriptionProps = ComponentProps<"p">;
@@ -76,32 +68,9 @@ export const CardFooter = withContext<CardFooterProps>("div", {
   name: "Footer",
 });
 
-export function CardHeader(props: CardHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "description",
-    "title",
-    "class",
-  ]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.header({ class: local.class })}
-      data-part="header"
-      data-scope="card"
-    >
-      <Show when={local.title != null}>
-        <CardTitle>{local.title}</CardTitle>
-      </Show>
-      <Show when={local.description != null}>
-        <CardDescription>{local.description}</CardDescription>
-      </Show>
-      {local.children}
-    </div>
-  );
-}
+export const CardHeader = withContext<CardHeaderProps>(ark.div, {
+  name: "Header",
+});
 // #endregion
 
 export const Card = Object.assign(CardRoot, {

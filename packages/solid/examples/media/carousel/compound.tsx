@@ -1,4 +1,5 @@
-import { Carousel } from "@pisagor/solid";
+import { Button, Carousel } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { numberedSlides } from "./helpers";
 
 export function Compound() {
@@ -7,8 +8,32 @@ export function Compound() {
   return (
     <Carousel.Root slideCount={slides.length}>
       <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.PrevTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretLeftIcon aria-hidden />
+            </Button>
+          )}
+        />
+        <Carousel.NextTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretRightIcon aria-hidden />
+            </Button>
+          )}
+        />
       </Carousel.Control>
       <Carousel.ItemGroup>
         {slides.map((slide, index) => (

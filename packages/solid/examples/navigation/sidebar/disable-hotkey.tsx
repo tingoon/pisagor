@@ -1,4 +1,5 @@
 import { Sidebar } from "@pisagor/solid";
+import { SidebarSimpleIcon } from "@squidlab/phosphor-solid/icons";
 
 export function DisableHotkey() {
   return (
@@ -24,7 +25,9 @@ export function DisableHotkey() {
         </Sidebar.Content>
       </Sidebar>
       <Sidebar.Inset class="p-4">
-        <Sidebar.Trigger />
+        <Sidebar.Trigger>
+          <SidebarSimpleIcon class="rtl:rotate-180" />
+        </Sidebar.Trigger>
       </Sidebar.Inset>
     </Sidebar.Provider>
   );

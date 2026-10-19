@@ -1,5 +1,3 @@
-import { Card, Marquee } from "@pisagor/solid";
-import type { IconProps } from "@squidlab/phosphor-solid";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -10,6 +8,8 @@ import {
   SparkleIcon,
   StackIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Card, Marquee } from "@pisagor/solid";
+import type { IconProps } from "@squidlab/phosphor-solid";
 import type { Component } from "solid-js";
 
 const marqueeIcons: Component<IconProps>[] = [
@@ -23,20 +23,18 @@ const marqueeIcons: Component<IconProps>[] = [
   AtomIcon,
 ];
 
+const items = marqueeIcons.map((IconComponent) => (
+  <Card class="[--space:--spacing(8)]">
+    <Card.Content>
+      <IconComponent class="size-10" />
+    </Card.Content>
+  </Card>
+));
+
 export function OrientationVertical() {
   return (
-    <Marquee.Root>
-      <Marquee.Content>
-        {marqueeIcons.map((IconComponent) => (
-          <Marquee.Item>
-            <Card>
-              <Card.Content class="flex justify-center">
-                <IconComponent class="size-10" />
-              </Card.Content>
-            </Card>
-          </Marquee.Item>
-        ))}
-      </Marquee.Content>
-    </Marquee.Root>
+    <div class="h-80">
+      <Marquee items={items} orientation="vertical" />
+    </div>
   );
 }

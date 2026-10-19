@@ -1,4 +1,3 @@
-import type { TreeNodeType } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
@@ -30,36 +29,6 @@ export function CheckboxTree() {
     },
   });
 
-  const TreeNode = ({
-    indexPath,
-    node,
-  }: {
-    node: TreeNodeType;
-    indexPath: number[];
-  }) => {
-    return (
-      <TreeView.NodeProvider indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>
-              <TreeView.NodeCheckbox />
-              {node.name}
-            </TreeView.BranchControl>
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} node={child} />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.NodeCheckbox />
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
   const [checkedNodes, setCheckedNodes] = createSignal<string[]>(["readme.md"]);
 
   return (
@@ -69,16 +38,11 @@ export function CheckboxTree() {
           checkedValue={checkedNodes()}
           collection={collection}
           onCheckedChange={({ checkedValue }) => setCheckedNodes(checkedValue)}
-        >
-          <TreeView.Tree>
-            {collection.rootNode.children?.map((node, index) => (
-              <TreeNode indexPath={[index]} node={node} />
-            ))}
-          </TreeView.Tree>
-        </TreeView>
+          checkbox
+        />
       </div>
       <p class="text-muted-foreground text-sm whitespace-pre-wrap">
-        {JSON.stringify(checkedNodes, null, 2)}
+        {JSON.stringify(checkedNodes(), null, 2)}
       </p>
     </div>
   );

@@ -1,6 +1,5 @@
-import type { NodeProviderProps } from "@pisagor/solid";
-import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { StarIcon } from "@squidlab/phosphor-solid/icons";
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 
 export function CustomIconsItem() {
   const collection = createTreeCollection({
@@ -30,37 +29,9 @@ export function CustomIconsItem() {
     },
   });
 
-  const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
-    return (
-      <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} node={child} />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.ItemText icon={StarIcon}>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
-
   return (
     <div>
-      <TreeView collection={collection}>
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} node={node} />
-          ))}
-        </TreeView.Tree>
-      </TreeView>
+      <TreeView collection={collection} itemIcon={StarIcon} />
     </div>
   );
 }

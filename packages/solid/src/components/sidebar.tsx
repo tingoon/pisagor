@@ -20,7 +20,7 @@ import {
   splitProps,
 } from "solid-js";
 import { useIsMobile } from "../hooks";
-import { SidebarSimpleIcon, XIcon, createSlotRecipeContext } from "../internal";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
@@ -32,7 +32,11 @@ import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
 // #region Context
-const { Context: SidebarStylesContext, useStyles } = createSlotRecipeContext({
+const {
+  Context: SidebarStylesContext,
+  useStyles,
+  withContext,
+} = createSlotRecipeContext({
   name: "Sidebar",
   recipe: sidebarRecipe,
 });
@@ -376,13 +380,21 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
   );
 }
 
+/**
+ * Toggles the sidebar; localized default `aria-label`. Pass your own icon as
+ * children.
+ */
 export function SidebarTrigger(props: ButtonProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["onClick", "class"]);
   const styles = useStyles();
   const { toggleSidebar } = useSidebarState();
 
   return (
     <Button
+      aria-label={m("sidebar.toggle")}
+      size="icon-md"
+      variant="ghost"
       {...rest}
       class={styles.slots.trigger({ class: local.class })}
       data-part="trigger"
@@ -392,12 +404,7 @@ export function SidebarTrigger(props: ButtonProps): JSX.Element {
         if (typeof local.onClick === "function") local.onClick(event);
         toggleSidebar();
       }}
-      size="icon-md"
-      variant="ghost"
-    >
-      <SidebarSimpleIcon class={styles.slots.triggerIcon()} />
-      <span class={styles.slots.triggerLabel()}>Toggle sidebar</span>
-    </Button>
+    />
   );
 }
 
@@ -423,19 +430,9 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
   );
 }
 
-export function SidebarInset(props: SidebarInsetProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <main
-      {...rest}
-      class={styles.slots.inset({ class: local.class })}
-      data-part="inset"
-      data-scope="sidebar"
-    />
-  );
-}
+export const SidebarInset = withContext<SidebarInsetProps>(ark.main, {
+  name: "Inset",
+});
 
 export function SidebarInput(props: InputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "classNames"]);
@@ -451,35 +448,15 @@ export function SidebarInput(props: InputProps): JSX.Element {
   );
 }
 
-export function SidebarHeader(props: SidebarHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+export const SidebarHeader = withContext<SidebarHeaderProps>(ark.div, {
+  defaultProps: { "data-sidebar": "header" },
+  name: "Header",
+});
 
-  return (
-    <div
-      {...rest}
-      class={styles.slots.header({ class: local.class })}
-      data-part="header"
-      data-scope="sidebar"
-      data-sidebar="header"
-    />
-  );
-}
-
-export function SidebarFooter(props: SidebarFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="sidebar"
-      data-sidebar="footer"
-    />
-  );
-}
+export const SidebarFooter = withContext<SidebarFooterProps>(ark.div, {
+  defaultProps: { "data-sidebar": "footer" },
+  name: "Footer",
+});
 
 export function SidebarSeparator(props: SeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
@@ -516,35 +493,15 @@ export function SidebarContent(props: SidebarContentProps): JSX.Element {
   );
 }
 
-export function SidebarGroup(props: SidebarGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+export const SidebarGroup = withContext<SidebarGroupProps>(ark.div, {
+  defaultProps: { "data-sidebar": "group" },
+  name: "Group",
+});
 
-  return (
-    <div
-      {...rest}
-      class={styles.slots.group({ class: local.class })}
-      data-part="group"
-      data-scope="sidebar"
-      data-sidebar="group"
-    />
-  );
-}
-
-export function SidebarGroupLabel(props: SidebarGroupLabelProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.groupLabel({ class: local.class })}
-      data-part="group-label"
-      data-scope="sidebar"
-      data-sidebar="group-label"
-    />
-  );
-}
+export const SidebarGroupLabel = withContext<SidebarGroupLabelProps>(ark.div, {
+  defaultProps: { "data-sidebar": "group-label" },
+  name: "GroupLabel",
+});
 
 export function SidebarGroupAction(
   props: SidebarGroupActionProps,
@@ -573,52 +530,23 @@ export function SidebarGroupAction(
   );
 }
 
-export function SidebarGroupContent(
-  props: SidebarGroupContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+export const SidebarGroupContent = withContext<SidebarGroupContentProps>(
+  ark.div,
+  {
+    defaultProps: { "data-sidebar": "group-content" },
+    name: "GroupContent",
+  },
+);
 
-  return (
-    <div
-      {...rest}
-      class={styles.slots.groupContent({ class: local.class })}
-      data-part="group-content"
-      data-scope="sidebar"
-      data-sidebar="group-content"
-    />
-  );
-}
+export const SidebarMenu = withContext<SidebarMenuProps>(ark.ul, {
+  defaultProps: { "data-sidebar": "menu" },
+  name: "Menu",
+});
 
-export function SidebarMenu(props: SidebarMenuProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ul
-      {...rest}
-      class={styles.slots.menu({ class: local.class })}
-      data-part="menu"
-      data-scope="sidebar"
-      data-sidebar="menu"
-    />
-  );
-}
-
-export function SidebarMenuItem(props: SidebarMenuItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <li
-      {...rest}
-      class={styles.slots.menuItem({ class: local.class })}
-      data-part="menu-item"
-      data-scope="sidebar"
-      data-sidebar="menu-item"
-    />
-  );
-}
+export const SidebarMenuItem = withContext<SidebarMenuItemProps>(ark.li, {
+  defaultProps: { "data-sidebar": "menu-item" },
+  name: "MenuItem",
+});
 
 export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -708,20 +636,10 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
   );
 }
 
-export function SidebarMenuBadge(props: SidebarMenuBadgeProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.menuBadge({ class: local.class })}
-      data-part="menu-badge"
-      data-scope="sidebar"
-      data-sidebar="menu-badge"
-    />
-  );
-}
+export const SidebarMenuBadge = withContext<SidebarMenuBadgeProps>(ark.div, {
+  defaultProps: { "data-sidebar": "menu-badge" },
+  name: "MenuBadge",
+});
 
 export function SidebarMenuSkeleton(
   props: SidebarMenuSkeletonProps,
@@ -752,37 +670,15 @@ export function SidebarMenuSkeleton(
   );
 }
 
-export function SidebarMenuSub(props: SidebarMenuSubProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+export const SidebarMenuSub = withContext<SidebarMenuSubProps>(ark.ul, {
+  defaultProps: { "data-sidebar": "menu-sub" },
+  name: "MenuSub",
+});
 
-  return (
-    <ul
-      {...rest}
-      class={styles.slots.menuSub({ class: local.class })}
-      data-part="menu-sub"
-      data-scope="sidebar"
-      data-sidebar="menu-sub"
-    />
-  );
-}
-
-export function SidebarMenuSubItem(
-  props: SidebarMenuSubItemProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <li
-      {...rest}
-      class={styles.slots.menuSubItem({ class: local.class })}
-      data-part="menu-sub-item"
-      data-scope="sidebar"
-      data-sidebar="menu-sub-item"
-    />
-  );
-}
+export const SidebarMenuSubItem = withContext<SidebarMenuSubItemProps>(ark.li, {
+  defaultProps: { "data-sidebar": "menu-sub-item" },
+  name: "MenuSubItem",
+});
 
 export function SidebarMenuSubButton(
   props: SidebarMenuSubButtonProps,

@@ -1,3 +1,4 @@
+import { CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { Breadcrumb } from "@pisagor/solid";
 
 export function WithLink() {
@@ -13,7 +14,9 @@ export function WithLink() {
             )}
           />
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Link
             asChild={(props) => (
@@ -23,7 +26,9 @@ export function WithLink() {
             )}
           />
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
         </Breadcrumb.Item>

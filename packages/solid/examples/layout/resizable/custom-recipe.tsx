@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@squidlab/phosphor-solid/icons";
 import { resizableRecipe } from "@pisagor/recipes";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
@@ -36,7 +37,11 @@ export function CustomRecipe() {
         <Resizable.Panel class={panelClass()} id="1">
           One
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="1:2" withHandle />
+        <Resizable.ResizeTrigger id="1:2">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon class="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel class="h-full min-h-0 min-w-0" id="2">
           <Resizable
@@ -51,7 +56,11 @@ export function CustomRecipe() {
             <Resizable.Panel class={panelClass("vertical")} id="3">
               Two
             </Resizable.Panel>
-            <Resizable.ResizeTrigger id="3:4" withHandle />
+            <Resizable.ResizeTrigger id="3:4">
+              <Resizable.ResizeTriggerHandle>
+                <DotsSixVerticalIcon class="size-2.5" />
+              </Resizable.ResizeTriggerHandle>
+            </Resizable.ResizeTrigger>
 
             <Resizable.Panel class={panelClass("vertical")} id="4">
               Three

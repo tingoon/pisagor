@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@squidlab/phosphor-solid/icons";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -35,7 +36,11 @@ export function OrientationVertical() {
         <Resizable.Panel class={panelClassName("vertical")} id="1">
           Top
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="1:2" withHandle />
+        <Resizable.ResizeTrigger id="1:2">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon class="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel class={panelClassName("vertical")} id="2">
           Bottom

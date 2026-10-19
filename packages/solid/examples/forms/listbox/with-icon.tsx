@@ -1,3 +1,4 @@
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
 
@@ -19,7 +20,9 @@ export function WithIcon() {
               <Listbox.Item item={item}>
                 {item.icon}
                 <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             ))}
           </Listbox.Content>

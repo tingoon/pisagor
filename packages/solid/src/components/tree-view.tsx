@@ -1,26 +1,31 @@
 import {
   TreeView as TreeViewPrimitive,
   createTreeCollection as arkCreateTreeCollection,
+  useTreeViewNodeContext,
 } from "@ark-ui/solid";
 import type {
-  TreeCollection as arkTreeCollection,
+  TreeCollection as ArkTreeCollection,
   TreeViewBranchContentProps,
-  TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
+  TreeViewBranchControlProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
   TreeViewBranchProps as TreeViewBranchPrimitiveProps,
   TreeViewBranchTextProps,
+  TreeViewBranchTriggerProps,
   TreeViewItemProps as TreeViewItemPrimitiveProps,
-  TreeViewItemTextProps as TreeViewItemTextPrimitiveProps,
+  TreeViewItemTextProps,
   TreeViewLabelProps,
+  TreeViewNodeCheckboxIndicatorProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeProviderProps,
   TreeViewNodeRenameInputProps,
-  TreeViewRootComponentProps,
+  TreeViewRootComponent,
+  TreeViewRootProps as TreeViewRootPrimitiveProps,
   TreeViewTreeProps,
 } from "@ark-ui/solid";
 import type {
   TreeViewBranchRootContract,
+  TreeViewContract,
   TreeViewItemRootContract,
   TreeViewRootContract,
 } from "@pisagor/contracts";
@@ -31,8 +36,9 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, Show, splitProps, useContext } from "solid-js";
+import type { Component, JSX } from "solid-js";
+import { For, Show, splitProps, useContext } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import {
   CaretRightIcon,
   CheckIcon,
@@ -42,36 +48,35 @@ import {
   MinusIcon,
   createSlotRecipeContext,
 } from "../internal";
-import { createContext } from "../utils";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TreeViewStylesContext, useStyles: useTreeView } =
-  createSlotRecipeContext({ name: "TreeView", recipe: treeViewRecipe });
-
-export interface TreeViewContextProps {
-  fileIcons?: Record<string, Component | null>;
-}
-
-const { TreeViewFileIconsContext, useTreeViewFileIcons } =
-  createContext("TreeViewFileIcons")<TreeViewContextProps>();
-
-const { Context: TreeViewBranchStylesContext, useStyles: useTreeViewBranch } =
-  createSlotRecipeContext({ name: "TreeView", recipe: treeViewBranchRecipe });
-
-const { Context: TreeViewItemStylesContext } = createSlotRecipeContext({
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
   name: "TreeView",
-  recipe: treeViewItemRecipe,
+  recipe: treeViewRecipe,
 });
 
-/** Item parts may render outside Item, so fall back to the default recipe. */
-function useTreeViewItemSlots() {
-  const styles = useContext(TreeViewItemStylesContext);
+const { withContext: withBranchContext, withProvider: withBranchProvider } =
+  createSlotRecipeContext({
+    name: "TreeView",
+    recipe: treeViewBranchRecipe,
+  });
 
-  return () => styles?.slots ?? treeViewItemRecipe();
+const { Context: TreeViewItemStylesContext, withProvider: withItemProvider } =
+  createSlotRecipeContext({
+    name: "TreeView",
+    recipe: treeViewItemRecipe,
+  });
+
+/** Item styles when inside `Item`, default item styles otherwise (branches). */
+function useItemSlots() {
+  const item = useContext(TreeViewItemStylesContext);
+
+  return () => item?.slots ?? treeViewItemRecipe();
 }
 // #endregion
 
+// #region Types
 export interface TreeNodeType<T = unknown> {
   children?: TreeNodeType<T>[] | undefined;
   expandedIcon?: Component | null;
@@ -80,11 +85,43 @@ export interface TreeNodeType<T = unknown> {
   name: string;
 }
 
-export type TreeCollection = arkTreeCollection;
+export type TreeCollection = ArkTreeCollection;
 
-export type TreeViewProps = TreeViewRootComponentProps &
-  TreeViewContextProps &
-  TreeViewRootContract;
+export type TreeViewRootProps<T extends TreeNodeType = TreeNodeType> =
+  TreeViewRootPrimitiveProps<T> & TreeViewRootContract;
+
+export interface TreeViewProps<T extends TreeNodeType = TreeNodeType>
+  extends Omit<TreeViewRootProps<T>, "children">, TreeViewContract {
+  /**
+   * Default folder icon (`null` hides it). A node's own `icon` wins.
+   *
+   * @defaultValue FolderIcon
+   */
+  branchIcon?: Component | null;
+  /**
+   * Default open-folder icon (`null` hides it). A node's own `expandedIcon`
+   * wins.
+   *
+   * @defaultValue FolderOpenIcon
+   */
+  branchExpandedIcon?: Component | null;
+  /**
+   * Whether to render a checkbox per node (use with `checkedValue`).
+   *
+   * @defaultValue false
+   */
+  checkbox?: boolean;
+  /** Icons by file extension (see `createFileIcons`). */
+  fileIcons?: Record<string, Component | null>;
+  /**
+   * Default file icon. A node's own `icon` or a `fileIcons` match wins.
+   *
+   * @defaultValue FileIcon
+   */
+  itemIcon?: Component;
+  /** Visible label rendered above the tree. */
+  label?: JSX.Element;
+}
 
 export type TreeViewBranchProps = TreeViewBranchPrimitiveProps &
   TreeViewBranchRootContract;
@@ -95,24 +132,23 @@ export type TreeViewItemProps = TreeViewItemPrimitiveProps &
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = TreeViewBranchControlPrimitiveProps &
-  Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
+export type {
+  TreeViewBranchContentProps,
+  TreeViewBranchControlProps,
+  TreeViewBranchIndentGuideProps,
+  TreeViewBranchIndicatorProps,
+  TreeViewBranchTextProps,
+  TreeViewBranchTriggerProps,
+  TreeViewItemTextProps,
+  TreeViewLabelProps,
+  TreeViewNodeCheckboxIndicatorProps,
+  TreeViewNodeCheckboxProps,
+  TreeViewNodeRenameInputProps,
+  TreeViewTreeProps,
+};
+// #endregion
 
-export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
-  expandedIcon?: Component | null;
-  icon?: Component | null;
-}
-
-export type TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps;
-
-export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
-  icon?: Component;
-}
-
-export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
-
-type TreeViewItemIconProps = ComponentProps<"span">;
-
+// #region Parts
 export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0],
 ) =>
@@ -122,291 +158,83 @@ export const createTreeCollection = <T extends TreeNodeType>(
     ...options,
   });
 
-export function TreeViewRoot(props: TreeViewProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["fileIcons", "recipe", "class"]);
+type CreateFileIconsArgs = Record<`.${string}`, Component | null>;
 
-  const slots = createMemo(() => (local.recipe ?? treeViewRecipe)());
+export const createFileIcons = (args: CreateFileIconsArgs) => ({ ...args });
 
-  return (
-    <TreeViewStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <TreeViewFileIconsContext
-        value={{
-          get fileIcons() {
-            return local.fileIcons;
-          },
-        }}
-      >
-        <TreeViewPrimitive.Root
-          {...rest}
-          class={slots().base({ class: local.class })}
-        />
-      </TreeViewFileIconsContext>
-    </TreeViewStylesContext>
-  );
-}
+const Root = withProvider<TreeViewRootProps>(TreeViewPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+}) as TreeViewRootComponent<TreeViewRootContract>;
 
-export function TreeViewLabel(props: TreeViewLabelProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useTreeView();
+const Label = withContext<TreeViewLabelProps>(TreeViewPrimitive.Label, {
+  name: "Label",
+});
 
-  return (
-    <TreeViewPrimitive.Label
-      {...rest}
-      class={styles.slots.label({ class: local.class })}
-    />
-  );
-}
+const Tree = withContext<TreeViewTreeProps>(TreeViewPrimitive.Tree, {
+  name: "Tree",
+});
 
-export function TreeViewTree(props: TreeViewTreeProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useTreeView();
-
-  return (
-    <TreeViewPrimitive.Tree
-      {...rest}
-      class={styles.slots.tree({ class: local.class })}
-    />
-  );
-}
-
-export function TreeViewNodeProvider<T extends TreeNodeType>(
+function NodeProvider<T extends TreeNodeType>(
   props: NodeProviderProps<T>,
 ): JSX.Element {
   return <TreeViewPrimitive.NodeProvider {...props} />;
 }
 
-export function TreeViewBranch(props: TreeViewBranchProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const slots = createMemo(() => (local.recipe ?? treeViewBranchRecipe)());
+const Branch = withBranchProvider<TreeViewBranchProps>(
+  TreeViewPrimitive.Branch,
+  { name: "Branch", slot: "base" },
+);
 
-  return (
-    <TreeViewBranchStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <TreeViewPrimitive.Branch
-        {...rest}
-        class={slots().base({ class: local.class })}
-      />
-    </TreeViewBranchStylesContext>
-  );
-}
+const BranchControl = withContext<TreeViewBranchControlProps>(
+  TreeViewPrimitive.BranchControl,
+  { name: "BranchControl", slot: "control" },
+);
 
-export function TreeViewBranchControl(
-  props: TreeViewBranchControlProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "expandedIcon",
-    "icon",
-    "class",
-  ]);
-  const styles = useTreeView();
+const BranchIndicator = withBranchContext<TreeViewBranchIndicatorProps>(
+  TreeViewPrimitive.BranchIndicator,
+  { name: "BranchIndicator", slot: "indicator" },
+);
 
-  return (
-    <TreeViewPrimitive.BranchControl
-      {...rest}
-      class={styles.slots.control({ class: local.class })}
-    >
-      <TreeViewBranchIndicator />
-      <TreeViewBranchTitle expandedIcon={local.expandedIcon} icon={local.icon}>
-        {local.children}
-      </TreeViewBranchTitle>
-    </TreeViewPrimitive.BranchControl>
-  );
-}
+const BranchText = withBranchContext<TreeViewBranchTextProps>(
+  TreeViewPrimitive.BranchText,
+  { name: "BranchText", slot: "title" },
+);
 
-function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "expandedIcon",
-    "icon",
-    "class",
-  ]);
-  const styles = useTreeViewBranch();
-  const Icon = () => local.icon;
-  const ExpandedIcon = () => local.expandedIcon;
+const BranchTrigger = withBranchContext<TreeViewBranchTriggerProps>(
+  TreeViewPrimitive.BranchTrigger,
+  { name: "BranchTrigger", slot: "trigger" },
+);
 
-  return (
-    <TreeViewPrimitive.NodeContext>
-      {(nodeState) => (
-        <Show
-          fallback={
-            <TreeViewPrimitive.BranchText
-              {...rest}
-              class={styles.slots.title({ class: local.class })}
-            >
-              <Show when={Icon() !== null && !nodeState().expanded}>
-                <TreeViewItemIcon>
-                  <Show fallback={<FolderIcon />} when={Icon()}>
-                    {(Comp) => {
-                      const C = Comp();
+const BranchContent = withBranchContext<TreeViewBranchContentProps>(
+  TreeViewPrimitive.BranchContent,
+  { name: "BranchContent", slot: "content" },
+);
 
-                      return C ? <C /> : null;
-                    }}
-                  </Show>
-                </TreeViewItemIcon>
-              </Show>
-              <Show when={ExpandedIcon() !== null && nodeState().expanded}>
-                <TreeViewItemIcon>
-                  <Show fallback={<FolderOpenIcon />} when={ExpandedIcon()}>
-                    {(Comp) => {
-                      const C = Comp();
+const BranchIndentGuide = withBranchContext<TreeViewBranchIndentGuideProps>(
+  TreeViewPrimitive.BranchIndentGuide,
+  { name: "BranchIndentGuide", slot: "indentGuide" },
+);
 
-                      return C ? <C /> : null;
-                    }}
-                  </Show>
-                </TreeViewItemIcon>
-              </Show>
-              {local.children}
-            </TreeViewPrimitive.BranchText>
-          }
-          when={nodeState().renaming}
-        >
-          <TreeViewNodeInput />
-        </Show>
-      )}
-    </TreeViewPrimitive.NodeContext>
-  );
-}
+const ItemBase = withItemProvider<TreeViewItemProps>(TreeViewPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+});
 
-export function TreeViewBranchIndicator(
-  props: TreeViewBranchIndicatorProps,
-): JSX.Element {
+/** Item; shares the row (`control`) styles with `BranchControl`. */
+function Item(props: TreeViewItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useTreeViewBranch();
+  const styles = useStyles();
 
   return (
-    <TreeViewPrimitive.BranchIndicator
-      {...rest}
-      class={styles.slots.indicator({ class: local.class })}
-    >
-      <CaretRightIcon />
-    </TreeViewPrimitive.BranchIndicator>
+    <ItemBase {...rest} class={styles.slots.control({ class: local.class })} />
   );
 }
 
-export function TreeViewBranchContent(
-  props: TreeViewBranchContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useTreeViewBranch();
-
-  return (
-    <TreeViewPrimitive.BranchContent
-      {...rest}
-      class={styles.slots.content({ class: local.class })}
-    >
-      <TreeViewBranchIndentGuide />
-      {local.children}
-    </TreeViewPrimitive.BranchContent>
-  );
-}
-
-function TreeViewBranchIndentGuide(
-  props: TreeViewBranchIndentGuideProps,
-): JSX.Element {
+/** Item text; styled by the item recipe `title` slot. */
+function ItemText(props: TreeViewItemTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useTreeViewBranch();
-
-  return (
-    <TreeViewPrimitive.BranchIndentGuide
-      {...rest}
-      class={styles.slots.indentGuide({ class: local.class })}
-    />
-  );
-}
-
-export function TreeViewItem(props: TreeViewItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const styles = useTreeView();
-
-  const slots = createMemo(() => (local.recipe ?? treeViewItemRecipe)());
-
-  return (
-    <TreeViewItemStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <TreeViewPrimitive.Item
-        {...rest}
-        class={styles.slots.control({ class: local.class })}
-      />
-    </TreeViewItemStylesContext>
-  );
-}
-
-export function TreeViewItemText(props: TreeViewItemTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "icon", "class"]);
-  const files = useTreeViewFileIcons();
-  const Icon = () => local.icon ?? FileIcon;
-
-  const getFileIcon = (value: string): Component => {
-    const extension = getFileExtension(value);
-    const resolved = extension ? files.fileIcons?.[extension] : undefined;
-
-    return resolved ?? Icon();
-  };
-
-  return (
-    <TreeViewPrimitive.NodeContext>
-      {(nodeState) => {
-        const ResolvedIcon = getFileIcon(nodeState().value);
-
-        return (
-          <>
-            <TreeViewItemIcon>
-              <ResolvedIcon />
-            </TreeViewItemIcon>
-            <Show
-              fallback={
-                <TreeViewItemTitle {...rest} class={local.class}>
-                  {local.children}
-                </TreeViewItemTitle>
-              }
-              when={nodeState().renaming}
-            >
-              <TreeViewNodeInput />
-            </Show>
-          </>
-        );
-      }}
-    </TreeViewPrimitive.NodeContext>
-  );
-}
-
-function TreeViewItemIcon(props: TreeViewItemIconProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useTreeViewItemSlots();
-
-  return (
-    <span
-      {...rest}
-      class={slots().icon({ class: local.class })}
-      data-part="item-icon"
-      data-scope="tree-view"
-    />
-  );
-}
-
-function TreeViewItemTitle(props: TreeViewItemTitleProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useTreeViewItemSlots();
+  const slots = useItemSlots();
 
   return (
     <TreeViewPrimitive.ItemText
@@ -416,11 +244,10 @@ function TreeViewItemTitle(props: TreeViewItemTitleProps): JSX.Element {
   );
 }
 
-export function TreeViewNodeCheckbox(
-  props: TreeViewNodeCheckboxProps,
-): JSX.Element {
+/** Node checkbox; render `NodeCheckboxIndicator` with your icons inside. */
+function NodeCheckbox(props: TreeViewNodeCheckboxProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const slots = useTreeViewItemSlots();
+  const slots = useItemSlots();
   const surfaceVariant = useFormControlSurface();
 
   return (
@@ -431,17 +258,16 @@ export function TreeViewNodeCheckbox(
         slots().checkbox(),
         local.class,
       )}
-    >
-      <TreeViewPrimitive.NodeCheckboxIndicator indeterminate={<MinusIcon />}>
-        <CheckIcon />
-      </TreeViewPrimitive.NodeCheckboxIndicator>
-    </TreeViewPrimitive.NodeCheckbox>
+    />
   );
 }
 
-function TreeViewNodeInput(props: TreeViewNodeInputProps): JSX.Element {
+const NodeCheckboxIndicator = TreeViewPrimitive.NodeCheckboxIndicator;
+
+/** Rename input; styled by the item recipe `renameInput` slot. */
+function NodeRenameInput(props: TreeViewNodeRenameInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const slots = useTreeViewItemSlots();
+  const slots = useItemSlots();
 
   return (
     <TreeViewPrimitive.NodeRenameInput
@@ -450,11 +276,9 @@ function TreeViewNodeInput(props: TreeViewNodeInputProps): JSX.Element {
     />
   );
 }
+// #endregion
 
-type CreateFileIconsArgs = Record<`.${string}`, Component | null>;
-
-export const createFileIcons = (args: CreateFileIconsArgs) => ({ ...args });
-
+// #region Shorthand
 const getFileExtension = (file: string) => {
   const name = file.includes(".")
     ? file.split(".").at(-1)?.toLowerCase()
@@ -463,25 +287,252 @@ const getFileExtension = (file: string) => {
   return name ? `.${name}` : null;
 };
 
-export type {
-  TreeViewBranchContentProps,
-  TreeViewBranchIndentGuideProps,
-  TreeViewBranchIndicatorProps,
-  TreeViewLabelProps,
-  TreeViewNodeCheckboxProps,
-  TreeViewNodeRenameInputProps,
-  TreeViewTreeProps,
-} from "@ark-ui/solid";
+function NodeIcon(props: {
+  class?: string;
+  icon: Component | null;
+}): JSX.Element {
+  const slots = useItemSlots();
 
-export const TreeView = Object.assign(TreeViewRoot, {
-  Branch: TreeViewBranch,
-  BranchContent: TreeViewBranchContent,
-  BranchControl: TreeViewBranchControl,
-  BranchIndicator: TreeViewBranchIndicator,
-  Item: TreeViewItem,
-  ItemText: TreeViewItemText,
-  Label: TreeViewLabel,
-  NodeCheckbox: TreeViewNodeCheckbox,
-  NodeProvider: TreeViewNodeProvider,
-  Tree: TreeViewTree,
+  return (
+    <Show when={props.icon}>
+      {(icon) => (
+        <span
+          class={slots().icon({ class: props.class })}
+          data-part="item-icon"
+          data-scope="tree-view"
+        >
+          <Dynamic component={icon()} />
+        </span>
+      )}
+    </Show>
+  );
+}
+
+type ShorthandOptions = Pick<
+  TreeViewProps,
+  | "branchClassNames"
+  | "branchExpandedIcon"
+  | "branchIcon"
+  | "checkbox"
+  | "classNames"
+  | "fileIcons"
+  | "itemClassNames"
+  | "itemIcon"
+>;
+
+function ShorthandCheckbox(props: { options: ShorthandOptions }): JSX.Element {
+  return (
+    <Show when={props.options.checkbox}>
+      <NodeCheckbox class={props.options.itemClassNames?.checkbox}>
+        <NodeCheckboxIndicator indeterminate={<MinusIcon />}>
+          <CheckIcon />
+        </NodeCheckboxIndicator>
+      </NodeCheckbox>
+    </Show>
+  );
+}
+
+function ShorthandNode(props: {
+  indexPath: number[];
+  node: TreeNodeType;
+  options: ShorthandOptions;
+}): JSX.Element {
+  return (
+    <NodeProvider indexPath={props.indexPath} node={props.node}>
+      <Show
+        fallback={
+          <Item class={props.options.classNames?.control}>
+            <ShorthandCheckbox options={props.options} />
+            <ShorthandItemLabel node={props.node} options={props.options} />
+          </Item>
+        }
+        when={props.node.children}
+      >
+        {(children) => (
+          <Branch class={props.options.branchClassNames?.base}>
+            <BranchControl class={props.options.classNames?.control}>
+              <BranchIndicator
+                class={props.options.branchClassNames?.indicator}
+              >
+                <CaretRightIcon />
+              </BranchIndicator>
+              <ShorthandBranchLabel node={props.node} options={props.options} />
+            </BranchControl>
+            <BranchContent class={props.options.branchClassNames?.content}>
+              <BranchIndentGuide
+                class={props.options.branchClassNames?.indentGuide}
+              />
+              <For each={children()}>
+                {(child, index) => (
+                  <ShorthandNode
+                    indexPath={[...props.indexPath, index()]}
+                    node={child}
+                    options={props.options}
+                  />
+                )}
+              </For>
+            </BranchContent>
+          </Branch>
+        )}
+      </Show>
+    </NodeProvider>
+  );
+}
+
+function ShorthandBranchLabel(props: {
+  node: TreeNodeType;
+  options: ShorthandOptions;
+}): JSX.Element {
+  const nodeState = useTreeViewNodeContext();
+  const icon = () => {
+    if (nodeState().expanded) {
+      if (props.node.expandedIcon !== undefined) {
+        return props.node.expandedIcon;
+      }
+
+      return props.options.branchExpandedIcon !== undefined
+        ? props.options.branchExpandedIcon
+        : FolderOpenIcon;
+    }
+    if (props.node.icon !== undefined) {
+      return props.node.icon;
+    }
+
+    return props.options.branchIcon !== undefined
+      ? props.options.branchIcon
+      : FolderIcon;
+  };
+
+  return (
+    <Show
+      fallback={
+        <BranchText class={props.options.branchClassNames?.title}>
+          <ShorthandCheckbox options={props.options} />
+          <NodeIcon class={props.options.itemClassNames?.icon} icon={icon()} />
+          {props.node.name}
+        </BranchText>
+      }
+      when={nodeState().renaming}
+    >
+      <NodeRenameInput class={props.options.itemClassNames?.renameInput} />
+    </Show>
+  );
+}
+
+function ShorthandItemLabel(props: {
+  node: TreeNodeType;
+  options: ShorthandOptions;
+}): JSX.Element {
+  const nodeState = useTreeViewNodeContext();
+  const icon = () => {
+    if (props.node.icon !== undefined) {
+      return props.node.icon;
+    }
+    const extension = getFileExtension(nodeState().value);
+
+    return (
+      (extension ? props.options.fileIcons?.[extension] : undefined) ??
+      props.options.itemIcon ??
+      FileIcon
+    );
+  };
+
+  return (
+    <>
+      <NodeIcon class={props.options.itemClassNames?.icon} icon={icon()} />
+      <Show
+        fallback={
+          <ItemText class={props.options.itemClassNames?.title}>
+            {props.node.name}
+          </ItemText>
+        }
+        when={nodeState().renaming}
+      >
+        <NodeRenameInput class={props.options.itemClassNames?.renameInput} />
+      </Show>
+    </>
+  );
+}
+
+export function TreeViewShorthand<T extends TreeNodeType = TreeNodeType>(
+  props: TreeViewProps<T>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "branchClassNames",
+    "branchExpandedIcon",
+    "branchIcon",
+    "checkbox",
+    "classNames",
+    "fileIcons",
+    "itemClassNames",
+    "itemIcon",
+    "label",
+  ]);
+  const options: ShorthandOptions = {
+    get branchClassNames() {
+      return local.branchClassNames;
+    },
+    get branchExpandedIcon() {
+      return local.branchExpandedIcon;
+    },
+    get branchIcon() {
+      return local.branchIcon;
+    },
+    get checkbox() {
+      return local.checkbox ?? false;
+    },
+    get classNames() {
+      return local.classNames;
+    },
+    get fileIcons() {
+      return local.fileIcons;
+    },
+    get itemClassNames() {
+      return local.itemClassNames;
+    },
+    get itemIcon() {
+      return local.itemIcon;
+    },
+  };
+
+  return (
+    <Root {...rest}>
+      <Show when={local.label}>
+        <Label class={local.classNames?.label}>{local.label}</Label>
+      </Show>
+      <Tree class={local.classNames?.tree}>
+        <For each={rest.collection.rootNode.children}>
+          {(node, index) => (
+            <ShorthandNode
+              indexPath={[index()]}
+              node={node}
+              options={options}
+            />
+          )}
+        </For>
+      </Tree>
+    </Root>
+  );
+}
+// #endregion
+
+export const TreeView = Object.assign(TreeViewShorthand, {
+  Branch,
+  BranchContent,
+  BranchControl,
+  BranchIndentGuide,
+  BranchIndicator,
+  BranchText,
+  BranchTrigger,
+  Context: TreeViewPrimitive.Context,
+  Item,
+  ItemText,
+  Label,
+  NodeCheckbox,
+  NodeCheckboxIndicator,
+  NodeContext: TreeViewPrimitive.NodeContext,
+  NodeProvider,
+  NodeRenameInput,
+  Root,
+  Tree,
 });

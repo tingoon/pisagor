@@ -1,3 +1,4 @@
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Input, Item, Listbox } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
@@ -36,7 +37,9 @@ export function WithFilter() {
               {(item) => (
                 <Listbox.Item item={item}>
                   <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
+                  <Listbox.ItemIndicator>
+                    <CheckIcon />
+                  </Listbox.ItemIndicator>
                 </Listbox.Item>
               )}
             </For>

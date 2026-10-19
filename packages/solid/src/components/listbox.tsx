@@ -26,23 +26,29 @@ import {
   listboxItemRecipe,
   listboxRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
-import { createMemo, For, Show, splitProps } from "solid-js";
-import { CheckIcon, createSlotRecipeContext } from "../internal";
+import type { JSX } from "solid-js";
+import { createMemo, For, splitProps } from "solid-js";
+import { createSlotRecipeContext } from "../internal";
 import type { DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  Context: ListboxStylesContext,
-  useStyles: useListbox,
-  withContext: withListboxContext,
-} = createSlotRecipeContext({ name: "Listbox", recipe: listboxRecipe });
+const { Context: ListboxStylesContext, withContext: withListboxContext } =
+  createSlotRecipeContext({
+    name: "Listbox",
+    recipe: listboxRecipe,
+  });
 
-const { Context: ListboxItemStylesContext, useStyles: useListboxItem } =
-  createSlotRecipeContext({ name: "Listbox", recipe: listboxItemRecipe });
+const {
+  withContext: withListboxItemContext,
+  withProvider: withListboxItemProvider,
+} = createSlotRecipeContext({
+  name: "Listbox",
+  recipe: listboxItemRecipe,
+});
 // #endregion
 
+// #region Types
 interface ListboxPresetItem
   extends CollectionItem, Omit<BaseListboxPresetItem, "label"> {
   label: string;
@@ -66,10 +72,9 @@ export type ListboxItemProps = ListboxItemPrimitiveProps &
   ListboxItemRootContract &
   ListboxItemContract;
 
-export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
-  heading?: string;
-}
+// #endregion
 
+// #region Parts
 export function ListboxRoot<T extends CollectionItem = CollectionItem>(
   props: ListboxRootProps<T>,
 ): JSX.Element {
@@ -103,119 +108,59 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>(
   );
 }
 
-export const ListboxContent: Component<ListboxContentProps> =
-  withListboxContext(ListboxPrimitive.Content, { name: "Content" });
+export const ListboxContent = withListboxContext<ListboxContentProps>(
+  ListboxPrimitive.Content,
+  { name: "Content" },
+);
 
-export function ListboxItem(props: ListboxItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
-  const variant = () => local.variant ?? "default";
-  const slots = createMemo(() =>
-    (local.recipe ?? listboxItemRecipe)({ variant: variant() }),
+export const ListboxItem = withListboxItemProvider<ListboxItemProps>(
+  ListboxPrimitive.Item,
+  { name: "Item", slot: "base" },
+);
+
+export const ListboxItemText = withListboxItemContext<ListboxItemTextProps>(
+  ListboxPrimitive.ItemText,
+  { name: "ItemText", slot: "text" },
+);
+
+export const ListboxItemGroup =
+  withListboxContext<ListboxItemGroupPrimitiveProps>(
+    ListboxPrimitive.ItemGroup,
+    { name: "ItemGroup" },
   );
 
-  return (
-    <ListboxItemStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        get variants() {
-          return { variant: variant() };
-        },
-      }}
-    >
-      <ListboxPrimitive.Item
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-variant={variant()}
-      />
-    </ListboxItemStylesContext>
+export const ListboxItemGroupLabel =
+  withListboxContext<ListboxItemGroupLabelProps>(
+    ListboxPrimitive.ItemGroupLabel,
+    { name: "ItemGroupLabel" },
   );
-}
 
-export function ListboxItemText(props: ListboxItemTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useListboxItem();
+export const ListboxValueText = withListboxContext<ListboxValueTextProps>(
+  ListboxPrimitive.ValueText,
+  { name: "ValueText" },
+);
 
-  return (
-    <ListboxPrimitive.ItemText
-      {...rest}
-      class={styles.slots.text({ class: local.class })}
-    />
+/** Selected-item indicator; render your own icon inside. */
+export const ListboxItemIndicator =
+  withListboxItemContext<ListboxItemIndicatorProps>(
+    ListboxPrimitive.ItemIndicator,
+    { name: "ItemIndicator", slot: "indicator" },
   );
-}
 
-export function ListboxItemGroup(props: ListboxItemGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "heading", "class"]);
-  const styles = useListbox();
+const ListboxEmptyBase = withListboxContext<ListboxEmptyProps>(
+  ListboxPrimitive.Empty,
+  { name: "Empty" },
+);
 
-  return (
-    <ListboxPrimitive.ItemGroup
-      {...rest}
-      class={styles.slots.itemGroup({ class: local.class })}
-    >
-      <Show when={!!local.heading}>
-        <ListboxItemGroupLabel>{local.heading}</ListboxItemGroupLabel>
-      </Show>
-      {local.children}
-    </ListboxPrimitive.ItemGroup>
-  );
-}
-
-export function ListboxItemGroupLabel(
-  props: ListboxItemGroupLabelProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useListbox();
-
-  return (
-    <ListboxPrimitive.ItemGroupLabel
-      {...rest}
-      class={styles.slots.itemGroupLabel({ class: local.class })}
-    />
-  );
-}
-
-export function ListboxValueText(props: ListboxValueTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useListbox();
-
-  return (
-    <ListboxPrimitive.ValueText
-      {...rest}
-      class={styles.slots.valueText({ class: local.class })}
-    />
-  );
-}
-
-export function ListboxItemIndicator(
-  props: ListboxItemIndicatorProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useListboxItem();
-
-  return (
-    <ListboxPrimitive.ItemIndicator
-      {...rest}
-      class={styles.slots.indicator({ class: local.class })}
-    >
-      {local.children ?? <CheckIcon />}
-    </ListboxPrimitive.ItemIndicator>
-  );
-}
-
+/** Empty state with localized default text. */
 export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["class", "children"]);
-  const styles = useListbox();
+  const [local, rest] = splitProps(props, ["children"]);
 
   return (
-    <ListboxPrimitive.Empty
-      {...rest}
-      class={styles.slots.empty({ class: local.class })}
-    >
+    <ListboxEmptyBase {...rest}>
       {local.children || m("listbox.empty")}
-    </ListboxPrimitive.Empty>
+    </ListboxEmptyBase>
   );
 }
 
@@ -232,6 +177,9 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps): JSX.Element {
   );
 }
 
+// #endregion
+
+// #region Shorthand
 export function ListboxShorthand(props: ListboxProps): JSX.Element {
   const [local, rest] = splitProps(props, ["collection", "items", "emptyText"]);
   const items = createMemo(() => local.items ?? []);
@@ -240,7 +188,7 @@ export function ListboxShorthand(props: ListboxProps): JSX.Element {
       local.collection ??
       createListCollection({
         items: items(),
-        itemToString: (item) => item.value,
+        itemToString: (item) => item.label,
         itemToValue: (item) => item.value,
       }),
   );
@@ -260,10 +208,12 @@ export function ListboxShorthand(props: ListboxProps): JSX.Element {
     </ListboxRoot>
   );
 }
+// #endregion
 
 export {
   type ListboxContentProps,
   type ListboxEmptyProps,
+  type ListboxItemGroupProps,
   type ListboxItemGroupLabelProps,
   type ListboxItemIndicatorProps,
   type ListboxItemTextProps,

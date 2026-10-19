@@ -1,4 +1,5 @@
 import { Button, Sidebar } from "@pisagor/solid";
+import { SidebarSimpleIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Default() {
   return (
@@ -36,7 +37,9 @@ export function Default() {
       </Sidebar>
       <Sidebar.Inset>
         <header class="flex h-12 items-center gap-2 border-b px-4">
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon class="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <span class="text-sm font-medium">Dashboard</span>
         </header>
         <div class="flex flex-1 flex-col gap-2 p-4">

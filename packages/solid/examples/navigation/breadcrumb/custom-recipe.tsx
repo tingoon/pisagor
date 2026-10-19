@@ -1,5 +1,5 @@
-import { breadcrumbRecipe } from "@pisagor/recipes";
 import { Breadcrumb } from "@pisagor/solid";
+import { breadcrumbRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandBreadcrumbRecipe = tv({

@@ -25,17 +25,19 @@ const marqueeIcons: Component<IconProps>[] = [
 
 function MarqueeIconRow() {
   return (
-    <Marquee.Content>
-      {marqueeIcons.map((IconComponent) => (
-        <Marquee.Item>
-          <Card class="[--space:--spacing(8)]">
-            <Card.Content>
-              <IconComponent class="size-10" />
-            </Card.Content>
-          </Card>
-        </Marquee.Item>
-      ))}
-    </Marquee.Content>
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {marqueeIcons.map((IconComponent) => (
+          <Marquee.Item>
+            <Card class="[--space:--spacing(8)]">
+              <Card.Content>
+                <IconComponent class="size-10" />
+              </Card.Content>
+            </Card>
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
   );
 }
 
@@ -43,6 +45,8 @@ export function Compound() {
   return (
     <Marquee.Root>
       <MarqueeIconRow />
+      <Marquee.Edge side="start" />
+      <Marquee.Edge side="end" />
     </Marquee.Root>
   );
 }

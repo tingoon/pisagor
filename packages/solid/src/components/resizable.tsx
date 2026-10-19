@@ -1,4 +1,8 @@
-import { Splitter as SplitterPrimitive } from "@ark-ui/solid";
+import {
+  ark,
+  type HTMLArkProps,
+  Splitter as SplitterPrimitive,
+} from "@ark-ui/solid";
 import type {
   SplitterContextProps,
   SplitterPanelProps,
@@ -13,14 +17,13 @@ import type {
 } from "@pisagor/contracts";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import { createMemo, splitProps } from "solid-js";
 import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
 const {
   Context: ResizableStylesContext,
-  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({ name: "Resizable", recipe: resizableRecipe });
@@ -59,9 +62,9 @@ export interface ResizableEdgeHandleProps
   onWidthChange: (width: number) => void;
 }
 
-export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
-  withHandle?: boolean;
-}
+export type ResizableResizeTriggerProps = SplitterResizeTriggerProps;
+
+export type ResizableResizeTriggerHandleProps = HTMLArkProps<"div">;
 
 export type ResizableRootProps = SplitterRootProps & ResizableRootContract;
 
@@ -212,31 +215,28 @@ export const ResizableResizeTriggerIndicator: Component<ResizableResizeTriggerIn
     name: "ResizeTriggerIndicator",
   });
 
+const ResizeTriggerBase = withContext<ResizableResizeTriggerProps>(
+  SplitterPrimitive.ResizeTrigger,
+  { name: "ResizeTrigger" },
+);
+
+/**
+ * Resize trigger with a localized default `aria-label`; compose the indicator /
+ * handle yourself.
+ */
 export function ResizableResizeTrigger(
   props: ResizableResizeTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["children", "withHandle", "class"]);
-  const styles = useStyles();
-  const withHandle = () => local.withHandle ?? false;
 
-  return (
-    <SplitterPrimitive.ResizeTrigger
-      aria-label={m("resizable.resize")}
-      {...rest}
-      class={styles.slots.resizeTrigger({ class: local.class })}
-    >
-      <Show
-        fallback={local.children ?? <ResizableResizeTriggerIndicator />}
-        when={withHandle()}
-      >
-        <div class={styles.slots.resizeTriggerHandle()}>
-          <DotsSixVerticalIcon class={styles.slots.resizeTriggerIcon()} />
-        </div>
-      </Show>
-    </SplitterPrimitive.ResizeTrigger>
-  );
+  return <ResizeTriggerBase aria-label={m("resizable.resize")} {...props} />;
 }
+
+/** Visible grip inside a resize trigger; pass your own icon. */
+export const ResizableResizeTriggerHandle =
+  withContext<ResizableResizeTriggerHandleProps>(ark.div, {
+    name: "ResizeTriggerHandle",
+  });
 
 export function ResizableContext(props: ResizableContextProps): JSX.Element {
   return <SplitterPrimitive.Context {...props} />;
@@ -272,6 +272,7 @@ export const Resizable = Object.assign(ResizableRoot, {
   EdgeHandle: ResizableEdgeHandle,
   Panel: ResizablePanel,
   ResizeTrigger: ResizableResizeTrigger,
+  ResizeTriggerHandle: ResizableResizeTriggerHandle,
   ResizeTriggerIndicator: ResizableResizeTriggerIndicator,
   RootProvider: ResizableRootProvider,
 });

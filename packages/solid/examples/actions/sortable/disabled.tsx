@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@squidlab/phosphor-solid/icons";
 import { Sortable } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -17,7 +18,9 @@ export function Disabled() {
         {(id) => (
           <Sortable.Item value={id}>
             <Sortable.ItemContent>
-              <Sortable.Handle />
+              <Sortable.Handle>
+                <DotsSixVerticalIcon />
+              </Sortable.Handle>
               <span class="text-sm font-medium">{labels[id]}</span>
             </Sortable.ItemContent>
           </Sortable.Item>

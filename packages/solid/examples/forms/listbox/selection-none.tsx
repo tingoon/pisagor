@@ -29,7 +29,8 @@ export function SelectionNone() {
           selectionMode="none"
         >
           <Listbox.Content>
-            <Listbox.ItemGroup heading="Actions">
+            <Listbox.ItemGroup>
+              <Listbox.ItemGroupLabel>Actions</Listbox.ItemGroupLabel>
               <Listbox.Item item={collection.items[0]}>
                 <div class="flex h-8 items-start justify-start">
                   <PlusSquareIcon />
@@ -56,7 +57,8 @@ export function SelectionNone() {
               </Listbox.Item>
             </Listbox.ItemGroup>
             <Separator />
-            <Listbox.ItemGroup heading="Danger zone">
+            <Listbox.ItemGroup>
+              <Listbox.ItemGroupLabel>Danger zone</Listbox.ItemGroupLabel>
               <Listbox.Item item={collection.items[2]} variant="destructive">
                 <div class="flex h-8 items-start justify-start">
                   <TrashIcon />

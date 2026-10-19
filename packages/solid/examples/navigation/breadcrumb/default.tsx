@@ -4,8 +4,8 @@ export function Default() {
   return (
     <Breadcrumb
       items={[
-        { href: "#", label: "Home" },
-        { href: "#", label: "Docs" },
+        { href: "https://example.com/", label: "Home" },
+        { href: "https://example.com/", label: "Components" },
         { isCurrentPage: true, label: "Breadcrumb" },
       ]}
     />

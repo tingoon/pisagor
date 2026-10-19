@@ -17,7 +17,7 @@ import {
   splitProps,
   useContext,
 } from "solid-js";
-import { CaretDownIcon, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
 import { useLocale } from "./provider/context";
 
@@ -67,6 +67,8 @@ export type NavigationMenuProps = ComponentProps<"nav"> &
 export type NavigationMenuPartProps = ComponentProps<"ul">;
 export type NavigationMenuItemProps = ComponentProps<"li">;
 export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
+
+export type NavigationMenuIndicatorProps = HTMLArkProps<"span">;
 export type NavigationMenuContentProps = ComponentProps<"ul">;
 
 export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
@@ -203,10 +205,16 @@ export function NavigationMenuTrigger(
       type="button"
     >
       {local.children}
-      <CaretDownIcon aria-hidden class={styles.slots.indicator()} />
     </ark.button>
   );
 }
+
+/** Open-state indicator for a trigger; pass your own icon (e.g. a caret). */
+export const NavigationMenuIndicator =
+  withContext<NavigationMenuIndicatorProps>(ark.span, {
+    defaultProps: { "aria-hidden": true },
+    name: "Indicator",
+  });
 
 export function NavigationMenuContent(
   props: NavigationMenuContentProps,
@@ -254,6 +262,7 @@ export function NavigationMenuLink(
 
 export const NavigationMenu = Object.assign(NavigationMenuRoot, {
   Content: NavigationMenuContent,
+  Indicator: NavigationMenuIndicator,
   Item: NavigationMenuItem,
   Link: NavigationMenuLink,
   List: NavigationMenuList,

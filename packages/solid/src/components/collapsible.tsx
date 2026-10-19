@@ -1,101 +1,121 @@
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/solid";
+import {
+  Collapsible as CollapsiblePrimitive,
+  type HTMLArkProps,
+} from "@ark-ui/solid";
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
   CollapsibleRootProps as CollapsibleRootPrimitiveProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/solid";
-import type { CollapsibleRootContract } from "@pisagor/contracts";
+import type {
+  CollapsibleContract,
+  CollapsibleRootContract,
+} from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import type { Component, JSX, ComponentProps } from "solid-js";
-import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: CollapsibleStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Collapsible",
   recipe: collapsibleRecipe,
 });
 // #endregion
 
 // #region Types
-export type LocalCollapsibleRootProps = CollapsibleRootPrimitiveProps &
+export type CollapsibleRootProps = CollapsibleRootPrimitiveProps &
   CollapsibleRootContract;
+
+export type CollapsibleBodyProps = HTMLArkProps<"div">;
+
+export interface CollapsibleProps
+  extends Omit<CollapsibleRootProps, "children">, CollapsibleContract {
+  /** Content revealed when open. */
+  children?: JSX.Element;
+  /** Trigger label. */
+  trigger?: JSX.Element;
+  /**
+   * Whether to render the caret indicator inside the trigger.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
+}
 // #endregion
 
 // #region Parts
-export function CollapsibleRoot(props: LocalCollapsibleRootProps): JSX.Element {
+const RootBase = withProvider<CollapsibleRootProps>(CollapsiblePrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
+
+/** Root; `collapsedHeight` keeps content mounted for partial collapse. */
+function Root(props: CollapsibleRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
+    "collapsedHeight",
     "lazyMount",
     "unmountOnExit",
-    "children",
-    "collapsedHeight",
-    "recipe",
-    "class",
   ]);
-  const slots = createMemo(() => (local.recipe ?? collapsibleRecipe)());
-  const partial = () => !!local.collapsedHeight;
+  const partial = () => local.collapsedHeight !== undefined;
 
   return (
-    <CollapsibleStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <CollapsiblePrimitive.Root
-        {...rest}
-        class={slots().base({ class: local.class })}
-        collapsedHeight={local.collapsedHeight}
-        data-partial-collapse={partial() ? "" : undefined}
-        lazyMount={partial() ? false : local.lazyMount}
-        unmountOnExit={partial() ? false : local.unmountOnExit}
-      >
-        {local.children}
-      </CollapsiblePrimitive.Root>
-    </CollapsibleStylesContext>
-  );
-}
-
-export const CollapsibleTrigger: Component<CollapsibleTriggerProps> =
-  withContext<ComponentProps<typeof CollapsiblePrimitive.Trigger>>(
-    CollapsiblePrimitive.Trigger,
-    { name: "Trigger" },
-  );
-
-/** `class` targets the inner body wrapper; the content slot animates height. */
-export function CollapsibleContent(
-  props: CollapsibleContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <CollapsiblePrimitive.Content {...rest} class={styles.slots.content()}>
-      <div class={local.class}>{local.children}</div>
-    </CollapsiblePrimitive.Content>
-  );
-}
-
-export function CollapsibleIndicator(
-  props: CollapsibleIndicatorProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <CollapsiblePrimitive.Indicator
+    <RootBase
       {...rest}
-      class={styles.slots.indicator({ class: local.class })}
-    >
-      <CaretDownIcon class={styles.slots.icon()} />
-    </CollapsiblePrimitive.Indicator>
+      collapsedHeight={local.collapsedHeight}
+      data-partial-collapse={partial() ? "" : undefined}
+      lazyMount={partial() ? false : local.lazyMount}
+      unmountOnExit={partial() ? false : local.unmountOnExit}
+    />
+  );
+}
+
+const Trigger = withContext<CollapsibleTriggerProps>(
+  CollapsiblePrimitive.Trigger,
+  { name: "Trigger" },
+);
+
+const Indicator = withContext<CollapsibleIndicatorProps>(
+  CollapsiblePrimitive.Indicator,
+  { name: "Indicator" },
+);
+
+const Content = withContext<CollapsibleContentProps>(
+  CollapsiblePrimitive.Content,
+  { name: "Content" },
+);
+
+const Body = withContext<CollapsibleBodyProps>("div", { name: "Body" });
+// #endregion
+
+// #region Shorthand
+export function CollapsibleShorthand(props: CollapsibleProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "children",
+    "classNames",
+    "showIndicator",
+    "trigger",
+  ]);
+
+  return (
+    <Root {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <Trigger class={local.classNames?.trigger}>
+          {local.trigger}
+
+          <Show when={local.showIndicator ?? true}>
+            <Indicator class={local.classNames?.indicator}>
+              <CaretDownIcon />
+            </Indicator>
+          </Show>
+        </Trigger>
+      </Show>
+
+      <Content class={local.classNames?.content}>
+        <Body class={local.classNames?.body}>{local.children}</Body>
+      </Content>
+    </Root>
   );
 }
 // #endregion
@@ -103,12 +123,13 @@ export function CollapsibleIndicator(
 export type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
-  CollapsibleRootProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/solid";
 
-export const Collapsible = Object.assign(CollapsibleRoot, {
-  Content: CollapsibleContent,
-  Indicator: CollapsibleIndicator,
-  Trigger: CollapsibleTrigger,
+export const Collapsible = Object.assign(CollapsibleShorthand, {
+  Body,
+  Content,
+  Indicator,
+  Root,
+  Trigger,
 });

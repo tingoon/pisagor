@@ -9,7 +9,10 @@ export function Sizes() {
       <For each={sizes}>
         {(size) => (
           <Card size={size}>
-            <Card.Header description={`Size ${size}`} title="Card header" />
+            <Card.Header>
+              <Card.Title>Card header</Card.Title>
+              <Card.Description>{`Size ${size}`}</Card.Description>
+            </Card.Header>
             <Card.Content>
               <p class="text-muted-foreground text-sm">Card content</p>
             </Card.Content>

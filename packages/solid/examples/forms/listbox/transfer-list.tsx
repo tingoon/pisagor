@@ -1,6 +1,10 @@
 import { createListCollection } from "@ark-ui/solid";
 import { Button, Item, Listbox } from "@pisagor/solid";
-import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  CheckIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { createMemo, createSignal, For } from "solid-js";
 
 export function TransferList() {
@@ -49,12 +53,15 @@ export function TransferList() {
             value={availableValue()}
           >
             <Listbox.Content>
-              <Listbox.ItemGroup heading="Available">
+              <Listbox.ItemGroup>
+                <Listbox.ItemGroupLabel>Available</Listbox.ItemGroupLabel>
                 <For each={availableCollection().items}>
                   {(item) => (
                     <Listbox.Item item={item}>
                       <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                      <Listbox.ItemIndicator />
+                      <Listbox.ItemIndicator>
+                        <CheckIcon />
+                      </Listbox.ItemIndicator>
                     </Listbox.Item>
                   )}
                 </For>
@@ -95,12 +102,15 @@ export function TransferList() {
             value={selectedValue()}
           >
             <Listbox.Content class="max-h-48 min-h-40">
-              <Listbox.ItemGroup heading="Selected">
+              <Listbox.ItemGroup>
+                <Listbox.ItemGroupLabel>Selected</Listbox.ItemGroupLabel>
                 <For each={selectedCollection().items}>
                   {(item) => (
                     <Listbox.Item item={item}>
                       <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                      <Listbox.ItemIndicator />
+                      <Listbox.ItemIndicator>
+                        <CheckIcon />
+                      </Listbox.ItemIndicator>
                     </Listbox.Item>
                   )}
                 </For>
