@@ -3,6 +3,8 @@ import {
   useCarouselContext,
 } from "@ark-ui/react";
 import type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
@@ -13,25 +15,20 @@ import type {
   CarouselProgressTextProps,
   CarouselRootProps as CarouselRootPrimitiveProps,
 } from "@ark-ui/react";
-import {
-  CaretLeftIcon,
-  CaretRightIcon,
-  PauseIcon,
-  PlayIcon,
-} from "@phosphor-icons/react";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import type {
   CarouselPresetItem as BaseCarouselPresetItem,
   CarouselRootContract,
   CarouselContract,
 } from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -79,83 +76,59 @@ export const CarouselControl = withContext<CarouselControlProps>(
   },
 );
 
-export function CarouselPrevTrigger({
-  className,
-  ...rest
-}: CarouselPrevTriggerProps) {
+const CarouselPrevTriggerBase = withContext<CarouselPrevTriggerProps>(
+  CarouselPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
+
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
+export function CarouselPrevTrigger(props: CarouselPrevTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
   return (
-    <CarouselPrimitive.PrevTrigger
-      {...rest}
-      asChild
-      className={slots.prevTrigger({ className })}
-    >
-      <Button
-        aria-label={m("carousel.previous")}
-        clickEffect={false}
-        pill
-        size="icon-md"
-        variant="outline"
-      >
-        <CaretLeftIcon aria-hidden />
-      </Button>
-    </CarouselPrimitive.PrevTrigger>
+    <CarouselPrevTriggerBase aria-label={m("carousel.previous")} {...props} />
   );
 }
 
-export function CarouselNextTrigger({
-  className,
-  ...rest
-}: CarouselNextTriggerProps) {
-  const { m } = useLocale();
-  const { slots } = useStyles();
+const CarouselNextTriggerBase = withContext<CarouselNextTriggerProps>(
+  CarouselPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
 
-  return (
-    <CarouselPrimitive.NextTrigger
-      {...rest}
-      asChild
-      className={slots.nextTrigger({ className })}
-    >
-      <Button
-        aria-label={m("carousel.next")}
-        clickEffect={false}
-        pill
-        size="icon-md"
-        variant="outline"
-      >
-        <CaretRightIcon aria-hidden />
-      </Button>
-    </CarouselPrimitive.NextTrigger>
-  );
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
+export function CarouselNextTrigger(props: CarouselNextTriggerProps) {
+  const { m } = useLocale();
+
+  return <CarouselNextTriggerBase aria-label={m("carousel.next")} {...props} />;
 }
 
-export function CarouselAutoplayTrigger({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>) {
+const CarouselAutoplayTriggerBase = withContext<CarouselAutoplayTriggerProps>(
+  CarouselPrimitive.AutoplayTrigger,
+  { name: "AutoplayTrigger" },
+);
+
+/** Autoplay trigger with a localized play / pause `aria-label`. */
+export function CarouselAutoplayTrigger(props: CarouselAutoplayTriggerProps) {
   const { m } = useLocale();
   const carousel = useCarouselContext();
 
   return (
-    <CarouselPrimitive.AutoplayTrigger {...rest} asChild className={className}>
-      <Button
-        aria-label={m(carousel.isPlaying ? "carousel.pause" : "carousel.play")}
-        clickEffect={false}
-        pill
-        size="icon-md"
-        variant="outline"
-      >
-        {carousel.isPlaying ? (
-          <PauseIcon aria-hidden />
-        ) : (
-          <PlayIcon aria-hidden />
-        )}
-      </Button>
-    </CarouselPrimitive.AutoplayTrigger>
+    <CarouselAutoplayTriggerBase
+      aria-label={m(carousel.isPlaying ? "carousel.pause" : "carousel.play")}
+      {...props}
+    />
   );
 }
+
+/** Shows `children` while playing and `fallback` while paused. */
+export const CarouselAutoplayIndicator =
+  withContext<CarouselAutoplayIndicatorProps>(
+    CarouselPrimitive.AutoplayIndicator,
+    { name: "AutoplayIndicator" },
+  );
 
 export const CarouselProgressText = withContext<CarouselProgressTextProps>(
   CarouselPrimitive.ProgressText,
@@ -192,8 +165,16 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
   return (
     <CarouselRoot {...rest} slideCount={slides.length}>
       <CarouselControl>
-        <CarouselPrevTrigger />
-        <CarouselNextTrigger />
+        <CarouselPrevTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretLeftIcon aria-hidden />
+          </Button>
+        </CarouselPrevTrigger>
+        <CarouselNextTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretRightIcon aria-hidden />
+          </Button>
+        </CarouselNextTrigger>
       </CarouselControl>
 
       <CarouselItemGroup>
@@ -218,10 +199,13 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
 CarouselRoot.displayName = "Carousel.Root";
 CarouselPrevTrigger.displayName = "Carousel.PrevTrigger";
 CarouselNextTrigger.displayName = "Carousel.NextTrigger";
+CarouselAutoplayTrigger.displayName = "Carousel.AutoplayTrigger";
 
 // #endregion
 
 export type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
@@ -232,6 +216,7 @@ export type {
 } from "@ark-ui/react";
 
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayIndicator: CarouselAutoplayIndicator,
   AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,

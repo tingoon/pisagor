@@ -2,6 +2,8 @@ import { tv } from "tailwind-variants";
 
 export const carouselRecipe = tv({
   slots: {
+    autoplayIndicator: [],
+    autoplayTrigger: [],
     base: [
       "relative",
       "flex flex-col",

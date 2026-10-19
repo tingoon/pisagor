@@ -1,4 +1,10 @@
-import { Carousel } from "@pisagor/react";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  PauseIcon,
+  PlayIcon,
+} from "@phosphor-icons/react";
+import { Button, Carousel } from "@pisagor/react";
 import { numberedSlides } from "./helpers";
 
 export function AutoplayControls() {
@@ -7,10 +13,24 @@ export function AutoplayControls() {
   return (
     <Carousel.Root autoplay loop slideCount={slides.length}>
       <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.AutoplayTrigger />
+        <Carousel.PrevTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretLeftIcon aria-hidden />
+          </Button>
+        </Carousel.PrevTrigger>
+        <Carousel.AutoplayTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <Carousel.AutoplayIndicator fallback={<PlayIcon aria-hidden />}>
+              <PauseIcon aria-hidden />
+            </Carousel.AutoplayIndicator>
+          </Button>
+        </Carousel.AutoplayTrigger>
         <Carousel.ProgressText />
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.NextTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretRightIcon aria-hidden />
+          </Button>
+        </Carousel.NextTrigger>
       </Carousel.Control>
       <Carousel.ItemGroup>
         {slides.map((slide, index) => (
