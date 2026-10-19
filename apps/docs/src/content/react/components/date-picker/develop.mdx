@@ -7,13 +7,10 @@ import { DatePicker } from "@pisagor/react";
 ## Anatomy
 
 ```tsx
-<DatePicker>
-  <DatePicker.Trigger>
-    <DatePicker.ValueText />
-  </DatePicker.Trigger>
-  <DatePicker.Content />
-</DatePicker>
+<DatePicker placeholder="Select date" clearable />
 ```
+
+The shorthand renders the input, calendar trigger, optional clear button, `Portal`, `Positioner`, and the default calendar. Pass children to replace the calendar, or compose `DatePicker.Root` and its parts directly (see Compound).
 
 ## Examples
 

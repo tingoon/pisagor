@@ -2,6 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const datePickerRecipe = tv({
   slots: {
+    clearTrigger: [],
     content: [
       "[--cell-size:--spacing(9)]",
       "z-[calc(var(--z-index-popover)+var(--layer-index,0))]",
@@ -19,6 +20,8 @@ export const datePickerRecipe = tv({
     ],
     control: ["flex w-fit items-center gap-1"],
     icon: "text-muted-foreground",
+    input: [],
+    positioner: [],
     timer: [
       "[&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none",
     ],

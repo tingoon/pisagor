@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker } from "@pisagor/react";
 import { datePickerRecipe } from "@pisagor/recipes";
@@ -14,25 +15,29 @@ const brandDatePickerRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <DatePicker recipe={brandDatePickerRecipe}>
+    <DatePicker.Root recipe={brandDatePickerRecipe}>
       <DatePicker.Trigger asChild>
         <Button variant="outline">
           <CalendarIcon />
           <DatePicker.ValueText placeholder="Pick a date" />
         </Button>
       </DatePicker.Trigger>
-      <DatePicker.Content>
-        <Calendar.ViewControl>
-          <Calendar.PrevTrigger />
-          <Calendar.MonthSelect />
-          <Calendar.YearSelect />
-          <Calendar.NextTrigger />
-        </Calendar.ViewControl>
-        <Calendar.Table>
-          <Calendar.WeekDays />
-          <Calendar.TableDays />
-        </Calendar.Table>
-      </DatePicker.Content>
-    </DatePicker>
+      <Portal>
+        <DatePicker.Positioner>
+          <DatePicker.Content>
+            <Calendar.ViewControl>
+              <Calendar.PrevTrigger />
+              <Calendar.MonthSelect />
+              <Calendar.YearSelect />
+              <Calendar.NextTrigger />
+            </Calendar.ViewControl>
+            <Calendar.Table>
+              <Calendar.WeekDays />
+              <Calendar.TableDays />
+            </Calendar.Table>
+          </DatePicker.Content>
+        </DatePicker.Positioner>
+      </Portal>
+    </DatePicker.Root>
   );
 }
