@@ -11,9 +11,9 @@ export function Compound() {
         <Drawer.Backdrop />
         <Drawer.Positioner>
           <Drawer.Content>
-            <Drawer.GrabberWrapper>
-              <Drawer.Grabber />
-            </Drawer.GrabberWrapper>
+            <Drawer.Grabber>
+              <Drawer.GrabberIndicator />
+            </Drawer.Grabber>
             <Drawer.ContentInner>
               <Drawer.Header>
                 <Drawer.Title>Edit profile</Drawer.Title>

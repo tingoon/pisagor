@@ -6,7 +6,7 @@
 React `Drawer` now follows the thin parts + shorthand pattern. `Drawer` is a shorthand that
 takes `trigger`, `title`, `description`, `actions`, `scrollFade` and `classNames` and renders
 the portal, backdrop, positioner, grabber, header, scrollable body and footer for you. Every
-part (`Drawer.Root`, `Trigger`, `Backdrop`, `Positioner`, `Content`, `GrabberWrapper`, `Grabber`,
+part (`Drawer.Root`, `Trigger`, `Backdrop`, `Positioner`, `Content`, `Grabber`,
 `GrabberIndicator`, `ContentInner`, `Header`, `Title`, `Description`, `Body`, `Footer`,
 `CloseTrigger`) is a single styled element built with `withProvider` / `withContext`.
 
@@ -18,3 +18,6 @@ shorthand); `Drawer.Header` no longer takes `title` / `description`. `variant` m
 `DrawerContent`, … function exports are removed; use `Drawer.*`.
 
 `drawerRecipe` gains empty `base`, `trigger` and `closeTrigger` slots so every part has a slot.
+
+In React, `Drawer.Grabber` (the drag hit area) uses the `grabberWrapper` slot and
+`Drawer.GrabberIndicator` (the visible bar) uses the `grabber` slot; `grabberIcon` is unused there.

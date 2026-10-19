@@ -32,8 +32,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export type DrawerRootProps = DrawerRootPrimitiveProps &
   Omit<DrawerRootContract, "placement">;
 
-export type DrawerGrabberWrapperProps = ComponentPropsWithRef<"div">;
-
 export type DrawerContentInnerProps = ComponentPropsWithRef<"div">;
 
 export type DrawerHeaderProps = ComponentPropsWithRef<"div">;
@@ -99,18 +97,17 @@ const Content = withContext<DrawerContentProps>(DrawerPrimitive.Content, {
   name: "Content",
 });
 
-const GrabberWrapper = withContext<DrawerGrabberWrapperProps>("div", {
-  name: "GrabberWrapper",
-});
-
+// Ark semantics: `Grabber` is the padded drag hit area (`grabberWrapper` slot),
+// `GrabberIndicator` is the visible bar (`grabber` slot).
 const GrabberIndicator = withContext<DrawerGrabberIndicatorProps>(
   DrawerPrimitive.GrabberIndicator,
-  { name: "GrabberIndicator", slot: "grabberIcon" },
+  { name: "GrabberIndicator", slot: "grabber" },
 );
 
 const Grabber = withContext<DrawerGrabberProps>(DrawerPrimitive.Grabber, {
   defaultProps: { children: <GrabberIndicator /> },
   name: "Grabber",
+  slot: "grabberWrapper",
 });
 
 const ContentInner = withContext<DrawerContentInnerProps>("div", {
@@ -164,11 +161,9 @@ export function DrawerShorthand({
 
         <Positioner className={classNames?.positioner}>
           <Content className={classNames?.content}>
-            <GrabberWrapper className={classNames?.grabberWrapper}>
-              <Grabber className={classNames?.grabber}>
-                <GrabberIndicator className={classNames?.grabberIcon} />
-              </Grabber>
-            </GrabberWrapper>
+            <Grabber className={classNames?.grabberWrapper}>
+              <GrabberIndicator className={classNames?.grabber} />
+            </Grabber>
 
             <ContentInner className={classNames?.contentInner}>
               {hasHeader && (
@@ -233,7 +228,6 @@ export const Drawer = Object.assign(DrawerShorthand, {
   Footer,
   Grabber,
   GrabberIndicator,
-  GrabberWrapper,
   Header,
   Positioner,
   Root,

@@ -6,7 +6,7 @@ const brandDrawerRecipe = tv({
   extend: drawerRecipe,
   slots: {
     backdrop: "bg-emerald-950/30",
-    grabberIcon: "bg-emerald-500/50",
+    grabber: "bg-emerald-500/50",
     title: "text-emerald-900 dark:text-emerald-100",
   },
   variants: {},
