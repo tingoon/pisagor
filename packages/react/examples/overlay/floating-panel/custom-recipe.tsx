@@ -67,13 +67,7 @@ export function CustomRecipe() {
       </Field>
       <Field>
         <Field.Label>Font size</Field.Label>
-        <NumberInput className="w-full" defaultValue="16">
-          <NumberInput.Control>
-            <NumberInput.DecrementTrigger />
-            <NumberInput.Input />
-            <NumberInput.IncrementTrigger />
-          </NumberInput.Control>
-        </NumberInput>
+        <NumberInput className="w-full" defaultValue="16" />
       </Field>
     </FloatingPanel>
   );

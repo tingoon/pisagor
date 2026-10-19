@@ -1,14 +1,29 @@
-import { NumberInput } from "@pisagor/react";
+import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
+import { Button, Field, Input, NumberInput } from "@pisagor/react";
 
 export function Scrub() {
   return (
-    <NumberInput>
-      <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
+    <NumberInput.Root>
+      <NumberInput.Scrubber asChild>
+        <NumberInput.Label asChild>
+          <Field.Label>Quantity</Field.Label>
+        </NumberInput.Label>
+      </NumberInput.Scrubber>
       <NumberInput.Control>
-        <NumberInput.DecrementTrigger />
-        <NumberInput.Input />
-        <NumberInput.IncrementTrigger />
+        <NumberInput.DecrementTrigger asChild>
+          <Button variant="ghost">
+            <MinusIcon aria-hidden />
+          </Button>
+        </NumberInput.DecrementTrigger>
+        <NumberInput.Input asChild>
+          <Input />
+        </NumberInput.Input>
+        <NumberInput.IncrementTrigger asChild>
+          <Button variant="ghost">
+            <PlusIcon aria-hidden />
+          </Button>
+        </NumberInput.IncrementTrigger>
       </NumberInput.Control>
-    </NumberInput>
+    </NumberInput.Root>
   );
 }

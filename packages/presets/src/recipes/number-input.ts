@@ -65,7 +65,9 @@ export const numberInputRecipe = tv({
       "focus-visible:ring-0 aria-invalid:ring-0 data-invalid:ring-0",
       "dark:bg-transparent",
     ],
+    label: [],
     scrubber: ["flex cursor-ew-resize"],
+    valueText: [],
   },
   variants: {
     size: {
