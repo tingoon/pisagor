@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <ColorPicker onValueChange={(v) => (value = v)} {value}>
+  <ColorPicker.Root onValueChange={(v) => (value = v)} {value}>
     <ColorPicker.Control>
       <ColorPicker.Input channel="hex">
         {#snippet asChild(props)}
@@ -13,7 +13,7 @@
         {/snippet}
       </ColorPicker.Input>
     </ColorPicker.Control>
-  </ColorPicker>
+  </ColorPicker.Root>
   <p class="text-muted-foreground text-center text-sm">
     {parseColor(value).toString("hex")}
   </p>

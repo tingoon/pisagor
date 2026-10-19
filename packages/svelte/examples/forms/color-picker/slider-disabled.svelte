@@ -2,8 +2,11 @@
   import { ColorPicker } from "@pisagor/svelte";
 </script>
 
-<ColorPicker>
+<ColorPicker.Root>
   <ColorPicker.View format="hsla">
-    <ColorPicker.ChannelSlider channel="hue" />
+    <ColorPicker.ChannelSlider channel="hue">
+      <ColorPicker.ChannelSliderTrack />
+      <ColorPicker.ChannelSliderThumb />
+    </ColorPicker.ChannelSlider>
   </ColorPicker.View>
-</ColorPicker>
+</ColorPicker.Root>

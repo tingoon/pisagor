@@ -3,27 +3,12 @@
     DatePicker as DatePickerPrimitive,
     type DatePickerControlProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { setInsideControl } from "../../internal";
-  import {
-    DATE_PICKER_INSIDE_CONTROL,
-    useDatePicker,
-  } from "./date-picker.context";
+  import { withContext } from "./date-picker.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: DatePickerControlProps = $props();
-  const ctx = useDatePicker();
-  setInsideControl(DATE_PICKER_INSIDE_CONTROL);
+  let { children, ...rest }: DatePickerControlProps = $props();
+  const part = withContext(() => rest, { name: "Control" });
 </script>
 
-<DatePickerPrimitive.Control
-  {...rest}
-  class={ctx?.slots
-    ? ctx.slots.control({ class: cn(className) })
-    : cn(className)}
->
+<DatePickerPrimitive.Control {...part.props}>
   {@render children?.()}
 </DatePickerPrimitive.Control>

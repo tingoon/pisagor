@@ -4,35 +4,38 @@
     type ColorPickerAreaProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useStyles } from "./color-picker.context";
+  import { withContext } from "./color-picker.context";
 
-  type Props = ColorPickerAreaProps & { showDots?: boolean };
+  type Props = ColorPickerAreaProps & {
+    /**
+     * Whether to overlay a dot grid on the area.
+     *
+     * @defaultValue false
+     */
+    showDots?: boolean;
+  };
+
   let {
     children,
     class: className,
     showDots = false,
     ...rest
   }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  const part = withContext(
+    () => ({
+      ...rest,
+      class: cn(
+        {
+          "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
+            showDots,
+        },
+        className,
+      ),
+    }),
+    { name: "Area" },
+  );
 </script>
 
-<ColorPickerPrimitive.Area
-  {...rest}
-  class={slots.area({
-    class: cn(
-      {
-        "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
-          showDots,
-      },
-      className,
-    ),
-  })}
->
-  <ColorPickerPrimitive.AreaBackground class={slots.areaBackground()} />
-  {#if children}
-    {@render children()}
-  {:else}
-    <ColorPickerPrimitive.AreaThumb class={slots.areaThumb()} />
-  {/if}
+<ColorPickerPrimitive.Area {...part.props}>
+  {@render children?.()}
 </ColorPickerPrimitive.Area>

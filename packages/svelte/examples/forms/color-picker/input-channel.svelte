@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <ColorPicker
+  <ColorPicker.Root
     class="w-full"
     defaultValue={parseColor("#0485F7").toString("rgba")}
     format="rgba"
@@ -29,8 +29,8 @@
         <ColorPicker.SwatchPreview class="size-6" />
       </Field>
     </ColorPicker.View>
-  </ColorPicker>
-  <ColorPicker
+  </ColorPicker.Root>
+  <ColorPicker.Root
     class="w-full"
     defaultValue={parseColor("#EF4444").toString("hsba")}
     format="hsba"
@@ -56,8 +56,8 @@
         <ColorPicker.SwatchPreview class="size-6" />
       </Field>
     </ColorPicker.View>
-  </ColorPicker>
-  <ColorPicker
+  </ColorPicker.Root>
+  <ColorPicker.Root
     class="w-full"
     defaultValue={parseColor("#F59E0B").toString("hsla")}
     format="hsla"
@@ -83,8 +83,8 @@
         <ColorPicker.SwatchPreview class="size-6" />
       </Field>
     </ColorPicker.View>
-  </ColorPicker>
-  <ColorPicker
+  </ColorPicker.Root>
+  <ColorPicker.Root
     class="w-full items-center"
     defaultValue={parseColor("#10B981").toString("hex")}
   >
@@ -104,5 +104,5 @@
         <ColorPicker.SwatchPreview class="size-6" />
       </ColorPicker.Control>
     </Field>
-  </ColorPicker>
+  </ColorPicker.Root>
 </div>

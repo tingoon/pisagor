@@ -7,24 +7,10 @@ import { ColorPicker } from "@pisagor/svelte";
 ## Anatomy
 
 ```tsx
-<ColorPicker>
-  <ColorPicker.Control>
-    <ColorPicker.Trigger>
-      <ColorPicker.SwatchPreview />
-    </ColorPicker.Trigger>
-    <ColorPicker.Input />
-  </ColorPicker.Control>
-  <ColorPicker.Content>
-    <ColorPicker.Area>
-      <ColorPicker.AreaThumb />
-    </ColorPicker.Area>
-    <ColorPicker.View>
-      <ColorPicker.EyeDropperTrigger />
-      <ColorPicker.ChannelSlider />
-    </ColorPicker.View>
-  </ColorPicker.Content>
-</ColorPicker>
+<ColorPicker defaultValue="#eb5e41" clearable />
 ```
+
+The shorthand renders the swatch trigger, hex input, optional clear button, `Portal`, `Positioner`, and the default area, eye dropper, hue and alpha sliders. Pass children to replace the popover content, or compose `ColorPicker.Root` and its parts directly (see Compound).
 
 ## Examples
 

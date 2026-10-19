@@ -1,20 +1,14 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import type { ClassValue } from "svelte/elements";
-  import { useStyles } from "./color-picker.context";
+  import {
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerAreaThumbProps,
+  } from "@ark-ui/svelte";
+  import { withContext } from "./color-picker.context";
 
-  type Props = {
-    class?: ClassValue;
-    children?: import("svelte").Snippet;
-    [key: string]: unknown;
-  };
-  let { class: className, ...rest }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerAreaThumbProps = $props();
+  const part = withContext(() => rest, { name: "AreaThumb" });
 </script>
 
-<ColorPickerPrimitive.AreaThumb
-  {...rest}
-  class={slots.areaThumb({ class: cn(className) })}
-></ColorPickerPrimitive.AreaThumb>
+<ColorPickerPrimitive.AreaThumb {...part.props}>
+  {@render children?.()}
+</ColorPickerPrimitive.AreaThumb>

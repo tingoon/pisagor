@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import type { ClassValue } from "svelte/elements";
-  import { useStyles } from "./color-picker.context";
+  import {
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerControlProps,
+  } from "@ark-ui/svelte";
+  import { withContext } from "./color-picker.context";
 
-  type Props = {
-    class?: ClassValue;
-    children?: import("svelte").Snippet;
-    [key: string]: unknown;
-  };
-  let { children, class: className, ...rest }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerControlProps = $props();
+  const part = withContext(() => rest, { name: "Control" });
 </script>
 
-<ColorPickerPrimitive.Control
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
+<ColorPickerPrimitive.Control {...part.props}>
   {@render children?.()}
 </ColorPickerPrimitive.Control>

@@ -2,7 +2,7 @@
   import { ColorPicker, Input } from "@pisagor/svelte";
 </script>
 
-<ColorPicker defaultValue="#eb5e41" disabled>
+<ColorPicker.Root defaultValue="#eb5e41" disabled>
   <ColorPicker.Control>
     <ColorPicker.Input channel="hex">
       {#snippet asChild(props)}
@@ -10,4 +10,4 @@
       {/snippet}
     </ColorPicker.Input>
   </ColorPicker.Control>
-</ColorPicker>
+</ColorPicker.Root>

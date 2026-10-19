@@ -2,7 +2,7 @@
   import { ColorPicker } from "@pisagor/svelte";
 </script>
 
-<ColorPicker inline>
+<ColorPicker.Root inline>
   <ColorPicker.SwatchGroup>
     <ColorPicker.SwatchTrigger class="rounded-xs" value="#0485F7">
       <ColorPicker.Swatch value="#0485F7">
@@ -31,4 +31,4 @@
       </ColorPicker.Swatch>
     </ColorPicker.SwatchTrigger>
   </ColorPicker.SwatchGroup>
-</ColorPicker>
+</ColorPicker.Root>

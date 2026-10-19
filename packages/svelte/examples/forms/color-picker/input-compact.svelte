@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import {
     ColorPicker,
     InputGroup,
@@ -8,13 +9,15 @@
   import { PercentIcon } from "phosphor-svelte";
 </script>
 
-<ColorPicker format="hsla" value={parseColor("#0485F7").toString("hsla")}>
+<ColorPicker.Root format="hsla" value={parseColor("#0485F7").toString("hsla")}>
   <ColorPicker.Control>
     <InputGroup>
       <ColorPicker.Trigger>
-        <InputGroup.Addon>
-          <ColorPicker.SwatchPreview aria-hidden />
-        </InputGroup.Addon>
+        {#snippet asChild(props)}
+          <InputGroup.Addon {...props()}>
+            <ColorPicker.SwatchPreview aria-hidden />
+          </InputGroup.Addon>
+        {/snippet}
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex" class="flex-1">
         {#snippet asChild(props)}
@@ -36,17 +39,33 @@
       </InputGroup.Addon>
     </InputGroup>
   </ColorPicker.Control>
-  <ColorPicker.Content>
-    <ColorPicker.Area showDots>
-      <ColorPicker.AreaThumb />
-    </ColorPicker.Area>
-    <ColorPicker.View format="hsla">
-      <ColorPicker.ChannelSlider channel="hue" />
-      <ColorPicker.ChannelSlider channel="saturation" />
-      <ColorPicker.ChannelSlider channel="lightness" />
-      <ColorPicker.ChannelSlider channel="alpha">
-        <ColorPicker.TransparencyGrid />
-      </ColorPicker.ChannelSlider>
-    </ColorPicker.View>
-  </ColorPicker.Content>
-</ColorPicker>
+  <Portal>
+    <ColorPicker.Positioner>
+      <ColorPicker.Content>
+        <ColorPicker.Area showDots>
+          <ColorPicker.AreaBackground />
+          <ColorPicker.AreaThumb />
+        </ColorPicker.Area>
+        <ColorPicker.View format="hsla">
+          <ColorPicker.ChannelSlider channel="hue">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+          <ColorPicker.ChannelSlider channel="saturation">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+          <ColorPicker.ChannelSlider channel="lightness">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+          <ColorPicker.ChannelSlider channel="alpha">
+            <ColorPicker.TransparencyGrid />
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+        </ColorPicker.View>
+      </ColorPicker.Content>
+    </ColorPicker.Positioner>
+  </Portal>
+</ColorPicker.Root>

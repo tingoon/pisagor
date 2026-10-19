@@ -48,6 +48,3 @@ export function setDatePickerSlotsContext(value: {
   });
   setDatePickerVariantContext(value.variant);
 }
-
-/** Context key: true inside a date picker control. */
-export const DATE_PICKER_INSIDE_CONTROL = Symbol("DatePickerInsideControl");

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { Button, ColorPicker } from "@pisagor/svelte";
 
   const swatches = [
@@ -14,28 +15,38 @@
   ];
 </script>
 
-<ColorPicker format="hsla" value="#eb5e41">
+<ColorPicker.Root format="hsla" value="#eb5e41">
   <ColorPicker.Control>
     <ColorPicker.Trigger>
-      <Button size="lg" variant="ghost">
-        <ColorPicker.SwatchPreview class="size-6" />
-        Pick a color
-      </Button>
+      {#snippet asChild(props)}
+        <Button {...props()} size="lg" variant="ghost">
+          <ColorPicker.SwatchPreview class="size-6" />
+          Pick a color
+        </Button>
+      {/snippet}
     </ColorPicker.Trigger>
   </ColorPicker.Control>
-  <ColorPicker.Content>
-    <ColorPicker.Area>
-      <ColorPicker.AreaThumb />
-    </ColorPicker.Area>
-    <ColorPicker.View format="hsla">
-      <ColorPicker.ChannelSlider channel="hue" />
-    </ColorPicker.View>
-    <ColorPicker.SwatchGroup>
-      {#each swatches as color}
-        <ColorPicker.SwatchTrigger class="size-4" value={color}>
-          <ColorPicker.Swatch value={color} />
-        </ColorPicker.SwatchTrigger>
-      {/each}
-    </ColorPicker.SwatchGroup>
-  </ColorPicker.Content>
-</ColorPicker>
+  <Portal>
+    <ColorPicker.Positioner>
+      <ColorPicker.Content>
+        <ColorPicker.Area>
+          <ColorPicker.AreaBackground />
+          <ColorPicker.AreaThumb />
+        </ColorPicker.Area>
+        <ColorPicker.View format="hsla">
+          <ColorPicker.ChannelSlider channel="hue">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+        </ColorPicker.View>
+        <ColorPicker.SwatchGroup>
+          {#each swatches as color}
+            <ColorPicker.SwatchTrigger class="size-4" value={color}>
+              <ColorPicker.Swatch value={color} />
+            </ColorPicker.SwatchTrigger>
+          {/each}
+        </ColorPicker.SwatchGroup>
+      </ColorPicker.Content>
+    </ColorPicker.Positioner>
+  </Portal>
+</ColorPicker.Root>

@@ -1,6 +1,7 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
-  import { CalendarIcon } from "phosphor-svelte";
+  import { CalendarIcon, CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
 
   let value = $state([parseDate("2025-01-15")]);
 
@@ -11,7 +12,7 @@
   );
 </script>
 
-<DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
+<DatePicker.Root onValueChange={(next) => (value = next ?? [])} {value}>
   <DatePicker.Trigger>
     {#snippet asChild(props)}
       <Button {...props()} variant="outline">
@@ -20,16 +21,32 @@
       </Button>
     {/snippet}
   </DatePicker.Trigger>
-  <DatePicker.Content>
-    <Calendar.ViewControl>
-      <Calendar.PrevTrigger />
-      <Calendar.MonthSelect />
-      <Calendar.YearSelect />
-      <Calendar.NextTrigger />
-    </Calendar.ViewControl>
-    <Calendar.Table>
-      <Calendar.WeekDays />
-      <Calendar.TableDays />
-    </Calendar.Table>
-  </DatePicker.Content>
-</DatePicker>
+  <Portal>
+    <DatePicker.Positioner>
+      <DatePicker.Content>
+        <Calendar.ViewControl>
+          <Calendar.PrevTrigger>
+            {#snippet asChild(props)}
+              <Button {...props()} size="icon-md" variant="ghost">
+                <CaretLeftIcon aria-hidden="true" class="rtl:rotate-180" />
+              </Button>
+            {/snippet}
+          </Calendar.PrevTrigger>
+          <Calendar.MonthSelect />
+          <Calendar.YearSelect />
+          <Calendar.NextTrigger>
+            {#snippet asChild(props)}
+              <Button {...props()} size="icon-md" variant="ghost">
+                <CaretRightIcon aria-hidden="true" class="rtl:rotate-180" />
+              </Button>
+            {/snippet}
+          </Calendar.NextTrigger>
+        </Calendar.ViewControl>
+        <Calendar.Table>
+          <Calendar.WeekDays />
+          <Calendar.TableDays />
+        </Calendar.Table>
+      </DatePicker.Content>
+    </DatePicker.Positioner>
+  </Portal>
+</DatePicker.Root>

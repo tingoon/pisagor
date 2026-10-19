@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { EyedropperIcon } from "phosphor-svelte";
+  import { Portal } from "@ark-ui/svelte";
   import { colorPickerRecipe } from "@pisagor/recipes";
-  import { ColorPicker, InputGroup } from "@pisagor/svelte";
+  import { Button, ColorPicker, InputGroup } from "@pisagor/svelte";
   import { tv } from "tailwind-variants";
 
   const brandColorPickerRecipe = tv({
@@ -10,13 +12,15 @@
   });
 </script>
 
-<ColorPicker recipe={brandColorPickerRecipe}>
+<ColorPicker.Root recipe={brandColorPickerRecipe}>
   <ColorPicker.Control>
     <InputGroup>
       <ColorPicker.Trigger>
-        <InputGroup.Addon>
-          <ColorPicker.SwatchPreview />
-        </InputGroup.Addon>
+        {#snippet asChild(props)}
+          <InputGroup.Addon {...props()}>
+            <ColorPicker.SwatchPreview />
+          </InputGroup.Addon>
+        {/snippet}
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex">
         {#snippet asChild(props)}
@@ -25,20 +29,36 @@
       </ColorPicker.Input>
     </InputGroup>
   </ColorPicker.Control>
-  <ColorPicker.Content>
-    <ColorPicker.Area>
-      <ColorPicker.AreaThumb />
-    </ColorPicker.Area>
-    <ColorPicker.View format="hsla">
-      <div class="flex items-center gap-3">
-        <ColorPicker.EyeDropperTrigger />
-        <div class="flex flex-1 flex-col gap-2.5">
-          <ColorPicker.ChannelSlider channel="hue" />
-          <ColorPicker.ChannelSlider channel="alpha">
-            <ColorPicker.TransparencyGrid />
-          </ColorPicker.ChannelSlider>
-        </div>
-      </div>
-    </ColorPicker.View>
-  </ColorPicker.Content>
-</ColorPicker>
+  <Portal>
+    <ColorPicker.Positioner>
+      <ColorPicker.Content>
+        <ColorPicker.Area>
+          <ColorPicker.AreaBackground />
+          <ColorPicker.AreaThumb />
+        </ColorPicker.Area>
+        <ColorPicker.View format="hsla">
+          <div class="flex items-center gap-3">
+            <ColorPicker.EyeDropperTrigger>
+              {#snippet asChild(props)}
+                <Button {...props()} size="icon-md" variant="outline">
+                  <EyedropperIcon />
+                </Button>
+              {/snippet}
+            </ColorPicker.EyeDropperTrigger>
+            <div class="flex flex-1 flex-col gap-2.5">
+              <ColorPicker.ChannelSlider channel="hue">
+                <ColorPicker.ChannelSliderTrack />
+                <ColorPicker.ChannelSliderThumb />
+              </ColorPicker.ChannelSlider>
+              <ColorPicker.ChannelSlider channel="alpha">
+                <ColorPicker.TransparencyGrid />
+                <ColorPicker.ChannelSliderTrack />
+                <ColorPicker.ChannelSliderThumb />
+              </ColorPicker.ChannelSlider>
+            </div>
+          </div>
+        </ColorPicker.View>
+      </ColorPicker.Content>
+    </ColorPicker.Positioner>
+  </Portal>
+</ColorPicker.Root>

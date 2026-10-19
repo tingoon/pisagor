@@ -1,15 +1,28 @@
 <script lang="ts">
-  import { Calendar, Card } from "@pisagor/svelte";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
+  import { Button, Calendar, Card } from "@pisagor/svelte";
 </script>
 
 <Card class="[--space:--spacing(2)]">
   <Card.Content>
     <Calendar>
       <Calendar.ViewControl>
-        <Calendar.PrevTrigger />
+        <Calendar.PrevTrigger>
+          {#snippet asChild(props)}
+            <Button {...props()} size="icon-md" variant="ghost">
+              <CaretLeftIcon aria-hidden="true" class="rtl:rotate-180" />
+            </Button>
+          {/snippet}
+        </Calendar.PrevTrigger>
         <Calendar.MonthSelect />
         <Calendar.YearSelect />
-        <Calendar.NextTrigger />
+        <Calendar.NextTrigger>
+          {#snippet asChild(props)}
+            <Button {...props()} size="icon-md" variant="ghost">
+              <CaretRightIcon aria-hidden="true" class="rtl:rotate-180" />
+            </Button>
+          {/snippet}
+        </Calendar.NextTrigger>
       </Calendar.ViewControl>
       <Calendar.Table>
         <Calendar.WeekDays />
