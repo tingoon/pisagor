@@ -28,10 +28,6 @@ export const Inset = meta.story({
   render: exampleRender(Examples.Inset),
 });
 
-export const DrawerContentInner = meta.story({
-  render: exampleRender(Examples.DrawerContentInner),
-});
-
 export const SnapPoints = meta.story({
   render: exampleRender(Examples.SnapPoints),
 });
@@ -46,4 +42,8 @@ export const CustomSpacing = meta.story({
 
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
+});
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
 });

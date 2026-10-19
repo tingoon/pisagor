@@ -27,3 +27,7 @@ export const Default = meta.story({
 export const Checkboxes = meta.story({
   render: exampleRender(Examples.Checkboxes),
 });
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});

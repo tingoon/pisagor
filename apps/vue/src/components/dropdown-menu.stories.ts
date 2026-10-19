@@ -75,3 +75,7 @@ export const Placements = meta.story({
 export const ItemIndicator = meta.story({
   render: exampleRender(Examples.ItemIndicator),
 });
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});
