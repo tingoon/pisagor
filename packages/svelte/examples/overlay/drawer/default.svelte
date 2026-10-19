@@ -1,16 +1,35 @@
 <script lang="ts">
-  import { Drawer } from "@pisagor/svelte";
+  import { Button, Drawer, Field, Input } from "@pisagor/svelte";
 </script>
 
-<Drawer>
-  <Drawer.Trigger>Open drawer</Drawer.Trigger>
-  <Drawer.Content>
-    <Drawer.ContentInner>
-      <Drawer.Header description="Swipe to dismiss" title="Drawer" />
-      <Drawer.Body>Drawer body</Drawer.Body>
-      <Drawer.Footer>
-        <Drawer.CloseTrigger>Close</Drawer.CloseTrigger>
-      </Drawer.Footer>
-    </Drawer.ContentInner>
-  </Drawer.Content>
+<Drawer
+  description="Make changes to your account here. Swipe down to close."
+  title="Edit profile"
+>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+  {#snippet actions()}
+    <Drawer.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()} variant="outline">Cancel</Button>
+      {/snippet}
+    </Drawer.CloseTrigger>
+    <Drawer.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()}>Save changes</Button>
+      {/snippet}
+    </Drawer.CloseTrigger>
+  {/snippet}
+
+  <Field.Group>
+    <Field>
+      <Field.Label>Name</Field.Label>
+      <Input value="Jane Doe" />
+    </Field>
+    <Field>
+      <Field.Label>Username</Field.Label>
+      <Input value="@jane.doe" />
+    </Field>
+  </Field.Group>
 </Drawer>

@@ -1,20 +1,37 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { Button, Input, Popover } from "@pisagor/svelte";
 </script>
 
 <div>
-  <Popover>
+  <Popover.Root>
     <div class="flex items-center gap-2">
       <Popover.Trigger>
-        <Button variant="outline">Open</Button>
+        {#snippet asChild(props)}
+          <Button {...props()} variant="outline">Open</Button>
+        {/snippet}
       </Popover.Trigger>
-      <Input class="w-full" placeholder="jane.doe@example.com" />
-      <Popover.Content class="w-56">
-        <Popover.Header
-          description="We'll send you a link to reset your password."
-          title="Enter your email"
-        />
-      </Popover.Content>
+      <Popover.Anchor>
+        {#snippet asChild(props)}
+          <Input
+            {...props()}
+            class="w-full"
+            placeholder="jane.doe@example.com"
+          />
+        {/snippet}
+      </Popover.Anchor>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content class="w-56">
+            <Popover.Header>
+              <Popover.Title>Enter your email</Popover.Title>
+              <Popover.Description>
+                We'll send you a link to reset your password.
+              </Popover.Description>
+            </Popover.Header>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
     </div>
-  </Popover>
+  </Popover.Root>
 </div>

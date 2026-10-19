@@ -1,34 +1,28 @@
 <script lang="ts">
   import { Menu as MenuPrimitive, type MenuItemProps } from "@ark-ui/svelte";
-  import type {
-    DropdownMenuItemRootContract,
-    DropdownMenuItemContract,
-  } from "@pisagor/contracts";
-  import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
+  import type { DropdownMenuItemRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
-  import { useStyles } from "./dropdown-menu.context";
+  import { useStyles, withItemProvider } from "./dropdown-menu.context";
 
-  type Props = MenuItemProps &
-    DropdownMenuItemRootContract &
-    DropdownMenuItemContract;
+  /** Stacked icon + label item for quick-action grids. */
+  type Props = MenuItemProps & DropdownMenuItemRootContract;
 
-  let {
-    variant = "default",
-    recipe = dropdownMenuItemRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-
-  const context = useStyles();
-  const menuSlots = $derived(context?.slots ?? dropdownMenuRecipe());
+  let { children, class: className, ...rest }: Props = $props();
+  const styles = useStyles();
+  const part = withItemProvider(
+    () => ({
+      ...rest,
+      class: styles.slots.quickItem({ class: cn(className) }),
+    }),
+    {
+      defaultProps: { "data-scope": "menu" },
+      name: "QuickItem",
+      part: "item",
+      slot: "base",
+    },
+  );
 </script>
 
-<MenuPrimitive.Item
-  {...rest}
-  class={recipe({ variant }).base({
-    class: menuSlots.quickItem({ class: cn(className) }),
-  })}
->
+<MenuPrimitive.Item {...part.props}>
   {@render children?.()}
 </MenuPrimitive.Item>

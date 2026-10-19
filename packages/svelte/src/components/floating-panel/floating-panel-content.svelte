@@ -1,43 +1,14 @@
 <script lang="ts">
   import {
     FloatingPanel as FloatingPanelPrimitive,
-    type FloatingPanelContentProps as ArkProps,
-    Portal,
+    type FloatingPanelContentProps,
   } from "@ark-ui/svelte";
-  import { floatingPanelRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./floating-panel.context";
-  import FloatingPanelResizeTrigger from "./floating-panel-resize-trigger.svelte";
+  import { withContext } from "./floating-panel.context";
 
-  type Props = ArkProps & { resizable?: boolean };
-
-  let {
-    children,
-    resizable = true,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const ctx = useStyles();
-  const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
+  let { children, ...rest }: FloatingPanelContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-<Portal>
-  <FloatingPanelPrimitive.Positioner class={slots.positioner()}>
-    <FloatingPanelPrimitive.Content
-      {...rest}
-      class={slots.content({ class: cn(className) })}
-    >
-      {@render children?.()}
-      {#if resizable}
-        <FloatingPanelResizeTrigger axis="n" />
-        <FloatingPanelResizeTrigger axis="e" />
-        <FloatingPanelResizeTrigger axis="w" />
-        <FloatingPanelResizeTrigger axis="s" />
-        <FloatingPanelResizeTrigger axis="ne" />
-        <FloatingPanelResizeTrigger axis="se" />
-        <FloatingPanelResizeTrigger axis="sw" />
-        <FloatingPanelResizeTrigger axis="nw" />
-      {/if}
-    </FloatingPanelPrimitive.Content>
-  </FloatingPanelPrimitive.Positioner>
-</Portal>
+<FloatingPanelPrimitive.Content {...part.props}>
+  {@render children?.()}
+</FloatingPanelPrimitive.Content>

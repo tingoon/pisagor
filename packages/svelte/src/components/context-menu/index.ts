@@ -1,32 +1,26 @@
 import { DropdownMenu } from "../dropdown-menu";
-import ContextMenuContent from "./context-menu-content.svelte";
+import ContextMenuShorthand from "./context-menu.svelte";
 import ContextMenuContextTrigger from "./context-menu-context-trigger.svelte";
-import ContextMenuItem from "./context-menu-item.svelte";
-import ContextMenuItemGroup from "./context-menu-item-group.svelte";
-import ContextMenuRoot from "./context-menu-root.svelte";
-import ContextMenuSeparator from "./context-menu-separator.svelte";
 import ContextMenuShortcut from "./context-menu-shortcut.svelte";
-import ContextMenuSub from "./context-menu-sub.svelte";
-import ContextMenuSubContent from "./context-menu-sub-content.svelte";
-import ContextMenuTriggerItem from "./context-menu-trigger-item.svelte";
 
-export const ContextMenu = Object.assign(ContextMenuRoot, {
+export const ContextMenu = Object.assign(ContextMenuShorthand, {
   Arrow: DropdownMenu.Arrow,
+  ArrowTip: DropdownMenu.ArrowTip,
   CheckboxItem: DropdownMenu.CheckboxItem,
-  Content: ContextMenuContent,
+  Content: DropdownMenu.Content,
   ContextTrigger: ContextMenuContextTrigger,
-  Item: ContextMenuItem,
-  ItemGroup: ContextMenuItemGroup,
+  Indicator: DropdownMenu.Indicator,
+  Item: DropdownMenu.Item,
+  ItemGroup: DropdownMenu.ItemGroup,
   ItemGroupLabel: DropdownMenu.ItemGroupLabel,
   ItemIndicator: DropdownMenu.ItemIndicator,
   ItemText: DropdownMenu.ItemText,
   Positioner: DropdownMenu.Positioner,
   RadioItem: DropdownMenu.RadioItem,
   RadioItemGroup: DropdownMenu.RadioItemGroup,
-  Root: ContextMenuRoot,
-  Separator: ContextMenuSeparator,
+  Root: DropdownMenu.Root,
+  Separator: DropdownMenu.Separator,
   Shortcut: ContextMenuShortcut,
-  Sub: ContextMenuSub,
-  SubContent: ContextMenuSubContent,
-  TriggerItem: ContextMenuTriggerItem,
+  Sub: DropdownMenu.Sub,
+  TriggerItem: DropdownMenu.TriggerItem,
 });

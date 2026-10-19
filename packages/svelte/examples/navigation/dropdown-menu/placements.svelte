@@ -6,17 +6,16 @@
 
 <div class="flex flex-wrap justify-center gap-2">
   {#each placements as placement}
-    <DropdownMenu positioning={{ placement }}>
-      <DropdownMenu.Trigger>
-        <Button class="capitalize" variant="outline">
+    <DropdownMenu classNames={{ content: "w-36" }} positioning={{ placement }}>
+      {#snippet trigger(props)}
+        <Button {...props()} class="capitalize" variant="outline">
           {placement}
         </Button>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content class="w-36">
-        <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
-        <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
-        <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
-      </DropdownMenu.Content>
+      {/snippet}
+
+      <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
+      <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
+      <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
     </DropdownMenu>
   {/each}
 </div>

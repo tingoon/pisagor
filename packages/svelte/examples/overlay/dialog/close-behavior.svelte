@@ -1,45 +1,26 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte";
   import { Button, Dialog } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">
-  <Dialog.Root closeOnInteractOutside={false}>
-    <Dialog.Trigger>
-      <Button variant="outline">No close on outside click</Button>
-    </Dialog.Trigger>
-    <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content size="sm">
-          <Dialog.Header>
-            <Dialog.Title>Stays on outside click</Dialog.Title>
-            <Dialog.Description>
-              Clicking outside does not close this dialog. Press ESC or use the
-              button to close.
-            </Dialog.Description>
-          </Dialog.Header>
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Portal>
-  </Dialog.Root>
-  <Dialog.Root closeOnEscape={false}>
-    <Dialog.Trigger>
-      <Button variant="outline">No close on Escape</Button>
-    </Dialog.Trigger>
-    <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content size="sm">
-          <Dialog.Header>
-            <Dialog.Title>Escape key unavailable</Dialog.Title>
-            <Dialog.Description>
-              Pressing Escape does not close this dialog. Click outside or use
-              the close button.
-            </Dialog.Description>
-          </Dialog.Header>
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Portal>
-  </Dialog.Root>
+  <Dialog
+    closeOnInteractOutside={false}
+    description="Clicking outside does not close this dialog. Press ESC or use the button to close."
+    size="sm"
+    title="Stays on outside click"
+  >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">No close on outside click</Button>
+    {/snippet}
+  </Dialog>
+  <Dialog
+    closeOnEscape={false}
+    description="Pressing Escape does not close this dialog. Click outside or use the close button."
+    size="sm"
+    title="Escape key unavailable"
+  >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">No close on Escape</Button>
+    {/snippet}
+  </Dialog>
 </div>

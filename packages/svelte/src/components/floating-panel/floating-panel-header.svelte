@@ -3,25 +3,12 @@
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelHeaderProps,
   } from "@ark-ui/svelte";
-  import { floatingPanelRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./floating-panel.context";
-  import FloatingPanelDragTrigger from "./floating-panel-drag-trigger.svelte";
+  import { withContext } from "./floating-panel.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: FloatingPanelHeaderProps = $props();
-  const ctx = useStyles();
-  const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
+  let { children, ...rest }: FloatingPanelHeaderProps = $props();
+  const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<FloatingPanelDragTrigger>
-  <FloatingPanelPrimitive.Header
-    {...rest}
-    class={slots.header({ class: cn(className) })}
-  >
-    {@render children?.()}
-  </FloatingPanelPrimitive.Header>
-</FloatingPanelDragTrigger>
+<FloatingPanelPrimitive.Header {...part.props}>
+  {@render children?.()}
+</FloatingPanelPrimitive.Header>

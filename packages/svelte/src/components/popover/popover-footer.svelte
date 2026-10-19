@@ -2,11 +2,7 @@
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./popover.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & {
-    children?: import("svelte").Snippet;
-  };
-
-  let { children, ...rest }: Props = $props();
+  let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
   const part = withContext(() => rest, { name: "Footer" });
 </script>
 

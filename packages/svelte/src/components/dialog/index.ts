@@ -11,6 +11,16 @@ import DialogRoot from "./dialog-root.svelte";
 import DialogTitle from "./dialog-title.svelte";
 import DialogTrigger from "./dialog-trigger.svelte";
 
+export type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogPositionerProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/svelte";
+
 export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,
   Body: DialogBody,

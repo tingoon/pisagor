@@ -4,15 +4,14 @@
   import DialogFooter from "../dialog/dialog-footer.svelte";
   import { useStyles } from "./sheet.context";
 
-  let { class: className, ...rest }: ComponentProps<typeof DialogFooter> =
-    $props();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: ComponentProps<typeof DialogFooter> = $props();
   const styles = useStyles();
-  const slots = $derived(styles.slots);
 </script>
 
-<DialogFooter
-  {...rest}
-  class={slots.footer({ class: cn(className) })}
-  data-part="footer"
-  data-scope="sheet"
-/>
+<DialogFooter {...rest} class={styles.slots.footer({ class: cn(className) })}>
+  {@render children?.()}
+</DialogFooter>

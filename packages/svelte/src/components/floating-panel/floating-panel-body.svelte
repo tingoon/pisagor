@@ -1,30 +1,14 @@
 <script lang="ts">
   import {
     FloatingPanel as FloatingPanelPrimitive,
-    type FloatingPanelBodyProps as ArkProps,
+    type FloatingPanelBodyProps,
   } from "@ark-ui/svelte";
-  import { floatingPanelRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { ScrollArea } from "../scroll-area";
-  import { useStyles } from "./floating-panel.context";
+  import { withContext } from "./floating-panel.context";
 
-  type Props = ArkProps & { scrollFade?: boolean };
-
-  let {
-    scrollFade = false,
-    children,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const ctx = useStyles();
-  const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
+  let { children, ...rest }: FloatingPanelBodyProps = $props();
+  const part = withContext(() => rest, { name: "Body" });
 </script>
 
-<ScrollArea {scrollFade}>
-  <FloatingPanelPrimitive.Body
-    {...rest}
-    class={slots.body({ class: cn(className) })}
-  >
-    {@render children?.()}
-  </FloatingPanelPrimitive.Body>
-</ScrollArea>
+<FloatingPanelPrimitive.Body {...part.props}>
+  {@render children?.()}
+</FloatingPanelPrimitive.Body>

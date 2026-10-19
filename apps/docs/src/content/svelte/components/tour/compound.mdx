@@ -1,18 +1,41 @@
 ## Anatomy
 
-```tsx
-<Tour>
-  <Tour.Trigger />
-  <Tour.Content>
-    <Tour.Header>
-      <Tour.ProgressText />
-      <Tour.Title />
-      <Tour.Description />
-    </Tour.Header>
-    <Tour.Footer>
-      <Tour.PreviousStep />
-      <Tour.NextStep />
-    </Tour.Footer>
-  </Tour.Content>
-</Tour>
+```svelte
+<Tour.Root {tour}>
+  <Tour.Backdrop />
+  <Tour.Spotlight />
+  <Tour.Positioner>
+    <Tour.Content>
+      <Tour.Arrow>
+        <Tour.ArrowTip />
+      </Tour.Arrow>
+      <Tour.Header>
+        <Tour.ProgressText />
+        <Tour.Title />
+        <Tour.Description />
+      </Tour.Header>
+      <Tour.Body />
+      <Tour.Actions>
+        {#snippet children(actions)}
+          <Tour.Control>
+            {#each actions() as action (action.label)}
+              <Tour.ActionTrigger {action} />
+            {/each}
+          </Tour.Control>
+        {/snippet}
+      </Tour.Actions>
+      <Tour.CloseTrigger />
+    </Tour.Content>
+  </Tour.Positioner>
+</Tour.Root>
 ```
+
+Create the tour with `useTour` and start it with `tour().start()`. Wrap the overlay parts in `Portal`.
+
+## Examples
+
+### Compound
+
+Read the tour state with `useTourContext` to render custom chrome, such as a progress bar.
+
+<Example name="Progress" />

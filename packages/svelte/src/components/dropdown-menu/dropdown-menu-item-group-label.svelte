@@ -3,22 +3,15 @@
     Menu as MenuPrimitive,
     type MenuItemGroupLabelProps,
   } from "@ark-ui/svelte";
-  import { dropdownMenuRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./dropdown-menu.context";
+  import { withContext } from "./dropdown-menu.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: MenuItemGroupLabelProps = $props();
-  const context = useStyles();
-  const slots = $derived(context?.slots ?? dropdownMenuRecipe());
+  let { children, ...rest }: MenuItemGroupLabelProps = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "ItemGroupLabel",
+  });
 </script>
 
-<MenuPrimitive.ItemGroupLabel
-  {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
->
+<MenuPrimitive.ItemGroupLabel {...part.props}>
   {@render children?.()}
 </MenuPrimitive.ItemGroupLabel>

@@ -3,16 +3,23 @@
     HoverCard as HoverCardPrimitive,
     type HoverCardArrowProps,
   } from "@ark-ui/svelte";
-  import { useStyles } from "./hover-card.context";
+  import { withContext } from "./hover-card.context";
+  import HoverCardArrowTip from "./hover-card-arrow-tip.svelte";
 
-  let { style, ...rest }: HoverCardArrowProps = $props();
-  const styles = useStyles();
+  const ARROW_STYLE =
+    "--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing));";
+
+  let { children, style, ...rest }: HoverCardArrowProps = $props();
+  const part = withContext(
+    () => ({ ...rest, style: style ? `${ARROW_STYLE} ${style}` : ARROW_STYLE }),
+    { name: "Arrow" },
+  );
 </script>
 
-<HoverCardPrimitive.Arrow
-  {...rest}
-  style="--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing)); {style ??
-    ''}"
->
-  <HoverCardPrimitive.ArrowTip class={styles.slots.arrowTip()} />
+<HoverCardPrimitive.Arrow {...part.props}>
+  {#if children}
+    {@render children()}
+  {:else}
+    <HoverCardArrowTip />
+  {/if}
 </HoverCardPrimitive.Arrow>

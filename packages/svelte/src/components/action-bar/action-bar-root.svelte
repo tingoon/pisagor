@@ -1,56 +1,44 @@
 <script lang="ts">
   import { useHotkey } from "@ark-ui/svelte";
-  import type {
-    ActionBarActionItem,
-    ActionBarRootContract,
-    ActionBarContract,
-  } from "@pisagor/contracts";
-  import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
-  import { XIcon } from "phosphor-svelte";
+  import type { ActionBarRootContract } from "@pisagor/contracts";
+  import { actionBarRecipe } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
   import { setActionBarContext } from "./action-bar.context";
-  import ActionBarBody from "./action-bar-body.svelte";
-  import ActionBarClose from "./action-bar-close.svelte";
-  import ActionBarContent from "./action-bar-content.svelte";
-  import ActionBarSeparator from "./action-bar-separator.svelte";
-  import ActionBarValue from "./action-bar-value.svelte";
 
-  type ActionItem = Omit<ActionBarActionItem, "icon" | "label"> & {
-    icon?: Snippet;
-    label: string;
-    onClick: () => void;
-  };
   type Props = {
-    actions?: ActionItem[];
     children?: Snippet;
+    /**
+     * Whether to close the action bar when the Escape key is pressed.
+     *
+     * @defaultValue true
+     */
     closeOnEscape?: boolean;
-    count?: number;
+    /** The default open state of the action bar. */
     defaultOpen?: boolean;
     lazyMount?: boolean;
+    /** The function to call when the open state of the action bar changes. */
     onOpenChange?: (open: boolean) => void;
+    /** The open state of the action bar. */
     open?: boolean;
+    /** Placement and gutter of the action bar. */
     positioning?: {
       gutter?: string;
       placement?: "bottom" | "bottom-start" | "bottom-end";
     };
     unmountOnExit?: boolean;
-  } & ActionBarRootContract &
-    ActionBarContract;
+  } & ActionBarRootContract;
 
   let {
     closeOnEscape = true,
-    count,
     defaultOpen = false,
     lazyMount,
     open = $bindable(defaultOpen),
     positioning: positioningProp,
     unmountOnExit,
-    actions,
     children,
     onOpenChange,
     recipe = actionBarRecipe,
   }: Props = $props();
-
   const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
   const positioning = $derived({ ...defaultPositioning, ...positioningProp });
   const slots = $derived(recipe({ placement: positioning.placement }));
@@ -96,39 +84,6 @@
       return unmountOnExit;
     },
   });
-
-  const hasPreset = $derived(
-    count !== undefined || (actions && actions.length > 0),
-  );
 </script>
 
 {@render children?.()}
-{#if hasPreset}
-  <ActionBarContent>
-    {#if count !== undefined}
-      <ActionBarValue {count} />
-    {/if}
-    {#if count !== undefined && actions}
-      <ActionBarSeparator />
-    {/if}
-    {#if actions}
-      <ActionBarBody>
-        {#each actions as action (action.id ?? action.label)}
-          <button
-            class={buttonRecipe({ size: "sm", variant: "ghost" }).base()}
-            disabled={action.disabled}
-            onclick={action.onClick}
-            type="button"
-          >
-            {@render action.icon?.()}
-            {action.label}
-          </button>
-        {/each}
-      </ActionBarBody>
-    {/if}
-    {#if actions}
-      <ActionBarSeparator />
-    {/if}
-    <ActionBarClose><XIcon aria-hidden /></ActionBarClose>
-  </ActionBarContent>
-{/if}

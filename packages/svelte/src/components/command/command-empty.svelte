@@ -2,23 +2,12 @@
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import ComboboxEmpty from "../combobox/combobox-empty.svelte";
-  import { useLocale } from "../provider/context";
   import { useStyles } from "./command.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: ComponentProps<typeof ComboboxEmpty> = $props();
-  const { m } = useLocale();
+  let { class: className, ...rest }: ComponentProps<typeof ComboboxEmpty> =
+    $props();
   const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 
-<ComboboxEmpty {...rest} class={slots.empty({ class: cn(className) })}>
-  {#if children}
-    {@render children()}
-  {:else}
-    {m("command.empty")}
-  {/if}
-</ComboboxEmpty>
+<ComboboxEmpty {...rest} class={slots.empty({ class: cn(className) })} />

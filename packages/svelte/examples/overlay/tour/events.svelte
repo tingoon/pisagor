@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
   const steps: TourStepDetails[] = [
     {
@@ -51,9 +50,10 @@
       addLog(`Step changed: ${details.stepId ?? "unknown"}`)}
     {steps}
   >
-    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-      >Start tour</Tour.Trigger
-    >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">Start tour</Button>
+    {/snippet}
+
     <div class="flex flex-wrap gap-2">
       <div
         class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -86,15 +86,5 @@
         {/each}
       {/if}
     </div>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Footer>
-        <Tour.Actions />
-      </Tour.Footer>
-    </Tour.Content>
   </Tour>
 </div>

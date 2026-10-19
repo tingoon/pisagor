@@ -3,15 +3,16 @@
     Menu as MenuPrimitive,
     type MenuItemTextProps,
   } from "@ark-ui/svelte";
-  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import { withItemContext } from "./dropdown-menu.context";
 
-  let { class: className, children, ...rest }: MenuItemTextProps = $props();
+  let { children, ...rest }: MenuItemTextProps = $props();
+  const part = withItemContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "ItemText",
+    slot: "text",
+  });
 </script>
 
-<MenuPrimitive.ItemText
-  {...rest}
-  class={dropdownMenuItemRecipe().text({ class: cn(className) })}
->
+<MenuPrimitive.ItemText {...part.props}>
   {@render children?.()}
 </MenuPrimitive.ItemText>

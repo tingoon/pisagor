@@ -1,13 +1,8 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./drawer.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & {
-    children?: Snippet;
-  };
-
-  let { children, ...rest }: Props = $props();
+  let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
   const part = withContext(() => rest, { name: "ContentInner" });
 </script>
 

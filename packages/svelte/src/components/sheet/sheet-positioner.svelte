@@ -3,26 +3,15 @@
     Dialog as DialogPrimitive,
     type DialogPositionerProps,
   } from "@ark-ui/svelte";
-  import type { SheetRootContract } from "@pisagor/contracts";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./sheet.context";
+  import { withContext } from "./sheet.context";
 
-  type Props = DialogPositionerProps & SheetRootContract;
-
-  let {
-    placement,
-    variant = "default",
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: DialogPositionerProps = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-scope": "dialog" },
+    name: "Positioner",
+  });
 </script>
 
-<DialogPrimitive.Positioner
-  {...rest}
-  class={slots.positioner({ class: cn(className), placement, variant })}
->
+<DialogPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </DialogPrimitive.Positioner>

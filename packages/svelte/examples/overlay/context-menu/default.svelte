@@ -1,19 +1,24 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { ContextMenu } from "@pisagor/svelte";
 </script>
 
-<ContextMenu>
+<ContextMenu.Root>
   <ContextMenu.ContextTrigger
     class="flex h-32 w-64 items-center justify-center rounded-md border border-dashed text-sm"
   >
     Right click here
   </ContextMenu.ContextTrigger>
-  <ContextMenu.Content>
-    <ContextMenu.Item value="copy">Copy</ContextMenu.Item>
-    <ContextMenu.Item value="paste">Paste</ContextMenu.Item>
-    <ContextMenu.Separator />
-    <ContextMenu.Item value="delete" variant="destructive"
-      >Delete</ContextMenu.Item
-    >
-  </ContextMenu.Content>
-</ContextMenu>
+  <Portal>
+    <ContextMenu.Positioner>
+      <ContextMenu.Content>
+        <ContextMenu.Item value="copy">Copy</ContextMenu.Item>
+        <ContextMenu.Item value="paste">Paste</ContextMenu.Item>
+        <ContextMenu.Separator />
+        <ContextMenu.Item value="delete" variant="destructive"
+          >Delete</ContextMenu.Item
+        >
+      </ContextMenu.Content>
+    </ContextMenu.Positioner>
+  </Portal>
+</ContextMenu.Root>

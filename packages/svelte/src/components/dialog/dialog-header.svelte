@@ -1,21 +1,9 @@
 <script lang="ts">
-  import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useDialog } from "./dialog.context";
+  import { withContext } from "./dialog.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & {
-    children?: import("svelte").Snippet;
-  };
-
-  let { children, class: className, ...rest }: Props = $props();
-  const { slots } = useDialog();
+  let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+  const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<div
-  {...rest}
-  class={slots.header({ class: cn(className) })}
-  data-part="header"
-  data-scope="dialog"
->
-  {@render children?.()}
-</div>
+<div {...part.props}>{@render children?.()}</div>

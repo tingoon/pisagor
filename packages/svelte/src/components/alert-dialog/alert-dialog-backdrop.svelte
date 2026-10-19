@@ -3,16 +3,12 @@
     Dialog as AlertDialogPrimitive,
     type DialogBackdropProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useAlertDialog } from "./alert-dialog.context";
+  import { withContext } from "./alert-dialog.context";
 
-  let { class: className, ...rest }: DialogBackdropProps = $props();
-  const { modal, slots } = useAlertDialog();
+  let { children, ...rest }: DialogBackdropProps = $props();
+  const part = withContext(() => rest, { name: "Backdrop" });
 </script>
 
-{#if modal}
-  <AlertDialogPrimitive.Backdrop
-    {...rest}
-    class={slots.backdrop({ class: cn(className) })}
-  />
-{/if}
+<AlertDialogPrimitive.Backdrop {...part.props}>
+  {@render children?.()}
+</AlertDialogPrimitive.Backdrop>

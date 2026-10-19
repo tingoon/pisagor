@@ -1,25 +1,14 @@
 <script lang="ts">
   import {
     Dialog as AlertDialogPrimitive,
-    type DialogPositionerProps as ArkDialogPositionerProps,
+    type DialogPositionerProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useAlertDialog } from "./alert-dialog.context";
+  import { withContext } from "./alert-dialog.context";
 
-  type Props = ArkDialogPositionerProps & { bottomStickOnMobile?: boolean };
-
-  let {
-    bottomStickOnMobile,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-  const { slots } = useAlertDialog();
+  let { children, ...rest }: DialogPositionerProps = $props();
+  const part = withContext(() => rest, { name: "Positioner" });
 </script>
 
-<AlertDialogPrimitive.Positioner
-  {...rest}
-  class={slots.positioner({ bottomStickOnMobile, class: cn(className) })}
->
+<AlertDialogPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </AlertDialogPrimitive.Positioner>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { Portal } from "@ark-ui/svelte";
+  import { Button, Tour, type TourStepDetails, useTour } from "@pisagor/svelte";
   import TourProgressBar from "./tour-progress-bar.svelte";
 
   const steps: TourStepDetails[] = [
@@ -46,13 +46,13 @@
       type: "tooltip",
     },
   ];
+
+  const tour = useTour({ steps });
 </script>
 
 <div class="flex flex-col gap-2">
-  <Tour {steps}>
-    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-      >Start tour</Tour.Trigger
-    >
+  <Tour.Root {tour}>
+    <Button onclick={() => tour().start()} variant="outline">Start tour</Button>
     <div class="flex flex-wrap gap-2">
       {#each [1, 2, 3, 4] as n}
         <div
@@ -63,14 +63,40 @@
         </div>
       {/each}
     </div>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Actions />
-      <TourProgressBar />
-    </Tour.Content>
-  </Tour>
+    <Portal>
+      <Tour.Backdrop />
+      <Tour.Spotlight />
+      <Tour.Positioner>
+        <Tour.Content>
+          <Tour.Header>
+            <Tour.ProgressText />
+            <Tour.Title />
+            <Tour.Description />
+          </Tour.Header>
+          <Tour.Actions>
+            {#snippet children(actions)}
+              <Tour.Control>
+                {#each actions() as action (action.label)}
+                  <Tour.ActionTrigger {action}>
+                    {#snippet asChild(props)}
+                      <Button
+                        {...props()}
+                        size="sm"
+                        variant={action.action === "next"
+                          ? "default"
+                          : "outline"}
+                      >
+                        {action.label}
+                      </Button>
+                    {/snippet}
+                  </Tour.ActionTrigger>
+                {/each}
+              </Tour.Control>
+            {/snippet}
+          </Tour.Actions>
+          <TourProgressBar />
+        </Tour.Content>
+      </Tour.Positioner>
+    </Portal>
+  </Tour.Root>
 </div>

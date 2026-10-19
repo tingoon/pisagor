@@ -1,23 +1,18 @@
 <script lang="ts">
   import {
     FloatingPanel as FloatingPanelPrimitive,
-    type FloatingPanelRootProps as ArkRootProps,
+    type FloatingPanelRootProps,
   } from "@ark-ui/svelte";
   import type { FloatingPanelRootContract } from "@pisagor/contracts";
-  import { floatingPanelRecipe } from "@pisagor/recipes";
-  import { Context } from "./floating-panel.context";
+  import { withProvider } from "./floating-panel.context";
 
-  type Props = ArkRootProps & FloatingPanelRootContract;
+  type Props = FloatingPanelRootProps & FloatingPanelRootContract;
 
-  let { children, recipe = floatingPanelRecipe, ...rest }: Props = $props();
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  let { children, ...rest }: Props = $props();
+  // The root renders no element; `base` is an empty slot.
+  const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<FloatingPanelPrimitive.Root {...rest}>
+<FloatingPanelPrimitive.Root {...root.props}>
   {@render children?.()}
 </FloatingPanelPrimitive.Root>

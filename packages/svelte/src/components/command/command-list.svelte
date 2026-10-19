@@ -4,17 +4,10 @@
   import ComboboxList from "../combobox/combobox-list.svelte";
   import { useStyles } from "./command.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: ComponentProps<typeof ComboboxList> = $props();
+  let { class: className, ...rest }: ComponentProps<typeof ComboboxList> =
+    $props();
   const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 
-<div class={slots.listWrapper()}>
-  <ComboboxList {...rest} class={slots.list({ class: cn(className) })}>
-    {@render children?.()}
-  </ComboboxList>
-</div>
+<ComboboxList {...rest} class={slots.list({ class: cn(className) })} />

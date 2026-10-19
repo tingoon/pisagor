@@ -5,7 +5,9 @@
 
 <Dialog.Root>
   <Dialog.Trigger>
-    <Button variant="outline">Open</Button>
+    {#snippet asChild(props)}
+      <Button {...props()} variant="outline">Open</Button>
+    {/snippet}
   </Dialog.Trigger>
   <Portal>
     <Dialog.Backdrop />
@@ -39,10 +41,14 @@
         </Dialog.Body>
         <Dialog.Footer>
           <Dialog.CloseTrigger>
-            <Button variant="outline">Cancel</Button>
+            {#snippet asChild(props)}
+              <Button {...props()} variant="outline">Cancel</Button>
+            {/snippet}
           </Dialog.CloseTrigger>
           <Dialog.CloseTrigger>
-            <Button>Save</Button>
+            {#snippet asChild(props)}
+              <Button {...props()}>Save</Button>
+            {/snippet}
           </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>

@@ -3,8 +3,12 @@
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelResizeTriggerProps,
   } from "@ark-ui/svelte";
+  import { withContext } from "./floating-panel.context";
 
-  let props: FloatingPanelResizeTriggerProps = $props();
+  let { children, ...rest }: FloatingPanelResizeTriggerProps = $props();
+  const part = withContext(() => rest, { name: "ResizeTrigger" });
 </script>
 
-<FloatingPanelPrimitive.ResizeTrigger {...props} />
+<FloatingPanelPrimitive.ResizeTrigger {...part.props}>
+  {@render children?.()}
+</FloatingPanelPrimitive.ResizeTrigger>

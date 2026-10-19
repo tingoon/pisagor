@@ -3,16 +3,15 @@
     Menu as MenuPrimitive,
     type MenuSeparatorProps,
   } from "@ark-ui/svelte";
-  import { dropdownMenuRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./dropdown-menu.context";
+  import { withContext } from "./dropdown-menu.context";
 
-  let { class: className, ...rest }: MenuSeparatorProps = $props();
-  const context = useStyles();
-  const slots = $derived(context?.slots ?? dropdownMenuRecipe());
+  let { children, ...rest }: MenuSeparatorProps = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "Separator",
+  });
 </script>
 
-<MenuPrimitive.Separator
-  {...rest}
-  class={slots.separator({ class: cn(className) })}
-/>
+<MenuPrimitive.Separator {...part.props}>
+  {@render children?.()}
+</MenuPrimitive.Separator>

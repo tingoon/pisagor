@@ -3,18 +3,15 @@
     Menu as MenuPrimitive,
     type MenuPositionerProps,
   } from "@ark-ui/svelte";
-  import { dropdownMenuRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./dropdown-menu.context";
+  import { withContext } from "./dropdown-menu.context";
 
-  let { class: className, children, ...rest }: MenuPositionerProps = $props();
-  const context = useStyles();
-  const slots = $derived(context?.slots ?? dropdownMenuRecipe());
+  let { children, ...rest }: MenuPositionerProps = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "Positioner",
+  });
 </script>
 
-<MenuPrimitive.Positioner
-  {...rest}
-  class={slots.positioner({ class: cn(className) })}
->
+<MenuPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </MenuPrimitive.Positioner>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
+  import { Ark, type DialogTriggerProps } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -7,12 +7,12 @@
 
   const { m } = useLocale();
 
-  let {
-    onclick,
-    class: className,
-    children,
-    ...rest
-  }: HTMLButtonAttributes = $props();
+  type Props = HTMLButtonAttributes & {
+    /** Render your own element; spread `props()` onto it. */
+    asChild?: DialogTriggerProps["asChild"];
+  };
+
+  let { onclick, class: className, children, ...rest }: Props = $props();
   const ctx = useActionBar();
 
   function handleClick(

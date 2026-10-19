@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
   const steps: TourStepDetails[] = [
     {
@@ -22,19 +21,8 @@
   ];
 </script>
 
-<Tour {steps}>
-  <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-    >Open</Tour.Trigger
-  >
-  <Tour.Content class="[--space:--spacing(2)]">
-    <Tour.Header>
-      <Tour.ProgressText />
-      <Tour.Title />
-      <Tour.Description />
-    </Tour.Header>
-    <Tour.Footer>
-      <Tour.PreviousStep />
-      <Tour.NextStep />
-    </Tour.Footer>
-  </Tour.Content>
+<Tour classNames={{ content: "[--space:--spacing(2)]" }} {steps}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
 </Tour>

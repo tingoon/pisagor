@@ -3,37 +3,21 @@
     Menu as MenuPrimitive,
     type MenuCheckboxItemProps,
   } from "@ark-ui/svelte";
-  import type {
-    DropdownMenuItemRootContract,
-    DropdownMenuItemContract,
-  } from "@pisagor/contracts";
-  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CheckIcon } from "phosphor-svelte";
+  import type { DropdownMenuItemRootContract } from "@pisagor/contracts";
+  import { withItemProvider } from "./dropdown-menu.context";
 
-  type Props = MenuCheckboxItemProps &
-    DropdownMenuItemRootContract &
-    DropdownMenuItemContract;
+  /** Checkbox item; inset by default to leave room for `ItemIndicator`. */
+  type Props = MenuCheckboxItemProps & DropdownMenuItemRootContract;
 
-  let {
-    variant = "default",
-    recipe = dropdownMenuItemRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-  const slots = $derived(recipe({ inset: true, variant }));
+  let { inset = true, children, ...rest }: Props = $props();
+  const part = withItemProvider(() => ({ ...rest, inset }), {
+    defaultProps: { "data-scope": "menu" },
+    name: "CheckboxItem",
+    part: "item",
+    slot: "base",
+  });
 </script>
 
-<MenuPrimitive.CheckboxItem
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
->
-  <MenuPrimitive.ItemIndicator class={slots.indicator()}>
-    <CheckIcon />
-  </MenuPrimitive.ItemIndicator>
-  <MenuPrimitive.ItemText class={slots.text()}>
-    {@render children?.()}
-  </MenuPrimitive.ItemText>
+<MenuPrimitive.CheckboxItem {...part.props}>
+  {@render children?.()}
 </MenuPrimitive.CheckboxItem>

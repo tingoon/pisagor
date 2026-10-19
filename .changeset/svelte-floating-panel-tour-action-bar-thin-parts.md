@@ -1,0 +1,5 @@
+---
+"@pisagor/svelte": minor
+---
+
+Svelte `FloatingPanel`, `Tour` and `ActionBar` follow the thin parts + shorthand pattern (mirrors React and Solid). The default exports are shorthands (`trigger` takes a snippet that receives the trigger props); parts map 1:1 to Ark (or to the custom ActionBar state) and `ActionBar.Positioner` is added. **Breaking:** compound usage starts from `.Root` and you render `Portal` and `Positioner` yourself. FloatingPanel `Minimize` / `Maximize` / `Restore` are removed (use `StageTrigger` with your own icons) and `Header`, `Body` and `Content` no longer add the drag trigger, scroll area or resize handles. `Tour.Root` takes `tour` (from `useTour`) instead of `steps`; `Trigger`, `Footer`, `PreviousStep`, `NextStep` and the step `Actions` helper are removed (use `Tour.Control`, `Tour.Actions` and `Tour.ActionTrigger`); `useTourContext` is Ark's and returns the tour API accessor. `ActionBar.Root` no longer renders the `count` / `actions` preset and `ActionBar.Content` no longer portals or animates.

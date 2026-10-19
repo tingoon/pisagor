@@ -3,24 +3,16 @@
     Menu as MenuPrimitive,
     type MenuItemIndicatorProps,
   } from "@ark-ui/svelte";
-  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CheckIcon } from "phosphor-svelte";
+  import { withItemContext } from "./dropdown-menu.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: MenuItemIndicatorProps = $props();
+  let { children, ...rest }: MenuItemIndicatorProps = $props();
+  const part = withItemContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "ItemIndicator",
+    slot: "indicator",
+  });
 </script>
 
-<MenuPrimitive.ItemIndicator
-  {...rest}
-  class={dropdownMenuItemRecipe().indicator({ class: cn(className) })}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    <CheckIcon />
-  {/if}
+<MenuPrimitive.ItemIndicator {...part.props}>
+  {@render children?.()}
 </MenuPrimitive.ItemIndicator>

@@ -3,22 +3,21 @@
   import { CopyIcon, PencilIcon, ShareIcon } from "phosphor-svelte";
 </script>
 
-<DropdownMenu>
-  <DropdownMenu.Trigger>
-    <Button variant="outline">Open</Button>
-  </DropdownMenu.Trigger>
-  <DropdownMenu.Content class="w-40">
-    <DropdownMenu.Item value="edit">
-      <PencilIcon />
-      Edit
-    </DropdownMenu.Item>
-    <DropdownMenu.Item value="copy">
-      <CopyIcon />
-      Copy
-    </DropdownMenu.Item>
-    <DropdownMenu.Item value="share">
-      <ShareIcon />
-      Share
-    </DropdownMenu.Item>
-  </DropdownMenu.Content>
+<DropdownMenu classNames={{ content: "w-40" }}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+
+  <DropdownMenu.Item value="edit">
+    <PencilIcon />
+    Edit
+  </DropdownMenu.Item>
+  <DropdownMenu.Item value="copy">
+    <CopyIcon />
+    Copy
+  </DropdownMenu.Item>
+  <DropdownMenu.Item value="share">
+    <ShareIcon />
+    Share
+  </DropdownMenu.Item>
 </DropdownMenu>

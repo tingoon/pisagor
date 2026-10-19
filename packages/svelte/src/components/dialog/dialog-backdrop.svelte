@@ -3,16 +3,12 @@
     Dialog as DialogPrimitive,
     type DialogBackdropProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useDialog } from "./dialog.context";
+  import { withContext } from "./dialog.context";
 
-  let { class: className, ...rest }: DialogBackdropProps = $props();
-  const { modal, slots } = useDialog();
+  let { children, ...rest }: DialogBackdropProps = $props();
+  const part = withContext(() => rest, { name: "Backdrop" });
 </script>
 
-{#if modal}
-  <DialogPrimitive.Backdrop
-    {...rest}
-    class={slots.backdrop({ class: cn(className) })}
-  />
-{/if}
+<DialogPrimitive.Backdrop {...part.props}>
+  {@render children?.()}
+</DialogPrimitive.Backdrop>

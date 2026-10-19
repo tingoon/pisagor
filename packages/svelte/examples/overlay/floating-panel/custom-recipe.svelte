@@ -8,7 +8,7 @@
     NumberInput,
     Select,
   } from "@pisagor/svelte";
-  import { GearSixIcon, XIcon } from "phosphor-svelte";
+  import { GearSixIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandFloatingPanelRecipe = tv({
@@ -29,46 +29,33 @@
 <FloatingPanel
   defaultSize={{ height: 300, width: 360 }}
   recipe={brandFloatingPanelRecipe}
+  title="Settings"
 >
-  <FloatingPanel.Trigger>
-    <Button variant="outline">Open</Button>
-  </FloatingPanel.Trigger>
-  <FloatingPanel.Content>
-    <FloatingPanel.Header>
-      <GearSixIcon />
-      <FloatingPanel.Title>Settings</FloatingPanel.Title>
-      <FloatingPanel.Control>
-        <FloatingPanel.Minimize />
-        <FloatingPanel.Maximize />
-        <FloatingPanel.Restore />
-        <FloatingPanel.CloseTrigger>
-          <Button aria-label="Close" size="icon-xs">
-            <XIcon aria-hidden />
-          </Button>
-        </FloatingPanel.CloseTrigger>
-      </FloatingPanel.Control>
-    </FloatingPanel.Header>
-    <FloatingPanel.Body>
-      <Field>
-        <Field.Label>Font family</Field.Label>
-        <Select.Root {collection} defaultValue={["Inter"]}>
-          <Select.Trigger class="w-full">
-            <Select.ValueText />
-          </Select.Trigger>
-          <Select.Content>
-            {#each collection.items as item}
-              <Select.Item {item}>{item}</Select.Item>
-            {/each}
-          </Select.Content>
-        </Select.Root>
-      </Field>
-      <Field>
-        <Field.Label>Font size</Field.Label>
-        <NumberInput class="w-full" defaultValue="16" />
-      </Field>
-    </FloatingPanel.Body>
-    <FloatingPanel.Footer>
-      <Button variant="outline">Save</Button>
-    </FloatingPanel.Footer>
-  </FloatingPanel.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+  {#snippet icon()}
+    <GearSixIcon />
+  {/snippet}
+  {#snippet actions()}
+    <Button variant="outline">Save</Button>
+  {/snippet}
+
+  <Field>
+    <Field.Label>Font family</Field.Label>
+    <Select.Root {collection} defaultValue={["Inter"]}>
+      <Select.Trigger class="w-full">
+        <Select.ValueText />
+      </Select.Trigger>
+      <Select.Content>
+        {#each collection.items as item}
+          <Select.Item {item}>{item}</Select.Item>
+        {/each}
+      </Select.Content>
+    </Select.Root>
+  </Field>
+  <Field>
+    <Field.Label>Font size</Field.Label>
+    <NumberInput class="w-full" defaultValue="16" />
+  </Field>
 </FloatingPanel>

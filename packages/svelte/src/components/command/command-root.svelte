@@ -16,6 +16,7 @@
     ...rest
   }: Props = $props();
   const slots = $derived(recipe());
+
   Context.set({
     get slots() {
       return slots;
@@ -24,8 +25,6 @@
 </script>
 
 <ComboboxRoot
-  {...rest}
-  class={slots.base({ class: cn(className) })}
   closeOnSelect={false}
   disableLayer
   inputBehavior="autohighlight"
@@ -33,6 +32,8 @@
   open
   selectionBehavior="clear"
   showIndicator={false}
+  {...rest}
+  class={slots.base({ class: cn(className) })}
 >
   {@render children?.()}
 </ComboboxRoot>

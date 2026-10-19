@@ -4,30 +4,17 @@
     type DialogRootProps,
   } from "@ark-ui/svelte";
   import type { AlertDialogRootContract } from "@pisagor/contracts";
-  import { alertDialogRecipe } from "@pisagor/recipes";
-  import { setAlertDialogContext } from "./alert-dialog.context";
+  import { withProvider } from "./alert-dialog.context";
 
   type Props = DialogRootProps & AlertDialogRootContract;
 
-  let {
-    modal = true,
-    recipe = alertDialogRecipe,
-    role = "alertdialog",
-    children,
-    ...rest
-  }: Props = $props();
-  const slots = $derived(recipe());
-
-  setAlertDialogContext({
-    get modal() {
-      return modal;
-    },
-    get slots() {
-      return slots;
-    },
+  let { children, ...rest }: Props = $props();
+  const root = withProvider(() => rest, {
+    defaultProps: { role: "alertdialog" },
+    name: "Root",
   });
 </script>
 
-<AlertDialogPrimitive.Root {...rest} {modal} {role}>
+<AlertDialogPrimitive.Root {...root.props}>
   {@render children?.()}
 </AlertDialogPrimitive.Root>

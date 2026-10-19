@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
   import { KeyboardIcon } from "phosphor-svelte";
 
   const steps: TourStepDetails[] = [
@@ -39,9 +38,10 @@
 
 <div class="flex flex-col gap-2">
   <Tour keyboardNavigation {steps}>
-    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-      >Start tour</Tour.Trigger
-    >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">Start tour</Button>
+    {/snippet}
+
     <p class="text-muted-foreground flex items-center gap-2 text-sm">
       <KeyboardIcon class="size-4" />
       Use arrow keys to navigate, Escape to close
@@ -56,13 +56,5 @@
         </div>
       {/each}
     </div>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Actions />
-    </Tour.Content>
   </Tour>
 </div>

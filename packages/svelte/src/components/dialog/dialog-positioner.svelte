@@ -1,25 +1,14 @@
 <script lang="ts">
   import {
     Dialog as DialogPrimitive,
-    type DialogPositionerProps as ArkDialogPositionerProps,
+    type DialogPositionerProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useDialog } from "./dialog.context";
+  import { withContext } from "./dialog.context";
 
-  type Props = ArkDialogPositionerProps & { bottomStickOnMobile?: boolean };
-
-  let {
-    bottomStickOnMobile,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-  const { slots } = useDialog();
+  let { children, ...rest }: DialogPositionerProps = $props();
+  const part = withContext(() => rest, { name: "Positioner" });
 </script>
 
-<DialogPrimitive.Positioner
-  {...rest}
-  class={slots.positioner({ bottomStickOnMobile, class: cn(className) })}
->
+<DialogPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </DialogPrimitive.Positioner>

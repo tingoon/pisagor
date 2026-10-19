@@ -1,40 +1,55 @@
-import { useTourContext } from "./tour.context";
+import { Tour as TourPrimitive } from "@ark-ui/svelte";
+import TourShorthand from "./tour.svelte";
 import TourActionTrigger from "./tour-action-trigger.svelte";
-import TourActions from "./tour-actions.svelte";
+import TourArrow from "./tour-arrow.svelte";
+import TourArrowTip from "./tour-arrow-tip.svelte";
 import TourBackdrop from "./tour-backdrop.svelte";
 import TourBody from "./tour-body.svelte";
 import TourCloseTrigger from "./tour-close-trigger.svelte";
 import TourContent from "./tour-content.svelte";
+import TourControl from "./tour-control.svelte";
 import TourDescription from "./tour-description.svelte";
-import TourFooter from "./tour-footer.svelte";
 import TourHeader from "./tour-header.svelte";
-import TourNextStep from "./tour-next-step.svelte";
 import TourPositioner from "./tour-positioner.svelte";
-import TourPreviousStep from "./tour-previous-step.svelte";
 import TourProgressText from "./tour-progress-text.svelte";
 import TourRoot from "./tour-root.svelte";
 import TourSpotlight from "./tour-spotlight.svelte";
 import TourTitle from "./tour-title.svelte";
-import TourTrigger from "./tour-trigger.svelte";
 
-export type { TourStepDetails } from "@ark-ui/svelte";
-export { useTourContext };
+export type {
+  TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
+  TourCloseTriggerProps,
+  TourContentProps,
+  TourControlProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourSpotlightProps,
+  TourStepDetails,
+  TourTitleProps,
+  UseTourProps,
+  UseTourReturn,
+} from "@ark-ui/svelte";
+export { useTour, useTourContext } from "@ark-ui/svelte";
 
-export const Tour = Object.assign(TourRoot, {
-  Actions: TourActions,
+export const Tour = Object.assign(TourShorthand, {
   ActionTrigger: TourActionTrigger,
+  Actions: TourPrimitive.Actions,
+  Arrow: TourArrow,
+  ArrowTip: TourArrowTip,
   Backdrop: TourBackdrop,
   Body: TourBody,
   CloseTrigger: TourCloseTrigger,
   Content: TourContent,
+  Control: TourControl,
   Description: TourDescription,
-  Footer: TourFooter,
   Header: TourHeader,
-  NextStep: TourNextStep,
   Positioner: TourPositioner,
-  PreviousStep: TourPreviousStep,
   ProgressText: TourProgressText,
+  Root: TourRoot,
   Spotlight: TourSpotlight,
   Title: TourTitle,
-  Trigger: TourTrigger,
 });

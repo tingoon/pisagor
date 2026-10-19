@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { commandRecipe } from "@pisagor/recipes";
   import { Command } from "@pisagor/svelte";
   import { tv } from "tailwind-variants";
@@ -39,38 +38,6 @@
     { group: "Settings", label: "Sign out", shortcut: "⌘O", value: "sign out" },
     { group: "Settings", label: "Sign in", shortcut: "⌘I", value: "sign in" },
   ];
-  const filters = useFilter({ sensitivity: "base" });
-  const { collection, filter } = useListCollection({
-    filter(itemString, filterText) {
-      return filters().contains(itemString, filterText);
-    },
-    groupBy: (item) => item.group,
-    initialItems,
-  });
 </script>
 
-<Command
-  {collection}
-  onInputValueChange={({ inputValue }) => filter(inputValue)}
-  recipe={brandCommandRecipe}
->
-  <Command.Input />
-  <Command.Content>
-    <Command.Empty />
-    <Command.List>
-      {#each collection().group() as [group, items], index}
-        {#if index !== 0}
-          <Command.Separator />
-        {/if}
-        <Command.ItemGroup heading={group}>
-          {#each items as item}
-            <Command.Item {item}>
-              {item.label}
-              <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-            </Command.Item>
-          {/each}
-        </Command.ItemGroup>
-      {/each}
-    </Command.List>
-  </Command.Content>
-</Command>
+<Command items={initialItems} recipe={brandCommandRecipe} />

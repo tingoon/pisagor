@@ -1,4 +1,5 @@
 export { default as CloseBehavior } from "./close-behavior.svelte";
+export { default as Compound } from "./compound.svelte";
 export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as CustomSpacing } from "./custom-spacing.svelte";
 export { default as Default } from "./default.svelte";

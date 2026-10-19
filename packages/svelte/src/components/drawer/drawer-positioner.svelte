@@ -3,25 +3,12 @@
     Drawer as DrawerPrimitive,
     type DrawerPositionerProps,
   } from "@ark-ui/svelte";
-  import type { DrawerRootContract } from "@pisagor/contracts";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./drawer.context";
+  import { withContext } from "./drawer.context";
 
-  type Props = DrawerPositionerProps & DrawerRootContract;
-
-  let {
-    variant = "default",
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: DrawerPositionerProps = $props();
+  const part = withContext(() => rest, { name: "Positioner" });
 </script>
 
-<DrawerPrimitive.Positioner
-  {...rest}
-  class={slots.positioner({ class: cn(className), variant })}
->
+<DrawerPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </DrawerPrimitive.Positioner>
