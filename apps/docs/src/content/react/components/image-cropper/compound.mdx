@@ -1,8 +1,15 @@
 ## Anatomy
 
 ```tsx
-<ImageCropper>
-  <ImageCropper.Image />
-  <ImageCropper.Selection />
-</ImageCropper>
+<ImageCropper.Root>
+  <ImageCropper.Viewport>
+    <ImageCropper.Image />
+    <ImageCropper.Selection>
+      <ImageCropper.Grid />
+      <ImageCropper.Handle />
+    </ImageCropper.Selection>
+  </ImageCropper.Viewport>
+</ImageCropper.Root>
 ```
+
+Parts map 1:1 to Ark (`Handle` renders its grip by default). The `ImageCropper` shorthand renders the viewport, image, grid lines, and all eight handles for you.

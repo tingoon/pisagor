@@ -1,4 +1,8 @@
-import type { ImageCropperRecipeFn } from "@pisagor/recipes";
+import type {
+  ImageCropperRecipeFn,
+  ImageCropperRecipeSlot,
+} from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared ImageCropper root contract: recipe override. Used by compound roots;
@@ -11,4 +15,13 @@ export interface ImageCropperRootContract {
    * @defaultValue imageCropperRecipe
    */
   recipe?: ImageCropperRecipeFn;
+}
+
+/**
+ * ImageCropper shorthand contract. Compose with `ImageCropperRootContract` /
+ * framework `ImageCropperRootProps`.
+ */
+export interface ImageCropperContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<ImageCropperRecipeSlot>;
 }
