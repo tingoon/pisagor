@@ -17,6 +17,7 @@ export const drawerRecipe = tv({
       "transparency-reduce:[--blur:0px]",
       "motion-reduce:animate-none!",
     ],
+    base: [],
     body: [
       "flex-1",
       "p-(--space)",
@@ -24,6 +25,7 @@ export const drawerRecipe = tv({
       "in-[[data-scope=drawer][data-part=content]:has([data-scope=drawer][data-part=header])]:pt-0",
       "in-[[data-scope=drawer][data-part=content]:has([data-scope=drawer][data-part=footer]:not(.border-t))]:pb-1",
     ],
+    closeTrigger: [],
     content: [
       "[--bleed:3rem] [--space:--spacing(6)]",
       "group/drawer",
@@ -84,6 +86,7 @@ export const drawerRecipe = tv({
       "has-data-[swipe-direction=right]:items-stretch has-data-[swipe-direction=right]:justify-end",
     ],
     title: ["text-xl leading-tight font-semibold tracking-tight"],
+    trigger: [],
   },
   variants: {
     placement: {
