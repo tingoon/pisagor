@@ -1,10 +1,13 @@
-import type { FileInputRecipeFn } from "@pisagor/recipes";
+import type {
+  FileInputRecipeFn,
+  FileInputVariantProps,
+} from "@pisagor/recipes";
 
 /**
- * Shared FileInput root contract: recipe override. Used by compound roots;
- * excludes host DOM attributes.
+ * Shared FileInput root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
  */
-export interface FileInputRootContract {
+export interface FileInputRootContract extends FileInputVariantProps {
   /**
    * Style recipe override.
    *

@@ -1,13 +1,14 @@
 import type {
   CalendarRecipeFn,
   CalendarTableCellRecipeFn,
+  CalendarVariantProps,
 } from "@pisagor/recipes";
 
 /**
- * Shared Calendar root contract: recipe override. Used by compound roots;
- * excludes host DOM attributes.
+ * Shared Calendar root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
  */
-export interface CalendarRootContract {
+export interface CalendarRootContract extends CalendarVariantProps {
   /**
    * Style recipe override.
    *

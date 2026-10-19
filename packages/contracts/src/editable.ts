@@ -1,10 +1,10 @@
-import type { EditableRecipeFn } from "@pisagor/recipes";
+import type { EditableRecipeFn, EditableVariantProps } from "@pisagor/recipes";
 
 /**
- * Shared Editable root contract: recipe override. Used by compound roots;
- * excludes host DOM attributes.
+ * Shared Editable root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
  */
-export interface EditableRootContract {
+export interface EditableRootContract extends EditableVariantProps {
   /**
    * Style recipe override.
    *
