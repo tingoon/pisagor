@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Breadcrumb, Button, DropdownMenu } from "@pisagor/react";
 
 export function WithMenu() {
@@ -9,7 +10,7 @@ export function WithMenu() {
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item>
-          <DropdownMenu positioning={{ placement: "bottom-start" }}>
+          <DropdownMenu.Root positioning={{ placement: "bottom-start" }}>
             <DropdownMenu.Trigger asChild>
               <Button
                 aria-label="Open menu to view more breadcrumb items"
@@ -19,18 +20,24 @@ export function WithMenu() {
                 <Breadcrumb.Ellipsis />
               </Button>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content className="w-40">
-              <DropdownMenu.Item asChild value="docs">
-                <a href="https://example.com/documentation">Documentation</a>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild value="components">
-                <a href="https://example.com/components">Components</a>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild value="hooks">
-                <a href="https://example.com/hooks">Hooks</a>
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
+            <Portal>
+              <DropdownMenu.Positioner>
+                <DropdownMenu.Content className="w-40">
+                  <DropdownMenu.Item asChild value="docs">
+                    <a href="https://example.com/documentation">
+                      Documentation
+                    </a>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item asChild value="components">
+                    <a href="https://example.com/components">Components</a>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item asChild value="hooks">
+                    <a href="https://example.com/hooks">Hooks</a>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Positioner>
+            </Portal>
+          </DropdownMenu.Root>
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item>

@@ -22,11 +22,15 @@ import type {
   ListboxRootContract,
   ListboxContract,
 } from "@pisagor/contracts";
-import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
+import {
+  dropdownMenuRecipe,
+  listboxItemRecipe,
+  listboxRecipe,
+} from "@pisagor/recipes";
 
 import { type ReactNode, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
+import type { DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useLocale } from "./provider/context";
 
 // #region Context
@@ -203,10 +207,14 @@ export function ListboxEmpty({
   );
 }
 
-export function ListboxShortcut(props: DropdownMenuShortcutProps) {
+export function ListboxShortcut({
+  className,
+  ...rest
+}: DropdownMenuShortcutProps) {
   return (
-    <DropdownMenu.Shortcut
-      {...props}
+    <span
+      {...rest}
+      className={dropdownMenuRecipe().shortcut({ className })}
       data-part="shortcut"
       data-scope="listbox"
     />

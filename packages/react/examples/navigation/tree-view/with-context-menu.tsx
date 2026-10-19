@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   FilePlusIcon,
   FolderPlusIcon,
@@ -40,31 +41,35 @@ export function WithContextMenu() {
       <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
         {node.children ? (
           <TreeView.Branch>
-            <ContextMenu>
+            <ContextMenu.Root>
               <ContextMenu.ContextTrigger asChild>
                 <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
               </ContextMenu.ContextTrigger>
-              <ContextMenu.Content className="w-40">
-                <ContextMenu.Item value="add-folder">
-                  <FolderPlusIcon aria-hidden />
-                  Add folder
-                </ContextMenu.Item>
-                <ContextMenu.Item value="add-file">
-                  <FilePlusIcon aria-hidden />
-                  Add file
-                </ContextMenu.Item>
-                <ContextMenu.Separator />
-                <ContextMenu.Item value="rename">
-                  <PencilSimpleIcon aria-hidden />
-                  Rename
-                </ContextMenu.Item>
-                <ContextMenu.Separator />
-                <ContextMenu.Item value="delete" variant="destructive">
-                  <TrashIcon aria-hidden />
-                  Delete
-                </ContextMenu.Item>
-              </ContextMenu.Content>
-            </ContextMenu>
+              <Portal>
+                <ContextMenu.Positioner>
+                  <ContextMenu.Content className="w-40">
+                    <ContextMenu.Item value="add-folder">
+                      <FolderPlusIcon aria-hidden />
+                      Add folder
+                    </ContextMenu.Item>
+                    <ContextMenu.Item value="add-file">
+                      <FilePlusIcon aria-hidden />
+                      Add file
+                    </ContextMenu.Item>
+                    <ContextMenu.Separator />
+                    <ContextMenu.Item value="rename">
+                      <PencilSimpleIcon aria-hidden />
+                      Rename
+                    </ContextMenu.Item>
+                    <ContextMenu.Separator />
+                    <ContextMenu.Item value="delete" variant="destructive">
+                      <TrashIcon aria-hidden />
+                      Delete
+                    </ContextMenu.Item>
+                  </ContextMenu.Content>
+                </ContextMenu.Positioner>
+              </Portal>
+            </ContextMenu.Root>
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
                 <TreeNode
@@ -76,24 +81,28 @@ export function WithContextMenu() {
             </TreeView.BranchContent>
           </TreeView.Branch>
         ) : (
-          <ContextMenu>
+          <ContextMenu.Root>
             <ContextMenu.ContextTrigger asChild>
               <TreeView.Item>
                 <TreeView.ItemText>{node.name}</TreeView.ItemText>
               </TreeView.Item>
             </ContextMenu.ContextTrigger>
-            <ContextMenu.Content className="w-40">
-              <ContextMenu.Item value="add-file">
-                <PencilSimpleIcon aria-hidden />
-                Rename
-              </ContextMenu.Item>
-              <ContextMenu.Separator />
-              <ContextMenu.Item value="delete" variant="destructive">
-                <TrashIcon aria-hidden />
-                Delete
-              </ContextMenu.Item>
-            </ContextMenu.Content>
-          </ContextMenu>
+            <Portal>
+              <ContextMenu.Positioner>
+                <ContextMenu.Content className="w-40">
+                  <ContextMenu.Item value="add-file">
+                    <PencilSimpleIcon aria-hidden />
+                    Rename
+                  </ContextMenu.Item>
+                  <ContextMenu.Separator />
+                  <ContextMenu.Item value="delete" variant="destructive">
+                    <TrashIcon aria-hidden />
+                    Delete
+                  </ContextMenu.Item>
+                </ContextMenu.Content>
+              </ContextMenu.Positioner>
+            </Portal>
+          </ContextMenu.Root>
         )}
       </TreeView.NodeProvider>
     );

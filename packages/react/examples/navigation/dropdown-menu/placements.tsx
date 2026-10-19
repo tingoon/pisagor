@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Button, DropdownMenu } from "@pisagor/react";
 
 export function Placements() {
@@ -6,18 +7,22 @@ export function Placements() {
   return (
     <div className="flex flex-wrap justify-center gap-2">
       {placements.map((placement) => (
-        <DropdownMenu key={placement} positioning={{ placement }}>
+        <DropdownMenu.Root key={placement} positioning={{ placement }}>
           <DropdownMenu.Trigger asChild>
             <Button className="capitalize" variant="outline">
               {placement}
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content className="w-36">
-            <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
-            <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
-            <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content className="w-36">
+                <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
+                <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
+                <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
       ))}
     </div>
   );

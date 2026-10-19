@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   CaretDownIcon,
   ChartBarIcon,
@@ -136,7 +137,7 @@ export function SectionTabs() {
           </Tabs.List>
         </Tabs.Root>
 
-        <DropdownMenu onSelect={({ value }) => setSectionId(value)}>
+        <DropdownMenu.Root onSelect={({ value }) => setSectionId(value)}>
           <DropdownMenu.Trigger asChild>
             <Button className={styles.tabsMobile()} variant="ghost">
               {section ? <section.icon /> : null}
@@ -144,15 +145,19 @@ export function SectionTabs() {
               <CaretDownIcon />
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            {sections.map((item) => (
-              <DropdownMenu.Item key={item.id} value={item.id}>
-                <item.icon />
-                {item.label}
-              </DropdownMenu.Item>
-            ))}
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content>
+                {sections.map((item) => (
+                  <DropdownMenu.Item key={item.id} value={item.id}>
+                    <item.icon />
+                    {item.label}
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
 
         <div className={styles.headerActions()}>
           <SearchCommand />

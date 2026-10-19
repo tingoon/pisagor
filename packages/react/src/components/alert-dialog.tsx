@@ -85,7 +85,9 @@ const Root = withProvider<AlertDialogRootProps>(AlertDialogPrimitive.Root, {
   slot: "base",
 });
 
+// Zag looks triggers up by `[data-scope="dialog"]`, so keep the Ark scope.
 const Trigger = withContext<DialogTriggerProps>(AlertDialogPrimitive.Trigger, {
+  defaultProps: { "data-scope": "dialog" },
   name: "Trigger",
 });
 

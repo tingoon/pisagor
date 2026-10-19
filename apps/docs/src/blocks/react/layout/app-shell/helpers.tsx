@@ -59,7 +59,7 @@ export function WorkspaceSwitcher() {
   return (
     <Sidebar.Menu>
       <Sidebar.MenuItem>
-        <DropdownMenu
+        <DropdownMenu.Root
           onSelect={({ value }) => {
             if (value !== "add") setActiveId(value);
           }}
@@ -75,25 +75,29 @@ export function WorkspaceSwitcher() {
               <CaretUpDownIcon className={styles.menuCaret()} />
             </Sidebar.MenuButton>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content className={styles.dropdownContent()}>
-            <DropdownMenu.ItemGroup>
-              <DropdownMenu.ItemGroupLabel>
-                Workspaces
-              </DropdownMenu.ItemGroupLabel>
-              {workspaces.map((workspace) => (
-                <DropdownMenu.Item key={workspace.id} value={workspace.id}>
-                  <Avatar fallback={workspace.initials} size="sm" />
-                  {workspace.name}
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content className={styles.dropdownContent()}>
+                <DropdownMenu.ItemGroup>
+                  <DropdownMenu.ItemGroupLabel>
+                    Workspaces
+                  </DropdownMenu.ItemGroupLabel>
+                  {workspaces.map((workspace) => (
+                    <DropdownMenu.Item key={workspace.id} value={workspace.id}>
+                      <Avatar fallback={workspace.initials} size="sm" />
+                      {workspace.name}
+                    </DropdownMenu.Item>
+                  ))}
+                </DropdownMenu.ItemGroup>
+                <DropdownMenu.Separator />
+                <DropdownMenu.Item value="add">
+                  <PlusIcon />
+                  Add workspace
                 </DropdownMenu.Item>
-              ))}
-            </DropdownMenu.ItemGroup>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item value="add">
-              <PlusIcon />
-              Add workspace
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
       </Sidebar.MenuItem>
     </Sidebar.Menu>
   );
@@ -159,7 +163,7 @@ export function NavUser() {
   return (
     <Sidebar.Menu>
       <Sidebar.MenuItem>
-        <DropdownMenu positioning={{ placement: "right-end" }}>
+        <DropdownMenu.Root positioning={{ placement: "right-end" }}>
           <DropdownMenu.Trigger asChild>
             <Sidebar.MenuButton size="lg">
               <Avatar fallback={user.initials} name={user.name} />
@@ -171,7 +175,7 @@ export function NavUser() {
             </Sidebar.MenuButton>
           </DropdownMenu.Trigger>
           <UserMenuContent />
-        </DropdownMenu>
+        </DropdownMenu.Root>
       </Sidebar.MenuItem>
     </Sidebar.Menu>
   );
@@ -180,50 +184,54 @@ export function NavUser() {
 /** Avatar button + account menu for top bars. */
 export function UserMenu() {
   return (
-    <DropdownMenu positioning={{ placement: "bottom-end" }}>
+    <DropdownMenu.Root positioning={{ placement: "bottom-end" }}>
       <DropdownMenu.Trigger asChild>
         <Button aria-label="Account" size="icon-md" variant="ghost">
           <Avatar fallback={user.initials} name={user.name} size="sm" />
         </Button>
       </DropdownMenu.Trigger>
       <UserMenuContent />
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 }
 
 function UserMenuContent() {
   return (
-    <DropdownMenu.Content className={styles.dropdownContent()}>
-      <DropdownMenu.ItemGroup>
-        <DropdownMenu.ItemGroupLabel className={styles.dropdownLabel()}>
-          <Avatar fallback={user.initials} name={user.name} size="sm" />
-          <span className={styles.brandText()}>
-            <span className={styles.brandName()}>{user.name}</span>
-            <span className={styles.brandMeta()}>{user.email}</span>
-          </span>
-        </DropdownMenu.ItemGroupLabel>
-      </DropdownMenu.ItemGroup>
-      <DropdownMenu.Separator />
-      <DropdownMenu.ItemGroup>
-        <DropdownMenu.Item value="account">
-          <UserIcon />
-          Account
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="billing">
-          <CreditCardIcon />
-          Billing
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="settings">
-          <GearIcon />
-          Settings
-        </DropdownMenu.Item>
-      </DropdownMenu.ItemGroup>
-      <DropdownMenu.Separator />
-      <DropdownMenu.Item value="sign-out">
-        <SignOutIcon />
-        Sign out
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
+    <Portal>
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content className={styles.dropdownContent()}>
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.ItemGroupLabel className={styles.dropdownLabel()}>
+              <Avatar fallback={user.initials} name={user.name} size="sm" />
+              <span className={styles.brandText()}>
+                <span className={styles.brandName()}>{user.name}</span>
+                <span className={styles.brandMeta()}>{user.email}</span>
+              </span>
+            </DropdownMenu.ItemGroupLabel>
+          </DropdownMenu.ItemGroup>
+          <DropdownMenu.Separator />
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.Item value="account">
+              <UserIcon />
+              Account
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="billing">
+              <CreditCardIcon />
+              Billing
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="settings">
+              <GearIcon />
+              Settings
+            </DropdownMenu.Item>
+          </DropdownMenu.ItemGroup>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item value="sign-out">
+            <SignOutIcon />
+            Sign out
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Portal>
   );
 }
 

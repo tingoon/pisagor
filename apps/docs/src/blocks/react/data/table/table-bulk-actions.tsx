@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   ArchiveIcon,
   CopyIcon,
@@ -120,23 +121,27 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
               <PencilSimpleIcon />
               Edit
             </Button>
-            <DropdownMenu positioning={{ placement: "top" }}>
+            <DropdownMenu.Root positioning={{ placement: "top" }}>
               <DropdownMenu.Trigger asChild>
                 <Button size="sm" variant="secondary">
                   <DotsThreeIcon />
                 </Button>
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content>
-                <DropdownMenu.Item value="archive">
-                  <ArchiveIcon />
-                  Archive
-                </DropdownMenu.Item>
-                <DropdownMenu.Item value="duplicate">
-                  <CopyIcon />
-                  Duplicate
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu>
+              <Portal>
+                <DropdownMenu.Positioner>
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Item value="archive">
+                      <ArchiveIcon />
+                      Archive
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item value="duplicate">
+                      <CopyIcon />
+                      Duplicate
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Positioner>
+              </Portal>
+            </DropdownMenu.Root>
             <AlertDialog
               actions={
                 <>

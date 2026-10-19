@@ -2,7 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const dropdownMenuRecipe = tv({
   slots: {
+    arrow: [],
     arrowTip: ["border-s border-t"],
+    base: [],
     content: [
       "z-[calc(var(--z-index-popover)+var(--nested-layer-count,0))]",
       "max-h-(--available-height) not-[class*='w-']:min-w-32",
@@ -23,6 +25,8 @@ export const dropdownMenuRecipe = tv({
       "data-[placement=top]:slide-in-from-bottom-2 data-[state=closed]:data-[placement=top]:slide-out-to-bottom-2",
       "motion-reduce:animate-none!",
     ],
+    indicator: ["ms-auto rtl:me-auto", "text-muted-foreground"],
+    itemGroup: [],
     itemGroupLabel: [
       "px-2 py-1.5",
       "text-muted-foreground text-sm font-medium",
@@ -30,12 +34,14 @@ export const dropdownMenuRecipe = tv({
     ],
     positioner: "outline-hidden",
     quickItem: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
+    radioItemGroup: [],
     separator: ["bg-border my-1 h-px"],
     shortcut: [
       "ms-auto rtl:me-auto",
       "text-muted-foreground text-xs tracking-widest",
       "group-data-highlighted/dropdown-menu-item:group-data-[variant=destructive]/dropdown-menu-item:text-destructive",
     ],
+    trigger: [],
   },
 });
 
