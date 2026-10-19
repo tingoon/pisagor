@@ -45,10 +45,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Parts
 const CarouselRootBase = withProvider<CarouselRootContract>(
   CarouselPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export const CarouselRoot = defineComponent({
@@ -175,20 +172,12 @@ export const CarouselAutoplayTrigger = defineComponent({
 
 export const CarouselProgressText = withContext(
   CarouselPrimitive.ProgressText,
-  {
-    defaultProps: { "data-part": "progress-text" },
-    name: "ProgressText",
-    slot: "progressText",
-  },
+  { name: "ProgressText" },
 );
 
 export const CarouselIndicatorGroup = withContext(
   CarouselPrimitive.IndicatorGroup,
-  {
-    defaultProps: { "data-part": "indicator-group" },
-    name: "IndicatorGroup",
-    slot: "indicatorGroup",
-  },
+  { name: "IndicatorGroup" },
 );
 
 export const CarouselIndicator = withContext(CarouselPrimitive.Indicator, {
@@ -196,9 +185,7 @@ export const CarouselIndicator = withContext(CarouselPrimitive.Indicator, {
 });
 
 export const CarouselItemGroup = withContext(CarouselPrimitive.ItemGroup, {
-  defaultProps: { "data-part": "item-group" },
   name: "ItemGroup",
-  slot: "itemGroup",
 });
 
 export const CarouselItem = withContext(CarouselPrimitive.Item, {

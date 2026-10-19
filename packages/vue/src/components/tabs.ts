@@ -42,7 +42,6 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Parts
 export const TabsRoot = withProvider<TabsRootContract>(TabsPrimitive.Root, {
   name: "Root",
-  slot: "base",
 });
 
 export const TabsList = defineComponent({

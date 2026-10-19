@@ -37,6 +37,7 @@ type ClassValue = Parameters<typeof cn>[0];
 const {
   Context: DatePickerStylesContext,
   useOptionalStyles: useOptionalDatePickerStyles,
+  withContext,
   useStyles,
 } = createSlotRecipeContext({
   name: "DatePicker",
@@ -80,7 +81,7 @@ export interface DatePickerContentProps {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-export const DatePickerRoot = defineComponent({
+const Root = defineComponent({
   inheritAttrs: false,
   name: "DatePicker",
   props: {
@@ -158,6 +159,14 @@ const DatePickerInsideControlKey: InjectionKey<boolean> = Symbol(
   "DatePickerInsideControl",
 );
 
+const ControlBase = withContext(DatePickerPrimitive.Control, {
+  name: "Control",
+});
+
+const TriggerBase = withContext(DatePickerPrimitive.Trigger, {
+  name: "Trigger",
+});
+
 function maybeControl(
   insideControl: boolean,
   props: Record<string, unknown>,
@@ -165,26 +174,21 @@ function maybeControl(
 ): VNodeChild {
   return insideControl
     ? children()
-    : h(DatePickerPrimitive.Control as ArkPart, props, children);
+    : h(ControlBase as ArkPart, props, children);
 }
 
-export const DatePickerControl = defineComponent({
+const Control = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Control",
   setup(_, { attrs, slots }) {
-    const styles = useStyles();
     provide(DatePickerInsideControlKey, true);
 
     return () =>
-      h(
-        DatePickerPrimitive.Control as ArkPart,
-        { ...attrs, class: cn(styles.slots.control(), attrs.class as string) },
-        slots,
-      );
+      h(ControlBase as ArkPart, { ...attrs }, () => slots.default?.());
   },
 });
 
-export const DatePickerTrigger = defineComponent({
+const Trigger = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Trigger",
   props: {
@@ -199,25 +203,17 @@ export const DatePickerTrigger = defineComponent({
       maybeControl(
         insideControl,
         {
-          ...attrs,
           class: styles.slots.control(),
         },
         () => [
-          h(
-            DatePickerPrimitive.Trigger as ArkPart,
-            {
-              ...attrs,
-              class: styles.slots.trigger(),
-            },
-            () => slots.default?.(),
-          ),
-          props.clearable ? h(DatePickerClearTrigger) : null,
+          h(TriggerBase as ArkPart, { ...attrs }, () => slots.default?.()),
+          props.clearable ? h(ClearTrigger) : null,
         ],
       );
   },
 });
 
-export const DatePickerInput = defineComponent({
+const Input = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Input",
   props: {
@@ -253,7 +249,7 @@ export const DatePickerInput = defineComponent({
               }),
             ),
             h(InputGroup.Addon, { align: "inline-end" }, () => [
-              props.clearable ? h(DatePickerClearTrigger) : null,
+              props.clearable ? h(ClearTrigger) : null,
               h(DatePickerPrimitive.Trigger as ArkPart, { asChild: true }, () =>
                 h(
                   Button as ArkPart,
@@ -273,7 +269,7 @@ export const DatePickerInput = defineComponent({
   },
 });
 
-export const DatePickerClearTrigger = defineComponent({
+const ClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.ClearTrigger",
   setup(_, { attrs }) {
@@ -316,9 +312,9 @@ export const DatePickerClearTrigger = defineComponent({
   },
 });
 
-export const DatePickerTimer = defineComponent({
+const TimeInput = defineComponent({
   inheritAttrs: false,
-  name: "DatePicker.Timer",
+  name: "DatePicker.TimeInput",
   props: {
     class: {
       default: undefined,
@@ -415,7 +411,11 @@ export const DatePickerTimer = defineComponent({
   },
 });
 
-export const DatePickerContent = defineComponent({
+const ContentBase = withContext(DatePickerPrimitive.Content, {
+  name: "Content",
+});
+
+const Content = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Content",
   props: {
@@ -426,32 +426,23 @@ export const DatePickerContent = defineComponent({
     showCalendar: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
     return () => {
-      const content = [
-        h(
-          DatePickerPrimitive.Content as ArkPart,
-          {
-            ...attrs,
-            class: styles.slots.content({
-              class: cn(props.class, (attrs as { class?: ClassValue }).class),
-            }),
-          },
-          () =>
-            props.showCalendar && !slots.default
-              ? [
-                  h(DatePickerPrimitive.ViewControl as ArkPart, () => [
-                    h(DatePickerPrimitive.PrevTrigger as ArkPart),
-                    h(DatePickerPrimitive.MonthSelect as ArkPart),
-                    h(DatePickerPrimitive.YearSelect as ArkPart),
-                    h(DatePickerPrimitive.NextTrigger as ArkPart),
-                  ]),
-                  h(DatePickerPrimitive.Table as ArkPart),
-                ]
-              : slots.default?.(),
-        ),
-      ];
+      const content = h(
+        ContentBase as ArkPart,
+        { ...attrs, class: props.class },
+        () =>
+          props.showCalendar && !slots.default
+            ? [
+                h(DatePickerPrimitive.ViewControl as ArkPart, () => [
+                  h(DatePickerPrimitive.PrevTrigger as ArkPart),
+                  h(DatePickerPrimitive.MonthSelect as ArkPart),
+                  h(DatePickerPrimitive.YearSelect as ArkPart),
+                  h(DatePickerPrimitive.NextTrigger as ArkPart),
+                ]),
+                h(DatePickerPrimitive.Table as ArkPart),
+              ]
+            : slots.default?.(),
+      );
 
       return h(Teleport, { to: "body" }, [
         h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
@@ -460,23 +451,11 @@ export const DatePickerContent = defineComponent({
   },
 });
 
-export const DatePickerValueText = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.ValueText",
-  setup(_, { attrs }) {
-    const styles = useStyles();
-
-    return () =>
-      h(DatePickerPrimitive.ValueText as ArkPart, {
-        ...attrs,
-        class: styles.slots.valueText({
-          class: cn((attrs as { class?: ClassValue }).class),
-        }),
-      });
-  },
+const ValueText = withContext(DatePickerPrimitive.ValueText, {
+  name: "ValueText",
 });
 
-export const DatePickerPresetTrigger = defineComponent({
+const PresetTrigger = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.PresetTrigger",
   props: {},
@@ -511,17 +490,17 @@ const InputClearButton = defineComponent({
   },
 });
 
-export const DatePicker = Object.assign(DatePickerRoot, {
-  ClearTrigger: DatePickerClearTrigger,
-  Content: DatePickerContent,
-  Control: DatePickerControl,
-  Input: DatePickerInput,
-  PresetTrigger: DatePickerPresetTrigger,
-  TimeInput: DatePickerTimer,
+export const DatePicker = Object.assign(Root, {
+  ClearTrigger,
+  Content,
+  Control,
+  Input,
+  PresetTrigger,
+  TimeInput,
   /** @deprecated Use `TimeInput`. */
-  Timer: DatePickerTimer,
-  Trigger: DatePickerTrigger,
-  ValueText: DatePickerValueText,
+  Timer: TimeInput,
+  Trigger,
+  ValueText,
 });
 
 export type { DatePickerRootProps as DatePickerProps };

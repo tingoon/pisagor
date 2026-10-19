@@ -22,14 +22,10 @@ export const AnnouncementRoot = withProvider<AnnouncementRootContract>(
       role: "status",
     },
     name: "Root",
-    slot: "base",
   },
 );
 
-export const AnnouncementTitle = withContext("span", {
-  name: "Title",
-  slot: "title",
-});
+export const AnnouncementTitle = withContext("span", { name: "Title" });
 // #endregion
 
 // #region Types

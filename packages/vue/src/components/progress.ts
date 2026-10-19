@@ -17,18 +17,15 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 const ProgressRoot = withProvider<ProgressRootContract>(
   ProgressPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 const ProgressHeader = withContext("div", {
   name: "Header",
 });
 
-const ProgressValue = withContext(ProgressPrimitive.ValueText, {
-  name: "Value",
+const ProgressValueText = withContext(ProgressPrimitive.ValueText, {
+  name: "ValueText",
 });
 
 const ProgressTrack = withContext(ProgressPrimitive.Track, {
@@ -118,9 +115,9 @@ export const Progress = defineComponent({
                   ? h("label", { class: fieldRecipe().label() }, props.label)
                   : null,
                 props.isValueVisible
-                  ? h(ProgressValue, {
+                  ? h(ProgressValueText, {
                       ...props.valueProps,
-                      class: props.classNames?.value,
+                      class: props.classNames?.valueText,
                     })
                   : null,
               ]),

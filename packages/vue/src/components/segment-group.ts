@@ -63,19 +63,12 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Parts
 const SegmentGroupRootBase = withProvider<SegmentGroupRootContract>(
   SegmentGroupPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export const SegmentGroupItemText = withContext(
   SegmentGroupPrimitive.ItemText,
-  {
-    defaultProps: { "data-part": "item-text" },
-    name: "ItemText",
-    slot: "itemText",
-  },
+  { name: "ItemText" },
 );
 
 export const SegmentGroupIndicator = withContext(

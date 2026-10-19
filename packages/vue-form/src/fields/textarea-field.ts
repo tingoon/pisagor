@@ -10,7 +10,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 type TextareaControlProps = SetRequired<
-  Omit<TextareaProps, "name" | "onBlur" | "onChange" | "value">,
+  Omit<TextareaProps, "class" | "name" | "onBlur" | "onChange" | "value">,
   "onValueChange"
 >;
 

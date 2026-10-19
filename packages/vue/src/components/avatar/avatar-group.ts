@@ -15,7 +15,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const AvatarGroupRoot = withProvider<AvatarGroupRootContract>("div", {
   name: "Root",
-  slot: "base",
 });
 
 export const AvatarGroupCount = withContext(ark.div, {

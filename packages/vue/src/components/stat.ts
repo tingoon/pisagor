@@ -47,25 +47,13 @@ export interface StatTrendProps extends StatTrendRootContract {
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider<StatRootContract>("div", {
-  name: "Root",
-  slot: "base",
-});
+export const StatRoot = withProvider<StatRootContract>("div", { name: "Root" });
 
-export const StatLabel = withContext("div", {
-  name: "Label",
-  slot: "label",
-});
+export const StatLabel = withContext("div", { name: "Label" });
 
-export const StatValue = withContext("div", {
-  name: "Value",
-  slot: "value",
-});
+export const StatValue = withContext("div", { name: "Value" });
 
-export const StatDescription = withContext("p", {
-  name: "Description",
-  slot: "description",
-});
+export const StatDescription = withContext("p", { name: "Description" });
 
 const TREND_ICONS = {
   down: PhArrowDown,

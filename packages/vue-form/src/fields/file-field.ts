@@ -1,18 +1,16 @@
 import { FileInput, type FileInputProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-  type SetRequired,
-} from "../internal";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-type FileInputControlProps = SetRequired<
-  Omit<FileInputProps, "invalid" | "name" | "onFilesChange">,
-  "onValueChange"
->;
+type FileInputControlProps = Omit<
+  FileInputProps,
+  "class" | "invalid" | "name" | "onFilesChange"
+> & {
+  onValueChange: (files: File[]) => void;
+};
 
 export interface FileFieldProps
   extends FieldPresentationProps, FileInputControlProps {
@@ -108,7 +106,7 @@ export const FileField = defineComponent({
             multiple: props.multiple,
             name: props.name,
             onBlur: props.onBlur,
-            onValueChange: props.onValueChange,
+            onFilesChange: props.onValueChange,
             placeholder: props.placeholder,
             required: props.required,
             size: props.size,

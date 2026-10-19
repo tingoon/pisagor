@@ -35,10 +35,7 @@ export interface JsonTreeViewProps
 // #region Parts
 const JsonTreeViewRoot = withProvider<JsonTreeViewRootContract>(
   JsonTreeViewPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 const JsonTreeViewTree = withContext(JsonTreeViewPrimitive.Tree, {

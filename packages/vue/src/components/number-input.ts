@@ -1,202 +1,148 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue";
+import type {
+  NumberInputControlProps as NumberInputControlPrimitiveProps,
+  NumberInputDecrementTriggerProps as NumberInputDecrementTriggerPrimitiveProps,
+  NumberInputIncrementTriggerProps as NumberInputIncrementTriggerPrimitiveProps,
+  NumberInputRootProps as NumberInputRootPrimitiveProps,
+  NumberInputScrubberProps,
+} from "@ark-ui/vue";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import type { NumberInputRootContract } from "@pisagor/contracts";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  numberInputRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType } from "vue";
+import { numberInputRecipe } from "@pisagor/recipes";
+import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { FieldLabel } from "./field";
+import { Field } from "./field";
 import { Input, type InputProps } from "./input";
-import { InputClearButton } from "./input/input-clear-button";
 import { useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
-// #region Slot recipe context
-const { provideStyles: provideNumberInputStyles, useStyles } =
-  createSlotRecipeContext({
-    name: "NumberInput",
-    recipe: numberInputRecipe,
-  });
+// #region Context
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
+  name: "NumberInput",
+  recipe: numberInputRecipe,
+});
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
+// #region Types
+type NumberInputRootBaseProps = NumberInputRootPrimitiveProps &
+  NumberInputRootContract;
+
+type NumberInputRootProps = Omit<NumberInputRootBaseProps, "onValueChange"> & {
+  /** Called with the numeric value when the input changes. */
+  onValueChange?: (value: number) => void;
+};
+
+export interface NumberInputProps extends NumberInputRootProps {
+  /**
+   * Whether to show a clear button when the input has a value.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /** Placeholder text for the auto-rendered input */
+  placeholder?: string;
+}
+
+type NumberInputControlProps = NumberInputControlPrimitiveProps & {
+  clearable?: boolean;
+};
+
+type NumberInputDecrementTriggerProps =
+  NumberInputDecrementTriggerPrimitiveProps;
+
+type NumberInputIncrementTriggerProps =
+  NumberInputIncrementTriggerPrimitiveProps;
+
+// #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Types
-export interface NumberInputProps
-  extends FormControlGroupShellVariantProps, NumberInputRootContract {
-  class?: unknown;
-  clearable?: boolean;
-  defaultValue?: string;
-  disabled?: boolean;
-  max?: number;
-  min?: number;
-  onValueChange?: (value: number) => void;
-  placeholder?: string;
-  readOnly?: boolean;
-  step?: number;
-  value?: string;
-}
-
-export interface NumberInputControlProps extends FormControlGroupShellVariantProps {
-  class?: unknown;
-  clearable?: boolean;
-}
-// #endregion
-
 // #region Parts
-export const NumberInputRoot = defineComponent({
+const RootBase = withProvider<NumberInputRootBaseProps>(
+  NumberInputPrimitive.Root,
+  { name: "Root" },
+);
+
+const Root = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputRoot",
+  name: "NumberInput",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
-    defaultValue: { default: undefined, type: String },
-    disabled: { default: undefined, type: Boolean },
-    max: { default: undefined, type: Number },
-    min: { default: undefined, type: Number },
     onValueChange: {
       default: undefined,
       type: Function as PropType<NumberInputProps["onValueChange"]>,
     },
     placeholder: { default: undefined, type: String },
-    readOnly: { default: undefined, type: Boolean },
-    recipe: {
-      default: numberInputRecipe,
-      type: Function as PropType<typeof numberInputRecipe>,
-    },
-    size: { default: "md", type: String as PropType<NumberInputProps["size"]> },
-    step: { default: undefined, type: Number },
-    value: { default: undefined, type: String },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant>,
-    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideNumberInputStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      get variants() {
-        return { size: props.size } as never;
-      },
-    });
-
     return () =>
       h(
-        NumberInputPrimitive.Root as ArkPart,
+        RootBase,
         {
           ...attrs,
-          class: cn(recipeSlots.value.base(), props.class),
-          "data-size": props.size,
-          defaultValue: props.defaultValue,
-          disabled: props.disabled,
-          max: props.max,
-          min: props.min,
-          modelValue: props.value,
+          class: props.class as string | undefined,
           onValueChange: props.onValueChange
-            ? (details: { value: string }) =>
-                props.onValueChange?.(Number(details.value))
+            ? (details: { valueAsNumber: number }) =>
+                props.onValueChange?.(details.valueAsNumber)
             : undefined,
-          readOnly: props.readOnly,
-          step: props.step,
         },
         () =>
-          slots.default?.() ?? [
-            h(
-              NumberInputControl as ArkPart,
-              { clearable: props.clearable, variant: props.variant },
-              () => [
-                h(NumberInputDecrementTrigger as ArkPart),
-                h(NumberInputInput as ArkPart, {
-                  placeholder: props.placeholder,
-                  size: props.size,
-                  variant: props.variant,
-                }),
-                h(NumberInputClearTrigger as ArkPart),
-                h(NumberInputIncrementTrigger as ArkPart),
-              ],
-            ),
-          ],
+          slots.default?.() ??
+          h(Control, { clearable: props.clearable }, () => [
+            h(DecrementTrigger),
+            h(InputPart, { placeholder: props.placeholder }),
+            props.clearable ? h(ClearTrigger) : null,
+            h(IncrementTrigger),
+          ]),
       );
   },
 });
 
-export const NumberInputControl = defineComponent({
+const ControlBase = withContext<NumberInputControlProps>(
+  NumberInputPrimitive.Control,
+  {
+    name: "Control",
+  },
+);
+
+const Control = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputControl",
+  name: "NumberInput.Control",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant>,
-    },
   },
   setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    const surfaceVariant = useFormControlSurface();
-
-    return () => {
-      const resolved = {
-        surfaceVariant,
-        variant: props.variant ?? ("primary" as FormControlVariant),
-      };
-      const shellArgs = {
-        surfaceVariant: resolved.surfaceVariant,
-        variant: resolved.variant,
-      };
-      const controlProps = { "data-variant": resolved.variant };
-
-      return h(
-        NumberInputPrimitive.Control as ArkPart,
+    return () =>
+      h(
+        ControlBase,
         {
           ...attrs,
-          ...controlProps,
-          class: cn(
-            styles.slots.control(),
-            formControlGroupShellRecipe({
-              size:
-                (styles.variants as { size?: "sm" | "md" | "lg" } | undefined)
-                  ?.size ?? "md",
-              ...shellArgs,
-            }),
-            props.class,
-          ),
+          class: props.class as string | undefined,
           "data-clearable": props.clearable || undefined,
         },
         slots,
       );
-    };
   },
 });
 
-export const NumberInputClearTrigger = defineComponent({
-  name: "NumberInputClearTrigger",
-  setup(_props) {
+const ClearTrigger = defineComponent({
+  name: "NumberInput.ClearTrigger",
+  setup() {
     const styles = useStyles();
 
     return () =>
       h(NumberInputPrimitive.Context as ArkPart, null, {
         default: (api: {
-          setValue: (value: number) => void;
-          value: string | undefined;
+          clearValue: () => void;
+          value: string | undefined | null;
         }) => {
           const hasValue =
             api.value !== undefined &&
@@ -207,18 +153,23 @@ export const NumberInputClearTrigger = defineComponent({
             return null;
           }
 
-          return h(InputClearButton as ArkPart, {
+          return h(Input.ClearButton, {
             class: styles.slots.clearTrigger(),
-            onClear: () => api.setValue(Number.NaN),
+            onClear: () => api.clearValue(),
           });
         },
       });
   },
 });
 
-export const NumberInputDecrementTrigger = defineComponent({
+const DecrementTriggerBase = withContext<NumberInputDecrementTriggerProps>(
+  NumberInputPrimitive.DecrementTrigger,
+  { name: "DecrementTrigger" },
+);
+
+const DecrementTrigger = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputDecrementTrigger",
+  name: "NumberInput.DecrementTrigger",
   props: {
     class: {
       default: undefined,
@@ -227,19 +178,18 @@ export const NumberInputDecrementTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const styles = useStyles();
 
     return () =>
       h(
-        NumberInputPrimitive.DecrementTrigger as ArkPart,
+        DecrementTriggerBase,
         {
           ...attrs,
           asChild: true,
-          class: cn(styles.slots.decrementTrigger(), props.class),
+          class: props.class as string | undefined,
         },
         () =>
           h(
-            Button as ArkPart,
+            Button,
             {
               "aria-label": m("numberInput.decrement"),
               variant: "ghost",
@@ -250,9 +200,14 @@ export const NumberInputDecrementTrigger = defineComponent({
   },
 });
 
-export const NumberInputIncrementTrigger = defineComponent({
+const IncrementTriggerBase = withContext<NumberInputIncrementTriggerProps>(
+  NumberInputPrimitive.IncrementTrigger,
+  { name: "IncrementTrigger" },
+);
+
+const IncrementTrigger = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputIncrementTrigger",
+  name: "NumberInput.IncrementTrigger",
   props: {
     class: {
       default: undefined,
@@ -261,19 +216,18 @@ export const NumberInputIncrementTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const styles = useStyles();
 
     return () =>
       h(
-        NumberInputPrimitive.IncrementTrigger as ArkPart,
+        IncrementTriggerBase,
         {
           ...attrs,
           asChild: true,
-          class: cn(styles.slots.incrementTrigger(), props.class),
+          class: props.class as string | undefined,
         },
         () =>
           h(
-            Button as ArkPart,
+            Button,
             {
               "aria-label": m("numberInput.increment"),
               variant: "ghost",
@@ -284,9 +238,9 @@ export const NumberInputIncrementTrigger = defineComponent({
   },
 });
 
-export const NumberInputInput = defineComponent({
+const InputPart = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputInput",
+  name: "NumberInput.Input",
   props: {
     class: {
       default: undefined,
@@ -299,11 +253,11 @@ export const NumberInputInput = defineComponent({
     placeholder: { default: undefined, type: String },
     size: {
       default: undefined,
-      type: String as PropType<NumberInputProps["size"]>,
+      type: String as PropType<InputProps["size"]>,
     },
     variant: {
       default: undefined,
-      type: String as PropType<FormControlVariant>,
+      type: String as PropType<InputProps["variant"]>,
     },
   },
   setup(props, { attrs }) {
@@ -312,11 +266,10 @@ export const NumberInputInput = defineComponent({
     return () =>
       h(
         NumberInputPrimitive.Input as ArkPart,
-        { asChild: true, ...attrs },
+        { ...attrs, asChild: true },
         () =>
-          h(Input as ArkPart, {
-            ...(attrs as object),
-            class: cn(styles.slots.input(), props.class),
+          h(Input, {
+            class: styles.slots.input({ class: props.class }),
             classNames: props.classNames,
             placeholder: props.placeholder,
             size: props.size,
@@ -326,9 +279,16 @@ export const NumberInputInput = defineComponent({
   },
 });
 
-export const NumberInputScrubber = defineComponent({
+const ScrubberBase = withContext<NumberInputScrubberProps>(
+  NumberInputPrimitive.Scrubber,
+  {
+    name: "Scrubber",
+  },
+);
+
+const Scrubber = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputScrubber",
+  name: "NumberInput.Scrubber",
   props: {
     class: {
       default: undefined,
@@ -336,30 +296,30 @@ export const NumberInputScrubber = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
     return () =>
       h(
-        NumberInputPrimitive.Scrubber as ArkPart,
+        ScrubberBase,
         {
           ...attrs,
           asChild: true,
-          class: cn(styles.slots.scrubber(), props.class),
+          class: props.class as string | undefined,
         },
         () =>
           h(NumberInputPrimitive.Label as ArkPart, { asChild: true }, () =>
-            h(FieldLabel as ArkPart, null, slots.default),
+            h(Field.Label, null, slots.default),
           ),
       );
   },
 });
 // #endregion
 
-export const NumberInput = Object.assign(NumberInputRoot, {
-  ClearTrigger: NumberInputClearTrigger,
-  Control: NumberInputControl,
-  DecrementTrigger: NumberInputDecrementTrigger,
-  IncrementTrigger: NumberInputIncrementTrigger,
-  Input: NumberInputInput,
-  Scrubber: NumberInputScrubber,
+export type { NumberInputScrubberProps } from "@ark-ui/vue";
+
+export const NumberInput = Object.assign(Root, {
+  ClearTrigger,
+  Control,
+  DecrementTrigger,
+  IncrementTrigger,
+  Input: InputPart,
+  Scrubber,
 });

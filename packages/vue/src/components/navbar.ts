@@ -27,7 +27,6 @@ export type NavbarProps = NavbarRootProps & NavbarContract;
 // #region Parts
 export const NavbarRoot = withProvider<NavbarRootContract>("header", {
   name: "Root",
-  slot: "base",
 });
 
 export const NavbarBrand = withContext("div", {

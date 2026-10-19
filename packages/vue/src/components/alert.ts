@@ -20,7 +20,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const AlertRoot = withProvider<AlertRootContract>("div", {
   name: "Root",
-  slot: "base",
 });
 
 export const AlertTitle = withContext("div", {

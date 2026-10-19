@@ -1,28 +1,29 @@
 import type { FileInputRootContract } from "@pisagor/contracts";
-import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { fileInputRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
+  type InputGroupTextProps,
 } from "./input-group/input-group-core";
 import { useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "FileInput",
   recipe: fileInputRecipe,
 });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Types
+type FileInputRootProps = FileInputRootContract & {
+  class?: unknown;
+  /** Disables the control and sets `data-disabled` on the root. */
+  disabled?: boolean;
+};
+
 export interface FileInputProps extends FileInputRootContract {
   accept?: string;
   /** Label for the browse button. */
@@ -38,16 +39,19 @@ export interface FileInputProps extends FileInputRootContract {
   onChange?: (event: Event) => void;
   /** Called with accepted files when the selection changes. */
   onFilesChange?: (files: File[]) => void;
-  /** Alias for `onFilesChange`; matches `FileUpload` callback naming. */
-  onValueChange?: (files: File[]) => void;
   /** Text shown when no file is selected. */
   placeholder?: string;
   required?: boolean;
-  size?: "lg" | "md" | "sm";
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
 }
+
+type FileInputControlProps = {
+  class?: unknown;
+};
+
+type FileInputLabelProps = InputGroupTextProps;
 // #endregion
+
+type ArkPart = Parameters<typeof h>[0];
 
 // #region Helpers
 function getSelectedFiles(input: HTMLInputElement): File[] {
@@ -67,8 +71,75 @@ function formatFileLabel(files: File[]): string | undefined {
 }
 // #endregion
 
-// #region Component
-export const FileInput = defineComponent({
+// #region Parts
+const RootBase = withProvider<FileInputRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+  slot: "root",
+});
+
+const Root = defineComponent({
+  inheritAttrs: false,
+  name: "FileInput.Root",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    disabled: { default: undefined, type: Boolean },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        RootBase,
+        {
+          ...attrs,
+          class: props.class,
+          "data-disabled": props.disabled ? true : undefined,
+        },
+        slots,
+      );
+  },
+});
+
+const Control = withContext<FileInputControlProps>("input", {
+  defaultProps: {
+    type: "file",
+  },
+  name: "Control",
+});
+
+const LabelBase = withContext<FileInputLabelProps>(InputGroupText, {
+  name: "Label",
+});
+
+const Label = defineComponent({
+  inheritAttrs: false,
+  name: "FileInput.Label",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        LabelBase,
+        {
+          ...attrs,
+          class: props.class,
+        },
+        slots,
+      );
+  },
+});
+// #endregion
+
+// #region Closed
+const FileInputShorthand = defineComponent({
   inheritAttrs: false,
   name: "FileInput",
   props: {
@@ -95,22 +166,20 @@ export const FileInput = defineComponent({
       default: undefined,
       type: Function as PropType<FileInputProps["onFilesChange"]>,
     },
-    onValueChange: {
-      default: undefined,
-      type: Function as PropType<FileInputProps["onValueChange"]>,
-    },
     placeholder: { default: undefined, type: String },
+    recipe: {
+      default: undefined,
+      type: Function as PropType<typeof fileInputRecipe>,
+    },
     required: { default: undefined, type: Boolean },
-    size: { default: "md", type: String as PropType<FileInputProps["size"]> },
+    size: { default: "md", type: String as PropType<"sm" | "md" | "lg"> },
     variant: {
       default: undefined,
-      type: String as PropType<FormControlVariant>,
+      type: String as PropType<FileInputRootContract["variant"]>,
     },
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const surfaceVariant = useFormControlSurface();
-
     const inputRef = ref<HTMLInputElement | null>(null);
     const fileLabel = ref<string>();
 
@@ -118,92 +187,66 @@ export const FileInput = defineComponent({
       inputRef.value?.click();
     };
 
-    const handleChange = (event: Event) => {
+    const changeHandler = (event: Event) => {
       props.onChange?.(event);
       const files = getSelectedFiles(event.currentTarget as HTMLInputElement);
       props.onFilesChange?.(files);
-      props.onValueChange?.(files);
       fileLabel.value = formatFileLabel(files);
     };
 
-    return () => {
-      const resolved = {
-        surfaceVariant,
-        variant: props.variant ?? ("primary" as FormControlVariant),
-      };
-      const shellArgs = {
-        surfaceVariant: resolved.surfaceVariant,
-        variant: resolved.variant,
-      };
-      const controlProps = { "data-variant": resolved.variant };
-      const slots = fileInputRecipe();
-
-      return h(
-        FileInputStylesContext,
-        { value: { slots: slots, variants: {} } },
-        () =>
-          h(
-            "div",
-            {
-              ...attrs,
-              ...controlProps,
-              class: cn(
-                formControlGroupShellRecipe({
-                  class: slots.root(),
-                  size: props.size,
-                  ...shellArgs,
-                }),
-                props.class,
-              ),
-              "data-disabled": props.disabled || undefined,
-              "data-part": "root",
-              "data-scope": "file-input",
-              "data-size": props.size,
-              role: "group",
-            },
-            [
-              h("input", {
-                accept: props.accept,
-                "aria-invalid": props.invalid || undefined,
-                capture: props.capture,
-                class: slots.control(),
-                "data-invalid": props.invalid || undefined,
-                "data-part": "control",
-                "data-scope": "file-input",
+    return () =>
+      h(
+        Root,
+        {
+          class: props.class,
+          disabled: props.disabled,
+          recipe: props.recipe,
+          size: props.size,
+          variant: props.variant,
+        },
+        () => [
+          h(Control, {
+            ...attrs,
+            accept: props.accept,
+            "aria-invalid": props.invalid || undefined,
+            capture: props.capture,
+            "data-invalid": props.invalid || undefined,
+            disabled: props.disabled,
+            id: props.id,
+            multiple: props.multiple,
+            name: props.name,
+            onChange: changeHandler,
+            ref: inputRef,
+            required: props.required,
+            tabIndex: -1,
+          }),
+          h(InputGroupAddon as ArkPart, { align: "inline-start" }, () =>
+            h(
+              InputGroupButton as ArkPart,
+              {
                 disabled: props.disabled,
-                id: props.id,
-                multiple: props.multiple,
-                name: props.name,
-                onChange: handleChange,
-                ref: inputRef,
-                required: props.required,
-                type: "file",
-              }),
-              h(InputGroupAddon as ArkPart, { align: "inline-start" }, () =>
-                h(
-                  InputGroupButton as ArkPart,
-                  {
-                    disabled: props.disabled,
-                    onClick: openPicker,
-                    type: "button",
-                  },
-                  () => m("fileInput.browse", props.browseLabel),
-                ),
-              ),
-              h(
-                InputGroupText as ArkPart,
-                {
-                  class: slots.label(),
-                  onClick: props.disabled ? undefined : openPicker,
-                },
-                () =>
-                  fileLabel.value ??
-                  m("fileInput.placeholder", props.placeholder),
-              ),
-            ],
+                onClick: openPicker,
+                type: "button",
+              },
+              () => m("fileInput.browse", props.browseLabel),
+            ),
           ),
+          h(
+            Label,
+            {
+              onClick: props.disabled ? undefined : openPicker,
+            },
+            () =>
+              fileLabel.value ?? m("fileInput.placeholder", props.placeholder),
+          ),
+        ],
       );
-    };
   },
 });
 // #endregion
+
+export const FileInput = Object.assign(FileInputShorthand, {
+  Control,
+  Label,
+  Root,
+});

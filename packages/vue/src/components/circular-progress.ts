@@ -27,10 +27,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 const CircularProgressRoot = withProvider<CircularProgressRootContract>(
   ProgressRootProvider,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 /**
@@ -50,13 +47,11 @@ function getProgressbarProps(progress: UseProgressReturn["value"]) {
 }
 
 const CircularProgressValueWrapper = withContext("span", {
-  defaultProps: { "data-part": "value-wrapper" },
   name: "ValueWrapper",
-  slot: "valueWrapper",
 });
 
-const CircularProgressValue = withContext(ProgressValueText, {
-  name: "Value",
+const CircularProgressValueText = withContext(ProgressValueText, {
+  name: "ValueText",
 });
 
 const CircularProgressTrack = defineComponent({
@@ -236,9 +231,9 @@ export const CircularProgress = defineComponent({
             CircularProgressValueWrapper,
             { class: props.classNames?.valueWrapper },
             () =>
-              h(CircularProgressValue, {
+              h(CircularProgressValueText, {
                 ...props.valueProps,
-                class: props.classNames?.value,
+                class: props.classNames?.valueText,
               }),
           ),
         );

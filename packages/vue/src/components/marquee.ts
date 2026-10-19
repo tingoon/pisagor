@@ -27,10 +27,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Parts
 const MarqueeRootBase = withProvider<MarqueeRootContract>(
   MarqueePrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export const MarqueeItem = withContext(MarqueePrimitive.Item, {

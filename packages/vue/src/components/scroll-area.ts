@@ -17,10 +17,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 const ScrollAreaRoot = withProvider<ScrollAreaRootContract>(
   ScrollAreaPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 const ScrollAreaScrollbar = withContext(ScrollAreaPrimitive.Scrollbar, {

@@ -1,619 +1,198 @@
 import {
   Combobox as ComboboxPrimitive,
   createListCollection,
-  useComboboxContext as useCombobox,
+  useComboboxContext,
 } from "@ark-ui/vue";
 import type {
   CollectionItem,
-  ComboboxInputValueChangeDetails,
   ComboboxRootProps as ArkComboboxRootProps,
-  ListCollection,
 } from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type {
-  ComboboxItemGroupContract,
+  ComboboxContract,
   ComboboxPresetItem as BaseComboboxPresetItem,
   ComboboxRootContract,
-  ComboboxContract,
 } from "@pisagor/contracts";
 import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import {
-  computed,
-  defineComponent,
-  h,
-  inject,
-  provide,
-  Teleport,
-  unref,
-} from "vue";
-import type { InjectionKey, PropType, VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type LoosePropValue,
-  createContext,
-  createSlotRecipeContext,
-} from "../internal";
+import { defineComponent, h, Teleport } from "vue";
+import type { Component, PropType } from "vue";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  provideStyles: provideComboboxStyles,
-  useOptionalStyles: useOptionalComboboxStyles,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Combobox",
   recipe: comboboxRecipe,
 });
-
-/**
- * Slots from the nearest Combobox root, or the default recipe when used
- * standalone.
- */
-function useComboboxSlots() {
-  const styles = useOptionalComboboxStyles();
-
-  return () => styles?.slots ?? comboboxRecipe();
-}
 // #endregion
 
+// #region Types
 type FormControlVariant = "primary" | "secondary";
 
-interface ComboboxControlValue {
-  size?: ComboboxInputProps["size"];
-  variant?: FormControlVariant;
-}
-
-/** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
-const [provideComboboxControl, , useComboboxControlRef] = createContext(
-  "ComboboxControl",
-)<ComboboxControlValue>({ defaultValue: {}, strict: false });
-
-// #region Types
 interface ComboboxPresetItem extends Omit<BaseComboboxPresetItem, "label"> {
   label: string;
   value: string;
 }
 
-export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ArkComboboxRootProps<T>,
-  "collection" | "onValueChange"
-> & {
-  /** Visual shell variant applied to the input. Defaults to `primary`. */
-  variant?: FormControlVariant;
-  /** Input size. Defaults to `md`. */
-  size?: ComboboxInputProps["size"];
-  collection?: ListCollection<T>;
-  onValueChange?: (value: string[]) => void;
-} & Omit<ComboboxRootContract, "items">;
+export type ComboboxRootProps<T extends CollectionItem = CollectionItem> =
+  ArkComboboxRootProps<T> & ComboboxRootContract;
 
 export interface ComboboxProps
   extends
-    Omit<ComboboxRootProps, "children" | "items">,
-    Omit<ComboboxContract, "items"> {
-  items?: Array<ComboboxPresetItem | string>;
+    Omit<ComboboxRootProps, "children" | "collection" | "onValueChange">,
+    Omit<ComboboxContract, "items" | "placeholder"> {
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  /** Input id forwarded to the shorthand field. */
+  id?: string;
+  items?: Array<ComboboxPresetItem | string>;
+  /** Placeholder for the shorthand field. */
   placeholder?: string;
-}
-
-export interface ComboboxInputProps {
-  size?: "lg" | "md" | "sm";
-  variant?: FormControlVariant;
-  clearable?: boolean;
+  /**
+   * Whether to show the toggle trigger.
+   *
+   * @defaultValue true
+   */
   showTrigger?: boolean;
-  disabled?: boolean;
-  class?: unknown;
-}
-
-export interface ComboboxItemGroupProps extends ComboboxItemGroupContract {
-  heading?: string | VNodeChild;
-  class?: unknown;
-}
-
-export interface ComboboxControlProps extends Omit<
-  ComboboxRootContract,
-  "items" | "placeholder"
-> {
-  class?: unknown;
+  /** Input size. Defaults to `md`. */
+  size?: "sm" | "md" | "lg";
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: FormControlVariant;
+  onValueChange?: (value: string[]) => void;
 }
 // #endregion
 
-// #region Parts
 type ArkPart = Parameters<typeof h>[0];
+type ArkHost = Component;
 
-export const ComboboxContext = ComboboxPrimitive.Context;
-
-function comboboxTeleport(
-  content: ReturnType<typeof h> | Array<ReturnType<typeof h>>,
-) {
-  return h(Teleport, { to: "body" }, [content]);
-}
-
-export const ComboboxRoot = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxRoot",
-  props: {
-    collection: {
-      default: undefined,
-      type: Object as PropType<ListCollection<CollectionItem> | undefined>,
-    },
-    lazyMount: { default: true, type: Boolean },
-    onInputValueChange: {
-      default: undefined,
-      type: Function as PropType<
-        (details: ComboboxInputValueChangeDetails) => void
-      >,
-    },
-    onValueChange: {
-      default: undefined,
-      type: Function as PropType<ComboboxRootProps["onValueChange"]>,
-    },
-    openOnClick: { default: true, type: Boolean },
-    recipe: {
-      default: comboboxRecipe,
-      type: Function as PropType<typeof comboboxRecipe>,
-    },
-    size: {
-      default: undefined,
-      type: String as PropType<ComboboxInputProps["size"]>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
+// #region Parts
+const Root = withProvider<ComboboxRootContract>(
+  ComboboxPrimitive.Root as ArkHost,
+  {
+    name: "Root",
+    slot: "base",
   },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideComboboxControl(
-      computed(() => ({ size: props.size, variant: props.variant })),
-    );
-
-    provideComboboxStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () => {
-      return h(
-        ComboboxPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          collection: props.collection,
-          lazyMount: props.lazyMount,
-          onInputValueChange: props.onInputValueChange,
-          onValueChange: props.onValueChange
-            ? (details: { value: string[] }) =>
-                props.onValueChange?.(details.value)
-            : undefined,
-          openOnClick: props.openOnClick,
-          unmountOnExit: props.unmountOnExit,
-        },
-        () => slots.default?.(),
-      );
-    };
-  },
-});
-
-/**
- * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
- * control.
- */
-const ComboboxInsideControlKey: InjectionKey<boolean> = Symbol(
-  "ComboboxInsideControl",
 );
 
-export const ComboboxControl = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxControl",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    // Allow consumers to pass data-size via attrs; styled root uses variants.
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
-    provide(ComboboxInsideControlKey, true);
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        ComboboxPrimitive.Control as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.control(), props.class, attrs.class),
-        },
-        () => slots.default?.(),
-      );
-    };
-  },
+const Control = withContext(ComboboxPrimitive.Control as ArkHost, {
+  name: "Control",
 });
 
-export const ComboboxInput = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxInput",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    clearable: { default: false, type: Boolean },
-    disabled: { default: undefined, type: Boolean },
-    showTrigger: { default: true, type: Boolean },
-    size: {
-      default: undefined,
-      type: String as PropType<ComboboxInputProps["size"]>,
-    },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
-
-    const api = useCombobox();
-    const controlRef = useComboboxControlRef();
-    const insideControl = inject(ComboboxInsideControlKey, false);
-
-    return () => {
-      const styleSlots = getSlots();
-      const control = unref(controlRef);
-      const size = props.size ?? control.size ?? "md";
-
-      const group = () =>
-        h(
-          InputGroup as ArkPart,
-          {
-            class: props.class,
-            size,
-            variant: props.variant ?? control.variant,
-          },
-          () => [
-            slots.default?.(),
-            h(ComboboxPrimitive.Input as ArkPart, { asChild: true }, () =>
-              h(InputGroup.Input as ArkPart, {
-                ...attrs,
-                clearable: false,
-                disabled: props.disabled,
-              }),
-            ),
-            h(
-              InputGroup.Addon as ArkPart,
-              {
-                align: "inline-end",
-                "data-part": "addon",
-                "data-scope": "combobox",
-              },
-              () => [
-                props.showTrigger
-                  ? h(ComboboxTrigger as ArkPart, {
-                      class: styleSlots.triggerHidden(),
-                    })
-                  : null,
-                props.clearable && api.value.inputValue
-                  ? h(ComboboxClearTrigger as ArkPart, { asChild: true }, () =>
-                      h(
-                        InputGroup.Button as ArkPart,
-                        { size: "icon-xs", variant: "ghost" },
-                        () => h(PhX, { "aria-hidden": true }),
-                      ),
-                    )
-                  : null,
-              ],
-            ),
-          ],
-        );
-
-      return insideControl
-        ? group()
-        : h(ComboboxControl as ArkPart, { "data-size": size }, group);
-    };
-  },
+const Input = withContext(ComboboxPrimitive.Input as ArkHost, {
+  name: "Input",
 });
 
-export const ComboboxTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxTrigger",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        ComboboxPrimitive.Trigger as ArkPart,
-        {
-          ...attrs,
-          asChild: true,
-          class: cn(styleSlots.trigger(), props.class, attrs.class),
-        },
-        () =>
-          slots.default?.() ??
-          h(
-            Button as ArkPart,
-            { class: styleSlots.triggerButton(), variant: "ghost" },
-            () => h(PhCaretUpDown, { "aria-hidden": true }),
-          ),
-      );
-    };
-  },
+const Trigger = withContext(ComboboxPrimitive.Trigger as ArkHost, {
+  name: "Trigger",
 });
 
-export const ComboboxClearTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxClearTrigger",
-  props: {
-    "aria-label": { default: undefined, type: String },
+const ClearTrigger = withContext(ComboboxPrimitive.ClearTrigger as ArkHost, {
+  name: "ClearTrigger",
+});
+
+const Positioner = withContext(ComboboxPrimitive.Positioner as ArkHost, {
+  name: "Positioner",
+});
+
+const Content = withContext(ComboboxPrimitive.Content as ArkHost, {
+  name: "Content",
+});
+
+const ItemGroup = withContext(ComboboxPrimitive.ItemGroup as ArkHost, {
+  name: "ItemGroup",
+});
+
+const ItemGroupLabel = withContext(
+  ComboboxPrimitive.ItemGroupLabel as ArkHost,
+  {
+    name: "ItemGroupLabel",
   },
-  setup(props, { attrs, slots }) {
+);
+
+const Item = withContext(ComboboxPrimitive.Item as ArkHost, {
+  name: "Item",
+});
+
+const ItemIndicator = withContext(ComboboxPrimitive.ItemIndicator as ArkHost, {
+  name: "ItemIndicator",
+});
+
+const Empty = withContext(ComboboxPrimitive.Empty as ArkHost, {
+  name: "Empty",
+});
+
+const List = withContext(ComboboxPrimitive.List as ArkHost, {
+  name: "List",
+});
+// #endregion
+
+// #region Shorthand
+const ComboboxClearButton = defineComponent({
+  name: "ComboboxClearButton",
+  setup() {
     const { m } = useLocale();
-
-    return () =>
-      h(
-        ComboboxPrimitive.ClearTrigger as ArkPart,
-        {
-          ...attrs,
-          "aria-label": m("select.clear", props["aria-label"]),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-export const ComboboxFieldInput = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxFieldInput",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        ComboboxPrimitive.Input as ArkPart,
-        {
-          ...attrs,
-          ...(attrs as object),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-export const ComboboxPositioner = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxPositioner",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        ComboboxPrimitive.Positioner as ArkPart,
-        {
-          ...attrs,
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-export const ComboboxContent = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
+    const api = useComboboxContext();
 
     return () => {
-      const styleSlots = getSlots();
+      if (!api.value.inputValue) return null;
 
-      return comboboxTeleport(
-        h(ComboboxPositioner as ArkPart, null, () =>
-          h(
-            ComboboxPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: cn(styleSlots.content(), props.class, attrs.class),
-            },
-            () => slots.default?.(),
-          ),
+      return h(ClearTrigger as ArkPart, { asChild: true }, () =>
+        h(
+          InputGroup.Button as ArkPart,
+          {
+            "aria-label": m("combobox.clear"),
+            size: "icon-xs",
+            variant: "ghost",
+          },
+          () => h(PhX, { "aria-hidden": true }),
         ),
       );
     };
   },
 });
 
-export const ComboboxItemGroup = defineComponent({
+const ComboboxShorthand = defineComponent({
   inheritAttrs: false,
-  name: "ComboboxItemGroup",
+  name: "Combobox",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    heading: {
+    classNames: {
       default: undefined,
-      type: [String, Object] as PropType<ComboboxItemGroupProps["heading"]>,
+      type: Object as PropType<ComboboxProps["classNames"]>,
     },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        ComboboxPrimitive.ItemGroup as ArkPart,
-        { ...attrs, class: props.class },
-        () => [
-          props.heading
-            ? h(ComboboxItemGroupLabel, null, () => props.heading)
-            : null,
-          slots.default?.(),
-        ],
-      );
-  },
-});
-
-export const ComboboxItemGroupLabel = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxItemGroupLabel",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        ComboboxPrimitive.ItemGroupLabel as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.itemGroupLabel(), props.class, attrs.class),
-        },
-        () => slots.default?.(),
-      );
-    };
-  },
-});
-
-export const ComboboxItem = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxItem",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    item: { default: undefined, type: Object as PropType<LoosePropValue> },
-    recipe: {
-      default: comboboxRecipe,
-      type: Function as PropType<typeof comboboxRecipe>,
-    },
-    showIndicator: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots: children }) {
-    return () => {
-      const styleSlots = props.recipe({ showIndicator: props.showIndicator });
-
-      return h(
-        ComboboxPrimitive.Item as ArkPart,
-        {
-          ...attrs,
-          class: styleSlots.item({ class: cn(props.class, attrs.class) }),
-          item: props.item,
-          persistFocus: true,
-        },
-        () => [
-          children.default?.(),
-          props.showIndicator
-            ? h(
-                "span",
-                { class: styleSlots.itemIndicator() },
-                h(ComboboxPrimitive.ItemIndicator as ArkPart, {}, () =>
-                  h(PhCheck, { "aria-hidden": true }),
-                ),
-              )
-            : null,
-        ],
-      );
-    };
-  },
-});
-
-export const ComboboxEmpty = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxEmpty",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const { m } = useLocale();
-    const getSlots = useComboboxSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        ComboboxPrimitive.Empty as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.empty(), props.class, attrs.class),
-        },
-        () => slots.default?.() ?? m("combobox.empty"),
-      );
-    };
-  },
-});
-
-export const ComboboxList = defineComponent({
-  inheritAttrs: false,
-  name: "ComboboxList",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useComboboxSlots();
-
-    return () => {
-      const styleSlots = getSlots();
-
-      return h(
-        ComboboxPrimitive.List as ArkPart,
-        {
-          ...attrs,
-          class: cn(styleSlots.list(), props.class, attrs.class),
-        },
-        () => slots.default?.(),
-      );
-    };
-  },
-});
-
-export const ComboboxShorthand = defineComponent({
-  inheritAttrs: false,
-  name: "PisagorCombobox",
-  props: {
     clearable: { default: false, type: Boolean },
+    id: { default: undefined, type: String },
     items: {
       default: undefined,
-      type: Array as PropType<Array<ComboboxPresetItem | string> | undefined>,
+      type: Array as PropType<ComboboxProps["items"]>,
     },
-    size: {
+    onValueChange: {
       default: undefined,
-      type: String as PropType<ComboboxInputProps["size"]>,
+      type: Function as PropType<ComboboxProps["onValueChange"]>,
+    },
+    placeholder: { default: undefined, type: String },
+    showTrigger: { default: true, type: Boolean },
+    size: {
+      default: "md",
+      type: String as PropType<NonNullable<ComboboxProps["size"]>>,
     },
     variant: {
       default: undefined,
       type: String as PropType<FormControlVariant | undefined>,
     },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () => {
       const items = props.items ?? [];
       const normalized = items.map((item) =>
@@ -622,27 +201,95 @@ export const ComboboxShorthand = defineComponent({
       const collection = createListCollection({ items: normalized });
 
       return h(
-        ComboboxRoot as ArkPart,
+        Root as ArkPart,
         {
           ...attrs,
           collection,
-          size: props.size,
-          variant: props.variant,
+          onValueChange: props.onValueChange
+            ? (details: { value: string[] }) =>
+                props.onValueChange?.(details.value)
+            : undefined,
+          openOnClick: true,
         },
         () => [
-          h(ComboboxInput as ArkPart, { clearable: props.clearable }),
-          h(ComboboxContent as ArkPart, null, () =>
-            h(ComboboxList as ArkPart, null, () =>
-              normalized.map((item) =>
-                h(
-                  ComboboxItem as ArkPart,
-                  { item, key: item.value, value: item.value },
-                  () => item.label,
+          h(Control as ArkPart, null, () =>
+            h(
+              InputGroup as ArkPart,
+              {
+                class: props.class,
+                size: props.size,
+                variant: props.variant,
+              },
+              () => [
+                h(Input as ArkPart, { asChild: true }, () =>
+                  h(InputGroup.Input as ArkPart, {
+                    id: props.id,
+                    placeholder: props.placeholder,
+                  }),
                 ),
+                h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () => [
+                  props.showTrigger
+                    ? h(
+                        InputGroup.Button as ArkPart,
+                        {
+                          asChild: true,
+                          class: props.classNames?.triggerHidden,
+                          size: "icon-xs",
+                          variant: "ghost",
+                        },
+                        () =>
+                          h(Trigger as ArkPart, null, () =>
+                            h(
+                              Button as ArkPart,
+                              {
+                                "aria-label": m("combobox.toggle"),
+                                class: props.classNames?.triggerButton,
+                                variant: "ghost",
+                              },
+                              () => h(PhCaretUpDown, { "aria-hidden": true }),
+                            ),
+                          ),
+                      )
+                    : null,
+                  props.clearable ? h(ComboboxClearButton) : null,
+                ]),
+              ],
+            ),
+          ),
+          h(Teleport, { to: "body" }, () =>
+            h(Positioner as ArkPart, null, () =>
+              h(
+                Content as ArkPart,
+                { class: props.classNames?.content },
+                () => [
+                  h(List as ArkPart, { class: props.classNames?.list }, () =>
+                    normalized.map((item) =>
+                      h(
+                        Item as ArkPart,
+                        {
+                          class: props.classNames?.item,
+                          item,
+                          key: item.value,
+                          persistFocus: true,
+                        },
+                        () => [
+                          item.label,
+                          h(
+                            ItemIndicator as ArkPart,
+                            { class: props.classNames?.itemIndicator },
+                            () => h(PhCheck),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  h(Empty as ArkPart, { class: props.classNames?.empty }, () =>
+                    m("combobox.empty"),
+                  ),
+                ],
               ),
             ),
           ),
-          slots.default?.(),
         ],
       );
     };
@@ -651,18 +298,18 @@ export const ComboboxShorthand = defineComponent({
 // #endregion
 
 export const Combobox = Object.assign(ComboboxShorthand, {
-  ClearTrigger: ComboboxClearTrigger,
-  Content: ComboboxContent,
-  Context: ComboboxContext,
-  Control: ComboboxControl,
-  Empty: ComboboxEmpty,
-  FieldInput: ComboboxFieldInput,
-  Input: ComboboxInput,
-  Item: ComboboxItem,
-  ItemGroup: ComboboxItemGroup,
-  ItemGroupLabel: ComboboxItemGroupLabel,
-  List: ComboboxList,
-  Positioner: ComboboxPositioner,
-  Root: ComboboxRoot,
-  Trigger: ComboboxTrigger,
+  ClearTrigger,
+  Content,
+  Context: ComboboxPrimitive.Context,
+  Control,
+  Empty,
+  Input,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemIndicator,
+  List,
+  Positioner,
+  Root,
+  Trigger,
 });

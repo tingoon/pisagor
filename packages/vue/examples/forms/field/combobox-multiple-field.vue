@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue";
-import { Combobox, Field } from "@pisagor/vue";
+import { PhCaretUpDown, PhCheck } from "@phosphor-icons/vue";
+import { Combobox, Field, InputGroup } from "@pisagor/vue";
 
 const initialItems = [
   { label: "Apple", value: "apple" },
@@ -28,18 +29,42 @@ function filter(_inputValue: string) {}
       :collection="collection"
       @input-value-change="({ inputValue }) => filter(inputValue)"
     >
-      <Combobox.Input aria-label="Select items" placeholder="Select items…" />
-      <Combobox.Content>
-        <Combobox.List>
-          <Combobox.Item
-            v-for="item in collection.items"
-            :key="item.value"
-            :item="item"
-          >
-            {{ item.label }}
-          </Combobox.Item>
-        </Combobox.List>
-      </Combobox.Content>
+      <Combobox.Control>
+        <InputGroup>
+          <Combobox.Input as-child>
+            <InputGroup.Input
+              aria-label="Select items"
+              placeholder="Select items…"
+            />
+          </Combobox.Input>
+          <InputGroup.Addon align="inline-end">
+            <InputGroup.Button as-child size="icon-xs" variant="ghost">
+              <Combobox.Trigger>
+                <PhCaretUpDown aria-hidden />
+              </Combobox.Trigger>
+            </InputGroup.Button>
+          </InputGroup.Addon>
+        </InputGroup>
+      </Combobox.Control>
+      <Teleport to="body">
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.List>
+              <Combobox.Item
+                v-for="item in collection.items"
+                :key="item.value"
+                :item="item"
+                persist-focus
+              >
+                {{ item.label }}
+                <Combobox.ItemIndicator>
+                  <PhCheck />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            </Combobox.List>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Teleport>
     </Combobox.Root>
     <Field.Description>Select multiple items.</Field.Description>
   </Field>

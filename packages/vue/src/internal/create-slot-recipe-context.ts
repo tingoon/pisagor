@@ -9,6 +9,7 @@ import type {
   Slots,
   VNode,
 } from "vue";
+import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 
 type SlotClassProps = {
   class?: ClassValue;
@@ -49,10 +50,21 @@ type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
 export interface WithSlotRecipeOptions<Slot extends string = string> {
-  /** PascalCase part name (`Alert.Title`). */
+  /**
+   * PascalCase part name (`Alert.Title`). Only required field — `slot` and
+   * `part` are derived from this when omitted.
+   */
   name: string;
-  /** Recipe slot; defaults to kebab-case of `name` (`Root` → `base`). */
+  /**
+   * Recipe slot. When omitted: `Root` → `base`, otherwise camelCase of `name`
+   * (`ClearTrigger` → `clearTrigger`).
+   */
   slot?: Slot;
+  /**
+   * `data-part` value. When omitted: `Root` → `root`, otherwise kebab-case of
+   * `name` (`ClearTrigger` → `clear-trigger`).
+   */
+  part?: string;
   defaultProps?: Record<string, unknown>;
 }
 
@@ -87,6 +99,11 @@ function toKebabCase(value: string) {
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
+}
+
+/** PascalCase part name → recipe slot key (`ClearTrigger` → `clearTrigger`). */
+function toCamelCase(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
 }
 
 /**
@@ -159,7 +176,14 @@ export function createSlotRecipeContext<
 
   function slotOf(options: WithSlotRecipeOptions<Slot>): Slot {
     return (options.slot ??
-      (options.name === "Root" ? "base" : toKebabCase(options.name))) as Slot;
+      (options.name === "Root" ? "base" : toCamelCase(options.name))) as Slot;
+  }
+
+  function partOf(options: WithSlotRecipeOptions<Slot>) {
+    return (
+      options.part ??
+      (options.name === "Root" ? "root" : toKebabCase(options.name))
+    );
   }
 
   function useStyles(): Styles {
@@ -232,6 +256,7 @@ export function createSlotRecipeContext<
     const part = defineComponent<P & PartClassProps>(
       (props, { attrs, slots: children }) => {
         const values = props as Record<string, unknown>;
+        const surfaceFromContext = useFormControlSurface();
         const recipe = computed(() => (values.recipe ?? defaultRecipe) as R);
         const variants = computed(() => {
           const own: Record<string, unknown> = {};
@@ -240,11 +265,20 @@ export function createSlotRecipeContext<
             own[variantKey] = values[variantKey];
           }
 
-          return {
+          const resolved = {
             ...defaultRecipe.defaultVariants,
             ...recipe.value.defaultVariants,
             ...definedOnly(own),
-          } as Variants;
+          } as Variants & { surfaceVariant?: unknown };
+
+          if (
+            variantKeys.includes("surfaceVariant") &&
+            resolved.surfaceVariant === undefined
+          ) {
+            resolved.surfaceVariant = surfaceFromContext;
+          }
+
+          return resolved as Variants;
         });
         const slots = computed(
           () => recipe.value(variants.value as never) as Slots,
@@ -273,11 +307,11 @@ export function createSlotRecipeContext<
           return renderSlotHost(
             component,
             {
-              "data-part": slot === "base" ? "root" : slot,
               "data-scope": dataScope,
               ...dataAttrs,
               ...options.defaultProps,
               ...attrs,
+              "data-part": partOf(options),
               class: (slots.value[slot] as SlotFn)({
                 class: [defaultClass, values.class as ClassValue],
               }),
@@ -324,10 +358,10 @@ export function createSlotRecipeContext<
           renderSlotHost(
             component,
             {
-              "data-part": slot === "base" ? "root" : slot,
               "data-scope": dataScope,
               ...options.defaultProps,
               ...attrs,
+              "data-part": partOf(options),
               class: (styles.slots[slot] as SlotFn)({
                 class: [defaultClass, values.class as ClassValue],
               }),

@@ -1,36 +1,13 @@
 <script lang="ts" setup>
-import { createListCollection } from "@ark-ui/vue";
 import { Autocomplete } from "@pisagor/vue";
 
-const initialItems = [
+const items = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Cherry", value: "cherry" },
 ];
-
-const collection = createListCollection({ items: initialItems });
-
-function filter(_inputValue: string) {}
 </script>
 
 <template>
-  <Autocomplete.Root
-    disabled
-    :collection="collection"
-    @input-value-change="({ inputValue }) => filter(inputValue)"
-  >
-    <Autocomplete.Input placeholder="Select a fruit..." />
-    <Autocomplete.Content>
-      <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-      <Autocomplete.List>
-        <Autocomplete.Item
-          v-for="item in collection.items"
-          :key="item.value"
-          :item="item"
-        >
-          {{ item.label }}
-        </Autocomplete.Item>
-      </Autocomplete.List>
-    </Autocomplete.Content>
-  </Autocomplete.Root>
+  <Autocomplete disabled :items="items" />
 </template>

@@ -10,7 +10,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 type SliderControlProps = SetRequired<
-  Omit<SliderProps, "invalid" | "label" | "name">,
+  Omit<SliderProps, "class" | "invalid" | "label" | "name">,
   "onValueChange"
 >;
 

@@ -45,10 +45,7 @@ export type MenuProps = MenuRootProps & MenuContract;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const MenuRootBase = withProvider<MenuRootContract>("nav", {
-  name: "Root",
-  slot: "base",
-});
+const MenuRootBase = withProvider<MenuRootContract>("nav", { name: "Root" });
 
 export const MenuRoot = defineComponent({
   inheritAttrs: false,
@@ -91,11 +88,7 @@ export const MenuGroup = withContext("div", {
   name: "Group",
 });
 
-export const MenuGroupLabel = withContext("div", {
-  defaultProps: { "data-part": "group-label" },
-  name: "GroupLabel",
-  slot: "groupLabel",
-});
+export const MenuGroupLabel = withContext("div", { name: "GroupLabel" });
 
 export const MenuItem = defineComponent({
   inheritAttrs: false,

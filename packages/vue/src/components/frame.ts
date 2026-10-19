@@ -118,34 +118,26 @@ export const FramePanel = defineComponent({
 });
 
 export const FrameTitle = withContext("div", {
-  defaultProps: {
-    "data-part": "panel-title",
-  },
   name: "Title",
+  part: "panel-title",
   slot: "panelTitle",
 });
 
 export const FrameDescription = withContext("div", {
-  defaultProps: {
-    "data-part": "panel-description",
-  },
   name: "Description",
+  part: "panel-description",
   slot: "panelDescription",
 });
 
 export const FrameHeader = withContext("header", {
-  defaultProps: {
-    "data-part": "panel-header",
-  },
   name: "Header",
+  part: "panel-header",
   slot: "panelHeader",
 });
 
 export const FrameFooter = withContext("footer", {
-  defaultProps: {
-    "data-part": "panel-footer",
-  },
   name: "Footer",
+  part: "panel-footer",
   slot: "panelFooter",
 });
 // #endregion

@@ -68,7 +68,6 @@ export interface BottomNavigationItemProps extends BottomNavigationItemRootContr
 const BottomNavigationNav =
   withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
     name: "Root",
-    slot: "base",
   });
 
 export const BottomNavigationRoot = defineComponent({
@@ -141,7 +140,7 @@ export const BottomNavigationItem = defineComponent({
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
   "span",
   {
-    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+    defaultProps: { "aria-hidden": true },
     name: "ItemIcon",
     slot: "icon",
   },
@@ -150,7 +149,6 @@ export const BottomNavigationItemIcon = withBottomNavigationItemContext(
 export const BottomNavigationItemLabel = withBottomNavigationItemContext(
   "span",
   {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   },
