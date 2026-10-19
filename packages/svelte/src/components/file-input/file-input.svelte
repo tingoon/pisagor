@@ -1,50 +1,41 @@
 <script lang="ts">
   import type { FileInputRootContract } from "@pisagor/contracts";
-  import {
-    type FormControlGroupShellVariantProps,
-    fileInputRecipe,
-    formControlGroupShellRecipe,
-  } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import type { HTMLInputAttributes } from "svelte/elements";
   import { InputGroup } from "../input-group";
   import { useLocale } from "../provider/context";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { Context } from "./file-input.context";
+  import FileInputControl from "./file-input-control.svelte";
+  import FileInputLabel from "./file-input-label.svelte";
+  import FileInputRoot from "./file-input-root.svelte";
 
   const { m } = useLocale();
-
-  type FormControlVariant = "primary" | "secondary";
 
   type Props = Omit<
     HTMLInputAttributes,
     "defaultValue" | "onChange" | "size" | "type" | "value"
   > &
-    FormControlGroupShellVariantProps & {
+    FileInputRootContract & {
       browseLabel?: string;
       invalid?: boolean;
       onFilesChange?: (files: globalThis.File[]) => void;
-      onValueChange?: (files: globalThis.File[]) => void;
       placeholder?: string;
-    } & FileInputRootContract;
+    };
 
   let {
     size = "md",
-    variant: variantProp,
+    variant,
     accept,
     disabled,
     invalid,
     multiple,
     name,
     required,
-    browseLabel = m("fileInput.browse"),
+    browseLabel: browseLabelProp,
     capture,
     id,
-    placeholder = m("fileInput.placeholder"),
+    placeholder: placeholderProp,
     onchange,
     onFilesChange,
-    onValueChange,
-    recipe = fileInputRecipe,
+    recipe,
     class: className,
     ...rest
   }: Props = $props();
@@ -52,15 +43,8 @@
   let inputEl = $state<HTMLInputElement | null>(null);
   let fileLabel = $state<string | undefined>(undefined);
 
-  const slots = $derived(recipe());
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  const placeholder = $derived(m("fileInput.placeholder", placeholderProp));
+  const browseLabel = $derived(m("fileInput.browse", browseLabelProp));
 
   function formatFileLabel(files: globalThis.File[]): string | undefined {
     if (files.length === 0) return undefined;
@@ -79,51 +63,38 @@
       ? Array.from(event.currentTarget.files)
       : [];
     onFilesChange?.(files);
-    onValueChange?.(files);
     fileLabel = formatFileLabel(files);
   }
 </script>
 
-<fieldset
-  class={formControlGroupShellRecipe({
-    class: cn(slots.root(), className),
-    size,
-    surfaceVariant,
-    variant,
-  })}
-  data-disabled={disabled ? true : undefined}
-  data-part="root"
-  data-scope="file-input"
-  data-size={size}
-  data-variant={variant}
+<FileInputRoot
+  class={className}
+  disabled={disabled ?? undefined}
+  {recipe}
+  {size}
+  {variant}
 >
-  <input
+  <FileInputControl
     {...rest}
     {accept}
     aria-invalid={invalid || undefined}
     {capture}
-    class={slots.control()}
     data-invalid={invalid || undefined}
-    data-part="control"
-    data-scope="file-input"
     {disabled}
     {id}
     {multiple}
     {name}
     onchange={handleChange}
     {required}
-    type="file"
-    bind:this={inputEl}
+    tabindex={-1}
+    bind:element={inputEl}
   />
   <InputGroup.Addon align="inline-start">
     <InputGroup.Button {disabled} onclick={openPicker} type="button">
       {browseLabel}
     </InputGroup.Button>
   </InputGroup.Addon>
-  <InputGroup.Text
-    class={slots.label()}
-    onclick={disabled ? undefined : openPicker}
-  >
+  <FileInputLabel onclick={disabled ? undefined : openPicker}>
     {fileLabel ?? placeholder}
-  </InputGroup.Text>
-</fieldset>
+  </FileInputLabel>
+</FileInputRoot>

@@ -5,16 +5,14 @@
     useTagsInputContext,
   } from "@ark-ui/svelte";
   import type { TagsInputRootContract } from "@pisagor/contracts";
-  import { formControlGroupShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
+  import type { ComponentProps } from "svelte";
+  import { InputGroup } from "../input-group";
   import { useLocale } from "../provider/context";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { useTagsInput } from "./tags-input.context";
   import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
 
   const { m } = useLocale();
-
-  type FormControlVariant = "primary" | "secondary";
 
   type Props = ArkControlProps &
     TagsInputRootContract & {
@@ -23,7 +21,7 @@
 
   let {
     size = "md",
-    variant: variantProp,
+    variant,
     clearable = false,
     children,
     class: className,
@@ -33,19 +31,21 @@
   const styles = useTagsInput();
   const slots = $derived(styles.slots);
   const api = useTagsInputContext();
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
-<TagsInputPrimitive.Control
-  {...rest}
-  class={cn(
-    formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-    slots.control({ class: cn(className) }),
-  )}
->
-  {@render children?.()}
-  {#if clearable && api().value.length > 0}
-    <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
-  {/if}
+<TagsInputPrimitive.Control {...rest}>
+  {#snippet asChild(props)}
+    <InputGroup
+      {...props({
+        class: slots.control({ class: cn(className) }),
+      }) as ComponentProps<typeof InputGroup>}
+      {size}
+      {variant}
+    >
+      {@render children?.()}
+      {#if clearable && api().value.length > 0}
+        <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
+      {/if}
+    </InputGroup>
+  {/snippet}
 </TagsInputPrimitive.Control>

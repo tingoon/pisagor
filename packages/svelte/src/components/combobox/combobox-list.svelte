@@ -3,15 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxListProps,
   } from "@ark-ui/svelte";
-  import { comboboxRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useComboboxRoot } from "./combobox.context";
+  import { withContext } from "./combobox.context";
 
-  let { class: className, children, ...rest }: ComboboxListProps = $props();
-  const ctx = useComboboxRoot();
-  const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let { children, ...rest }: ComboboxListProps = $props();
+  const part = withContext(() => rest, { name: "List" });
 </script>
 
-<ComboboxPrimitive.List {...rest} class={slots.list({ class: cn(className) })}>
+<ComboboxPrimitive.List {...part.props}>
   {@render children?.()}
 </ComboboxPrimitive.List>

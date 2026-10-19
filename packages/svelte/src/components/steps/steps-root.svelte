@@ -6,7 +6,7 @@
   type Props = StepsRootProps & StepsRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withStepsProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withStepsProvider(() => rest, { name: "Root" });
 </script>
 
 <StepsPrimitive.Root {...root.props}>

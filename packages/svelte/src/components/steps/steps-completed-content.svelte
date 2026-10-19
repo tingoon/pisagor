@@ -6,11 +6,7 @@
   import { withStepsContext } from "./steps.context";
 
   let { children, ...rest }: StepsCompletedContentProps = $props();
-  const part = withStepsContext(() => rest, {
-    defaultProps: { "data-part": "completed-content" },
-    name: "CompletedContent",
-    slot: "completedContent",
-  });
+  const part = withStepsContext(() => rest, { name: "CompletedContent" });
 </script>
 
 <StepsPrimitive.CompletedContent {...part.props}>

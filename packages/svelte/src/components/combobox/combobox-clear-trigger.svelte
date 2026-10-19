@@ -3,17 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxClearTriggerProps,
   } from "@ark-ui/svelte";
-  import { useLocale } from "../provider/context";
+  import { withContext } from "./combobox.context";
 
-  const { m } = useLocale();
-
-  let {
-    "aria-label": ariaLabel = m("select.clear"),
-    children,
-    ...rest
-  }: ComboboxClearTriggerProps = $props();
+  let { children, ...rest }: ComboboxClearTriggerProps = $props();
+  const part = withContext(() => rest, { name: "ClearTrigger" });
 </script>
 
-<ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel}>
+<ComboboxPrimitive.ClearTrigger {...part.props}>
   {@render children?.()}
 </ComboboxPrimitive.ClearTrigger>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte";
+  import { createListCollection, Portal } from "@ark-ui/svelte";
   import { Combobox, Field, TagsInput } from "@pisagor/svelte";
 
   const frameworks = [
@@ -21,8 +21,8 @@
     }),
   );
 
-  function onComboboxValueChange(value: string[]) {
-    const next = value[0];
+  function onComboboxValueChange(details: { value: string[] }) {
+    const next = details.value[0];
     if (next && !tags.includes(next)) {
       tags = [...tags, next];
     }
@@ -44,15 +44,19 @@
       placeholder="Search framework"
       value={tags}
     />
-    <Combobox.Content>
-      <Combobox.List>
-        <Combobox.Empty
-          >No frameworks found. Try a different search.</Combobox.Empty
-        >
-        {#each collection.items as item}
-          <Combobox.Item {item}>{item}</Combobox.Item>
-        {/each}
-      </Combobox.List>
-    </Combobox.Content>
+    <Portal>
+      <Combobox.Positioner>
+        <Combobox.Content>
+          <Combobox.List>
+            <Combobox.Empty
+              >No frameworks found. Try a different search.</Combobox.Empty
+            >
+            {#each collection.items as item}
+              <Combobox.Item {item}>{item}</Combobox.Item>
+            {/each}
+          </Combobox.List>
+        </Combobox.Content>
+      </Combobox.Positioner>
+    </Portal>
   </Combobox.Root>
 </Field>

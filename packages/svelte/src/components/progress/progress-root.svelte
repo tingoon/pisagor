@@ -9,7 +9,7 @@
   type Props = ProgressRootProps & ProgressRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <ProgressPrimitive.Root {...root.props}>

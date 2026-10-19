@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import { Combobox } from "@pisagor/svelte";
+  import { Portal, useFilter, useListCollection } from "@ark-ui/svelte";
+  import { CaretUpDownIcon, CheckIcon } from "phosphor-svelte";
+  import { Combobox, InputGroup } from "@pisagor/svelte";
 
   const initialItems = [
     { continent: "North America", label: "Canada", value: "ca" },
@@ -27,16 +28,48 @@
   {collection}
   onInputValueChange={({ inputValue }) => filter(inputValue)}
 >
-  <Combobox.Input placeholder="Select a timezone" />
-  <Combobox.Content class="w-60">
-    <Combobox.List>
-      {#each collection().group() as [continent, group]}
-        <Combobox.ItemGroup heading={continent}>
-          {#each group as item}
-            <Combobox.Item {item}>{item.label}</Combobox.Item>
+  <Combobox.Control>
+    <InputGroup>
+      <Combobox.Input>
+        {#snippet asChild(props)}
+          <InputGroup.Input {...props()} placeholder="Select a timezone" />
+        {/snippet}
+      </Combobox.Input>
+      <InputGroup.Addon align="inline-end">
+        <Combobox.Trigger>
+          {#snippet asChild(props)}
+            <InputGroup.Button
+              {...props()}
+              aria-label="Toggle suggestions"
+              size="icon-xs"
+              variant="ghost"
+            >
+              <CaretUpDownIcon aria-hidden="true" />
+            </InputGroup.Button>
+          {/snippet}
+        </Combobox.Trigger>
+      </InputGroup.Addon>
+    </InputGroup>
+  </Combobox.Control>
+  <Portal>
+    <Combobox.Positioner>
+      <Combobox.Content class="w-60">
+        <Combobox.List>
+          {#each collection().group() as [continent, group] (continent)}
+            <Combobox.ItemGroup>
+              <Combobox.ItemGroupLabel>{continent}</Combobox.ItemGroupLabel>
+              {#each group as item (item.value)}
+                <Combobox.Item {item} persistFocus>
+                  {item.label}
+                  <Combobox.ItemIndicator>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              {/each}
+            </Combobox.ItemGroup>
           {/each}
-        </Combobox.ItemGroup>
-      {/each}
-    </Combobox.List>
-  </Combobox.Content>
+        </Combobox.List>
+      </Combobox.Content>
+    </Combobox.Positioner>
+  </Portal>
 </Combobox.Root>

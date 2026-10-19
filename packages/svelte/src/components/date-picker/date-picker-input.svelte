@@ -3,17 +3,12 @@
     DatePicker as DatePickerPrimitive,
     type DatePickerInputProps as ArkInputProps,
   } from "@ark-ui/svelte";
-  import {
-    buttonRecipe,
-    type FormControlGroupShellVariantProps,
-    formControlGroupShellRecipe,
-    inputGroupControlRecipe,
-  } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import type { FormControlGroupShellVariantProps } from "@pisagor/recipes";
   import { CalendarIcon } from "phosphor-svelte";
   import { isInsideControl, setInsideControl } from "../../internal";
+  import Button from "../button.svelte";
+  import { InputGroup } from "../input-group";
   import { useLocale } from "../provider/context";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
   import {
     DATE_PICKER_INSIDE_CONTROL,
     useDatePicker,
@@ -35,40 +30,37 @@
 
   const ctx = useDatePicker();
   const slots = $derived(ctx?.slots);
-  const surfaceVariant = useFormControlSurface();
   const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
   if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
-  const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
+  const variant = $derived(variantProp ?? ctx?.variant);
 </script>
 
 {#if slots}
   {#snippet body()}
-    <div
-      class={cn(
-        formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-        "group/input-group",
-        className,
-      )}
-      data-part="root"
-      data-scope="input-group"
-    >
-      <DatePickerPrimitive.Input {...rest} class={inputGroupControlRecipe()} />
-      <div
-        class="ms-auto flex items-center gap-0.5 pe-1"
-        data-align="inline-end"
-      >
+    <InputGroup class={className} {size} {variant}>
+      <DatePickerPrimitive.Input {...rest}>
+        {#snippet asChild(props)}
+          <InputGroup.Input {...props()} clearable={false} />
+        {/snippet}
+      </DatePickerPrimitive.Input>
+      <InputGroup.Addon align="inline-end">
         {#if clearable}
           <DatePickerClearTrigger />
         {/if}
-        <DatePickerPrimitive.Trigger
-          aria-label={m("datePicker.openCalendar")}
-          class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
-          type="button"
-        >
-          <CalendarIcon aria-hidden="true" class={slots.icon()} />
+        <DatePickerPrimitive.Trigger>
+          {#snippet asChild(props)}
+            <Button
+              {...props()}
+              aria-label={m("datePicker.openCalendar")}
+              size="icon-md"
+              variant="ghost"
+            >
+              <CalendarIcon aria-hidden="true" class={slots.icon()} />
+            </Button>
+          {/snippet}
         </DatePickerPrimitive.Trigger>
-      </div>
-    </div>
+      </InputGroup.Addon>
+    </InputGroup>
   {/snippet}
   {#if insideControl}
     {@render body()}

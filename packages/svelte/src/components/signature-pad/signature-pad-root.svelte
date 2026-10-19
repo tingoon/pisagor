@@ -4,37 +4,27 @@
     type SignaturePadRootProps,
   } from "@ark-ui/svelte";
   import type { SignaturePadRootContract } from "@pisagor/contracts";
-  import { signaturePadRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./signature-pad.context";
 
-  type Props = SignaturePadRootProps & {
-    /** Marks the control as invalid for styling and assistive tech. */
-    invalid?: boolean;
-  } & SignaturePadRootContract;
+  import { withProvider } from "./signature-pad.context";
 
-  let {
-    invalid = false,
-    children,
-    recipe = signaturePadRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  type Props = SignaturePadRootProps &
+    SignaturePadRootContract & {
+      /** Marks the control as invalid for styling and assistive tech. */
+      invalid?: boolean;
+    };
 
-  const slots = $derived(recipe());
+  let { invalid = false, children, ...rest }: Props = $props();
 
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  const root = withProvider(
+    () => ({
+      ...rest,
+      "aria-invalid": invalid || undefined,
+      "data-invalid": invalid || undefined,
+    }),
+    { name: "Root" },
+  );
 </script>
 
-<SignaturePadPrimitive.Root
-  {...rest}
-  aria-invalid={invalid || undefined}
-  class={slots.base({ class: cn(className) })}
-  data-invalid={invalid || undefined}
->
+<SignaturePadPrimitive.Root {...root.props}>
   {@render children?.()}
 </SignaturePadPrimitive.Root>

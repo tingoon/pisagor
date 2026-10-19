@@ -9,7 +9,7 @@
 
   let { children, ...rest }: Props = $props();
 
-  const part = withContext(() => rest, { name: "Title", slot: "title" });
+  const part = withContext(() => rest, { name: "Title" });
 </script>
 
 <Ark as="h3" {...part.props}>{@render children?.()}</Ark>

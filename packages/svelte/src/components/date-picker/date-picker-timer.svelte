@@ -1,25 +1,21 @@
 <script lang="ts">
   import type { DatePickerRootContract } from "@pisagor/contracts";
-  import {
-    datePickerRecipe,
-    type FormControlGroupShellVariantProps,
-    formControlGroupShellRecipe,
-    inputGroupControlRecipe,
-  } from "@pisagor/recipes";
+  import { datePickerRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ClockIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import InputClearButton from "../input/input-clear-button.svelte";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { InputGroup } from "../input-group";
   import { useDatePicker } from "./date-picker.context";
 
-  type Props = Omit<HTMLInputAttributes, "size" | "type" | "value"> &
-    FormControlGroupShellVariantProps & {
-      children?: Snippet;
-      clearable?: boolean;
-      value?: string | undefined;
-    } & DatePickerRootContract;
+  type Props = Omit<HTMLInputAttributes, "size" | "type" | "value"> & {
+    children?: Snippet;
+    clearable?: boolean;
+    size?: "sm" | "md" | "lg";
+    value?: string | undefined;
+    variant?: "primary" | "secondary";
+  } & DatePickerRootContract;
 
   let {
     clearable = false,
@@ -36,8 +32,7 @@
 
   const ctx = useDatePicker();
   const slots = $derived(ctx?.slots ?? recipe());
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
+  const variant = $derived(variantProp ?? ctx?.variant);
   const canClear = $derived(
     clearable &&
       !disabled &&
@@ -50,17 +45,10 @@
   }
 </script>
 
-<div
-  class={cn(
-    formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-    "group/input-group",
-  )}
-  data-part="root"
-  data-scope="input-group"
->
-  <div class="ps-2" data-align="inline-start">
+<InputGroup {size} {variant}>
+  <InputGroup.Addon>
     <ClockIcon />
-  </div>
+  </InputGroup.Addon>
   <input
     {...rest}
     class={cn(inputGroupControlRecipe(), slots.timer({ class: cn(className) }))}
@@ -72,8 +60,8 @@
     bind:value
   />
   {#if canClear}
-    <div class="pe-1" data-align="inline-end">
+    <InputGroup.Addon align="inline-end">
       <InputClearButton onClear={handleClear} />
-    </div>
+    </InputGroup.Addon>
   {/if}
-</div>
+</InputGroup>

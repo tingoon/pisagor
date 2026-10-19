@@ -10,7 +10,7 @@ import SliderRange from "./slider-range.svelte";
 import SliderRoot from "./slider-root.svelte";
 import SliderThumb from "./slider-thumb.svelte";
 import SliderTrack from "./slider-track.svelte";
-import SliderValue from "./slider-value.svelte";
+import SliderValueText from "./slider-value-text.svelte";
 
 export const Slider = Object.assign(SliderShorthand, {
   Control: SliderControl,
@@ -24,5 +24,5 @@ export const Slider = Object.assign(SliderShorthand, {
   Root: SliderRoot,
   Thumb: SliderThumb,
   Track: SliderTrack,
-  Value: SliderValue,
+  ValueText: SliderValueText,
 });

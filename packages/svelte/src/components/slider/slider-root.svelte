@@ -4,45 +4,20 @@
     type SliderRootProps,
   } from "@ark-ui/svelte";
   import type { SliderRootContract } from "@pisagor/contracts";
-  import { sliderRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { setSliderContext } from "./slider.context";
 
-  type FormControlVariant = "primary" | "secondary";
+  import { withProvider } from "./slider.context";
 
-  type Props = SliderRootProps & {
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
-  } & SliderRootContract;
+  type Props = SliderRootProps & SliderRootContract;
 
   let {
-    variant: variantProp,
     children,
-    recipe = sliderRecipe,
-    class: className,
+    value = $bindable<number[] | undefined>(undefined),
     ...rest
   }: Props = $props();
 
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
-
-  setSliderContext({
-    get slots() {
-      return slots;
-    },
-    get thumbShadowClass() {
-      return variant === "secondary" ? "shadow-none" : undefined;
-    },
-    get trackVariantClass() {
-      return variant === "secondary" ? "bg-muted/40" : "bg-input/64";
-    },
-  });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
-<SliderPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
->
+<SliderPrimitive.Root {...root.props} bind:value>
   {@render children?.()}
 </SliderPrimitive.Root>

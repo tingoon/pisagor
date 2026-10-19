@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import { Autocomplete } from "@pisagor/svelte";
+  import { Portal, useFilter, useListCollection } from "@ark-ui/svelte";
+  import { CheckIcon } from "phosphor-svelte";
+  import { Autocomplete, Combobox, InputGroup } from "@pisagor/svelte";
 
   const initialItems = [
     { continent: "North America", label: "Canada", value: "ca" },
@@ -27,17 +28,39 @@
   {collection}
   onInputValueChange={({ inputValue }) => filter(inputValue)}
 >
-  <Autocomplete.Input placeholder="Select a timezone" />
-  <Autocomplete.Content class="w-60">
-    <Autocomplete.Empty />
-    <Autocomplete.List>
-      {#each collection().group() as [continent, group]}
-        <Autocomplete.ItemGroup heading={continent}>
-          {#each group as item}
-            <Autocomplete.Item {item}>{item.label}</Autocomplete.Item>
+  <Autocomplete.Control>
+    <InputGroup>
+      <Autocomplete.Input>
+        {#snippet asChild(props)}
+          <InputGroup.Input {...props()} placeholder="Select a timezone" />
+        {/snippet}
+      </Autocomplete.Input>
+    </InputGroup>
+  </Autocomplete.Control>
+  <Portal>
+    <Combobox.Positioner>
+      <Autocomplete.Content class="w-60">
+        <Autocomplete.Empty>
+          No results found. Try a different search.
+        </Autocomplete.Empty>
+        <Autocomplete.List>
+          {#each collection().group() as [continent, group] (continent)}
+            <Autocomplete.ItemGroup>
+              <Autocomplete.ItemGroupLabel
+                >{continent}</Autocomplete.ItemGroupLabel
+              >
+              {#each group as item (item.value)}
+                <Autocomplete.Item {item} persistFocus>
+                  {item.label}
+                  <Combobox.ItemIndicator>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Autocomplete.Item>
+              {/each}
+            </Autocomplete.ItemGroup>
           {/each}
-        </Autocomplete.ItemGroup>
-      {/each}
-    </Autocomplete.List>
-  </Autocomplete.Content>
+        </Autocomplete.List>
+      </Autocomplete.Content>
+    </Combobox.Positioner>
+  </Portal>
 </Autocomplete.Root>

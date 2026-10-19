@@ -9,8 +9,8 @@
   let { children, ...rest }: Props = $props();
 
   const part = withContext(() => rest, {
-    defaultProps: { "data-part": "panel-title" },
     name: "Title",
+    part: "panel-title",
     slot: "panelTitle",
   });
 </script>

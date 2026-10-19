@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import { Combobox } from "@pisagor/svelte";
+  import { Portal, useFilter, useListCollection } from "@ark-ui/svelte";
+  import { CaretUpDownIcon, CheckIcon } from "phosphor-svelte";
+  import { Combobox, InputGroup } from "@pisagor/svelte";
 
   const initialItems = [
     { label: "React", value: "react" },
@@ -23,14 +24,43 @@
   multiple
   onInputValueChange={({ inputValue }) => filter(inputValue)}
 >
-  <Combobox.Input placeholder="Select frameworks..." />
-  <Combobox.Content>
-    <Combobox.List>
-      {#each collection().items as item}
-        <Combobox.Item {item}>
-          {item.label}
-        </Combobox.Item>
-      {/each}
-    </Combobox.List>
-  </Combobox.Content>
+  <Combobox.Control>
+    <InputGroup>
+      <Combobox.Input>
+        {#snippet asChild(props)}
+          <InputGroup.Input {...props()} placeholder="Select frameworks..." />
+        {/snippet}
+      </Combobox.Input>
+      <InputGroup.Addon align="inline-end">
+        <Combobox.Trigger>
+          {#snippet asChild(props)}
+            <InputGroup.Button
+              {...props()}
+              aria-label="Toggle suggestions"
+              size="icon-xs"
+              variant="ghost"
+            >
+              <CaretUpDownIcon aria-hidden="true" />
+            </InputGroup.Button>
+          {/snippet}
+        </Combobox.Trigger>
+      </InputGroup.Addon>
+    </InputGroup>
+  </Combobox.Control>
+  <Portal>
+    <Combobox.Positioner>
+      <Combobox.Content>
+        <Combobox.List>
+          {#each collection().items as item (item.value)}
+            <Combobox.Item {item} persistFocus>
+              {item.label}
+              <Combobox.ItemIndicator>
+                <CheckIcon />
+              </Combobox.ItemIndicator>
+            </Combobox.Item>
+          {/each}
+        </Combobox.List>
+      </Combobox.Content>
+    </Combobox.Positioner>
+  </Portal>
 </Combobox.Root>

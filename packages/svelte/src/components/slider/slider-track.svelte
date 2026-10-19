@@ -3,15 +3,10 @@
     Slider as SliderPrimitive,
     type SliderTrackProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useSliderExtras, withContext } from "./slider.context";
+  import { withContext } from "./slider.context";
 
-  let { children, class: className, ...rest }: SliderTrackProps = $props();
-  const extras = useSliderExtras();
-  const part = withContext(
-    () => ({ ...rest, class: cn(extras.trackVariantClass, className) }),
-    { name: "Track" },
-  );
+  let { children, ...rest }: SliderTrackProps = $props();
+  const part = withContext(() => rest, { name: "Track" });
 </script>
 
 <SliderPrimitive.Track {...part.props}>

@@ -4,46 +4,16 @@
     type SwitchRootProps,
   } from "@ark-ui/svelte";
   import type { SwitchRootContract } from "@pisagor/contracts";
-  import { switchRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
 
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { Context } from "./switch.context";
+  import { withProvider } from "./switch.context";
 
-  type FormControlVariant = "primary" | "secondary";
+  type Props = SwitchRootProps & SwitchRootContract;
 
-  type Props = SwitchRootProps & {
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
-  } & SwitchRootContract;
+  let { children, ...rest }: Props = $props();
 
-  let {
-    variant: variantProp,
-    children,
-    size = "md",
-    recipe = switchRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe({ size, surfaceVariant, variant }));
-
-  Context.set({
-    get slots() {
-      return slots;
-    },
-    get variants() {
-      return { surfaceVariant, variant };
-    },
-  });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
-<SwitchPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
->
+<SwitchPrimitive.Root {...root.props}>
   {@render children?.()}
 </SwitchPrimitive.Root>

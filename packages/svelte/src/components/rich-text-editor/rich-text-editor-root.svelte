@@ -1,25 +1,19 @@
 <script lang="ts">
   import type { RichTextEditorRootContract } from "@pisagor/contracts";
-  import {
-    formControlShellRecipe,
-    richTextEditorRecipe,
-  } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { Editor } from "@tiptap/core";
   import StarterKit from "@tiptap/starter-kit";
   import { untrack } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
   import VisuallyHidden from "../visually-hidden.svelte";
-  import { setRichTextEditorContext } from "./rich-text-editor.context";
+  import {
+    setRichTextEditorContext,
+    withProvider,
+  } from "./rich-text-editor.context";
 
   const { m } = useLocale();
 
-  type FormControlVariant = "primary" | "secondary";
-
   type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "onblur"> & {
-    variant?: FormControlVariant;
     defaultValue?: string;
     value?: string;
     onValueChange?: (value: string) => void;
@@ -34,7 +28,6 @@
   } & RichTextEditorRootContract;
 
   let {
-    variant: variantProp,
     defaultValue,
     disabled,
     invalid,
@@ -46,16 +39,26 @@
     id,
     onBlur,
     onValueChange,
-    recipe = richTextEditorRecipe,
-    class: className,
     ...rest
   }: Props = $props();
 
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
-  const resolvedAriaLabel = $derived(
-    ariaLabel ?? (id ? undefined : m("richTextEditor.label")),
+  const root = withProvider(
+    () => ({
+      ...rest,
+      "aria-disabled": disabled || undefined,
+      "aria-invalid": invalid || undefined,
+      "aria-label": ariaLabel ?? (id ? undefined : m("richTextEditor.label")),
+      "aria-readonly": readOnly || undefined,
+      "data-disabled": disabled ? "true" : undefined,
+      "data-invalid": invalid ? "true" : undefined,
+      "data-readonly": readOnly ? "true" : undefined,
+    }),
+    {
+      defaultProps: {
+        role: "group",
+      },
+      name: "Root",
+    },
   );
 
   let hostEl = $state<HTMLDivElement | null>(null);
@@ -136,29 +139,12 @@
       return revision;
     },
     get slots() {
-      return slots;
+      return root.styles.slots;
     },
   });
 </script>
 
-<!-- biome-ignore lint/a11y/useAriaPropsSupportedByRole: mirrors React RTE root; aria-readonly flags the shell -->
-<fieldset
-  {...rest}
-  aria-disabled={disabled || undefined}
-  aria-invalid={invalid || undefined}
-  aria-label={resolvedAriaLabel}
-  aria-readonly={readOnly || undefined}
-  class={cn(
-    formControlShellRecipe({ surfaceVariant, variant }),
-    slots.base({ class: cn(className) }),
-  )}
-  data-disabled={disabled ? "true" : undefined}
-  data-invalid={invalid ? "true" : undefined}
-  data-part="root"
-  data-readonly={readOnly ? "true" : undefined}
-  data-scope="rich-text-editor"
-  data-variant={variant}
->
+<fieldset {...root.props}>
   {#if name}
     <VisuallyHidden>
       <input {name} readonly tabindex={-1} type="hidden" value={htmlValue} />

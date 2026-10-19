@@ -3,10 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxPositionerProps,
   } from "@ark-ui/svelte";
+  import { withContext } from "./combobox.context";
 
   let { children, ...rest }: ComboboxPositionerProps = $props();
+  const part = withContext(() => rest, { name: "Positioner" });
 </script>
 
-<ComboboxPrimitive.Positioner {...rest}>
+<ComboboxPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </ComboboxPrimitive.Positioner>

@@ -9,7 +9,7 @@
   type Props = SplitterRootProps & ResizableRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <SplitterPrimitive.Root {...root.props}>

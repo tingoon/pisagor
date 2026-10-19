@@ -4,10 +4,9 @@
     type EditablePreviewProps as ArkEditablePreviewProps,
   } from "@ark-ui/svelte";
   import type { ButtonRootContract } from "@pisagor/contracts";
-  import { buttonRecipe } from "@pisagor/recipes";
+  import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useStyles } from "./editable.context";
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -19,7 +18,7 @@
   };
 
   let {
-    controlVariant,
+    controlVariant = "primary",
     size = "md",
     variant = "outline",
     buttonRecipe: buttonRecipeProp = buttonRecipe,
@@ -28,21 +27,9 @@
     ...rest
   }: Props = $props();
 
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
   const surfaceVariant = useFormControlSurface();
-  const resolvedVariant = $derived(
-    controlVariant ?? ("primary" as FormControlVariant),
-  );
-
-  const previewShellClass = $derived(
-    resolvedVariant === "secondary" && surfaceVariant === "default"
-      ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-      : resolvedVariant === "secondary" && surfaceVariant
-        ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
-        : resolvedVariant === "secondary"
-          ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-          : undefined,
+  const slots = $derived(
+    editableRecipe({ surfaceVariant, variant: controlVariant }),
   );
 </script>
 
@@ -50,12 +37,10 @@
   {...rest}
   class={cn(
     buttonRecipeProp({ clickEffect: false, size, variant }).base(),
-    previewShellClass,
     slots.preview(),
-    previewShellClass ? "dark:hover:bg-transparent" : undefined,
     className,
   )}
-  data-variant={resolvedVariant}
+  data-variant={controlVariant}
 >
   {@render children?.()}
 </EditablePrimitive.Preview>

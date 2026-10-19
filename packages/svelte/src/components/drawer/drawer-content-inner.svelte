@@ -8,11 +8,7 @@
   };
 
   let { children, ...rest }: Props = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "content-inner" },
-    name: "ContentInner",
-    slot: "contentInner",
-  });
+  const part = withContext(() => rest, { name: "ContentInner" });
 </script>
 
 <div {...part.props}>{@render children?.()}</div>

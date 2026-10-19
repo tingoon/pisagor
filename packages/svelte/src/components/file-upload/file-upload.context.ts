@@ -18,6 +18,6 @@ export const {
   withContext: withFileUploadItemContext,
   withProvider: withFileUploadItemProvider,
 } = createSlotRecipeContext({
-  name: "FileUpload",
+  name: "FileUploadItem",
   recipe: fileUploadItemRecipe,
 });

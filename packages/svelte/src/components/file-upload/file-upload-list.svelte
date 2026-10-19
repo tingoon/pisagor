@@ -12,7 +12,7 @@
   import FileUploadItemName from "./file-upload-item-name.svelte";
   import FileUploadItemPreview from "./file-upload-item-preview.svelte";
   import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
-  import FileUploadItemSize from "./file-upload-item-size.svelte";
+  import FileUploadItemSizeText from "./file-upload-item-size-text.svelte";
 
   type Props = { class?: ClassValue } & FileUploadItemRootContract;
 
@@ -46,7 +46,7 @@
     </FileUploadItemPreview>
     <div class={itemSlots.content()}>
       <FileUploadItemName />
-      <FileUploadItemSize />
+      <FileUploadItemSizeText />
       {#each errors ?? [] as code (code)}
         <div class={itemSlots.error()}>
           {m(`fileUpload.error.${code}` as MessageKey) ?? code}

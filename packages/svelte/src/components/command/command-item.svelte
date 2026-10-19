@@ -6,4 +6,4 @@
     $props();
 </script>
 
-<ComboboxItem {...rest} class={className} showIndicator={false} />
+<ComboboxItem {...rest} class={className} />

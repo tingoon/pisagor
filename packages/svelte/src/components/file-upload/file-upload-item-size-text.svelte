@@ -13,5 +13,5 @@
 
 <FileUploadPrimitive.ItemSizeText
   {...rest}
-  class={slots.size({ class: cn(className) })}
+  class={slots.sizeText({ class: cn(className) })}
 />

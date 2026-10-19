@@ -4,11 +4,7 @@
   import { withFileUploadContext } from "./file-upload.context";
 
   let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-  const part = withFileUploadContext(() => rest, {
-    defaultProps: { "data-part": "dropzone-icon" },
-    name: "DropzoneIcon",
-    slot: "dropzoneIcon",
-  });
+  const part = withFileUploadContext(() => rest, { name: "DropzoneIcon" });
 </script>
 
 <div {...part.props}>

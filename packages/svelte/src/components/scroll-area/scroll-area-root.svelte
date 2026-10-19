@@ -9,7 +9,7 @@
   type Props = ScrollAreaRootProps & ScrollAreaRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <ScrollAreaPrimitive.Root {...root.props}>

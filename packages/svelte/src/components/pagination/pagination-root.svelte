@@ -12,7 +12,7 @@
   type Props = PaginationRootProps & PaginationRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <PaginationPrimitive.Root {...root.props}>

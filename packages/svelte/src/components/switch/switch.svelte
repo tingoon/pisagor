@@ -12,8 +12,6 @@
   import SwitchRoot from "./switch-root.svelte";
   import SwitchThumb from "./switch-thumb.svelte";
 
-  type FormControlVariant = "primary" | "secondary";
-
   type Props = Omit<SwitchRootProps, "children"> & {
     /** Extra props forwarded to the switch control element */
     controlProps?: Omit<SwitchControlProps, "children" | "class">;
@@ -22,8 +20,6 @@
     onValueChange?: (value: boolean) => void;
     /** Extra props forwarded to the switch thumb element */
     thumbProps?: Omit<SwitchThumbProps, "children" | "class">;
-    /** Visual shell variant. Defaults to `primary`. */
-    variant?: FormControlVariant;
   } & SwitchRootContract &
     SwitchContract;
 

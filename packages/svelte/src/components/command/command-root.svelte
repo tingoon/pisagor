@@ -32,6 +32,7 @@
   loopFocus={false}
   open
   selectionBehavior="clear"
+  showIndicator={false}
 >
   {@render children?.()}
 </ComboboxRoot>

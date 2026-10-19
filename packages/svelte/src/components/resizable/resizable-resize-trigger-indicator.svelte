@@ -6,11 +6,7 @@
   import { withContext } from "./resizable.context";
 
   let { ...rest }: SplitterResizeTriggerIndicatorProps = $props();
-  const part = withContext(() => rest, {
-    defaultProps: { "data-part": "resize-trigger-indicator" },
-    name: "ResizeTriggerIndicator",
-    slot: "resizeTriggerIndicator",
-  });
+  const part = withContext(() => rest, { name: "ResizeTriggerIndicator" });
 </script>
 
 <SplitterPrimitive.ResizeTriggerIndicator {...part.props} />

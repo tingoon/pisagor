@@ -3,21 +3,19 @@
     Select as SelectPrimitive,
     type SelectItemProps,
   } from "@ark-ui/svelte";
-  import { selectRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
   import { CheckIcon } from "phosphor-svelte";
-  import { useSelectRoot } from "./select.context";
+  import { useStyles, withContext } from "./select.context";
 
-  let { class: className, children, ...rest }: SelectItemProps = $props();
-  const ctx = useSelectRoot();
-  const slots = $derived(ctx?.slots ?? selectRecipe());
+  let { children, ...rest }: SelectItemProps = $props();
+  const styles = useStyles();
+  const part = withContext(() => rest, { name: "Item" });
 </script>
 
-<SelectPrimitive.Item {...rest} class={slots.item({ class: cn(className) })}>
-  <SelectPrimitive.ItemText class={slots.itemText()}>
+<SelectPrimitive.Item {...part.props}>
+  <SelectPrimitive.ItemText class={styles.slots.itemText()}>
     {@render children?.()}
   </SelectPrimitive.ItemText>
-  <span class={slots.itemIndicator()}>
+  <span class={styles.slots.itemIndicator()}>
     <SelectPrimitive.ItemIndicator>
       <CheckIcon />
     </SelectPrimitive.ItemIndicator>

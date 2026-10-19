@@ -6,7 +6,7 @@
   import { withContext } from "./progress.context";
 
   let { children, ...rest }: ProgressValueTextProps = $props();
-  const part = withContext(() => rest, { name: "Value" });
+  const part = withContext(() => rest, { name: "ValueText" });
 </script>
 
 <ProgressPrimitive.ValueText {...part.props} {children} />

@@ -3,22 +3,12 @@
     Combobox as ComboboxPrimitive,
     type ComboboxEmptyProps,
   } from "@ark-ui/svelte";
-  import { comboboxRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useComboboxRoot } from "./combobox.context";
+  import { withContext } from "./combobox.context";
 
-  let { children, class: className, ...rest }: ComboboxEmptyProps = $props();
-  const ctx = useComboboxRoot();
-  const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let { children, ...rest }: ComboboxEmptyProps = $props();
+  const part = withContext(() => rest, { name: "Empty" });
 </script>
 
-<ComboboxPrimitive.Empty
-  {...rest}
-  class={slots.empty({ class: cn(className) })}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    No results found. Try a different search.
-  {/if}
+<ComboboxPrimitive.Empty {...part.props}>
+  {@render children?.()}
 </ComboboxPrimitive.Empty>

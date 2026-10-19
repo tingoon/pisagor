@@ -6,7 +6,9 @@
   import { withContext } from "./clipboard.context";
 
   let { children, ...rest }: ClipboardValueTextProps = $props();
-  const part = withContext(() => rest, { name: "Value" });
+  const part = withContext(() => rest, { name: "ValueText" });
 </script>
 
-<ClipboardPrimitive.ValueText {...part.props} {children} />
+<ClipboardPrimitive.ValueText {...part.props}>
+  {@render children?.()}
+</ClipboardPrimitive.ValueText>

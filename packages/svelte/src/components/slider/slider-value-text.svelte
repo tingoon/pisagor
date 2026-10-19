@@ -6,7 +6,7 @@
   import { withContext } from "./slider.context";
 
   let { children, ...rest }: SliderValueTextProps = $props();
-  const part = withContext(() => rest, { name: "Value" });
+  const part = withContext(() => rest, { name: "ValueText", slot: "value" });
 </script>
 
 <SliderPrimitive.ValueText {...part.props}>

@@ -9,7 +9,7 @@
   type Props = ArkRootProps & FieldRootContract;
 
   let { children, ...rest }: Props = $props();
-  const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
 <FieldPrimitive.Root {...root.props}>

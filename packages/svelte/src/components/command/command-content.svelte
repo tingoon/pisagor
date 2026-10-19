@@ -10,8 +10,4 @@
   const slots = $derived(styles.slots);
 </script>
 
-<ComboboxContent
-  {...rest}
-  class={slots.content({ class: cn(className) })}
-  portalled={false}
-/>
+<ComboboxContent {...rest} class={slots.content({ class: cn(className) })} />

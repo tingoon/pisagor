@@ -1,16 +1,10 @@
 <script lang="ts">
-  import {
-    Checkbox as CheckboxPrimitive,
-    type CheckboxRootProps,
-  } from "@ark-ui/svelte";
+  import { Checkbox as CheckboxPrimitive } from "@ark-ui/svelte";
+  import type { CheckboxRootProps } from "@ark-ui/svelte";
   import type { CheckboxRootContract } from "@pisagor/contracts";
-  import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CheckIcon, MinusIcon } from "phosphor-svelte";
 
-  import { useFormControlSurface } from "../surface/use-form-control-surface";
-
-  type FormControlVariant = "primary" | "secondary";
+  import CheckboxControl from "./checkbox-control.svelte";
+  import CheckboxRoot from "./checkbox-root.svelte";
 
   type Props = CheckboxRootProps &
     CheckboxRootContract & {
@@ -19,20 +13,7 @@
       tabindex?: number | null;
     };
 
-  let {
-    variant: variantProp,
-    tabindex,
-    onCheckedChange,
-    onValueChange,
-    size = "md",
-    recipe = checkboxRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const surfaceVariant = useFormControlSurface();
-  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-  const slots = $derived(recipe());
+  let { tabindex, onCheckedChange, onValueChange, ...rest }: Props = $props();
 
   function handleCheckedChange(
     details: Parameters<NonNullable<CheckboxRootProps["onCheckedChange"]>>[0],
@@ -42,24 +23,12 @@
   }
 </script>
 
-<CheckboxPrimitive.Root
+<CheckboxRoot
   {...rest}
-  class={cn(
-    formControlToggleRecipe({ size, surfaceVariant, variant }),
-    slots.base({ class: cn(className) }),
-  )}
-  data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange
     ? handleCheckedChange
     : undefined}
 >
-  <CheckboxPrimitive.Control>
-    <CheckboxPrimitive.Indicator class={slots.indicator()}>
-      <CheckIcon />
-    </CheckboxPrimitive.Indicator>
-    <CheckboxPrimitive.Indicator class={slots.indicator()} indeterminate>
-      <MinusIcon />
-    </CheckboxPrimitive.Indicator>
-  </CheckboxPrimitive.Control>
+  <CheckboxControl />
   <CheckboxPrimitive.HiddenInput {tabindex} />
-</CheckboxPrimitive.Root>
+</CheckboxRoot>

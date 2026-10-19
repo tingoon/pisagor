@@ -23,7 +23,7 @@
 
   let { isControlsVisible, children, units, ...rest }: Props = $props();
 
-  const root = withTimerProvider(() => rest, { name: "Root", slot: "base" });
+  const root = withTimerProvider(() => rest, { name: "Root" });
 </script>
 
 <TimerPrimitive.Root {...root.props}>

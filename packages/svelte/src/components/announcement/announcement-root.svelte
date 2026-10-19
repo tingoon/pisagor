@@ -14,7 +14,6 @@
   const root = withProvider(() => rest, {
     defaultProps: { role: "status" },
     name: "Root",
-    slot: "base",
   });
 </script>
 

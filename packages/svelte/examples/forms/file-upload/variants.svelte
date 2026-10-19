@@ -3,8 +3,8 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <FileUpload>
-    <FileUpload.Dropzone variant="primary">
+  <FileUpload variant="primary">
+    <FileUpload.Dropzone>
       <FileUpload.DropzoneIcon />
       <FileUpload.Title>Primary</FileUpload.Title>
       <FileUpload.Trigger>
@@ -14,8 +14,8 @@
       </FileUpload.Trigger>
     </FileUpload.Dropzone>
   </FileUpload>
-  <FileUpload>
-    <FileUpload.Dropzone variant="secondary">
+  <FileUpload variant="secondary">
+    <FileUpload.Dropzone>
       <FileUpload.DropzoneIcon />
       <FileUpload.Title>Secondary</FileUpload.Title>
       <FileUpload.Trigger>

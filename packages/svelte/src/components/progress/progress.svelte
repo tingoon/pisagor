@@ -15,7 +15,7 @@
   import ProgressRange from "./progress-range.svelte";
   import ProgressRoot from "./progress-root.svelte";
   import ProgressTrack from "./progress-track.svelte";
-  import ProgressValue from "./progress-value.svelte";
+  import ProgressValueText from "./progress-value-text.svelte";
 
   type Props = Omit<ProgressRootProps, "children" | "value"> &
     ProgressRootContract & {
@@ -75,8 +75,8 @@
       {#if isValueVisible}
         <Field.Label>
           {#snippet asChild(props)}
-            <ProgressValue
-              {...props({ ...valueProps, class: classNames?.value })}
+            <ProgressValueText
+              {...props({ ...valueProps, class: classNames?.valueText })}
             />
           {/snippet}
         </Field.Label>

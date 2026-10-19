@@ -5,4 +5,9 @@
   let props: ComponentProps<typeof Combobox> = $props();
 </script>
 
-<Combobox {...props} allowCustomValue inputBehavior="autocomplete" />
+<Combobox
+  {...props}
+  allowCustomValue
+  inputBehavior="autocomplete"
+  showTrigger={false}
+/>
