@@ -25,17 +25,21 @@ const marqueeIcons: Icon[] = [
 export function Compound() {
   return (
     <Marquee.Root>
-      <Marquee.Content>
-        {marqueeIcons.map((IconComponent) => (
-          <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
-            <Card className="[--space:--spacing(8)]">
-              <Card.Content>
-                <IconComponent className="size-10" />
-              </Card.Content>
-            </Card>
-          </Marquee.Item>
-        ))}
-      </Marquee.Content>
+      <Marquee.Viewport>
+        <Marquee.Content>
+          {marqueeIcons.map((IconComponent) => (
+            <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
+              <Card className="[--space:--spacing(8)]">
+                <Card.Content>
+                  <IconComponent className="size-10" />
+                </Card.Content>
+              </Card>
+            </Marquee.Item>
+          ))}
+        </Marquee.Content>
+      </Marquee.Viewport>
+      <Marquee.Edge side="start" />
+      <Marquee.Edge side="end" />
     </Marquee.Root>
   );
 }
