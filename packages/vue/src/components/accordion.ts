@@ -1,6 +1,7 @@
 import {
   Accordion as AccordionPrimitive,
   type AccordionItemProps as AccordionItemPrimitiveProps,
+  type AccordionRootProps as AccordionRootPrimitiveProps,
 } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type {
@@ -10,18 +11,30 @@ import type {
   AccordionRootContract,
   AccordionContract,
 } from "@pisagor/contracts";
-import { accordionItemRecipe } from "@pisagor/recipes";
+import { accordionItemRecipe, accordionRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withProvider } = createSlotRecipeContext({
+const { withProvider: withAccordionProvider } = createSlotRecipeContext({
+  name: "Accordion",
+  recipe: accordionRecipe,
+});
+
+const {
+  useStyles,
+  withContext,
+  withProvider: withItemProvider,
+} = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
 // #endregion
 
 // #region Types
+export type AccordionRootProps = AccordionRootPrimitiveProps &
+  AccordionRootContract;
+
 export type LocalAccordionItemProps = AccordionItemPrimitiveProps &
   AccordionItemRootContract &
   AccordionItemContract;
@@ -40,8 +53,6 @@ export interface AccordionProps
   extends AccordionRootContract, AccordionContract {
   items?: AccordionPresetItem[];
   collapsible?: boolean;
-  /** Size scale applied to every item. */
-  size?: "sm" | "md" | "lg";
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }
@@ -51,34 +62,16 @@ export interface AccordionProps
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-export const AccordionRoot = defineComponent({
-  inheritAttrs: false,
-  name: "Accordion.Root",
-  props: {
-    collapsible: { default: true, type: Boolean },
-    lazyMount: { default: true, type: Boolean },
-    size: {
-      default: undefined,
-      type: String as PropType<"sm" | "md" | "lg">,
-    },
-    unmountOnExit: { default: true, type: Boolean },
+const Root = withAccordionProvider<AccordionRootContract>(
+  AccordionPrimitive.Root,
+  {
+    defaultProps: { collapsible: true },
+    name: "Root",
+    slot: "base",
   },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        AccordionPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          collapsible: props.collapsible,
-          lazyMount: props.lazyMount,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
-  },
-});
+);
 
-export const AccordionItem = withProvider<LocalAccordionItemProps>(
+const Item = withItemProvider<LocalAccordionItemProps>(
   AccordionPrimitive.Item,
   {
     name: "Item",
@@ -86,57 +79,40 @@ export const AccordionItem = withProvider<LocalAccordionItemProps>(
   },
 );
 
-export const AccordionItemTrigger = defineComponent({
+const ItemTrigger = withContext(AccordionPrimitive.ItemTrigger, {
+  name: "ItemTrigger",
+});
+
+const ItemIndicator = defineComponent({
   inheritAttrs: false,
-  name: "Accordion.ItemTrigger",
+  name: "Accordion.ItemIndicator",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
-  setup(props, { attrs, slots: children }) {
+  setup(props, { attrs, slots }) {
     const styles = useStyles();
 
     return () =>
       h(
-        AccordionPrimitive.ItemTrigger as ArkPart,
+        AccordionPrimitive.ItemIndicator as ArkPart,
         {
           ...attrs,
-          class: styles.slots.trigger({ class: props.class }),
+          class: styles.slots.itemIndicator({ class: props.class }),
         },
-        () => [
-          children.default?.(),
-          h(AccordionPrimitive.ItemIndicator as ArkPart, null, () =>
-            h(PhCaretDown, { class: styles.slots.indicator() }),
-          ),
-        ],
+        () => slots.default?.() ?? h(PhCaretDown),
       );
   },
 });
 
-export const AccordionItemContent = defineComponent({
-  inheritAttrs: false,
-  name: "Accordion.ItemContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots: children }) {
-    const styles = useStyles();
+const ItemContent = withContext(AccordionPrimitive.ItemContent, {
+  name: "ItemContent",
+});
 
-    return () =>
-      h(
-        AccordionPrimitive.ItemContent as ArkPart,
-        {
-          ...attrs,
-          class: styles.slots.content({ class: props.class }),
-        },
-        () => h("div", { class: styles.slots.body() }, children.default?.()),
-      );
-  },
+const ItemBody = withContext("div", {
+  name: "ItemBody",
 });
 // #endregion
 
@@ -160,7 +136,7 @@ export const AccordionShorthand = defineComponent({
   setup(props, { attrs }) {
     return () =>
       h(
-        AccordionRoot,
+        Root,
         {
           ...attrs,
           collapsible: props.collapsible,
@@ -170,7 +146,7 @@ export const AccordionShorthand = defineComponent({
         () =>
           props.items?.map((item) =>
             h(
-              AccordionItem,
+              Item,
               {
                 disabled: item.disabled,
                 key: item.value,
@@ -178,8 +154,11 @@ export const AccordionShorthand = defineComponent({
                 value: item.value,
               },
               () => [
-                h(AccordionItemTrigger, null, () => item.title),
-                h(AccordionItemContent, null, () => item.content),
+                h(ItemTrigger, null, () => [item.title, h(ItemIndicator)]),
+
+                h(ItemContent, null, () =>
+                  h(ItemBody, null, () => item.content),
+                ),
               ],
             ),
           ),
@@ -190,15 +169,17 @@ export const AccordionShorthand = defineComponent({
 
 export type {
   AccordionItemContentProps,
+  AccordionItemIndicatorProps,
   AccordionItemTriggerProps,
-  AccordionRootProps,
 } from "@ark-ui/vue";
 
 export type AccordionItemProps = LocalAccordionItemProps;
 
 export const Accordion = Object.assign(AccordionShorthand, {
-  Item: AccordionItem,
-  ItemContent: AccordionItemContent,
-  ItemTrigger: AccordionItemTrigger,
-  Root: AccordionRoot,
+  Item,
+  ItemBody,
+  ItemContent,
+  ItemIndicator,
+  ItemTrigger,
+  Root,
 });
