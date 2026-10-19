@@ -4,7 +4,7 @@ import { withContext } from "./link-box.context";
 
 type Props = HTMLAttributes<"a">;
 
-const overlay = withContext(Astro.props, { name: "Overlay", slot: "overlay" });
+const overlay = withContext(Astro.props, { name: "Overlay" });
 ---
 
 {/* biome-ignore lint/a11y/useAnchorContent: content is the default slot */}

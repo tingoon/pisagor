@@ -4,7 +4,7 @@ import { withContext } from "./card.context";
 
 type Props = HTMLAttributes<"div">;
 
-const action = withContext(Astro.props, { name: "Action", slot: "action" });
+const action = withContext(Astro.props, { name: "Action" });
 ---
 
 <div {...action.props}>

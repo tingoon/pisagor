@@ -5,7 +5,7 @@ import { withProvider } from "./stat.context";
 
 type Props = HTMLAttributes<"div"> & StatRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <div {...root.props}>

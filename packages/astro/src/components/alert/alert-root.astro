@@ -5,7 +5,7 @@ import { withProvider } from "./alert.context";
 
 type Props = HTMLAttributes<"div"> & AlertRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <div {...root.props}>

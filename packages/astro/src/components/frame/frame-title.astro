@@ -5,8 +5,8 @@ import { withContext } from "./frame.context";
 type Props = HTMLAttributes<"div">;
 
 const title = withContext(Astro.props, {
-  defaultProps: { "data-part": "panel-title" },
   name: "Title",
+  part: "panel-title",
   slot: "panelTitle",
 });
 ---

@@ -4,7 +4,7 @@ import { withContext } from "./button-group.context";
 
 type Props = HTMLAttributes<"div">;
 
-const text = withContext(Astro.props, { name: "Text", slot: "text" });
+const text = withContext(Astro.props, { name: "Text" });
 ---
 
 <div {...text.props}>

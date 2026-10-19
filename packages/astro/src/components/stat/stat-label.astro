@@ -4,7 +4,7 @@ import { withContext } from "./stat.context";
 
 type Props = HTMLAttributes<"div">;
 
-const label = withContext(Astro.props, { name: "Label", slot: "label" });
+const label = withContext(Astro.props, { name: "Label" });
 ---
 
 <div {...label.props}>

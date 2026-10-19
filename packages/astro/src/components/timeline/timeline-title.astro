@@ -4,7 +4,7 @@ import { withContext } from "./timeline.context";
 
 type Props = HTMLAttributes<"div">;
 
-const title = withContext(Astro.props, { name: "Title", slot: "title" });
+const title = withContext(Astro.props, { name: "Title" });
 ---
 
 <div {...title.props}>

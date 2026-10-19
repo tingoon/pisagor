@@ -21,7 +21,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 
 const { alt, fallback, src, classNames, ...rest } = Astro.props;
-const root = withProvider(rest, { name: "Root", slot: "base" });
+const root = withProvider(rest, { name: "Root" });
 const image = withContext(
   { class: classNames?.image, src },
   { defaultProps: { "data-state": "visible" }, name: "Image" },

@@ -4,7 +4,7 @@ import { withContext } from "./card.context";
 
 type Props = HTMLAttributes<"div">;
 
-const footer = withContext(Astro.props, { name: "Footer", slot: "footer" });
+const footer = withContext(Astro.props, { name: "Footer" });
 ---
 
 <div {...footer.props}>

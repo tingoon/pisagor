@@ -4,7 +4,7 @@ import { withContext } from "./frame.context";
 
 type Props = HTMLAttributes<"div">;
 
-const panel = withContext(Astro.props, { name: "Panel", slot: "panel" });
+const panel = withContext(Astro.props, { name: "Panel" });
 ---
 
 <div {...panel.props}>

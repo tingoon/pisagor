@@ -5,7 +5,7 @@ import { withProvider } from "./link-box.context";
 
 type Props = HTMLAttributes<"div"> & LinkBoxRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <div {...root.props}>

@@ -5,7 +5,7 @@ import { withProvider } from "./item.context";
 
 type Props = HTMLAttributes<"div"> & ItemRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <div {...root.props}>

@@ -5,7 +5,7 @@ import { withProvider } from "./button-group.context";
 
 type Props = HTMLAttributes<"fieldset"> & ButtonGroupRootContract;
 
-const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+const root = withProvider(Astro.props, { name: "Root" });
 ---
 
 <fieldset {...root.props}>
