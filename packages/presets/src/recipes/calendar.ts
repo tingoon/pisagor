@@ -19,9 +19,7 @@ export const calendarRecipe = tv({
     base: ["[--cell-size:--spacing(9)]", "w-fit"],
     control: ["inline-flex items-center gap-2"],
     label: ["text-sm font-medium"],
-    nextIcon: "rtl:rotate-180",
     nextTrigger: "ms-auto",
-    prevIcon: "rtl:rotate-180",
     prevTrigger: "me-auto",
     rangeText: ["text-sm font-medium"],
     select: [

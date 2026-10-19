@@ -23,7 +23,6 @@ export const resizableRecipe = tv({
       "group-active/resizable-resize-trigger:bg-accent group-active/resizable-resize-trigger:text-accent-foreground group-active/resizable-resize-trigger:border-transparent",
       "group-focus-visible/resizable-resize-trigger:border-accent group-focus-visible/resizable-resize-trigger:bg-accent group-focus-visible/resizable-resize-trigger:text-accent-foreground",
     ],
-    resizeTriggerIcon: "size-2.5",
     resizeTriggerIndicator: [
       "bg-border group-hover/resizable-resize-trigger:bg-accent/60 group-focus-visible/resizable-resize-trigger:bg-accent/60 group-active/resizable-resize-trigger:bg-accent opacity-0 transition group-hover/resizable-resize-trigger:opacity-100 group-focus-visible/resizable-resize-trigger:opacity-100 group-active/resizable-resize-trigger:opacity-100 motion-reduce:transition-none!",
       "group-data-[orientation=horizontal]/resizable-resize-trigger:h-full group-data-[orientation=horizontal]/resizable-resize-trigger:w-1",

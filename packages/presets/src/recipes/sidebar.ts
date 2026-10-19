@@ -181,8 +181,6 @@ export const sidebarRecipe = tv({
     ],
     separator: ["bg-border mx-2 w-auto"],
     trigger: "size-7",
-    triggerIcon: "rtl:rotate-180",
-    triggerLabel: "sr-only",
     wrapper: [
       "group/sidebar-wrapper",
       "flex",
