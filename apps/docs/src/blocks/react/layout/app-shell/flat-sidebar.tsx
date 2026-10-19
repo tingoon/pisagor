@@ -1,5 +1,9 @@
 import { Portal } from "@ark-ui/react";
-import { DotsThreeIcon, FolderIcon } from "@phosphor-icons/react";
+import {
+  DotsThreeIcon,
+  FolderIcon,
+  SidebarSimpleIcon,
+} from "@phosphor-icons/react";
 import { Breadcrumb, DropdownMenu, Separator, Sidebar } from "@pisagor/react";
 import { tv } from "tailwind-variants";
 import { projects, secondaryNav } from "./data";
@@ -94,7 +98,9 @@ export function FlatSidebar() {
       </Sidebar>
       <Sidebar.Inset>
         <header className={styles.header()}>
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <Separator
             className={styles.headerDivider()}
             orientation="vertical"

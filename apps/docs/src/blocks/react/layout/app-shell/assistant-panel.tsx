@@ -2,6 +2,7 @@ import {
   ArrowUpIcon,
   CalendarIcon,
   CheckSquareIcon,
+  SidebarSimpleIcon,
   SparkleIcon,
   StarIcon,
   SunIcon,
@@ -101,7 +102,9 @@ export function AssistantPanel() {
         <div className={styles.splitRow()}>
           <div className={styles.splitMain()}>
             <header className={styles.header()}>
-              <Sidebar.Trigger />
+              <Sidebar.Trigger>
+                <SidebarSimpleIcon className="rtl:rotate-180" />
+              </Sidebar.Trigger>
               <Separator
                 className={styles.headerDivider()}
                 orientation="vertical"

@@ -1,5 +1,5 @@
 import { ark, Portal, useHotkey, type HTMLArkProps } from "@ark-ui/react";
-import { SidebarSimpleIcon, XIcon } from "@phosphor-icons/react";
+import { XIcon } from "@phosphor-icons/react";
 import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
@@ -29,7 +29,11 @@ import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
 // #region Context
-const { Context: SidebarStylesContext, useStyles } = createSlotRecipeContext({
+const {
+  Context: SidebarStylesContext,
+  useStyles,
+  withContext,
+} = createSlotRecipeContext({
   name: "Sidebar",
   recipe: sidebarRecipe,
 });
@@ -398,12 +402,19 @@ export function SidebarRoot(props: SidebarProps) {
   );
 }
 
+/**
+ * Toggles the sidebar; localized default `aria-label`. Pass your own icon as
+ * children.
+ */
 export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
   const { m } = useLocale();
   const { slots, toggleSidebar } = useSidebar();
 
   return (
     <Button
+      aria-label={m("sidebar.toggle")}
+      size="icon-md"
+      variant="ghost"
       {...rest}
       className={slots.trigger({ className })}
       data-part="trigger"
@@ -413,12 +424,7 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
         onClick?.(event);
         toggleSidebar();
       }}
-      size="icon-md"
-      variant="ghost"
-    >
-      <SidebarSimpleIcon className={slots.triggerIcon()} />
-      <span className={slots.triggerLabel()}>{m("sidebar.toggle")}</span>
-    </Button>
+    />
   );
 }
 
@@ -442,18 +448,9 @@ export function SidebarRail({ className, ...rest }: SidebarRailProps) {
   );
 }
 
-export function SidebarInset({ className, ...rest }: SidebarInsetProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <main
-      {...rest}
-      className={slots.inset({ className })}
-      data-part="inset"
-      data-scope="sidebar"
-    />
-  );
-}
+export const SidebarInset = withContext<SidebarInsetProps>("main", {
+  name: "Inset",
+});
 
 export function SidebarInput({ className, classNames, ...rest }: InputProps) {
   const { slots } = useSidebar();
@@ -468,33 +465,15 @@ export function SidebarInput({ className, classNames, ...rest }: InputProps) {
   );
 }
 
-export function SidebarHeader({ className, ...rest }: SidebarHeaderProps) {
-  const { slots } = useSidebar();
+export const SidebarHeader = withContext<SidebarHeaderProps>("div", {
+  defaultProps: { "data-sidebar": "header" },
+  name: "Header",
+});
 
-  return (
-    <div
-      {...rest}
-      className={slots.header({ className })}
-      data-part="header"
-      data-scope="sidebar"
-      data-sidebar="header"
-    />
-  );
-}
-
-export function SidebarFooter({ className, ...rest }: SidebarFooterProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <div
-      {...rest}
-      className={slots.footer({ className })}
-      data-part="footer"
-      data-scope="sidebar"
-      data-sidebar="footer"
-    />
-  );
-}
+export const SidebarFooter = withContext<SidebarFooterProps>("div", {
+  defaultProps: { "data-sidebar": "footer" },
+  name: "Footer",
+});
 
 export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
   const { slots } = useSidebar();
@@ -530,36 +509,15 @@ export function SidebarContent({
   );
 }
 
-export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
-  const { slots } = useSidebar();
+export const SidebarGroup = withContext<SidebarGroupProps>("div", {
+  defaultProps: { "data-sidebar": "group" },
+  name: "Group",
+});
 
-  return (
-    <div
-      {...rest}
-      className={slots.group({ className })}
-      data-part="group"
-      data-scope="sidebar"
-      data-sidebar="group"
-    />
-  );
-}
-
-export function SidebarGroupLabel({
-  className,
-  ...rest
-}: SidebarGroupLabelProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <div
-      {...rest}
-      className={slots.groupLabel({ className })}
-      data-part="group-label"
-      data-scope="sidebar"
-      data-sidebar="group-label"
-    />
-  );
-}
+export const SidebarGroupLabel = withContext<SidebarGroupLabelProps>("div", {
+  defaultProps: { "data-sidebar": "group-label" },
+  name: "GroupLabel",
+});
 
 export function SidebarGroupAction({
   buttonRecipe: buttonRecipeProp = buttonRecipe,
@@ -588,50 +546,23 @@ export function SidebarGroupAction({
   );
 }
 
-export function SidebarGroupContent({
-  className,
-  ...rest
-}: SidebarGroupContentProps) {
-  const { slots } = useSidebar();
+export const SidebarGroupContent = withContext<SidebarGroupContentProps>(
+  "div",
+  {
+    defaultProps: { "data-sidebar": "group-content" },
+    name: "GroupContent",
+  },
+);
 
-  return (
-    <div
-      {...rest}
-      className={slots.groupContent({ className })}
-      data-part="group-content"
-      data-scope="sidebar"
-      data-sidebar="group-content"
-    />
-  );
-}
+export const SidebarMenu = withContext<SidebarMenuProps>("ul", {
+  defaultProps: { "data-sidebar": "menu" },
+  name: "Menu",
+});
 
-export function SidebarMenu({ className, ...rest }: SidebarMenuProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <ul
-      {...rest}
-      className={slots.menu({ className })}
-      data-part="menu"
-      data-scope="sidebar"
-      data-sidebar="menu"
-    />
-  );
-}
-
-export function SidebarMenuItem({ className, ...rest }: SidebarMenuItemProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <li
-      {...rest}
-      className={slots.menuItem({ className })}
-      data-part="menu-item"
-      data-scope="sidebar"
-      data-sidebar="menu-item"
-    />
-  );
-}
+export const SidebarMenuItem = withContext<SidebarMenuItemProps>("li", {
+  defaultProps: { "data-sidebar": "menu-item" },
+  name: "MenuItem",
+});
 
 export function SidebarMenuButton({
   size = "md",
@@ -710,22 +641,10 @@ export function SidebarMenuAction({
   );
 }
 
-export function SidebarMenuBadge({
-  className,
-  ...rest
-}: SidebarMenuBadgeProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <div
-      {...rest}
-      className={slots.menuBadge({ className })}
-      data-part="menu-badge"
-      data-scope="sidebar"
-      data-sidebar="menu-badge"
-    />
-  );
-}
+export const SidebarMenuBadge = withContext<SidebarMenuBadgeProps>("div", {
+  defaultProps: { "data-sidebar": "menu-badge" },
+  name: "MenuBadge",
+});
 
 export function SidebarMenuSkeleton({
   showIcon = false,
@@ -761,36 +680,15 @@ export function SidebarMenuSkeleton({
   );
 }
 
-export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
-  const { slots } = useSidebar();
+export const SidebarMenuSub = withContext<SidebarMenuSubProps>("ul", {
+  defaultProps: { "data-sidebar": "menu-sub" },
+  name: "MenuSub",
+});
 
-  return (
-    <ul
-      {...rest}
-      className={slots.menuSub({ className })}
-      data-part="menu-sub"
-      data-scope="sidebar"
-      data-sidebar="menu-sub"
-    />
-  );
-}
-
-export function SidebarMenuSubItem({
-  className,
-  ...props
-}: SidebarMenuSubItemProps) {
-  const { slots } = useSidebar();
-
-  return (
-    <li
-      {...props}
-      className={slots.menuSubItem({ className })}
-      data-part="menu-sub-item"
-      data-scope="sidebar"
-      data-sidebar="menu-sub-item"
-    />
-  );
-}
+export const SidebarMenuSubItem = withContext<SidebarMenuSubItemProps>("li", {
+  defaultProps: { "data-sidebar": "menu-sub-item" },
+  name: "MenuSubItem",
+});
 
 export function SidebarMenuSubButton({
   size = "md",

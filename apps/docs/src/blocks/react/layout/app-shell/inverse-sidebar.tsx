@@ -1,3 +1,4 @@
+import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { Avatar, Breadcrumb, Separator, Sidebar, Status } from "@pisagor/react";
 import { tv } from "tailwind-variants";
 import { members } from "./data";
@@ -71,7 +72,9 @@ export function InverseSidebar() {
       </Sidebar>
       <Sidebar.Inset>
         <header className={styles.header()}>
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <Separator
             className={styles.headerDivider()}
             orientation="vertical"

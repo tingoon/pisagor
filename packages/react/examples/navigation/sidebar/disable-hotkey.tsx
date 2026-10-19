@@ -1,4 +1,4 @@
-import { HouseIcon, UserIcon } from "@phosphor-icons/react";
+import { HouseIcon, SidebarSimpleIcon, UserIcon } from "@phosphor-icons/react";
 import { Sidebar } from "@pisagor/react";
 
 export function DisableHotkey() {
@@ -27,7 +27,9 @@ export function DisableHotkey() {
         </Sidebar.Content>
       </Sidebar>
       <Sidebar.Inset className="p-4">
-        <Sidebar.Trigger />
+        <Sidebar.Trigger>
+          <SidebarSimpleIcon className="rtl:rotate-180" />
+        </Sidebar.Trigger>
       </Sidebar.Inset>
     </Sidebar.Provider>
   );
