@@ -14,7 +14,7 @@ const brandTimerRecipe = tv({
 </script>
 
 <template>
-  <Timer auto-start :recipe="brandTimerRecipe">
+  <Timer.Root auto-start :recipe="brandTimerRecipe">
     <Timer.Area>
       <Timer.ItemGroup>
         <Timer.Item type="days" />
@@ -36,5 +36,5 @@ const brandTimerRecipe = tv({
         <Timer.ItemLabel>Seconds</Timer.ItemLabel>
       </Timer.ItemGroup>
     </Timer.Area>
-  </Timer>
+  </Timer.Root>
 </template>

@@ -1,26 +1,28 @@
 import {
+  type HTMLArkProps,
+  type TimerActionTriggerProps,
   Timer as TimerPrimitive,
   useTimerContext as useTimer,
 } from "@ark-ui/vue";
+import { PhArrowCounterClockwise, PhPause, PhPlay } from "@phosphor-icons/vue";
 import type {
+  TimerContract,
   TimerItemGroupRootContract,
   TimerRootContract,
 } from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { cn, type MessageKey } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles,
-  withContext: withTimerContext,
-  withProvider: withTimerProvider,
-} = createSlotRecipeContext({
-  name: "Timer",
-  recipe: timerRecipe,
-});
+const { withContext: withTimerContext, withProvider: withTimerProvider } =
+  createSlotRecipeContext({
+    name: "Timer",
+    recipe: timerRecipe,
+  });
 
 const {
   useOptionalStyles: useOptionalTimerItemGroupStyles,
@@ -34,19 +36,13 @@ const {
 // #endregion
 
 // #region Types
-type TimerUnit = "hours" | "minutes" | "seconds";
-
-export interface TimerRootProps extends TimerRootContract {
-  units?: TimerUnit[];
-  /** Auto-render Timer.Control with play and reset buttons */
-  isControlsVisible?: boolean;
-  class?: unknown;
-}
+type TimerUnit = "days" | "hours" | "minutes" | "seconds";
 
 type ArkPart = Parameters<typeof h>[0];
 
+export type TimerRootProps = TimerRootContract;
+
 export interface TimerItemGroupProps extends TimerItemGroupRootContract {
-  class?: unknown;
   /**
    * The orientation of the timer item group.
    *
@@ -54,12 +50,39 @@ export interface TimerItemGroupProps extends TimerItemGroupRootContract {
    */
   orientation?: "horizontal" | "vertical";
 }
+
+export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
+
+export interface TimerProps extends TimerRootProps, TimerContract {
+  /**
+   * Whether to render play/pause and reset buttons.
+   *
+   * @defaultValue false
+   */
+  showControls?: boolean;
+  /**
+   * Units to render, each with a localized label.
+   *
+   * @defaultValue ["hours", "minutes", "seconds"]
+   */
+  units?: TimerUnit[];
+}
+
+export type TimerItemLabelProps = HTMLArkProps<"div">;
+
+export type {
+  TimerActionTriggerProps,
+  TimerAreaProps,
+  TimerControlProps,
+  TimerItemProps,
+  TimerSeparatorProps,
+} from "@ark-ui/vue";
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider<TimerRootContract>(
+export const TimerRoot = withTimerProvider<TimerRootContract>(
   TimerPrimitive.Root,
-  { name: "Root" },
+  { name: "Root", slot: "base" },
 );
 
 export const TimerArea = withTimerContext(TimerPrimitive.Area, {
@@ -71,6 +94,29 @@ const TimerItemGroupBase =
     name: "ItemGroup",
     slot: "base",
   });
+
+export const TimerItemGroup = defineComponent({
+  inheritAttrs: false,
+  name: "Timer.ItemGroup",
+  props: {
+    orientation: {
+      default: "vertical",
+      type: String as PropType<"horizontal" | "vertical">,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        TimerItemGroupBase,
+        {
+          ...attrs,
+          "data-orientation": props.orientation,
+          "data-part": "item-group",
+        },
+        slots,
+      );
+  },
+});
 
 /**
  * Usable inside or outside `Timer.ItemGroup` (falls back to the default
@@ -96,7 +142,7 @@ export const TimerItem = defineComponent({
           "data-scope": "timer",
           ...attrs,
           class: (styles?.slots ?? timerItemGroupRecipe()).item({
-            class: props.class as string | undefined,
+            class: cn(props.class),
           }),
         },
         slots,
@@ -109,215 +155,148 @@ export const TimerItemLabel = withTimerItemGroupContext("div", {
   slot: "label",
 });
 
-export const TimerControl = withTimerContext(TimerPrimitive.Control, {
-  name: "Control",
-});
-
-export const TimerRoot = defineComponent({
-  inheritAttrs: false,
-  name: "Timer.Root",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    isControlsVisible: { default: undefined, type: Boolean },
-    units: { default: undefined, type: Array as PropType<TimerUnit[]> },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(TimerRootBase, { ...attrs, class: props.class }, () => [
-        props.units
-          ? h(TimerArea, null, () =>
-              props.units?.map((unit, index) => [
-                index > 0
-                  ? h(TimerSeparator, { key: `sep-${unit}-${index}` })
-                  : null,
-                h(TimerItemGroup, { key: `group-${unit}-${index}` }, () => [
-                  h(TimerItem, { type: unit }),
-                  h(TimerItemLabel, null, () => unit),
-                ]),
-              ]),
-            )
-          : null,
-        props.isControlsVisible
-          ? h(TimerControl, null, () => [h(TimerPlay), h(TimerReset)])
-          : null,
-        slots.default?.(),
-      ]);
-  },
-});
-
-export const TimerItemGroup = defineComponent({
-  inheritAttrs: false,
-  name: "Timer.ItemGroup",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    orientation: {
-      default: "vertical",
-      type: String as PropType<"horizontal" | "vertical">,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        TimerItemGroupBase,
-        {
-          ...attrs,
-          class: props.class,
-          "data-orientation": props.orientation,
-        },
-        slots,
-      );
-  },
+const TimerSeparatorBase = withTimerContext(TimerPrimitive.Separator, {
+  name: "Separator",
 });
 
 export const TimerSeparator = defineComponent({
   inheritAttrs: false,
   name: "Timer.Separator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+  setup(_, { attrs, slots }) {
+    return () => h(TimerSeparatorBase, attrs, () => slots.default?.() ?? ":");
+  },
+});
+
+export const TimerControl = withTimerContext(TimerPrimitive.Control, {
+  name: "Control",
+});
+
+export const TimerActionTrigger = withTimerContext(
+  TimerPrimitive.ActionTrigger,
+  { name: "ActionTrigger" },
+);
+
+function defineAction(action: TimerActionTriggerProps["action"], name: string) {
+  return defineComponent({
+    inheritAttrs: false,
+    name,
+    setup(_, { attrs, slots }) {
+      const { m } = useLocale();
+
+      return () =>
+        h(
+          TimerActionTrigger as ArkPart,
+          { "aria-label": m(`timer.${action}`), ...attrs, action },
+          slots,
+        );
     },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
+  });
+}
 
-    return () =>
-      h(
-        TimerPrimitive.Separator as ArkPart,
-        {
-          ...attrs,
-          class: styles.slots.separator({ class: cn(props.class) }),
-        },
-        () => slots.default?.() ?? ":",
-      );
-  },
-});
+export const TimerPause = defineAction("pause", "Timer.Pause");
 
-export const TimerActionTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "TimerActionTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(TimerPrimitive.ActionTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
+export const TimerResume = defineAction("resume", "Timer.Resume");
 
-export const TimerPause = defineComponent({
-  inheritAttrs: false,
-  name: "TimerPause",
-  setup(_, { attrs, slots }) {
-    const { m } = useLocale();
+export const TimerStart = defineAction("start", "Timer.Start");
 
-    return () =>
-      h(
-        TimerPrimitive.ActionTrigger as ArkPart,
-        {
-          "aria-label": m("timer.pause"),
-          ...attrs,
-          action: "pause",
-        },
-        slots,
-      );
-  },
-});
+export const TimerReset = defineAction("reset", "Timer.Reset");
 
-export const TimerResume = defineComponent({
-  inheritAttrs: false,
-  name: "TimerResume",
-  setup(_, { attrs, slots }) {
-    const { m } = useLocale();
+export const TimerRestart = defineAction("restart", "Timer.Restart");
 
-    return () =>
-      h(
-        TimerPrimitive.ActionTrigger as ArkPart,
-        {
-          "aria-label": m("timer.resume"),
-          ...attrs,
-          action: "resume",
-        },
-        slots,
-      );
-  },
-});
-
-export const TimerStart = defineComponent({
-  inheritAttrs: false,
-  name: "TimerStart",
-  setup(_, { attrs, slots }) {
-    const { m } = useLocale();
-
-    return () =>
-      h(
-        TimerPrimitive.ActionTrigger as ArkPart,
-        {
-          "aria-label": m("timer.start"),
-          ...attrs,
-          action: "start",
-        },
-        slots,
-      );
-  },
-});
-
-export const TimerReset = defineComponent({
-  inheritAttrs: false,
-  name: "TimerReset",
-  setup(_, { attrs, slots }) {
-    const { m } = useLocale();
-
-    return () =>
-      h(
-        TimerPrimitive.ActionTrigger as ArkPart,
-        {
-          "aria-label": m("timer.reset"),
-          ...attrs,
-          action: "reset",
-        },
-        slots,
-      );
-  },
-});
-
-export const TimerRestart = defineComponent({
-  inheritAttrs: false,
-  name: "TimerRestart",
-  setup(_, { attrs, slots }) {
-    const { m } = useLocale();
-
-    return () =>
-      h(
-        TimerPrimitive.ActionTrigger as ArkPart,
-        {
-          "aria-label": m("timer.restart"),
-          ...attrs,
-          action: "restart",
-        },
-        slots,
-      );
-  },
-});
-
+/** Renders Pause while running, Resume while paused, otherwise Start. */
 export const TimerPlay = defineComponent({
   inheritAttrs: false,
-  name: "TimerPlay",
+  name: "Timer.Play",
   setup(_, { attrs, slots }) {
     const timer = useTimer();
 
-    return () =>
-      timer.value.paused
-        ? h(TimerResume, { ...attrs }, slots)
-        : h(TimerStart, { ...attrs }, slots);
+    return () => {
+      if (timer.value.running) {
+        return h(TimerPause, attrs, slots);
+      }
+
+      if (timer.value.paused) {
+        return h(TimerResume, attrs, slots);
+      }
+
+      return h(TimerStart, attrs, slots);
+    };
   },
 });
 // #endregion
 
-export const Timer = Object.assign(TimerRoot, {
+// #region Shorthand
+/** Play/pause toggle with a matching icon. */
+const ShorthandPlay = defineComponent({
+  name: "Timer.ShorthandPlay",
+  props: { class: { default: undefined, type: String } },
+  setup(props) {
+    const timer = useTimer();
+
+    return () =>
+      h(TimerPlay, { asChild: true, class: props.class }, () =>
+        h(Button, { size: "icon-sm", variant: "ghost" }, () =>
+          h(timer.value.running ? PhPause : PhPlay),
+        ),
+      );
+  },
+});
+
+export const TimerShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "Timer",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TimerProps["classNames"]>,
+    },
+    showControls: { default: false, type: Boolean },
+    units: {
+      default: () => ["hours", "minutes", "seconds"],
+      type: Array as PropType<TimerUnit[]>,
+    },
+  },
+  setup(props, { attrs }) {
+    const { m } = useLocale();
+
+    return () => {
+      const classNames = props.classNames;
+
+      return h(TimerRoot as ArkPart, attrs, () => [
+        h(TimerArea, { class: classNames?.area }, () =>
+          props.units.flatMap((unit, index) => [
+            index > 0
+              ? h(TimerSeparator, {
+                  class: classNames?.separator,
+                  key: `separator-${unit}`,
+                })
+              : null,
+            h(TimerItemGroup, { key: unit }, () => [
+              h(TimerItem, { type: unit }),
+              h(TimerItemLabel, null, () => m(`timer.${unit}` as MessageKey)),
+            ]),
+          ]),
+        ),
+        props.showControls
+          ? h(TimerControl, { class: classNames?.control }, () => [
+              h(ShorthandPlay, { class: classNames?.actionTrigger }),
+              h(
+                TimerReset,
+                { asChild: true, class: classNames?.actionTrigger },
+                () =>
+                  h(Button, { size: "icon-sm", variant: "ghost" }, () =>
+                    h(PhArrowCounterClockwise),
+                  ),
+              ),
+            ])
+          : null,
+      ]);
+    };
+  },
+});
+// #endregion
+
+export const Timer = Object.assign(TimerShorthand, {
   ActionTrigger: TimerActionTrigger,
   Area: TimerArea,
   Control: TimerControl,
@@ -329,6 +308,7 @@ export const Timer = Object.assign(TimerRoot, {
   Reset: TimerReset,
   Restart: TimerRestart,
   Resume: TimerResume,
+  Root: TimerRoot,
   Separator: TimerSeparator,
   Start: TimerStart,
 });

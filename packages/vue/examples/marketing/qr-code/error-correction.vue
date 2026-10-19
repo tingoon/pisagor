@@ -12,13 +12,15 @@ const docsUrl = "https://example.com/docs";
       v-for="ecc in eccLevels"
       :key="ecc"
     >
-      <QrCode
+      <QrCode.Root
         class="[--qr-code-size:6rem]"
         :encoding="{ ecc }"
         :value="docsUrl"
       >
-        <QrCode.Frame />
-      </QrCode>
+        <QrCode.Frame>
+          <QrCode.Pattern />
+        </QrCode.Frame>
+      </QrCode.Root>
       <p class="text-muted-foreground text-sm">{{ ecc }}</p>
     </div>
   </div>

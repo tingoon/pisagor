@@ -28,7 +28,7 @@ function reset() {
 
 <template>
   <div class="flex flex-col gap-2">
-    <Steps
+    <Steps.Root
       class="w-full"
       :count="items.length"
       :step="step"
@@ -59,7 +59,7 @@ function reset() {
       <Steps.CompletedContent>
         <p class="text-muted-foreground">All steps completed.</p>
       </Steps.CompletedContent>
-    </Steps>
+    </Steps.Root>
     <div class="flex gap-2">
       <Button variant="outline" @click="back">Back</Button>
       <Button @click="next">Next</Button>

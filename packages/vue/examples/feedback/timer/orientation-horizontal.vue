@@ -5,7 +5,7 @@ import { Card, Timer } from "@pisagor/vue";
 <template>
   <Card class="rounded-3xl [--space:--spacing(6)]">
     <Card.Content>
-      <Timer
+      <Timer.Root
         auto-start
         class="items-center gap-2"
         countdown
@@ -22,7 +22,7 @@ import { Card, Timer } from "@pisagor/vue";
             <Timer.ItemLabel>seconds</Timer.ItemLabel>
           </Timer.ItemGroup>
         </Timer.Area>
-      </Timer>
+      </Timer.Root>
     </Card.Content>
   </Card>
 </template>

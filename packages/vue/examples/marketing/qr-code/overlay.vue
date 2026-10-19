@@ -4,10 +4,9 @@ import { QrCode } from "@pisagor/vue";
 </script>
 
 <template>
-  <QrCode value="https://example.com/docs">
-    <QrCode.Frame />
-    <QrCode.Overlay>
+  <QrCode value="https://example.com">
+    <template #overlay>
       <PhFish />
-    </QrCode.Overlay>
+    </template>
   </QrCode>
 </template>

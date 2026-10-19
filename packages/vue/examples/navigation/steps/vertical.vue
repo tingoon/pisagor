@@ -10,7 +10,7 @@ const items = [
 </script>
 
 <template>
-  <Steps class="h-64" orientation="vertical" :count="items.length">
+  <Steps.Root class="h-64" orientation="vertical" :count="items.length">
     <Steps.List>
       <Steps.Item
         v-for="(item, index) in items"
@@ -56,5 +56,5 @@ const items = [
         </Steps.PrevTrigger>
       </div>
     </div>
-  </Steps>
+  </Steps.Root>
 </template>

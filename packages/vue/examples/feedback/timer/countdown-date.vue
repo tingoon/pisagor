@@ -16,7 +16,7 @@ const startMs = Math.max(0, targetDate.getTime() - Date.now());
       <p class="text-muted-foreground text-center text-xs">
         Until {{ targetLabel }}
       </p>
-      <Timer
+      <Timer.Root
         auto-start
         class="items-center gap-2"
         countdown
@@ -43,7 +43,7 @@ const startMs = Math.max(0, targetDate.getTime() - Date.now());
             <Timer.ItemLabel>seconds</Timer.ItemLabel>
           </Timer.ItemGroup>
         </Timer.Area>
-      </Timer>
+      </Timer.Root>
     </Card.Content>
   </Card>
 </template>

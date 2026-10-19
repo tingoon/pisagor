@@ -35,7 +35,7 @@ function onValueChange(next: string) {
 </script>
 
 <template>
-  <QrCode :encoding="{ ecc: qualityLabel }" :value="value">
+  <QrCode.Root :encoding="{ ecc: qualityLabel }" :value="value">
     <Card class="[--space:--spacing(6)]">
       <Card.Content class="flex flex-col justify-center gap-6">
         <Input
@@ -45,16 +45,22 @@ function onValueChange(next: string) {
         />
         <div class="flex flex-col items-center gap-2">
           <p class="text-muted-foreground text-sm font-medium">Live preview</p>
-          <QrCode.Frame />
+          <QrCode.Frame>
+            <QrCode.Pattern />
+          </QrCode.Frame>
         </div>
         <div class="flex items-center gap-2">
-          <QrCode.Download as-child file-name="qr-code" mime-type="image/png">
+          <QrCode.DownloadTrigger
+            as-child
+            file-name="qr-code"
+            mime-type="image/png"
+          >
             <Button class="w-1/2" size="icon-md" variant="outline">
               <PhDownload />
               PNG
             </Button>
-          </QrCode.Download>
-          <QrCode.Download
+          </QrCode.DownloadTrigger>
+          <QrCode.DownloadTrigger
             as-child
             file-name="qr-code"
             mime-type="image/svg+xml"
@@ -63,9 +69,9 @@ function onValueChange(next: string) {
               <PhDownload />
               SVG
             </Button>
-          </QrCode.Download>
+          </QrCode.DownloadTrigger>
         </div>
       </Card.Content>
     </Card>
-  </QrCode>
+  </QrCode.Root>
 </template>
