@@ -31,12 +31,7 @@ import type {
 import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import {
-  CaretDownIcon,
-  CaretLeftIcon,
-  CaretRightIcon,
-  createSlotRecipeContext,
-} from "../internal";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 
@@ -256,46 +251,33 @@ const ViewControl = withContext<CalendarViewControlProps>(
   { name: "ViewControl" },
 );
 
+const PrevTriggerBase = withContext<CalendarPrevTriggerProps>(
+  CalendarPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
+
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
 function PrevTrigger(props: CalendarPrevTriggerProps): JSX.Element {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
   return (
-    <CalendarPrimitive.PrevTrigger
-      {...props}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps({ class: slots.prevTrigger() })}
-          aria-label={m("calendar.previousMonth")}
-          size="icon-md"
-          variant="ghost"
-        >
-          <CaretLeftIcon aria-hidden class={slots.prevIcon()} />
-        </Button>
-      )}
-    />
+    <PrevTriggerBase aria-label={m("calendar.previousMonth")} {...props} />
   );
 }
 
+const NextTriggerBase = withContext<CalendarNextTriggerProps>(
+  CalendarPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
+
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
 function NextTrigger(props: CalendarNextTriggerProps): JSX.Element {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
-  return (
-    <CalendarPrimitive.NextTrigger
-      {...props}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps({ class: slots.nextTrigger() })}
-          aria-label={m("calendar.nextMonth")}
-          size="icon-md"
-          variant="ghost"
-        >
-          <CaretRightIcon aria-hidden class={slots.nextIcon()} />
-        </Button>
-      )}
-    />
-  );
+  return <NextTriggerBase aria-label={m("calendar.nextMonth")} {...props} />;
 }
 
 const Table = withContext<CalendarTableProps>(CalendarPrimitive.Table, {

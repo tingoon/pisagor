@@ -1,5 +1,10 @@
-import { Button, DatePicker, Field, parseDate } from "@pisagor/solid";
-import { CalendarIcon } from "@squidlab/phosphor-solid/icons";
+import { Portal } from "solid-js/web";
+import {
+  CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@squidlab/phosphor-solid/icons";
+import { Button, Calendar, DatePicker, Field, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
 export function Clearable() {
@@ -10,16 +15,15 @@ export function Clearable() {
       <Field>
         <Field.Label>Input variant</Field.Label>
         <DatePicker
+          clearable
           onValueChange={(value) => setValue(value ?? [])}
+          placeholder="Select date"
           value={value()}
-        >
-          <DatePicker.Input placeholder="Select date" />
-          <DatePicker.Content />
-        </DatePicker>
+        />
       </Field>
       <Field>
         <Field.Label>Trigger variant</Field.Label>
-        <DatePicker
+        <DatePicker.Root
           onValueChange={(value) => setValue(value ?? [])}
           value={value()}
         >
@@ -31,8 +35,35 @@ export function Clearable() {
               </Button>
             )}
           />
-          <DatePicker.Content />
-        </DatePicker>
+          <Portal>
+            <DatePicker.Positioner>
+              <DatePicker.Content>
+                <Calendar.ViewControl>
+                  <Calendar.PrevTrigger
+                    asChild={(props) => (
+                      <Button {...props()} size="icon-md" variant="ghost">
+                        <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                      </Button>
+                    )}
+                  />
+                  <Calendar.MonthSelect />
+                  <Calendar.YearSelect />
+                  <Calendar.NextTrigger
+                    asChild={(props) => (
+                      <Button {...props()} size="icon-md" variant="ghost">
+                        <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                      </Button>
+                    )}
+                  />
+                </Calendar.ViewControl>
+                <Calendar.Table>
+                  <Calendar.WeekDays />
+                  <Calendar.TableDays />
+                </Calendar.Table>
+              </DatePicker.Content>
+            </DatePicker.Positioner>
+          </Portal>
+        </DatePicker.Root>
       </Field>
     </div>
   );

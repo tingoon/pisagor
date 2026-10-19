@@ -1,4 +1,5 @@
-import { Calendar, Card, parseDate } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Calendar, Card, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
 export function MultipleMonths() {
@@ -14,9 +15,21 @@ export function MultipleMonths() {
           value={value()}
         >
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
             <Calendar.ViewDate />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
           </Calendar.ViewControl>
           <div class="flex gap-2">
             <Calendar.Table>

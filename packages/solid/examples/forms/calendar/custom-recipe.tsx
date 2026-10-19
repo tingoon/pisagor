@@ -1,5 +1,6 @@
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Calendar, Card } from "@pisagor/solid";
 import { calendarRecipe } from "@pisagor/recipes";
-import { Calendar, Card } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
 
 const brandCalendarRecipe = tv({
@@ -18,9 +19,21 @@ export function CustomRecipe() {
       <Card.Content>
         <Calendar recipe={brandCalendarRecipe}>
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
             <Calendar.ViewDate />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
           </Calendar.ViewControl>
           <Calendar.Table>
             <Calendar.WeekDays />

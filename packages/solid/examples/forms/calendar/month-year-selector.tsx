@@ -1,4 +1,5 @@
-import { Calendar, Card } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Calendar, Card } from "@pisagor/solid";
 
 export function MonthYearSelector() {
   return (
@@ -6,10 +7,22 @@ export function MonthYearSelector() {
       <Card.Content>
         <Calendar>
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
             <Calendar.MonthSelect />
             <Calendar.YearSelect />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
           </Calendar.ViewControl>
           <Calendar.Table>
             <Calendar.WeekDays />
