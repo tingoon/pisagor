@@ -28,7 +28,7 @@ export function Download() {
   const qualityLabel = QUALITY_BY_LEVEL[getQualityLevel(value.length)];
 
   return (
-    <QrCode encoding={{ ecc: qualityLabel }} value={value}>
+    <QrCode.Root encoding={{ ecc: qualityLabel }} value={value}>
       <Card className="[--space:--spacing(6)]">
         <Card.Content className="flex flex-col justify-center gap-2">
           <Input
@@ -40,10 +40,16 @@ export function Download() {
             <p className="text-muted-foreground text-sm font-medium">
               Live preview
             </p>
-            <QrCode.Frame />
+            <QrCode.Frame>
+              <QrCode.Pattern />
+            </QrCode.Frame>
           </div>
           <div className="flex items-center gap-2">
-            <QrCode.Download asChild fileName="qr-code" mimeType="image/png">
+            <QrCode.DownloadTrigger
+              asChild
+              fileName="qr-code"
+              mimeType="image/png"
+            >
               <Button
                 aria-label="Download PNG"
                 className="w-1/2"
@@ -53,8 +59,8 @@ export function Download() {
                 <DownloadIcon />
                 PNG
               </Button>
-            </QrCode.Download>
-            <QrCode.Download
+            </QrCode.DownloadTrigger>
+            <QrCode.DownloadTrigger
               asChild
               fileName="qr-code"
               mimeType="image/svg+xml"
@@ -67,10 +73,10 @@ export function Download() {
                 <DownloadIcon />
                 SVG
               </Button>
-            </QrCode.Download>
+            </QrCode.DownloadTrigger>
           </div>
         </Card.Content>
       </Card>
-    </QrCode>
+    </QrCode.Root>
   );
 }

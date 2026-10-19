@@ -2,8 +2,10 @@ import { QrCode } from "@pisagor/react";
 
 export function Compound() {
   return (
-    <QrCode value="https://example.com">
-      <QrCode.Frame />
-    </QrCode>
+    <QrCode.Root value="https://example.com">
+      <QrCode.Frame>
+        <QrCode.Pattern />
+      </QrCode.Frame>
+    </QrCode.Root>
   );
 }
