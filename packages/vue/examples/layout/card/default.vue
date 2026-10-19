@@ -5,10 +5,10 @@ import { Card } from "@pisagor/vue";
 <template>
   <div class="w-96">
     <Card>
-      <Card.Header
-        description="Brief description about the card"
-        title="Card header"
-      />
+      <Card.Header>
+        <Card.Title>Card header</Card.Title>
+        <Card.Description>Brief description about the card</Card.Description>
+      </Card.Header>
       <Card.Content>
         <p class="text-muted-foreground text-sm">Card content</p>
       </Card.Content>

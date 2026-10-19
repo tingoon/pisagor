@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { createListCollection } from "@ark-ui/vue";
 import { Field, Listbox } from "@pisagor/vue";
 
@@ -32,7 +33,9 @@ const collection = createListCollection({
           </div>
           <Listbox.ItemIndicator
             class="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs"
-          />
+          >
+            <PhCheck />
+          </Listbox.ItemIndicator>
         </Listbox.Item>
       </Listbox.Content>
     </Listbox.Root>

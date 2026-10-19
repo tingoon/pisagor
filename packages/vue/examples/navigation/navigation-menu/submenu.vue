@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCaretDown } from "@phosphor-icons/vue";
 import { NavigationMenu } from "@pisagor/vue";
 </script>
 
@@ -11,7 +12,12 @@ import { NavigationMenu } from "@pisagor/vue";
         >
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+        <NavigationMenu.Trigger>
+          Products
+          <NavigationMenu.Indicator>
+            <PhCaretDown />
+          </NavigationMenu.Indicator>
+        </NavigationMenu.Trigger>
         <NavigationMenu.Content>
           <li>
             <NavigationMenu.Link href="#analytics"

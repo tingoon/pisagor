@@ -4,7 +4,6 @@ import type {
   ListCollection,
   ListboxRootProps as ArkListboxRootProps,
 } from "@ark-ui/vue";
-import { PhCheck } from "@phosphor-icons/vue";
 import type {
   ListboxItemRootContract,
   ListboxItemContract,
@@ -13,58 +12,28 @@ import type {
   ListboxContract,
 } from "@pisagor/contracts";
 import {
-  type ListboxItemVariantProps,
+  dropdownMenuRecipe,
   listboxItemRecipe,
   listboxRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType } from "vue";
-import {
-  type ClassValue,
-  type LoosePropValue,
-  createSlotRecipeContext,
-} from "../internal";
-import { DropdownMenu } from "./dropdown-menu";
+import { defineComponent, h, type PropType } from "vue";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
+const { withContext: withListboxContext, withProvider: withListboxProvider } =
+  createSlotRecipeContext({
+    name: "Listbox",
+    recipe: listboxRecipe,
+  });
+
 const {
-  provideStyles: provideListboxItemStyles,
-  useOptionalStyles: useOptionalListboxItemStyles,
+  withContext: withListboxItemContext,
+  withProvider: withListboxItemProvider,
 } = createSlotRecipeContext({
   name: "Listbox",
   recipe: listboxItemRecipe,
 });
-
-/**
- * Slots from the nearest ListboxItem root, or the default recipe when used
- * standalone.
- */
-function useListboxItemSlots() {
-  const styles = useOptionalListboxItemStyles();
-
-  return () => styles?.slots ?? listboxItemRecipe();
-}
-// #endregion
-
-// #region Context
-const {
-  provideStyles: provideListboxStyles,
-  useOptionalStyles: useOptionalListboxStyles,
-} = createSlotRecipeContext({
-  name: "Listbox",
-  recipe: listboxRecipe,
-});
-
-/**
- * Slots from the nearest Listbox root, or the default recipe when used
- * standalone.
- */
-function useListboxSlots() {
-  const styles = useOptionalListboxStyles();
-
-  return () => styles?.slots ?? listboxRecipe();
-}
 // #endregion
 
 // #region Types
@@ -90,330 +59,100 @@ export interface ListboxProps
 
 export interface ListboxItemProps
   extends ListboxItemRootContract, ListboxItemContract {
-  class?: unknown;
+  class?: ClassValue;
 }
 // #endregion
 
 // #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
+const ListboxRootBase = withListboxProvider<ListboxRootContract>(
+  ListboxPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+/** Root; `onValueChange` receives the selected value(s) directly. */
 export const ListboxRoot = defineComponent({
   inheritAttrs: false,
-  name: "ListboxRoot",
+  name: "Listbox.Root",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    collection: {
-      default: undefined,
-      type: Object as PropType<ListCollection<CollectionItem> | undefined>,
-    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<ListboxRootProps["onValueChange"]>,
     },
-    recipe: {
-      default: listboxRecipe,
-      type: Function as PropType<typeof listboxRecipe>,
-    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideListboxStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () => {
-      const variantSlots = recipeSlots.value;
-
-      return h(
-        ListboxPrimitive.Root as ArkPart,
+    return () =>
+      h(
+        ListboxRootBase as ArkPart,
         {
           ...attrs,
-          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
-          collection: props.collection,
           onValueChange: props.onValueChange
             ? (details: { value: string | string[] }) =>
                 props.onValueChange?.(details.value)
             : undefined,
         },
-        slots.default?.(),
+        slots,
       );
-    };
   },
 });
-ListboxRoot.displayName = "Listbox.Root";
 
-export const ListboxContent = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.Content as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.content({ class: cn(props.class, attrs.class) }),
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const ListboxContent = withListboxContext(ListboxPrimitive.Content, {
+  name: "Content",
 });
-ListboxContent.displayName = "Listbox.Content";
 
-export const ListboxItem = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxItem",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    item: { default: undefined, type: Object as PropType<LoosePropValue> },
-    recipe: {
-      default: listboxItemRecipe,
-      type: Function as PropType<typeof listboxItemRecipe>,
-    },
-    variant: {
-      default: "default",
-      type: String as PropType<ListboxItemVariantProps["variant"]>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() =>
-      props.recipe({ variant: props.variant }),
-    );
+export const ListboxItem = withListboxItemProvider<ListboxItemRootContract>(
+  ListboxPrimitive.Item,
+  { name: "Item", slot: "base" },
+);
 
-    provideListboxItemStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
+export const ListboxItemText = withListboxItemContext(
+  ListboxPrimitive.ItemText,
+  { name: "ItemText", slot: "text" },
+);
 
-    return () => {
-      const variantSlots = recipeSlots.value;
-
-      return h(
-        ListboxPrimitive.Item as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
-          "data-variant": props.variant,
-          item: props.item,
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const ListboxItemGroup = withListboxContext(ListboxPrimitive.ItemGroup, {
+  name: "ItemGroup",
 });
-ListboxItem.displayName = "Listbox.Item";
 
-export const ListboxItemText = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxItemText",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxItemSlots();
+export const ListboxItemGroupLabel = withListboxContext(
+  ListboxPrimitive.ItemGroupLabel,
+  { name: "ItemGroupLabel" },
+);
 
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.ItemText as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.text({ class: cn(props.class, attrs.class) }),
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const ListboxValueText = withListboxContext(ListboxPrimitive.ValueText, {
+  name: "ValueText",
 });
-ListboxItemText.displayName = "Listbox.ItemText";
 
-export const ListboxItemGroup = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxItemGroup",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    heading: {
-      default: undefined,
-      type: String as PropType<string | undefined>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxSlots();
+/** Selected-item indicator; render your own icon inside. */
+export const ListboxItemIndicator = withListboxItemContext(
+  ListboxPrimitive.ItemIndicator,
+  { name: "ItemIndicator", slot: "indicator" },
+);
 
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.ItemGroup as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.itemGroup({
-            class: cn(props.class, attrs.class),
-          }),
-        },
-        () => [
-          props.heading
-            ? h(ListboxItemGroupLabel, null, () => props.heading)
-            : null,
-          slots.default?.(),
-        ],
-      );
-    };
-  },
+const ListboxEmptyBase = withListboxContext(ListboxPrimitive.Empty, {
+  name: "Empty",
 });
-ListboxItemGroup.displayName = "Listbox.ItemGroup";
 
-export const ListboxItemGroupLabel = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxItemGroupLabel",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.ItemGroupLabel as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.itemGroupLabel({
-            class: cn(props.class, attrs.class),
-          }),
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
-
-export const ListboxValueText = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxValueText",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.ValueText as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.valueText({
-            class: cn(props.class, attrs.class),
-          }),
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-ListboxValueText.displayName = "Listbox.ValueText";
-
-export const ListboxItemIndicator = defineComponent({
-  inheritAttrs: false,
-  name: "ListboxItemIndicator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useListboxItemSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.ItemIndicator as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.indicator({
-            class: cn(props.class, attrs.class),
-          }),
-        },
-        slots.default?.() ?? h(PhCheck, { "aria-hidden": true }),
-      );
-    };
-  },
-});
-ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
-
+/** Empty state with localized default text. */
 export const ListboxEmpty = defineComponent({
   inheritAttrs: false,
-  name: "ListboxEmpty",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
+  name: "Listbox.Empty",
+  setup(_, { attrs, slots }) {
     const { m } = useLocale();
-    const getSlots = useListboxSlots();
 
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        ListboxPrimitive.Empty as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
-        },
-        slots.default?.() ?? m("listbox.empty"),
+    return () =>
+      h(
+        ListboxEmptyBase as ArkPart,
+        attrs,
+        () => slots.default?.() ?? m("listbox.empty"),
       );
-    };
   },
 });
-ListboxEmpty.displayName = "Listbox.Empty";
 
 export const ListboxShortcut = defineComponent({
   inheritAttrs: false,
-  name: "ListboxShortcut",
+  name: "Listbox.Shortcut",
   props: {
     class: {
       default: undefined,
@@ -423,22 +162,23 @@ export const ListboxShortcut = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        DropdownMenu.Shortcut as ArkPart,
+        "span",
         {
           ...attrs,
-          class: cn(props.class, attrs.class),
-          dataPart: "shortcut",
-          dataScope: "listbox",
+          class: dropdownMenuRecipe().shortcut({ class: props.class }),
+          "data-part": "shortcut",
+          "data-scope": "listbox",
         },
         slots.default?.(),
       );
   },
 });
-ListboxShortcut.displayName = "Listbox.Shortcut";
+// #endregion
 
+// #region Shorthand
 export const ListboxShorthand = defineComponent({
   inheritAttrs: false,
-  name: "PisagorListbox",
+  name: "Listbox",
   props: {
     class: {
       default: undefined,
@@ -459,17 +199,16 @@ export const ListboxShorthand = defineComponent({
       type: Function as PropType<ListboxRootProps["onValueChange"]>,
     },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs }) {
     return () => {
-      const items = props.items;
-
-      const collection = items
-        ? createListCollection({
-            items,
-            itemToString: (item) => (item as { value: string }).value,
-            itemToValue: (item) => (item as { value: string }).value,
-          })
-        : props.collection;
+      const items = props.items ?? [];
+      const collection =
+        props.collection ??
+        createListCollection({
+          items,
+          itemToString: (item) => item.label,
+          itemToValue: (item) => item.value,
+        });
 
       return h(
         ListboxRoot as ArkPart,
@@ -480,28 +219,30 @@ export const ListboxShorthand = defineComponent({
           onValueChange: props.onValueChange,
         },
         () =>
-          items
-            ? h(ListboxContent as ArkPart, null, () => [
-                h(ListboxEmpty as ArkPart, null, () => props.emptyText),
-                ...items.map((item) =>
-                  h(
-                    ListboxItem as ArkPart,
-                    {
-                      disabled: item.disabled,
-                      item,
-                      key: item.value,
-                      value: item.value,
-                    },
-                    () => h(ListboxItemText as ArkPart, null, () => item.label),
-                  ),
-                ),
-              ])
-            : slots.default?.(),
+          h(ListboxContent as ArkPart, null, () => [
+            h(ListboxEmpty as ArkPart, null, () => props.emptyText),
+            ...items.map((item) =>
+              h(ListboxItem as ArkPart, { item, key: item.value }, () =>
+                h(ListboxItemText as ArkPart, null, () => item.label),
+              ),
+            ),
+          ]),
       );
     };
   },
 });
 // #endregion
+
+export type {
+  ListboxContentProps,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemGroupProps,
+  ListboxItemIndicatorProps,
+  ListboxItemTextProps,
+  ListboxValueTextProps,
+} from "@ark-ui/vue";
+export { createListCollection };
 
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,

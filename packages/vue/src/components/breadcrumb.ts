@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
+import { PhCaretRight } from "@phosphor-icons/vue";
 import type {
   BreadcrumbItemRootContract,
   BreadcrumbItemContract,
@@ -8,21 +8,16 @@ import type {
   BreadcrumbContract,
 } from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import {
-  computed,
-  defineComponent,
-  h,
-  type PropType,
-  type VNodeChild,
-} from "vue";
+import { cn } from "@pisagor/utils";
+import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { contentProp, slotOrProp } from "../internal/shorthand";
 import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  provideStyles: provideBreadcrumbStyles,
-  useStyles,
   withContext: withBreadcrumbContext,
+  withProvider: withBreadcrumbProvider,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
   recipe: breadcrumbRecipe,
@@ -62,7 +57,15 @@ export interface BreadcrumbRootProps extends Omit<
 export interface BreadcrumbProps
   extends BreadcrumbRootProps, BreadcrumbRootContract, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
+  /**
+   * Separator content between items; also the `separator` slot.
+   *
+   * @defaultValue <PhCaretRight />
+   */
+  separator?: VNodeChild;
 }
+
+type ArkPart = Parameters<typeof h>[0];
 
 export interface BreadcrumbItemProps
   extends BreadcrumbItemRootContract, BreadcrumbItemContract {
@@ -71,36 +74,25 @@ export interface BreadcrumbItemProps
 // #endregion
 
 // #region Parts
+const BreadcrumbRootBase = withBreadcrumbProvider<BreadcrumbRootContract>(
+  "nav",
+  { name: "Root", slot: "base" },
+);
+
+/** Navigation landmark with a localized default `aria-label`. */
 export const BreadcrumbRoot = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb.Root",
   props: {
     ariaLabel: { default: undefined, type: String },
-    recipe: {
-      default: breadcrumbRecipe,
-      type: Function as PropType<typeof breadcrumbRecipe>,
-    },
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const recipeSlots = computed(() => props.recipe());
-
-    provideBreadcrumbStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
 
     return () =>
       h(
-        "nav",
-        {
-          ...attrs,
-          "aria-label": m("breadcrumb.label", props.ariaLabel),
-          "data-part": "root",
-          "data-scope": "breadcrumb",
-        },
+        BreadcrumbRootBase as ArkPart,
+        { ...attrs, "aria-label": m("breadcrumb.label", props.ariaLabel) },
         slots,
       );
   },
@@ -126,97 +118,101 @@ export const BreadcrumbPage = withBreadcrumbItemContext("span", {
   name: "Page",
 });
 
-export const BreadcrumbSeparator = defineComponent({
-  inheritAttrs: false,
-  name: "Breadcrumb.Separator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        "li",
-        {
-          ...attrs,
-          "aria-hidden": "true",
-          class: styles.slots.separator({ class: props.class }),
-          "data-part": "separator",
-          "data-scope": "breadcrumb",
-          role: "presentation",
-        },
-        slots.default ?? (() => h(PhCaretRight)),
-      );
-  },
+export const BreadcrumbSeparator = withBreadcrumbContext("li", {
+  defaultProps: { "aria-hidden": "true", role: "presentation" },
+  name: "Separator",
 });
 
+const BreadcrumbEllipsisBase = withBreadcrumbContext("span", {
+  name: "Ellipsis",
+});
+
+/**
+ * Collapsed-items marker; render your icon inside. Adds localized screen-reader
+ * text.
+ */
 export const BreadcrumbEllipsis = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb.Ellipsis",
-  setup(_, { attrs }) {
-    const styles = useStyles();
+  setup(_, { attrs, slots }) {
+    const { m } = useLocale();
 
     return () =>
-      h(
-        "span",
-        {
-          ...attrs,
-          "aria-hidden": "true",
-          "data-part": "ellipsis",
-          "data-scope": "breadcrumb",
-          role: "presentation",
-        },
-        () => h(PhDotsThree, { class: styles.slots.ellipsis() }),
-      );
+      h(BreadcrumbEllipsisBase as ArkPart, attrs, () => [
+        slots.default?.(),
+        h("span", { class: "sr-only" }, m("breadcrumb.more")),
+      ]);
   },
 });
+// #endregion
 
+// #region Shorthand
 export const BreadcrumbShorthand = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb",
   props: {
     ariaLabel: { default: undefined, type: String },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<BreadcrumbProps["classNames"]>,
+    },
     items: {
       default: undefined,
       type: Array as PropType<BreadcrumbPresetItem[]>,
     },
+    separator: contentProp,
   },
-  setup(props, { attrs }) {
-    return () =>
-      h(BreadcrumbRoot, { ...attrs, ariaLabel: props.ariaLabel }, () =>
-        props.items
-          ? h(BreadcrumbList, null, () =>
-              props.items?.flatMap((item, index) => {
-                const key = item.href ?? String(item.label);
-                const nodes = [
-                  h(BreadcrumbItem, { key }, () =>
-                    item.isCurrentPage
-                      ? h(BreadcrumbPage, null, () => item.label)
-                      : item.href
-                        ? h(
-                            BreadcrumbLink,
-                            { href: item.href },
-                            () => item.label,
-                          )
-                        : item.label,
-                  ),
-                ];
+  setup(props, { attrs, slots }) {
+    return () => {
+      const classNames = props.classNames;
+      const separator =
+        slotOrProp(slots.separator, props.separator) ?? (() => h(PhCaretRight));
 
-                if (index > 0) {
-                  nodes.unshift(
-                    h(BreadcrumbSeparator, { key: `separator-${key}` }),
-                  );
-                }
+      return h(
+        BreadcrumbRoot,
+        {
+          ...attrs,
+          ariaLabel: props.ariaLabel,
+          class: cn(classNames?.base, attrs.class as ClassValue),
+        },
+        () =>
+          props.items
+            ? h(BreadcrumbList, { class: classNames?.list }, () =>
+                props.items?.flatMap((item, index) => {
+                  const key = item.href ?? String(item.label);
+                  const nodes = [
+                    h(BreadcrumbItem, { key }, () =>
+                      item.isCurrentPage
+                        ? h(BreadcrumbPage, null, () => item.label)
+                        : item.href
+                          ? h(
+                              BreadcrumbLink,
+                              { href: item.href },
+                              () => item.label,
+                            )
+                          : item.label,
+                    ),
+                  ];
 
-                return nodes;
-              }),
-            )
-          : undefined,
+                  if (index > 0) {
+                    nodes.unshift(
+                      h(
+                        BreadcrumbSeparator,
+                        {
+                          class: classNames?.separator,
+                          key: `separator-${key}`,
+                        },
+                        separator,
+                      ),
+                    );
+                  }
+
+                  return nodes;
+                }),
+              )
+            : undefined,
       );
+    };
   },
 });
 // #endregion

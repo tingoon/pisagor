@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import { Breadcrumb } from "@pisagor/vue";
 </script>
 
@@ -8,17 +9,25 @@ import { Breadcrumb } from "@pisagor/vue";
       <Breadcrumb.Item>
         <Breadcrumb.Link href="https://example.com/">Home</Breadcrumb.Link>
       </Breadcrumb.Item>
-      <Breadcrumb.Separator />
+      <Breadcrumb.Separator>
+        <PhCaretRight />
+      </Breadcrumb.Separator>
       <Breadcrumb.Item>
-        <Breadcrumb.Ellipsis />
+        <Breadcrumb.Ellipsis>
+          <PhDotsThree aria-hidden="true" />
+        </Breadcrumb.Ellipsis>
       </Breadcrumb.Item>
-      <Breadcrumb.Separator />
+      <Breadcrumb.Separator>
+        <PhCaretRight />
+      </Breadcrumb.Separator>
       <Breadcrumb.Item>
         <Breadcrumb.Link href="https://example.com/">
           Components
         </Breadcrumb.Link>
       </Breadcrumb.Item>
-      <Breadcrumb.Separator />
+      <Breadcrumb.Separator>
+        <PhCaretRight />
+      </Breadcrumb.Separator>
       <Breadcrumb.Item>
         <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
       </Breadcrumb.Item>

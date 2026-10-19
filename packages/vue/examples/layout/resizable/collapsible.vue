@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
 import { Resizable } from "@pisagor/vue";
 
@@ -28,7 +29,11 @@ function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
       <Resizable.Panel id="sidebar" :class="panelClassName()">
         Sidebar
       </Resizable.Panel>
-      <Resizable.ResizeTrigger id="sidebar:main" with-handle />
+      <Resizable.ResizeTrigger id="sidebar:main">
+        <Resizable.ResizeTriggerHandle>
+          <PhDotsSixVertical class="size-2.5" />
+        </Resizable.ResizeTriggerHandle>
+      </Resizable.ResizeTrigger>
       <Resizable.Panel id="main" :class="panelClassName()">
         Main
       </Resizable.Panel>

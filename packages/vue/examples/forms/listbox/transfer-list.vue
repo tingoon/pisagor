@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue";
-import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import { PhCaretLeft, PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import { Button, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
 
@@ -58,14 +58,17 @@ function moveToAvailable() {
           @value-change="onAvailableValueChange"
         >
           <Listbox.Content>
-            <Listbox.ItemGroup heading="Available">
+            <Listbox.ItemGroup>
+              <Listbox.ItemGroupLabel>Available</Listbox.ItemGroupLabel>
               <Listbox.Item
                 v-for="item in availableCollection.items"
                 :key="item.value"
                 :item="item"
               >
                 <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <PhCheck />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             </Listbox.ItemGroup>
           </Listbox.Content>
@@ -100,14 +103,17 @@ function moveToAvailable() {
           @value-change="onSelectedValueChange"
         >
           <Listbox.Content class="max-h-48 min-h-40">
-            <Listbox.ItemGroup heading="Selected">
+            <Listbox.ItemGroup>
+              <Listbox.ItemGroupLabel>Selected</Listbox.ItemGroupLabel>
               <Listbox.Item
                 v-for="item in selectedCollection.items"
                 :key="item.value"
                 :item="item"
               >
                 <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <PhCheck />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             </Listbox.ItemGroup>
           </Listbox.Content>

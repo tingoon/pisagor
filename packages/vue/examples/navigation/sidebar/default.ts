@@ -1,4 +1,9 @@
-import { PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
+import {
+  PhHouse,
+  PhMagnifyingGlass,
+  PhSidebarSimple,
+  PhUser,
+} from "@phosphor-icons/vue";
 import { Button, Sidebar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -60,7 +65,9 @@ export default defineComponent({
         ]),
         h(Sidebar.Inset, null, () => [
           h("header", { class: "flex h-12 items-center gap-2 border-b px-4" }, [
-            h(Sidebar.Trigger),
+            h(Sidebar.Trigger, null, () =>
+              h(PhSidebarSimple, { class: "rtl:rotate-180" }),
+            ),
             h("span", { class: "font-medium text-sm" }, "Dashboard"),
           ]),
           h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, [

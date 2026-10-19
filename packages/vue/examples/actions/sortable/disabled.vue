@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import { Sortable } from "@pisagor/vue";
 import { ref } from "vue";
 
@@ -19,7 +20,9 @@ function onValueChange(next: string[]) {
   <Sortable disabled :items="items" @value-change="onValueChange">
     <Sortable.Item v-for="id in items" :key="id" :value="id">
       <Sortable.ItemContent>
-        <Sortable.Handle />
+        <Sortable.Handle>
+          <PhDotsSixVertical />
+        </Sortable.Handle>
         <span class="text-sm font-medium">{{ labels[id] }}</span>
       </Sortable.ItemContent>
     </Sortable.Item>

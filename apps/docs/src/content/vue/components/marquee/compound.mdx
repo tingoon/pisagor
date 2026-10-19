@@ -2,11 +2,17 @@
 
 ```vue
 <Marquee.Root>
-  <Marquee.Content>
-    <Marquee.Item />
-  </Marquee.Content>
+  <Marquee.Viewport>
+    <Marquee.Content>
+      <Marquee.Item />
+    </Marquee.Content>
+  </Marquee.Viewport>
+  <Marquee.Edge side="start" />
+  <Marquee.Edge side="end" />
 </Marquee.Root>
 ```
+
+Parts map 1:1 to Ark. The `Marquee` shorthand renders the viewport, items, and fading edges (`show-edges`) for you.
 
 ## Examples
 

@@ -8,7 +8,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -27,27 +27,19 @@ const ScrollAreaScrollbar = withContext(ScrollAreaPrimitive.Scrollbar, {
 const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, {
   name: "Thumb",
 });
-// #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
-const ScrollAreaViewport = defineComponent({
-  inheritAttrs: false,
-  name: "ScrollArea.Viewport",
-  props: {
-    class: { default: undefined, type: String as PropType<string> },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ScrollAreaPrimitive.Viewport as ArkPart,
-        { ...attrs, class: styles.slots.viewport({ class: props.class }) },
-        () => h(ScrollAreaPrimitive.Content as ArkPart, null, slots),
-      );
-  },
+const ScrollAreaViewport = withContext(ScrollAreaPrimitive.Viewport, {
+  name: "Viewport",
 });
+
+const ScrollAreaContent = withContext(ScrollAreaPrimitive.Content, {
+  name: "Content",
+});
+
+const ScrollAreaCorner = withContext(ScrollAreaPrimitive.Corner, {
+  name: "Corner",
+});
+// #endregion
 
 // #region Types
 
@@ -61,7 +53,7 @@ export interface ScrollAreaProps
 }
 // #endregion
 
-// #region Closed
+// #region Shorthand
 const ScrollAreaShorthand = defineComponent({
   inheritAttrs: false,
   name: "ScrollArea",
@@ -98,7 +90,12 @@ const ScrollAreaShorthand = defineComponent({
             h(
               ScrollAreaViewport,
               { ...props.viewportProps, class: props.classNames?.viewport },
-              slots,
+              () =>
+                h(
+                  ScrollAreaContent,
+                  { class: props.classNames?.content },
+                  slots,
+                ),
             ),
           ];
 
@@ -120,7 +117,9 @@ const ScrollAreaShorthand = defineComponent({
             );
           }
 
-          children.push(h(ScrollAreaPrimitive.Corner as ArkPart));
+          children.push(
+            h(ScrollAreaCorner, { class: props.classNames?.corner }),
+          );
 
           return children;
         },
@@ -129,8 +128,17 @@ const ScrollAreaShorthand = defineComponent({
 });
 // #endregion
 
+export type {
+  ScrollAreaContentProps,
+  ScrollAreaCornerProps,
+  ScrollAreaScrollbarProps,
+  ScrollAreaThumbProps,
+  ScrollAreaViewportProps,
+} from "@ark-ui/vue";
+
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
-  Corner: ScrollAreaPrimitive.Corner,
+  Content: ScrollAreaContent,
+  Corner: ScrollAreaCorner,
   Root: ScrollAreaRoot,
   Scrollbar: ScrollAreaScrollbar,
   Thumb: ScrollAreaThumb,

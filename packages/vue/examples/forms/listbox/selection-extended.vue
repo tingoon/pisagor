@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { createListCollection } from "@ark-ui/vue";
 import { Item, Kbd, Listbox } from "@pisagor/vue";
 
@@ -26,7 +27,9 @@ const collection = createListCollection({
               :item="item"
             >
               <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
+              <Listbox.ItemIndicator>
+                <PhCheck />
+              </Listbox.ItemIndicator>
             </Listbox.Item>
           </Listbox.Content>
         </Listbox.Root>

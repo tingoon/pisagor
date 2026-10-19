@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { createListCollection } from "@ark-ui/vue";
 import { Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
@@ -37,7 +38,9 @@ function onValueChange(next: string | string[]) {
               :item="item"
             >
               <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
+              <Listbox.ItemIndicator>
+                <PhCheck />
+              </Listbox.ItemIndicator>
             </Listbox.Item>
           </Listbox.Content>
         </Listbox.Root>

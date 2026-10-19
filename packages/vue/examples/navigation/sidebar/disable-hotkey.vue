@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PhHouse, PhUser } from "@phosphor-icons/vue";
+import { PhHouse, PhSidebarSimple, PhUser } from "@phosphor-icons/vue";
 import { Sidebar } from "@pisagor/vue";
 </script>
 
@@ -28,7 +28,9 @@ import { Sidebar } from "@pisagor/vue";
       </Sidebar.Content>
     </Sidebar>
     <Sidebar.Inset class="p-4">
-      <Sidebar.Trigger />
+      <Sidebar.Trigger>
+        <PhSidebarSimple class="rtl:rotate-180" />
+      </Sidebar.Trigger>
     </Sidebar.Inset>
   </Sidebar.Provider>
 </template>

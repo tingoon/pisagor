@@ -1,16 +1,16 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { CollapsibleRootContract } from "@pisagor/contracts";
+import type {
+  CollapsibleContract,
+  CollapsibleRootContract,
+} from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import { computed, defineComponent, h, type PropType } from "vue";
-import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { defineComponent, h, type PropType } from "vue";
+import { createSlotRecipeContext } from "../internal";
+import { contentProp, slotOrProp } from "../internal/shorthand";
 
 // #region Slot recipe context
-const {
-  provideStyles: provideCollapsibleStyles,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Collapsible",
   recipe: collapsibleRecipe,
 });
@@ -20,54 +20,55 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CollapsibleRootProps extends CollapsibleRootContract {
-  class?: unknown;
+  /** Height kept visible while collapsed; keeps content mounted. */
+  collapsedHeight?: number | string;
+  lazyMount?: boolean;
+  unmountOnExit?: boolean;
+}
+
+export interface CollapsibleProps
+  extends CollapsibleRootProps, CollapsibleContract {
+  /**
+   * Whether to render the caret indicator inside the trigger.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
+  /** Trigger content; also available as the `trigger` slot. */
+  trigger?: unknown;
 }
 // #endregion
 
 // #region Parts
+const RootBase = withProvider(CollapsiblePrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
+
+/** Root; `collapsedHeight` keeps content mounted for partial collapse. */
 export const CollapsibleRoot = defineComponent({
   inheritAttrs: false,
-  name: "CollapsibleRoot",
+  name: "Collapsible.Root",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
     collapsedHeight: {
       default: undefined,
       type: [Number, String] as PropType<number | string>,
     },
-    lazyMount: { default: true, type: Boolean },
-    recipe: {
-      default: collapsibleRecipe,
-      type: Function as PropType<typeof collapsibleRecipe>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
+    lazyMount: { default: undefined, type: Boolean },
+    unmountOnExit: { default: undefined, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideCollapsibleStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    const partialCollapse = props.collapsedHeight !== undefined;
-
     return () => {
-      const variantSlots = recipeSlots.value;
+      const partial = props.collapsedHeight !== undefined;
 
       return h(
-        CollapsiblePrimitive.Root as ArkPart,
+        RootBase as ArkPart,
         {
           ...attrs,
-          class: variantSlots.base({ class: props.class }),
           collapsedHeight: props.collapsedHeight,
-          "data-partial-collapse": props.collapsedHeight ? "" : undefined,
-          lazyMount: partialCollapse ? false : props.lazyMount,
-          unmountOnExit: partialCollapse ? false : props.unmountOnExit,
+          "data-partial-collapse": partial ? "" : undefined,
+          lazyMount: partial ? false : props.lazyMount,
+          unmountOnExit: partial ? false : props.unmountOnExit,
         },
         slots,
       );
@@ -79,66 +80,63 @@ export const CollapsibleTrigger = withContext(CollapsiblePrimitive.Trigger, {
   name: "Trigger",
 });
 
-export const CollapsibleContent = defineComponent({
-  inheritAttrs: false,
-  name: "CollapsibleContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
+export const CollapsibleIndicator = withContext(
+  CollapsiblePrimitive.Indicator,
+  { name: "Indicator" },
+);
 
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        CollapsiblePrimitive.Content as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.content(),
-        },
-        () => h("div", { class: props.class }, slots.default?.()),
-      );
-    };
-  },
+export const CollapsibleContent = withContext(CollapsiblePrimitive.Content, {
+  name: "Content",
 });
 
-export const CollapsibleIndicator = defineComponent({
+export const CollapsibleBody = withContext("div", { name: "Body" });
+// #endregion
+
+// #region Shorthand
+export const CollapsibleShorthand = defineComponent({
   inheritAttrs: false,
-  name: "CollapsibleIndicator",
+  name: "Collapsible",
   props: {
-    class: {
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Object as PropType<CollapsibleProps["classNames"]>,
     },
+    showIndicator: { default: true, type: Boolean },
+    trigger: contentProp,
   },
-  setup(props, { attrs, slots: children }) {
-    const styles = useStyles();
-
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = styles.slots;
+      const classNames = props.classNames;
+      const trigger = slotOrProp(slots.trigger, props.trigger);
 
-      return h(
-        CollapsiblePrimitive.Indicator as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.indicator({ class: props.class }),
-        },
-        () => [
-          children.default?.(),
-          h(PhCaretDown, { class: variantSlots.icon() }),
-        ],
-      );
+      return h(CollapsibleRoot as ArkPart, { ...attrs }, () => [
+        trigger
+          ? h(CollapsibleTrigger, { class: classNames?.trigger }, () => [
+              trigger(),
+              props.showIndicator
+                ? h(
+                    CollapsibleIndicator,
+                    { class: classNames?.indicator },
+                    () => h(PhCaretDown),
+                  )
+                : null,
+            ])
+          : null,
+        h(CollapsibleContent, { class: classNames?.content }, () =>
+          h(CollapsibleBody, { class: classNames?.body }, () =>
+            slots.default?.(),
+          ),
+        ),
+      ]);
     };
   },
 });
 // #endregion
 
-export const Collapsible = Object.assign(CollapsibleRoot, {
+export const Collapsible = Object.assign(CollapsibleShorthand, {
+  Body: CollapsibleBody,
   Content: CollapsibleContent,
   Indicator: CollapsibleIndicator,
+  Root: CollapsibleRoot,
   Trigger: CollapsibleTrigger,
 });

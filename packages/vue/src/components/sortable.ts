@@ -1,4 +1,3 @@
-import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   SortableItemRootContract,
   SortableRootContract,
@@ -457,7 +456,7 @@ export const SortableHandle = defineComponent({
           role: "button",
           tabIndex: sortable.disabled ? -1 : 0,
         },
-        () => slots.default?.() ?? h(PhDotsSixVertical),
+        () => slots.default?.(),
       );
   },
 });

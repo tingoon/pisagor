@@ -1,5 +1,4 @@
 import { ark } from "@ark-ui/vue";
-import { PhCaretDown } from "@phosphor-icons/vue";
 import type {
   NavigationMenuRootContract,
   NavigationMenuContract,
@@ -211,13 +210,7 @@ export const NavigationMenuTrigger = defineComponent({
           ref: item.trigger,
           type: "button",
         },
-        () => [
-          slots.default?.(),
-          h(PhCaretDown, {
-            "aria-hidden": true,
-            class: styles.slots.indicator(),
-          }),
-        ],
+        slots,
       );
   },
 });
@@ -290,10 +283,17 @@ export const NavigationMenuLink = defineComponent({
     };
   },
 });
+
+/** Open-state indicator for a trigger; pass your own icon (e.g. a caret). */
+export const NavigationMenuIndicator = withContext("span", {
+  defaultProps: { "aria-hidden": true },
+  name: "Indicator",
+});
 // #endregion
 
 export const NavigationMenu = Object.assign(NavigationMenuRoot, {
   Content: NavigationMenuContent,
+  Indicator: NavigationMenuIndicator,
   Item: NavigationMenuItem,
   Link: NavigationMenuLink,
   List: NavigationMenuList,

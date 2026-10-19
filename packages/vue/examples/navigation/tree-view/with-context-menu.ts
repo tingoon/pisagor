@@ -1,5 +1,8 @@
 import {
+  PhCaretRight,
+  PhFile,
   PhFilePlus,
+  PhFolder,
   PhFolderPlus,
   PhPencilSimple,
   PhTrash,
@@ -7,10 +10,17 @@ import {
 import type { TreeNodeType } from "@pisagor/vue";
 import { ContextMenu, createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
-import { defineComponent, h } from "vue";
+import { defineComponent, h, Teleport } from "vue";
 import { sampleFileTree } from "./data";
 
 type ArkPart = Parameters<typeof h>[0];
+
+const menuContent = (items: () => VNode[]) =>
+  h(Teleport, { to: "body" }, [
+    h(ContextMenu.Positioner as ArkPart, null, () =>
+      h(ContextMenu.Content as ArkPart, { class: "w-40" }, items),
+    ),
+  ]);
 
 export default defineComponent({
   name: "WithContextMenu",
@@ -24,18 +34,22 @@ export default defineComponent({
         () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(ContextMenu as ArkPart, null, () => [
+                h(ContextMenu.Root as ArkPart, null, () => [
                   h(
                     ContextMenu.ContextTrigger as ArkPart,
                     { asChild: true },
                     () =>
-                      h(
-                        TreeView.BranchControl as ArkPart,
-                        null,
-                        () => node.name,
-                      ),
+                      h(TreeView.BranchControl as ArkPart, null, () => [
+                        h(TreeView.BranchIndicator as ArkPart, null, () =>
+                          h(PhCaretRight),
+                        ),
+                        h(TreeView.BranchText as ArkPart, null, () => [
+                          h(PhFolder),
+                          node.name,
+                        ]),
+                      ]),
                   ),
-                  h(ContextMenu.Content as ArkPart, { class: "w-40" }, () => [
+                  menuContent(() => [
                     h(
                       ContextMenu.Item as ArkPart,
                       { value: "add-folder" },
@@ -65,22 +79,24 @@ export default defineComponent({
                     ),
                   ]),
                 ]),
-                h(TreeView.BranchContent as ArkPart, null, () =>
-                  node.children?.map((child, index) =>
+                h(TreeView.BranchContent as ArkPart, null, () => [
+                  h(TreeView.BranchIndentGuide as ArkPart),
+                  ...(node.children ?? []).map((child, index) =>
                     renderNode(child, [...indexPath, index]),
                   ),
-                ),
+                ]),
               ])
-            : h(ContextMenu as ArkPart, null, () => [
+            : h(ContextMenu.Root as ArkPart, null, () => [
                 h(
                   ContextMenu.ContextTrigger as ArkPart,
                   { asChild: true },
                   () =>
-                    h(TreeView.Item as ArkPart, null, () =>
+                    h(TreeView.Item as ArkPart, null, () => [
+                      h(PhFile),
                       h(TreeView.ItemText as ArkPart, null, () => node.name),
-                    ),
+                    ]),
                 ),
-                h(ContextMenu.Content as ArkPart, { class: "w-40" }, () => [
+                menuContent(() => [
                   h(ContextMenu.Item as ArkPart, { value: "add-file" }, () => [
                     h(PhPencilSimple, { "aria-hidden": true }),
                     "Rename",
@@ -97,7 +113,7 @@ export default defineComponent({
 
     return () =>
       h("div", null, [
-        h(TreeView as ArkPart, { collection }, () =>
+        h(TreeView.Root as ArkPart, { collection }, () =>
           h(TreeView.Tree as ArkPart, null, () =>
             collection.rootNode.children?.map((node, index) =>
               renderNode(node, [index]),
