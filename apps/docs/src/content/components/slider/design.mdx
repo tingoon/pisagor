@@ -1,0 +1,38 @@
+A slider lets people choose a value along a continuous or stepped track by dragging a thumb or using the keyboard. It works well when the range is understood and seeing the whole span helps judgment — volume, opacity, price bounds, or filter thresholds.
+
+Prefer Slider when adjustment is exploratory and approximate; prefer <DocLink id="number-input">Number Input</DocLink> when people need an exact typed value. Prefer <DocLink id="progress">Progress</DocLink> when showing completion, not setting a value.
+
+## Best practices
+
+**Expose the current value.** Show the selected number or label near the thumb or in an associated field so people know what they chose without guessing from position alone.
+
+**Define sensible bounds and steps.** Set min, max, and step size to match real constraints; avoid ranges so wide that small movements cause huge jumps.
+
+**Track the thumb during drag.** Move the thumb one-to-one with the pointer for the whole gesture so the control feels direct and interruptible.
+
+**Support keyboard and pointer equally.** Arrow keys, Home, and End should nudge or jump predictably; ensure a visible focus ring on the thumb.
+
+**Pair with labels when meaning is not obvious.** End labels, marks, or a short caption clarify what “more” and “less” represent.
+
+<DoDont
+  do={
+    "Show min, max, or current value when the track alone would be ambiguous."
+  }
+  dont={
+    "Use a slider for a small set of named choices — a <DocLink id="segment-group">Segment Group</DocLink> or <DocLink id="select">Select</DocLink> is clearer."
+  }
+/>
+
+## Range and dual thumbs
+
+When selecting an interval, use two thumbs with a clear filled range between them. Keep both thumbs reachable on narrow viewports and announce the interval to assistive technology.
+
+## Related patterns
+
+| Need                                   | Prefer                                                  |
+| -------------------------------------- | ------------------------------------------------------- |
+| Continuous or stepped value on a track | **Slider**                                              |
+| Exact numeric entry                    | <DocLink id="number-input">Number Input</DocLink>       |
+| Circular or radial control             | <DocLink id="circular-slider">Circular Slider</DocLink> |
+| Read-only completion                   | <DocLink id="progress">Progress</DocLink>               |
+| On/off setting                         | <DocLink id="switch">Switch</DocLink>                   |

@@ -4,6 +4,21 @@
 import { AlertDialog } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<AlertDialog.Root>
+  <AlertDialog.Trigger />
+  <AlertDialog.Content>
+    <AlertDialog.Header>
+      <AlertDialog.Title />
+      <AlertDialog.Description />
+    </AlertDialog.Header>
+    <AlertDialog.Footer />
+  </AlertDialog.Content>
+</AlertDialog.Root>
+```
+
 ## Examples
 
 ### Variants
@@ -14,6 +29,6 @@ Match tone to severity — informative for caution, destructive for irreversible
 
 ### Compound
 
-Assemble title, description, and actions from parts when the shorthand layout is not enough.
+Assemble title, description, and actions from parts when the layout needs a custom structure.
 
 <Example name="Composition" />

@@ -136,6 +136,9 @@ const COMPONENT_DOC_TABS = new Set(["design", "develop"]);
 /** Drop a trailing doc tab segment so sidebar slugs still match. */
 function stripComponentDocTab(slug: string): string {
   const segments = slug.split("/").filter(Boolean);
+  if (segments.at(-1) === "compound" && segments.at(-2) === "develop") {
+    segments.pop();
+  }
   const last = segments.at(-1);
   if (
     segments.length >= 2 &&

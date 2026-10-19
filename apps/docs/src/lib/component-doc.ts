@@ -46,13 +46,6 @@ const PROPS_FILE_ALIASES: Record<string, string> = {
   "textarea-field": "textarea",
 };
 
-type CollectionName =
-  | "astroComponents"
-  | "reactComponents"
-  | "solidComponents"
-  | "svelteComponents"
-  | "vueComponents";
-
 type PaneMdxModule = {
   default: (props?: Record<string, unknown>) => unknown;
   frontmatter?: Record<string, unknown>;
@@ -61,52 +54,27 @@ type PaneMdxModule = {
 
 type PaneModules = Record<string, () => Promise<PaneMdxModule>>;
 
-type FrameworkPaneGlobs = {
-  design: PaneModules;
-  develop: PaneModules;
-};
+/** Shared design pages. The same file serves every framework. */
+const designModules = import.meta.glob<PaneMdxModule>(
+  "../content/components/*/design.mdx",
+);
 
-const componentPanesByFramework: Record<Framework, FrameworkPaneGlobs> = {
-  astro: {
-    design: import.meta.glob<PaneMdxModule>(
-      "../content/astro/components/*/design.mdx",
-    ),
-    develop: import.meta.glob<PaneMdxModule>(
-      "../content/astro/components/*/develop.mdx",
-    ),
-  },
-  react: {
-    design: import.meta.glob<PaneMdxModule>(
-      "../content/react/components/*/design.mdx",
-    ),
-    develop: import.meta.glob<PaneMdxModule>(
-      "../content/react/components/*/develop.mdx",
-    ),
-  },
-  solid: {
-    design: import.meta.glob<PaneMdxModule>(
-      "../content/solid/components/*/design.mdx",
-    ),
-    develop: import.meta.glob<PaneMdxModule>(
-      "../content/solid/components/*/develop.mdx",
-    ),
-  },
-  svelte: {
-    design: import.meta.glob<PaneMdxModule>(
-      "../content/svelte/components/*/design.mdx",
-    ),
-    develop: import.meta.glob<PaneMdxModule>(
-      "../content/svelte/components/*/develop.mdx",
-    ),
-  },
-  vue: {
-    design: import.meta.glob<PaneMdxModule>(
-      "../content/vue/components/*/design.mdx",
-    ),
-    develop: import.meta.glob<PaneMdxModule>(
-      "../content/vue/components/*/develop.mdx",
-    ),
-  },
+const developModulesByFramework: Record<Framework, PaneModules> = {
+  astro: import.meta.glob<PaneMdxModule>(
+    "../content/astro/components/*/develop.mdx",
+  ),
+  react: import.meta.glob<PaneMdxModule>(
+    "../content/react/components/*/develop.mdx",
+  ),
+  solid: import.meta.glob<PaneMdxModule>(
+    "../content/solid/components/*/develop.mdx",
+  ),
+  svelte: import.meta.glob<PaneMdxModule>(
+    "../content/svelte/components/*/develop.mdx",
+  ),
+  vue: import.meta.glob<PaneMdxModule>(
+    "../content/vue/components/*/develop.mdx",
+  ),
 };
 
 const propsModules = import.meta.glob<Record<string, unknown>>(
@@ -117,35 +85,49 @@ const propsModules = import.meta.glob<Record<string, unknown>>(
 /** Lazy `?raw` loaders — only the requested pane file is fetched. */
 type PaneRawLoaderMap = Record<string, () => Promise<string>>;
 
+const compoundModulesByFramework: Record<Framework, PaneModules> = {
+  astro: import.meta.glob<PaneMdxModule>(
+    "../content/astro/components/*/compound.mdx",
+  ),
+  react: import.meta.glob<PaneMdxModule>(
+    "../content/react/components/*/compound.mdx",
+  ),
+  solid: import.meta.glob<PaneMdxModule>(
+    "../content/solid/components/*/compound.mdx",
+  ),
+  svelte: import.meta.glob<PaneMdxModule>(
+    "../content/svelte/components/*/compound.mdx",
+  ),
+  vue: import.meta.glob<PaneMdxModule>(
+    "../content/vue/components/*/compound.mdx",
+  ),
+};
+
 const paneRawByFramework: Record<Framework, PaneRawLoaderMap> = {
-  astro: import.meta.glob<string>(
-    "../content/astro/components/*/{design,develop}.mdx",
-    { import: "default", query: "?raw" },
-  ),
-  react: import.meta.glob<string>(
-    "../content/react/components/*/{design,develop}.mdx",
-    { import: "default", query: "?raw" },
-  ),
-  solid: import.meta.glob<string>(
-    "../content/solid/components/*/{design,develop}.mdx",
-    { import: "default", query: "?raw" },
-  ),
+  astro: import.meta.glob<string>("../content/astro/components/*/develop.mdx", {
+    import: "default",
+    query: "?raw",
+  }),
+  react: import.meta.glob<string>("../content/react/components/*/develop.mdx", {
+    import: "default",
+    query: "?raw",
+  }),
+  solid: import.meta.glob<string>("../content/solid/components/*/develop.mdx", {
+    import: "default",
+    query: "?raw",
+  }),
   svelte: import.meta.glob<string>(
-    "../content/svelte/components/*/{design,develop}.mdx",
+    "../content/svelte/components/*/develop.mdx",
     { import: "default", query: "?raw" },
   ),
-  vue: import.meta.glob<string>(
-    "../content/vue/components/*/{design,develop}.mdx",
-    { import: "default", query: "?raw" },
-  ),
+  vue: import.meta.glob<string>("../content/vue/components/*/develop.mdx", {
+    import: "default",
+    query: "?raw",
+  }),
 };
 
 function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
-}
-
-function collectionName(framework: Framework): CollectionName | undefined {
-  return `${framework}Components` as CollectionName;
 }
 
 function panePathSuffix(
@@ -153,6 +135,8 @@ function panePathSuffix(
   id: string,
   pane: SkillPaneId,
 ): string {
+  if (pane === "design") return `/content/components/${id}/design.mdx`;
+
   return `/content/${framework}/components/${id}/${pane}.mdx`;
 }
 
@@ -163,11 +147,14 @@ function findGlobKey(
   return Object.keys(modules).find((path) => path.endsWith(suffix));
 }
 
-function paneModules(
-  framework: Framework,
-  pane: SkillPaneId,
-): PaneModules | undefined {
-  return componentPanesByFramework[framework]?.[pane];
+function developIds(framework: Framework): Set<string> {
+  const ids = new Set<string>();
+  for (const key of Object.keys(developModulesByFramework[framework])) {
+    const match = key.match(/\/components\/([^/]+)\/develop\.mdx$/);
+    if (match?.[1]) ids.add(match[1]);
+  }
+
+  return ids;
 }
 
 function paneLoader(
@@ -175,8 +162,8 @@ function paneLoader(
   id: string,
   pane: SkillPaneId,
 ): (() => Promise<PaneMdxModule>) | undefined {
-  const modules = paneModules(framework, pane);
-  if (!modules) return undefined;
+  const modules =
+    pane === "design" ? designModules : developModulesByFramework[framework];
   const key = findGlobKey(modules, panePathSuffix(framework, id, pane));
 
   return key ? modules[key] : undefined;
@@ -195,15 +182,17 @@ async function loadPaneMdx(
   };
 }
 
-/** Component ids from content collection meta files. */
+/** Component ids that this framework ships (shared meta + a develop page). */
 export async function listComponentIds(
   framework: Framework,
 ): Promise<string[]> {
-  const name = collectionName(framework);
-  if (!name) return [];
-  const entries = await getCollection(name);
+  const shipped = developIds(framework);
+  const entries = await getCollection("components");
 
-  return entries.map((entry) => entry.id).sort();
+  return entries
+    .map((entry) => entry.id)
+    .filter((id) => shipped.has(id))
+    .sort();
 }
 
 export function defaultPackageName(framework: Framework): string {
@@ -211,16 +200,12 @@ export function defaultPackageName(framework: Framework): string {
 }
 
 export async function loadSkillMd(
-  framework: Framework,
+  _framework: Framework,
   id: string,
 ): Promise<SkillMdModule> {
-  const name = collectionName(framework);
-  if (!name) {
-    throw new Error(`No collection for ${framework}`);
-  }
-  const entry = await getEntry(name, id);
+  const entry = await getEntry("components", id);
   if (!entry) {
-    throw new Error(`Missing ${framework} meta for "${id}"`);
+    throw new Error(`Missing shared meta for "${id}"`);
   }
   const { Content, headings } = await render(entry);
 
@@ -297,6 +282,49 @@ export function listComponentDocTabs(
   }
 
   return tabs;
+}
+
+function compoundPathSuffix(framework: Framework, id: string): string {
+  return `/content/${framework}/components/${id}/compound.mdx`;
+}
+
+/** True when `compound.mdx` exists for the component. */
+export function hasCompoundDoc(framework: Framework, id: string): boolean {
+  return Boolean(
+    findGlobKey(
+      compoundModulesByFramework[framework],
+      compoundPathSuffix(framework, id),
+    ),
+  );
+}
+
+/** Load the compound surface (`compound.mdx`). Anatomy only for now. */
+export async function loadCompoundDoc(
+  framework: Framework,
+  id: string,
+): Promise<SkillMdModule> {
+  const modules = compoundModulesByFramework[framework];
+  const key = findGlobKey(modules, compoundPathSuffix(framework, id));
+  const loader = key ? modules[key] : undefined;
+  if (!loader) {
+    throw new Error(`Missing ${framework} compound doc for "${id}"`);
+  }
+  const { frontmatter } = await loadSkillMd(framework, id);
+
+  return loadPaneMdx(loader, frontmatter);
+}
+
+export type DevelopSurface = "shorthand" | "compound";
+
+/** Static paths for `/…/components/<id>/develop/compound`. */
+export async function listCompoundStaticPaths(
+  framework: Framework,
+): Promise<{ params: { id: string } }[]> {
+  const ids = await listComponentIds(framework);
+
+  return ids
+    .filter((id) => hasCompoundDoc(framework, id))
+    .map((id) => ({ params: { id } }));
 }
 
 /** Static paths for `/…/components/<id>/develop` or `…/design`. */

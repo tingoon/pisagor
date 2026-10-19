@@ -1,0 +1,33 @@
+Button group clusters related actions so people compare choices and pick one without hunting across the layout. Shared edges signal that the options belong together.
+
+Prefer button group when actions share a purpose; prefer <DocLink id="toolbar">Toolbar</DocLink> when a heading and actions share one horizontal row. Prefer <DocLink id="segment-group">Segment Group</DocLink> when the cluster behaves like a single selected value.
+
+## Best practices
+
+**Keep the set coherent.** Group formatting, alignment, or view mode toggles — not unrelated Save and Delete.
+
+**One strong emphasis.** At most one option should look primary; others stay outline or ghost so the recommended choice is obvious.
+
+**Preserve equal width when comparing.** Segmented equal columns help when labels are short and parallel.
+
+**Expose selection state.** For toggle-style groups, show which option is active with aria-pressed or equivalent semantics.
+
+**Wrap on small screens.** Allow the group to stack or scroll horizontally before clipping labels.
+
+<DoDont
+  do={
+    "Group Left, Center, and Right alignment controls in one connected cluster."
+  }
+  dont={
+    "Merge destructive and constructive actions in one group without visual separation."
+  }
+/>
+
+## Related patterns
+
+| Need                            | Prefer                                              |
+| ------------------------------- | --------------------------------------------------- |
+| Related actions side by side    | **Button Group**                                    |
+| Section title plus actions      | <DocLink id="toolbar">Toolbar</DocLink>             |
+| Single choice among few options | <DocLink id="segment-group">Segment Group</DocLink> |
+| Bulk actions on selection       | <DocLink id="action-bar">Action Bar</DocLink>       |

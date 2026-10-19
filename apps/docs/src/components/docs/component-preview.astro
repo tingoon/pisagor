@@ -10,6 +10,7 @@ import {
 import CodeBlock from "./code-block.astro";
 import { PreviewThemeToggle } from "./react/preview-theme-toggle";
 import { PreviewToolbarControls } from "./react/preview-toolbar-controls";
+import { PreviewViewTabs } from "./react/preview-view-tabs";
 
 interface Props {
   title?: string;
@@ -89,37 +90,7 @@ const viewports = [
   <div
     class="flex flex-wrap items-center gap-1.5 border-b border-border/60 bg-muted/15 px-2 py-1.5 sm:gap-2 sm:px-2.5"
   >
-    <div
-      aria-label={title ? `${title} view` : "Component view"}
-      class="inline-flex rounded-md bg-muted/60 p-0.5"
-      role="tablist"
-    >
-      <Button
-        aria-selected="true"
-        class="docs-press rounded-md text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
-        data-active
-        data-view="preview"
-        data-view-tab
-        role="tab"
-        size="xs"
-        type="button"
-        variant="ghost"
-      >
-        Preview
-      </Button>
-      <Button
-        aria-selected="false"
-        class="docs-press rounded-md text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
-        data-view="code"
-        data-view-tab
-        role="tab"
-        size="xs"
-        type="button"
-        variant="ghost"
-      >
-        Code
-      </Button>
-    </div>
+    <PreviewViewTabs client:load title={title} />
 
     <div class="ms-auto flex flex-wrap items-center gap-1">
       <PreviewThemeToggle client:load />

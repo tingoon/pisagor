@@ -4,6 +4,27 @@
 import { Dialog } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<Dialog.Root>
+  <Dialog.Trigger />
+  <Dialog.Backdrop />
+  <Dialog.Positioner>
+    <Dialog.Content>
+      <Dialog.Header>
+        <Dialog.Title />
+        <Dialog.Description />
+      </Dialog.Header>
+      <Dialog.Body />
+      <Dialog.Footer>
+        <Dialog.CloseTrigger />
+      </Dialog.Footer>
+    </Dialog.Content>
+  </Dialog.Positioner>
+</Dialog.Root>
+```
+
 ## Examples
 
 ### Default
@@ -32,7 +53,7 @@ Nest another dialog when hierarchy or layered structure is part of the content.
 
 ### Compound
 
-Build the dialog from parts when the shorthand props are not enough.
+Build the dialog from parts when the layout needs a custom structure.
 
 <Example name="Compound" />
 

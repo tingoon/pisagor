@@ -1,0 +1,27 @@
+---
+/**
+ * Framework-relative component doc link. The open page supplies the framework.
+ */
+import { getDocsExampleContext } from "#/lib/docs-example-context";
+import { withDocsBase } from "#/lib/nav";
+
+interface Props {
+  id: string;
+  tab?: "design" | "develop";
+}
+
+const ctx = getDocsExampleContext(Astro.locals);
+const framework = ctx?.framework;
+const tab = Astro.props.tab ?? "design";
+
+if (!framework) {
+  throw new Error(
+    `<DocLink id="${Astro.props.id}" /> needs page context (framework).`,
+  );
+}
+
+const href = withDocsBase(`/${framework}/components/${Astro.props.id}/${tab}`);
+---
+
+{/* biome-ignore lint/a11y/useAnchorContent: content is the default slot */}
+<a href={href}><slot /></a>

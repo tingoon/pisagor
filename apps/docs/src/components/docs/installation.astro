@@ -1,5 +1,6 @@
 ---
 import { Button } from "@pisagor/astro";
+import { InstallationManagerTabs } from "./react/installation-manager-tabs";
 
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
@@ -22,9 +23,6 @@ const managers = [
 ] as const;
 
 const defaultManager = managers[0];
-
-const tabClass =
-  "shrink-0 text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
 ---
 
 <div
@@ -57,28 +55,7 @@ const tabClass =
         </svg>
       </span>
 
-      <div
-        aria-label="Package manager"
-        class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
-        role="tablist"
-      >
-        {managers.map((manager) => (
-          <Button
-            aria-selected={manager.id === defaultManager.id ? "true" : "false"}
-            class={tabClass}
-            data-active={manager.id === defaultManager.id ? "" : undefined}
-            data-command={manager.command}
-            data-pm={manager.id}
-            data-tab
-            role="tab"
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            {manager.label}
-          </Button>
-        ))}
-      </div>
+      <InstallationManagerTabs client:load managers={[...managers]} />
     </div>
 
     <div role="tabpanel">
@@ -130,8 +107,6 @@ const tabClass =
 </div>
 
 <script>
-const STORAGE_KEY = "pisagor.docs.package-manager";
-
 function markCopied(btn: HTMLElement) {
   const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
   const done = btn.querySelector<HTMLElement>("[data-copy-done]");
@@ -162,31 +137,8 @@ function bindInstallation(root: HTMLElement) {
   if (root.dataset.bound === "1") return;
   root.dataset.bound = "1";
 
-  const tabs = [...root.querySelectorAll<HTMLElement>("[data-tab]")];
   const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
   const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
-
-  function activate(target: HTMLElement) {
-    for (const tab of tabs) {
-      const active = tab === target;
-      tab.toggleAttribute("data-active", active);
-      tab.setAttribute("aria-selected", active ? "true" : "false");
-    }
-    if (commandEl && target.dataset.command) {
-      commandEl.textContent = target.dataset.command;
-    }
-    if (target.dataset.pm) {
-      try {
-        localStorage.setItem(STORAGE_KEY, target.dataset.pm);
-      } catch {
-        /* ignore */
-      }
-    }
-  }
-
-  for (const tab of tabs) {
-    tab.addEventListener("click", () => activate(tab));
-  }
 
   copyBtn?.addEventListener("click", async () => {
     const text = commandEl?.textContent?.trim() ?? "";
@@ -194,15 +146,6 @@ function bindInstallation(root: HTMLElement) {
     await copyText(text);
     markCopied(copyBtn);
   });
-
-  let preferred: string | null = null;
-  try {
-    preferred = localStorage.getItem(STORAGE_KEY);
-  } catch {
-    /* ignore */
-  }
-  const initial = tabs.find((tab) => tab.dataset.pm === preferred) ?? tabs[0];
-  if (initial) activate(initial);
 }
 
 function bindAll() {
