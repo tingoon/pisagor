@@ -5,8 +5,8 @@
   } from "@ark-ui/svelte";
   import { withContext } from "./image-cropper.context";
 
-  let { ...rest }: ImageCropperImageProps = $props();
-  const part = withContext(() => rest, { name: "Image" });
+  let props: ImageCropperImageProps = $props();
+  const part = withContext(() => props, { name: "Image" });
 </script>
 
 <ImageCropperPrimitive.Image {...part.props} />

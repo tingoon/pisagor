@@ -7,16 +7,10 @@ import { Timer } from "@pisagor/svelte";
 ## Anatomy
 
 ```tsx
-<Timer>
-  <Timer.Area>
-    <Timer.ItemGroup>
-      <Timer.Item />
-      <Timer.ItemLabel />
-    </Timer.ItemGroup>
-    <Timer.Separator />
-  </Timer.Area>
-</Timer>
+<Timer autoStart units={["minutes", "seconds"]} showControls />
 ```
+
+The shorthand renders each unit with a localized label and separators, plus play/pause and reset buttons with `showControls`. Compose `Timer.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

@@ -3,25 +3,12 @@
     Pagination as PaginationPrimitive,
     type PaginationPrevTriggerProps,
   } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CaretLeftIcon } from "phosphor-svelte";
+  import { withContext } from "./pagination.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: PaginationPrevTriggerProps = $props();
+  let { children, ...rest }: PaginationPrevTriggerProps = $props();
+  const part = withContext(() => rest, { name: "PrevTrigger" });
 </script>
 
-<PaginationPrimitive.PrevTrigger
-  {...rest}
-  class={cn(buttonRecipe({ variant: "ghost" }).base(), className)}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    <CaretLeftIcon />
-    Previous
-  {/if}
+<PaginationPrimitive.PrevTrigger {...part.props}>
+  {@render children?.()}
 </PaginationPrimitive.PrevTrigger>

@@ -12,7 +12,7 @@
   </output>
   <Card class="rounded-3xl [--space:--spacing(6)]">
     <Card.Content>
-      <Timer
+      <Timer.Root
         class="items-center gap-2"
         onComplete={() => (completed = true)}
         onTick={() => (ticks += 1)}
@@ -55,7 +55,7 @@
             {/snippet}
           </Timer.Reset>
         </Timer.Control>
-      </Timer>
+      </Timer.Root>
     </Card.Content>
   </Card>
 </div>

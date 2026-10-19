@@ -4,7 +4,7 @@
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
   <Card.Content>
-    <Timer autoStart countdown startMs={5 * 60 * 1000}>
+    <Timer.Root autoStart countdown startMs={5 * 60 * 1000}>
       <Timer.Area>
         <Timer.ItemGroup>
           <Timer.Item type="minutes" />
@@ -16,6 +16,6 @@
           <Timer.ItemLabel>seconds</Timer.ItemLabel>
         </Timer.ItemGroup>
       </Timer.Area>
-    </Timer>
+    </Timer.Root>
   </Card.Content>
 </Card>

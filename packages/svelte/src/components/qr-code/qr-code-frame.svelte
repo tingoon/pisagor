@@ -3,14 +3,12 @@
     QrCode as QrCodePrimitive,
     type QrCodeFrameProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./qr-code.context";
+  import { withContext } from "./qr-code.context";
 
-  let { class: className, ...rest }: QrCodeFrameProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: QrCodeFrameProps = $props();
+  const part = withContext(() => rest, { name: "Frame" });
 </script>
 
-<QrCodePrimitive.Frame {...rest} class={slots.frame({ class: cn(className) })}>
-  <QrCodePrimitive.Pattern class={slots.pattern()} />
+<QrCodePrimitive.Frame {...part.props}>
+  {@render children?.()}
 </QrCodePrimitive.Frame>

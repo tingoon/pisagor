@@ -3,18 +3,13 @@
     Timer as TimerPrimitive,
     type TimerSeparatorProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTimer } from "./timer.context";
+  import { withTimerContext } from "./timer.context";
 
-  let { class: className, children, ...rest }: TimerSeparatorProps = $props();
-  const styles = useTimer();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: TimerSeparatorProps = $props();
+  const part = withTimerContext(() => rest, { name: "Separator" });
 </script>
 
-<TimerPrimitive.Separator
-  {...rest}
-  class={slots.separator({ class: cn(className) })}
->
+<TimerPrimitive.Separator {...part.props}>
   {#if children}
     {@render children()}
   {:else}

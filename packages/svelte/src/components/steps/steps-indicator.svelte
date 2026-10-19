@@ -3,19 +3,12 @@
     Steps as StepsPrimitive,
     type StepsIndicatorProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { CheckIcon } from "phosphor-svelte";
-  import { useStepsItem } from "./steps.context";
+  import { withStepsItemContext } from "./steps.context";
 
-  let { class: className, children, ...rest }: StepsIndicatorProps = $props();
-  const styles = useStepsItem();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: StepsIndicatorProps = $props();
+  const part = withStepsItemContext(() => rest, { name: "Indicator" });
 </script>
 
-<StepsPrimitive.Indicator
-  {...rest}
-  class={slots.indicator({ class: cn(className) })}
->
-  <span class={slots.label()}>{@render children?.()}</span>
-  <CheckIcon class={slots.check()} />
+<StepsPrimitive.Indicator {...part.props}>
+  {@render children?.()}
 </StepsPrimitive.Indicator>

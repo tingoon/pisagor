@@ -1,3 +1,4 @@
+import TimerShorthand from "./timer.svelte";
 import TimerActionTrigger from "./timer-action-trigger.svelte";
 import TimerArea from "./timer-area.svelte";
 import TimerControl from "./timer-control.svelte";
@@ -13,7 +14,15 @@ import TimerRoot from "./timer-root.svelte";
 import TimerSeparator from "./timer-separator.svelte";
 import TimerStart from "./timer-start.svelte";
 
-export const Timer = Object.assign(TimerRoot, {
+export type {
+  TimerActionTriggerProps,
+  TimerAreaProps,
+  TimerControlProps,
+  TimerItemProps,
+  TimerSeparatorProps,
+} from "@ark-ui/svelte";
+
+export const Timer = Object.assign(TimerShorthand, {
   ActionTrigger: TimerActionTrigger,
   Area: TimerArea,
   Control: TimerControl,
@@ -25,6 +34,7 @@ export const Timer = Object.assign(TimerRoot, {
   Reset: TimerReset,
   Restart: TimerRestart,
   Resume: TimerResume,
+  Root: TimerRoot,
   Separator: TimerSeparator,
   Start: TimerStart,
 });

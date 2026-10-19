@@ -3,25 +3,12 @@
     Pagination as PaginationPrimitive,
     type PaginationNextTriggerProps,
   } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CaretRightIcon } from "phosphor-svelte";
+  import { withContext } from "./pagination.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: PaginationNextTriggerProps = $props();
+  let { children, ...rest }: PaginationNextTriggerProps = $props();
+  const part = withContext(() => rest, { name: "NextTrigger" });
 </script>
 
-<PaginationPrimitive.NextTrigger
-  {...rest}
-  class={cn(buttonRecipe({ variant: "ghost" }).base(), className)}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    Next
-    <CaretRightIcon />
-  {/if}
+<PaginationPrimitive.NextTrigger {...part.props}>
+  {@render children?.()}
 </PaginationPrimitive.NextTrigger>

@@ -4,47 +4,14 @@
     type ImageCropperRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
   import type { ImageCropperRootContract } from "@pisagor/contracts";
-  import { imageCropperRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./image-cropper.context";
-  import ImageCropperImage from "./image-cropper-image.svelte";
-  import ImageCropperSelection from "./image-cropper-selection.svelte";
+  import { withProvider } from "./image-cropper.context";
 
-  type Props = Omit<ArkRootProps, "src" | "cropShape"> & {
-    alt?: string;
-    cropShape?: "rectangle" | "circle";
-    src?: string;
-  } & ImageCropperRootContract;
+  type Props = ArkRootProps & ImageCropperRootContract;
 
-  let {
-    alt,
-    children,
-    cropShape,
-    src,
-    recipe = imageCropperRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  let { children, ...rest }: Props = $props();
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
-<ImageCropperPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  {cropShape}
->
-  <ImageCropperPrimitive.Viewport class={slots.viewport()}>
-    {#if src}
-      <ImageCropperImage {alt} {src} />
-      <ImageCropperSelection />
-    {:else}
-      {@render children?.()}
-    {/if}
-  </ImageCropperPrimitive.Viewport>
+<ImageCropperPrimitive.Root {...root.props}>
+  {@render children?.()}
 </ImageCropperPrimitive.Root>

@@ -4,7 +4,7 @@
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
   <Card.Content>
-    <Timer
+    <Timer.Root
       autoStart
       class="items-center gap-2"
       countdown
@@ -15,6 +15,6 @@
         <Timer.Separator>{"//"}</Timer.Separator>
         <Timer.Item type="seconds" />
       </Timer.Area>
-    </Timer>
+    </Timer.Root>
   </Card.Content>
 </Card>

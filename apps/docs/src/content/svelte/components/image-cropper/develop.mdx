@@ -7,11 +7,10 @@ import { ImageCropper } from "@pisagor/svelte";
 ## Anatomy
 
 ```tsx
-<ImageCropper>
-  <ImageCropper.Image />
-  <ImageCropper.Selection />
-</ImageCropper>
+<ImageCropper alt="Avatar" src="/avatar.jpg" />
 ```
+
+The shorthand renders `Viewport` > `Image` + `Selection` with grid lines (`axis`) and eight resize handles. Compose `ImageCropper.Root` and its parts directly for custom selections (see Compound).
 
 ## Examples
 

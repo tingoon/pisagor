@@ -1,3 +1,4 @@
+import StepsShorthand from "./steps.svelte";
 import StepsCompletedContent from "./steps-completed-content.svelte";
 import StepsContent from "./steps-content.svelte";
 import StepsDescription from "./steps-description.svelte";
@@ -11,7 +12,18 @@ import StepsSeparator from "./steps-separator.svelte";
 import StepsTitle from "./steps-title.svelte";
 import StepsTrigger from "./steps-trigger.svelte";
 
-export const Steps = Object.assign(StepsRoot, {
+export type {
+  StepsCompletedContentProps,
+  StepsContentProps,
+  StepsIndicatorProps,
+  StepsListProps,
+  StepsNextTriggerProps,
+  StepsPrevTriggerProps,
+  StepsSeparatorProps,
+  StepsTriggerProps,
+} from "@ark-ui/svelte";
+
+export const Steps = Object.assign(StepsShorthand, {
   CompletedContent: StepsCompletedContent,
   Content: StepsContent,
   Description: StepsDescription,
