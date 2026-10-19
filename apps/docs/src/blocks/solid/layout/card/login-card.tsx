@@ -15,10 +15,11 @@ export interface LoginCardProps {
 export function LoginCard(props: LoginCardProps) {
   return (
     <Card class={cn(styles.root(), props.class)}>
-      <Card.Header
-        description="Enter your email and we'll send a one-time code to sign you in."
-        title="Sign in"
-      >
+      <Card.Header>
+        <Card.Title>Sign in</Card.Title>
+        <Card.Description>
+          Enter your email and we'll send a one-time code to sign you in.
+        </Card.Description>
         <Card.Action>
           <Button variant="link">Sign up</Button>
         </Card.Action>
