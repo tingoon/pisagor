@@ -4,113 +4,69 @@ import type {
   ImageCropperHandleProps,
   ImageCropperImageProps,
   ImageCropperRootProps as ImageCropperRootPrimitiveProps,
-  ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
+  ImageCropperSelectionProps,
+  ImageCropperViewportProps,
 } from "@ark-ui/solid";
-import type { ImageCropperRootContract } from "@pisagor/contracts";
+import type {
+  ImageCropperContract,
+  ImageCropperRootContract,
+} from "@pisagor/contracts";
 import { imageCropperRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: ImageCropperStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ImageCropper",
   recipe: imageCropperRecipe,
 });
 // #endregion
 
-export interface ImageCropperRootProps
-  extends
-    Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
-    ImageCropperRootContract {
-  src?: string;
+// #region Types
+export type ImageCropperRootProps = ImageCropperRootPrimitiveProps &
+  ImageCropperRootContract;
+
+const handlePositions = ["n", "e", "s", "w", "ne", "se", "sw", "nw"] as const;
+
+export interface ImageCropperProps
+  extends Omit<ImageCropperRootProps, "children">, ImageCropperContract {
+  /** Image URL. */
+  src: string;
+  /** Image alt text. */
   alt?: string;
-  cropShape?: "rectangle" | "circle";
+  /**
+   * Which grid lines to show inside the selection.
+   *
+   * @defaultValue "both"
+   */
+  axis?: "horizontal" | "vertical" | "both" | "none";
 }
+// #endregion
 
-export interface ImageCropperSelectionProps extends ImageCropperSelectionPrimitiveProps {
-  axis?: "horizontal" | "vertical" | "both";
-}
+// #region Parts
+const Root = withProvider<ImageCropperRootProps>(ImageCropperPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export function ImageCropperRoot(props: ImageCropperRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "alt",
-    "children",
-    "src",
-    "recipe",
-    "class",
-  ]);
-
-  const slots = createMemo(() => (local.recipe ?? imageCropperRecipe)());
-
-  return (
-    <ImageCropperStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <ImageCropperPrimitive.Root
-        {...rest}
-        class={slots().base({ class: local.class })}
-      >
-        <ImageCropperPrimitive.Viewport class={slots().viewport()}>
-          <Show fallback={local.children} when={local.src}>
-            <ImageCropperImage alt={local.alt} src={local.src} />
-            <ImageCropperSelection />
-          </Show>
-        </ImageCropperPrimitive.Viewport>
-      </ImageCropperPrimitive.Root>
-    </ImageCropperStylesContext>
-  );
-}
-
-export const ImageCropperImage: Component<ImageCropperImageProps> = withContext(
-  ImageCropperPrimitive.Image,
-  { name: "Image" },
+const Viewport = withContext<ImageCropperViewportProps>(
+  ImageCropperPrimitive.Viewport,
+  { name: "Viewport" },
 );
 
-export function ImageCropperSelection(
-  props: ImageCropperSelectionProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["axis", "children", "class"]);
-  const styles = useStyles();
-  const axis = () => local.axis ?? "both";
+const Image = withContext<ImageCropperImageProps>(ImageCropperPrimitive.Image, {
+  name: "Image",
+});
 
-  return (
-    <ImageCropperPrimitive.Selection
-      {...rest}
-      class={styles.slots.selection({ class: local.class })}
-    >
-      {local.children}
-      <Show when={axis() === "horizontal" || axis() === "both"}>
-        <ImageCropperGrid axis="horizontal" />
-      </Show>
-      <Show when={axis() === "vertical" || axis() === "both"}>
-        <ImageCropperGrid axis="vertical" />
-      </Show>
-      <ImageCropperHandle position="n" />
-      <ImageCropperHandle position="e" />
-      <ImageCropperHandle position="s" />
-      <ImageCropperHandle position="w" />
-      <ImageCropperHandle position="ne" />
-      <ImageCropperHandle position="se" />
-      <ImageCropperHandle position="sw" />
-      <ImageCropperHandle position="nw" />
-    </ImageCropperPrimitive.Selection>
-  );
-}
+const Selection = withContext<ImageCropperSelectionProps>(
+  ImageCropperPrimitive.Selection,
+  { name: "Selection" },
+);
 
-export function ImageCropperHandle(
-  props: ImageCropperHandleProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
+/** Resize handle with its visual grip. */
+function Handle(props: ImageCropperHandleProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useStyles();
 
   return (
@@ -118,32 +74,68 @@ export function ImageCropperHandle(
       {...rest}
       class={styles.slots.handle({ class: local.class })}
     >
-      <span aria-hidden class={styles.slots.handleGrip()} />
+      <Show
+        fallback={<span aria-hidden class={styles.slots.handleGrip()} />}
+        when={local.children}
+      >
+        {local.children}
+      </Show>
     </ImageCropperPrimitive.Handle>
   );
 }
 
-export function ImageCropperGrid(props: ImageCropperGridProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Grid = withContext<ImageCropperGridProps>(ImageCropperPrimitive.Grid, {
+  name: "Grid",
+});
+// #endregion
+
+// #region Shorthand
+export function ImageCropperShorthand(props: ImageCropperProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["alt", "axis", "classNames", "src"]);
+  const axis = () => local.axis ?? "both";
 
   return (
-    <ImageCropperPrimitive.Grid
-      {...rest}
-      class={styles.slots.grid({ class: local.class })}
-    />
+    <Root {...rest}>
+      <Viewport class={local.classNames?.viewport}>
+        <Image
+          alt={local.alt}
+          class={local.classNames?.image}
+          src={local.src}
+        />
+
+        <Selection class={local.classNames?.selection}>
+          <Show when={axis() === "horizontal" || axis() === "both"}>
+            <Grid axis="horizontal" class={local.classNames?.grid} />
+          </Show>
+          <Show when={axis() === "vertical" || axis() === "both"}>
+            <Grid axis="vertical" class={local.classNames?.grid} />
+          </Show>
+
+          <For each={handlePositions}>
+            {(position) => (
+              <Handle class={local.classNames?.handle} position={position} />
+            )}
+          </For>
+        </Selection>
+      </Viewport>
+    </Root>
   );
 }
+// #endregion
 
 export type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
+  ImageCropperSelectionProps,
+  ImageCropperViewportProps,
 } from "@ark-ui/solid";
 
-export const ImageCropper = Object.assign(ImageCropperRoot, {
-  Grid: ImageCropperGrid,
-  Handle: ImageCropperHandle,
-  Image: ImageCropperImage,
-  Selection: ImageCropperSelection,
+export const ImageCropper = Object.assign(ImageCropperShorthand, {
+  Grid,
+  Handle,
+  Image,
+  Root,
+  Selection,
+  Viewport,
 });

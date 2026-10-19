@@ -1,5 +1,5 @@
-import { paginationRecipe } from "@pisagor/recipes";
 import { Pagination } from "@pisagor/solid";
+import { paginationRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandPaginationRecipe = tv({

@@ -1,13 +1,6 @@
-import { QrCode } from "@pisagor/solid";
 import { FishIcon } from "@squidlab/phosphor-solid/icons";
+import { QrCode } from "@pisagor/solid";
 
 export function Overlay() {
-  return (
-    <QrCode>
-      <QrCode.Frame />
-      <QrCode.Overlay>
-        <FishIcon />
-      </QrCode.Overlay>
-    </QrCode>
-  );
+  return <QrCode overlay={<FishIcon />} value="https://example.com" />;
 }

@@ -1,8 +1,8 @@
-import { Button, Card, Timer } from "@pisagor/solid";
 import {
   ArrowCounterClockwiseIcon,
   PlayIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Timer } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
 export function Controlled() {
@@ -16,7 +16,7 @@ export function Controlled() {
       </output>
       <Card class="rounded-3xl [--space:--spacing(6)]">
         <Card.Content>
-          <Timer
+          <Timer.Root
             class="items-center gap-2"
             onComplete={() => setCompleted(true)}
             onTick={() => setTicks((t) => t + 1)}
@@ -59,7 +59,7 @@ export function Controlled() {
                 )}
               />
             </Timer.Control>
-          </Timer>
+          </Timer.Root>
         </Card.Content>
       </Card>
     </div>

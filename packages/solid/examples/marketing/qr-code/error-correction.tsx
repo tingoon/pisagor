@@ -11,9 +11,7 @@ export function ErrorCorrection() {
             class="[--qr-code-size:6rem]"
             encoding={{ ecc }}
             value="https://example.com/docs"
-          >
-            <QrCode.Frame />
-          </QrCode>
+          />
           <p class="text-muted-foreground text-sm">{ecc}</p>
         </div>
       ))}

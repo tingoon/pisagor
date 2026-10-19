@@ -1,5 +1,5 @@
-import { Button, Card, Input, QrCode } from "@pisagor/solid";
 import { DownloadIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Input, QrCode } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
 export function Download() {
@@ -28,7 +28,7 @@ export function Download() {
   const qualityLabel = QUALITY_BY_LEVEL[getQualityLevel(value().length)];
 
   return (
-    <QrCode encoding={{ ecc: qualityLabel }} value={value()}>
+    <QrCode.Root encoding={{ ecc: qualityLabel }} value={value()}>
       <Card class="[--space:--spacing(6)]">
         <Card.Content class="flex flex-col justify-center gap-2">
           <Input
@@ -40,10 +40,14 @@ export function Download() {
             <p class="text-muted-foreground text-sm font-medium">
               Live preview
             </p>
-            <QrCode.Frame />
+            <QrCode.Frame>
+              <QrCode.Pattern />
+            </QrCode.Frame>
           </div>
           <div class="flex items-center gap-2">
-            <QrCode.Download
+            <QrCode.DownloadTrigger
+              fileName="qr-code"
+              mimeType="image/png"
               asChild={(props) => (
                 <Button
                   {...props()}
@@ -56,10 +60,10 @@ export function Download() {
                   PNG
                 </Button>
               )}
-              fileName="qr-code"
-              mimeType="image/png"
             />
-            <QrCode.Download
+            <QrCode.DownloadTrigger
+              fileName="qr-code"
+              mimeType="image/svg+xml"
               asChild={(props) => (
                 <Button
                   {...props()}
@@ -71,12 +75,10 @@ export function Download() {
                   SVG
                 </Button>
               )}
-              fileName="qr-code"
-              mimeType="image/svg+xml"
             />
           </div>
         </Card.Content>
       </Card>
-    </QrCode>
+    </QrCode.Root>
   );
 }

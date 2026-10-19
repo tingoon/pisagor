@@ -1,5 +1,5 @@
-import { Button, Steps } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Steps } from "@pisagor/solid";
 
 export function Vertical() {
   const items = [
@@ -9,7 +9,7 @@ export function Vertical() {
   ];
 
   return (
-    <Steps class="h-64" count={items.length} orientation="vertical">
+    <Steps.Root class="h-64" count={items.length} orientation="vertical">
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index}>
@@ -55,6 +55,6 @@ export function Vertical() {
           />
         </div>
       </div>
-    </Steps>
+    </Steps.Root>
   );
 }
