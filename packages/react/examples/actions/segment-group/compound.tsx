@@ -5,13 +5,16 @@ export function Compound() {
 
   return (
     <SegmentGroup.Root className="rounded-lg" defaultValue="Profile">
+      <SegmentGroup.Indicator />
       {items.map((item) => (
         <SegmentGroup.Item
           className="px-2 py-1.5 text-sm"
           key={item}
           value={item}
         >
-          {item}
+          <SegmentGroup.ItemText>{item}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+          <SegmentGroup.ItemHiddenInput />
         </SegmentGroup.Item>
       ))}
     </SegmentGroup.Root>
