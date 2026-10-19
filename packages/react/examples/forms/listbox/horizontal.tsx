@@ -1,3 +1,4 @@
+import { CheckIcon } from "@phosphor-icons/react";
 import { createListCollection } from "@ark-ui/react";
 import { Field, Listbox } from "@pisagor/react";
 
@@ -29,7 +30,9 @@ export function Horizontal() {
                 <Listbox.ItemText>{item.title}</Listbox.ItemText>
                 <p className="text-muted-foreground text-xs">{item.artist}</p>
               </div>
-              <Listbox.ItemIndicator className="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs" />
+              <Listbox.ItemIndicator className="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs">
+                <CheckIcon />
+              </Listbox.ItemIndicator>
             </Listbox.Item>
           ))}
         </Listbox.Content>

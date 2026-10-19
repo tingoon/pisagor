@@ -1,5 +1,5 @@
 import { useFilter, useListCollection, Portal } from "@ark-ui/react";
-import { CaretUpDownIcon } from "@phosphor-icons/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import { Button, Input, Listbox, Popover } from "@pisagor/react";
 import { useState } from "react";
 
@@ -51,7 +51,9 @@ export function WithPopover() {
                 {collection.items.map((item) => (
                   <Listbox.Item item={item} key={item.value}>
                     <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
+                    <Listbox.ItemIndicator>
+                      <CheckIcon />
+                    </Listbox.ItemIndicator>
                   </Listbox.Item>
                 ))}
 

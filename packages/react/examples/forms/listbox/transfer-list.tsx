@@ -1,5 +1,9 @@
 import { createListCollection } from "@ark-ui/react";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  CheckIcon,
+} from "@phosphor-icons/react";
 import { Button, Item, Listbox } from "@pisagor/react";
 import { useCallback, useState } from "react";
 
@@ -50,7 +54,9 @@ export function TransferList() {
                 {availableCollection.items.map((item) => (
                   <Listbox.Item item={item} key={item.value}>
                     <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
+                    <Listbox.ItemIndicator>
+                      <CheckIcon />
+                    </Listbox.ItemIndicator>
                   </Listbox.Item>
                 ))}
               </Listbox.ItemGroup>
@@ -95,7 +101,9 @@ export function TransferList() {
                 {selectedCollection.items.map((item) => (
                   <Listbox.Item item={item} key={item.value}>
                     <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
+                    <Listbox.ItemIndicator>
+                      <CheckIcon />
+                    </Listbox.ItemIndicator>
                   </Listbox.Item>
                 ))}
               </Listbox.ItemGroup>

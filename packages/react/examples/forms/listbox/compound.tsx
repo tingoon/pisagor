@@ -1,3 +1,4 @@
+import { CheckIcon } from "@phosphor-icons/react";
 import { createListCollection } from "@ark-ui/react";
 import { Listbox } from "@pisagor/react";
 
@@ -16,7 +17,9 @@ export function Compound() {
         {collection.items.map((item) => (
           <Listbox.Item item={item} key={item.value}>
             <Listbox.ItemText>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
+            <Listbox.ItemIndicator>
+              <CheckIcon />
+            </Listbox.ItemIndicator>
           </Listbox.Item>
         ))}
       </Listbox.Content>

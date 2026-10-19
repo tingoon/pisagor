@@ -1,3 +1,4 @@
+import { CheckIcon } from "@phosphor-icons/react";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Input, Item, Listbox } from "@pisagor/react";
 import { useState } from "react";
@@ -35,7 +36,9 @@ export function WithFilter() {
             {collection.items.map((item) => (
               <Listbox.Item item={item} key={item.value}>
                 <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             ))}
 

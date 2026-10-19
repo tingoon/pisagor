@@ -1,3 +1,4 @@
+import { CheckIcon } from "@phosphor-icons/react";
 import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
 
@@ -35,7 +36,9 @@ export function WithDescription() {
                     {item.description}
                   </span>
                 </div>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             ))}
           </Listbox.Content>
