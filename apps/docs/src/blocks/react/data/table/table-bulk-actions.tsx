@@ -137,47 +137,40 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu>
-            <AlertDialog.Root>
-              <AlertDialog.Trigger asChild>
+            <AlertDialog
+              actions={
+                <>
+                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                  <AlertDialog.Action variant="destructive">
+                    Delete
+                  </AlertDialog.Action>
+                </>
+              }
+              description="This action cannot be undone."
+              title="Delete selected orders?"
+              trigger={
                 <Button size="sm" variant="destructive">
                   <TrashIcon />
                   Delete
                 </Button>
-              </AlertDialog.Trigger>
-              <AlertDialog.Content>
-                <AlertDialog.Header>
-                  <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
-                  <AlertDialog.Description>
-                    This action cannot be undone.
-                  </AlertDialog.Description>
-                </AlertDialog.Header>
-                <AlertDialog.Body>
-                  <ul>
-                    {selectedIds.map((id) => {
-                      const order = orders.find((o) => o.id === id);
+              }
+            >
+              <ul>
+                {selectedIds.map((id) => {
+                  const order = orders.find((o) => o.id === id);
 
-                      if (!order) {
-                        return null;
-                      }
+                  if (!order) {
+                    return null;
+                  }
 
-                      return (
-                        <li className={styles.deleteItem()} key={id}>
-                          {order.id} - {order.name}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </AlertDialog.Body>
-                <AlertDialog.Footer>
-                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.CloseTrigger asChild>
-                    <AlertDialog.Action variant="destructive">
-                      Delete
-                    </AlertDialog.Action>
-                  </AlertDialog.CloseTrigger>
-                </AlertDialog.Footer>
-              </AlertDialog.Content>
-            </AlertDialog.Root>
+                  return (
+                    <li className={styles.deleteItem()} key={id}>
+                      {order.id} - {order.name}
+                    </li>
+                  );
+                })}
+              </ul>
+            </AlertDialog>
           </div>
         </ActionBar.Content>
       </ActionBar>
