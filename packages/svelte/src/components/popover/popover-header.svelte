@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PopoverHeaderContract } from "@pisagor/props";
+  import type { PopoverHeaderContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./popover.context";
   import PopoverDescription from "./popover-description.svelte";

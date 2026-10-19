@@ -6,7 +6,7 @@
   import type {
     ListboxItemRootContract,
     ListboxItemContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { listboxItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ListboxItemStylesContext } from "./listbox.context";

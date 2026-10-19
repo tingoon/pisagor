@@ -3,7 +3,7 @@
     Timer as TimerPrimitive,
     type TimerRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { TimerRootContract } from "@pisagor/props";
+  import type { TimerRootContract } from "@pisagor/contracts";
   import { withTimerProvider } from "./timer.context";
   import TimerArea from "./timer-area.svelte";
   import TimerControl from "./timer-control.svelte";

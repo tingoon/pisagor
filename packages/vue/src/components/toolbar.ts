@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { ToolbarContract, ToolbarRootContract } from "@pisagor/props";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
 import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

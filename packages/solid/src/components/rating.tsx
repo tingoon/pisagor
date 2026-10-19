@@ -4,7 +4,7 @@ import type {
   RatingGroupItemProps,
   RatingGroupRootProps,
 } from "@ark-ui/solid";
-import type { RatingContract, RatingRootContract } from "@pisagor/props";
+import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";

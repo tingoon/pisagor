@@ -1,5 +1,8 @@
 <script lang="ts">
-  import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
+  import type {
+    MarqueeRootContract,
+    MarqueeContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps, Snippet } from "svelte";
   import MarqueeContent from "./marquee-content.svelte";
   import MarqueeItem from "./marquee-item.svelte";

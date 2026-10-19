@@ -3,7 +3,7 @@
     Slider as SliderPrimitive,
     type SliderRootProps,
   } from "@ark-ui/svelte";
-  import type { SliderContract, SliderRootContract } from "@pisagor/props";
+  import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
   import { sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

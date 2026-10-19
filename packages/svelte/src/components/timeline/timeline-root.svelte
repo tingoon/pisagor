@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TimelineRootContract } from "@pisagor/props";
+  import type { TimelineRootContract } from "@pisagor/contracts";
   import { timelineRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

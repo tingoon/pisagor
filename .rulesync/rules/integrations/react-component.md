@@ -86,15 +86,15 @@ Only for **foldered** multi-file components that need shared non-style state:
 - **Stories** use the public export map (`@pisagor/react`, heavy subpaths).
 - For cyclic pairs, import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not call `tv()` or add `<name>.recipe.ts` shims.
-- Shared visual props from `@pisagor/props` — see [Shared props](#shared-props-pisagorprops).
+- Shared visual props from `@pisagor/contracts` — see [Shared props](#shared-props-pisagorcontracts).
 - Relative imports by depth: `../utils` / `../../utils`, `../internal/…` / `../../internal/…`, `../hooks`, siblings.
 - Icons from `@phosphor-icons/react`.
 
-### Shared props (`@pisagor/props`)
+### Shared props (`@pisagor/contracts`)
 
-Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
+Framework-agnostic visual props live in [`@pisagor/contracts`](../../../packages/contracts). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
 
-- Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
+- Import: `import type { FooProps as BaseFooProps } from "@pisagor/contracts"`.
 - Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, slots, refs, `className`, `classNames`, sub-element bags).
 - Template: [`button.tsx`](../../../packages/react/src/components/button.tsx).
@@ -267,7 +267,7 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 - Use `export interface FooProps` when props are part of the public API.
 - Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
-- Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Prefer extending `@pisagor/contracts` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
 
 | `Omit` usage                                           | Valid                                                                                           | Invalid                                                                                                          |

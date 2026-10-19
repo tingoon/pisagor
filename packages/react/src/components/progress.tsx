@@ -4,7 +4,10 @@ import type {
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/react";
-import type { ProgressContract, ProgressRootContract } from "@pisagor/props";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
 import { progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

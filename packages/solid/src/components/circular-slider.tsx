@@ -11,7 +11,7 @@ import type {
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
 } from "@ark-ui/solid";
-import type { CircularSliderRootContract } from "@pisagor/props";
+import type { CircularSliderRootContract } from "@pisagor/contracts";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";

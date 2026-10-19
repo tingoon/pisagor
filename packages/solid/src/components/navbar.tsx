@@ -1,4 +1,4 @@
-import type { NavbarRootContract, NavbarContract } from "@pisagor/props";
+import type { NavbarRootContract, NavbarContract } from "@pisagor/contracts";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

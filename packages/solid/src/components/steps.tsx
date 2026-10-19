@@ -11,7 +11,10 @@ import type {
   StepsSeparatorProps,
   StepsTriggerProps,
 } from "@ark-ui/solid";
-import type { StepsItemRootContract, StepsRootContract } from "@pisagor/props";
+import type {
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

@@ -1,6 +1,9 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
-import type { ClipboardContract, ClipboardRootContract } from "@pisagor/props";
+import type {
+  ClipboardContract,
+  ClipboardRootContract,
+} from "@pisagor/contracts";
 import {
   type ClipboardVariantProps,
   clipboardRecipe,

@@ -3,7 +3,7 @@ import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import type {
   PhoneInputContract,
   PhoneInputRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";

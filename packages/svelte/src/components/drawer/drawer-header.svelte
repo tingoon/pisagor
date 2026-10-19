@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DrawerHeaderContract } from "@pisagor/props";
+  import type { DrawerHeaderContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./drawer.context";

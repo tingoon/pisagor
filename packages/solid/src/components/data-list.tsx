@@ -4,7 +4,7 @@ import type {
   DataListItemRootContract,
   DataListPresetItem as BaseDataListPresetItem,
   DataListRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

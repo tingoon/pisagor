@@ -41,7 +41,7 @@ export default defineConfig({
       entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/mcp": {},
-    "packages/props": {
+    "packages/contracts": {
       entry: ["skills/**/*"],
     },
     "packages/react": {

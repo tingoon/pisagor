@@ -8,7 +8,7 @@
     ButtonRootContract,
     ClipboardContract,
     ClipboardRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { clipboardRecipe, formControlShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, ClipboardIcon } from "phosphor-svelte";

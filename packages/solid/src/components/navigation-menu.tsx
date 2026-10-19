@@ -2,7 +2,7 @@ import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   NavigationMenuRootContract,
   NavigationMenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import {
   focusNavigationMenuContentLink,

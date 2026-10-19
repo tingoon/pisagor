@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { NavigationMenuRootContract } from "@pisagor/props";
+  import type { NavigationMenuRootContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";

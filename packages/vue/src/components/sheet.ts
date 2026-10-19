@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue";
-import type { SheetRootContract, SheetContract } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
 import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
 import {
   computed,

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CardHeaderContract } from "@pisagor/props";
+  import type { CardHeaderContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./card.context";
   import CardDescription from "./card-description.svelte";

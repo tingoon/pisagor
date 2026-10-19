@@ -3,7 +3,7 @@ import { PhCaretRight } from "@phosphor-icons/vue";
 import type {
   JsonTreeViewContract,
   JsonTreeViewRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

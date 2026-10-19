@@ -1,6 +1,6 @@
 import { ark, useHotkey, type HTMLArkProps } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import type { SidebarRootContract } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,

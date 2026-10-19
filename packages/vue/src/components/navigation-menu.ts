@@ -3,7 +3,7 @@ import { PhCaretDown } from "@phosphor-icons/vue";
 import type {
   NavigationMenuRootContract,
   NavigationMenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type NavigationMenuRecipeSlot,
   navigationMenuRecipe,

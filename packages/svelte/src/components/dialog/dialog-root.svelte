@@ -3,7 +3,7 @@
     Dialog as DialogPrimitive,
     type DialogRootProps,
   } from "@ark-ui/svelte";
-  import type { DialogRootContract } from "@pisagor/props";
+  import type { DialogRootContract } from "@pisagor/contracts";
   import { dialogRecipe } from "@pisagor/recipes";
   import { setDialogContext } from "./dialog.context";
 

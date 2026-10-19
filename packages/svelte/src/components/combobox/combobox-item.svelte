@@ -3,7 +3,7 @@
     Combobox as ComboboxPrimitive,
     type ComboboxItemProps as ArkItemProps,
   } from "@ark-ui/svelte";
-  import type { ComboboxRootContract } from "@pisagor/props";
+  import type { ComboboxRootContract } from "@pisagor/contracts";
   import { comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon } from "phosphor-svelte";

@@ -12,7 +12,7 @@ import type {
   CommandPresetItem,
   CommandRootContract,
   CommandContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

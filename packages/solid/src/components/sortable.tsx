@@ -1,7 +1,7 @@
 import type {
   SortableItemRootContract,
   SortableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
 import type { Accessor, ComponentProps, JSX } from "solid-js";

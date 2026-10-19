@@ -32,7 +32,7 @@ import {
 import type {
   CalendarRootContract,
   CalendarTableCellRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   calendarRecipe,
   calendarTableCellRecipe,

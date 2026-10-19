@@ -3,7 +3,7 @@
     PinInput as PinInputPrimitive,
     type PinInputRootProps,
   } from "@ark-ui/svelte";
-  import type { InputOtpRootContract } from "@pisagor/props";
+  import type { InputOtpRootContract } from "@pisagor/contracts";
   import { inputOtpRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { setInputOTPContext } from "./input-otp.context";

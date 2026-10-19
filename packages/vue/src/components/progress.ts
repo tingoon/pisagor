@@ -1,5 +1,8 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/vue";
-import type { ProgressContract, ProgressRootContract } from "@pisagor/props";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
 import { fieldRecipe, progressRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

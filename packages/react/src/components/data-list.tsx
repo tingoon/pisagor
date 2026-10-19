@@ -4,7 +4,7 @@ import type {
   DataListItemRootContract,
   DataListPresetItem as BaseDataListPresetItem,
   DataListRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

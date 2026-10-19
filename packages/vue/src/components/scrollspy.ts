@@ -1,4 +1,4 @@
-import type { ScrollspyRootContract } from "@pisagor/props";
+import type { ScrollspyRootContract } from "@pisagor/contracts";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

@@ -1,4 +1,4 @@
-import type { BadgeRootContract } from "@pisagor/props";
+import type { BadgeRootContract } from "@pisagor/contracts";
 import { badgeRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

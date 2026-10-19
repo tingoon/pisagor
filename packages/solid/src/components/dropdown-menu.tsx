@@ -20,7 +20,7 @@ import type {
   DropdownMenuItemContract,
   DropdownMenuRootContract,
   DropdownMenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";

@@ -1,5 +1,5 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue";
-import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

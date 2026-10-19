@@ -7,7 +7,10 @@ import type {
   StepsRootProps as StepsRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
-import type { StepsItemRootContract, StepsRootContract } from "@pisagor/props";
+import type {
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";

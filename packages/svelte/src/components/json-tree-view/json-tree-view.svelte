@@ -6,7 +6,7 @@
   import type {
     JsonTreeViewContract,
     JsonTreeViewRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
 
   import { CaretRightIcon } from "phosphor-svelte";
 

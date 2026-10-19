@@ -6,7 +6,7 @@
     SwitchRootProps,
     SwitchThumbProps,
   } from "@ark-ui/svelte";
-  import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+  import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 
   import SwitchControl from "./switch-control.svelte";
   import SwitchRoot from "./switch-root.svelte";

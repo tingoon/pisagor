@@ -1,4 +1,4 @@
-import type { StatusRootContract } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

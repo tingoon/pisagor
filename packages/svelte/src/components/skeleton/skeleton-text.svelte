@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SkeletonRootContract } from "@pisagor/props";
+  import type { SkeletonRootContract } from "@pisagor/contracts";
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

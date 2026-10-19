@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FileRootContract } from "@pisagor/props";
+  import type { FileRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { FileIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";

@@ -4,7 +4,7 @@
     AvatarImageProps,
     AvatarRootProps,
   } from "@ark-ui/svelte";
-  import type { AvatarContract, AvatarRootContract } from "@pisagor/props";
+  import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
   import { getInitials } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import AvatarFallback from "./avatar-fallback.svelte";

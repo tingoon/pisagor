@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { SkipNavRootContract } from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

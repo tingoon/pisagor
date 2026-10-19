@@ -3,7 +3,7 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { TagsInputRootContract } from "@pisagor/props";
+  import type { TagsInputRootContract } from "@pisagor/contracts";
   import { tagsInputRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./tags-input.context";

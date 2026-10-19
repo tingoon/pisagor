@@ -7,7 +7,7 @@
     ToastOptions,
     ToastTitleProps,
   } from "@ark-ui/svelte";
-  import type { ToastItemContract } from "@pisagor/props";
+  import type { ToastItemContract } from "@pisagor/contracts";
   import {
     CheckCircleIcon,
     InfoIcon,

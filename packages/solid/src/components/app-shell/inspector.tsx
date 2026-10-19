@@ -1,4 +1,4 @@
-import type { AppShellTriggerContract } from "@pisagor/props";
+import type { AppShellTriggerContract } from "@pisagor/contracts";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, Show, splitProps } from "solid-js";

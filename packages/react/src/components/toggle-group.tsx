@@ -7,7 +7,7 @@ import type {
   ToggleGroupPresetItem as BaseToggleGroupPresetItem,
   ToggleGroupRootContract,
   ToggleGroupContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";

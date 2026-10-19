@@ -1,5 +1,5 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue";
-import type { ToggleRootContract } from "@pisagor/props";
+import type { ToggleRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,

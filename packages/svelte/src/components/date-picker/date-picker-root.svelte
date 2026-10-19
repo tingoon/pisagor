@@ -3,7 +3,7 @@
     DatePicker as DatePickerPrimitive,
     type DatePickerRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { DatePickerRootContract } from "@pisagor/props";
+  import type { DatePickerRootContract } from "@pisagor/contracts";
   import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
   import { setCalendarSlotsContext } from "../calendar/calendar.context";
   import { setDatePickerSlotsContext } from "./date-picker.context";

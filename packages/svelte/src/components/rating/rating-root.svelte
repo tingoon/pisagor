@@ -3,7 +3,7 @@
     RatingGroup as RatingGroupPrimitive,
     type RatingGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { RatingRootContract } from "@pisagor/props";
+  import type { RatingRootContract } from "@pisagor/contracts";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

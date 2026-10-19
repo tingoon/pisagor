@@ -10,7 +10,7 @@ import type {
   CommandDialogContract,
   CommandPresetItem,
   CommandRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { commandRecipe } from "@pisagor/recipes";
 import { type ComponentProps, Fragment, type ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

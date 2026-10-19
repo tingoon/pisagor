@@ -10,7 +10,7 @@ import type {
 import type {
   ResizableEdgeHandleRootContract,
   ResizableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

@@ -3,7 +3,7 @@
     Dialog as AlertDialogPrimitive,
     type DialogRootProps,
   } from "@ark-ui/svelte";
-  import type { AlertDialogRootContract } from "@pisagor/props";
+  import type { AlertDialogRootContract } from "@pisagor/contracts";
   import { alertDialogRecipe } from "@pisagor/recipes";
   import { setAlertDialogContext } from "./alert-dialog.context";
 

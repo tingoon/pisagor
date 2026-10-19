@@ -1,6 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import type { PasswordInputRootContract } from "@pisagor/props";
+import type { PasswordInputRootContract } from "@pisagor/contracts";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import {

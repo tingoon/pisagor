@@ -1,4 +1,4 @@
-import type { ScrollspyRootContract } from "@pisagor/props";
+import type { ScrollspyRootContract } from "@pisagor/contracts";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { useCallback, useEffect, useRef } from "react";
 import type { ComponentPropsWithRef, RefObject } from "react";

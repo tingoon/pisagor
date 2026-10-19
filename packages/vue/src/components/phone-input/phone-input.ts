@@ -3,7 +3,7 @@ import { PhCaretUpDown, PhGlobe } from "@phosphor-icons/vue";
 import type {
   PhoneInputContract,
   PhoneInputRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

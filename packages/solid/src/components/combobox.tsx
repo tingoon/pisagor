@@ -23,7 +23,7 @@ import type {
   ComboboxPresetItem as BaseComboboxPresetItem,
   ComboboxRootContract,
   ComboboxContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,

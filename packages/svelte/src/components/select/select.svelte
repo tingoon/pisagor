@@ -4,7 +4,7 @@
     SelectPresetItem,
     SelectRootContract,
     SelectContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import SelectContent from "./select-content.svelte";
   import SelectItem from "./select-item.svelte";

@@ -21,7 +21,7 @@ import type {
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import type { ColorPickerRootContract } from "@pisagor/props";
+import type { ColorPickerRootContract } from "@pisagor/contracts";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useMemo } from "react";

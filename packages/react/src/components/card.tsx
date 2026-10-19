@@ -3,7 +3,7 @@ import type {
   CardContract,
   CardHeaderContract,
   CardRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

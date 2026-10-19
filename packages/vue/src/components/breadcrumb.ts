@@ -6,7 +6,7 @@ import type {
   BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
   BreadcrumbRootContract,
   BreadcrumbContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import {
   computed,

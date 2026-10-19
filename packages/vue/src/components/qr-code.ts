@@ -1,5 +1,5 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue";
-import type { QrCodeRootContract } from "@pisagor/props";
+import type { QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

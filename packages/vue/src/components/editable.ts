@@ -2,7 +2,7 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue";
-import type { EditableRootContract } from "@pisagor/props";
+import type { EditableRootContract } from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";

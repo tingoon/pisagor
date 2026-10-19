@@ -6,7 +6,7 @@ import {
   useTour,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import type { TourRootContract } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

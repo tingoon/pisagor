@@ -3,7 +3,7 @@
   import type {
     PhoneInputContract,
     PhoneInputRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import {
     type PhoneInputVariantProps,
     phoneInputRecipe,

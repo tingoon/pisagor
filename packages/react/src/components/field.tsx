@@ -10,7 +10,7 @@ import type {
   FieldsetLegendProps,
   FieldsetRootProps,
 } from "@ark-ui/react";
-import type { FieldRootContract } from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,

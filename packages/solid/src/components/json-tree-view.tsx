@@ -6,7 +6,7 @@ import {
 import type {
   JsonTreeViewContract,
   JsonTreeViewRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";

@@ -4,7 +4,7 @@
     type DrawerContentProps,
     Portal,
   } from "@ark-ui/svelte";
-  import type { DrawerRootContract } from "@pisagor/props";
+  import type { DrawerRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./drawer.context";
   import DrawerBackdrop from "./drawer-backdrop.svelte";

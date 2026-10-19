@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { LinkBoxRootContract } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/contracts";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";

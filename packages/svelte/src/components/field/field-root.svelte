@@ -3,7 +3,7 @@
     Field as FieldPrimitive,
     type FieldRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { FieldRootContract } from "@pisagor/props";
+  import type { FieldRootContract } from "@pisagor/contracts";
   import { withProvider } from "./field.context";
 
   type Props = ArkRootProps & FieldRootContract;

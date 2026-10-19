@@ -1,4 +1,4 @@
-import type { VisuallyHiddenRootContract } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/contracts";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 

@@ -4,7 +4,7 @@ import {
   parseDate as arkParseDate,
 } from "@ark-ui/vue";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import type { CalendarRootContract } from "@pisagor/props";
+import type { CalendarRootContract } from "@pisagor/contracts";
 import {
   calendarRecipe,
   calendarTableCellRecipe,

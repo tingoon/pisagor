@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { StatTrendRootContract } from "@pisagor/props";
+  import type { StatTrendRootContract } from "@pisagor/contracts";
   import { statTrendRecipe } from "@pisagor/recipes";
   import type { MessageKey } from "@pisagor/utils";
   import { cn } from "@pisagor/utils";

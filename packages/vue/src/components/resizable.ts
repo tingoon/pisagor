@@ -3,7 +3,7 @@ import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   ResizableEdgeHandleRootContract,
   ResizableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { SidebarRootContract } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,

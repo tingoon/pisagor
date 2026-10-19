@@ -3,7 +3,7 @@
     Checkbox as CheckboxPrimitive,
     type CheckboxGroupProps as ArkCheckboxGroupProps,
   } from "@ark-ui/svelte";
-  import type { CheckboxGroupRootContract } from "@pisagor/props";
+  import type { CheckboxGroupRootContract } from "@pisagor/contracts";
   import { checkboxGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

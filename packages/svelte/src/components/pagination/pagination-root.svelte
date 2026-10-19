@@ -3,7 +3,7 @@
     Pagination as PaginationPrimitive,
     type PaginationRootProps,
   } from "@ark-ui/svelte";
-  import type { PaginationRootContract } from "@pisagor/props";
+  import type { PaginationRootContract } from "@pisagor/contracts";
   import { withProvider } from "./pagination.context";
   import PaginationItems from "./pagination-items.svelte";
   import PaginationNextTrigger from "./pagination-next-trigger.svelte";

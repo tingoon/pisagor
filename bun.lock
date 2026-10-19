@@ -161,7 +161,7 @@
       "name": "@pisagor/astro",
       "version": "0.3.0",
       "dependencies": {
-        "@pisagor/props": "workspace:*",
+        "@pisagor/contracts": "workspace:*",
         "@pisagor/recipes": "workspace:*",
         "@pisagor/tokens": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -175,6 +175,13 @@
       "peerDependencies": {
         "astro": "^7",
         "tailwindcss": "^4",
+      },
+    },
+    "packages/contracts": {
+      "name": "@pisagor/contracts",
+      "version": "0.2.0",
+      "dependencies": {
+        "@pisagor/recipes": "workspace:*",
       },
     },
     "packages/mcp": {
@@ -195,13 +202,6 @@
         "tailwind-variants": "^3.3.1",
       },
     },
-    "packages/props": {
-      "name": "@pisagor/props",
-      "version": "0.2.0",
-      "dependencies": {
-        "@pisagor/recipes": "workspace:*",
-      },
-    },
     "packages/react": {
       "name": "@pisagor/react",
       "version": "0.3.0",
@@ -209,7 +209,7 @@
         "@ark-ui/react": "^5.39.2",
         "@mantine/hooks": "^9.6.2",
         "@phosphor-icons/react": "^2.1.10",
-        "@pisagor/props": "workspace:*",
+        "@pisagor/contracts": "workspace:*",
         "@pisagor/recipes": "workspace:*",
         "@pisagor/tokens": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -269,7 +269,7 @@
       "version": "0.2.1",
       "dependencies": {
         "@ark-ui/solid": "^5.39.2",
-        "@pisagor/props": "workspace:*",
+        "@pisagor/contracts": "workspace:*",
         "@pisagor/recipes": "workspace:*",
         "@pisagor/tokens": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -317,7 +317,7 @@
       "version": "0.2.1",
       "dependencies": {
         "@ark-ui/svelte": "^5.24.2",
-        "@pisagor/props": "workspace:*",
+        "@pisagor/contracts": "workspace:*",
         "@pisagor/recipes": "workspace:*",
         "@pisagor/tokens": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -383,7 +383,7 @@
       "dependencies": {
         "@ark-ui/vue": "^5.39.2",
         "@phosphor-icons/vue": "^2.2.1",
-        "@pisagor/props": "workspace:*",
+        "@pisagor/contracts": "workspace:*",
         "@pisagor/recipes": "workspace:*",
         "@pisagor/tokens": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -994,11 +994,11 @@
 
     "@pisagor/astro": ["@pisagor/astro@workspace:packages/astro"],
 
+    "@pisagor/contracts": ["@pisagor/contracts@workspace:packages/contracts"],
+
     "@pisagor/mcp": ["@pisagor/mcp@workspace:packages/mcp"],
 
     "@pisagor/presets": ["@pisagor/presets@workspace:packages/presets"],
-
-    "@pisagor/props": ["@pisagor/props@workspace:packages/props"],
 
     "@pisagor/react": ["@pisagor/react@workspace:packages/react"],
 

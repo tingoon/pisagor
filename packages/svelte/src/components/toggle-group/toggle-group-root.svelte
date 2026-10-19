@@ -3,7 +3,7 @@
     ToggleGroup as ToggleGroupPrimitive,
     type ToggleGroupRootProps as ArkToggleGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { ToggleGroupRootContract } from "@pisagor/props";
+  import type { ToggleGroupRootContract } from "@pisagor/contracts";
   import {
     type ButtonVariantProps,
     type ToggleVariantProps,

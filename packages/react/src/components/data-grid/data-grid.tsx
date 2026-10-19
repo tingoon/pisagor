@@ -1,7 +1,7 @@
 import type {
   DataGridBodyContract,
   DataGridRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";

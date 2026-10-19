@@ -1,5 +1,5 @@
 import { PhFile } from "@phosphor-icons/vue";
-import type { FileContract, FileRootContract } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

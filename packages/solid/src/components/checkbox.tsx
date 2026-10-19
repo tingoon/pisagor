@@ -9,7 +9,7 @@ import type {
 import type {
   CheckboxGroupRootContract,
   CheckboxRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   checkboxGroupRecipe,
   checkboxRecipe,

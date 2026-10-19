@@ -19,7 +19,7 @@ import type {
   SelectPresetItem as BaseSelectPresetItem,
   SelectRootContract,
   SelectContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,

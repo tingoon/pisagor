@@ -10,7 +10,7 @@
   import type {
     ToastItemContract,
     ToastItemRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import ToastItemContent from "./toast-item-content.svelte";
   import ToastItemRoot from "./toast-item-root.svelte";

@@ -8,7 +8,7 @@ import type {
 import type {
   ScrollAreaContract,
   ScrollAreaRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";

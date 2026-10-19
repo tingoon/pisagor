@@ -3,7 +3,7 @@
     ScrollArea as ScrollAreaPrimitive,
     type ScrollAreaRootProps,
   } from "@ark-ui/svelte";
-  import type { ScrollAreaRootContract } from "@pisagor/props";
+  import type { ScrollAreaRootContract } from "@pisagor/contracts";
   import { withProvider } from "./scroll-area.context";
 
   type Props = ScrollAreaRootProps & ScrollAreaRootContract;

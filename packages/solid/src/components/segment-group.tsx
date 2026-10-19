@@ -10,7 +10,7 @@ import type {
   SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
   SegmentGroupRootContract,
   SegmentGroupContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

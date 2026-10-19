@@ -1,4 +1,4 @@
-import type { ProseRootContract } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

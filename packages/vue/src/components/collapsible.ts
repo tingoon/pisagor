@@ -1,6 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { CollapsibleRootContract } from "@pisagor/props";
+import type { CollapsibleRootContract } from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

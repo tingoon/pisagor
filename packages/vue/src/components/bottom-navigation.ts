@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type {
   BottomNavigationItemRootContract,
   BottomNavigationRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,

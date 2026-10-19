@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ResizableEdgeHandleRootContract } from "@pisagor/props";
+  import type { ResizableEdgeHandleRootContract } from "@pisagor/contracts";
   import { resizableEdgeHandleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { DotsSixVerticalIcon } from "phosphor-svelte";

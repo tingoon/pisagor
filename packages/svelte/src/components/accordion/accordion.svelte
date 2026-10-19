@@ -4,7 +4,7 @@
     AccordionPresetItem as BaseAccordionPresetItem,
     AccordionRootContract,
     AccordionContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import AccordionItem from "./accordion-item.svelte";
   import AccordionItemContent from "./accordion-item-content.svelte";
   import AccordionItemTrigger from "./accordion-item-trigger.svelte";

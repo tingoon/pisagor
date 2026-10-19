@@ -1,7 +1,7 @@
 import type {
   DataTableBodyContract,
   DataTableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";

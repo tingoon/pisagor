@@ -4,7 +4,7 @@
     ComboboxPresetItem,
     ComboboxRootContract,
     ComboboxContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import ComboboxContent from "./combobox-content.svelte";
   import ComboboxInput from "./combobox-input.svelte";

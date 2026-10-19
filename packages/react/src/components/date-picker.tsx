@@ -12,7 +12,7 @@ import type {
   DatePickerValueTextProps,
 } from "@ark-ui/react";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import type { DatePickerRootContract } from "@pisagor/props";
+import type { DatePickerRootContract } from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { type ComponentProps, createContext, type ReactNode, use } from "react";
 import { useClearableInput } from "../hooks";

@@ -1,4 +1,4 @@
-import type { ButtonGroupRootContract } from "@pisagor/props";
+import type { ButtonGroupRootContract } from "@pisagor/contracts";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

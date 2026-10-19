@@ -15,7 +15,7 @@ import type {
   ComboboxPresetItem as BaseComboboxPresetItem,
   ComboboxRootContract,
   ComboboxContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { ButtonRootContract } from "@pisagor/props";
+  import type { ButtonRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAnchorAttributes } from "svelte/elements";

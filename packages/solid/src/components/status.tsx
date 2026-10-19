@@ -1,4 +1,4 @@
-import type { StatusRootContract } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

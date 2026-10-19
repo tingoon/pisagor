@@ -5,7 +5,7 @@ import type {
   SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/solid";
-import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";

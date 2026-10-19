@@ -1,4 +1,4 @@
-import type { SurfaceRootContract } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/contracts";
 import { surfaceRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";

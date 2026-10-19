@@ -7,7 +7,7 @@ import type {
   TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
 } from "@ark-ui/react";
-import type { TooltipContract, TooltipRootContract } from "@pisagor/props";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
 import { tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactElement, ReactNode } from "react";

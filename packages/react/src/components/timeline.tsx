@@ -4,7 +4,7 @@ import type {
   TimelineItemRootContract,
   TimelinePresetItem as BaseTimelinePresetItem,
   TimelineRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

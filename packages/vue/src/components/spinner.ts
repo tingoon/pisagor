@@ -1,5 +1,5 @@
 import { PhCircleNotch } from "@phosphor-icons/vue";
-import type { SpinnerRootContract } from "@pisagor/props";
+import type { SpinnerRootContract } from "@pisagor/contracts";
 import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

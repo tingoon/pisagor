@@ -6,7 +6,7 @@
     TreeView as TreeViewPrimitive,
     type TreeViewRootProps,
   } from "@ark-ui/svelte";
-  import type { TreeViewRootContract } from "@pisagor/props";
+  import type { TreeViewRootContract } from "@pisagor/contracts";
   import { treeViewRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Component } from "svelte";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Steps as StepsPrimitive, type StepsItemProps } from "@ark-ui/svelte";
-  import type { StepsItemRootContract } from "@pisagor/props";
+  import type { StepsItemRootContract } from "@pisagor/contracts";
   import { withStepsItemProvider } from "./steps.context";
 
   type Props = StepsItemProps & StepsItemRootContract;

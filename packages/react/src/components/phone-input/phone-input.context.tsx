@@ -1,4 +1,4 @@
-import type { PhoneInputContract } from "@pisagor/props";
+import type { PhoneInputContract } from "@pisagor/contracts";
 import type {
   PhoneInputRecipe,
   PhoneInputVariantProps,

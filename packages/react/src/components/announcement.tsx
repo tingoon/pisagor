@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import type {
   AnnouncementContract,
   AnnouncementRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

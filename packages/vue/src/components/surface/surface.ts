@@ -1,4 +1,4 @@
-import type { SurfaceRootContract } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/contracts";
 import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";

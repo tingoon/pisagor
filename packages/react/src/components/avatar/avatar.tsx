@@ -1,6 +1,6 @@
 import { Avatar as AvatarPrimitive } from "@ark-ui/react";
 import type { AvatarFallbackProps, AvatarImageProps } from "@ark-ui/react";
-import type { AvatarContract, AvatarRootContract } from "@pisagor/props";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
 import { avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";

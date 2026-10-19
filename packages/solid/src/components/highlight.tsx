@@ -2,7 +2,7 @@ import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
 } from "@ark-ui/solid";
-import type { HighlightRootContract } from "@pisagor/props";
+import type { HighlightRootContract } from "@pisagor/contracts";
 import { highlightRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";

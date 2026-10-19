@@ -8,7 +8,7 @@ import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import type {
   SignaturePadContract,
   SignaturePadRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { EmptyStateRootContract } from "@pisagor/props";
+  import type { EmptyStateRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
 
   import { withProvider } from "./empty-state.context";

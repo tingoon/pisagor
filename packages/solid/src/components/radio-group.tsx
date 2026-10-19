@@ -10,7 +10,7 @@ import type {
   RadioGroupPresetItem as BaseRadioGroupPresetItem,
   RadioGroupRootContract,
   RadioGroupContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   formControlRadioToggleRecipe,
   radioGroupItemRecipe,

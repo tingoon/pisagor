@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { SkipNavRootContract } from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

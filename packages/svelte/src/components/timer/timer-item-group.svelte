@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TimerItemGroupRootContract } from "@pisagor/props";
+  import type { TimerItemGroupRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withTimerItemGroupProvider } from "./timer.context";
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FileContract, FileRootContract } from "@pisagor/props";
+  import type { FileContract, FileRootContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import FileActions from "./file-actions.svelte";

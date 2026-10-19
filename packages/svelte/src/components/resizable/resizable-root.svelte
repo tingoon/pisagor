@@ -3,7 +3,7 @@
     Splitter as SplitterPrimitive,
     type SplitterRootProps,
   } from "@ark-ui/svelte";
-  import type { ResizableRootContract } from "@pisagor/props";
+  import type { ResizableRootContract } from "@pisagor/contracts";
   import { withProvider } from "./resizable.context";
 
   type Props = SplitterRootProps & ResizableRootContract;

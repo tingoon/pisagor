@@ -12,7 +12,7 @@ import type {
 import type {
   CircularProgressContract,
   CircularProgressRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

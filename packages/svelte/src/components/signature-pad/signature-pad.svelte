@@ -3,7 +3,7 @@
   import type {
     SignaturePadContract,
     SignaturePadRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
 
   import SignaturePadClear from "./signature-pad-clear.svelte";
   import SignaturePadControl from "./signature-pad-control.svelte";

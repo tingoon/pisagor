@@ -1,7 +1,7 @@
 import type {
   AspectRatioRootContract,
   AspectRatioContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

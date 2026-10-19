@@ -5,7 +5,7 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import type { RichTextEditorRootContract } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/contracts";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";

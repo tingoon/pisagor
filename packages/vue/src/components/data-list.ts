@@ -4,7 +4,7 @@ import type {
   DataListItemRootContract,
   DataListPresetItem as BaseDataListPresetItem,
   DataListRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

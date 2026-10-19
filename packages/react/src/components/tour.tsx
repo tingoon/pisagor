@@ -19,7 +19,7 @@ import type {
   UseTourReturn,
 } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import type { TourRootContract } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { MouseEvent } from "react";

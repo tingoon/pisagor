@@ -7,7 +7,7 @@
   import type {
     CircularProgressContract,
     CircularProgressRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
 
   import type { Snippet } from "svelte";
   import type { SVGAttributes } from "svelte/elements";

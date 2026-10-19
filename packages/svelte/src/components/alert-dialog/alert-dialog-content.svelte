@@ -4,7 +4,7 @@
     Portal,
     type DialogContentProps as ArkDialogContentProps,
   } from "@ark-ui/svelte";
-  import type { AlertDialogRootContract } from "@pisagor/props";
+  import type { AlertDialogRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";

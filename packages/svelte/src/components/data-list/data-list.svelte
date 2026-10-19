@@ -3,7 +3,7 @@
     DataListContract,
     DataListPresetItem as BaseDataListPresetItem,
     DataListRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import DataListItem from "./data-list-item.svelte";
   import DataListRoot from "./data-list-root.svelte";

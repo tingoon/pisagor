@@ -1,4 +1,4 @@
-import type { NavbarContract, NavbarRootContract } from "@pisagor/props";
+import type { NavbarContract, NavbarRootContract } from "@pisagor/contracts";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";

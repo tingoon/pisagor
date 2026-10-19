@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { AvatarGroupRootContract } from "@pisagor/props";
+import type { AvatarGroupRootContract } from "@pisagor/contracts";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../../internal";

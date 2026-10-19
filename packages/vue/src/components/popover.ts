@@ -3,7 +3,7 @@ import type {
   PopoverHeaderContract,
   PopoverRootContract,
   PopoverContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,

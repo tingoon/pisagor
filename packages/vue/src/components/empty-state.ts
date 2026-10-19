@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type {
   EmptyStateContract,
   EmptyStateRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { emptyStateRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

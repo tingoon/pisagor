@@ -2,7 +2,7 @@ import {
   Menu as MenuPrimitive,
   type MenuContextTriggerProps,
 } from "@ark-ui/solid";
-import type { ContextMenuRootContract } from "@pisagor/props";
+import type { ContextMenuRootContract } from "@pisagor/contracts";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";

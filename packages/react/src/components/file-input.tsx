@@ -1,4 +1,4 @@
-import type { FileInputRootContract } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,

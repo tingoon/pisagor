@@ -16,7 +16,7 @@ import type {
   CarouselPresetItem as BaseCarouselPresetItem,
   CarouselRootContract,
   CarouselContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

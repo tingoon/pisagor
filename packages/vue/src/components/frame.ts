@@ -1,4 +1,4 @@
-import type { FrameRootContract } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

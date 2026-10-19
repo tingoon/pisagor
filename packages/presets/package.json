@@ -20,9 +20,9 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "types": "./src/contracts/index.ts",
+  "types": "./src/recipes/index.ts",
   "exports": {
-    ".": "./src/contracts/index.ts",
+    ".": "./src/recipes/index.ts",
     "./pisagor": "./src/pisagor.ts",
     "./styles": "./src/styles.css"
   },

@@ -1,4 +1,4 @@
-import type { SurfaceRootContract } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/contracts";
 import { surfaceRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";

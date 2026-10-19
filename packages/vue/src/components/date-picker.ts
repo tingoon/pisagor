@@ -4,7 +4,7 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import type { DatePickerRootContract } from "@pisagor/props";
+import type { DatePickerRootContract } from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

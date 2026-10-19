@@ -2,7 +2,7 @@ import type {
   StatContract,
   StatRootContract,
   StatTrendRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

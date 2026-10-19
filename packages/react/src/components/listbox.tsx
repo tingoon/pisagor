@@ -20,7 +20,7 @@ import type {
   ListboxPresetItem as BaseListboxPresetItem,
   ListboxRootContract,
   ListboxContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { type ReactNode, useMemo } from "react";

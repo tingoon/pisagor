@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type {
   AnnouncementContract,
   AnnouncementRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

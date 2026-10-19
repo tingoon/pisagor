@@ -1,4 +1,4 @@
-import type { FileInputRootContract } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";

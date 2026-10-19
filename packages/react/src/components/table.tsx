@@ -1,4 +1,4 @@
-import type { TableRootContract } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/contracts";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 

@@ -3,7 +3,7 @@
     SegmentGroup as SegmentGroupPrimitive,
     type SegmentGroupRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { SegmentGroupRootContract } from "@pisagor/props";
+  import type { SegmentGroupRootContract } from "@pisagor/contracts";
 
   import { withProvider } from "./segment-group.context";
   import SegmentGroupIndicator from "./segment-group-indicator.svelte";

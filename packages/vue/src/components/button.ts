@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { ButtonRootContract } from "@pisagor/props";
+import type { ButtonRootContract } from "@pisagor/contracts";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";

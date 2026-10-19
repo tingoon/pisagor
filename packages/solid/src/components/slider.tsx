@@ -9,7 +9,7 @@ import type {
   SliderTrackProps,
   SliderValueTextProps,
 } from "@ark-ui/solid";
-import type { SliderContract, SliderRootContract } from "@pisagor/props";
+import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";

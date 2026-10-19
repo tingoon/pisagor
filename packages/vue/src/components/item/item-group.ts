@@ -1,4 +1,4 @@
-import type { ItemRootContract } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";

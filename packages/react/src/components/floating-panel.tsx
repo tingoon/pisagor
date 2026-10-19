@@ -13,7 +13,7 @@ import type {
   FloatingPanelTriggerProps,
 } from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import type { FloatingPanelRootContract } from "@pisagor/props";
+import type { FloatingPanelRootContract } from "@pisagor/contracts";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 
 import { use, type ComponentPropsWithRef } from "react";

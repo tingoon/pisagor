@@ -3,7 +3,7 @@
     Collapsible as CollapsiblePrimitive,
     type CollapsibleRootProps,
   } from "@ark-ui/svelte";
-  import type { CollapsibleRootContract } from "@pisagor/props";
+  import type { CollapsibleRootContract } from "@pisagor/contracts";
   import { collapsibleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./collapsible.context";

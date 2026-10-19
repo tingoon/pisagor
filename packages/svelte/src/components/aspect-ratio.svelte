@@ -2,7 +2,7 @@
   import type {
     AspectRatioRootContract,
     AspectRatioContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { aspectRatioRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

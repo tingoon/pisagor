@@ -10,7 +10,7 @@ import type {
 import type {
   TimerItemGroupRootContract,
   TimerRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";

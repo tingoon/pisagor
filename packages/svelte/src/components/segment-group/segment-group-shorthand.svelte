@@ -3,7 +3,7 @@
     SegmentGroupPresetItem,
     SegmentGroupRootContract,
     SegmentGroupContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import SegmentGroupItem from "./segment-group-item.svelte";
   import SegmentGroupRoot from "./segment-group-root.svelte";

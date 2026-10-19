@@ -2,7 +2,7 @@
   import type {
     DataListItemContract,
     DataListItemRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { dataListItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

@@ -4,7 +4,7 @@ import {
   PhWarning,
   PhWarningCircle,
 } from "@phosphor-icons/vue";
-import type { AlertContract, AlertRootContract } from "@pisagor/props";
+import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
 import { type AlertVariantProps, alertRecipe } from "@pisagor/recipes";
 import { defineComponent, h } from "vue";
 import type { Component, PropType, VNodeChild } from "vue";

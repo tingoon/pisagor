@@ -1,5 +1,8 @@
 <script lang="ts">
-  import type { ToolbarContract, ToolbarRootContract } from "@pisagor/props";
+  import type {
+    ToolbarContract,
+    ToolbarRootContract,
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import ToolbarActions from "./toolbar-actions.svelte";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CommandRootContract } from "@pisagor/props";
+  import type { CommandRootContract } from "@pisagor/contracts";
   import { commandRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";

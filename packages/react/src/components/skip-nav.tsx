@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { SkipNavRootContract } from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 

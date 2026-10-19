@@ -5,7 +5,10 @@ import type {
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/solid";
-import type { ProgressContract, ProgressRootContract } from "@pisagor/props";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
 import { progressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

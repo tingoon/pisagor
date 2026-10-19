@@ -5,7 +5,10 @@
     ProgressTrackProps,
     ProgressValueTextProps,
   } from "@ark-ui/svelte";
-  import type { ProgressContract, ProgressRootContract } from "@pisagor/props";
+  import type {
+    ProgressContract,
+    ProgressRootContract,
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import { Field } from "../field";
   import ProgressHeader from "./progress-header.svelte";

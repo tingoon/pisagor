@@ -3,7 +3,7 @@
     Marquee as MarqueePrimitive,
     type MarqueeRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { MarqueeRootContract } from "@pisagor/props";
+  import type { MarqueeRootContract } from "@pisagor/contracts";
   import { withProvider } from "./marquee.context";
   import MarqueeEdge from "./marquee-edge.svelte";
 

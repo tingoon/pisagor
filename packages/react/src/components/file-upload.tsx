@@ -17,7 +17,7 @@ import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
   FileUploadItemRootContract,
   FileUploadRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   fileUploadItemRecipe,
   fileUploadRecipe,

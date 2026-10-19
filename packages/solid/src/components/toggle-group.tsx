@@ -7,7 +7,7 @@ import type {
   ToggleGroupPresetItem as BaseToggleGroupPresetItem,
   ToggleGroupRootContract,
   ToggleGroupContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";

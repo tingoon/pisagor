@@ -1,7 +1,7 @@
 import type {
   DataTableBodyContract,
   DataTableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DataTableRecipe, dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {

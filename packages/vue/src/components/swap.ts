@@ -1,5 +1,5 @@
 import { Swap as SwapPrimitive } from "@ark-ui/vue";
-import type { SwapRootContract, SwapContract } from "@pisagor/props";
+import type { SwapRootContract, SwapContract } from "@pisagor/contracts";
 import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

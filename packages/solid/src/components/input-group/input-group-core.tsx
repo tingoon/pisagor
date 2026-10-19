@@ -2,7 +2,7 @@ import type {
   InputGroupAddonRootContract,
   InputGroupButtonRootContract,
   InputGroupTextRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,

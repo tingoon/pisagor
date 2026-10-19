@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/vue";
-import type { CircularSliderRootContract } from "@pisagor/props";
+import type { CircularSliderRootContract } from "@pisagor/contracts";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import {
   computed,

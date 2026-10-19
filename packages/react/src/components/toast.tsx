@@ -24,7 +24,7 @@ import type {
   ToastItemContract,
   ToastItemRootContract,
   ToastRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { toastItemRecipe, toastRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,

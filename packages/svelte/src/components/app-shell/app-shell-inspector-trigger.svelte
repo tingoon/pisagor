@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AppShellTriggerContract } from "@pisagor/props";
+  import type { AppShellTriggerContract } from "@pisagor/contracts";
   import {
     ArrowsInLineHorizontalIcon,
     ArrowsOutLineHorizontalIcon,

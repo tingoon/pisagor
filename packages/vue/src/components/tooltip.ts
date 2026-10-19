@@ -1,5 +1,5 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue";
-import type { TooltipContract, TooltipRootContract } from "@pisagor/props";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
 import { tooltipRecipe } from "@pisagor/recipes";
 import {
   computed,

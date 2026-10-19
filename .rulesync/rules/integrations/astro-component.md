@@ -126,9 +126,9 @@ Use `aria-hidden="true"` (not bare `aria-hidden`, which renders as an empty valu
 
 ---
 
-## Shared props (`@pisagor/props`)
+## Shared props (`@pisagor/contracts`)
 
-Same contract as React — extend `BaseFooProps` from `@pisagor/props` and the matching `HTMLAttributes<"tag">` from `astro/types`.
+Same contract as React — extend `BaseFooProps` from `@pisagor/contracts` and the matching `HTMLAttributes<"tag">` from `astro/types`.
 
 ## Public API
 

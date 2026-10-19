@@ -5,7 +5,7 @@ import type {
   MarqueeItemProps,
   MarqueeRootProps as MarqueeRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

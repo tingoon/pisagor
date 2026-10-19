@@ -6,7 +6,7 @@ import type {
   TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
 } from "@ark-ui/solid";
-import type { TooltipContract, TooltipRootContract } from "@pisagor/props";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
 import { tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";

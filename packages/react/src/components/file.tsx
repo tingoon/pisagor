@@ -1,5 +1,5 @@
 import { FileIcon } from "@phosphor-icons/react";
-import type { FileContract, FileRootContract } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

@@ -3,7 +3,7 @@
     FileUpload as FileUploadPrimitive,
     type FileUploadRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { FileUploadRootContract } from "@pisagor/props";
+  import type { FileUploadRootContract } from "@pisagor/contracts";
   import { fileUploadRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./file-upload.context";

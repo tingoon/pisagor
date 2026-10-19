@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useHotkey } from "@ark-ui/svelte";
-  import type { SidebarRootContract } from "@pisagor/props";
+  import type { SidebarRootContract } from "@pisagor/contracts";
   import { sidebarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { onMount } from "svelte";

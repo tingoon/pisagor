@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import type {
   EmptyStateContract,
   EmptyStateRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { emptyStateRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

@@ -9,7 +9,7 @@ import type {
   TabsPresetItem as BaseTabsPresetItem,
   TabsRootContract,
   TabsContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

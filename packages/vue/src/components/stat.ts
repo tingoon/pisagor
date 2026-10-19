@@ -3,7 +3,7 @@ import type {
   StatContract,
   StatRootContract,
   StatTrendRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
 import type { StatTrendVariantProps, StatVariantProps } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

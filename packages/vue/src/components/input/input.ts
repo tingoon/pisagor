@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue";
-import type { InputContract, InputRootContract } from "@pisagor/props";
+import type { InputContract, InputRootContract } from "@pisagor/contracts";
 import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";

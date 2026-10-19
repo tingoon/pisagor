@@ -1,5 +1,5 @@
 <script generics="TData extends RowData = RowData" lang="ts">
-  import type { DataGridRootContract } from "@pisagor/props";
+  import type { DataGridRootContract } from "@pisagor/contracts";
   import { dataGridRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type {

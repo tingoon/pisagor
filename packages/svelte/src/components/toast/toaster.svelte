@@ -4,7 +4,7 @@
     Portal,
     Toaster as ToasterPrimitive,
   } from "@ark-ui/svelte";
-  import type { ToastRootContract } from "@pisagor/props";
+  import type { ToastRootContract } from "@pisagor/contracts";
   import { toastRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { toast as defaultToast } from "./toast";

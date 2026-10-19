@@ -3,7 +3,7 @@ import type {
   DrawerHeaderContract,
   DrawerRootContract,
   DrawerContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes";
 import {
   computed,

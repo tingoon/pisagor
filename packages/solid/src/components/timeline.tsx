@@ -4,7 +4,7 @@ import type {
   TimelinePresetItem as BaseTimelinePresetItem,
   TimelineRootContract,
   TimelineContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

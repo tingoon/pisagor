@@ -1,6 +1,6 @@
 import { PinInput as PinInputPrimitive } from "@ark-ui/solid";
 import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/solid";
-import type { InputOtpRootContract } from "@pisagor/props";
+import type { InputOtpRootContract } from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,

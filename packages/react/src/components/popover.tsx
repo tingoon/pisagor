@@ -13,7 +13,7 @@ import type {
   PopoverContract,
   PopoverHeaderContract,
   PopoverRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { KbdRootContract } from "@pisagor/props";
+  import type { KbdRootContract } from "@pisagor/contracts";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

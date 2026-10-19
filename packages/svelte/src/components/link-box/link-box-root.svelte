@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { LinkBoxRootContract } from "@pisagor/props";
+  import type { LinkBoxRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./link-box.context";
 

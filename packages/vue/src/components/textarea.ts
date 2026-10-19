@@ -1,5 +1,8 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue";
-import type { TextareaContract, TextareaRootContract } from "@pisagor/props";
+import type {
+  TextareaContract,
+  TextareaRootContract,
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,

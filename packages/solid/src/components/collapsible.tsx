@@ -5,7 +5,7 @@ import type {
   CollapsibleRootProps as CollapsibleRootPrimitiveProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/solid";
-import type { CollapsibleRootContract } from "@pisagor/props";
+import type { CollapsibleRootContract } from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";

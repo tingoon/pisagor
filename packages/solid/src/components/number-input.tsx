@@ -4,7 +4,7 @@ import type {
   NumberInputRootProps as NumberInputRootPrimitiveProps,
   NumberInputScrubberProps,
 } from "@ark-ui/solid";
-import type { NumberInputRootContract } from "@pisagor/props";
+import type { NumberInputRootContract } from "@pisagor/contracts";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,

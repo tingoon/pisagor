@@ -9,7 +9,7 @@ import type {
   AccordionPresetItem as BaseAccordionPresetItem,
   AccordionRootContract,
   AccordionContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

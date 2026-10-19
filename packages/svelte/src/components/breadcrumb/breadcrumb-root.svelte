@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BreadcrumbRootContract } from "@pisagor/props";
+  import type { BreadcrumbRootContract } from "@pisagor/contracts";
   import { breadcrumbRecipe } from "@pisagor/recipes";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";

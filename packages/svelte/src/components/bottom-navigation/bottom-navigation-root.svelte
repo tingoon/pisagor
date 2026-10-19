@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BottomNavigationRootContract } from "@pisagor/props";
+  import type { BottomNavigationRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
   import {

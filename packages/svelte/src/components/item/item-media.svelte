@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ItemRootContract } from "@pisagor/props";
+  import type { ItemRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useItem } from "./item.context";

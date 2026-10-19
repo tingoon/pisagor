@@ -13,7 +13,7 @@ import type {
   DrawerHeaderContract,
   DrawerRootContract,
   DrawerContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

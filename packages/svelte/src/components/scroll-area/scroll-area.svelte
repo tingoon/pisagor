@@ -9,7 +9,7 @@
   import type {
     ScrollAreaContract,
     ScrollAreaRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
 
   import type { Snippet } from "svelte";
 

@@ -3,7 +3,7 @@
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { FloatingPanelRootContract } from "@pisagor/props";
+  import type { FloatingPanelRootContract } from "@pisagor/contracts";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { Context } from "./floating-panel.context";
 

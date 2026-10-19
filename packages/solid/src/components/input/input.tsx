@@ -2,7 +2,7 @@ import {
   FieldInput as InputPrimitive,
   type FieldInputProps,
 } from "@ark-ui/solid";
-import type { InputContract, InputRootContract } from "@pisagor/props";
+import type { InputContract, InputRootContract } from "@pisagor/contracts";
 import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";

@@ -3,7 +3,7 @@
     ToggleGroupPresetItem as BaseToggleGroupPresetItem,
     ToggleGroupRootContract,
     ToggleGroupContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import ToggleGroupItem from "./toggle-group-item.svelte";
   import ToggleGroupRoot from "./toggle-group-root.svelte";

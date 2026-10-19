@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FieldRootContract } from "@pisagor/props";
+  import type { FieldRootContract } from "@pisagor/contracts";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

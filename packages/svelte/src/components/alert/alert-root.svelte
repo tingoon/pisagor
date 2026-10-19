@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AlertRootContract } from "@pisagor/props";
+  import type { AlertRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./alert.context";
 

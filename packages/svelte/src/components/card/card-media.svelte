@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CardRootContract } from "@pisagor/props";
+  import type { CardRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./card.context";

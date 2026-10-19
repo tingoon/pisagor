@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { AvatarGroupRootContract } from "@pisagor/props";
+import type { AvatarGroupRootContract } from "@pisagor/contracts";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

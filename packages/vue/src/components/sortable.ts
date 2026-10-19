@@ -2,7 +2,7 @@ import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   SortableItemRootContract,
   SortableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { cn, formatMessage } from "@pisagor/utils";
 import {

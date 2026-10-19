@@ -3,8 +3,8 @@
 Named `tailwind-variants` (`tv`) recipe presets (skins) for Pisagor components.
 
 ```text
-src/contracts/   recipe modules (shared surface)
-src/pisagor.ts   default Pisagor skin entry — re-exports contracts
+src/recipes/     recipe modules (shared surface)
+src/pisagor.ts   default Pisagor skin entry — re-exports recipes
 src/styles.css   Tailwind `@source` entry for recipe class scanning
 ```
 

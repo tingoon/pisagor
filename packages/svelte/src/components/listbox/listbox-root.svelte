@@ -4,7 +4,7 @@
     Listbox as ListboxPrimitive,
     type ListboxRootProps as ArkListboxRootProps,
   } from "@ark-ui/svelte";
-  import type { ListboxRootContract } from "@pisagor/props";
+  import type { ListboxRootContract } from "@pisagor/contracts";
   import { listboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./listbox.context";

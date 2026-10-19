@@ -2,7 +2,7 @@
   import type {
     AnnouncementContract,
     AnnouncementRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import AnnouncementRoot from "./announcement-root.svelte";

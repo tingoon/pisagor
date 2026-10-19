@@ -1,7 +1,7 @@
 import type {
   AspectRatioRootContract,
   AspectRatioContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 

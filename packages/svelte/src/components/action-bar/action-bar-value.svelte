@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ActionBarValueContract } from "@pisagor/props";
+  import type { ActionBarValueContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import Badge from "../badge.svelte";

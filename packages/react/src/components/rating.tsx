@@ -5,7 +5,7 @@ import type {
   RatingGroupRootProps,
 } from "@ark-ui/react";
 import { StarIcon } from "@phosphor-icons/react";
-import type { RatingContract, RatingRootContract } from "@pisagor/props";
+import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";

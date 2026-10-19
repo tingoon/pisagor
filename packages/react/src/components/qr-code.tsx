@@ -4,7 +4,7 @@ import type {
   QrCodeFrameProps,
   QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { QrCodeRootContract } from "@pisagor/props";
+import type { QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";

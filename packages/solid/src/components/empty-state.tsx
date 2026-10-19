@@ -2,7 +2,7 @@ import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   EmptyStateContract,
   EmptyStateRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { emptyStateRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

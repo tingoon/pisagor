@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { StatRootContract } from "@pisagor/props";
+  import type { StatRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./stat.context";
 

@@ -1,6 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import type { NumberInputRootContract } from "@pisagor/props";
+import type { NumberInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,

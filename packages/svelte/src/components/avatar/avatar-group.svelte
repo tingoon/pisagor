@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AvatarGroupRootContract } from "@pisagor/props";
+  import type { AvatarGroupRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import Avatar from "./avatar.svelte";
   import AvatarGroupCount from "./avatar-group-count.svelte";

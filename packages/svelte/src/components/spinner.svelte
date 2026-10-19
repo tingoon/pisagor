@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SpinnerRootContract } from "@pisagor/props";
+  import type { SpinnerRootContract } from "@pisagor/contracts";
   import { spinnerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CircleNotchIcon } from "phosphor-svelte";

@@ -2,7 +2,7 @@ import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
 } from "@ark-ui/react";
-import type { HighlightRootContract } from "@pisagor/props";
+import type { HighlightRootContract } from "@pisagor/contracts";
 import { highlightRecipe } from "@pisagor/recipes";
 
 // #region Types

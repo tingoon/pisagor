@@ -3,7 +3,7 @@
     SegmentGroup as SegmentGroupPrimitive,
     type SegmentGroupItemProps as ArkItemProps,
   } from "@ark-ui/svelte";
-  import type { SegmentGroupItemContract } from "@pisagor/props";
+  import type { SegmentGroupItemContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import { useStyles } from "./segment-group.context";

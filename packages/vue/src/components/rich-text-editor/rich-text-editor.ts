@@ -5,7 +5,7 @@ import {
   PhTextItalic,
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
-import type { RichTextEditorRootContract } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/contracts";
 import {
   formControlShellRecipe,
   type RichTextEditorRecipe,

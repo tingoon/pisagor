@@ -3,7 +3,7 @@
     BreadcrumbPresetItem,
     BreadcrumbRootContract,
     BreadcrumbContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import BreadcrumbItem from "./breadcrumb-item.svelte";
   import BreadcrumbLink from "./breadcrumb-link.svelte";

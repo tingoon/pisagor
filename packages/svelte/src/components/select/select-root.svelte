@@ -4,7 +4,7 @@
     Select as SelectPrimitive,
     type SelectRootProps as ArkSelectRootProps,
   } from "@ark-ui/svelte";
-  import type { SelectRootContract } from "@pisagor/props";
+  import type { SelectRootContract } from "@pisagor/contracts";
   import {
     type FormControlShellVariantProps,
     selectRecipe,

@@ -5,7 +5,7 @@ import type {
   QrCodeOverlayProps,
   QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { QrCodeRootContract } from "@pisagor/props";
+import type { QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";

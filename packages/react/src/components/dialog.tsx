@@ -12,7 +12,7 @@ import type {
   DialogContract,
   DialogHeaderContract,
   DialogRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";

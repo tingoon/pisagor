@@ -7,7 +7,7 @@ import { CaretRightIcon } from "@phosphor-icons/react";
 import type {
   JsonTreeViewContract,
   JsonTreeViewRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
 
 import type { FunctionComponent } from "react";

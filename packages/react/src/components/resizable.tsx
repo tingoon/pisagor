@@ -11,7 +11,7 @@ import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   ResizableEdgeHandleRootContract,
   ResizableRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal";

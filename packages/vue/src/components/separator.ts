@@ -1,4 +1,4 @@
-import type { SeparatorRootContract } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

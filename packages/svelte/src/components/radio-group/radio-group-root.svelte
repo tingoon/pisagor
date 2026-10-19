@@ -3,7 +3,7 @@
     RadioGroup as RadioGroupPrimitive,
     type RadioGroupRootProps as ArkRadioGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { RadioGroupRootContract } from "@pisagor/props";
+  import type { RadioGroupRootContract } from "@pisagor/contracts";
   import { radioGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

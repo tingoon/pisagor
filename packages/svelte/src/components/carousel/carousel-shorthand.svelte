@@ -3,7 +3,7 @@
     CarouselPresetItem,
     CarouselRootContract,
     CarouselContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps, Snippet } from "svelte";
   import CarouselControl from "./carousel-control.svelte";
   import CarouselIndicator from "./carousel-indicator.svelte";

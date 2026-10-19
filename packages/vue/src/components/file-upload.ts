@@ -7,7 +7,7 @@ import { PhUpload, PhX } from "@phosphor-icons/vue";
 import type {
   FileUploadItemRootContract,
   FileUploadRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   fileUploadItemRecipe,
   fileUploadRecipe,

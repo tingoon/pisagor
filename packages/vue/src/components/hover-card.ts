@@ -1,5 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue";
-import type { HoverCardRootContract } from "@pisagor/props";
+import type { HoverCardRootContract } from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,

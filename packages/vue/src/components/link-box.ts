@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { LinkBoxRootContract } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/contracts";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 

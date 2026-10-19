@@ -4,7 +4,7 @@
     ListboxPresetItem,
     ListboxRootContract,
     ListboxContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import ListboxContent from "./listbox-content.svelte";
   import ListboxEmpty from "./listbox-empty.svelte";

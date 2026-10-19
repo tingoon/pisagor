@@ -1,4 +1,4 @@
-import type { FrameRootContract } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";

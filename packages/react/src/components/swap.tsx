@@ -3,7 +3,7 @@ import {
   type SwapIndicatorProps,
   type SwapRootProps,
 } from "@ark-ui/react";
-import type { SwapRootContract, SwapContract } from "@pisagor/props";
+import type { SwapRootContract, SwapContract } from "@pisagor/contracts";
 import { swapRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 

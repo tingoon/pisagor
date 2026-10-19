@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { ToolbarContract, ToolbarRootContract } from "@pisagor/props";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
 import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Toast as ToastPrimitive, type ToastRootProps } from "@ark-ui/svelte";
-  import type { ToastItemRootContract } from "@pisagor/props";
+  import type { ToastItemRootContract } from "@pisagor/contracts";
   import { withProvider } from "./toast.context";
 
   type Props = ToastRootProps & ToastItemRootContract;

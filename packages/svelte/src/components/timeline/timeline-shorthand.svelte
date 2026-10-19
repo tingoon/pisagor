@@ -3,7 +3,7 @@
     TimelinePresetItem,
     TimelineRootContract,
     TimelineContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps, Snippet } from "svelte";
   import TimelineContent from "./timeline-content.svelte";
   import TimelineDescription from "./timeline-description.svelte";

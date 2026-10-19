@@ -6,7 +6,10 @@ import type {
   ClipboardRootProps as ClipboardRootPrimitiveProps,
   ClipboardValueTextProps,
 } from "@ark-ui/solid";
-import type { ClipboardContract, ClipboardRootContract } from "@pisagor/props";
+import type {
+  ClipboardContract,
+  ClipboardRootContract,
+} from "@pisagor/contracts";
 import {
   type ClipboardVariantProps,
   clipboardRecipe,

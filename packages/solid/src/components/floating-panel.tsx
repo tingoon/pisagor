@@ -12,7 +12,7 @@ import type {
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
 } from "@ark-ui/solid";
-import type { FloatingPanelRootContract } from "@pisagor/props";
+import type { FloatingPanelRootContract } from "@pisagor/contracts";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";

@@ -1,4 +1,4 @@
-import type { SeparatorRootContract } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

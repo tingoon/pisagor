@@ -3,7 +3,7 @@ import {
   usePaginationContext,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import type { PaginationRootContract } from "@pisagor/props";
+import type { PaginationRootContract } from "@pisagor/contracts";
 import { buttonRecipe, paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

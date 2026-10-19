@@ -10,7 +10,7 @@ import type {
   DatePickerTriggerProps as DatePickerTriggerPrimitiveProps,
   DatePickerValueTextProps,
 } from "@ark-ui/solid";
-import type { DatePickerRootContract } from "@pisagor/props";
+import type { DatePickerRootContract } from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import {

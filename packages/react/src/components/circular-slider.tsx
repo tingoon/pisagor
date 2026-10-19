@@ -11,7 +11,7 @@ import type {
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
 } from "@ark-ui/react";
-import type { CircularSliderRootContract } from "@pisagor/props";
+import type { CircularSliderRootContract } from "@pisagor/contracts";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";

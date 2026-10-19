@@ -13,7 +13,7 @@ import type {
   AlertDialogContract,
   AlertDialogHeaderContract,
   AlertDialogRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type AlertDialogVariantProps,
   alertDialogRecipe,

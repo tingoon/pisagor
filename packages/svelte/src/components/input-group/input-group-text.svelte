@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { InputGroupTextRootContract } from "@pisagor/props";
+  import type { InputGroupTextRootContract } from "@pisagor/contracts";
   import { inputGroupTextRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

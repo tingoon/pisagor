@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SheetRootContract } from "@pisagor/props";
+  import type { SheetRootContract } from "@pisagor/contracts";
   import { sheetRecipe } from "@pisagor/recipes";
   import type { ComponentProps } from "svelte";
   import DialogRoot from "../dialog/dialog-root.svelte";

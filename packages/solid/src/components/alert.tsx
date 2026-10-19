@@ -1,4 +1,4 @@
-import type { AlertContract, AlertRootContract } from "@pisagor/props";
+import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
 import { alertRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

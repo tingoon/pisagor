@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DataTableRootContract } from "@pisagor/props";
+  import type { DataTableRootContract } from "@pisagor/contracts";
   import { dataTableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { RowData, TableOptions } from "@tanstack/svelte-table";

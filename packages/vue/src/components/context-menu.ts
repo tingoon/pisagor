@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue";
-import type { ContextMenuRootContract } from "@pisagor/props";
+import type { ContextMenuRootContract } from "@pisagor/contracts";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";

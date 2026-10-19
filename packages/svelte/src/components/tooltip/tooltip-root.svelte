@@ -3,7 +3,7 @@
     Tooltip as TooltipPrimitive,
     type TooltipRootProps,
   } from "@ark-ui/svelte";
-  import type { TooltipRootContract } from "@pisagor/props";
+  import type { TooltipRootContract } from "@pisagor/contracts";
   import { tooltipRecipe } from "@pisagor/recipes";
   import { Context } from "./tooltip.context";
 

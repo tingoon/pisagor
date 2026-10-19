@@ -7,7 +7,10 @@
     TooltipRootProps,
     TooltipTriggerProps,
   } from "@ark-ui/svelte";
-  import type { TooltipContract, TooltipRootContract } from "@pisagor/props";
+  import type {
+    TooltipContract,
+    TooltipRootContract,
+  } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { ClassValue } from "svelte/elements";

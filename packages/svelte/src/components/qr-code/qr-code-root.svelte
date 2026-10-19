@@ -3,7 +3,7 @@
     QrCode as QrCodePrimitive,
     type QrCodeRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { QrCodeRootContract } from "@pisagor/props";
+  import type { QrCodeRootContract } from "@pisagor/contracts";
   import { withProvider } from "./qr-code.context";
   import QrCodeFrame from "./qr-code-frame.svelte";
 

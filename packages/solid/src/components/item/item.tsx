@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { ItemRootContract } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";

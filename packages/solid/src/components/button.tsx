@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { ButtonRootContract } from "@pisagor/props";
+import type { ButtonRootContract } from "@pisagor/contracts";
 import { buttonRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

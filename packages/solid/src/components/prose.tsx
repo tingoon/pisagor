@@ -1,4 +1,4 @@
-import type { ProseRootContract } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

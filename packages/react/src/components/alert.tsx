@@ -4,7 +4,7 @@ import {
   WarningCircleIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import type { AlertContract, AlertRootContract } from "@pisagor/props";
+import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
 import { alertRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

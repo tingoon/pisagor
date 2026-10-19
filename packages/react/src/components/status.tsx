@@ -1,4 +1,4 @@
-import type { StatusRootContract } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { statusRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 

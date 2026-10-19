@@ -3,7 +3,7 @@
     Progress as ProgressPrimitive,
     type ProgressRootProps,
   } from "@ark-ui/svelte";
-  import type { ProgressRootContract } from "@pisagor/props";
+  import type { ProgressRootContract } from "@pisagor/contracts";
   import { withProvider } from "./progress.context";
 
   type Props = ProgressRootProps & ProgressRootContract;

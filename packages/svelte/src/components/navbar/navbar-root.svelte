@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { NavbarRootContract } from "@pisagor/props";
+  import type { NavbarRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./navbar.context";
 

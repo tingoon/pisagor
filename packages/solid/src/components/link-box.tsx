@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { LinkBoxRootContract } from "@pisagor/props";
+import type { LinkBoxRootContract } from "@pisagor/contracts";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { Component } from "solid-js";
 import { createSlotRecipeContext } from "../internal";

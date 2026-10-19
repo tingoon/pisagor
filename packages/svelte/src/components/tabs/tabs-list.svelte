@@ -3,7 +3,7 @@
     type TabListProps as ArkTabsListProps,
     Tabs as TabsPrimitive,
   } from "@ark-ui/svelte";
-  import type { TabsRootContract } from "@pisagor/props";
+  import type { TabsRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./tabs.context";
 

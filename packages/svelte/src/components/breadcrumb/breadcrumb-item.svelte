@@ -2,7 +2,7 @@
   import type {
     BreadcrumbItemRootContract,
     BreadcrumbItemContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withBreadcrumbItemProvider } from "./breadcrumb.context";
 

@@ -3,7 +3,7 @@
     Dialog as DialogPrimitive,
     type DialogContentProps as ArkDialogContentProps,
   } from "@ark-ui/svelte";
-  import type { DialogRootContract } from "@pisagor/props";
+  import type { DialogRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";

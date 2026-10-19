@@ -1,4 +1,4 @@
-import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/contracts";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

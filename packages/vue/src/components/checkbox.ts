@@ -3,7 +3,7 @@ import { PhCheck, PhMinus } from "@phosphor-icons/vue";
 import type {
   CheckboxGroupRootContract,
   CheckboxRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   checkboxGroupRecipe,
   checkboxRecipe,

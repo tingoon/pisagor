@@ -3,7 +3,7 @@
     Switch as SwitchPrimitive,
     type SwitchRootProps,
   } from "@ark-ui/svelte";
-  import type { SwitchRootContract } from "@pisagor/props";
+  import type { SwitchRootContract } from "@pisagor/contracts";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

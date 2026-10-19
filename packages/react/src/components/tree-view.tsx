@@ -29,7 +29,7 @@ import type {
   TreeViewBranchRootContract,
   TreeViewItemRootContract,
   TreeViewRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   formControlToggleRecipe,
   treeViewBranchRecipe,

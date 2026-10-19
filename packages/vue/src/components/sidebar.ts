@@ -1,5 +1,5 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import type { SidebarRootContract } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import { sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 

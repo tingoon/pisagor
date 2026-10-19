@@ -6,7 +6,7 @@ import type {
   BreadcrumbItemRootContract,
   BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
   BreadcrumbRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { Fragment } from "react";

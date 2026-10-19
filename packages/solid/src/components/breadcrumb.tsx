@@ -5,7 +5,7 @@ import type {
   BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
   BreadcrumbRootContract,
   BreadcrumbContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";

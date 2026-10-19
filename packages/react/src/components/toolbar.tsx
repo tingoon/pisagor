@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react";
-import type { ToolbarContract, ToolbarRootContract } from "@pisagor/props";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
 import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type { ComponentProps, KeyboardEvent, ReactNode } from "react";

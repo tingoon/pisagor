@@ -3,7 +3,7 @@ import {
   Fieldset as FieldsetPrimitive,
   useFieldContext,
 } from "@ark-ui/vue";
-import type { FieldRootContract } from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";

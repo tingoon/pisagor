@@ -5,7 +5,7 @@ import type {
   DialogPositionerProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
-import type { SheetRootContract, SheetContract } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

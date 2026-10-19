@@ -1,4 +1,4 @@
-import type { SkeletonRootContract } from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/contracts";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";

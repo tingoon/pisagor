@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SortableRootContract } from "@pisagor/props";
+  import type { SortableRootContract } from "@pisagor/contracts";
   import { sortableRecipe } from "@pisagor/recipes";
   import { cn, formatMessage } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

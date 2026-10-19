@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue";
 import { PhStar } from "@phosphor-icons/vue";
-import type { RatingContract, RatingRootContract } from "@pisagor/props";
+import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type Component, defineComponent, h, type PropType } from "vue";

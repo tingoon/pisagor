@@ -15,7 +15,10 @@
 
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import type { CommandRootContract, CommandContract } from "@pisagor/props";
+  import type {
+    CommandRootContract,
+    CommandContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import { useLocale } from "../provider/context";
   import CommandContent from "./command-content.svelte";

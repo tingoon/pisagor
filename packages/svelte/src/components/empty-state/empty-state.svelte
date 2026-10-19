@@ -2,7 +2,7 @@
   import type {
     EmptyStateContract,
     EmptyStateRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import EmptyStateActions from "./empty-state-actions.svelte";

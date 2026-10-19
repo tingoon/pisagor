@@ -3,7 +3,7 @@ import type {
   StatContract,
   StatRootContract,
   StatTrendRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

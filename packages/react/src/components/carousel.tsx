@@ -17,7 +17,7 @@ import type {
   CarouselPresetItem as BaseCarouselPresetItem,
   CarouselRootContract,
   CarouselContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

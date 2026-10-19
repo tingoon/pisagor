@@ -6,7 +6,7 @@
   import type {
     AccordionItemRootContract,
     AccordionItemContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { withProvider } from "./accordion.context";
 
   type Props = ArkAccordionItemProps &

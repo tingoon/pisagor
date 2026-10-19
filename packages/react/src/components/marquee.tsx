@@ -3,7 +3,7 @@ import {
   type MarqueeContentProps,
   type MarqueeRootProps as MarqueeRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { MarqueeRootContract, MarqueeContract } from "@pisagor/props";
+import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { Children, isValidElement } from "react";

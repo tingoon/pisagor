@@ -4,7 +4,7 @@ import type {
   AvatarImageProps,
   AvatarRootProps as AvatarRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { AvatarContract, AvatarRootContract } from "@pisagor/props";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
 import { avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";

@@ -12,7 +12,7 @@ import type {
 import type {
   CircularProgressContract,
   CircularProgressRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

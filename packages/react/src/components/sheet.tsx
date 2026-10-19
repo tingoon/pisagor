@@ -7,7 +7,7 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { SheetRootContract, SheetContract } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";

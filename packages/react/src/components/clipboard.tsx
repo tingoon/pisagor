@@ -3,7 +3,10 @@ import {
   type ClipboardRootProps,
 } from "@ark-ui/react";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
-import type { ClipboardContract, ClipboardRootContract } from "@pisagor/props";
+import type {
+  ClipboardContract,
+  ClipboardRootContract,
+} from "@pisagor/contracts";
 import {
   type ClipboardVariantProps,
   clipboardRecipe,

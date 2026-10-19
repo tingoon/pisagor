@@ -1,4 +1,4 @@
-import type { SkeletonRootContract } from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/contracts";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";

@@ -3,7 +3,7 @@
   import type {
     DropdownMenuItemRootContract,
     DropdownMenuItemContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

@@ -4,7 +4,7 @@ import type {
   TimelinePresetItem as BaseTimelinePresetItem,
   TimelineRootContract,
   TimelineContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

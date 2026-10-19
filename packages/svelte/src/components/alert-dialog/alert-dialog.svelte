@@ -3,7 +3,7 @@
   import type {
     AlertDialogContract,
     AlertDialogRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import AlertDialogContent from "./alert-dialog-content.svelte";
   import AlertDialogDescription from "./alert-dialog-description.svelte";

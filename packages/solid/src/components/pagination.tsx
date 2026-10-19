@@ -10,7 +10,7 @@ import type {
   PaginationPrevTriggerProps,
   PaginationRootProps as PaginationRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { PaginationRootContract } from "@pisagor/props";
+import type { PaginationRootContract } from "@pisagor/contracts";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";

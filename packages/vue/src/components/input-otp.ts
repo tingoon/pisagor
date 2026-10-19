@@ -2,7 +2,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue";
-import type { InputOtpRootContract } from "@pisagor/props";
+import type { InputOtpRootContract } from "@pisagor/contracts";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";

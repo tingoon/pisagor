@@ -9,7 +9,7 @@ import type {
   CarouselPresetItem as BaseCarouselPresetItem,
   CarouselRootContract,
   CarouselContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

@@ -5,7 +5,7 @@ import type {
   SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/react";
-import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 import type { FormControlVariant } from "../internal";

@@ -3,7 +3,7 @@ import type {
   ToggleGroupPresetItem as BaseToggleGroupPresetItem,
   ToggleGroupRootContract,
   ToggleGroupContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

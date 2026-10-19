@@ -1,4 +1,4 @@
-import type { VisuallyHiddenRootContract } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/contracts";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

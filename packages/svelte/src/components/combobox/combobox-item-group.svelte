@@ -3,7 +3,7 @@
     Combobox as ComboboxPrimitive,
     type ComboboxItemGroupProps as ArkProps,
   } from "@ark-ui/svelte";
-  import type { ComboboxItemGroupContract } from "@pisagor/props";
+  import type { ComboboxItemGroupContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import ComboboxItemGroupLabel from "./combobox-item-group-label.svelte";
 

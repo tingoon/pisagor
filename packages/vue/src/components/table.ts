@@ -1,4 +1,4 @@
-import type { TableRootContract } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/contracts";
 import { tableRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

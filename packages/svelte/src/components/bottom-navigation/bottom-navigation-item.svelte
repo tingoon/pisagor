@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { BottomNavigationItemRootContract } from "@pisagor/props";
+  import type { BottomNavigationItemRootContract } from "@pisagor/contracts";
   import type { HTMLAnchorAttributes } from "svelte/elements";
   import {
     useBottomNavigationValue,

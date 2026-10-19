@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FrameRootContract } from "@pisagor/props";
+  import type { FrameRootContract } from "@pisagor/contracts";
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

@@ -3,7 +3,7 @@ import {
   AvatarImage as AvatarImagePrimitive,
   AvatarRoot as AvatarRootPrimitive,
 } from "@ark-ui/vue";
-import type { AvatarContract, AvatarRootContract } from "@pisagor/props";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
 import { type AvatarVariantProps, avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

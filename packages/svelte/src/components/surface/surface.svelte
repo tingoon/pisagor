@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SurfaceRootContract } from "@pisagor/props";
+  import type { SurfaceRootContract } from "@pisagor/contracts";
   import { surfaceRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DataGridBodyContract } from "@pisagor/props";
+  import type { DataGridBodyContract } from "@pisagor/contracts";
   import { useDataGridContext } from "./data-grid.context";
   import DataGridRowProvider from "./data-grid-row-provider.svelte";
 

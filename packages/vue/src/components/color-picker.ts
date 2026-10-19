@@ -5,7 +5,7 @@ import {
   useColorPickerContext as useColorPicker,
 } from "@ark-ui/vue";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import type { ColorPickerRootContract } from "@pisagor/props";
+import type { ColorPickerRootContract } from "@pisagor/contracts";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useLocale } from "./provider/context";

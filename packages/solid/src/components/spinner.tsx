@@ -1,4 +1,4 @@
-import type { SpinnerRootContract } from "@pisagor/props";
+import type { SpinnerRootContract } from "@pisagor/contracts";
 import { spinnerRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";

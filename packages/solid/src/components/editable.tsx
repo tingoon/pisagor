@@ -9,7 +9,7 @@ import type {
   EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/solid";
-import type { EditableRootContract } from "@pisagor/props";
+import type { EditableRootContract } from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";

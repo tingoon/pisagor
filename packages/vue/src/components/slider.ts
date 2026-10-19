@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue";
-import type { SliderContract, SliderRootContract } from "@pisagor/props";
+import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, inject, provide } from "vue";

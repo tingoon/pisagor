@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@ark-ui/svelte": "^5.24.2",
-    "@pisagor/props": "workspace:*",
+    "@pisagor/contracts": "workspace:*",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",

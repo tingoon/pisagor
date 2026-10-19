@@ -3,7 +3,7 @@ import type {
   CardHeaderContract,
   CardRootContract,
   CardContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

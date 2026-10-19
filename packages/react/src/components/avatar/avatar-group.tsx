@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react";
-import type { AvatarGroupRootContract } from "@pisagor/props";
+import type { AvatarGroupRootContract } from "@pisagor/contracts";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../../internal";

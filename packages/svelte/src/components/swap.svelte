@@ -4,7 +4,7 @@
     type SwapIndicatorProps,
     type SwapRootProps,
   } from "@ark-ui/svelte";
-  import type { SwapRootContract, SwapContract } from "@pisagor/props";
+  import type { SwapRootContract, SwapContract } from "@pisagor/contracts";
   import { swapRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

@@ -3,7 +3,7 @@
     RadioGroupPresetItem as BaseRadioGroupPresetItem,
     RadioGroupRootContract,
     RadioGroupContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import RadioGroupItem from "./radio-group-item.svelte";
   import RadioGroupRoot from "./radio-group-root.svelte";

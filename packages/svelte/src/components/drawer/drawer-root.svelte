@@ -3,7 +3,7 @@
     Drawer as DrawerPrimitive,
     type DrawerRootProps,
   } from "@ark-ui/svelte";
-  import type { DrawerRootContract } from "@pisagor/props";
+  import type { DrawerRootContract } from "@pisagor/contracts";
   import { drawerRecipe } from "@pisagor/recipes";
   import { Context } from "./drawer.context";
 

@@ -13,7 +13,7 @@ import type {
   DialogContract,
   DialogHeaderContract,
   DialogRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

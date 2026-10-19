@@ -3,7 +3,7 @@
   import type {
     CommandDialogContract,
     CommandRootContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { commandRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Field, type FieldInputProps } from "@ark-ui/svelte";
-  import type { InputContract, InputRootContract } from "@pisagor/props";
+  import type { InputContract, InputRootContract } from "@pisagor/contracts";
   import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

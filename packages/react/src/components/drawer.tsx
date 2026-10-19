@@ -12,7 +12,7 @@ import type {
   DrawerContract,
   DrawerHeaderContract,
   DrawerRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";

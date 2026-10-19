@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react";
-import type { ButtonRootContract } from "@pisagor/props";
+import type { ButtonRootContract } from "@pisagor/contracts";
 import { buttonRecipe } from "@pisagor/recipes";
 import type { HTMLArkPropsWithRef } from "../internal";
 import { Spinner } from "./spinner";

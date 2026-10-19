@@ -15,7 +15,7 @@ import {
   CaretRightIcon,
   DotsThreeIcon,
 } from "@phosphor-icons/react";
-import type { PaginationRootContract } from "@pisagor/props";
+import type { PaginationRootContract } from "@pisagor/contracts";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";

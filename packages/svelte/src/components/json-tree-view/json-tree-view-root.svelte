@@ -3,7 +3,7 @@
     JsonTreeView as JsonTreeViewPrimitive,
     type JsonTreeViewRootProps,
   } from "@ark-ui/svelte";
-  import type { JsonTreeViewRootContract } from "@pisagor/props";
+  import type { JsonTreeViewRootContract } from "@pisagor/contracts";
   import { withProvider } from "./json-tree-view.context";
 
   type Props = JsonTreeViewRootProps & JsonTreeViewRootContract;

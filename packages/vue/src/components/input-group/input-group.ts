@@ -1,7 +1,7 @@
 import type {
   InputGroupControlRootContract,
   InputGroupTextareaControlRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   inputGroupControlRecipe,
   inputGroupTextareaControlRecipe,

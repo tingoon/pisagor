@@ -5,7 +5,7 @@ import type {
   HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid";
-import type { HoverCardRootContract } from "@pisagor/props";
+import type { HoverCardRootContract } from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

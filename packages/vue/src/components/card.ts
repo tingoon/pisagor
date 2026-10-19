@@ -3,7 +3,7 @@ import type {
   CardHeaderContract,
   CardRootContract,
   CardContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

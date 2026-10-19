@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DataListRootContract } from "@pisagor/props";
+  import type { DataListRootContract } from "@pisagor/contracts";
   import { dataListRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DatePickerRootContract } from "@pisagor/props";
+  import type { DatePickerRootContract } from "@pisagor/contracts";
   import {
     datePickerRecipe,
     type FormControlGroupShellVariantProps,

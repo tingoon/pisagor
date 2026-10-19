@@ -21,7 +21,7 @@ import type {
   DropdownMenuItemGroupContract,
   DropdownMenuItemRootContract,
   DropdownMenuRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { use } from "react";

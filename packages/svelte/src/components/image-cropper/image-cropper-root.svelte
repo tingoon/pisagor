@@ -3,7 +3,7 @@
     ImageCropper as ImageCropperPrimitive,
     type ImageCropperRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { ImageCropperRootContract } from "@pisagor/props";
+  import type { ImageCropperRootContract } from "@pisagor/contracts";
   import { imageCropperRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./image-cropper.context";

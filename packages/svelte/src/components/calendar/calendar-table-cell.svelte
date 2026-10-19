@@ -4,7 +4,7 @@
     type DatePickerTableCellProps,
     type DatePickerTableCellTriggerProps,
   } from "@ark-ui/svelte";
-  import type { CalendarTableCellRootContract } from "@pisagor/props";
+  import type { CalendarTableCellRootContract } from "@pisagor/contracts";
   import { calendarTableCellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

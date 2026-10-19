@@ -5,7 +5,7 @@
     RatingGroupItemProps,
     RatingGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { RatingContract, RatingRootContract } from "@pisagor/props";
+  import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
 
   import { StarIcon } from "phosphor-svelte";
   import type { Component } from "svelte";

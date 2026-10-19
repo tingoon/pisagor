@@ -8,7 +8,7 @@ import type {
   CommandDialogContract,
   CommandPresetItem,
   CommandRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";

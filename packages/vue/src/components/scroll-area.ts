@@ -2,7 +2,7 @@ import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue";
 import type {
   ScrollAreaContract,
   ScrollAreaRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

@@ -2,7 +2,7 @@ import {
   Menu as MenuPrimitive,
   type MenuContextTriggerProps,
 } from "@ark-ui/react";
-import type { ContextMenuRootContract } from "@pisagor/props";
+import type { ContextMenuRootContract } from "@pisagor/contracts";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import type {
   DropdownMenuContentProps,

@@ -2,7 +2,7 @@ import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   AnnouncementContract,
   AnnouncementRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

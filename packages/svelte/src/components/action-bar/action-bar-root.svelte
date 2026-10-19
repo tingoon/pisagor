@@ -4,7 +4,7 @@
     ActionBarActionItem,
     ActionBarRootContract,
     ActionBarContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
   import { XIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";

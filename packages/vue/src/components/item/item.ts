@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { ItemRootContract } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";

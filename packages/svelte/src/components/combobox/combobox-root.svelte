@@ -4,7 +4,7 @@
     Combobox as ComboboxPrimitive,
     type ComboboxRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { ComboboxRootContract } from "@pisagor/props";
+  import type { ComboboxRootContract } from "@pisagor/contracts";
   import {
     comboboxRecipe,
     type FormControlGroupShellVariantProps,

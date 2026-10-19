@@ -4,7 +4,7 @@
     type TagsInputControlProps as ArkControlProps,
     useTagsInputContext,
   } from "@ark-ui/svelte";
-  import type { TagsInputRootContract } from "@pisagor/props";
+  import type { TagsInputRootContract } from "@pisagor/contracts";
   import { formControlGroupShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useLocale } from "../provider/context";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DataTableBodyContract } from "@pisagor/props";
+  import type { DataTableBodyContract } from "@pisagor/contracts";
   import { useDataTableContext } from "./data-table.context";
   import DataTableRowProvider from "./data-table-row-provider.svelte";
 

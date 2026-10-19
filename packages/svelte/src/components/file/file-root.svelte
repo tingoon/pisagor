@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FileRootContract } from "@pisagor/props";
+  import type { FileRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./file.context";
 

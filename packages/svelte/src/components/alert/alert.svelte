@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AlertContract, AlertRootContract } from "@pisagor/props";
+  import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
   import {
     CheckCircleIcon,
     InfoIcon,

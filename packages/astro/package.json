@@ -28,7 +28,7 @@
     "typecheck": "bun check"
   },
   "dependencies": {
-    "@pisagor/props": "workspace:*",
+    "@pisagor/contracts": "workspace:*",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",

@@ -1,4 +1,4 @@
-import type { FileContract, FileRootContract } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";

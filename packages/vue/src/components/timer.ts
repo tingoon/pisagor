@@ -5,7 +5,7 @@ import {
 import type {
   TimerItemGroupRootContract,
   TimerRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

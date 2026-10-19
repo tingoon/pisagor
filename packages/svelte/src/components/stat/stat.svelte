@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { StatContract, StatRootContract } from "@pisagor/props";
+  import type { StatContract, StatRootContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import StatDescription from "./stat-description.svelte";

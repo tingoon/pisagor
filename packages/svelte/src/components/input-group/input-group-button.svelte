@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { InputGroupButtonRootContract } from "@pisagor/props";
+  import type { InputGroupButtonRootContract } from "@pisagor/contracts";
   import { inputGroupButtonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import Button from "../button.svelte";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SeparatorRootContract } from "@pisagor/props";
+  import type { SeparatorRootContract } from "@pisagor/contracts";
   import { separatorRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

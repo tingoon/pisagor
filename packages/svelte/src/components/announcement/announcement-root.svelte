@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { AnnouncementRootContract } from "@pisagor/props";
+  import type { AnnouncementRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./announcement.context";
 

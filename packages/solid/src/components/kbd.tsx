@@ -1,4 +1,4 @@
-import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/contracts";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";

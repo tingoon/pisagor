@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Tabs as TabsPrimitive, type TabsRootProps } from "@ark-ui/svelte";
-  import type { TabsRootContract } from "@pisagor/props";
+  import type { TabsRootContract } from "@pisagor/contracts";
   import { withProvider } from "./tabs.context";
 
   type Props = TabsRootProps & TabsRootContract;

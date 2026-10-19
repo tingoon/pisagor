@@ -14,7 +14,7 @@ import type {
   PopoverHeaderContract,
   PopoverRootContract,
   PopoverContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";

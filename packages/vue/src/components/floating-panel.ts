@@ -1,6 +1,6 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import type { FloatingPanelRootContract } from "@pisagor/props";
+import type { FloatingPanelRootContract } from "@pisagor/contracts";
 import {
   type FloatingPanelRecipe,
   floatingPanelRecipe,

@@ -5,7 +5,7 @@ import {
 import type {
   AppShellRootContract,
   AppShellTriggerContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";

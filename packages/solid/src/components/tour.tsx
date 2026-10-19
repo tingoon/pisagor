@@ -13,7 +13,7 @@ import type {
   TourTitleProps,
   UseTourReturn,
 } from "@ark-ui/solid";
-import type { TourRootContract } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";

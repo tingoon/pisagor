@@ -3,7 +3,7 @@ import type {
   MenuItemRootContract,
   MenuRootContract,
   MenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

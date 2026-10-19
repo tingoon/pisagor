@@ -4,7 +4,7 @@
     type ColorPickerRootProps as ArkRootProps,
     parseColor,
   } from "@ark-ui/svelte";
-  import type { ColorPickerRootContract } from "@pisagor/props";
+  import type { ColorPickerRootContract } from "@pisagor/contracts";
   import { colorPickerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./color-picker.context";

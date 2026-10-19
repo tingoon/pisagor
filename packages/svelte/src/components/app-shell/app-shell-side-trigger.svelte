@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AppShellTriggerContract } from "@pisagor/props";
+  import type { AppShellTriggerContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps, Snippet } from "svelte";
   import Button from "../button.svelte";

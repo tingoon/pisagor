@@ -5,7 +5,7 @@ import type {
   ImageCropperRootProps as ImageCropperRootPrimitiveProps,
   ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/react";
-import type { ImageCropperRootContract } from "@pisagor/props";
+import type { ImageCropperRootContract } from "@pisagor/contracts";
 import { imageCropperRecipe } from "@pisagor/recipes";
 
 import { createSlotRecipeContext } from "../internal";

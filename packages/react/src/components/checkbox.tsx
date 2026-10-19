@@ -10,7 +10,7 @@ import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   CheckboxGroupRootContract,
   CheckboxRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   checkboxGroupRecipe,
   checkboxRecipe,

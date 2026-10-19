@@ -8,7 +8,7 @@ import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
 import type {
   SignaturePadContract,
   SignaturePadRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

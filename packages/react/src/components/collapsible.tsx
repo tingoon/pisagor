@@ -5,7 +5,7 @@ import type {
   CollapsibleRootProps as CollapsibleRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { CollapsibleRootContract } from "@pisagor/props";
+import type { CollapsibleRootContract } from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 

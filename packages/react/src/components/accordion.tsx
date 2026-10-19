@@ -12,7 +12,7 @@ import type {
   AccordionPresetItem as BaseAccordionPresetItem,
   AccordionRootContract,
   AccordionContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";

@@ -4,7 +4,7 @@
     type AngleSliderHiddenInputProps,
     type AngleSliderRootProps,
   } from "@ark-ui/svelte";
-  import type { CircularSliderRootContract } from "@pisagor/props";
+  import type { CircularSliderRootContract } from "@pisagor/contracts";
   import { circularSliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import {

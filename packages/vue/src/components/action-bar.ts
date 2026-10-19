@@ -5,7 +5,7 @@ import type {
   ActionBarRootContract,
   ActionBarContract,
   ActionBarValueContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
 import {
   computed,

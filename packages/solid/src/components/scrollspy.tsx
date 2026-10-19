@@ -1,4 +1,4 @@
-import type { ScrollspyRootContract } from "@pisagor/props";
+import type { ScrollspyRootContract } from "@pisagor/contracts";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { onCleanup, onMount, splitProps } from "solid-js";

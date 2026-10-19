@@ -3,7 +3,7 @@ import type {
   TabsPresetItem as BaseTabsPresetItem,
   TabsRootContract,
   TabsContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

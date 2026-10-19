@@ -11,7 +11,7 @@ import type {
   ListboxPresetItem as BaseListboxPresetItem,
   ListboxRootContract,
   ListboxContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type ListboxItemVariantProps,
   listboxItemRecipe,

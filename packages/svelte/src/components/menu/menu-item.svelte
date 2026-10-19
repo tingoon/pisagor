@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { MenuItemRootContract } from "@pisagor/props";
+  import type { MenuItemRootContract } from "@pisagor/contracts";
   import { menuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

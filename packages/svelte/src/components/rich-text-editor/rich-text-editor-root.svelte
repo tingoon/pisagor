@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { RichTextEditorRootContract } from "@pisagor/props";
+  import type { RichTextEditorRootContract } from "@pisagor/contracts";
   import {
     formControlShellRecipe,
     richTextEditorRecipe,

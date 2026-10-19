@@ -74,9 +74,9 @@ Only for **foldered** multi-file components. Same rules as React — provide wit
 - Icons: `@squidlab/phosphor-solid` (icons from `@squidlab/phosphor-solid/icons`, `IconProvider` and types from the root). Shared SVG stand-ins may live in `src/internal/icons`.
 - Class merging: `cn` from `@pisagor/utils`.
 
-### Shared props (`@pisagor/props`)
+### Shared props (`@pisagor/contracts`)
 
-Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Solid [`button.tsx`](../../../packages/solid/src/components/button.tsx).
+Same contract as React — extend `BaseFooProps` from `@pisagor/contracts`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Solid [`button.tsx`](../../../packages/solid/src/components/button.tsx).
 
 ---
 

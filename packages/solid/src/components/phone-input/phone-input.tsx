@@ -2,7 +2,7 @@ import { createListCollection } from "@ark-ui/solid";
 import type {
   PhoneInputContract,
   PhoneInputRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type PhoneInputVariantProps,
   phoneInputRecipe,

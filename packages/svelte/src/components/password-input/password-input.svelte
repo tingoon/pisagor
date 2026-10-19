@@ -4,7 +4,7 @@
     type PasswordInputInputProps,
     type PasswordInputRootProps as PasswordInputRootPrimitiveProps,
   } from "@ark-ui/svelte";
-  import type { PasswordInputRootContract } from "@pisagor/props";
+  import type { PasswordInputRootContract } from "@pisagor/contracts";
   import {
     inputGroupButtonRecipe,
     inputGroupControlRecipe,

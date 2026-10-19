@@ -5,7 +5,7 @@ import type {
   NumberInputScrubberProps,
 } from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import type { NumberInputRootContract } from "@pisagor/props";
+import type { NumberInputRootContract } from "@pisagor/contracts";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,

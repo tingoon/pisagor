@@ -6,7 +6,7 @@ import type {
   DropdownMenuItemContract,
   DropdownMenuRootContract,
   DropdownMenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {

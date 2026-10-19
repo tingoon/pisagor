@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ItemRootContract } from "@pisagor/props";
+  import type { ItemRootContract } from "@pisagor/contracts";
   import { itemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";

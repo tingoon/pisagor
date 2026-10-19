@@ -9,7 +9,7 @@ import type {
 import type {
   SignaturePadContract,
   SignaturePadRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";

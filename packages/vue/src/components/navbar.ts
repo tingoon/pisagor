@@ -1,4 +1,4 @@
-import type { NavbarRootContract, NavbarContract } from "@pisagor/props";
+import type { NavbarRootContract, NavbarContract } from "@pisagor/contracts";
 import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

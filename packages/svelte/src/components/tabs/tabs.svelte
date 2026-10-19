@@ -4,7 +4,7 @@
     TabsPresetItem as BaseTabsPresetItem,
     TabsRootContract,
     TabsContract,
-  } from "@pisagor/props";
+  } from "@pisagor/contracts";
   import TabsContent from "./tabs-content.svelte";
   import TabsList from "./tabs-list.svelte";
   import TabsRoot from "./tabs-root.svelte";

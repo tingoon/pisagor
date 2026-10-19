@@ -17,7 +17,7 @@ import { XIcon } from "@phosphor-icons/react";
 import type {
   TagsInputItemRootContract,
   TagsInputRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";

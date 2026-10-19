@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BadgeRootContract } from "@pisagor/props";
+  import type { BadgeRootContract } from "@pisagor/contracts";
   import { badgeRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

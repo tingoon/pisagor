@@ -7,7 +7,7 @@ import { PhX } from "@phosphor-icons/vue";
 import type {
   TagsInputItemRootContract,
   TagsInputRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useLocale } from "./provider/context";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ButtonGroupRootContract } from "@pisagor/props";
+  import type { ButtonGroupRootContract } from "@pisagor/contracts";
   import type { HTMLFieldsetAttributes } from "svelte/elements";
   import { withProvider } from "./button-group.context";
 

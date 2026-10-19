@@ -1,6 +1,9 @@
 import { Steps as StepsPrimitive } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
-import type { StepsItemRootContract, StepsRootContract } from "@pisagor/props";
+import type {
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

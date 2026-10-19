@@ -3,7 +3,7 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import type {
   NavigationMenuRootContract,
   NavigationMenuContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
 import type {

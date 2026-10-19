@@ -3,7 +3,7 @@ import type {
   DialogContract,
   DialogHeaderContract,
   DialogRootContract,
-} from "@pisagor/props";
+} from "@pisagor/contracts";
 import {
   type DialogRecipe,
   type DialogVariantProps,

@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue";
-import type { SwitchContract, SwitchRootContract } from "@pisagor/props";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";

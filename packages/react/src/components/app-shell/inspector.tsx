@@ -2,7 +2,7 @@ import {
   ArrowsInLineHorizontalIcon,
   ArrowsOutLineHorizontalIcon,
 } from "@phosphor-icons/react";
-import type { AppShellTriggerContract } from "@pisagor/props";
+import type { AppShellTriggerContract } from "@pisagor/contracts";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";

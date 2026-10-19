@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useHotkey } from "@ark-ui/svelte";
-  import type { AppShellRootContract } from "@pisagor/props";
+  import type { AppShellRootContract } from "@pisagor/contracts";
   import { appShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { untrack } from "svelte";

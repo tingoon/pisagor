@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { SkipNavRootContract } from "@pisagor/props";
+  import type { SkipNavRootContract } from "@pisagor/contracts";
   import { skipNavRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAnchorAttributes } from "svelte/elements";

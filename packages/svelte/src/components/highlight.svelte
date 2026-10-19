@@ -3,7 +3,7 @@
     Highlight as HighlightPrimitive,
     type HighlightProps as ArkHighlightProps,
   } from "@ark-ui/svelte";
-  import type { HighlightRootContract } from "@pisagor/props";
+  import type { HighlightRootContract } from "@pisagor/contracts";
   import { highlightRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

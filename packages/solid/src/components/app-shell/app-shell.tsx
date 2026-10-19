@@ -1,4 +1,4 @@
-import type { AppShellRootContract } from "@pisagor/props";
+import type { AppShellRootContract } from "@pisagor/contracts";
 import { appShellRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import {
