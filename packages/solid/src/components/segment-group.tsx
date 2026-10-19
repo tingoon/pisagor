@@ -57,10 +57,7 @@ const SegmentGroupRootBase: Component<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 > = withProvider<
   ComponentProps<typeof SegmentGroupPrimitive.Root> & SegmentGroupRootContract
->(SegmentGroupPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(SegmentGroupPrimitive.Root, { name: "Root" });
 
 export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -108,11 +105,7 @@ export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
 
 const SegmentGroupItemText: Component<SegmentGroupItemTextProps> = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.ItemText>
->(SegmentGroupPrimitive.ItemText, {
-  defaultProps: { "data-part": "item-text" },
-  name: "ItemText",
-  slot: "itemText",
-});
+>(SegmentGroupPrimitive.ItemText, { name: "ItemText" });
 
 export const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
   withContext<ComponentProps<typeof SegmentGroupPrimitive.Indicator>>(

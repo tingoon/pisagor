@@ -26,7 +26,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 type CircularProgressTrackProps = ComponentProps<"svg">;
-type CircularProgressValueProps = ProgressValueTextProps;
+type CircularProgressValueTextProps = ProgressValueTextProps;
 
 type CircularProgressRootProps = ProgressRootProviderProps &
   CircularProgressRootContract;
@@ -45,7 +45,7 @@ export interface CircularProgressProps
     CircularProgressTrackProps,
     "class" | "height" | "viewBox" | "width"
   >;
-  valueProps?: Omit<CircularProgressValueProps, "children" | "class">;
+  valueProps?: Omit<CircularProgressValueTextProps, "children" | "class">;
 }
 
 interface CircularProgressTrackPartProps {
@@ -62,10 +62,7 @@ interface CircularProgressTrackPartProps {
 const CircularProgressRoot: Component<CircularProgressRootProps> = withProvider<
   ComponentProps<typeof ProgressPrimitive.RootProvider> &
     CircularProgressRootContract
->(ProgressPrimitive.RootProvider, {
-  name: "Root",
-  slot: "base",
-});
+>(ProgressPrimitive.RootProvider, { name: "Root" });
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /
@@ -85,19 +82,13 @@ function getProgressbarProps(progress: ReturnType<UseProgressReturn>) {
 
 const CircularProgressValueWrapper = withContext<ComponentProps<"span">>(
   "span",
-  {
-    defaultProps: { "data-part": "value-wrapper" },
-    name: "ValueWrapper",
-    slot: "valueWrapper",
-  },
+  { name: "ValueWrapper" },
 );
 
-const CircularProgressValue: Component<CircularProgressValueProps> =
+const CircularProgressValueText: Component<CircularProgressValueTextProps> =
   withContext<ComponentProps<typeof ProgressPrimitive.ValueText>>(
     ProgressPrimitive.ValueText,
-    {
-      name: "Value",
-    },
+    { name: "ValueText" },
   );
 
 function CircularProgressTrack(
@@ -200,9 +191,9 @@ export function CircularProgress(props: CircularProgressProps): JSX.Element {
     >
       <Show when={local.isValueVisible}>
         <CircularProgressValueWrapper class={local.classNames?.valueWrapper}>
-          <CircularProgressValue
+          <CircularProgressValueText
             {...local.valueProps}
-            class={local.classNames?.value}
+            class={local.classNames?.valueText}
           />
         </CircularProgressValueWrapper>
       </Show>

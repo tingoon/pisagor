@@ -33,9 +33,14 @@ import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
+import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: DatePickerSlotsContext, useStyles } = createSlotRecipeContext({
+const {
+  Context: DatePickerSlotsContext,
+  withContext,
+  useStyles,
+} = createSlotRecipeContext({
   name: "DatePicker",
   recipe: datePickerRecipe,
 });
@@ -89,7 +94,7 @@ export interface DatePickerRootProps
   calendarRecipe?: typeof calendarRecipe;
 }
 
-export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
+function Root(props: DatePickerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "positioning",
@@ -99,8 +104,13 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
     "calendarRecipe",
   ]);
   const slots = createMemo(() => (local.recipe ?? datePickerRecipe)());
+  const surfaceVariant = useFormControlSurface();
+  const calendarResolved = () => ({
+    surfaceVariant,
+    variant: local.variant,
+  });
   const calendarSlots = createMemo(() =>
-    (local.calendarRecipe ?? calendarRecipe)(),
+    (local.calendarRecipe ?? calendarRecipe)(calendarResolved()),
   );
 
   return (
@@ -124,7 +134,9 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
             get slots() {
               return calendarSlots();
             },
-            variants: {},
+            get variants() {
+              return calendarResolved() as never;
+            },
           }}
         >
           <DatePickerPrimitive.Root
@@ -151,18 +163,20 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
  */
 const DatePickerInsideControlContext = createSolidContext(false);
 
-export function DatePickerControl(
+const ControlBase = withContext<
+  ComponentProps<typeof DatePickerPrimitive.Control>
+>(DatePickerPrimitive.Control, {
+  name: "Control",
+});
+
+function Control(
   props: ComponentProps<typeof DatePickerPrimitive.Control>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDatePicker();
 
   return (
     <DatePickerInsideControlContext.Provider value={true}>
-      <DatePickerPrimitive.Control
-        {...rest}
-        class={styles.slots.control({ class: local.class })}
-      />
+      <ControlBase {...rest} class={local.class} />
     </DatePickerInsideControlContext.Provider>
   );
 }
@@ -179,33 +193,35 @@ function MaybeDatePickerControl(props: {
 
   return (
     <DatePickerInsideControlContext.Provider value={true}>
-      <DatePickerPrimitive.Control class={props.class}>
-        {props.children}
-      </DatePickerPrimitive.Control>
+      <ControlBase class={props.class}>{props.children}</ControlBase>
     </DatePickerInsideControlContext.Provider>
   );
 }
 
-export function DatePickerTrigger(props: DatePickerTriggerProps): JSX.Element {
+const TriggerBase = withContext<DatePickerTriggerProps>(
+  DatePickerPrimitive.Trigger,
+  {
+    name: "Trigger",
+  },
+);
+
+function Trigger(props: DatePickerTriggerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
   const styles = useDatePicker();
 
   return (
     <MaybeDatePickerControl class={styles.slots.control()}>
-      <DatePickerPrimitive.Trigger
-        {...rest}
-        class={styles.slots.trigger({ class: local.class })}
-      >
+      <TriggerBase {...rest} class={local.class}>
         {local.children}
-      </DatePickerPrimitive.Trigger>
+      </TriggerBase>
       <Show when={local.clearable ?? false}>
-        <DatePickerClearTrigger />
+        <ClearTrigger />
       </Show>
     </MaybeDatePickerControl>
   );
 }
 
-export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
+function InputPart(props: DatePickerInputProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -229,7 +245,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
         />
         <InputGroup.Addon align="inline-end">
           <Show when={local.clearable ?? false}>
-            <DatePickerClearTrigger />
+            <ClearTrigger />
           </Show>
           <DatePickerPrimitive.Trigger
             asChild={(triggerProps) => (
@@ -250,7 +266,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
   );
 }
 
-export function DatePickerClearTrigger(): JSX.Element {
+function ClearTrigger(): JSX.Element {
   const { m } = useLocale();
   const api = useDatePickerContext();
 
@@ -273,7 +289,7 @@ export function DatePickerClearTrigger(): JSX.Element {
   );
 }
 
-export function DatePickerTimer(props: DatePickerTimerProps): JSX.Element {
+function TimeInput(props: DatePickerTimerProps): JSX.Element {
   const [local] = splitProps(props, [
     "clearable",
     "defaultValue",
@@ -360,22 +376,25 @@ export function DatePickerTimer(props: DatePickerTimerProps): JSX.Element {
   );
 }
 
-export function DatePickerContent(props: DatePickerContentProps): JSX.Element {
+const ContentBase = withContext<DatePickerContentProps>(
+  DatePickerPrimitive.Content,
+  {
+    name: "Content",
+  },
+);
+
+function Content(props: DatePickerContentProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "showCalendar",
     "children",
     "class",
   ]);
-  const styles = useDatePicker();
   const showCalendar = () => local.showCalendar ?? true;
 
   return (
     <Portal>
       <DatePickerPrimitive.Positioner>
-        <DatePickerPrimitive.Content
-          {...rest}
-          class={styles.slots.content({ class: local.class })}
-        >
+        <ContentBase {...rest} class={local.class}>
           <Show
             fallback={local.children}
             when={showCalendar() && local.children === undefined}
@@ -391,29 +410,18 @@ export function DatePickerContent(props: DatePickerContentProps): JSX.Element {
               <Calendar.TableDays />
             </Calendar.Table>
           </Show>
-        </DatePickerPrimitive.Content>
+        </ContentBase>
       </DatePickerPrimitive.Positioner>
     </Portal>
   );
 }
 
-export function DatePickerValueText(
-  props: DatePickerValueTextProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDatePicker();
+const ValueText = withContext<DatePickerValueTextProps>(
+  DatePickerPrimitive.ValueText,
+  { name: "ValueText" },
+);
 
-  return (
-    <DatePickerPrimitive.ValueText
-      {...rest}
-      class={styles.slots.valueText({ class: local.class })}
-    />
-  );
-}
-
-export function DatePickerPresetTrigger(
-  props: DatePickerPresetTriggerProps,
-): JSX.Element {
+function PresetTrigger(props: DatePickerPresetTriggerProps): JSX.Element {
   return <Calendar.PresetTrigger {...props} />;
 }
 
@@ -424,15 +432,15 @@ export type {
 
 export type { DatePickerRootProps as DatePickerProps };
 
-export const DatePicker = Object.assign(DatePickerRoot, {
-  ClearTrigger: DatePickerClearTrigger,
-  Content: DatePickerContent,
-  Control: DatePickerControl,
-  Input: DatePickerInput,
-  PresetTrigger: DatePickerPresetTrigger,
-  TimeInput: DatePickerTimer,
-  /** @deprecated Use `TimeInput`. */
-  Timer: DatePickerTimer,
-  Trigger: DatePickerTrigger,
-  ValueText: DatePickerValueText,
+export const DatePicker = Object.assign(Root, {
+  ClearTrigger,
+  Content,
+  Control,
+  Input: InputPart,
+  PresetTrigger,
+  TimeInput,
+  /** @deprecated Use `DatePicker.TimeInput`. */
+  Timer: TimeInput,
+  Trigger,
+  ValueText,
 });

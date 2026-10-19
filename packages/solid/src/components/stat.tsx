@@ -47,10 +47,7 @@ export interface StatProps
 // #region Parts
 export const StatRoot: Component<StatRootProps> = withProvider<
   ComponentProps<"div"> & StatRootContract
->("div", {
-  name: "Root",
-  slot: "base",
-});
+>("div", { name: "Root" });
 
 export const StatLabel = withContext<ComponentProps<"div">>("div", {
   name: "Label",

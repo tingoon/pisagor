@@ -27,11 +27,22 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
 
 export interface AutocompleteProps extends Omit<
   AutocompleteRootProps,
-  "children" | "collection" | "items" | "placeholder"
+  "children" | "collection" | "onValueChange"
 > {
+  /**
+   * Whether to show a clear button when the input has a value.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
+  id?: string;
   items?: Array<AutocompletePresetItem | string>;
   placeholder?: string;
+  /** Input size. Defaults to `md`. */
+  size?: "sm" | "md" | "lg";
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: "primary" | "secondary";
+  onValueChange?: (value: string[]) => void;
 }
 
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
@@ -47,15 +58,7 @@ export function AutocompleteControl(props: ComboboxControlProps): JSX.Element {
 }
 
 export function AutocompleteInput(props: ComboboxInputProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "showTrigger"]);
-
-  return (
-    <Combobox.Input
-      {...rest}
-      clearable={local.clearable ?? false}
-      showTrigger={local.showTrigger ?? false}
-    />
-  );
+  return <Combobox.Input {...props} />;
 }
 
 export function AutocompleteItemGroupLabel(
@@ -116,6 +119,7 @@ export function AutocompleteShorthand(props: AutocompleteProps): JSX.Element {
       clearable={local.clearable}
       inputBehavior="autocomplete"
       items={local.items}
+      showTrigger={false}
     />
   );
 }

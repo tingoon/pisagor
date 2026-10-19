@@ -37,10 +37,7 @@ export type CardProps = CardRootProps & CardContract;
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider<CardRootProps>(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+export const CardRoot = withProvider<CardRootProps>(ark.div, { name: "Root" });
 
 /** Part-level `variant` stays on Media (not lifted to Root). */
 export function CardMedia(props: CardMediaProps): JSX.Element {

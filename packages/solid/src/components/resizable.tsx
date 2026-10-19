@@ -201,10 +201,7 @@ export function ResizableEdgeHandle(
 }
 
 export const ResizableRoot: Component<ResizableRootProps> =
-  withProvider<ResizableRootContract>(SplitterPrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+  withProvider<ResizableRootContract>(SplitterPrimitive.Root, { name: "Root" });
 
 export function ResizablePanel(props: ResizablePanelProps): JSX.Element {
   return <SplitterPrimitive.Panel {...props} />;
@@ -212,9 +209,7 @@ export function ResizablePanel(props: ResizablePanelProps): JSX.Element {
 
 export const ResizableResizeTriggerIndicator: Component<ResizableResizeTriggerIndicatorProps> =
   withContext(SplitterPrimitive.ResizeTriggerIndicator, {
-    defaultProps: { "data-part": "resize-trigger-indicator" },
     name: "ResizeTriggerIndicator",
-    slot: "resizeTriggerIndicator",
   });
 
 export function ResizableResizeTrigger(

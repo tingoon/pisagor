@@ -11,233 +11,122 @@ import type {
 } from "@ark-ui/solid";
 import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
-import { createContext } from "../utils";
-import { Field } from "./field";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Slider",
   recipe: sliderRecipe,
 });
-
-interface SliderExtras {
-  thumbShadowClass?: string;
-  trackVariantClass: string;
-}
-
-const { SliderExtrasContext, useSliderExtras } =
-  createContext("SliderExtras")<SliderExtras>();
-
-function useSlider() {
-  const styles = useStyles();
-  const extras = useSliderExtras();
-
-  return {
-    get slots() {
-      return styles.slots;
-    },
-    get thumbShadowClass() {
-      return extras.thumbShadowClass;
-    },
-    get trackVariantClass() {
-      return extras.trackVariantClass;
-    },
-  };
-}
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-type SliderValueProps = SliderValueTextProps;
-
-type SliderRootProps = SliderRootPrimitiveProps &
-  SliderRootContract & {
-    variant?: FormControlVariant;
-  };
+// #region Types
+type SliderRootProps = SliderRootPrimitiveProps & SliderRootContract;
 
 export interface SliderProps
   extends Omit<SliderRootProps, "children" | "onValueChange">, SliderContract {
+  /**
+   * The interval between markers.
+   *
+   * @defaultValue 1
+   */
   markerInterval?: number;
+  /**
+   * The labels to show on the markers.
+   *
+   * @defaultValue [ ]
+   */
   markerLabels?: string[];
+  /**
+   * Whether to show markers.
+   *
+   * @defaultValue false
+   */
   showMarkers?: boolean;
+  /**
+   * Whether to show the current value text next to the label.
+   *
+   * @defaultValue false
+   */
   showValue?: boolean;
   children?: JSX.Element;
   label?: JSX.Element;
+  /**
+   * Called when the slider value changes.
+   *
+   * @remarks
+   *   Receives the numeric value array directly, not Ark UI event details.
+   */
   onValueChange?: (value: number[]) => void;
+  /** Extra props forwarded to the slider control element */
   controlProps?: Omit<SliderControlProps, "children" | "class">;
+  /** Extra props forwarded to the slider range element */
   rangeProps?: Omit<SliderRangeProps, "children" | "class">;
+  /** Extra props forwarded to each slider thumb element */
   thumbProps?: Omit<SliderThumbProps, "children" | "index" | "class">;
-  valueProps?: Omit<SliderValueProps, "children" | "class">;
+  /** Extra props forwarded to the slider track element */
   trackProps?: Omit<SliderTrackProps, "children" | "class">;
+  /** Extra props forwarded to the slider value text element */
+  valueTextProps?: Omit<SliderValueTextProps, "children" | "class">;
 }
 
 type SliderHeaderProps = ComponentProps<"div">;
+
 type SliderMarkerTickProps = ComponentProps<"span">;
+
 type SliderMarkerLabelProps = ComponentProps<"span">;
+// #endregion
 
-/** Form-control `variant` feeds thumb/track extras (not a recipe variant). */
-function SliderRoot(props: SliderRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
+// #region Parts
+const Root = withProvider<SliderRootProps>(SliderPrimitive.Root, {
+  name: "Root",
+});
 
-  const slots = createMemo(() => (local.recipe ?? sliderRecipe)());
+const Header = withContext<SliderHeaderProps>("div", {
+  name: "Header",
+});
 
-  return (
-    <SliderStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <SliderExtrasContext
-        value={{
-          get thumbShadowClass() {
-            return variant() === "secondary" ? "shadow-none" : undefined;
-          },
-          get trackVariantClass() {
-            return variant() === "secondary" ? "bg-muted/40" : "bg-input/64";
-          },
-        }}
-      >
-        <SliderPrimitive.Root
-          {...rest}
-          class={slots().base({ class: local.class })}
-          data-variant={variant()}
-        />
-      </SliderExtrasContext>
-    </SliderStylesContext>
-  );
-}
+const ValueText = withContext<SliderValueTextProps>(SliderPrimitive.ValueText, {
+  name: "ValueText",
+  slot: "value",
+});
 
-function SliderHeader(props: SliderHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useSlider();
+const Control = withContext<SliderControlProps>(SliderPrimitive.Control, {
+  name: "Control",
+});
 
-  return (
-    <div {...rest} class={styles.slots.header({ class: local.class })}>
-      {local.children}
-    </div>
-  );
-}
+const Track = withContext<SliderTrackProps>(SliderPrimitive.Track, {
+  name: "Track",
+});
 
-function SliderValue(props: SliderValueProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
+const Range = withContext<SliderRangeProps>(SliderPrimitive.Range, {
+  name: "Range",
+});
 
-  return (
-    <SliderPrimitive.ValueText
-      {...rest}
-      class={styles.slots.value({ class: local.class })}
-    />
-  );
-}
+const Thumb = withContext<SliderThumbProps>(SliderPrimitive.Thumb, {
+  name: "Thumb",
+});
 
-function SliderControl(props: SliderControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
+const MarkerGroup = withContext<SliderMarkerGroupProps>(
+  SliderPrimitive.MarkerGroup,
+  { name: "MarkerGroup" },
+);
 
-  return (
-    <SliderPrimitive.Control
-      {...rest}
-      class={styles.slots.control({ class: local.class })}
-    />
-  );
-}
+const Marker = withContext<SliderMarkerProps>(SliderPrimitive.Marker, {
+  name: "Marker",
+});
 
-function SliderTrack(props: SliderTrackProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useSlider();
+const MarkerTick = withContext<SliderMarkerTickProps>("span", {
+  name: "MarkerTick",
+});
 
-  return (
-    <SliderPrimitive.Track
-      {...rest}
-      class={styles.slots.track({
-        class: cn(styles.trackVariantClass, local.class),
-      })}
-    >
-      {local.children}
-    </SliderPrimitive.Track>
-  );
-}
+const MarkerLabel = withContext<SliderMarkerLabelProps>("span", {
+  name: "MarkerLabel",
+});
 
-function SliderRange(props: SliderRangeProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
-
-  return (
-    <SliderPrimitive.Range
-      {...rest}
-      class={styles.slots.range({ class: local.class })}
-    />
-  );
-}
-
-function SliderThumb(props: SliderThumbProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "children"]);
-  const styles = useSlider();
-
-  return (
-    <SliderPrimitive.Thumb
-      {...rest}
-      class={styles.slots.thumb({
-        class: cn(styles.thumbShadowClass, local.class),
-      })}
-    >
-      {local.children}
-    </SliderPrimitive.Thumb>
-  );
-}
-
-function SliderMarkerGroup(props: SliderMarkerGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
-
-  return (
-    <SliderPrimitive.MarkerGroup
-      {...rest}
-      class={styles.slots.markerGroup({ class: local.class })}
-    />
-  );
-}
-
-function SliderMarker(props: SliderMarkerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
-
-  return (
-    <SliderPrimitive.Marker
-      {...rest}
-      class={styles.slots.marker({ class: local.class })}
-    />
-  );
-}
-
-function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSlider();
-
-  return (
-    <span {...rest} class={styles.slots.markerTick({ class: local.class })} />
-  );
-}
-
-function SliderMarkerLabel(props: SliderMarkerLabelProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useSlider();
-
-  return (
-    <span {...rest} class={styles.slots.markerLabel({ class: local.class })}>
-      {local.children}
-    </span>
-  );
-}
-
-function SliderLabel(
+function Label(
   props: ComponentProps<typeof SliderPrimitive.Label>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
@@ -249,7 +138,9 @@ function SliderLabel(
     />
   );
 }
+// #endregion
 
+// #region Closed
 function SliderShorthand(props: SliderProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
@@ -268,7 +159,7 @@ function SliderShorthand(props: SliderProps): JSX.Element {
     "rangeProps",
     "thumbProps",
     "trackProps",
-    "valueProps",
+    "valueTextProps",
     "onValueChange",
     "class",
     "classNames",
@@ -280,15 +171,19 @@ function SliderShorthand(props: SliderProps): JSX.Element {
   const markerLabels = () => local.markerLabels ?? [];
 
   const values = createMemo(() => {
-    if (Array.isArray(local.value)) return local.value;
-    if (Array.isArray(local.defaultValue)) return local.defaultValue;
+    if (Array.isArray(local.value)) {
+      return local.value;
+    }
+    if (Array.isArray(local.defaultValue)) {
+      return local.defaultValue;
+    }
 
     // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
     return [min()];
   });
 
   return (
-    <SliderRoot
+    <Root
       {...rest}
       class={local.class}
       defaultValue={local.defaultValue}
@@ -303,86 +198,93 @@ function SliderShorthand(props: SliderProps): JSX.Element {
       variant={local.variant}
     >
       <Show when={local.label !== undefined || local.showValue}>
-        <SliderHeader class={local.classNames?.header}>
+        <Header class={local.classNames?.header}>
           <Show when={local.label !== undefined}>
-            <Field.Label>
-              <SliderPrimitive.Label>{local.label}</SliderPrimitive.Label>
-            </Field.Label>
+            <SliderPrimitive.Label class={fieldRecipe().label()}>
+              {local.label}
+            </SliderPrimitive.Label>
           </Show>
+
           <Show when={local.showValue}>
-            <Field.Label
-              asChild={(labelProps) => (
-                <SliderValue
-                  {...labelProps()}
-                  {...local.valueProps}
-                  class={local.classNames?.value}
-                />
-              )}
+            <ValueText
+              {...local.valueTextProps}
+              class={local.classNames?.value}
             />
           </Show>
-        </SliderHeader>
+        </Header>
       </Show>
 
       {local.children}
 
-      <SliderControl {...local.controlProps} class={local.classNames?.control}>
-        <SliderTrack {...local.trackProps} class={local.classNames?.track}>
-          <SliderRange {...local.rangeProps} class={local.classNames?.range} />
-        </SliderTrack>
+      <Control {...local.controlProps} class={local.classNames?.control}>
+        <Track {...local.trackProps} class={local.classNames?.track}>
+          <Range {...local.rangeProps} class={local.classNames?.range} />
+        </Track>
+
         <For each={values()}>
           {(_, index) => (
-            <SliderThumb
+            <Thumb
               {...local.thumbProps}
               class={local.classNames?.thumb}
               index={index()}
               tabIndex={local.tabIndex ?? undefined}
             >
               <SliderPrimitive.HiddenInput />
-            </SliderThumb>
+            </Thumb>
           )}
         </For>
-      </SliderControl>
+      </Control>
 
       <Show when={local.showMarkers}>
-        <SliderMarkerGroup class={local.classNames?.markerGroup}>
-          <For each={Array.from({ length: max() + 1 }, (_, i) => i)}>
-            {(index) => (
-              <SliderMarker
+        <MarkerGroup class={local.classNames?.markerGroup}>
+          <For
+            each={Array.from(
+              { length: max() - min() + 1 },
+              (_, index) => min() + index,
+            )}
+          >
+            {(value, index) => (
+              <Marker
                 class={local.classNames?.marker}
-                data-interval={index % markerInterval() === 0 ? undefined : ""}
-                value={index}
+                data-interval={
+                  index() % markerInterval() === 0 ? undefined : ""
+                }
+                value={value}
               >
-                <SliderMarkerTick class={local.classNames?.markerTick} />
-                <SliderMarkerLabel class={local.classNames?.markerLabel}>
-                  {markerLabels()[index] ?? index}
-                </SliderMarkerLabel>
-              </SliderMarker>
+                <MarkerTick class={local.classNames?.markerTick} />
+
+                <MarkerLabel class={local.classNames?.markerLabel}>
+                  {markerLabels()[index()] ?? value}
+                </MarkerLabel>
+              </Marker>
             )}
           </For>
-        </SliderMarkerGroup>
+        </MarkerGroup>
       </Show>
-    </SliderRoot>
+    </Root>
   );
 }
+// #endregion
 
 export type {
   SliderControlProps,
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderValueTextProps,
 } from "@ark-ui/solid";
 
 export const Slider = Object.assign(SliderShorthand, {
-  Control: SliderControl,
-  Header: SliderHeader,
-  Label: SliderLabel,
-  Marker: SliderMarker,
-  MarkerGroup: SliderMarkerGroup,
-  MarkerLabel: SliderMarkerLabel,
-  MarkerTick: SliderMarkerTick,
-  Range: SliderRange,
-  Root: SliderRoot,
-  Thumb: SliderThumb,
-  Track: SliderTrack,
-  Value: SliderValue,
+  Control,
+  Header,
+  Label,
+  Marker,
+  MarkerGroup,
+  MarkerLabel,
+  MarkerTick,
+  Range,
+  Root,
+  Thumb,
+  Track,
+  ValueText,
 });

@@ -17,7 +17,7 @@ import { MagnifyingGlassIcon, createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,
-  ComboboxFieldInputProps,
+  ComboboxInputProps,
   ComboboxItemGroupLabelProps,
   ComboboxItemGroupProps,
   ComboboxItemProps,
@@ -49,10 +49,7 @@ export interface CommandDialogContentProps
   recipe?: typeof commandRecipe;
 }
 
-export interface CommandInputProps extends Omit<
-  ComboboxFieldInputProps,
-  "size"
-> {
+export interface CommandInputProps extends Omit<ComboboxInputProps, "size"> {
   size?: InputProps["size"];
 }
 
@@ -177,6 +174,7 @@ function CommandRootFrame(
       loopFocus={false}
       open
       selectionBehavior="clear"
+      showIndicator={false}
     />
   );
 }
@@ -210,7 +208,6 @@ export function CommandContent(props: CommandContentProps): JSX.Element {
     <Combobox.Content
       {...rest}
       class={styles.slots.content({ class: local.class })}
-      portalled={false}
     />
   );
 }
@@ -228,7 +225,7 @@ export function CommandInput(props: CommandInputProps): JSX.Element {
         <InputGroup.Addon>
           <MagnifyingGlassIcon aria-hidden class={styles.slots.inputIcon()} />
         </InputGroup.Addon>
-        <Combobox.FieldInput
+        <Combobox.Input
           {...rest}
           asChild={(inputProps) => (
             <InputGroup.Input {...inputProps()} autofocus />
@@ -268,8 +265,21 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
   );
 }
 
-export function CommandItemGroup(props: ComboboxItemGroupProps): JSX.Element {
-  return <Combobox.ItemGroup {...props} />;
+export function CommandItemGroup(
+  props: ComboboxItemGroupProps & { heading?: JSX.Element },
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["heading", "children"]);
+
+  return (
+    <Combobox.ItemGroup {...rest}>
+      <Show when={local.heading}>
+        {(heading) => (
+          <Combobox.ItemGroupLabel>{heading()}</Combobox.ItemGroupLabel>
+        )}
+      </Show>
+      {local.children}
+    </Combobox.ItemGroup>
+  );
 }
 
 export function CommandItemGroupLabel(
@@ -281,7 +291,7 @@ export function CommandItemGroupLabel(
 export function CommandItem(props: ComboboxItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
 
-  return <Combobox.Item {...rest} class={local.class} showIndicator={false} />;
+  return <Combobox.Item {...rest} class={local.class} />;
 }
 
 export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {

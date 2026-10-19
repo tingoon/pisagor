@@ -37,10 +37,7 @@ export type MenuShortcutProps = ComponentProps<"span">;
 
 const MenuRootBase: Component<MenuRootProps> = withProvider<
   ComponentProps<"nav"> & MenuRootContract
->("nav", {
-  name: "Root",
-  slot: "base",
-});
+>("nav", { name: "Root" });
 
 export function MenuRoot(props: MenuRootProps): JSX.Element {
   const { m } = useLocale();
@@ -78,11 +75,7 @@ export const MenuGroup: Component<MenuPartProps> = withContext<
 
 export const MenuGroupLabel: Component<MenuGroupLabelProps> = withContext<
   ComponentProps<"div">
->("div", {
-  defaultProps: { "data-part": "group-label" },
-  name: "GroupLabel",
-  slot: "groupLabel",
-});
+>("div", { name: "GroupLabel" });
 
 export function MenuItem(props: MenuItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -43,10 +43,7 @@ export interface ProgressProps
 
 const ProgressRoot: Component<ProgressRootProps> = withProvider<
   ComponentProps<typeof ProgressPrimitive.Root> & ProgressRootContract
->(ProgressPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(ProgressPrimitive.Root, { name: "Root" });
 
 const ProgressHeader: Component<ProgressHeaderProps> = withContext<
   ComponentProps<"div">
@@ -54,9 +51,9 @@ const ProgressHeader: Component<ProgressHeaderProps> = withContext<
   name: "Header",
 });
 
-const ProgressValue: Component<ProgressValueTextProps> = withContext<
+const ProgressValueText: Component<ProgressValueTextProps> = withContext<
   ComponentProps<typeof ProgressPrimitive.ValueText>
->(ProgressPrimitive.ValueText, { name: "Value" });
+>(ProgressPrimitive.ValueText, { name: "ValueText" });
 
 const ProgressTrack: Component<ProgressTrackProps> = withContext<
   ComponentProps<typeof ProgressPrimitive.Track>
@@ -100,10 +97,10 @@ export function Progress(props: ProgressProps): JSX.Element {
           <Show when={local.isValueVisible}>
             <Field.Label
               asChild={(labelProps) => (
-                <ProgressValue
+                <ProgressValueText
                   {...labelProps()}
                   {...local.valueProps}
-                  class={local.classNames?.value}
+                  class={local.classNames?.valueText}
                 />
               )}
             />

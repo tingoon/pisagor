@@ -32,10 +32,7 @@ export interface ToolbarProps
 
 export const ToolbarRoot: Component<ToolbarRootProps> = withProvider<
   ComponentProps<"div"> & ToolbarRootContract
->("div", {
-  name: "Root",
-  slot: "base",
-});
+>("div", { name: "Root" });
 
 export const ToolbarHeading: Component<ToolbarHeadingProps> = withContext<
   ComponentProps<"div">

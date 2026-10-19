@@ -21,10 +21,7 @@ export type NavbarNavProps = ComponentProps<"nav">;
 
 export const NavbarRoot: Component<NavbarRootProps> = withProvider<
   ComponentProps<"header"> & NavbarRootContract
->("header", {
-  name: "Root",
-  slot: "base",
-});
+>("header", { name: "Root" });
 
 export const NavbarBrand: Component<NavbarPartProps> = withContext<
   ComponentProps<"div">

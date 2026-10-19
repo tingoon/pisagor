@@ -20,17 +20,11 @@ export type LinkOverlayLinkProps = HTMLArkProps<"a">;
 // #region Parts
 export const LinkBoxRoot: Component<LinkBoxRootProps> = withProvider<
   ComponentProps<typeof ark.div> & LinkBoxRootContract
->(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+>(ark.div, { name: "Root" });
 
 export const LinkOverlayLink = withContext<ComponentProps<typeof ark.a>>(
   ark.a,
-  {
-    name: "Overlay",
-    slot: "overlay",
-  },
+  { name: "Overlay" },
 );
 // #endregion
 

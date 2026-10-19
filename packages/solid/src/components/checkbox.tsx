@@ -4,24 +4,25 @@ import type {
   CheckboxGroupProps as CheckboxGroupPrimitiveProps,
   CheckboxIndicatorProps,
   CheckboxLabelProps,
-  CheckboxRootProps,
+  CheckboxRootProps as CheckboxRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
   CheckboxGroupRootContract,
   CheckboxRootContract,
 } from "@pisagor/contracts";
-import {
-  checkboxGroupRecipe,
-  checkboxRecipe,
-  formControlToggleRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
+import { CheckIcon, MinusIcon, createSlotRecipeContext } from "../internal";
 
-type FormControlVariant = "primary" | "secondary";
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Checkbox",
+  recipe: checkboxRecipe,
+});
+// #endregion
 
+// #region Types
 export interface CheckboxGroupProps
   extends
     Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
@@ -29,48 +30,13 @@ export interface CheckboxGroupProps
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, CheckboxRootContract {
-  onValueChange?: (value: boolean) => void;
-}
+type CheckboxRootProps = CheckboxRootPrimitiveProps & CheckboxRootContract;
 
-type CheckboxIndicatorPartProps = CheckboxIndicatorProps &
-  Pick<CheckboxRootContract, "recipe">;
+export type CheckboxProps = CheckboxRootProps;
+// #endregion
 
-function CheckIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="1em"
-      viewBox="0 0 256 256"
-      width="1em"
-    >
-      <path
-        d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function MinusIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="1em"
-      viewBox="0 0 256 256"
-      width="1em"
-    >
-      <path
-        d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-export function CheckboxGroup(props: CheckboxGroupProps): JSX.Element {
+// #region Parts
+function Group(props: CheckboxGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["onValueChange", "recipe", "class"]);
 
   return (
@@ -82,148 +48,72 @@ export function CheckboxGroup(props: CheckboxGroupProps): JSX.Element {
   );
 }
 
-export function CheckboxRoot(props: CheckboxProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "variant",
-    "tabIndex",
-    "onCheckedChange",
-    "onValueChange",
-    "recipe",
-    "size",
-    "class",
-  ]);
-  const surfaceVariant = useFormControlSurface();
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
-  const recipeFn = () => local.recipe ?? checkboxRecipe;
-  const slots = () => recipeFn()();
+const Root = withProvider<CheckboxRootProps>(CheckboxPrimitive.Root, {
+  name: "Root",
+  slot: "root",
+});
 
-  return (
-    <CheckboxPrimitive.Root
-      {...rest}
-      class={cn(
-        formControlToggleRecipe({
-          size: local.size ?? "md",
-          surfaceVariant,
-          variant: variant(),
-        }),
-        slots().base({ class: local.class }),
-      )}
-      data-variant={variant()}
-      onCheckedChange={
-        local.onCheckedChange || local.onValueChange
-          ? (details) => {
-              local.onCheckedChange?.(details);
-              local.onValueChange?.(details.checked === true);
-            }
-          : undefined
-      }
-      role="checkbox"
-    >
-      <CheckboxPrimitive.Control>
-        <CheckboxIndicator recipe={recipeFn()}>
-          <CheckIcon />
-        </CheckboxIndicator>
-        <CheckboxIndicator indeterminate recipe={recipeFn()}>
-          <MinusIcon />
-        </CheckboxIndicator>
-      </CheckboxPrimitive.Control>
-      <CheckboxPrimitive.HiddenInput tabIndex={local.tabIndex} />
-    </CheckboxPrimitive.Root>
-  );
-}
+const ControlBase = withContext<CheckboxControlProps>(
+  CheckboxPrimitive.Control,
+  {
+    name: "Control",
+    slot: "base",
+  },
+);
 
-function CheckboxIndicator(props: CheckboxIndicatorPartProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe"]);
-  const slots = () => (local.recipe ?? checkboxRecipe)();
-
-  return (
-    <CheckboxPrimitive.Indicator
-      {...rest}
-      class={slots().indicator({ class: local.class })}
-    />
-  );
-}
-
-/** Compound root: lays out `Checkbox.Control` and `Checkbox.Label`. */
-export function CheckboxCompoundRoot(
-  props: CheckboxRootProps & { recipe?: typeof checkboxRecipe },
+function Control(
+  props: CheckboxControlProps & Pick<CheckboxRootContract, "size" | "variant">,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
+  const [local, rest] = splitProps(props, ["children", "variant"]);
 
   return (
-    <CheckboxPrimitive.Root
-      {...rest}
-      class={(local.recipe ?? checkboxRecipe)().root({ class: local.class })}
-    />
-  );
-}
-
-/** The styled box; renders check / minus indicators when empty. */
-export function CheckboxControl(
-  props: CheckboxControlProps &
-    CheckboxRootContract & {
-      recipe?: typeof checkboxRecipe;
-    },
-): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "size",
-    "variant",
-    "recipe",
-    "children",
-    "class",
-  ]);
-  const surfaceVariant = useFormControlSurface();
-  const variant = () => local.variant ?? "primary";
-  const recipeFn = () => local.recipe ?? checkboxRecipe;
-
-  return (
-    <CheckboxPrimitive.Control
-      {...rest}
-      class={cn(
-        formControlToggleRecipe({
-          size: local.size ?? "md",
-          surfaceVariant,
-          variant: variant(),
-        }),
-        recipeFn()().base(),
-        recipeFn()().control({ class: local.class }),
-      )}
-      data-variant={variant()}
-    >
+    <ControlBase {...rest} data-variant={local.variant ?? "primary"}>
       {local.children ?? (
         <>
-          <CheckboxIndicator recipe={recipeFn()}>
+          <Indicator>
             <CheckIcon />
-          </CheckboxIndicator>
-          <CheckboxIndicator indeterminate recipe={recipeFn()}>
+          </Indicator>
+          <Indicator indeterminate>
             <MinusIcon />
-          </CheckboxIndicator>
+          </Indicator>
         </>
       )}
-    </CheckboxPrimitive.Control>
+    </ControlBase>
   );
 }
 
-export function CheckboxLabel(
-  props: CheckboxLabelProps & { recipe?: typeof checkboxRecipe },
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
+const Indicator = withContext<CheckboxIndicatorProps>(
+  CheckboxPrimitive.Indicator,
+  {
+    name: "Indicator",
+  },
+);
+
+const Label = withContext<CheckboxLabelProps>(CheckboxPrimitive.Label, {
+  name: "Label",
+});
+// #endregion
+
+// #region Closed
+function CheckboxShorthand(props: CheckboxProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["tabIndex", "class"]);
 
   return (
-    <CheckboxPrimitive.Label
-      {...rest}
-      class={(local.recipe ?? checkboxRecipe)().label({ class: local.class })}
-    />
+    <Root {...rest} class={local.class}>
+      <Control />
+      <CheckboxPrimitive.HiddenInput tabIndex={local.tabIndex} />
+    </Root>
   );
 }
+// #endregion
 
 export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/solid";
 
-export const Checkbox = Object.assign(CheckboxRoot, {
-  Control: CheckboxControl,
-  Group: CheckboxGroup,
+export const Checkbox = Object.assign(CheckboxShorthand, {
+  Control,
+  Group,
   HiddenInput: CheckboxPrimitive.HiddenInput,
-  Indicator: CheckboxIndicator,
-  Label: CheckboxLabel,
-  Root: CheckboxCompoundRoot,
+  Indicator,
+  Label,
+  Root,
 });

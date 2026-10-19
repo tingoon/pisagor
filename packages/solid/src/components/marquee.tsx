@@ -38,10 +38,7 @@ const MarqueeRootProvider: Component<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
 > = withProvider<
   ComponentProps<typeof MarqueePrimitive.Root> & MarqueeRootContract
->(MarqueePrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(MarqueePrimitive.Root, { name: "Root" });
 
 export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

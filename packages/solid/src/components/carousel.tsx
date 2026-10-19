@@ -53,10 +53,7 @@ export interface CarouselProps
 }
 
 const CarouselRootBase: Component<CarouselRootProps> =
-  withProvider<CarouselRootContract>(CarouselPrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+  withProvider<CarouselRootContract>(CarouselPrimitive.Root, { name: "Root" });
 
 export function CarouselRoot(props: CarouselRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "spacing"]);
@@ -163,18 +160,10 @@ export function CarouselAutoplayTrigger(
 
 export const CarouselProgressText: Component<
   ComponentProps<typeof CarouselPrimitive.ProgressText>
-> = withContext(CarouselPrimitive.ProgressText, {
-  defaultProps: { "data-part": "progress-text" },
-  name: "ProgressText",
-  slot: "progressText",
-});
+> = withContext(CarouselPrimitive.ProgressText, { name: "ProgressText" });
 
 export const CarouselIndicatorGroup: Component<CarouselIndicatorGroupProps> =
-  withContext(CarouselPrimitive.IndicatorGroup, {
-    defaultProps: { "data-part": "indicator-group" },
-    name: "IndicatorGroup",
-    slot: "indicatorGroup",
-  });
+  withContext(CarouselPrimitive.IndicatorGroup, { name: "IndicatorGroup" });
 
 export const CarouselIndicator: Component<CarouselIndicatorProps> = withContext(
   CarouselPrimitive.Indicator,
@@ -183,11 +172,7 @@ export const CarouselIndicator: Component<CarouselIndicatorProps> = withContext(
 
 export const CarouselItemGroup: Component<CarouselItemGroupProps> = withContext(
   CarouselPrimitive.ItemGroup,
-  {
-    defaultProps: { "data-part": "item-group" },
-    name: "ItemGroup",
-    slot: "itemGroup",
-  },
+  { name: "ItemGroup" },
 );
 
 export const CarouselItem: Component<CarouselItemProps> = withContext(

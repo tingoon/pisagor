@@ -54,10 +54,7 @@ export type FieldDescriptionProps = ComponentProps<"p">;
 export type FieldSeparatorProps = ComponentProps<"div">;
 
 export const FieldRoot: Component<FieldRootProps> =
-  withProvider<FieldRootContract>(FieldPrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+  withProvider<FieldRootContract>(FieldPrimitive.Root, { name: "Root" });
 
 function FieldSetElement(props: FieldsetRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);

@@ -25,10 +25,7 @@ export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 
 const QrCodeRootProvider: Component<LocalQrCodeRootProps> = withProvider<
   ComponentProps<typeof QrCodePrimitive.Root> & QrCodeRootContract
->(QrCodePrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(QrCodePrimitive.Root, { name: "Root" });
 
 export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);

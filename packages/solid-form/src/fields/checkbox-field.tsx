@@ -51,7 +51,11 @@ export function CheckboxField(props: CheckboxFieldProps) {
         invalid={local.invalid}
         name={local.name}
         onBlur={local.onBlur}
-        onValueChange={local.onValueChange}
+        onCheckedChange={
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.checked === true)
+            : undefined
+        }
       />
       <Show when={hasLabel() || local.description}>
         <Field.Content>

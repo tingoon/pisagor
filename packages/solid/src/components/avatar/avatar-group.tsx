@@ -34,10 +34,7 @@ export type AvatarGroupCountProps = HTMLArkProps<"div">;
 
 export const AvatarGroupRoot: Component<AvatarGroupRootProps> = withProvider<
   ComponentProps<"div"> & AvatarGroupRootContract
->("div", {
-  name: "Root",
-  slot: "base",
-});
+>("div", { name: "Root" });
 
 export const AvatarGroupCount: Component<AvatarGroupCountProps> = withContext<
   ComponentProps<typeof ark.div>

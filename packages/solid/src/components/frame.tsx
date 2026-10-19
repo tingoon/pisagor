@@ -80,26 +80,26 @@ export function FramePanel(props: FramePanelProps): JSX.Element {
 }
 
 export const FrameHeader = withContext<ComponentProps<"header">>("header", {
-  defaultProps: { "data-part": "panel-header" },
   name: "Header",
+  part: "panel-header",
   slot: "panelHeader",
 });
 
 export const FrameTitle = withContext<ComponentProps<"div">>("div", {
-  defaultProps: { "data-part": "panel-title" },
   name: "Title",
+  part: "panel-title",
   slot: "panelTitle",
 });
 
 export const FrameDescription = withContext<ComponentProps<"div">>("div", {
-  defaultProps: { "data-part": "panel-description" },
   name: "Description",
+  part: "panel-description",
   slot: "panelDescription",
 });
 
 export const FrameFooter = withContext<ComponentProps<"footer">>("footer", {
-  defaultProps: { "data-part": "panel-footer" },
   name: "Footer",
+  part: "panel-footer",
   slot: "panelFooter",
 });
 // #endregion

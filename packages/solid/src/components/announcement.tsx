@@ -40,7 +40,6 @@ export const AnnouncementRoot: Component<AnnouncementRootProps> = withProvider<
 >(ark.div, {
   defaultProps: { role: "status" },
   name: "Root",
-  slot: "base",
 });
 
 export const AnnouncementTitle = withContext<ComponentProps<"span">>("span", {

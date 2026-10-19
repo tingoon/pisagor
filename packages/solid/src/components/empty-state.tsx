@@ -42,10 +42,7 @@ export interface EmptyStateProps
 // #region Parts
 export const EmptyStateRoot: Component<EmptyStateRootProps> = withProvider<
   ComponentProps<typeof ark.div> & EmptyStateRootContract
->(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+>(ark.div, { name: "Root" });
 
 export const EmptyStateMedia = withContext<ComponentProps<"div">>("div", {
   name: "Media",

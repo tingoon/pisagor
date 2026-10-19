@@ -24,13 +24,26 @@ import {
   Show,
   splitProps,
 } from "solid-js";
+import { Portal } from "solid-js/web";
+import {
+  CaretUpDownIcon,
+  CheckIcon,
+  GlobeIcon,
+  createSlotRecipeContext,
+} from "../../internal";
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useLocale } from "../provider/context";
-import { CaretUpDownIcon, GlobeIcon } from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
+
+// #region Context
+const { Context } = createSlotRecipeContext({
+  name: "PhoneInput",
+  recipe: phoneInputRecipe,
+});
+// #endregion
 
 type FormControlVariant = "primary" | "secondary";
 export type Country = CountryCode;
@@ -72,7 +85,7 @@ function countryLabel(code: Country): string {
   }
 }
 
-function PhoneInputContainer(props: PhoneInputContainerProps): JSX.Element {
+function Container(props: PhoneInputContainerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "children"]);
   const ctx = usePhoneInput();
 
@@ -91,10 +104,7 @@ function PhoneInputContainer(props: PhoneInputContainerProps): JSX.Element {
   );
 }
 
-function PhoneInputFlag(props: {
-  country?: Country;
-  countryName?: string;
-}): JSX.Element {
+function Flag(props: { country?: Country; countryName?: string }): JSX.Element {
   const ctx = usePhoneInput();
   const flagClass = () => ctx.slots.flag({ class: ctx.classNames?.flag });
   const emoji = () =>
@@ -111,6 +121,8 @@ function PhoneInputFlag(props: {
         <span
           aria-label={props.countryName}
           class={cn(ctx.slots.flagEmoji(), flagClass())}
+          data-part="flag"
+          data-scope="phone-input"
           role="img"
         >
           {flag()}
@@ -120,7 +132,7 @@ function PhoneInputFlag(props: {
   );
 }
 
-function PhoneInputCountrySelect(props: {
+function CountrySelect(props: {
   disabled?: boolean;
   readOnly?: boolean;
   value?: Country;
@@ -147,8 +159,8 @@ function PhoneInputCountrySelect(props: {
       class={ctx.slots.countryRoot()}
       collection={collection()}
       disabled={isDisabled()}
-      onValueChange={(nextValue) => {
-        props.onChange(nextValue[0] as Country | undefined);
+      onValueChange={(details) => {
+        props.onChange(details.value[0] as Country | undefined);
       }}
       positioning={{ sameWidth: false }}
       value={props.value ? [props.value] : []}
@@ -164,64 +176,123 @@ function PhoneInputCountrySelect(props: {
         <Combobox.Control class={ctx.slots.countryControl()}>
           <Combobox.Trigger
             aria-label={m("phoneInput.selectCountry")}
-            class={ctx.slots.countrySelect()}
+            asChild={(triggerProps) => (
+              <InputGroup.Button
+                {...triggerProps({ class: ctx.slots.countrySelect() })}
+                class={ctx.slots.countryButton()}
+                disabled={isDisabled()}
+                onBlur={props.onBlur}
+                onFocus={props.onFocus}
+                size="sm"
+                type="button"
+                variant="ghost"
+              >
+                <Show when={props.value}>
+                  {(c) => <Flag country={c()} countryName={c()} />}
+                </Show>
+                <Show when={callingCode()}>
+                  {(code) => <span>+{code()}</span>}
+                </Show>
+                <CaretUpDownIcon aria-hidden class={ctx.slots.countryCaret()} />
+              </InputGroup.Button>
+            )}
             disabled={isDisabled()}
-            onBlur={props.onBlur}
-            onFocus={props.onFocus}
-          >
-            <InputGroup.Button
-              class={ctx.slots.countryButton()}
-              disabled={isDisabled()}
-              size="sm"
-              type="button"
-              variant="ghost"
-            >
-              <Show when={props.value}>
-                {(c) => <PhoneInputFlag country={c()} countryName={c()} />}
-              </Show>
-              <Show when={callingCode()}>
-                {(code) => <span>+{code()}</span>}
-              </Show>
-              <CaretUpDownIcon aria-hidden class={ctx.slots.countryCaret()} />
-            </InputGroup.Button>
-          </Combobox.Trigger>
+          />
         </Combobox.Control>
       </InputGroup.Addon>
-      <Combobox.Content
-        {...ctx.popupProps}
-        class={ctx.slots.popup({ class: ctx.classNames?.popup })}
-      >
-        <div class={ctx.slots.searchGroup()}>
-          <InputGroup size={ctx.size}>
-            <Combobox.FieldInput
-              asChild={(inputProps) => (
-                <InputGroup.Input
-                  {...inputProps()}
-                  class={ctx.slots.search({ class: ctx.classNames?.search })}
-                  placeholder={m("phoneInput.search")}
+      <Portal>
+        <Combobox.Positioner>
+          <Combobox.Content
+            {...ctx.popupProps}
+            class={ctx.slots.popup({ class: ctx.classNames?.popup })}
+          >
+            <div class={ctx.slots.searchGroup()}>
+              <InputGroup size={ctx.size}>
+                <Combobox.Input
+                  asChild={(inputProps) => (
+                    <InputGroup.Input
+                      {...inputProps()}
+                      class={ctx.slots.search({
+                        class: ctx.classNames?.search,
+                      })}
+                      placeholder={m("phoneInput.search")}
+                    />
+                  )}
                 />
-              )}
-            />
-          </InputGroup>
-        </div>
-        <Combobox.List>
-          <For each={items()}>
-            {(item) => (
-              <Combobox.Item item={item}>
-                <PhoneInputFlag country={item.value} countryName={item.label} />
-                <span class={ctx.slots.itemLabel()}>{item.label}</span>
-                <span class={ctx.slots.itemCode()}>
-                  +{getCountryCallingCode(item.value)}
-                </span>
-              </Combobox.Item>
-            )}
-          </For>
-        </Combobox.List>
-        <Combobox.Empty>
-          No country found. Try a different search.
-        </Combobox.Empty>
-      </Combobox.Content>
+              </InputGroup>
+            </div>
+            <Combobox.List>
+              <For each={items()}>
+                {(item) => (
+                  <Combobox.Item item={item}>
+                    <Flag country={item.value} countryName={item.label} />
+                    <span class={ctx.slots.itemLabel()}>{item.label}</span>
+                    <span class={ctx.slots.itemCode()}>
+                      +{getCountryCallingCode(item.value)}
+                    </span>
+                    <Combobox.ItemIndicator>
+                      <CheckIcon />
+                    </Combobox.ItemIndicator>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
+            <Combobox.Empty>{m("phoneInput.empty")}</Combobox.Empty>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Combobox.Root>
+  );
+}
+
+function Field(props: {
+  value?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  placeholder?: string;
+  name?: string;
+  id?: string;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  onInput?: (
+    event: InputEvent & {
+      currentTarget: HTMLInputElement;
+      target: HTMLInputElement;
+    },
+  ) => void;
+}): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "value",
+    "disabled",
+    "readOnly",
+    "placeholder",
+    "name",
+    "id",
+    "onBlur",
+    "onFocus",
+    "onInput",
+  ]);
+  const ctx = usePhoneInput();
+
+  return (
+    <InputGroup.Input
+      {...rest}
+      {...ctx.inputProps}
+      aria-invalid={ctx.invalid || undefined}
+      autocomplete={ctx.inputProps?.autocomplete ?? "tel"}
+      class={ctx.slots.input({ class: ctx.classNames?.input })}
+      disabled={local.disabled}
+      id={local.id}
+      name={local.name}
+      onBlur={local.onBlur}
+      onFocus={local.onFocus}
+      onInput={local.onInput}
+      placeholder={local.placeholder}
+      readOnly={local.readOnly}
+      size={ctx.size}
+      type="tel"
+      value={local.value ?? ""}
+    />
   );
 }
 
@@ -246,7 +317,7 @@ function formatNational(value: string | undefined, country: Country): string {
   return new AsYouType(country).input(value);
 }
 
-export function PhoneInput(props: PhoneInputProps): JSX.Element {
+function PhoneInputShorthand(props: PhoneInputProps): JSX.Element {
   const [local] = splitProps(props, [
     "size",
     "variant",
@@ -328,44 +399,56 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
   }));
 
   return (
-    <PhoneInputContext value={contextValue()}>
-      <PhoneInputContainer
-        class={local.class}
-        data-disabled={local.disabled || undefined}
-      >
-        <PhoneInputCountrySelect
-          disabled={local.disabled}
-          onBlur={local.onBlur}
-          onChange={(next) => {
-            const code = next ?? defaultCountry();
-            setInternalCountry(code);
-            emitValue(display(), code);
-          }}
-          onFocus={local.onFocus}
-          options={options()}
-          readOnly={local.readOnly}
-          value={country()}
-        />
-        <InputGroup.Input
-          {...local.inputProps}
-          aria-invalid={local.invalid || undefined}
-          autocomplete={local.inputProps?.autocomplete ?? "tel"}
-          class={slots().input({ class: local.classNames?.input })}
-          disabled={local.disabled}
-          id={local.id}
-          name={local.name}
-          onBlur={local.onBlur}
-          onFocus={local.onFocus}
-          onInput={(event) => {
-            emitValue(event.currentTarget.value, country());
-          }}
-          placeholder={local.placeholder}
-          readOnly={local.readOnly}
-          size={size()}
-          type="tel"
-          value={display()}
-        />
-      </PhoneInputContainer>
-    </PhoneInputContext>
+    <Context
+      value={{
+        get slots() {
+          return slots();
+        },
+        get variants() {
+          return { size: size() } as never;
+        },
+      }}
+    >
+      <PhoneInputContext value={contextValue()}>
+        <Container
+          class={local.class}
+          data-disabled={local.disabled || undefined}
+        >
+          <CountrySelect
+            disabled={local.disabled}
+            onBlur={local.onBlur}
+            onChange={(next) => {
+              const code = next ?? defaultCountry();
+              setInternalCountry(code);
+              emitValue(display(), code);
+            }}
+            onFocus={local.onFocus}
+            options={options()}
+            readOnly={local.readOnly}
+            value={country()}
+          />
+          <Field
+            disabled={local.disabled}
+            id={local.id}
+            name={local.name}
+            onBlur={local.onBlur}
+            onFocus={local.onFocus}
+            onInput={(event) => {
+              emitValue(event.currentTarget.value, country());
+            }}
+            placeholder={local.placeholder}
+            readOnly={local.readOnly}
+            value={display()}
+          />
+        </Container>
+      </PhoneInputContext>
+    </Context>
   );
 }
+
+export const PhoneInput = Object.assign(PhoneInputShorthand, {
+  Container,
+  CountrySelect,
+  Field,
+  Flag,
+});

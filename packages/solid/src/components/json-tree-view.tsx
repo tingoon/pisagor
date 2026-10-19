@@ -33,10 +33,7 @@ export interface JsonTreeViewProps extends Omit<
 
 const JsonTreeViewRoot: Component<JsonTreeViewRootProps> = withProvider<
   ComponentProps<typeof JsonTreeViewPrimitive.Root> & JsonTreeViewRootContract
->(JsonTreeViewPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(JsonTreeViewPrimitive.Root, { name: "Root" });
 
 const JsonTreeViewTree: Component<JsonTreeViewTreeProps> = withContext<
   ComponentProps<typeof JsonTreeViewPrimitive.Tree>

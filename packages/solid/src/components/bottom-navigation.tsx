@@ -67,10 +67,7 @@ export type BottomNavigationItemLabelProps = ComponentProps<"span">;
 const BottomNavigationNav: Component<ComponentProps<"nav">> =
   withBottomNavigationProvider<
     ComponentProps<"nav"> & BottomNavigationRootContract
-  >("nav", {
-    name: "Root",
-    slot: "base",
-  });
+  >("nav", { name: "Root" });
 
 export function BottomNavigationRoot(
   props: BottomNavigationRootProps,
@@ -131,14 +128,13 @@ export function BottomNavigationItem(
 
 export const BottomNavigationItemIcon: Component<BottomNavigationItemIconProps> =
   withBottomNavigationItemContext<ComponentProps<"span">>("span", {
-    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+    defaultProps: { "aria-hidden": true },
     name: "ItemIcon",
     slot: "icon",
   });
 
 export const BottomNavigationItemLabel: Component<BottomNavigationItemLabelProps> =
   withBottomNavigationItemContext<ComponentProps<"span">>("span", {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   });

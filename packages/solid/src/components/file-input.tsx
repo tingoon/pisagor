@@ -1,12 +1,7 @@
 import type { FileInputRootContract } from "@pisagor/contracts";
-import {
-  type FormControlGroupShellVariantProps,
-  fileInputRecipe,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { fileInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, createSignal, splitProps } from "solid-js";
+import { createSignal, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
@@ -15,33 +10,33 @@ import {
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
 import { useLocale } from "./provider/context";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "FileInput",
   recipe: fileInputRecipe,
 });
 // #endregion
 
-type FormControlVariant = "primary" | "secondary";
-type FileInputVariantProps = FormControlGroupShellVariantProps;
-
+// #region Types
 type NativeFileInputProps = Omit<
   ComponentProps<"input">,
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
 type FileInputRootProps = ComponentProps<"div"> &
-  FileInputVariantProps &
   FileInputRootContract & {
+    /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
+  extends NativeFileInputProps, FileInputRootContract {
+  /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
+  /** Label for the browse button. */
   browseLabel?: string;
+  /** Text shown when no file is selected. */
   placeholder?: string;
   onChange?: (
     event: Event & {
@@ -49,95 +44,68 @@ export interface FileInputProps
       target: HTMLInputElement;
     },
   ) => void;
-  onFilesChange?: (files: globalThis.File[]) => void;
-  onValueChange?: (files: globalThis.File[]) => void;
+  /** Called with accepted files when the selection changes. */
+  onFilesChange?: (files: File[]) => void;
 }
 
 type FileInputControlProps = ComponentProps<"input">;
-type FileInputLabelProps = InputGroupTextProps;
 
-function getSelectedFiles(input: HTMLInputElement): globalThis.File[] {
+type FileInputLabelProps = InputGroupTextProps;
+// #endregion
+
+// #region Helpers
+function getSelectedFiles(input: HTMLInputElement): File[] {
   return input.files ? Array.from(input.files) : [];
 }
 
-function formatFileLabel(files: globalThis.File[]): string | undefined {
-  if (files.length === 0) return undefined;
-  if (files.length === 1) return files[0]?.name;
+function formatFileLabel(files: File[]): string | undefined {
+  if (files.length === 0) {
+    return undefined;
+  }
+
+  if (files.length === 1) {
+    return files[0]?.name;
+  }
 
   return `${files.length} files selected`;
 }
+// #endregion
 
-function FileInputRoot(props: FileInputRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "size",
-    "variant",
-    "disabled",
-    "class",
-    "recipe",
-  ]);
-  const slots = createMemo(() => (local.recipe ?? fileInputRecipe)());
-  const surfaceVariant = useFormControlSurface();
-  const size = () => local.size ?? "md";
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
+// #region Parts
+const RootBase = withProvider<FileInputRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+  slot: "root",
+});
+
+function Root(props: FileInputRootProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["disabled"]);
 
   return (
-    <FileInputStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <div
-        {...rest}
-        class={formControlGroupShellRecipe({
-          class: cn(slots().root(), local.class),
-          size: size(),
-          surfaceVariant,
-          variant: variant(),
-        })}
-        data-disabled={local.disabled ? true : undefined}
-        data-part="root"
-        data-scope="file-input"
-        data-size={size()}
-        data-variant={variant()}
-        role="group"
-      />
-    </FileInputStylesContext>
+    <RootBase {...rest} data-disabled={local.disabled ? true : undefined} />
   );
 }
 
-function FileInputControl(props: FileInputControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Control = withContext<FileInputControlProps>("input", {
+  defaultProps: {
+    type: "file",
+  },
+  name: "Control",
+});
 
-  return (
-    <input
-      {...rest}
-      class={styles.slots.control({ class: local.class })}
-      data-part="control"
-      data-scope="file-input"
-      type="file"
-    />
-  );
+const LabelBase = withContext<FileInputLabelProps>(InputGroupText, {
+  name: "Label",
+});
+
+function Label(props: FileInputLabelProps): JSX.Element {
+  return <LabelBase {...props} />;
 }
+// #endregion
 
-function FileInputLabel(props: FileInputLabelProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <InputGroupText
-      {...rest}
-      class={styles.slots.label({ class: local.class })}
-    >
-      {local.children}
-    </InputGroupText>
-  );
-}
-
-export function FileInput(props: FileInputProps): JSX.Element {
+// #region Closed
+function FileInputShorthand(props: FileInputProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
@@ -155,7 +123,6 @@ export function FileInput(props: FileInputProps): JSX.Element {
     "ref",
     "onChange",
     "onFilesChange",
-    "onValueChange",
     "recipe",
     "class",
   ]);
@@ -163,7 +130,9 @@ export function FileInput(props: FileInputProps): JSX.Element {
   let inputEl: HTMLInputElement | undefined;
   const [fileLabel, setFileLabel] = createSignal<string>();
 
-  const openPicker = () => inputEl?.click();
+  const openPicker = () => {
+    inputEl?.click();
+  };
 
   const changeHandler = (
     event: Event & {
@@ -174,19 +143,19 @@ export function FileInput(props: FileInputProps): JSX.Element {
     local.onChange?.(event);
     const files = getSelectedFiles(event.currentTarget);
     local.onFilesChange?.(files);
-    local.onValueChange?.(files);
     setFileLabel(formatFileLabel(files));
   };
 
   return (
-    <FileInputRoot
+    <Root
       class={local.class}
       disabled={local.disabled}
       recipe={local.recipe}
-      size={local.size}
+      size={local.size ?? "md"}
       variant={local.variant}
     >
-      <FileInputControl
+      <Control
+        tabIndex={-1}
         {...rest}
         accept={local.accept}
         aria-invalid={local.invalid || undefined}
@@ -199,10 +168,13 @@ export function FileInput(props: FileInputProps): JSX.Element {
         onChange={changeHandler}
         ref={(el) => {
           inputEl = el;
-          if (typeof local.ref === "function") local.ref(el);
+          if (typeof local.ref === "function") {
+            local.ref(el);
+          }
         }}
         required={local.required}
       />
+
       <InputGroupAddon align="inline-start">
         <InputGroupButton
           disabled={local.disabled}
@@ -212,9 +184,17 @@ export function FileInput(props: FileInputProps): JSX.Element {
           {m("fileInput.browse", local.browseLabel)}
         </InputGroupButton>
       </InputGroupAddon>
-      <FileInputLabel onClick={local.disabled ? undefined : openPicker}>
+
+      <Label onClick={local.disabled ? undefined : openPicker}>
         {fileLabel() ?? m("fileInput.placeholder", local.placeholder)}
-      </FileInputLabel>
-    </FileInputRoot>
+      </Label>
+    </Root>
   );
 }
+// #endregion
+
+export const FileInput = Object.assign(FileInputShorthand, {
+  Control,
+  Label,
+  Root,
+});

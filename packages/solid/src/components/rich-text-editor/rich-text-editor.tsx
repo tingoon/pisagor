@@ -1,6 +1,5 @@
 import type { RichTextEditorRootContract } from "@pisagor/contracts";
-import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { richTextEditorRecipe } from "@pisagor/recipes";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import type { ComponentProps, JSX } from "solid-js";
@@ -13,50 +12,88 @@ import {
   untrack,
 } from "solid-js";
 import { createEditorTransaction } from "solid-tiptap";
-import { useLocale } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { Toggle } from "../toggle";
-import { VisuallyHidden } from "../visually-hidden";
 import {
   ListBulletsIcon,
   ListNumbersIcon,
   TextBIcon,
   TextItalicIcon,
   TextStrikethroughIcon,
+  createSlotRecipeContext,
 } from "../../internal";
+import { useLocale } from "../provider/context";
+import { Toggle } from "../toggle";
+import { VisuallyHidden } from "../visually-hidden";
 import {
   RichTextEditorContext,
   useRichTextEditorState,
 } from "./rich-text-editor.context";
 
-type FormControlVariant = "primary" | "secondary";
+// #region Context
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
+  name: "RichTextEditor",
+  recipe: richTextEditorRecipe,
+});
+// #endregion
 
-export interface RichTextEditorRootProps
-  extends
-    Omit<ComponentProps<"div">, "defaultValue" | "onChange">,
-    RichTextEditorRootContract {
-  variant?: FormControlVariant;
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  onBlur?: () => void;
-  name?: string;
-  readOnly?: boolean;
-  disabled?: boolean;
-  invalid?: boolean;
-  "aria-label"?: string;
-  children?: JSX.Element;
-}
+// #region Types
+type RichTextEditorRootProps = Omit<
+  ComponentProps<"div">,
+  "defaultValue" | "onChange"
+> &
+  RichTextEditorRootContract & {
+    /** Initial HTML content for uncontrolled usage. */
+    defaultValue?: string;
+    /** Controlled HTML content. */
+    value?: string;
+    /** Called with HTML when the document changes. */
+    onValueChange?: (value: string) => void;
+    /** Called when the editor loses focus. */
+    onBlur?: () => void;
+    /** Native form field name for a hidden input mirroring the HTML value. */
+    name?: string;
+    /**
+     * Whether the editor is read-only.
+     *
+     * @defaultValue false
+     */
+    readOnly?: boolean;
+    /**
+     * Whether the editor is disabled.
+     *
+     * @defaultValue false
+     */
+    disabled?: boolean;
+    /**
+     * Marks the control as invalid for styling and assistive tech.
+     *
+     * @defaultValue false
+     */
+    invalid?: boolean;
+    /**
+     * Accessible name for the editing region.
+     *
+     * @defaultValue "Rich text editor"
+     */
+    "aria-label"?: string;
+    children?: JSX.Element;
+  };
 
-export type RichTextEditorToolbarProps = ComponentProps<"div">;
-export type RichTextEditorContentProps = ComponentProps<"div">;
+type RichTextEditorToolbarProps = ComponentProps<"div">;
 
-export function RichTextEditorRoot(
-  props: RichTextEditorRootProps,
-): JSX.Element {
+type RichTextEditorContentProps = ComponentProps<"div">;
+// #endregion
+
+// #region Parts
+const RootBase = withProvider<RichTextEditorRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+});
+
+function Root(props: RichTextEditorRootProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, [
-    "variant",
     "defaultValue",
     "disabled",
     "invalid",
@@ -68,14 +105,8 @@ export function RichTextEditorRoot(
     "id",
     "onBlur",
     "onValueChange",
-    "recipe",
-    "class",
   ]);
 
-  const surfaceVariant = useFormControlSurface();
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
-  const recipe = () => local.recipe ?? richTextEditorRecipe;
-  const slots = () => recipe()();
   const resolvedAriaLabel = () =>
     local["aria-label"] ?? (local.id ? undefined : m("richTextEditor.label"));
 
@@ -141,30 +172,21 @@ export function RichTextEditorRoot(
     local.value ?? editor()?.getHTML() ?? local.defaultValue ?? "";
 
   return (
-    <RichTextEditorContext
-      value={{
-        editor,
-        registerHost: setHost,
-        slots: slots(),
-      }}
+    <RootBase
+      {...rest}
+      aria-disabled={local.disabled || undefined}
+      aria-invalid={local.invalid || undefined}
+      aria-label={resolvedAriaLabel()}
+      aria-readonly={local.readOnly || undefined}
+      data-disabled={local.disabled ? "true" : undefined}
+      data-invalid={local.invalid ? "true" : undefined}
+      data-readonly={local.readOnly ? "true" : undefined}
     >
-      <div
-        {...rest}
-        aria-disabled={local.disabled || undefined}
-        aria-invalid={local.invalid || undefined}
-        aria-label={resolvedAriaLabel()}
-        aria-readonly={local.readOnly || undefined}
-        class={cn(
-          formControlShellRecipe({ surfaceVariant, variant: variant() }),
-          slots().base({ class: local.class }),
-        )}
-        data-disabled={local.disabled ? "true" : undefined}
-        data-invalid={local.invalid ? "true" : undefined}
-        data-part="root"
-        data-readonly={local.readOnly ? "true" : undefined}
-        data-scope="rich-text-editor"
-        data-variant={variant()}
-        role="group"
+      <RichTextEditorContext
+        value={{
+          editor,
+          registerHost: setHost,
+        }}
       >
         <Show when={local.name}>
           {(name) => (
@@ -180,17 +202,20 @@ export function RichTextEditorRoot(
           )}
         </Show>
         {local.children}
-      </div>
-    </RichTextEditorContext>
+      </RichTextEditorContext>
+    </RootBase>
   );
 }
 
-export function RichTextEditorToolbar(
-  props: RichTextEditorToolbarProps,
-): JSX.Element {
+const ToolbarBase = withContext<RichTextEditorToolbarProps>("div", {
+  name: "Toolbar",
+});
+
+function Toolbar(props: RichTextEditorToolbarProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const { editor, slots } = useRichTextEditorState();
+  const { slots } = useStyles();
+  const { editor } = useRichTextEditorState();
 
   const bold = createEditorTransaction(
     editor,
@@ -216,12 +241,7 @@ export function RichTextEditorToolbar(
   return (
     <Show when={editor()}>
       {(instance) => (
-        <div
-          {...rest}
-          class={slots.toolbar({ class: local.class })}
-          data-part="toolbar"
-          data-scope="rich-text-editor"
-        >
+        <ToolbarBase {...rest} class={local.class}>
           <Show
             fallback={
               <div class={slots.inline()}>
@@ -235,7 +255,6 @@ export function RichTextEditorToolbar(
                   variant="ghost"
                 >
                   <TextBIcon />
-                  <VisuallyHidden>Bold</VisuallyHidden>
                 </Toggle>
                 <Toggle
                   aria-label={m("richTextEditor.italic")}
@@ -247,7 +266,6 @@ export function RichTextEditorToolbar(
                   variant="ghost"
                 >
                   <TextItalicIcon />
-                  <VisuallyHidden>Italic</VisuallyHidden>
                 </Toggle>
                 <Toggle
                   aria-label={m("richTextEditor.strikethrough")}
@@ -259,7 +277,6 @@ export function RichTextEditorToolbar(
                   variant="ghost"
                 >
                   <TextStrikethroughIcon />
-                  <VisuallyHidden>Strikethrough</VisuallyHidden>
                 </Toggle>
                 <Toggle
                   aria-label={m("richTextEditor.bulletList")}
@@ -271,7 +288,6 @@ export function RichTextEditorToolbar(
                   variant="ghost"
                 >
                   <ListBulletsIcon />
-                  <VisuallyHidden>Bullet list</VisuallyHidden>
                 </Toggle>
                 <Toggle
                   aria-label={m("richTextEditor.orderedList")}
@@ -283,7 +299,6 @@ export function RichTextEditorToolbar(
                   variant="ghost"
                 >
                   <ListNumbersIcon />
-                  <VisuallyHidden>Ordered list</VisuallyHidden>
                 </Toggle>
               </div>
             }
@@ -291,36 +306,47 @@ export function RichTextEditorToolbar(
           >
             {local.children}
           </Show>
-        </div>
+        </ToolbarBase>
       )}
     </Show>
   );
 }
 
-export function RichTextEditorContent(
-  props: RichTextEditorContentProps,
-): JSX.Element {
+const ContentBase = withContext<RichTextEditorContentProps>("div", {
+  name: "Content",
+});
+
+function Content(props: RichTextEditorContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { registerHost, slots } = useRichTextEditorState();
+  const { registerHost } = useRichTextEditorState();
 
   return (
-    <div
-      {...rest}
-      class={slots.content({ class: local.class })}
-      data-part="content"
-      data-scope="rich-text-editor"
-      ref={(el) => registerHost(el)}
-    />
+    <ContentBase {...rest} class={local.class} ref={(el) => registerHost(el)} />
   );
 }
+// #endregion
 
-export function RichTextEditorShorthand(
+// #region Shorthand
+function RichTextEditorShorthand(
   props: Omit<RichTextEditorRootProps, "children">,
 ): JSX.Element {
   return (
-    <RichTextEditorRoot {...props}>
-      <RichTextEditorToolbar />
-      <RichTextEditorContent />
-    </RichTextEditorRoot>
+    <Root {...props}>
+      <Toolbar />
+
+      <Content />
+    </Root>
   );
 }
+// #endregion
+
+export type {
+  RichTextEditorContentProps,
+  RichTextEditorRootProps,
+  RichTextEditorToolbarProps,
+};
+
+export const RichTextEditorRoot = Root;
+export const RichTextEditorToolbar = Toolbar;
+export const RichTextEditorContent = Content;
+export { RichTextEditorShorthand };

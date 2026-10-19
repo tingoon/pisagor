@@ -54,10 +54,7 @@ export interface TabsProps
 
 export const TabsRoot: Component<LocalTabsRootProps> = withProvider<
   ComponentProps<typeof TabsPrimitive.Root> & TabsRootContract
->(TabsPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(TabsPrimitive.Root, { name: "Root" });
 
 export function TabsList(props: TabsListProps): JSX.Element {
   const [local, rest] = splitProps(props, [

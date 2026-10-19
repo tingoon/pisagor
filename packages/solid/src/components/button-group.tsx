@@ -22,10 +22,7 @@ export type ButtonGroupTextProps = ComponentProps<"div">;
 // #region Parts
 export const ButtonGroupRoot: Component<ButtonGroupProps> = withProvider<
   ComponentProps<"fieldset"> & ButtonGroupRootContract
->("fieldset", {
-  name: "Root",
-  slot: "base",
-});
+>("fieldset", { name: "Root" });
 
 export const ButtonGroupText = withContext<ComponentProps<"div">>("div", {
   name: "Text",

@@ -1,6 +1,8 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
-import { Autocomplete } from "@pisagor/solid";
+import { CaretUpDownIcon, CheckIcon } from "@squidlab/phosphor-solid/icons";
+import { Autocomplete, Combobox, InputGroup } from "@pisagor/solid";
 import { For } from "solid-js";
+import { Portal } from "solid-js/web";
 
 export function WithTrigger() {
   const initialItems = [
@@ -9,7 +11,6 @@ export function WithTrigger() {
     { label: "Cherry", value: "cherry" },
   ];
   const filterFn = useFilter({ sensitivity: "base" });
-
   const { collection, filter } = useListCollection({
     filter: filterFn().contains,
     initialItems,
@@ -20,17 +21,50 @@ export function WithTrigger() {
       collection={collection()}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Autocomplete.Input placeholder="Select a fruit..." showTrigger />
-      <Autocomplete.Content>
-        <Autocomplete.Empty />
-        <Autocomplete.List>
-          <For each={collection().items}>
-            {(item) => (
-              <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
+      <Autocomplete.Control>
+        <InputGroup>
+          <Autocomplete.Input
+            asChild={(inputProps) => (
+              <InputGroup.Input
+                {...inputProps()}
+                placeholder="Select a fruit..."
+              />
             )}
-          </For>
-        </Autocomplete.List>
-      </Autocomplete.Content>
+          />
+          <InputGroup.Addon align="inline-end">
+            <InputGroup.Button
+              asChild={(buttonProps) => (
+                <Autocomplete.Trigger {...buttonProps()}>
+                  <CaretUpDownIcon aria-hidden />
+                </Autocomplete.Trigger>
+              )}
+              size="icon-xs"
+              variant="ghost"
+            />
+          </InputGroup.Addon>
+        </InputGroup>
+      </Autocomplete.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Autocomplete.Content>
+            <Autocomplete.Empty>
+              No results found. Try a different search.
+            </Autocomplete.Empty>
+            <Autocomplete.List>
+              <For each={collection().items}>
+                {(item) => (
+                  <Autocomplete.Item item={item} persistFocus>
+                    {item.label}
+                    <Combobox.ItemIndicator>
+                      <CheckIcon />
+                    </Combobox.ItemIndicator>
+                  </Autocomplete.Item>
+                )}
+              </For>
+            </Autocomplete.List>
+          </Autocomplete.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Autocomplete.Root>
   );
 }

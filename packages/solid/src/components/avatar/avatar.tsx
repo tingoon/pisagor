@@ -31,10 +31,7 @@ export interface AvatarProps
 
 const AvatarRoot: Component<AvatarRootProps> = withProvider<
   ComponentProps<typeof AvatarPrimitive.Root> & AvatarRootContract
->(AvatarPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+>(AvatarPrimitive.Root, { name: "Root" });
 
 const AvatarImage: Component<AvatarImageProps> = withContext<
   ComponentProps<typeof AvatarPrimitive.Image>

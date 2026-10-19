@@ -54,10 +54,7 @@ export type TimerItemLabelProps = ComponentProps<"div">;
 
 const TimerRootProvider: Component<
   TimerRootPrimitiveProps & TimerRootContract
-> = withTimerProvider<TimerRootContract>(TimerPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-});
+> = withTimerProvider<TimerRootContract>(TimerPrimitive.Root, { name: "Root" });
 
 export function TimerRoot(props: TimerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -141,7 +138,6 @@ export function TimerItem(props: TimerItemProps): JSX.Element {
 
 export const TimerItemLabel: Component<TimerItemLabelProps> =
   withTimerItemGroupContext("div", {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   });

@@ -69,7 +69,6 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
 }
 
 export const TimelineItem = withProvider<TimelineItemProps>("li", {
-  defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });
