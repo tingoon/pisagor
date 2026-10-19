@@ -108,7 +108,7 @@ export interface CommandShorthandProps extends Omit<
 
 // #region Parts
 export function CommandDialog(props: DialogRootProps) {
-  return <Dialog.Root {...props} />;
+  return <Dialog.Root size="lg" {...props} />;
 }
 
 export function CommandDialogTrigger(props: DialogTriggerProps) {
@@ -116,7 +116,6 @@ export function CommandDialogTrigger(props: DialogTriggerProps) {
 }
 
 export function CommandDialogContent({
-  size = "lg",
   children,
   description: descriptionProp,
   title: titleProp,
@@ -138,8 +137,6 @@ export function CommandDialogContent({
           <Dialog.Content
             {...rest}
             className={slots.dialogContent({ className })}
-            showCloseButton={false}
-            size={size}
           >
             <Dialog.Header className={slots.dialogHeader()}>
               <Dialog.Title>{title}</Dialog.Title>

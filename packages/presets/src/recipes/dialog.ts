@@ -18,6 +18,7 @@ export const dialogRecipe = tv({
       "transparency-reduce:backdrop-blur-none",
       "motion-reduce:animate-none!",
     ],
+    base: [],
     body: [
       "flex-1",
       "p-(--space)",
@@ -25,6 +26,7 @@ export const dialogRecipe = tv({
       "in-[[data-scope=dialog][data-part=content]:has([data-scope=dialog][data-part=header])]:pt-0",
       "in-[[data-scope=dialog][data-part=content]:has([data-scope=dialog][data-part=footer]:not(.border-t))]:pb-1",
     ],
+    closeTrigger: [],
     content: [
       "[--space:--spacing(6)]",
       "z-[calc(var(--z-index-modal)+var(--layer-index,0))]",
@@ -64,6 +66,7 @@ export const dialogRecipe = tv({
       "p-4",
     ],
     title: ["font-heading text-xl leading-tight font-semibold tracking-tight"],
+    trigger: [],
   },
   variants: {
     bottomStickOnMobile: {

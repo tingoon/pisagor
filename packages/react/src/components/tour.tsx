@@ -251,7 +251,7 @@ export function TourBody({
   scrollFade = false,
   className,
   ...rest
-}: DialogBodyProps) {
+}: DialogBodyProps & { scrollFade?: boolean }) {
   const dialogSlots = dialogRecipe();
 
   return (

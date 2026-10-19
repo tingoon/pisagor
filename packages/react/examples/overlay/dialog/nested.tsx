@@ -37,7 +37,7 @@ export function Nested() {
                   <Dialog.Backdrop />
 
                   <Dialog.Positioner>
-                    <Dialog.Content showCloseButton={false}>
+                    <Dialog.Content>
                       <Dialog.Header>
                         <Dialog.Title>Edit details</Dialog.Title>
                         <Dialog.Description>

@@ -1,9 +1,10 @@
-import { ark, useHotkey, type HTMLArkProps } from "@ark-ui/react";
-import { SidebarSimpleIcon } from "@phosphor-icons/react";
+import { ark, Portal, useHotkey, type HTMLArkProps } from "@ark-ui/react";
+import { SidebarSimpleIcon, XIcon } from "@phosphor-icons/react";
 import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,
+  sheetRecipe,
   sidebarRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -23,7 +24,7 @@ import { Input, type InputProps } from "./input";
 import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
-import { Sheet, type SheetProps } from "./sheet";
+import { Sheet } from "./sheet";
 import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
@@ -99,10 +100,7 @@ export interface SidebarProviderProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface SidebarProps extends Omit<
-  SheetProps,
-  "placement" | "recipe" | "variant"
-> {
+export interface SidebarProps extends ComponentPropsWithRef<"div"> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -322,26 +320,47 @@ export function SidebarRoot(props: SidebarProps) {
 
   if (isMobile) {
     return (
-      <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile}>
-        <Sheet.Content
-          {...rest}
-          className={slots.mobile()}
-          data-mobile="true"
-          data-sidebar="sidebar"
-          placement={placement === "left" ? "left" : "right"}
-          style={
-            {
-              "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-            } as CSSProperties
-          }
-        >
-          <Sheet.Header className={slots.mobileHeader()}>
-            <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
-            <Sheet.Description>{m("sidebar.description")}</Sheet.Description>
-          </Sheet.Header>
-          <div className={slots.mobileBody()}>{children}</div>
-        </Sheet.Content>
-      </Sheet>
+      <Sheet.Root
+        onOpenChange={({ open }) => setOpenMobile(open)}
+        open={openMobile}
+        placement={placement === "left" ? "left" : "right"}
+      >
+        <Portal>
+          <Sheet.Backdrop />
+
+          <Sheet.Positioner>
+            <Sheet.Content
+              {...rest}
+              className={slots.mobile()}
+              data-mobile="true"
+              data-sidebar="sidebar"
+              style={
+                {
+                  "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+                } as CSSProperties
+              }
+            >
+              <Sheet.Header className={slots.mobileHeader()}>
+                <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
+                <Sheet.Description>
+                  {m("sidebar.description")}
+                </Sheet.Description>
+              </Sheet.Header>
+              <div className={slots.mobileBody()}>{children}</div>
+              <Sheet.CloseTrigger asChild>
+                <Button
+                  aria-label={m("sheet.close")}
+                  className={sheetRecipe().inline()}
+                  size="icon-sm"
+                  variant="ghost"
+                >
+                  <XIcon />
+                </Button>
+              </Sheet.CloseTrigger>
+            </Sheet.Content>
+          </Sheet.Positioner>
+        </Portal>
+      </Sheet.Root>
     );
   }
 

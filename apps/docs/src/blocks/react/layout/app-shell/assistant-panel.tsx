@@ -126,13 +126,10 @@ export function AssistantPanel() {
             <Sheet
               onOpenChange={(details) => setAssistantOpen(details.open)}
               open={assistantOpen}
+              placement="right"
+              title="Assistant"
             >
-              <Sheet.Content placement="right">
-                <Sheet.Header>
-                  <Sheet.Title>Assistant</Sheet.Title>
-                </Sheet.Header>
-                <AssistantConversation />
-              </Sheet.Content>
+              <AssistantConversation />
             </Sheet>
           ) : assistantOpen ? (
             <aside aria-label="Assistant" className={styles.assistant()}>

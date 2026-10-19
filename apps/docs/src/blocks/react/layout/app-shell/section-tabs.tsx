@@ -103,8 +103,10 @@ export function SectionTabs() {
   return (
     <div className={styles.rootColumn()}>
       <header className={styles.topbarPlain()}>
-        <Sheet>
-          <Sheet.Trigger asChild>
+        <Sheet
+          placement="left"
+          title={section?.label}
+          trigger={
             <Button
               aria-label="Open navigation"
               className={styles.mobileOnly()}
@@ -113,13 +115,9 @@ export function SectionTabs() {
             >
               <ListIcon />
             </Button>
-          </Sheet.Trigger>
-          <Sheet.Content placement="left">
-            <Sheet.Header>
-              <Sheet.Title>{section?.label}</Sheet.Title>
-            </Sheet.Header>
-            <Sheet.Body>{sectionNav}</Sheet.Body>
-          </Sheet.Content>
+          }
+        >
+          {sectionNav}
         </Sheet>
         <span className={styles.brandMark()}>AC</span>
 
