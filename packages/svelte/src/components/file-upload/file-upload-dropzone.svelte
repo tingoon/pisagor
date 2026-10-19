@@ -1,11 +1,11 @@
 <script lang="ts">
   import {
     FileUpload as FileUploadPrimitive,
-    type FileUploadDropzoneProps as ArkProps,
+    type FileUploadDropzoneProps,
   } from "@ark-ui/svelte";
   import { withFileUploadContext } from "./file-upload.context";
 
-  let { children, ...rest }: ArkProps = $props();
+  let { children, ...rest }: FileUploadDropzoneProps = $props();
   const part = withFileUploadContext(() => rest, { name: "Dropzone" });
 </script>
 

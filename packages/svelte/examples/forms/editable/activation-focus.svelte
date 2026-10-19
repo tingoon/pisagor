@@ -4,53 +4,83 @@
 </script>
 
 <Card>
-  <Card.Header
-    description="Focus the field to start editing (default activation mode)"
-    title="Edit with focus"
-  />
+  <Card.Header>
+    <Card.Title>Edit with focus</Card.Title>
+    <Card.Description
+      >Focus the field to start editing (default activation mode)</Card.Description
+    >
+  </Card.Header>
   <Card.Content>
     <Field.Group>
       <Field>
         <Field.Label>Name</Field.Label>
-        <Editable activationMode="focus" value="Jane Doe">
+        <Editable.Root activationMode="focus" value="Jane Doe">
           <Editable.Area>
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline">
-                <XIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Cancel"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <XIcon />
+                </Button>
+              {/snippet}
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline">
-                <CheckIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Save"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <CheckIcon />
+                </Button>
+              {/snippet}
             </Editable.SubmitTrigger>
           </Editable.Control>
-        </Editable>
+        </Editable.Root>
       </Field>
       <Field>
         <Field.Label>Username</Field.Label>
-        <Editable activationMode="focus" value="@jane.doe">
+        <Editable.Root activationMode="focus" value="@jane.doe">
           <Editable.Area>
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline">
-                <XIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Cancel"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <XIcon />
+                </Button>
+              {/snippet}
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline">
-                <CheckIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Save"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <CheckIcon />
+                </Button>
+              {/snippet}
             </Editable.SubmitTrigger>
           </Editable.Control>
-        </Editable>
+        </Editable.Root>
       </Field>
     </Field.Group>
   </Card.Content>

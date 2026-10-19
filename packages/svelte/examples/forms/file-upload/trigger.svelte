@@ -3,16 +3,11 @@
   import { PaperclipIcon } from "phosphor-svelte";
 </script>
 
-<FileUpload>
-  <div class="flex justify-center">
-    <FileUpload.Trigger>
-      {#snippet asChild(props)}
-        <Button {...props()} variant="outline">
-          <PaperclipIcon />
-          Browse files
-        </Button>
-      {/snippet}
-    </FileUpload.Trigger>
-  </div>
-  <FileUpload.List />
+<FileUpload class="items-center" dropzone={false}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">
+      <PaperclipIcon />
+      Browse files
+    </Button>
+  {/snippet}
 </FileUpload>

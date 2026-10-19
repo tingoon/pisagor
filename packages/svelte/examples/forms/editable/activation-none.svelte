@@ -4,63 +4,107 @@
 </script>
 
 <Card>
-  <Card.Header
-    description="Use the edit button to start editing (no automatic activation)"
-    title="Edit with manual trigger"
-  />
+  <Card.Header>
+    <Card.Title>Edit with manual trigger</Card.Title>
+    <Card.Description
+      >Use the edit button to start editing (no automatic activation)</Card.Description
+    >
+  </Card.Header>
   <Card.Content>
     <Field.Group>
       <Field>
         <Field.Label>Name</Field.Label>
-        <Editable activationMode="none" value="Jane Doe">
+        <Editable.Root activationMode="none" value="Jane Doe">
           <Editable.Area>
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
             <Editable.EditTrigger>
-              <Button aria-label="Edit" size="icon-md" variant="outline">
-                <PencilSimpleIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Edit"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <PencilSimpleIcon />
+                </Button>
+              {/snippet}
             </Editable.EditTrigger>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline">
-                <XIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Cancel"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <XIcon />
+                </Button>
+              {/snippet}
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline">
-                <CheckIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Save"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <CheckIcon />
+                </Button>
+              {/snippet}
             </Editable.SubmitTrigger>
           </Editable.Control>
-        </Editable>
+        </Editable.Root>
       </Field>
       <Field>
         <Field.Label>Username</Field.Label>
-        <Editable activationMode="none" value="@jane.doe">
+        <Editable.Root activationMode="none" value="@jane.doe">
           <Editable.Area>
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
             <Editable.EditTrigger>
-              <Button aria-label="Edit" size="icon-md" variant="outline">
-                <PencilSimpleIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Edit"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <PencilSimpleIcon />
+                </Button>
+              {/snippet}
             </Editable.EditTrigger>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline">
-                <XIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Cancel"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <XIcon />
+                </Button>
+              {/snippet}
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline">
-                <CheckIcon />
-              </Button>
+              {#snippet asChild(props)}
+                <Button
+                  {...props()}
+                  aria-label="Save"
+                  size="icon-md"
+                  variant="outline"
+                >
+                  <CheckIcon />
+                </Button>
+              {/snippet}
             </Editable.SubmitTrigger>
           </Editable.Control>
-        </Editable>
+        </Editable.Root>
       </Field>
     </Field.Group>
   </Card.Content>

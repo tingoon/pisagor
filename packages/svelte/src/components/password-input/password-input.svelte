@@ -1,12 +1,15 @@
 <script lang="ts">
-  import {
-    PasswordInput as PasswordInputPrimitive,
-    type PasswordInputInputProps,
-    type PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+  import type {
+    PasswordInputIndicatorProps,
+    PasswordInputInputProps,
+    PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+    PasswordInputVisibilityTriggerProps,
   } from "@ark-ui/svelte";
-  import type { PasswordInputRootContract } from "@pisagor/contracts";
+  import type {
+    PasswordInputContract,
+    PasswordInputRootContract,
+  } from "@pisagor/contracts";
   import {
-    inputGroupButtonRecipe,
     inputGroupControlRecipe,
     passwordInputRecipe,
   } from "@pisagor/recipes";
@@ -16,6 +19,11 @@
   import InputGroupButton from "../input-group/input-group-button.svelte";
   import InputGroupRoot from "../input-group/input-group-root.svelte";
   import { useLocale } from "../provider/context";
+  import PasswordInputControl from "./password-input-control.svelte";
+  import PasswordInputIndicator from "./password-input-indicator.svelte";
+  import PasswordInputInput from "./password-input-input.svelte";
+  import PasswordInputRoot from "./password-input-root.svelte";
+  import PasswordInputVisibilityTrigger from "./password-input-visibility-trigger.svelte";
 
   const { m } = useLocale();
 
@@ -26,31 +34,42 @@
 
   type Props = PasswordInputRootProps &
     Omit<PasswordInputInputProps, "size" | "children"> &
-    PasswordInputRootContract & {
+    PasswordInputRootContract &
+    PasswordInputContract & {
       clearable?: boolean;
       disabled?: boolean | null;
+      indicatorProps?: Omit<PasswordInputIndicatorProps, "class">;
       onValueChange?: (value: string) => void;
       placeholder?: string | null | undefined;
       readonly?: boolean | null;
       value?: string | undefined;
+      visibilityTriggerProps?: Omit<
+        PasswordInputVisibilityTriggerProps,
+        "asChild" | "class"
+      >;
     };
 
   let {
     size = "md",
     variant,
+    classNames,
     clearable = false,
     defaultVisible,
     disabled,
+    indicatorProps,
     invalid,
     readonly,
     value = $bindable<string | undefined>(undefined),
     visible = $bindable<boolean | undefined>(undefined),
+    visibilityTriggerProps,
     placeholder,
     oninput,
     onValueChange,
     onVisibilityChange,
     recipe = passwordInputRecipe,
     class: className,
+    // InputGroup reads the surface from context; keep it off the DOM input.
+    surfaceVariant: _surfaceVariant,
     ...inputProps
   }: Props = $props();
 
@@ -72,61 +91,78 @@
   }
 </script>
 
-<PasswordInputPrimitive.Root
-  class={slots.base({ class: cn(className) })}
+<PasswordInputRoot
+  class={className}
   data-size={size}
   {defaultVisible}
   {invalid}
   {onVisibilityChange}
+  {recipe}
   bind:visible
 >
-  <PasswordInputPrimitive.Control class="contents">
-    <InputGroupRoot
-      class={slots.control()}
-      data-clearable={clearable || undefined}
-      {size}
-      {variant}
-    >
-      <PasswordInputPrimitive.Input
-        {...inputProps}
-        class={inputGroupControlRecipe()}
-        {disabled}
-        oninput={handleInput}
-        {placeholder}
-        {readonly}
-        bind:value
-      />
+  <PasswordInputControl class={classNames?.control}>
+    {#snippet asChild(props)}
+      <InputGroupRoot
+        {...props()}
+        data-clearable={clearable || undefined}
+        {size}
+        {variant}
+      >
+        <PasswordInputInput
+          {...inputProps}
+          class={cn(inputGroupControlRecipe(), classNames?.input)}
+          {disabled}
+          oninput={handleInput}
+          {placeholder}
+          {readonly}
+          {value}
+        />
 
-      {#if canClear}
-        <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
-          <InputGroupButton
-            aria-label={m("passwordInput.clear")}
-            data-part="clear-trigger"
-            data-scope="password-input"
-            onclick={handleClear}
-            size="icon-xs"
-            type="button"
-            variant="ghost"
+        {#if canClear}
+          <InputGroupAddon
+            align="inline-end"
+            class={slots.clearAddon({ class: classNames?.clearAddon })}
           >
-            <XIcon />
-          </InputGroupButton>
-        </InputGroupAddon>
-      {/if}
+            <InputGroupButton
+              aria-label={m("passwordInput.clear")}
+              data-part="clear-trigger"
+              data-scope="password-input"
+              onclick={handleClear}
+              size="icon-xs"
+              type="button"
+              variant="ghost"
+            >
+              <XIcon />
+            </InputGroupButton>
+          </InputGroupAddon>
+        {/if}
 
-      <InputGroupAddon align="inline-end">
-        <PasswordInputPrimitive.VisibilityTrigger
-          aria-label={m("passwordInput.togglePasswordVisibility")}
-          class={inputGroupButtonRecipe({ size: "icon-xs" })}
-          type="button"
-        >
-          <PasswordInputPrimitive.Indicator>
-            {#snippet fallback()}
-              <EyeSlashIcon />
+        <InputGroupAddon align="inline-end">
+          <PasswordInputVisibilityTrigger
+            {...visibilityTriggerProps}
+            class={classNames?.visibilityTrigger}
+          >
+            {#snippet asChild(triggerProps)}
+              <InputGroupButton
+                {...triggerProps()}
+                size="icon-xs"
+                type="button"
+                variant="ghost"
+              >
+                <PasswordInputIndicator
+                  {...indicatorProps}
+                  class={classNames?.indicator}
+                >
+                  {#snippet fallback()}
+                    <EyeSlashIcon />
+                  {/snippet}
+                  <EyeIcon />
+                </PasswordInputIndicator>
+              </InputGroupButton>
             {/snippet}
-            <EyeIcon />
-          </PasswordInputPrimitive.Indicator>
-        </PasswordInputPrimitive.VisibilityTrigger>
-      </InputGroupAddon>
-    </InputGroupRoot>
-  </PasswordInputPrimitive.Control>
-</PasswordInputPrimitive.Root>
+          </PasswordInputVisibilityTrigger>
+        </InputGroupAddon>
+      </InputGroupRoot>
+    {/snippet}
+  </PasswordInputControl>
+</PasswordInputRoot>

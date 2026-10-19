@@ -3,16 +3,11 @@
   import { CameraIcon } from "phosphor-svelte";
 </script>
 
-<FileUpload capture="environment">
-  <div class="flex justify-center">
-    <FileUpload.Trigger>
-      {#snippet asChild(props)}
-        <Button {...props()} variant="outline">
-          <CameraIcon />
-          Take a picture
-        </Button>
-      {/snippet}
-    </FileUpload.Trigger>
-  </div>
-  <FileUpload.List />
+<FileUpload capture="environment" class="items-center" dropzone={false}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">
+      <CameraIcon />
+      Take a picture
+    </Button>
+  {/snippet}
 </FileUpload>

@@ -3,14 +3,12 @@
     NumberInput as NumberInputPrimitive,
     type NumberInputInputProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./number-input.context";
+  import { withContext } from "./number-input.context";
 
-  let { class: className, ...rest }: NumberInputInputProps = $props();
-  const styles = useStyles();
+  let { children, ...rest }: NumberInputInputProps = $props();
+  const part = withContext(() => rest, { name: "Input" });
 </script>
 
-<NumberInputPrimitive.Input
-  {...rest}
-  class={styles.slots.input({ class: cn(className) })}
-/>
+<NumberInputPrimitive.Input {...part.props}>
+  {@render children?.()}
+</NumberInputPrimitive.Input>

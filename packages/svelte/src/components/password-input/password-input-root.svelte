@@ -3,22 +3,18 @@
     PasswordInput as PasswordInputPrimitive,
     type PasswordInputRootProps,
   } from "@ark-ui/svelte";
-  import { passwordInputRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import type { PasswordInputRootContract } from "@pisagor/contracts";
+  import { withProvider } from "./password-input.context";
 
-  type Props = PasswordInputRootProps & { recipe?: typeof passwordInputRecipe };
+  type Props = PasswordInputRootProps & {
+    /** Style recipe override. */
+    recipe?: PasswordInputRootContract["recipe"];
+  };
 
-  let {
-    children,
-    recipe = passwordInputRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
+  let { children, visible = $bindable(), ...rest }: Props = $props();
+  const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<PasswordInputPrimitive.Root
-  {...rest}
-  class={recipe().base({ class: cn(className) })}
->
+<PasswordInputPrimitive.Root {...root.props} bind:visible>
   {@render children?.()}
 </PasswordInputPrimitive.Root>

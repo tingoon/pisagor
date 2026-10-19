@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <Editable value="Editable content">
+  <Editable.Root value="Editable content">
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(props)}
@@ -15,18 +15,32 @@
     </Editable.Area>
     <Editable.Control>
       <Editable.CancelTrigger>
-        <Button aria-label="Cancel" size="icon-sm" variant="outline">
-          <XIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Cancel"
+            size="icon-sm"
+            variant="outline"
+          >
+            <XIcon />
+          </Button>
+        {/snippet}
       </Editable.CancelTrigger>
       <Editable.SubmitTrigger>
-        <Button aria-label="Save" size="icon-sm" variant="outline">
-          <CheckIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Save"
+            size="icon-sm"
+            variant="outline"
+          >
+            <CheckIcon />
+          </Button>
+        {/snippet}
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
-  <Editable value="Editable content">
+  </Editable.Root>
+  <Editable.Root value="Editable content">
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(props)}
@@ -37,18 +51,32 @@
     </Editable.Area>
     <Editable.Control>
       <Editable.CancelTrigger>
-        <Button aria-label="Cancel" size="icon-md" variant="outline">
-          <XIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Cancel"
+            size="icon-md"
+            variant="outline"
+          >
+            <XIcon />
+          </Button>
+        {/snippet}
       </Editable.CancelTrigger>
       <Editable.SubmitTrigger>
-        <Button aria-label="Save" size="icon-md" variant="outline">
-          <CheckIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Save"
+            size="icon-md"
+            variant="outline"
+          >
+            <CheckIcon />
+          </Button>
+        {/snippet}
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
-  <Editable value="Editable content">
+  </Editable.Root>
+  <Editable.Root value="Editable content">
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(props)}
@@ -59,15 +87,29 @@
     </Editable.Area>
     <Editable.Control>
       <Editable.CancelTrigger>
-        <Button aria-label="Cancel" size="icon-lg" variant="outline">
-          <XIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Cancel"
+            size="icon-lg"
+            variant="outline"
+          >
+            <XIcon />
+          </Button>
+        {/snippet}
       </Editable.CancelTrigger>
       <Editable.SubmitTrigger>
-        <Button aria-label="Save" size="icon-lg" variant="outline">
-          <CheckIcon />
-        </Button>
+        {#snippet asChild(props)}
+          <Button
+            {...props()}
+            aria-label="Save"
+            size="icon-lg"
+            variant="outline"
+          >
+            <CheckIcon />
+          </Button>
+        {/snippet}
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
+  </Editable.Root>
 </div>

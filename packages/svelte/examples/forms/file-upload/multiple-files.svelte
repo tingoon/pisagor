@@ -2,23 +2,19 @@
   import { Button, FileUpload, Separator } from "@pisagor/svelte";
 </script>
 
-<FileUpload maxFiles={5}>
-  <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title>Drop files here</FileUpload.Title>
+<FileUpload
+  maxFiles={5}
+  helper="You can upload up to 5 files at a time."
+  title="Drop files here"
+>
+  {#snippet description()}
     <div class="flex items-center justify-center gap-2">
       <Separator />
-      <FileUpload.Description>or</FileUpload.Description>
+      or
       <Separator />
     </div>
-    <FileUpload.Trigger>
-      {#snippet asChild(props)}
-        <Button {...props()}>Browse files</Button>
-      {/snippet}
-    </FileUpload.Trigger>
-    <FileUpload.Helper
-      >You can upload up to 5 files at a time.</FileUpload.Helper
-    >
-  </FileUpload.Dropzone>
-  <FileUpload.List />
+  {/snippet}
+  {#snippet trigger(props)}
+    <Button {...props()}>Browse files</Button>
+  {/snippet}
 </FileUpload>

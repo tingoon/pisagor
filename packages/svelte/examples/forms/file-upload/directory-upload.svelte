@@ -3,16 +3,11 @@
   import { FolderIcon } from "phosphor-svelte";
 </script>
 
-<FileUpload directory>
-  <div class="flex justify-center">
-    <FileUpload.Trigger>
-      {#snippet asChild(props)}
-        <Button {...props()} size="sm" variant="outline">
-          <FolderIcon />
-          Select folder
-        </Button>
-      {/snippet}
-    </FileUpload.Trigger>
-    <FileUpload.List />
-  </div>
+<FileUpload directory class="items-center" dropzone={false}>
+  {#snippet trigger(props)}
+    <Button {...props()} size="sm" variant="outline">
+      <FolderIcon />
+      Select folder
+    </Button>
+  {/snippet}
 </FileUpload>

@@ -3,13 +3,10 @@
     PasswordInput as PasswordInputPrimitive,
     type PasswordInputInputProps,
   } from "@ark-ui/svelte";
-  import { inputGroupControlRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import { withContext } from "./password-input.context";
 
-  let { class: className, ...rest }: PasswordInputInputProps = $props();
+  let { ...rest }: PasswordInputInputProps = $props();
+  const part = withContext(() => rest, { name: "Input" });
 </script>
 
-<PasswordInputPrimitive.Input
-  {...rest}
-  class={cn(inputGroupControlRecipe(), className)}
-/>
+<PasswordInputPrimitive.Input {...part.props} />

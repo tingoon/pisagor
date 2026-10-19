@@ -14,21 +14,19 @@
   });
 </script>
 
-<FileUpload recipe={brandFileUploadRecipe}>
-  <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title>Drop files here</FileUpload.Title>
+<FileUpload
+  recipe={brandFileUploadRecipe}
+  helper="You can upload up to 2 files at a time."
+  title="Drop files here"
+>
+  {#snippet description()}
     <div class="flex items-center justify-center gap-2">
       <Separator />
-      <FileUpload.Description>or</FileUpload.Description>
+      or
       <Separator />
     </div>
-    <FileUpload.Trigger>
-      <Button>Browse files</Button>
-    </FileUpload.Trigger>
-    <FileUpload.Helper>
-      You can upload up to 2 files at a time.
-    </FileUpload.Helper>
-  </FileUpload.Dropzone>
-  <FileUpload.List />
+  {/snippet}
+  {#snippet trigger(props)}
+    <Button {...props()}>Browse files</Button>
+  {/snippet}
 </FileUpload>

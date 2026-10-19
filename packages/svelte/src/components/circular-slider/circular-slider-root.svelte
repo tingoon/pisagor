@@ -1,69 +1,64 @@
 <script lang="ts">
   import {
     AngleSlider as AngleSliderPrimitive,
-    type AngleSliderHiddenInputProps,
     type AngleSliderRootProps,
   } from "@ark-ui/svelte";
   import type { CircularSliderRootContract } from "@pisagor/contracts";
   import { circularSliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import {
-    type CircularSliderContextValue,
-    setCircularSliderContext,
-  } from "./circular-slider.context";
-  import CircularSliderControl from "./circular-slider-control.svelte";
+  import { setCircularSliderContext } from "./circular-slider.context";
 
-  type Props = Omit<AngleSliderRootProps, "onValueChange" | "children"> &
-    Partial<Pick<CircularSliderContextValue, "thickness" | "size">> & {
-      children?: import("svelte").Snippet;
-      hiddenInputProps?: AngleSliderHiddenInputProps;
-      markers?: boolean | number[];
-      markersAtSteps?: boolean;
+  type Props = Omit<AngleSliderRootProps, "onValueChange"> &
+    CircularSliderRootContract & {
+      /** Called with the angle in degrees when the value changes. */
       onValueChange?: (value: number) => void;
-    } & CircularSliderRootContract;
+      /**
+       * Diameter in pixels.
+       *
+       * @defaultValue 100
+       */
+      size?: number;
+      /**
+       * Ring thickness in pixels.
+       *
+       * @defaultValue 6
+       */
+      thickness?: number;
+    };
 
   let {
-    size = 100,
-    step = 1,
     children,
-    hiddenInputProps,
-    markers,
-    markersAtSteps = false,
-    thickness = 6,
+    class: className,
     onValueChange,
     recipe = circularSliderRecipe,
-    class: className,
+    size = 100,
+    step = 1,
+    style,
+    thickness = 6,
     ...rest
   }: Props = $props();
 
   const slots = $derived(recipe());
-  const values = $derived({
-    ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
-    ringRadius: size / 2 - thickness / 2,
-    size,
-    slots,
-    thickness,
-    thumbSize: Math.max(thickness + 8, 16),
-  });
+  const ringRadius = $derived(size / 2 - thickness / 2);
 
   setCircularSliderContext({
     get ringCircumference() {
-      return values.ringCircumference;
+      return 2 * Math.PI * ringRadius;
     },
     get ringRadius() {
-      return values.ringRadius;
+      return ringRadius;
     },
     get size() {
-      return values.size;
+      return size;
     },
     get slots() {
-      return values.slots;
+      return slots;
     },
     get thickness() {
-      return values.thickness;
+      return thickness;
     },
     get thumbSize() {
-      return values.thumbSize;
+      return Math.max(thickness + 8, 16);
     },
   });
 
@@ -72,14 +67,13 @@
   }
 </script>
 
+<!-- Provides ring geometry; passes the numeric angle to `onValueChange`. -->
 <AngleSliderPrimitive.Root
   {...rest}
   class={slots.base({ class: cn(className) })}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {step}
-  style={`--thickness: ${thickness}px; height: ${size}px; width: ${size}px;`}
+  style={`--thickness: ${thickness}px; height: ${size}px; width: ${size}px; ${style ?? ""}`}
 >
-  <CircularSliderControl {markers} {markersAtSteps} {step} />
   {@render children?.()}
-  <AngleSliderPrimitive.HiddenInput {...hiddenInputProps} />
 </AngleSliderPrimitive.Root>

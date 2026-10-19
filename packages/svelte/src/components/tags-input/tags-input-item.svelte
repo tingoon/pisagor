@@ -1,49 +1,21 @@
 <script lang="ts">
   import {
     TagsInput as TagsInputPrimitive,
-    type TagsInputItemProps as ArkItemProps,
+    type TagsInputItemProps,
   } from "@ark-ui/svelte";
   import type { TagsInputItemRootContract } from "@pisagor/contracts";
-  import { tagsInputItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { TagsInputItemStylesContext } from "./tags-input.context";
-  import TagsInputItemDeleteTrigger from "./tags-input-item-delete-trigger.svelte";
-  import TagsInputItemInput from "./tags-input-item-input.svelte";
-  import TagsInputItemPreview from "./tags-input-item-preview.svelte";
-  import TagsInputItemText from "./tags-input-item-text.svelte";
+  import { withTagsInputItemProvider } from "./tags-input.context";
 
-  type Props = ArkItemProps & {
-    showDelete?: boolean;
-  } & TagsInputItemRootContract;
+  type Props = TagsInputItemProps &
+    Omit<TagsInputItemRootContract, "size" | "variant">;
 
-  let {
-    showDelete = true,
-    children,
-    recipe = tagsInputItemRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  TagsInputItemStylesContext.set({
-    get slots() {
-      return slots;
-    },
+  let { children, ...rest }: Props = $props();
+  const part = withTagsInputItemProvider(() => rest, {
+    name: "Item",
+    slot: "base",
   });
 </script>
 
-<TagsInputPrimitive.Item {...rest} class={slots.base({ class: cn(className) })}>
-  <TagsInputItemPreview>
-    <TagsInputItemText>
-      {#if children}
-        {@render children()}
-      {:else}
-        {rest.value}
-      {/if}
-    </TagsInputItemText>
-    {#if showDelete}
-      <TagsInputItemDeleteTrigger />
-    {/if}
-  </TagsInputItemPreview>
-  <TagsInputItemInput />
+<TagsInputPrimitive.Item {...part.props}>
+  {@render children?.()}
 </TagsInputPrimitive.Item>

@@ -55,8 +55,6 @@
   {otp}
   placeholder={placeholder ?? ""}
 >
-  <PinInputPrimitive.Control class={slots.control()}>
-    {@render children?.()}
-  </PinInputPrimitive.Control>
+  {@render children?.()}
   <PinInputPrimitive.HiddenInput />
 </PinInputPrimitive.Root>

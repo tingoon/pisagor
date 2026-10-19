@@ -4,22 +4,18 @@
     type AngleSliderValueTextProps,
     useAngleSliderContext,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useCircularSlider } from "./circular-slider.context";
+  import { withContext } from "./circular-slider.context";
 
-  type Props = AngleSliderValueTextProps & { prefix?: string; suffix?: string };
-
-  let { prefix = "", suffix = "", class: className, ...rest }: Props = $props();
+  let { children, ...rest }: AngleSliderValueTextProps = $props();
   const api = useAngleSliderContext();
-  const { slots } = useCircularSlider();
-  const value = $derived(api().value);
+  const part = withContext(() => rest, { name: "ValueText", slot: "value" });
 </script>
 
-<AngleSliderPrimitive.ValueText
-  {...rest}
-  class={slots.value({ class: cn(className) })}
->
-  {prefix}
-  {value}
-  {suffix}
+<!-- Renders the numeric angle when no children are given. -->
+<AngleSliderPrimitive.ValueText {...part.props}>
+  {#if children}
+    {@render children()}
+  {:else}
+    {api().value}
+  {/if}
 </AngleSliderPrimitive.ValueText>

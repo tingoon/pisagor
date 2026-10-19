@@ -1,14 +1,14 @@
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
-  import { XIcon } from "phosphor-svelte";
+  import { UploadIcon, XIcon } from "phosphor-svelte";
 
   let files = $state<File[]>([]);
 </script>
 
-<FileUpload accept="image/*" onValueChange={(next) => (files = next)}>
+<FileUpload.Root accept="image/*" onValueChange={(next) => (files = next)}>
   <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title>Drop files here</FileUpload.Title>
+    <UploadIcon class="text-muted-foreground size-5" />
+    <span class="text-sm font-medium">Drop files here</span>
   </FileUpload.Dropzone>
   {#if files.length > 0}
     <FileUpload.ItemGroup class="grid grid-cols-4 gap-2">
@@ -37,4 +37,4 @@
       {/each}
     </FileUpload.ItemGroup>
   {/if}
-</FileUpload>
+</FileUpload.Root>

@@ -5,9 +5,12 @@
 </script>
 
 <SegmentGroup.Root class="rounded-lg" defaultValue="Profile">
-  {#each items as item}
+  <SegmentGroup.Indicator />
+  {#each items as item (item)}
     <SegmentGroup.Item class="px-2 py-1.5 text-sm" value={item}>
-      {item}
+      <SegmentGroup.ItemText>{item}</SegmentGroup.ItemText>
+      <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   {/each}
 </SegmentGroup.Root>

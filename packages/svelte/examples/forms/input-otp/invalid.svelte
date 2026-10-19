@@ -6,9 +6,9 @@
   const isCorrect = $derived(value.join("") === "1234");
 </script>
 
-<InputOTP invalid={!isCorrect} onValueChange={(v) => (value = v)} {value}>
-  <InputOTP.Slot index={0} />
-  <InputOTP.Slot index={1} />
-  <InputOTP.Slot index={2} />
-  <InputOTP.Slot index={3} />
-</InputOTP>
+<InputOTP
+  invalid={!isCorrect}
+  onValueChange={(v) => (value = v)}
+  {value}
+  length={4}
+/>

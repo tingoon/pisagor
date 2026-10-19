@@ -1,19 +1,28 @@
-import EditableArea from "./editable-area.svelte";
-import EditableCancelTrigger from "./editable-cancel-trigger.svelte";
-import EditableControl from "./editable-control.svelte";
-import EditableEditTrigger from "./editable-edit-trigger.svelte";
-import EditableInput from "./editable-input.svelte";
-import EditablePreview from "./editable-preview.svelte";
-import EditableRoot from "./editable-root.svelte";
-import EditableSubmitTrigger from "./editable-submit-trigger.svelte";
+import EditableShorthand from "./editable.svelte";
+import Area from "./editable-area.svelte";
+import CancelTrigger from "./editable-cancel-trigger.svelte";
+import Control from "./editable-control.svelte";
+import EditTrigger from "./editable-edit-trigger.svelte";
+import Input from "./editable-input.svelte";
+import Preview from "./editable-preview.svelte";
+import Root from "./editable-root.svelte";
+import SubmitTrigger from "./editable-submit-trigger.svelte";
 
-export const Editable = Object.assign(EditableRoot, {
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Preview: EditablePreview,
-  Root: EditableRoot,
-  SubmitTrigger: EditableSubmitTrigger,
+export type {
+  EditableAreaProps,
+  EditableCancelTriggerProps,
+  EditableControlProps,
+  EditableEditTriggerProps,
+  EditableSubmitTriggerProps,
+} from "@ark-ui/svelte";
+
+export const Editable = Object.assign(EditableShorthand, {
+  Area,
+  CancelTrigger,
+  Control,
+  EditTrigger,
+  Input,
+  Preview,
+  Root,
+  SubmitTrigger,
 });

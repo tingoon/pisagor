@@ -3,21 +3,15 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputItemTextProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTagsInputItem } from "./tags-input.context";
+  import { withTagsInputItemContext } from "./tags-input.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: TagsInputItemTextProps = $props();
-  const styles = useTagsInputItem();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: TagsInputItemTextProps = $props();
+  const part = withTagsInputItemContext(() => rest, {
+    name: "ItemText",
+    slot: "text",
+  });
 </script>
 
-<TagsInputPrimitive.ItemText
-  {...rest}
-  class={slots.text({ class: cn(className) })}
->
+<TagsInputPrimitive.ItemText {...part.props}>
   {@render children?.()}
 </TagsInputPrimitive.ItemText>

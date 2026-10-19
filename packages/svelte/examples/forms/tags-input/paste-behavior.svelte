@@ -6,9 +6,5 @@
 
 <Field>
   <Field.Label>Frameworks</Field.Label>
-  <TagsInput addOnPaste class="w-full" delimiter="," {value}>
-    {#each value as tag, index}
-      <TagsInput.Item {index} value={tag}>{tag}</TagsInput.Item>
-    {/each}
-  </TagsInput>
+  <TagsInput addOnPaste class="w-full" delimiter="," {value} />
 </Field>

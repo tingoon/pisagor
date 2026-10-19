@@ -7,9 +7,5 @@
 
 <Field>
   <Field.Label>Frameworks</Field.Label>
-  <TagsInput class="w-full" onValueChange={(v) => (value = v)} {value}>
-    {#each value as tag, index}
-      <TagsInput.Item {index} value={tag}>{tag}</TagsInput.Item>
-    {/each}
-  </TagsInput>
+  <TagsInput class="w-full" onValueChange={(v) => (value = v)} {value} />
 </Field>

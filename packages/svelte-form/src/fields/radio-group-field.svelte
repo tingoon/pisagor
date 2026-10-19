@@ -90,7 +90,9 @@
             id={id ? `${id}-${option.value}` : undefined}
             value={option.value}
           >
-            {option.label}
+            <RadioGroup.ItemControl />
+            <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+            <RadioGroup.ItemHiddenInput />
           </RadioGroup.Item>
           <Field.Description>{option.description}</Field.Description>
         </Field>
@@ -99,7 +101,9 @@
           id={id ? `${id}-${option.value}` : undefined}
           value={option.value}
         >
-          {option.label}
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
         </RadioGroup.Item>
       {/if}
     {/each}

@@ -1,18 +1,17 @@
 <script lang="ts">
   import { SegmentGroup } from "@pisagor/svelte";
 
-  const items = ["Profile", "Account", "Security", "Notifications"];
   let value = $state<string | null>("Profile");
 </script>
 
-<SegmentGroup.Root
+<SegmentGroup
   class="rounded-lg"
+  items={[
+    { label: "Profile", value: "Profile" },
+    { label: "Account", value: "Account" },
+    { label: "Security", value: "Security" },
+    { label: "Notifications", value: "Notifications" },
+  ]}
   onValueChange={(next) => (value = next)}
   {value}
->
-  {#each items as item}
-    <SegmentGroup.Item class="px-2 py-1.5 text-sm" value={item}>
-      {item}
-    </SegmentGroup.Item>
-  {/each}
-</SegmentGroup.Root>
+/>

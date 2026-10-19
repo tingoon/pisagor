@@ -1,19 +1,15 @@
 <script lang="ts">
-  import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import type { ClassValue } from "svelte/elements";
-  import { useFileUploadItem } from "./file-upload.context";
+  import {
+    FileUpload as FileUploadPrimitive,
+    type FileUploadItemPreviewImageProps,
+  } from "@ark-ui/svelte";
+  import { withFileUploadItemContext } from "./file-upload.context";
 
-  type Props = {
-    class?: ClassValue;
-    [key: string]: unknown;
-  };
-  let { class: className, ...rest }: Props = $props();
-  const styles = useFileUploadItem();
-  const slots = $derived(styles.slots);
+  let props: FileUploadItemPreviewImageProps = $props();
+  const part = withFileUploadItemContext(() => props, {
+    name: "ItemPreviewImage",
+    slot: "previewImage",
+  });
 </script>
 
-<FileUploadPrimitive.ItemPreviewImage
-  {...rest}
-  class={slots.previewImage({ class: cn(className) })}
-/>
+<FileUploadPrimitive.ItemPreviewImage {...part.props} />

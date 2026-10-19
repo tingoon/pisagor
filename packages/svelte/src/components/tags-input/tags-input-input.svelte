@@ -3,15 +3,10 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputInputProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTagsInput } from "./tags-input.context";
+  import { withTagsInputContext } from "./tags-input.context";
 
-  let { class: className, ...rest }: TagsInputInputProps = $props();
-  const styles = useTagsInput();
-  const slots = $derived(styles.slots);
+  let props: TagsInputInputProps = $props();
+  const part = withTagsInputContext(() => props, { name: "Input" });
 </script>
 
-<TagsInputPrimitive.Input
-  {...rest}
-  class={slots.input({ class: cn(className) })}
-/>
+<TagsInputPrimitive.Input {...part.props} />

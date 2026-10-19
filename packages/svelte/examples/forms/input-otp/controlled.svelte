@@ -8,12 +8,7 @@
 
 <div class="flex flex-col gap-2">
   <p class="text-muted-foreground text-center text-sm">Enter the code 1234</p>
-  <InputOTP onValueChange={(v) => (value = v)} {value}>
-    <InputOTP.Slot index={0} />
-    <InputOTP.Slot index={1} />
-    <InputOTP.Slot index={2} />
-    <InputOTP.Slot index={3} />
-  </InputOTP>
+  <InputOTP onValueChange={(v) => (value = v)} {value} length={4} />
   <p class="text-muted-foreground text-center text-sm">
     {isCorrect ? "✅" : "❌"}
   </p>

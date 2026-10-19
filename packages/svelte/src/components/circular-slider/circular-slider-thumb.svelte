@@ -6,18 +6,28 @@
   import { cn } from "@pisagor/utils";
   import { useCircularSlider } from "./circular-slider.context";
 
-  let { class: className, ...rest }: AngleSliderThumbProps = $props();
-  const { thumbSize, ringRadius, slots } = useCircularSlider();
-  const halfThumb = $derived(thumbSize / 2);
+  let {
+    children,
+    class: className,
+    style,
+    ...rest
+  }: AngleSliderThumbProps = $props();
+  const ctx = useCircularSlider();
+  const halfThumb = $derived(ctx.thumbSize / 2);
 </script>
 
+<!-- Thumb positioned on the ring; renders its handle unless you pass children. -->
 <AngleSliderPrimitive.Thumb
   {...rest}
-  class={slots.thumb({ class: cn(className) })}
-  style={`--size: ${thumbSize}px;`}
+  class={ctx.slots.thumb({ class: cn(className) })}
+  style={`--size: ${ctx.thumbSize}px; ${style ?? ""}`}
 >
-  <span
-    class={slots.thumbHandle()}
-    style={`inset-block-start: calc(50% - ${ringRadius}px - ${halfThumb}px); inset-inline-start: calc(50% - ${halfThumb}px);`}
-  ></span>
+  {#if children}
+    {@render children()}
+  {:else}
+    <span
+      class={ctx.slots.thumbHandle()}
+      style={`inset-block-start: calc(50% - ${ctx.ringRadius}px - ${halfThumb}px); inset-inline-start: calc(50% - ${halfThumb}px);`}
+    ></span>
+  {/if}
 </AngleSliderPrimitive.Thumb>
