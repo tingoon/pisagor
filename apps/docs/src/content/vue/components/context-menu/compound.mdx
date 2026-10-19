@@ -1,19 +1,46 @@
 ## Anatomy
 
 ```vue
-<ContextMenu>
+<ContextMenu.Root>
   <ContextMenu.ContextTrigger />
-  <ContextMenu.Content>
-    <ContextMenu.ItemGroup>
-      <ContextMenu.Item>
-        <ContextMenu.Shortcut />
-      </ContextMenu.Item>
+  <ContextMenu.Positioner>
+    <ContextMenu.Content>
+      <ContextMenu.ItemGroup>
+        <ContextMenu.ItemGroupLabel />
+        <ContextMenu.Item>
+          <ContextMenu.Shortcut />
+        </ContextMenu.Item>
+      </ContextMenu.ItemGroup>
+      <ContextMenu.CheckboxItem>
+        <ContextMenu.ItemIndicator />
+        <ContextMenu.ItemText />
+      </ContextMenu.CheckboxItem>
+      <ContextMenu.RadioItemGroup>
+        <ContextMenu.RadioItem>
+          <ContextMenu.ItemIndicator />
+          <ContextMenu.ItemText />
+        </ContextMenu.RadioItem>
+      </ContextMenu.RadioItemGroup>
       <ContextMenu.Separator />
       <ContextMenu.Sub>
-        <ContextMenu.TriggerItem />
-        <ContextMenu.SubContent />
+        <ContextMenu.TriggerItem>
+          <ContextMenu.Indicator />
+        </ContextMenu.TriggerItem>
+        <ContextMenu.Positioner>
+          <ContextMenu.Content />
+        </ContextMenu.Positioner>
       </ContextMenu.Sub>
-    </ContextMenu.ItemGroup>
-  </ContextMenu.Content>
-</ContextMenu>
+    </ContextMenu.Content>
+  </ContextMenu.Positioner>
+</ContextMenu.Root>
 ```
+
+Wrap each `Positioner` in `Teleport`. Icons are not built in: pass the check icon to `ItemIndicator` and the caret to `Indicator`.
+
+## Examples
+
+### Compound
+
+Build the menu from parts when you need full control over the structure.
+
+<Example name="Compound" />

@@ -6,7 +6,7 @@ const placements = ["left", "top", "bottom", "right"] as const;
 
 <template>
   <div class="flex flex-wrap justify-center gap-2">
-    <DropdownMenu
+    <DropdownMenu.Root
       v-for="placement in placements"
       :key="placement"
       :positioning="{ placement }"
@@ -16,11 +16,15 @@ const placements = ["left", "top", "bottom", "right"] as const;
           {{ placement }}
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content class="w-36">
-        <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
-        <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
-        <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu>
+      <Teleport to="body">
+        <DropdownMenu.Positioner>
+          <DropdownMenu.Content class="w-36">
+            <DropdownMenu.Item value="edit">Edit</DropdownMenu.Item>
+            <DropdownMenu.Item value="copy">Copy</DropdownMenu.Item>
+            <DropdownMenu.Item value="share">Share</DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Teleport>
+    </DropdownMenu.Root>
   </div>
 </template>

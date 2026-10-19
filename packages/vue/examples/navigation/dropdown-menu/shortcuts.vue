@@ -4,32 +4,36 @@ import { Button, DropdownMenu } from "@pisagor/vue";
 </script>
 
 <template>
-  <DropdownMenu>
+  <DropdownMenu.Root>
     <DropdownMenu.Trigger as-child>
       <Button variant="outline">Open</Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content class="w-40">
-      <DropdownMenu.Item value="profile">
-        <PhUser />
-        Profile
-        <DropdownMenu.Shortcut>⌘P</DropdownMenu.Shortcut>
-      </DropdownMenu.Item>
-      <DropdownMenu.Item value="settings">
-        <PhGear />
-        Settings
-        <DropdownMenu.Shortcut>⌘S</DropdownMenu.Shortcut>
-      </DropdownMenu.Item>
-      <DropdownMenu.Item value="copy">
-        <PhCopy />
-        Copy
-        <DropdownMenu.Shortcut>⌘C</DropdownMenu.Shortcut>
-      </DropdownMenu.Item>
-      <DropdownMenu.Separator />
-      <DropdownMenu.Item value="logout">
-        <PhSignOut />
-        Log out
-        <DropdownMenu.Shortcut>⌘Q</DropdownMenu.Shortcut>
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
-  </DropdownMenu>
+    <Teleport to="body">
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content class="w-40">
+          <DropdownMenu.Item value="profile">
+            <PhUser />
+            Profile
+            <DropdownMenu.Shortcut>⌘P</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item value="settings">
+            <PhGear />
+            Settings
+            <DropdownMenu.Shortcut>⌘S</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item value="copy">
+            <PhCopy />
+            Copy
+            <DropdownMenu.Shortcut>⌘C</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item value="logout">
+            <PhSignOut />
+            Log out
+            <DropdownMenu.Shortcut>⌘Q</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Teleport>
+  </DropdownMenu.Root>
 </template>

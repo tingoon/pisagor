@@ -4,24 +4,28 @@ import { Button, DropdownMenu } from "@pisagor/vue";
 </script>
 
 <template>
-  <DropdownMenu>
+  <DropdownMenu.Root>
     <DropdownMenu.Trigger as-child>
       <Button variant="outline">Open</Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content class="w-40">
-      <DropdownMenu.Item value="edit">
-        <PhPencil />
-        Edit
-      </DropdownMenu.Item>
-      <DropdownMenu.Item value="duplicate">
-        <PhCopy />
-        Duplicate
-      </DropdownMenu.Item>
-      <DropdownMenu.Separator />
-      <DropdownMenu.Item value="delete" variant="destructive">
-        <PhTrash />
-        Delete
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
-  </DropdownMenu>
+    <Teleport to="body">
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content class="w-40">
+          <DropdownMenu.Item value="edit">
+            <PhPencil />
+            Edit
+          </DropdownMenu.Item>
+          <DropdownMenu.Item value="duplicate">
+            <PhCopy />
+            Duplicate
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item value="delete" variant="destructive">
+            <PhTrash />
+            Delete
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Teleport>
+  </DropdownMenu.Root>
 </template>

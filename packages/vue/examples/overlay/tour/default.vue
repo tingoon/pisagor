@@ -44,19 +44,8 @@ const steps: TourStepType[] = [
 
 <template>
   <Tour :steps="steps">
-    <Tour.Trigger as-child>
+    <template #trigger>
       <Button variant="outline">Open</Button>
-    </Tour.Trigger>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Footer>
-        <Tour.PreviousStep />
-        <Tour.NextStep />
-      </Tour.Footer>
-    </Tour.Content>
+    </template>
   </Tour>
 </template>

@@ -1,18 +1,43 @@
 ## Anatomy
 
 ```vue
-<Tour>
-  <Tour.Trigger />
-  <Tour.Content>
-    <Tour.Header>
-      <Tour.ProgressText />
-      <Tour.Title />
-      <Tour.Description />
-    </Tour.Header>
-    <Tour.Footer>
-      <Tour.PreviousStep />
-      <Tour.NextStep />
-    </Tour.Footer>
-  </Tour.Content>
-</Tour>
+<script setup lang="ts">
+const tour = useTour({ steps });
+</script>
+
+<Tour.Root :tour="tour">
+  <Tour.Backdrop />
+  <Tour.Spotlight />
+  <Tour.Positioner>
+    <Tour.Content>
+      <Tour.Arrow>
+        <Tour.ArrowTip />
+      </Tour.Arrow>
+      <Tour.Header>
+        <Tour.ProgressText />
+        <Tour.Title />
+        <Tour.Description />
+      </Tour.Header>
+      <Tour.Body />
+      <Tour.Control>
+        <Tour.ActionTrigger
+          v-for="action in tour.step?.actions"
+          :key="action.label"
+          :action="action"
+        />
+      </Tour.Control>
+      <Tour.CloseTrigger />
+    </Tour.Content>
+  </Tour.Positioner>
+</Tour.Root>
 ```
+
+Create the tour with `useTour` and start it with `tour.start()`. Wrap the overlay parts in `Teleport`.
+
+## Examples
+
+### Compound
+
+Read the tour state with `useTourContext` to render custom chrome, such as a progress bar.
+
+<Example name="Progress" />

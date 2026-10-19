@@ -1,12 +1,15 @@
 ## Anatomy
 
 ```vue
-<Command>
-  <Command.Input />
+<Command.Root :collection="collection">
+  <Command.Control>
+    <Command.Input />
+  </Command.Control>
   <Command.Content>
     <Command.Empty />
     <Command.List>
       <Command.ItemGroup>
+        <Command.ItemGroupLabel />
         <Command.Item>
           <Command.Shortcut />
         </Command.Item>
@@ -14,5 +17,16 @@
       </Command.ItemGroup>
     </Command.List>
   </Command.Content>
-</Command>
+  <Command.Footer />
+</Command.Root>
 ```
+
+`Command.Dialog` wraps any palette in a dialog (`#trigger` slot, `open`, `@open-change`, hidden `title` / `description`).
+
+## Examples
+
+### Compound
+
+Build the palette from parts with your own collection and filtering. Compose the search icon with `InputGroup` and render `Command.Input` with `as-child`.
+
+<Example name="WithDialog" />

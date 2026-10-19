@@ -1,163 +1,155 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue";
-import type { HoverCardRootContract } from "@pisagor/contracts";
+import type {
+  HoverCardArrowProps,
+  HoverCardArrowTipProps,
+  HoverCardContentProps,
+  HoverCardPositionerProps,
+  HoverCardRootProps as HoverCardRootPrimitiveProps,
+  HoverCardTriggerProps,
+} from "@ark-ui/vue";
+import type {
+  HoverCardContract,
+  HoverCardRootContract,
+} from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
-import {
-  type CSSProperties,
-  computed,
-  defineComponent,
-  h,
-  type PropType,
-  Teleport,
-} from "vue";
-import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { defineComponent, h, type PropType, Teleport } from "vue";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { provideStyles: provideHoverCardStyles, useStyles } =
-  createSlotRecipeContext({
-    name: "HoverCard",
-    recipe: hoverCardRecipe,
-  });
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "HoverCard",
+  recipe: hoverCardRecipe,
+});
 // #endregion
 
 // #region Types
-export interface HoverCardProps extends HoverCardRootContract {
-  closeDelay?: number;
-  lazyMount?: boolean;
-  openDelay?: number;
-  positioning?: Record<string, unknown>;
-  unmountOnExit?: boolean;
-}
+export type HoverCardRootProps = HoverCardRootPrimitiveProps &
+  HoverCardRootContract;
 
-export interface HoverCardArrowProps {
-  class?: unknown;
+/**
+ * Slots: `trigger` (single element, rendered `as-child`) and `default` (card
+ * content).
+ */
+export interface HoverCardProps extends HoverCardRootProps, HoverCardContract {
+  /**
+   * Whether to render the arrow pointing at the trigger.
+   *
+   * @defaultValue true
+   */
+  showArrow?: boolean;
 }
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
-function hoverCardTeleport(
-  content: ReturnType<typeof h> | ReturnType<typeof h>[],
-) {
-  return h(Teleport, { to: "body" }, [content]);
-}
-
 // #region Parts
-export const HoverCardRoot = defineComponent({
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<HoverCardRootProps>(HoverCardPrimitive.Root, {
+  defaultProps: {
+    closeDelay: 300,
+    openDelay: 600,
+    positioning: { placement: "top" },
+  },
+  name: "Root",
+  renderless: true,
+  slot: "base",
+});
+
+const Trigger = withContext<HoverCardTriggerProps>(HoverCardPrimitive.Trigger, {
+  name: "Trigger",
+});
+
+const Positioner = withContext<HoverCardPositionerProps>(
+  HoverCardPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const Content = withContext<HoverCardContentProps>(HoverCardPrimitive.Content, {
+  name: "Content",
+});
+
+const ArrowTip = withContext<HoverCardArrowTipProps>(
+  HoverCardPrimitive.ArrowTip,
+  { name: "ArrowTip" },
+);
+
+const ArrowBase = withContext<HoverCardArrowProps>(HoverCardPrimitive.Arrow, {
+  defaultProps: {
+    style: {
+      "--arrow-background": "var(--popover)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+/** Renders an `ArrowTip` when no children are passed. */
+const Arrow = defineComponent({
+  inheritAttrs: false,
+  name: "HoverCard.Arrow",
+  setup(_, { attrs, slots }) {
+    return () =>
+      h(ArrowBase, attrs, {
+        default: () => slots.default?.() ?? h(ArrowTip),
+      });
+  },
+});
+// #endregion
+
+// #region Shorthand
+export const HoverCardShorthand = defineComponent({
   inheritAttrs: false,
   name: "HoverCard",
   props: {
-    closeDelay: { default: 300, type: Number },
-    lazyMount: { default: true, type: Boolean },
-    openDelay: { default: 600, type: Number },
-    positioning: {
-      default: () => ({ placement: "top" }),
-      type: Object as PropType<Record<string, unknown>>,
-    },
-    recipe: {
-      default: hoverCardRecipe,
-      type: Function as PropType<typeof hoverCardRecipe>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideHoverCardStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () =>
-      h(
-        HoverCardPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          closeDelay: props.closeDelay,
-          lazyMount: props.lazyMount,
-          openDelay: props.openDelay,
-          positioning: props.positioning,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
-  },
-});
-
-export const HoverCardTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "HoverCard.Trigger",
-  setup(_props, { attrs, slots }) {
-    return () => h(HoverCardPrimitive.Trigger as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const HoverCardArrow = defineComponent({
-  inheritAttrs: false,
-  name: "HoverCard.Arrow",
-  props: {
-    style: { default: undefined, type: Object as PropType<CSSProperties> },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        HoverCardPrimitive.Arrow as ArkPart,
-        {
-          ...attrs,
-          style: {
-            "--arrow-background": "var(--popover)",
-            "--arrow-size": "calc(1.5 * var(--spacing))",
-            ...props.style,
-          } as CSSProperties,
-        },
-        () => [
-          h(HoverCardPrimitive.ArrowTip as ArkPart, {
-            class: styles.slots.arrowTip(),
-          }),
-          slots.default?.(),
-        ],
-      );
-  },
-});
-
-export const HoverCardContent = defineComponent({
-  inheritAttrs: false,
-  name: "HoverCard.Content",
-  props: {
-    class: {
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Object as PropType<HoverCardProps["classNames"]>,
     },
     showArrow: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useStyles();
+    return () => {
+      const classNames = props.classNames;
 
-    return () =>
-      hoverCardTeleport(
-        h(HoverCardPrimitive.Positioner as ArkPart, {}, () =>
-          h(
-            HoverCardPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: styles.slots.content({ class: props.class }),
-            },
-            () => [
+      return h(Root, attrs, () => [
+        slots.trigger
+          ? h(
+              Trigger,
+              { asChild: true, class: classNames?.trigger },
+              { default: slots.trigger },
+            )
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { class: classNames?.content }, () => [
               slots.default?.(),
-              props.showArrow ? h(HoverCardArrow) : null,
-            ],
+
+              props.showArrow
+                ? h(Arrow, { class: classNames?.arrow }, () =>
+                    h(ArrowTip, { class: classNames?.arrowTip }),
+                  )
+                : null,
+            ]),
           ),
-        ),
-      );
+        ]),
+      ]);
+    };
   },
 });
 // #endregion
 
-export const HoverCard = Object.assign(HoverCardRoot, {
-  Arrow: HoverCardArrow,
-  Content: HoverCardContent,
-  Trigger: HoverCardTrigger,
+export type {
+  HoverCardArrowProps,
+  HoverCardArrowTipProps,
+  HoverCardContentProps,
+  HoverCardPositionerProps,
+  HoverCardTriggerProps,
+} from "@ark-ui/vue";
+
+export const HoverCard = Object.assign(HoverCardShorthand, {
+  Arrow,
+  ArrowTip,
+  Content,
+  Positioner,
+  Root,
+  Trigger,
 });

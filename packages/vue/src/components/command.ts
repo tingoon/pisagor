@@ -1,562 +1,184 @@
 import {
   type CollectionItem,
-  Dialog as DialogPrimitive,
-  type ListCollection,
+  type HTMLArkProps,
   useFilter,
   useListCollection,
 } from "@ark-ui/vue";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import type {
+  CommandContract,
   CommandDialogContract,
   CommandPresetItem,
   CommandRootContract,
-  CommandContract,
 } from "@pisagor/contracts";
-import { commandRecipe, dialogRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { commandRecipe } from "@pisagor/recipes";
 import {
-  computed,
   defineComponent,
+  Fragment,
   h,
   type PropType,
   Teleport,
   type VNodeChild,
 } from "vue";
-import {
-  type ClassValue,
-  type LoosePropValue,
-  createSlotRecipeContext,
-} from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Combobox, type ComboboxRootProps } from "./combobox";
-import { Dialog, type DialogContentProps } from "./dialog";
-import type { InputProps } from "./input";
+import { Dialog, type DialogRootProps } from "./dialog";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
-// #region Slot recipe context
-const { provideStyles: provideCommandStyles, useStyles } =
-  createSlotRecipeContext({
-    name: "Command",
-    recipe: commandRecipe,
-  });
+// #region Context
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Command",
+  recipe: commandRecipe,
+});
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Types
-export interface CommandProps<T extends CollectionItem = CollectionItem>
+export interface CommandRootProps<T extends CollectionItem = CollectionItem>
   extends
     Omit<
       ComboboxRootProps<T>,
       "emptyText" | "items" | "placeholder" | "recipe"
     >,
-    CommandRootContract,
-    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
-  emptyText?: VNodeChild;
-  placeholder?: string;
-}
+    CommandRootContract {}
 
-interface CommandDialogContentProps
-  extends DialogContentProps, CommandDialogContract {
-  description?: string;
-  title?: string;
-}
+export type CommandSeparatorProps = HTMLArkProps<"div">;
 
-interface CommandInputProps {
-  class?: unknown;
-  /**
-   * The size of the input
-   *
-   * @defaultValue "md"
-   */
-  size?: InputProps["size"];
-}
-export interface CommandShorthandItem extends Omit<
-  CommandPresetItem,
-  "label" | "icon"
-> {
-  /** Optional group heading. */
-  group?: string;
+export type CommandShortcutProps = HTMLArkProps<"span">;
+
+export type CommandFooterProps = HTMLArkProps<"div">;
+
+export interface CommandItem extends Omit<CommandPresetItem, "label" | "icon"> {
   icon?: VNodeChild;
   label: string;
-  /** Keyboard shortcut hint. */
-  shortcut?: string;
-  /** Unique value. */
-  value: string;
 }
 
-export interface CommandShorthandProps extends Omit<
-  CommandProps<CommandShorthandItem>,
-  "collection"
-> {
+export interface CommandProps
+  extends
+    Omit<CommandRootProps<CommandItem>, "collection">,
+    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
+  /** Text shown when no item matches. Also available as the `empty` slot. */
   emptyText?: VNodeChild;
-  items: CommandShorthandItem[];
+  /** Items; grouped by `group` and filtered as the user types. */
+  items: CommandItem[];
+  /** Search input placeholder. */
   placeholder?: string;
+}
+
+export interface CommandDialogProps
+  extends
+    Omit<DialogRootProps, "recipe">,
+    Omit<CommandDialogContract, "description" | "title"> {
+  /** Visually hidden dialog description. */
+  description?: string;
+  /** Command style recipe override (dialog content and header slots). */
+  recipe?: typeof commandRecipe;
+  /** Visually hidden dialog title. */
+  title?: string;
 }
 // #endregion
 
 // #region Parts
-function commandTeleport(content: Array<ReturnType<typeof h>>) {
-  return h(Teleport, { to: "body" }, [content]);
-}
-
-export const CommandDialog = Dialog;
-CommandDialog.displayName = "Command.Dialog";
-
-export const CommandDialogTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "CommandDialogTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(Dialog.Trigger as ArkPart, { ...attrs }, slots);
+/** Always-open combobox tuned for command palettes. */
+const Root = withProvider<CommandRootProps>(Combobox.Root, {
+  defaultProps: {
+    closeOnSelect: false,
+    disableLayer: true,
+    inputBehavior: "autohighlight",
+    loopFocus: false,
+    open: true,
+    selectionBehavior: "clear",
+    showIndicator: false,
   },
+  name: "Root",
+  slot: "base",
 });
-CommandDialogTrigger.displayName = "Command.DialogTrigger";
 
-export const CommandDialogContent = defineComponent({
+const Control = withContext(Combobox.Control, { name: "Control" });
+
+const Input = Combobox.Input;
+
+const Content = withContext(Combobox.Content, { name: "Content" });
+
+const List = withContext(Combobox.List, { name: "List" });
+
+const Empty = withContext(Combobox.Empty, { name: "Empty" });
+
+const Separator_ = withContext(Separator, { name: "Separator" });
+
+const Shortcut = withContext("span", { name: "Shortcut" });
+
+const Footer = withContext("div", { name: "Footer" });
+
+/** Height-capped list region used by the shorthand. */
+const ListArea = withContext("div", { name: "ListWrapper" });
+// #endregion
+
+// #region Shorthand
+/** Search field with a leading icon, used by the shorthand. */
+const SearchInput = defineComponent({
   inheritAttrs: false,
-  name: "CommandDialogContent",
+  name: "Command.SearchInput",
   props: {
-    class: {
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    description: {
-      default: "Search for a command to run...",
-      type: String as PropType<CommandDialogContentProps["description"]>,
-    },
-    recipe: {
-      default: commandRecipe,
-      type: Function as PropType<typeof commandRecipe>,
-    },
-    size: {
-      default: "lg",
-      type: String as PropType<DialogContentProps["size"]>,
-    },
-    title: {
-      default: undefined,
-      type: String as PropType<CommandDialogContentProps["title"]>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const { m } = useLocale();
-    const recipeSlots = computed(() => props.recipe());
-
-    provideCommandStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () => {
-      const variantSlots = recipeSlots.value;
-      const dialogSlots = dialogRecipe();
-
-      return commandTeleport([
-        h(Dialog.Backdrop),
-        h(Dialog.Positioner, null, () =>
-          h(
-            DialogPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: cn(
-                variantSlots.dialogContent(),
-                dialogSlots.content({ size: props.size }),
-                props.class,
-              ),
-            },
-            () => [
-              h(Dialog.Header as ArkPart, {
-                class: variantSlots.dialogHeader(),
-                description: props.description,
-                title: m("command.title", props.title),
-              }),
-              slots.default?.(),
-            ],
-          ),
-        ),
-      ]);
-    };
-  },
-});
-CommandDialogContent.displayName = "Command.DialogContent";
-
-export const CommandRoot = defineComponent({
-  inheritAttrs: false,
-  name: "CommandRoot",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    collection: {
-      default: undefined,
-      type: Object as PropType<ListCollection<CollectionItem> | undefined>,
-    },
-    lazyMount: { default: true, type: Boolean },
-    onValueChange: {
-      default: undefined,
-      type: Function as PropType<(details: { value: string[] }) => void>,
-    },
-    recipe: {
-      default: commandRecipe,
-      type: Function as PropType<typeof commandRecipe>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    // React parity: the root provides its own recipe slots, so a standalone
-    // `<Command>` works without `Command.DialogContent`.
-    const recipeSlots = computed(() => props.recipe());
-
-    provideCommandStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () => {
-      const variantSlots = recipeSlots.value;
-
-      return h(
-        Combobox.Root as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.base({ class: props.class }),
-          closeOnSelect: false,
-          collection: props.collection,
-          disableLayer: true,
-          inputBehavior: "autohighlight",
-          showIndicator: false,
-          lazyMount: props.lazyMount,
-          loopFocus: false,
-          onValueChange: props.onValueChange,
-          open: true,
-          selectionBehavior: "clear",
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-CommandRoot.displayName = "Command";
-
-export const CommandContent = defineComponent({
-  inheritAttrs: false,
-  name: "CommandContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        Combobox.Content as ArkPart,
-        {
-          ...attrs,
-          class: cn(variantSlots.content(), props.class, attrs.class),
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-CommandContent.displayName = "Command.Content";
-
-export const CommandInput = defineComponent({
-  inheritAttrs: false,
-  name: "CommandInput",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    size: {
-      default: undefined,
-      type: String as PropType<CommandInputProps["size"]>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        Combobox.Control as ArkPart,
-        { class: variantSlots.control() },
-        () =>
-          h(
-            InputGroup as ArkPart,
-            {
-              class: variantSlots.input({ class: props.class }),
-              size: props.size,
-            },
-            () => [
-              h(InputGroup.Addon as ArkPart, null, () =>
-                h(PhMagnifyingGlass, {
-                  "aria-hidden": true,
-                  class: variantSlots.inputIcon(),
-                }),
-              ),
-              h(Combobox.Input as ArkPart, { asChild: true }, () =>
-                h(InputGroup.Input as ArkPart, {
-                  ...attrs,
-                  autofocus: true,
-                }),
-              ),
-            ],
-          ),
-      );
-    };
-  },
-});
-CommandInput.displayName = "Command.Input";
-
-export const CommandList = defineComponent({
-  inheritAttrs: false,
-  name: "CommandList",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        "div",
-        { class: variantSlots.listWrapper() },
-        h(
-          Combobox.List as ArkPart,
-          {
-            ...attrs,
-            class: cn(variantSlots.list(), props.class, attrs.class),
-          },
-          slots.default?.(),
-        ),
-      );
-    };
-  },
-});
-CommandList.displayName = "Command.List";
-
-export const CommandEmpty = defineComponent({
-  inheritAttrs: false,
-  name: "CommandEmpty",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const { m } = useLocale();
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        Combobox.Empty as ArkPart,
-        {
-          ...attrs,
-          class: cn(variantSlots.empty(), props.class, attrs.class),
-        },
-        slots.default?.() ?? m("command.empty"),
-      );
-    };
-  },
-});
-CommandEmpty.displayName = "Command.Empty";
-
-export const CommandItemGroup = defineComponent({
-  inheritAttrs: false,
-  name: "CommandItemGroup",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    heading: {
-      default: undefined,
-      type: [String, Object] as PropType<string | VNodeChild>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(Combobox.ItemGroup as ArkPart, { ...attrs, class: props.class }, () => [
-        props.heading
-          ? h(Combobox.ItemGroupLabel as ArkPart, null, () => props.heading)
-          : null,
-        slots.default?.(),
-      ]);
-  },
-});
-CommandItemGroup.displayName = "Command.ItemGroup";
-
-export const CommandItemGroupLabel = defineComponent({
-  inheritAttrs: false,
-  name: "CommandItemGroupLabel",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        Combobox.ItemGroupLabel as ArkPart,
-        { ...attrs, class: props.class },
-        slots.default?.(),
-      );
-  },
-});
-CommandItemGroupLabel.displayName = "Command.ItemGroupLabel";
-
-export const CommandItem = defineComponent({
-  inheritAttrs: false,
-  name: "CommandItem",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    item: { default: undefined, type: Object as PropType<LoosePropValue> },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        Combobox.Item as ArkPart,
-        {
-          ...attrs,
-          class: props.class,
-          item: props.item,
-        },
-        slots.default?.(),
-      );
-  },
-});
-CommandItem.displayName = "Command.Item";
-
-export const CommandSeparator = defineComponent({
-  inheritAttrs: false,
-  name: "CommandSeparator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(Separator as ArkPart, {
-        ...attrs,
-        class: variantSlots.separator({ class: props.class }),
-        dataPart: "separator",
-        dataScope: "command",
-      });
-    };
-  },
-});
-CommandSeparator.displayName = "Command.Separator";
-
-export const CommandShortcut = defineComponent({
-  inheritAttrs: false,
-  name: "CommandShortcut",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        "span",
-        {
-          ...attrs,
-          class: variantSlots.shortcut({ class: props.class }),
-          "data-part": "shortcut",
-          "data-scope": "command",
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-CommandShortcut.displayName = "Command.Shortcut";
-
-export const CommandFooter = defineComponent({
-  inheritAttrs: false,
-  name: "CommandFooter",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      const variantSlots = styles.slots;
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: variantSlots.footer({ class: props.class }),
-          "data-part": "footer",
-          "data-scope": "command",
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
-CommandFooter.displayName = "Command.Footer";
-
-export const CommandShorthand = defineComponent({
-  inheritAttrs: false,
-  name: "CommandShorthand",
-  props: {
-    emptyText: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<VNodeChild>,
-    },
-    items: {
-      required: true,
-      type: Array as PropType<CommandShorthandItem[]>,
+      type: Object as PropType<CommandProps["classNames"]>,
     },
     placeholder: { default: undefined, type: String },
   },
-  setup(props, { attrs }) {
+  setup(props) {
+    const styles = useStyles();
+
+    return () =>
+      h(Control, { class: props.classNames?.control }, () =>
+        h(
+          InputGroup,
+          { class: styles.slots.input({ class: props.classNames?.input }) },
+          () => [
+            h(InputGroup.Addon, null, () =>
+              h(PhMagnifyingGlass, {
+                "aria-hidden": true,
+                class: styles.slots.inputIcon({
+                  class: props.classNames?.inputIcon,
+                }),
+              }),
+            ),
+            h(Input, { asChild: true }, () =>
+              h(InputGroup.Input, {
+                autofocus: true,
+                placeholder: props.placeholder,
+              }),
+            ),
+          ],
+        ),
+      );
+  },
+});
+
+/** Slots: `empty` (no-match content) and `footer` (keyboard hints, …). */
+export const CommandShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "Command",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<CommandProps["classNames"]>,
+    },
+    emptyText: {
+      default: undefined,
+      type: [String, Number, Object, Array] as PropType<VNodeChild>,
+    },
+    items: {
+      required: true,
+      type: Array as PropType<CommandItem[]>,
+    },
+    placeholder: { default: undefined, type: String },
+  },
+  setup(props, { attrs, slots }) {
     const { m } = useLocale();
     const filterFn = useFilter({ sensitivity: "base" });
-    const { collection, filter } = useListCollection<CommandShorthandItem>({
+    const { collection, filter } = useListCollection<CommandItem>({
       filter: (itemText, query) => filterFn.value.contains(itemText, query),
       groupBy: (item) => item.group ?? "",
       initialItems: props.items,
@@ -565,12 +187,13 @@ export const CommandShorthand = defineComponent({
     });
 
     return () => {
+      const classNames = props.classNames;
       const groups = collection.value.group();
       const onInputValueChange = attrs.onInputValueChange as
         ((details: { inputValue: string }) => void) | undefined;
 
       return h(
-        CommandRoot as ArkPart,
+        Root,
         {
           ...attrs,
           collection: collection.value,
@@ -580,57 +203,125 @@ export const CommandShorthand = defineComponent({
           },
         },
         () => [
-          h(CommandInput, {
+          h(SearchInput, {
+            classNames,
             placeholder: m("command.placeholder", props.placeholder),
           }),
-          h(CommandContent, null, () => [
-            h(
-              CommandEmpty,
-              null,
-              props.emptyText ? () => props.emptyText : undefined,
-            ),
-            h(CommandList, null, () =>
-              groups.map(([group, groupItems], index) => {
-                const content = groupItems.map((item) =>
-                  h(CommandItem as ArkPart, { item, key: item.value }, () => [
-                    item.icon,
-                    item.label,
-                    item.shortcut
-                      ? h(CommandShortcut, null, () => item.shortcut)
-                      : null,
-                  ]),
-                );
 
-                return group
-                  ? h(CommandItemGroup, { heading: group, key: group }, () => [
-                      ...content,
-                      index < groups.length - 1 ? h(CommandSeparator) : null,
-                    ])
-                  : content;
-              }),
+          h(Content, { class: classNames?.content }, () => [
+            h(
+              Empty,
+              { class: classNames?.empty },
+              () => slots.empty?.() ?? props.emptyText ?? m("command.empty"),
+            ),
+
+            h(ListArea, { class: classNames?.listWrapper }, () =>
+              h(List, { class: classNames?.list }, () =>
+                groups.map(([group, groupItems], index) => {
+                  const content = groupItems.map((item) =>
+                    h(Combobox.Item, { item, key: item.value }, () => [
+                      item.icon,
+                      item.label,
+                      item.shortcut
+                        ? h(
+                            Shortcut,
+                            { class: classNames?.shortcut },
+                            () => item.shortcut,
+                          )
+                        : null,
+                    ]),
+                  );
+
+                  return group
+                    ? h(Combobox.ItemGroup, { key: group }, () => [
+                        h(Combobox.ItemGroupLabel, null, () => group),
+                        ...content,
+                        index < groups.length - 1
+                          ? h(Separator_, { class: classNames?.separator })
+                          : null,
+                      ])
+                    : h(Fragment, { key: "ungrouped" }, content);
+                }),
+              ),
             ),
           ]),
+
+          slots.footer
+            ? h(Footer, { class: classNames?.footer }, slots.footer)
+            : null,
         ],
       );
     };
   },
 });
-CommandShorthand.displayName = "Command.Shorthand";
+
+/**
+ * Command palette in a dialog. Slots: `trigger` (single element, rendered
+ * `as-child`) and `default` (the palette, usually `Command.Root`).
+ */
+export const CommandDialog = defineComponent({
+  inheritAttrs: false,
+  name: "Command.Dialog",
+  props: {
+    description: { default: undefined, type: String },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
+    title: { default: undefined, type: String },
+  },
+  setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+
+    return () => {
+      const recipeSlots = props.recipe();
+
+      return h(Dialog.Root, { size: "lg", ...attrs }, () => [
+        slots.trigger
+          ? h(Dialog.Trigger, { asChild: true }, { default: slots.trigger })
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          h(Dialog.Backdrop),
+
+          h(Dialog.Positioner, null, () =>
+            h(Dialog.Content, { class: recipeSlots.dialogContent() }, () => [
+              h(Dialog.Header, { class: recipeSlots.dialogHeader() }, () => [
+                h(Dialog.Title, null, () => m("command.title", props.title)),
+                h(Dialog.Description, null, () =>
+                  m("command.description", props.description),
+                ),
+              ]),
+              slots.default?.(),
+            ]),
+          ),
+        ]),
+      ]);
+    };
+  },
+});
 // #endregion
 
-export const Command = Object.assign(CommandRoot, {
-  Content: CommandContent,
+export type {
+  ComboboxContentProps as CommandContentProps,
+  ComboboxControlProps as CommandControlProps,
+  ComboboxEmptyProps as CommandEmptyProps,
+  ComboboxInputProps as CommandInputProps,
+  ComboboxListProps as CommandListProps,
+} from "@ark-ui/vue";
+
+export const Command = Object.assign(CommandShorthand, {
+  Content,
+  Control,
   Dialog: CommandDialog,
-  DialogContent: CommandDialogContent,
-  DialogTrigger: CommandDialogTrigger,
-  Empty: CommandEmpty,
-  Footer: CommandFooter,
-  Input: CommandInput,
-  Item: CommandItem,
-  ItemGroup: CommandItemGroup,
-  ItemGroupLabel: CommandItemGroupLabel,
-  List: CommandList,
-  Separator: CommandSeparator,
-  Shortcut: CommandShortcut,
-  Shorthand: CommandShorthand,
+  Empty,
+  Footer,
+  Input,
+  Item: Combobox.Item,
+  ItemGroup: Combobox.ItemGroup,
+  ItemGroupLabel: Combobox.ItemGroupLabel,
+  List,
+  Root,
+  Separator: Separator_,
+  Shortcut,
 });

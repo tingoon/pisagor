@@ -1,3 +1,4 @@
+export { default as Compound } from "./compound.vue";
 export { default as ControlledPosition } from "./controlled-position.vue";
 export { default as ControlledSize } from "./controlled-size.vue";
 export { default as CustomRecipe } from "./custom-recipe.vue";

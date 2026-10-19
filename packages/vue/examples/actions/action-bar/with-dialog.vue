@@ -4,43 +4,42 @@ import { ActionBar, AlertDialog, Button } from "@pisagor/vue";
 </script>
 
 <template>
-  <ActionBar>
+  <ActionBar.Root>
     <ActionBar.Trigger as-child>
       <Button variant="outline">Open</Button>
     </ActionBar.Trigger>
-    <ActionBar.Content aria-label="Order bulk actions">
-      <ActionBar.Value :count="3" />
-      <ActionBar.Separator />
-      <ActionBar.Body>
-        <AlertDialog>
-          <AlertDialog.Trigger as-child>
-            <Button variant="destructive">
-              <PhTrash />
-              <span class="max-sm:sr-only">Delete</span>
-            </Button>
-          </AlertDialog.Trigger>
-          <AlertDialog.Content>
-            <AlertDialog.Header
+    <Teleport to="body">
+      <ActionBar.Positioner>
+        <ActionBar.Content aria-label="Order bulk actions">
+          <ActionBar.Value :count="3" />
+          <ActionBar.Separator />
+          <ActionBar.Body>
+            <AlertDialog
               description="This action cannot be undone."
               title="Delete selected orders?"
-            />
-            <AlertDialog.Footer>
-              <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-              <AlertDialog.CloseTrigger as-child>
-                <AlertDialog.Action variant="destructive">
-                  Delete
-                </AlertDialog.Action>
-              </AlertDialog.CloseTrigger>
-            </AlertDialog.Footer>
-          </AlertDialog.Content>
-        </AlertDialog>
-      </ActionBar.Body>
-      <ActionBar.Separator />
-      <ActionBar.Close as-child>
-        <Button size="icon-md" variant="ghost">
-          <PhX />
-        </Button>
-      </ActionBar.Close>
-    </ActionBar.Content>
-  </ActionBar>
+            >
+              <template #trigger>
+                <Button variant="destructive">
+                  <PhTrash />
+                  <span class="max-sm:sr-only">Delete</span>
+                </Button>
+              </template>
+              <template #actions>
+                <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                <AlertDialog.Action variant="destructive"
+                  >Delete</AlertDialog.Action
+                >
+              </template>
+            </AlertDialog>
+          </ActionBar.Body>
+          <ActionBar.Separator />
+          <ActionBar.Close as-child>
+            <Button size="icon-md" variant="ghost">
+              <PhX />
+            </Button>
+          </ActionBar.Close>
+        </ActionBar.Content>
+      </ActionBar.Positioner>
+    </Teleport>
+  </ActionBar.Root>
 </template>

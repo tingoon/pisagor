@@ -1,326 +1,204 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue";
-import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
-import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
+import type {
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogPositionerProps,
+  DialogRootProps,
+} from "@ark-ui/vue";
+import { PhX } from "@phosphor-icons/vue";
+import type { SheetContract, SheetRootContract } from "@pisagor/contracts";
+import { sheetRecipe } from "@pisagor/recipes";
 import {
-  computed,
   defineComponent,
   h,
   type PropType,
-  reactive,
   Teleport,
+  type VNodeChild,
 } from "vue";
-import {
-  type ClassValue,
-  createContext,
-  createSlotRecipeContext,
-  renderIconCloseButton,
-} from "../internal";
-import {
-  DialogBackdrop,
-  DialogBody,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogRoot,
-  DialogTitle,
-  useDialog,
-} from "./dialog";
-import type { DialogBodyProps, DialogHeaderProps, DialogProps } from "./dialog";
+import { contentProp, createSlotRecipeContext, slotOrProp } from "../internal";
+import { Button } from "./button";
+import { Dialog, type DialogBodyProps, type DialogFooterProps } from "./dialog";
 import { useLocale } from "./provider/context";
+import { ScrollArea } from "./scroll-area";
 
-// #region Slot recipe context
-const { provideStyles: provideSheetStyles } = createSlotRecipeContext({
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Sheet",
   recipe: sheetRecipe,
 });
 // #endregion
 
 // #region Types
-interface SheetContextValue {
-  slots: SheetRecipe;
+export type SheetRootProps = DialogRootProps & SheetRootContract;
+
+export type SheetPositionerProps = DialogPositionerProps;
+
+export type SheetContentProps = DialogContentProps;
+
+export type SheetBodyProps = DialogBodyProps;
+
+export type SheetFooterProps = DialogFooterProps;
+
+export interface SheetProps
+  extends Omit<SheetRootProps, "title">, SheetContract {
+  /** Footer action area. Also available as the `actions` slot. */
+  actions?: VNodeChild;
+  /** Supporting copy in the header. Also available as the `description` slot. */
+  description?: VNodeChild;
+  /**
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
+   */
+  scrollFade?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  /** Sheet title. Also available as the `title` slot. */
+  title?: VNodeChild;
 }
 
-export type SheetProps = Omit<DialogProps, "recipe" | "classNames"> &
-  SheetRootContract &
-  SheetContract;
+export type {
+  DialogBackdropProps as SheetBackdropProps,
+  DialogCloseTriggerProps as SheetCloseTriggerProps,
+  DialogDescriptionProps as SheetDescriptionProps,
+  DialogHeaderProps as SheetHeaderProps,
+  DialogTitleProps as SheetTitleProps,
+  DialogTriggerProps as SheetTriggerProps,
+} from "./dialog";
 // #endregion
-
-// #region Context
-const [provideSheetContext, useSheetLocal] = createContext(
-  "SheetLocal",
-)<SheetContextValue>({ strict: false });
-
-function useSheetSlots() {
-  return useSheetLocal()?.slots ?? sheetRecipe();
-}
-// #endregion
-
-type ArkPart = Parameters<typeof h>[0];
-
-function sheetTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
-  return h(Teleport, { to: "body" }, [content]);
-}
 
 // #region Parts
-export const SheetRoot = defineComponent({
-  inheritAttrs: false,
-  name: "SheetRoot",
-  props: {
-    recipe: {
-      default: sheetRecipe,
-      type: Function as PropType<typeof sheetRecipe>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideSheetStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    const context = reactive<SheetContextValue>({
-      slots: recipeSlots.value,
-    });
-    provideSheetContext(context);
-
-    return () => h(DialogRoot, { ...attrs }, slots);
-  },
+// Sheet is a Dialog with edge placement: the root also opens Dialog's styles
+// context, so shared parts (header, title, …) are Dialog's own and the
+// sheet-specific slots layer on top of them.
+const Root = withProvider<SheetRootProps>(Dialog.Root, {
+  name: "Root",
+  renderless: true,
+  slot: "base",
 });
 
-export const SheetTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "SheetTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(DialogPrimitive.Trigger as ArkPart, { ...attrs }, slots);
-  },
+const Positioner = withContext<SheetPositionerProps>(
+  DialogPrimitive.Positioner,
+  { defaultProps: { "data-scope": "dialog" }, name: "Positioner" },
+);
+
+const Content = withContext<SheetContentProps>(DialogPrimitive.Content, {
+  defaultProps: { "data-scope": "dialog" },
+  name: "Content",
 });
 
-export const SheetBackdrop = defineComponent({
-  inheritAttrs: false,
-  name: "SheetBackdrop",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => h(DialogBackdrop, { ...attrs, class: props.class }, slots);
-  },
-});
+const Body = withContext(Dialog.Body, { name: "Body" });
 
-export const SheetPositioner = defineComponent({
-  inheritAttrs: false,
-  name: "SheetPositioner",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    placement: {
-      default: undefined,
-      type: String as PropType<"top" | "right" | "bottom" | "left">,
-    },
-    variant: {
-      default: "default",
-      type: String as PropType<"default" | "inset">,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const sheetSlots = useSheetSlots();
+const Footer = withContext(Dialog.Footer, { name: "Footer" });
 
-      return h(
-        DialogPrimitive.Positioner as ArkPart,
-        {
-          ...attrs,
-          class: sheetSlots.positioner({
-            class: props.class,
-            placement: props.placement,
-            variant: props.variant,
-          }),
-        },
-        slots,
-      );
-    };
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  {
+    defaultProps: { "data-scope": "dialog" },
+    name: "CloseTrigger",
+    slot: "inline",
   },
-});
+);
+// #endregion
 
-export const SheetContent = defineComponent({
+// #region Shorthand
+/**
+ * Slots: `trigger` (single element, rendered `as-child`), `title`,
+ * `description`, `default` (scrollable body) and `actions` (footer).
+ */
+export const SheetShorthand = defineComponent({
   inheritAttrs: false,
-  name: "SheetContent",
+  name: "Sheet",
   props: {
-    class: {
+    actions: contentProp,
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Object as PropType<SheetProps["classNames"]>,
     },
-    placement: {
-      default: "right",
-      type: String as PropType<"top" | "right" | "bottom" | "left">,
-    },
+    description: contentProp,
+    modal: { default: true, type: Boolean },
+    scrollFade: { default: false, type: Boolean },
     showCloseButton: { default: true, type: Boolean },
-    variant: {
-      default: "default",
-      type: String as PropType<"default" | "inset">,
-    },
+    title: contentProp,
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const dialogContext = useDialog();
 
     return () => {
-      if (!dialogContext) {
-        return null;
-      }
+      const classNames = props.classNames;
+      const title = slotOrProp(slots.title, props.title);
+      const description = slotOrProp(slots.description, props.description);
+      const actions = slotOrProp(slots.actions, props.actions);
 
-      const sheetSlots = useSheetSlots();
+      return h(Root, { ...attrs, modal: props.modal }, () => [
+        slots.trigger
+          ? h(Dialog.Trigger, { asChild: true }, { default: slots.trigger })
+          : null,
 
-      return sheetTeleport([
-        h(SheetBackdrop),
-        h(
-          SheetPositioner,
-          { placement: props.placement, variant: props.variant },
-          () =>
-            h(
-              DialogPrimitive.Content as ArkPart,
-              {
-                ...attrs,
-                class: sheetSlots.content({
-                  class: props.class,
-                  placement: props.placement,
-                  variant: props.variant,
-                }),
-              },
-              () => [
-                slots.default?.(),
-                props.showCloseButton
-                  ? h(SheetCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(
-                        m("dialog.close"),
-                        sheetSlots.inline(),
+        h(Teleport, { to: "body" }, [
+          props.modal ? h(Dialog.Backdrop) : null,
+
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { class: classNames?.content }, () => [
+              title || description
+                ? h(Dialog.Header, null, () => [
+                    title ? h(Dialog.Title, null, title) : null,
+                    description
+                      ? h(Dialog.Description, null, description)
+                      : null,
+                  ])
+                : null,
+
+              slots.default
+                ? h(ScrollArea, { scrollFade: props.scrollFade }, () =>
+                    h(Body, { class: classNames?.body }, slots.default),
+                  )
+                : null,
+
+              actions
+                ? h(Footer, { class: classNames?.footer }, actions)
+                : null,
+
+              props.showCloseButton
+                ? h(
+                    InlineCloseTrigger,
+                    { asChild: true, class: classNames?.inline },
+                    () =>
+                      h(
+                        Button,
+                        {
+                          "aria-label": m("sheet.close"),
+                          size: "icon-sm",
+                          variant: "ghost",
+                        },
+                        () => h(PhX),
                       ),
-                    )
-                  : null,
-              ],
-            ),
-        ),
+                  )
+                : null,
+            ]),
+          ),
+        ]),
       ]);
     };
   },
 });
-
-export const SheetHeader = defineComponent({
-  inheritAttrs: false,
-  name: "SheetHeader",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        DialogHeader as ArkPart,
-        { ...attrs, dataPart: "header", dataScope: "sheet" },
-        slots,
-      );
-  },
-});
-
-export const SheetTitle = defineComponent({
-  inheritAttrs: false,
-  name: "SheetTitle",
-  setup(_, { attrs, slots }) {
-    return () => h(DialogTitle as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const SheetDescription = defineComponent({
-  inheritAttrs: false,
-  name: "SheetDescription",
-  setup(_, { attrs, slots }) {
-    return () => h(DialogDescription as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const SheetBody = defineComponent({
-  inheritAttrs: false,
-  name: "SheetBody",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    scrollFade: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const sheetSlots = useSheetSlots();
-
-      return h(
-        DialogBody as ArkPart,
-        {
-          ...attrs,
-          class: sheetSlots.body({ class: props.class }),
-          dataPart: "body",
-          dataScope: "sheet",
-          scrollFade: props.scrollFade,
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const SheetCloseTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "SheetCloseTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const SheetFooter = defineComponent({
-  inheritAttrs: false,
-  name: "SheetFooter",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const sheetSlots = useSheetSlots();
-
-      return h(
-        DialogFooter as ArkPart,
-        {
-          ...attrs,
-          class: sheetSlots.footer({ class: props.class }),
-          dataPart: "footer",
-          dataScope: "sheet",
-        },
-        slots,
-      );
-    };
-  },
-});
 // #endregion
 
-export type {
-  DialogBodyProps as SheetBodyProps,
-  DialogHeaderProps as SheetHeaderProps,
-};
-
-export const Sheet = Object.assign(SheetRoot, {
-  Backdrop: SheetBackdrop,
-  Body: SheetBody,
-  CloseTrigger: SheetCloseTrigger,
-  Content: SheetContent,
-  Description: SheetDescription,
-  Footer: SheetFooter,
-  Header: SheetHeader,
-  Positioner: SheetPositioner,
-  Title: SheetTitle,
-  Trigger: SheetTrigger,
+export const Sheet = Object.assign(SheetShorthand, {
+  Backdrop: Dialog.Backdrop,
+  Body,
+  CloseTrigger: Dialog.CloseTrigger,
+  Content,
+  Description: Dialog.Description,
+  Footer,
+  Header: Dialog.Header,
+  Positioner,
+  Root,
+  Title: Dialog.Title,
+  Trigger: Dialog.Trigger,
 });

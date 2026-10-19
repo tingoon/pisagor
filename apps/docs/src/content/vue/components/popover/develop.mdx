@@ -7,19 +7,10 @@ import { Popover } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<Popover>
-  <Popover.Trigger />
-  <Popover.Anchor />
-  <Popover.Content>
-    <Popover.Header /> {/* or Title + Description */}
-    <Popover.Body />
-    <Popover.Footer />
-    <Popover.CloseTrigger />
-  </Popover.Content>
-</Popover>
+<Popover />
 ```
 
-`Positioner` and `Arrow` are available when you need custom positioning chrome.
+Pass `showArrow` to point at the trigger and `showCloseButton` for a corner close button.
 
 ## Examples
 

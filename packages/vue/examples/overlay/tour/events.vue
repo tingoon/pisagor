@@ -55,9 +55,9 @@ const steps: TourStepType[] = [
       @status-change="onStatusChange"
       @step-change="onStepChange"
     >
-      <Tour.Trigger as-child>
+      <template #trigger>
         <Button variant="outline">Start tour</Button>
-      </Tour.Trigger>
+      </template>
       <div class="flex flex-wrap gap-2">
         <div
           class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -85,16 +85,6 @@ const steps: TourStepType[] = [
         <span v-if="logs.length === 0">Start the tour to see events</span>
         <span v-for="log in logs" :key="log.id">{{ log.message }}</span>
       </div>
-      <Tour.Content>
-        <Tour.Header>
-          <Tour.ProgressText />
-          <Tour.Title />
-          <Tour.Description />
-        </Tour.Header>
-        <Tour.Footer>
-          <Tour.Actions />
-        </Tour.Footer>
-      </Tour.Content>
     </Tour>
   </div>
 </template>

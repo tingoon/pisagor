@@ -28,5 +28,5 @@ const items = [
 </script>
 
 <template>
-  <Command.Shorthand placeholder="Search…" :items="items" />
+  <Command :items="items" placeholder="Search…" />
 </template>

@@ -66,9 +66,9 @@ const steps: TourStepType[] = [
 <template>
   <div class="flex flex-col gap-2">
     <Tour :steps="steps">
-      <Tour.Trigger as-child>
+      <template #trigger>
         <Button variant="outline">Start tour</Button>
-      </Tour.Trigger>
+      </template>
       <div class="flex flex-col gap-2">
         <Button id="btn-add-item" size="sm" variant="outline" @click="addItem">
           <PhPlus class="size-4" />
@@ -85,14 +85,6 @@ const steps: TourStepType[] = [
           </div>
         </div>
       </div>
-      <Tour.Content>
-        <Tour.Header>
-          <Tour.ProgressText />
-          <Tour.Title />
-          <Tour.Description />
-        </Tour.Header>
-        <Tour.Actions />
-      </Tour.Content>
     </Tour>
   </div>
 </template>

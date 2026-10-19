@@ -1,31 +1,35 @@
 <script lang="ts" setup>
-import { Button, Tour, type TourStepType, useTourContext } from "@pisagor/vue";
-import { defineComponent, h, toValue } from "vue";
+import {
+  Button,
+  Tour,
+  type TourStepType,
+  useTour,
+  useTourContext,
+} from "@pisagor/vue";
+import { defineComponent, h } from "vue";
 
 const TourProgressBar = defineComponent({
   name: "TourProgressBar",
   setup() {
-    return () => {
-      const ctx = toValue(useTourContext());
-      if (!ctx) return null;
-      const { tour } = ctx;
+    const tour = useTourContext();
 
-      return h(
+    return () =>
+      h(
         "div",
         {
           class:
-            "absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted",
+            "bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl",
         },
         [
           h("div", {
-            class: "h-full bg-primary transition-[width]",
-            style: { width: `${tour.getProgressPercent()}%` },
+            class: "bg-primary h-full transition-[width]",
+            style: { width: `${tour.value.getProgressPercent()}%` },
           }),
         ],
       );
-    };
   },
 });
+
 const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Next" }],
@@ -69,50 +73,53 @@ const steps: TourStepType[] = [
     type: "tooltip",
   },
 ];
+
+const tour = useTour({ steps });
 </script>
 
 <template>
   <div class="flex flex-col gap-2">
-    <Tour :steps="steps">
-      <Tour.Trigger as-child>
-        <Button variant="outline">Start tour</Button>
-      </Tour.Trigger>
+    <Tour.Root :tour="tour">
+      <Button variant="outline" @click="tour.start()">Start tour</Button>
       <div class="flex flex-wrap gap-2">
         <div
+          v-for="index in 4"
+          :id="`progress-${index}`"
+          :key="index"
           class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
-          id="progress-1"
         >
-          Step 1
-        </div>
-        <div
-          class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
-          id="progress-2"
-        >
-          Step 2
-        </div>
-        <div
-          class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
-          id="progress-3"
-        >
-          Step 3
-        </div>
-        <div
-          class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
-          id="progress-4"
-        >
-          Step 4
+          Step {{ index }}
         </div>
       </div>
-      <Tour.Content>
-        <Tour.Header>
-          <Tour.ProgressText />
-          <Tour.Title />
-          <Tour.Description />
-        </Tour.Header>
-        <Tour.Actions />
-
-        <TourProgressBar />
-      </Tour.Content>
-    </Tour>
+      <Teleport to="body">
+        <Tour.Backdrop />
+        <Tour.Spotlight />
+        <Tour.Positioner>
+          <Tour.Content>
+            <Tour.Header>
+              <Tour.ProgressText />
+              <Tour.Title />
+              <Tour.Description />
+            </Tour.Header>
+            <Tour.Control v-if="tour.step?.actions?.length">
+              <Tour.ActionTrigger
+                v-for="action in tour.step.actions"
+                :key="action.label"
+                :action="action"
+                as-child
+              >
+                <Button
+                  size="sm"
+                  :variant="action.action === 'next' ? 'default' : 'outline'"
+                >
+                  {{ action.label }}
+                </Button>
+              </Tour.ActionTrigger>
+            </Tour.Control>
+            <TourProgressBar />
+          </Tour.Content>
+        </Tour.Positioner>
+      </Teleport>
+    </Tour.Root>
   </div>
 </template>

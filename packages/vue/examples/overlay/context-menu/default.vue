@@ -4,20 +4,33 @@ import { ContextMenu } from "@pisagor/vue";
 </script>
 
 <template>
-  <ContextMenu>
-    <ContextMenu.ContextTrigger
-      class="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm"
-    >
-      Right click here
-    </ContextMenu.ContextTrigger>
-    <ContextMenu.Content class="w-48">
-      <ContextMenu.Item value="edit"><PhPencil /> Edit</ContextMenu.Item>
-      <ContextMenu.Item value="copy"><PhCopy /> Copy</ContextMenu.Item>
-      <ContextMenu.Separator />
-      <ContextMenu.Item value="delete" variant="destructive">
-        <PhTrash />
-        Delete
-      </ContextMenu.Item>
-    </ContextMenu.Content>
+  <ContextMenu
+    :class-names="{
+      content: 'w-48',
+      trigger:
+        'flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm',
+    }"
+  >
+    <template #trigger>
+      <span class="hidden pointer-fine:inline-block">
+        Open the menu with a right-click
+      </span>
+      <span class="hidden pointer-coarse:inline-block">Long press here</span>
+    </template>
+    <ContextMenu.Item value="edit">
+      <PhPencil />
+      Edit
+      <ContextMenu.Shortcut>⌘E</ContextMenu.Shortcut>
+    </ContextMenu.Item>
+    <ContextMenu.Item value="copy">
+      <PhCopy />
+      Copy
+      <ContextMenu.Shortcut>⌘C</ContextMenu.Shortcut>
+    </ContextMenu.Item>
+    <ContextMenu.Separator />
+    <ContextMenu.Item value="delete" variant="destructive">
+      <PhTrash />
+      Delete
+    </ContextMenu.Item>
   </ContextMenu>
 </template>
