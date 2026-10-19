@@ -1,5 +1,5 @@
 import { CircularSlider } from "@pisagor/solid";
 
 export function Default() {
-  return <CircularSlider defaultValue={45} />;
+  return <CircularSlider showValue valueSuffix="°" />;
 }

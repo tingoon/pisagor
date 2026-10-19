@@ -87,14 +87,18 @@ export function RadioGroupField(props: RadioGroupFieldProps) {
               <Show
                 fallback={
                   <RadioGroup.Item id={optionId} value={option.value}>
-                    {option.label}
+                    <RadioGroup.ItemControl />
+                    <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+                    <RadioGroup.ItemHiddenInput />
                   </RadioGroup.Item>
                 }
                 when={option.description}
               >
                 <Field>
                   <RadioGroup.Item id={optionId} value={option.value}>
-                    {option.label}
+                    <RadioGroup.ItemControl />
+                    <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+                    <RadioGroup.ItemHiddenInput />
                   </RadioGroup.Item>
                   <Field.Description>{option.description}</Field.Description>
                 </Field>

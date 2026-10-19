@@ -1,4 +1,4 @@
-import { InputOTP, type InputOTPProps } from "@pisagor/solid";
+import { InputOTP, type InputOTPRootProps } from "@pisagor/solid";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { type FieldPresentationProps, FieldShell } from "../internal";
 
@@ -7,7 +7,7 @@ export interface OtpFieldProps
   extends
     FieldPresentationProps,
     Omit<
-      InputOTPProps,
+      InputOTPRootProps,
       "children" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"
     > {
   /**
@@ -62,7 +62,7 @@ export function OtpField(props: OtpFieldProps) {
       labelProps={local.labelProps}
       orientation={local.orientation}
     >
-      <InputOTP
+      <InputOTP.Root
         {...inputOtpProps}
         {...(local.value !== undefined
           ? { value: local.value ? local.value.split("") : [] }
@@ -73,17 +73,19 @@ export function OtpField(props: OtpFieldProps) {
         onBlur={local.onBlur}
         onValueChange={(nextValue) => local.onValueChange?.(nextValue.join(""))}
       >
-        <For each={indices()}>
-          {(index) => (
-            <>
-              <Show when={index === separatorAt()}>
-                <InputOTP.Separator />
-              </Show>
-              <InputOTP.Slot index={index} />
-            </>
-          )}
-        </For>
-      </InputOTP>
+        <InputOTP.Control>
+          <For each={indices()}>
+            {(index) => (
+              <>
+                <Show when={index === separatorAt()}>
+                  <InputOTP.Separator />
+                </Show>
+                <InputOTP.Input index={index} />
+              </>
+            )}
+          </For>
+        </InputOTP.Control>
+      </InputOTP.Root>
     </FieldShell>
   );
 }

@@ -1,9 +1,9 @@
-import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Editable, Input } from "@pisagor/solid";
 
 export function Disabled() {
   return (
-    <Editable>
+    <Editable.Root defaultValue="Click to edit" disabled>
       <Editable.Area>
         <Editable.Input asChild={(props) => <Input {...props()} />} />
         <Editable.Preview />
@@ -34,6 +34,6 @@ export function Disabled() {
           )}
         />
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

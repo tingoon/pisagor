@@ -1,14 +1,36 @@
-import { NumberInput } from "@pisagor/solid";
+import { MinusIcon, PlusIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Field, Input, NumberInput } from "@pisagor/solid";
 
 export function Scrub() {
   return (
-    <NumberInput>
-      <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
+    <NumberInput.Root>
+      <NumberInput.Scrubber
+        asChild={(props) => (
+          <NumberInput.Label
+            {...props()}
+            asChild={(props) => (
+              <Field.Label {...props()}>Quantity</Field.Label>
+            )}
+          />
+        )}
+      />
       <NumberInput.Control>
-        <NumberInput.DecrementTrigger />
-        <NumberInput.Input />
-        <NumberInput.IncrementTrigger />
+        <NumberInput.DecrementTrigger
+          asChild={(props) => (
+            <Button {...props()} variant="ghost">
+              <MinusIcon aria-hidden />
+            </Button>
+          )}
+        />
+        <NumberInput.Input asChild={(props) => <Input {...props()} />} />
+        <NumberInput.IncrementTrigger
+          asChild={(props) => (
+            <Button {...props()} variant="ghost">
+              <PlusIcon aria-hidden />
+            </Button>
+          )}
+        />
       </NumberInput.Control>
-    </NumberInput>
+    </NumberInput.Root>
   );
 }

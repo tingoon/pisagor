@@ -1,10 +1,10 @@
-import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Editable, Input } from "@pisagor/solid";
 
 export function Sizes() {
   return (
     <div class="flex flex-col gap-2">
-      <Editable defaultValue="Editable content">
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input
             asChild={(props) => <Input {...props()} size="sm" />}
@@ -37,8 +37,8 @@ export function Sizes() {
             )}
           />
         </Editable.Control>
-      </Editable>
-      <Editable defaultValue="Editable content">
+      </Editable.Root>
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input
             asChild={(props) => <Input {...props()} size="md" />}
@@ -71,8 +71,8 @@ export function Sizes() {
             )}
           />
         </Editable.Control>
-      </Editable>
-      <Editable defaultValue="Editable content">
+      </Editable.Root>
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input
             asChild={(props) => <Input {...props()} size="lg" />}
@@ -105,7 +105,7 @@ export function Sizes() {
             )}
           />
         </Editable.Control>
-      </Editable>
+      </Editable.Root>
     </div>
   );
 }

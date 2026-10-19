@@ -1,5 +1,4 @@
 import { SegmentGroup } from "@pisagor/solid";
-import { For } from "solid-js";
 
 const sizes = ["sm", "md", "lg"] as const;
 const items = [
@@ -11,11 +10,9 @@ const items = [
 export function Sizes() {
   return (
     <div class="flex flex-col items-start gap-2">
-      <For each={sizes}>
-        {(size) => (
-          <SegmentGroup defaultValue="Profile" items={items} size={size} />
-        )}
-      </For>
+      {sizes.map((size) => (
+        <SegmentGroup defaultValue="Profile" items={items} size={size} />
+      ))}
     </div>
   );
 }

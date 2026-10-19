@@ -6,23 +6,24 @@ import type {
   SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
-  SegmentGroupItemContract,
   SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
   SegmentGroupRootContract,
   SegmentGroupContract,
 } from "@pisagor/contracts";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX, ComponentProps } from "solid-js";
-import { For, Show, splitProps } from "solid-js";
+import { For, splitProps } from "solid-js";
+import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
 // #endregion
 
+// #region Types
 type SegmentGroupVariant = "default" | "underline";
 
 interface SegmentGroupPresetItem extends Omit<
@@ -48,11 +49,10 @@ export interface SegmentGroupProps
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps
-  extends SegmentGroupItemPrimitiveProps, SegmentGroupItemContract {
-  text?: JSX.Element;
-}
+export type SegmentGroupItemProps = SegmentGroupItemPrimitiveProps;
+// #endregion
 
+// #region Parts
 const SegmentGroupRootBase: Component<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 > = withProvider<
@@ -78,66 +78,73 @@ export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
       }
       orientation={local.orientation ?? "horizontal"}
     >
-      <SegmentGroupIndicator />
       {local.children}
     </SegmentGroupRootBase>
   );
 }
 
-export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "text", "class"]);
-  const styles = useStyles();
-  const content = () => local.children ?? local.text;
+const SegmentGroupItem = withContext<SegmentGroupItemProps>(
+  SegmentGroupPrimitive.Item,
+  { name: "Item" },
+);
 
-  return (
-    <SegmentGroupPrimitive.Item
-      {...rest}
-      class={styles.slots.item({ class: local.class })}
-    >
-      <Show when={content() != null}>
-        <SegmentGroupItemText>{content()}</SegmentGroupItemText>
-      </Show>
-      <SegmentGroupPrimitive.ItemControl />
-      <SegmentGroupPrimitive.ItemHiddenInput />
-    </SegmentGroupPrimitive.Item>
-  );
-}
+const SegmentGroupItemControl = withContext<
+  ComponentProps<typeof SegmentGroupPrimitive.ItemControl>
+>(SegmentGroupPrimitive.ItemControl, { name: "ItemControl" });
+
+const SegmentGroupItemHiddenInput = SegmentGroupPrimitive.ItemHiddenInput;
 
 const SegmentGroupItemText: Component<SegmentGroupItemTextProps> = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.ItemText>
 >(SegmentGroupPrimitive.ItemText, { name: "ItemText" });
 
-export const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
+const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
   withContext<ComponentProps<typeof SegmentGroupPrimitive.Indicator>>(
     SegmentGroupPrimitive.Indicator,
     { name: "Indicator" },
   );
 
+// #endregion
+
+// #region Shorthand
 export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["items"]);
+  const [local, rest] = splitProps(props, ["class", "classNames", "items"]);
 
   return (
-    <SegmentGroupRoot {...rest}>
+    <SegmentGroupRoot {...rest} class={cn(local.classNames?.base, local.class)}>
+      <SegmentGroupIndicator class={local.classNames?.indicator} />
       <For each={local.items ?? []}>
         {(item) => (
           <SegmentGroupItem
+            class={local.classNames?.item}
             disabled={item.disabled}
-            text={item.label}
             value={item.value}
-          />
+          >
+            <SegmentGroupItemText class={local.classNames?.itemText}>
+              {item.label}
+            </SegmentGroupItemText>
+            <SegmentGroupItemControl class={local.classNames?.itemControl} />
+            <SegmentGroupItemHiddenInput />
+          </SegmentGroupItem>
         )}
       </For>
     </SegmentGroupRoot>
   );
 }
+// #endregion
 
 export type {
   SegmentGroupIndicatorProps,
+  SegmentGroupItemControlProps,
+  SegmentGroupItemHiddenInputProps,
   SegmentGroupItemTextProps,
 } from "@ark-ui/solid";
 
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,
   Item: SegmentGroupItem,
+  ItemControl: SegmentGroupItemControl,
+  ItemHiddenInput: SegmentGroupItemHiddenInput,
+  ItemText: SegmentGroupItemText,
   Root: SegmentGroupRoot,
 });

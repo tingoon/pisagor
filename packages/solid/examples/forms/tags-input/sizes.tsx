@@ -1,5 +1,4 @@
 import { Field, TagsInput } from "@pisagor/solid";
-import { For } from "solid-js";
 
 export function Sizes() {
   const defaultValue = ["React", "Solid"];
@@ -9,19 +8,7 @@ export function Sizes() {
       {(["sm", "md", "lg"] as const).map((size) => (
         <Field>
           <Field.Label>Frameworks</Field.Label>
-          <TagsInput class="w-full" defaultValue={defaultValue} size={size}>
-            <TagsInput.Context>
-              {(api) => (
-                <For each={api().value}>
-                  {(tag, index) => (
-                    <TagsInput.Item index={index()} value={tag}>
-                      {tag}
-                    </TagsInput.Item>
-                  )}
-                </For>
-              )}
-            </TagsInput.Context>
-          </TagsInput>
+          <TagsInput class="w-full" defaultValue={defaultValue} size={size} />
         </Field>
       ))}
     </div>

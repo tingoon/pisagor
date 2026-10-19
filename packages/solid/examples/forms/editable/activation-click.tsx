@@ -1,18 +1,18 @@
-import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 
 export function ActivationClick() {
   return (
     <Card>
-      <Card.Header
-        description="Click the text to start editing"
-        title="Edit with click"
-      />
+      <Card.Header>
+        <Card.Title>Edit with click</Card.Title>
+        <Card.Description>Click the text to start editing</Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="click" defaultValue="Jane Doe">
+            <Editable.Root activationMode="click" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -43,11 +43,11 @@ export function ActivationClick() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="click" defaultValue="@jane.doe">
+            <Editable.Root activationMode="click" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -78,7 +78,7 @@ export function ActivationClick() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

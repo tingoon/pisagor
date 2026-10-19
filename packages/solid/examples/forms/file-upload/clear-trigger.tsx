@@ -1,27 +1,19 @@
-import { Button, FileUpload } from "@pisagor/solid";
 import { TrashIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, FileUpload } from "@pisagor/solid";
 
 export function ClearTrigger() {
   return (
-    <FileUpload>
-      <FileUpload.ClearTrigger
-        asChild={(props) => (
-          <Button
-            {...props()}
-            aria-label="Clear files"
-            size="icon-sm"
-            variant="ghost"
-          >
-            <TrashIcon />
-          </Button>
-        )}
-        class="absolute top-2 right-2"
-      />
-      <FileUpload.Dropzone class="w-full">
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop files here</FileUpload.Title>
-      </FileUpload.Dropzone>
-      <FileUpload.List />
-    </FileUpload>
+    <FileUpload
+      classNames={{
+        clearTrigger: "absolute top-2 right-2",
+        dropzone: "w-full",
+      }}
+      clearTrigger={(props) => (
+        <Button {...props} size="icon-sm" variant="ghost">
+          <TrashIcon />
+        </Button>
+      )}
+      title="Drop files here"
+    />
   );
 }

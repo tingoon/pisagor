@@ -1,11 +1,12 @@
 import { useFileUploadContext } from "@ark-ui/solid";
+import { UploadIcon, XIcon } from "@squidlab/phosphor-solid/icons";
 import { Button, FileUpload } from "@pisagor/solid";
-import { XIcon } from "@squidlab/phosphor-solid/icons";
 import { For, Show } from "solid-js";
 
 export function CustomPreview() {
   const CustomPreviewList = () => {
     const fileUpload = useFileUploadContext();
+
     const files = () => fileUpload().acceptedFiles;
 
     return (
@@ -24,7 +25,6 @@ export function CustomPreview() {
                   asChild={(props) => (
                     <Button
                       {...props()}
-                      aria-label="Remove file"
                       class="absolute -top-2 -right-2"
                       pill
                       size="icon-xs"
@@ -42,12 +42,12 @@ export function CustomPreview() {
   };
 
   return (
-    <FileUpload accept="image/*">
+    <FileUpload.Root accept="image/*">
       <FileUpload.Dropzone>
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop files here</FileUpload.Title>
+        <UploadIcon class="text-muted-foreground size-5" />
+        <span class="text-sm font-medium">Drop files here</span>
       </FileUpload.Dropzone>
       <CustomPreviewList />
-    </FileUpload>
+    </FileUpload.Root>
   );
 }

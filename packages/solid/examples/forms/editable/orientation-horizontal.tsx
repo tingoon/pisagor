@@ -1,9 +1,9 @@
-import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Editable, Input } from "@pisagor/solid";
 
 export function OrientationHorizontal() {
   return (
-    <Editable>
+    <Editable.Root>
       <Editable.Area>
         <Editable.Input asChild={(props) => <Input {...props()} />} />
         <Editable.Preview />
@@ -34,6 +34,6 @@ export function OrientationHorizontal() {
           )}
         />
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }
