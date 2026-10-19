@@ -1,17 +1,28 @@
 ## Anatomy
 
 ```tsx
-<Sheet>
+<Sheet.Root>
   <Sheet.Trigger />
-  <Sheet.Content>
-    <Sheet.Header>
-      <Sheet.Title />
-      <Sheet.Description />
-    </Sheet.Header>
-    <Sheet.Body />
-    <Sheet.Footer>
-      <Sheet.CloseTrigger />
-    </Sheet.Footer>
-  </Sheet.Content>
-</Sheet>
+  <Sheet.Backdrop />
+  <Sheet.Positioner>
+    <Sheet.Content>
+      <Sheet.Header>
+        <Sheet.Title />
+        <Sheet.Description />
+      </Sheet.Header>
+      <Sheet.Body />
+      <Sheet.Footer>
+        <Sheet.CloseTrigger />
+      </Sheet.Footer>
+    </Sheet.Content>
+  </Sheet.Positioner>
+</Sheet.Root>
 ```
+
+## Examples
+
+### Compound
+
+Build the sheet from parts when the shorthand props are not enough. Wrap the backdrop and positioner in `Portal`, and wrap `Sheet.Body` in `ScrollArea` when the body should scroll.
+
+<Example name="Compound" />

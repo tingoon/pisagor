@@ -106,7 +106,6 @@ function CommandDialogFrame(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, [
-    "size",
     "children",
     "description",
     "title",
@@ -121,8 +120,6 @@ function CommandDialogFrame(
         <Dialog.Content
           {...rest}
           class={styles.slots.dialogContent({ class: local.class })}
-          showCloseButton={false}
-          size={local.size ?? "lg"}
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
             <Dialog.Title>{m("command.title", local.title)}</Dialog.Title>

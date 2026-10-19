@@ -3,190 +3,198 @@ import type {
   DialogCloseTriggerProps,
   DialogContentProps,
   DialogPositionerProps,
-  DialogTriggerProps,
+  DialogRootProps,
 } from "@ark-ui/solid";
-import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
-import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
+import type { SheetContract, SheetRootContract } from "@pisagor/contracts";
+import { sheetRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
-  DialogBackdropProps,
   DialogBodyProps,
-  DialogDescriptionProps,
   DialogFooterProps,
-  DialogHeaderProps,
-  DialogRootProps,
-  DialogTitleProps,
+  DialogTriggerRender,
 } from "./dialog";
-import { Dialog } from "./dialog";
+import { Dialog, renderTrigger } from "./dialog";
 import { useLocale } from "./provider/context";
+import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: SheetStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Sheet",
   recipe: sheetRecipe,
 });
 // #endregion
 
-export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
+// #region Types
+export type SheetRootProps = DialogRootProps & SheetRootContract;
 
-export interface SheetContentProps
-  extends DialogContentProps, SheetVariantProps {
+export type SheetPositionerProps = DialogPositionerProps;
+
+export type SheetContentProps = DialogContentProps;
+
+export type SheetBodyProps = DialogBodyProps;
+
+export type SheetFooterProps = DialogFooterProps;
+
+export interface SheetProps
+  extends Omit<SheetRootProps, "title">, SheetContract {
+  /** Footer action area. */
+  actions?: JSX.Element;
+  /** Supporting copy in the header. */
+  description?: JSX.Element;
+  /**
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
+   */
+  scrollFade?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue true
+   */
   showCloseButton?: boolean;
+  /** Sheet title. */
+  title?: JSX.Element;
+  /** Trigger that opens the sheet (render fn preferred). */
+  trigger?: DialogTriggerRender;
 }
 
-export type SheetProps = Omit<DialogRootProps, "recipe"> &
-  SheetRootContract &
-  SheetContract;
+export type {
+  DialogBackdropProps as SheetBackdropProps,
+  DialogCloseTriggerProps as SheetCloseTriggerProps,
+  DialogDescriptionProps as SheetDescriptionProps,
+  DialogHeaderProps as SheetHeaderProps,
+  DialogTitleProps as SheetTitleProps,
+  DialogTriggerProps as SheetTriggerProps,
+} from "./dialog";
+// #endregion
 
-export type SheetTriggerProps = DialogTriggerProps;
-export type SheetCloseTriggerProps = DialogCloseTriggerProps;
+// #region Parts
+// Sheet is a Dialog with edge placement: the root also opens Dialog's styles
+// context, so shared parts (header, title, …) are Dialog's own and the
+// sheet-specific slots layer on top of them.
+const Root = withProvider<SheetRootProps>(Dialog.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export function SheetRoot(props: SheetProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe"]);
-  const slots = createMemo(() => (local.recipe ?? sheetRecipe)());
+const Positioner = withContext<SheetPositionerProps>(
+  DialogPrimitive.Positioner,
+  { defaultProps: { "data-scope": "dialog" }, name: "Positioner" },
+);
 
-  return (
-    <SheetStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <Dialog.Root {...rest} />
-    </SheetStylesContext>
-  );
-}
+const Content = withContext<SheetContentProps>(DialogPrimitive.Content, {
+  defaultProps: { "data-scope": "dialog" },
+  name: "Content",
+});
 
-export function SheetTrigger(props: SheetTriggerProps): JSX.Element {
-  return <DialogPrimitive.Trigger {...props} />;
-}
+const Body = withContext<SheetBodyProps>(Dialog.Body, { name: "Body" });
 
-export function SheetBackdrop(props: DialogBackdropProps): JSX.Element {
-  return <Dialog.Backdrop {...props} />;
-}
+const Footer = withContext<SheetFooterProps>(Dialog.Footer, {
+  name: "Footer",
+});
 
-export function SheetPositioner(props: SheetPositionerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["placement", "variant", "class"]);
-  const styles = useStyles();
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  {
+    defaultProps: { "data-scope": "dialog" },
+    name: "CloseTrigger",
+    slot: "inline",
+  },
+);
+// #endregion
 
-  return (
-    <DialogPrimitive.Positioner
-      {...rest}
-      class={styles.slots.positioner({
-        class: local.class,
-        placement: local.placement,
-        variant: local.variant,
-      })}
-    />
-  );
-}
-
-export function SheetContent(props: SheetContentProps): JSX.Element {
+// #region Shorthand
+export function SheetShorthand(props: SheetProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, [
-    "placement",
-    "variant",
-    "showCloseButton",
+    "actions",
     "children",
-    "class",
+    "classNames",
+    "description",
+    "modal",
+    "scrollFade",
+    "showCloseButton",
+    "title",
+    "trigger",
   ]);
-  const styles = useStyles();
-  const placement = () => local.placement ?? "right";
-  const variant = () => local.variant ?? "default";
-  const showCloseButton = () => local.showCloseButton ?? true;
+  const modal = () => local.modal ?? true;
+  const hasHeader = () =>
+    local.title !== undefined || local.description !== undefined;
 
   return (
-    <Portal>
-      <SheetBackdrop />
-      <SheetPositioner placement={placement()} variant={variant()}>
-        <DialogPrimitive.Content
-          {...rest}
-          class={styles.slots.content({
-            class: local.class,
-            placement: placement(),
-            variant: variant(),
-          })}
-        >
-          {local.children}
-          <Show when={showCloseButton()}>
-            <SheetCloseTrigger
-              asChild={(triggerProps) => (
-                <Button
-                  {...triggerProps({ class: styles.slots.inline() })}
-                  aria-label={m("sheet.close")}
-                  size="icon-sm"
-                  variant="ghost"
-                >
-                  <XIcon />
-                </Button>
-              )}
-            />
-          </Show>
-        </DialogPrimitive.Content>
-      </SheetPositioner>
-    </Portal>
+    <Root {...rest} modal={modal()}>
+      <Show when={local.trigger !== undefined}>
+        <Dialog.Trigger asChild={renderTrigger(local.trigger)} />
+      </Show>
+
+      <Portal>
+        <Show when={modal()}>
+          <Dialog.Backdrop />
+        </Show>
+
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show when={hasHeader()}>
+              <Dialog.Header>
+                <Show when={local.title !== undefined}>
+                  <Dialog.Title>{local.title}</Dialog.Title>
+                </Show>
+
+                <Show when={local.description !== undefined}>
+                  <Dialog.Description>{local.description}</Dialog.Description>
+                </Show>
+              </Dialog.Header>
+            </Show>
+
+            <Show when={local.children !== undefined}>
+              <ScrollArea scrollFade={local.scrollFade ?? false}>
+                <Body class={local.classNames?.body}>{local.children}</Body>
+              </ScrollArea>
+            </Show>
+
+            <Show when={local.actions !== undefined}>
+              <Footer class={local.classNames?.footer}>{local.actions}</Footer>
+            </Show>
+
+            <Show when={local.showCloseButton ?? true}>
+              <InlineCloseTrigger
+                asChild={(triggerProps) => (
+                  <Button
+                    {...triggerProps()}
+                    aria-label={m("sheet.close")}
+                    size="icon-sm"
+                    variant="ghost"
+                  >
+                    <XIcon />
+                  </Button>
+                )}
+                class={local.classNames?.inline}
+              />
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
+// #endregion
 
-export function SheetHeader(props: DialogHeaderProps): JSX.Element {
-  return <Dialog.Header {...props} data-part="header" data-scope="sheet" />;
-}
-
-export function SheetTitle(props: DialogTitleProps): JSX.Element {
-  return <Dialog.Title {...props} />;
-}
-
-export function SheetDescription(props: DialogDescriptionProps): JSX.Element {
-  return <Dialog.Description {...props} />;
-}
-
-export function SheetBody(props: DialogBodyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <Dialog.Body
-      {...rest}
-      class={styles.slots.body({ class: local.class })}
-      data-part="body"
-      data-scope="sheet"
-    />
-  );
-}
-
-export function SheetCloseTrigger(props: SheetCloseTriggerProps): JSX.Element {
-  return <DialogPrimitive.CloseTrigger {...props} />;
-}
-
-export function SheetFooter(props: DialogFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <Dialog.Footer
-      {...rest}
-      class={styles.slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="sheet"
-    />
-  );
-}
-
-export const Sheet = Object.assign(SheetRoot, {
-  Backdrop: SheetBackdrop,
-  Body: SheetBody,
-  CloseTrigger: SheetCloseTrigger,
-  Content: SheetContent,
-  Description: SheetDescription,
-  Footer: SheetFooter,
-  Header: SheetHeader,
-  Positioner: SheetPositioner,
-  Title: SheetTitle,
-  Trigger: SheetTrigger,
+export const Sheet = Object.assign(SheetShorthand, {
+  Backdrop: Dialog.Backdrop,
+  Body,
+  CloseTrigger: Dialog.CloseTrigger,
+  Content,
+  Description: Dialog.Description,
+  Footer,
+  Header: Dialog.Header,
+  Positioner,
+  Root,
+  Title: Dialog.Title,
+  Trigger: Dialog.Trigger,
 });

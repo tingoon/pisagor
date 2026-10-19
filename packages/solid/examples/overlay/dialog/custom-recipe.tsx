@@ -1,5 +1,5 @@
-import { dialogRecipe } from "@pisagor/recipes";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
+import { dialogRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandDialogRecipe = tv({

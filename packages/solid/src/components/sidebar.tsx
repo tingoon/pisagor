@@ -4,10 +4,12 @@ import {
   type ButtonVariantProps,
   buttonRecipe,
   type SidebarRecipe,
+  sheetRecipe,
   sidebarRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Accessor, JSX } from "solid-js";
+import { Portal } from "solid-js/web";
 import {
   createEffect,
   createMemo,
@@ -18,14 +20,14 @@ import {
   splitProps,
 } from "solid-js";
 import { useIsMobile } from "../hooks";
-import { SidebarSimpleIcon, createSlotRecipeContext } from "../internal";
+import { SidebarSimpleIcon, XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
 import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
-import { Sheet, type SheetProps } from "./sheet";
+import { Sheet } from "./sheet";
 import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
@@ -86,10 +88,7 @@ export interface SidebarProviderProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface SidebarProps extends Omit<
-  SheetProps,
-  "class" | "children" | "variant" | "recipe"
-> {
+export interface SidebarProps extends HTMLArkProps<"div"> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -261,6 +260,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
 }
 
 export function SidebarRoot(props: SidebarProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "collapsible",
     "placement",
@@ -320,27 +320,46 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
           }
           when={isMobile()}
         >
-          <Sheet
+          <Sheet.Root
             onOpenChange={(details) => setOpenMobile(details.open)}
             open={openMobile()}
+            placement={placement() === "left" ? "left" : "right"}
           >
-            <Sheet.Content
-              {...rest}
-              class={styles.slots.mobile()}
-              data-mobile="true"
-              data-sidebar="sidebar"
-              placement={placement() === "left" ? "left" : "right"}
-              style={{ "--sidebar-width": SIDEBAR_WIDTH_MOBILE }}
-            >
-              <Sheet.Header class={styles.slots.mobileHeader()}>
-                <Sheet.Title>Sidebar</Sheet.Title>
-                <Sheet.Description>
-                  Displays the mobile sidebar.
-                </Sheet.Description>
-              </Sheet.Header>
-              <div class={styles.slots.mobileBody()}>{local.children}</div>
-            </Sheet.Content>
-          </Sheet>
+            <Portal>
+              <Sheet.Backdrop />
+
+              <Sheet.Positioner>
+                <Sheet.Content
+                  {...rest}
+                  class={styles.slots.mobile()}
+                  data-mobile="true"
+                  data-sidebar="sidebar"
+                  style={{ "--sidebar-width": SIDEBAR_WIDTH_MOBILE }}
+                >
+                  <Sheet.Header class={styles.slots.mobileHeader()}>
+                    <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
+                    <Sheet.Description>
+                      {m("sidebar.description")}
+                    </Sheet.Description>
+                  </Sheet.Header>
+                  <div class={styles.slots.mobileBody()}>{local.children}</div>
+                  <Sheet.CloseTrigger
+                    asChild={(triggerProps) => (
+                      <Button
+                        {...triggerProps()}
+                        aria-label={m("sheet.close")}
+                        class={sheetRecipe().inline()}
+                        size="icon-sm"
+                        variant="ghost"
+                      >
+                        <XIcon />
+                      </Button>
+                    )}
+                  />
+                </Sheet.Content>
+              </Sheet.Positioner>
+            </Portal>
+          </Sheet.Root>
         </Show>
       }
       when={collapsible() === "none"}

@@ -1,5 +1,5 @@
-import { Button, Dialog, Field, Input } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
+import { Button, Dialog, Field, Input } from "@pisagor/solid";
 
 export function Nested() {
   return (
@@ -45,7 +45,7 @@ export function Nested() {
                   <Dialog.Backdrop />
 
                   <Dialog.Positioner>
-                    <Dialog.Content showCloseButton={false}>
+                    <Dialog.Content>
                       <Dialog.Header>
                         <Dialog.Title>Edit details</Dialog.Title>
                         <Dialog.Description>

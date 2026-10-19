@@ -1,5 +1,5 @@
-import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
 
 export function CustomSpacing() {
   return (

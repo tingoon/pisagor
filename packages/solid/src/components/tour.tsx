@@ -236,7 +236,9 @@ export function TourContent(props: TourContentProps): JSX.Element {
   );
 }
 
-export function TourBody(props: DialogBodyProps): JSX.Element {
+export function TourBody(
+  props: DialogBodyProps & { scrollFade?: boolean },
+): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
   const dialogSlots = dialogRecipe();
 
@@ -258,7 +260,12 @@ export function TourSpotlight(props: TourSpotlightProps): JSX.Element {
   return <TourPrimitive.Spotlight {...props} class={ctx.slots.spotlight()} />;
 }
 
-export function TourHeader(props: DialogHeaderProps): JSX.Element {
+export function TourHeader(
+  props: Omit<DialogHeaderProps, "title"> & {
+    description?: JSX.Element;
+    title?: JSX.Element;
+  },
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "children",
     "class",

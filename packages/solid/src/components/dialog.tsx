@@ -1,335 +1,241 @@
-import { Dialog as DialogPrimitive } from "@ark-ui/solid";
+import { Dialog as DialogPrimitive, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps as DialogContentPrimitiveProps,
+  DialogContentProps,
   DialogDescriptionProps,
-  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogPositionerProps,
   DialogRootProps as DialogRootPrimitiveProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
-import type {
-  DialogContract,
-  DialogHeaderContract,
-  DialogRootContract,
-} from "@pisagor/contracts";
-import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import type { DialogContract, DialogRootContract } from "@pisagor/contracts";
+import { dialogRecipe } from "@pisagor/recipes";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
-import { createContext } from "../utils";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const {
-  Context: DialogStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({ name: "Dialog", recipe: dialogRecipe });
-
-/** Non-style state: whether the dialog is modal (controls the backdrop). */
-interface DialogModalState {
-  readonly modal: boolean;
-}
-
-const { DialogModalContext, useDialogModal } =
-  createContext("DialogModal")<DialogModalState>();
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Dialog",
+  recipe: dialogRecipe,
+});
 // #endregion
 
+// #region Types
 export type DialogRootProps = DialogRootPrimitiveProps & DialogRootContract;
 
-export interface DialogContentProps
-  extends DialogContentPrimitiveProps, DialogVariantProps {
-  bottomStickOnMobile?: boolean;
-  showCloseButton?: boolean;
-}
+export type DialogHeaderProps = HTMLArkProps<"div">;
 
-export interface DialogBodyProps extends ComponentProps<"div"> {
-  scrollFade?: boolean;
-}
+export type DialogBodyProps = HTMLArkProps<"div">;
 
-export interface DialogHeaderProps
-  extends Omit<ComponentProps<"div">, "title">, DialogHeaderContract {
-  description?: JSX.Element;
-  title?: JSX.Element;
-}
+export type DialogFooterProps = HTMLArkProps<"div">;
 
-export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
-  bottomStickOnMobile?: boolean;
-}
-
-export type DialogFooterProps = ComponentProps<"div">;
+/**
+ * Shorthand trigger: a render fn (preferred) or JSX wrapped in `display:
+ * contents`.
+ */
+export type DialogTriggerRender =
+  | JSX.Element
+  | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
 
 export interface DialogProps
-  extends Omit<DialogRootProps, "title">, DialogContract {
+  extends
+    Omit<DialogRootProps, "title">,
+    Omit<DialogContract, "actions" | "description" | "title" | "trigger"> {
   actions?: JSX.Element;
   description?: JSX.Element;
-  title?: JSX.Element;
   /**
-   * Prefer a render fn for Solid asChild; JSX elements are wrapped with
-   * display:contents.
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
    */
-  trigger?:
-    | JSX.Element
-    | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
+  scrollFade?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  title?: JSX.Element;
+  trigger?: DialogTriggerRender;
 }
+// #endregion
 
-export function DialogRoot(props: DialogRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["modal", "recipe"]);
-  const modal = () => local.modal ?? true;
-  const slots = createMemo(() => (local.recipe ?? dialogRecipe)());
+// #region Parts
+const Root = withProvider<DialogRootProps>(DialogPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-  return (
-    <DialogStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <DialogModalContext
-        value={{
-          get modal() {
-            return modal();
-          },
-        }}
-      >
-        <DialogPrimitive.Root {...rest} modal={modal()} />
-      </DialogModalContext>
-    </DialogStylesContext>
-  );
-}
+const Trigger = withContext<DialogTriggerProps>(DialogPrimitive.Trigger, {
+  name: "Trigger",
+});
 
-export function DialogTrigger(props: DialogTriggerProps): JSX.Element {
-  return <DialogPrimitive.Trigger {...props} />;
-}
+const Backdrop = withContext<DialogBackdropProps>(DialogPrimitive.Backdrop, {
+  name: "Backdrop",
+});
 
-export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-  const state = useDialogModal();
-
-  return (
-    <Show when={state.modal}>
-      <DialogPrimitive.Backdrop
-        {...rest}
-        class={styles.slots.backdrop({ class: local.class })}
-      />
-    </Show>
-  );
-}
-
-export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["bottomStickOnMobile", "class"]);
-  const styles = useStyles();
-
-  return (
-    <DialogPrimitive.Positioner
-      {...rest}
-      class={styles.slots.positioner({
-        bottomStickOnMobile: local.bottomStickOnMobile,
-        class: local.class,
-      })}
-    />
-  );
-}
-
-export function DialogContent(props: DialogContentProps): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, [
-    "size",
-    "bottomStickOnMobile",
-    "showCloseButton",
-    "children",
-    "class",
-  ]);
-  const styles = useStyles();
-  const size = () => local.size ?? "md";
-  const bottomStickOnMobile = () => local.bottomStickOnMobile ?? true;
-  const showCloseButton = () => local.showCloseButton ?? true;
-
-  return (
-    <DialogPrimitive.Content
-      {...rest}
-      class={styles.slots.content({
-        bottomStickOnMobile: bottomStickOnMobile(),
-        class: local.class,
-        size: size(),
-      })}
-    >
-      {local.children}
-      <Show when={showCloseButton()}>
-        <DialogCloseTrigger
-          asChild={(triggerProps) => (
-            <Button
-              {...triggerProps({ class: styles.slots.inline() })}
-              aria-label={m("dialog.close")}
-              size="icon-sm"
-              variant="ghost"
-            >
-              <XIcon />
-            </Button>
-          )}
-        />
-      </Show>
-    </DialogPrimitive.Content>
-  );
-}
-
-export function DialogBody(props: DialogBodyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useStyles();
-
-  return (
-    <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <div
-        {...rest}
-        class={styles.slots.body({ class: local.class })}
-        data-part="body"
-        data-scope="dialog"
-      />
-    </ScrollArea>
-  );
-}
-
-export function DialogHeader(props: DialogHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "class",
-    "description",
-    "title",
-  ]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.header({ class: local.class })}
-      data-part="header"
-      data-scope="dialog"
-    >
-      <Show when={local.title !== undefined}>
-        <DialogTitle>{local.title}</DialogTitle>
-      </Show>
-      <Show when={local.description !== undefined}>
-        <DialogDescription>{local.description}</DialogDescription>
-      </Show>
-      {local.children}
-    </div>
-  );
-}
-
-export const DialogTitle: Component<DialogTitleProps> = withContext(
-  DialogPrimitive.Title,
-  { name: "Title" },
+const Positioner = withContext<DialogPositionerProps>(
+  DialogPrimitive.Positioner,
+  { name: "Positioner" },
 );
 
-export const DialogDescription: Component<DialogDescriptionProps> = withContext(
+const Content = withContext<DialogContentProps>(DialogPrimitive.Content, {
+  name: "Content",
+});
+
+const Header = withContext<DialogHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<DialogTitleProps>(DialogPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<DialogDescriptionProps>(
   DialogPrimitive.Description,
   { name: "Description" },
 );
 
-export function DialogCloseTrigger(
-  props: DialogCloseTriggerProps,
-): JSX.Element {
-  return <DialogPrimitive.CloseTrigger {...props} />;
+const Body = withContext<DialogBodyProps>("div", { name: "Body" });
+
+const Footer = withContext<DialogFooterProps>("div", { name: "Footer" });
+
+const CloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "inline" },
+);
+// #endregion
+
+// #region Helpers
+/** Renders a shorthand `trigger` through Ark's Solid `asChild`. */
+export function renderTrigger(
+  trigger: DialogTriggerRender,
+): NonNullable<DialogTriggerProps["asChild"]> {
+  return (triggerProps) => {
+    if (typeof trigger === "function") {
+      return trigger(triggerProps());
+    }
+
+    return (
+      <span {...triggerProps()} style={{ display: "contents" }}>
+        {trigger}
+      </span>
+    );
+  };
 }
+// #endregion
 
-export function DialogFooter(props: DialogFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="dialog"
-    />
-  );
-}
-
+// #region Shorthand
 export function DialogShorthand(props: DialogProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "actions",
     "children",
+    "classNames",
     "description",
+    "modal",
+    "scrollFade",
+    "showCloseButton",
     "title",
     "trigger",
   ]);
+  const modal = () => local.modal ?? true;
+  const hasHeader = () =>
+    local.title !== undefined || local.description !== undefined;
 
   return (
-    <DialogRoot {...rest}>
+    <Root {...rest} modal={modal()}>
       <Show when={local.trigger !== undefined}>
-        <DialogTrigger
-          asChild={(triggerProps) => {
-            if (typeof local.trigger === "function") {
-              return local.trigger(triggerProps());
-            }
-
-            return (
-              <span {...triggerProps()} style={{ display: "contents" }}>
-                {local.trigger}
-              </span>
-            );
-          }}
+        <Trigger
+          asChild={renderTrigger(local.trigger)}
+          class={local.classNames?.trigger}
         />
       </Show>
 
       <Portal>
-        <DialogBackdrop />
-        <DialogPositioner>
-          <DialogContent>
-            <Show
-              when={
-                local.title !== undefined || local.description !== undefined
-              }
-            >
-              <DialogHeader>
+        <Show when={modal()}>
+          <Backdrop class={local.classNames?.backdrop} />
+        </Show>
+
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show when={hasHeader()}>
+              <Header class={local.classNames?.header}>
                 <Show when={local.title !== undefined}>
-                  <DialogTitle>{local.title}</DialogTitle>
+                  <Title class={local.classNames?.title}>{local.title}</Title>
                 </Show>
+
                 <Show when={local.description !== undefined}>
-                  <DialogDescription>{local.description}</DialogDescription>
+                  <Description class={local.classNames?.description}>
+                    {local.description}
+                  </Description>
                 </Show>
-              </DialogHeader>
+              </Header>
             </Show>
+
             <Show when={local.children !== undefined}>
-              <DialogBody>{local.children}</DialogBody>
+              <ScrollArea scrollFade={local.scrollFade ?? false}>
+                <Body class={local.classNames?.body}>{local.children}</Body>
+              </ScrollArea>
             </Show>
+
             <Show when={local.actions !== undefined}>
-              <DialogFooter>{local.actions}</DialogFooter>
+              <Footer class={local.classNames?.footer}>{local.actions}</Footer>
             </Show>
-          </DialogContent>
-        </DialogPositioner>
+
+            <Show when={local.showCloseButton ?? true}>
+              <InlineCloseTrigger
+                asChild={(triggerProps) => (
+                  <Button
+                    {...triggerProps()}
+                    aria-label={m("dialog.close")}
+                    size="icon-sm"
+                    variant="ghost"
+                  >
+                    <XIcon />
+                  </Button>
+                )}
+                class={local.classNames?.inline}
+              />
+            </Show>
+          </Content>
+        </Positioner>
       </Portal>
-    </DialogRoot>
+    </Root>
   );
 }
+// #endregion
 
 export type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
+  DialogContentProps,
   DialogDescriptionProps,
+  DialogPositionerProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
 
 export const Dialog = Object.assign(DialogShorthand, {
-  Backdrop: DialogBackdrop,
-  Body: DialogBody,
-  CloseTrigger: DialogCloseTrigger,
-  Content: DialogContent,
-  Description: DialogDescription,
-  Footer: DialogFooter,
-  Header: DialogHeader,
-  Positioner: DialogPositioner,
-  Root: DialogRoot,
-  Title: DialogTitle,
-  Trigger: DialogTrigger,
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  Description,
+  Footer,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });

@@ -1,108 +1,72 @@
-import { Drawer as DrawerPrimitive } from "@ark-ui/solid";
+import { Drawer as DrawerPrimitive, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
-  DrawerContentProps as DrawerContentPrimitiveProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerGrabberIndicatorProps,
   DrawerGrabberProps,
-  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerPositionerProps,
   DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/solid";
-import type {
-  DrawerHeaderContract,
-  DrawerRootContract,
-  DrawerContract,
-} from "@pisagor/contracts";
-import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import type { DrawerContract, DrawerRootContract } from "@pisagor/contracts";
+import { drawerRecipe } from "@pisagor/recipes";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const {
-  Context: DrawerStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({ name: "Drawer", recipe: drawerRecipe });
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Drawer",
+  recipe: drawerRecipe,
+});
 // #endregion
 
-export type LocalDrawerRootProps = DrawerRootPrimitiveProps &
-  DrawerRootContract;
+// #region Types
+/**
+ * `placement` is not a prop: it always follows `swipeDirection` so the slide
+ * animation and rounded edge match the dismiss gesture.
+ */
+export type DrawerRootProps = DrawerRootPrimitiveProps &
+  Omit<DrawerRootContract, "placement">;
 
-export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
-  DrawerVariantProps;
+export type DrawerContentInnerProps = HTMLArkProps<"div">;
 
-export type DrawerContentProps = DrawerContentPrimitiveProps &
-  DrawerVariantProps;
+export type DrawerHeaderProps = HTMLArkProps<"div">;
 
-export interface DrawerHeaderProps
-  extends ComponentProps<"div">, DrawerHeaderContract {
-  description?: string;
-  title?: string;
-}
+export type DrawerBodyProps = HTMLArkProps<"div">;
 
-export interface DrawerBodyProps extends ComponentProps<"div"> {
+export type DrawerFooterProps = HTMLArkProps<"div">;
+
+export interface DrawerProps
+  extends Omit<DrawerRootProps, "title">, DrawerContract {
+  /** Footer action area. */
+  actions?: JSX.Element;
+  /** Supporting copy in the header. */
+  description?: JSX.Element;
+  /**
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
+   */
   scrollFade?: boolean;
+  /** Drawer title. */
+  title?: JSX.Element;
+  /**
+   * Trigger that opens the drawer. Prefer a render fn for Solid `asChild`; JSX
+   * elements are wrapped with `display: contents`.
+   */
+  trigger?:
+    | JSX.Element
+    | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
 }
+// #endregion
 
-export type DrawerContentInnerProps = ComponentProps<"div">;
-export type DrawerDescriptionProps = ComponentProps<"div">;
-export type DrawerFooterProps = ComponentProps<"div">;
-
-export type DrawerProps = LocalDrawerRootProps & DrawerContract;
-
-export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe"]);
-  const slots = createMemo(() => (local.recipe ?? drawerRecipe)());
-
-  return (
-    <DrawerStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <DrawerPrimitive.Root {...rest} />
-    </DrawerStylesContext>
-  );
-}
-
-export function DrawerTrigger(props: DrawerTriggerProps): JSX.Element {
-  return <DrawerPrimitive.Trigger {...props} />;
-}
-
-export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <DrawerPrimitive.Backdrop
-      {...rest}
-      class={styles.slots.backdrop({ class: local.class })}
-    />
-  );
-}
-
-export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "class"]);
-  const styles = useStyles();
-
-  return (
-    <DrawerPrimitive.Positioner
-      {...rest}
-      class={styles.slots.positioner({
-        class: local.class,
-        variant: local.variant ?? "default",
-      })}
-    />
-  );
-}
-
+// #region Parts
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "bottom",
   end: "right",
@@ -110,170 +74,181 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
   up: "top",
 } as const;
 
-export function DrawerContent(props: DrawerContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useStyles();
-  const variant = () => local.variant ?? "default";
+const RootBase = withProvider<
+  DrawerRootProps & Pick<DrawerRootContract, "placement">
+>(DrawerPrimitive.Root, { name: "Root", slot: "base" });
+
+function Root(props: DrawerRootProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["swipeDirection"]);
+  const swipeDirection = () => local.swipeDirection ?? "down";
 
   return (
-    <Portal>
-      <DrawerBackdrop />
-      <DrawerPrimitive.Context>
-        {(drawer) => (
-          <DrawerPositioner variant={variant()}>
-            <DrawerPrimitive.Content
-              {...rest}
-              class={styles.slots.content({
-                class: local.class,
-                placement:
-                  SWIPE_DIRECTION_TO_PLACEMENT[drawer().swipeDirection],
-                variant: variant(),
-              })}
-            >
-              <DrawerGrabber />
-              {local.children}
-            </DrawerPrimitive.Content>
-          </DrawerPositioner>
-        )}
-      </DrawerPrimitive.Context>
-    </Portal>
-  );
-}
-
-export function DrawerContentInner(
-  props: DrawerContentInnerProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
+    <RootBase
       {...rest}
-      class={styles.slots.contentInner({ class: local.class })}
-      data-part="content-inner"
-      data-scope="drawer"
+      placement={SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection()]}
+      swipeDirection={swipeDirection()}
     />
   );
 }
 
-export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Trigger = withContext<DrawerTriggerProps>(DrawerPrimitive.Trigger, {
+  name: "Trigger",
+});
 
-  return (
-    <div class={styles.slots.grabberWrapper()}>
-      <DrawerPrimitive.Grabber
-        {...rest}
-        class={styles.slots.grabber({ class: local.class })}
-      >
-        <DrawerPrimitive.GrabberIndicator class={styles.slots.grabberIcon()} />
-      </DrawerPrimitive.Grabber>
-    </div>
-  );
-}
+const Backdrop = withContext<DrawerBackdropProps>(DrawerPrimitive.Backdrop, {
+  name: "Backdrop",
+});
 
-export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "description",
-    "title",
-    "class",
-  ]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.header({ class: local.class })}
-      data-part="header"
-      data-scope="drawer"
-    >
-      <Show when={!!local.title}>
-        <DrawerTitle>{local.title}</DrawerTitle>
-      </Show>
-      <Show when={!!local.description}>
-        <DrawerDescription>{local.description}</DrawerDescription>
-      </Show>
-      {local.children}
-    </div>
-  );
-}
-
-export const DrawerTitle: Component<DrawerTitleProps> = withContext(
-  DrawerPrimitive.Title,
-  { name: "Title" },
+const Positioner = withContext<DrawerPositionerProps>(
+  DrawerPrimitive.Positioner,
+  { name: "Positioner" },
 );
 
-export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Content = withContext<DrawerContentProps>(DrawerPrimitive.Content, {
+  name: "Content",
+});
+
+// Ark semantics: `Grabber` is the padded drag hit area (`grabberWrapper` slot),
+// `GrabberIndicator` is the visible bar (`grabber` slot).
+const Grabber = withContext<DrawerGrabberProps>(DrawerPrimitive.Grabber, {
+  name: "Grabber",
+  slot: "grabberWrapper",
+});
+
+const GrabberIndicator = withContext<DrawerGrabberIndicatorProps>(
+  DrawerPrimitive.GrabberIndicator,
+  { name: "GrabberIndicator", slot: "grabber" },
+);
+
+const ContentInner = withContext<DrawerContentInnerProps>("div", {
+  name: "ContentInner",
+});
+
+const Header = withContext<DrawerHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<DrawerTitleProps>(DrawerPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<DrawerDescriptionProps>(
+  DrawerPrimitive.Description,
+  { name: "Description" },
+);
+
+const Body = withContext<DrawerBodyProps>("div", { name: "Body" });
+
+const Footer = withContext<DrawerFooterProps>("div", { name: "Footer" });
+
+const CloseTrigger = withContext<DrawerCloseTriggerProps>(
+  DrawerPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+// #endregion
+
+// #region Shorthand
+export function DrawerShorthand(props: DrawerProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "actions",
+    "children",
+    "classNames",
+    "description",
+    "scrollFade",
+    "title",
+    "trigger",
+  ]);
+  const hasHeader = () =>
+    local.title !== undefined || local.description !== undefined;
 
   return (
-    <div
-      {...rest}
-      class={styles.slots.description({ class: local.class })}
-      data-part="description"
-      data-scope="drawer"
-    />
+    <Root {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <Trigger
+          asChild={(triggerProps) => {
+            if (typeof local.trigger === "function") {
+              return local.trigger(triggerProps());
+            }
+
+            return (
+              <span {...triggerProps()} style={{ display: "contents" }}>
+                {local.trigger}
+              </span>
+            );
+          }}
+          class={local.classNames?.trigger}
+        />
+      </Show>
+
+      <Portal>
+        <Backdrop class={local.classNames?.backdrop} />
+
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Grabber class={local.classNames?.grabberWrapper}>
+              <GrabberIndicator class={local.classNames?.grabber} />
+            </Grabber>
+
+            <ContentInner class={local.classNames?.contentInner}>
+              <Show when={hasHeader()}>
+                <Header class={local.classNames?.header}>
+                  <Show when={local.title !== undefined}>
+                    <Title class={local.classNames?.title}>{local.title}</Title>
+                  </Show>
+
+                  <Show when={local.description !== undefined}>
+                    <Description class={local.classNames?.description}>
+                      {local.description}
+                    </Description>
+                  </Show>
+                </Header>
+              </Show>
+
+              <Show when={local.children !== undefined}>
+                <ScrollArea scrollFade={local.scrollFade ?? false}>
+                  <Body class={local.classNames?.body}>{local.children}</Body>
+                </ScrollArea>
+              </Show>
+            </ContentInner>
+
+            <Show when={local.actions !== undefined}>
+              <Footer class={local.classNames?.footer}>
+                <ContentInner class={local.classNames?.contentInner}>
+                  {local.actions}
+                </ContentInner>
+              </Footer>
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
-
-export function DrawerBody(props: DrawerBodyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useStyles();
-
-  return (
-    <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <div
-        {...rest}
-        class={styles.slots.body({ class: local.class })}
-        data-part="body"
-        data-scope="drawer"
-      />
-    </ScrollArea>
-  );
-}
-
-export function DrawerCloseTrigger(
-  props: DrawerCloseTriggerProps,
-): JSX.Element {
-  return <DrawerPrimitive.CloseTrigger {...props} />;
-}
-
-export function DrawerFooter(props: DrawerFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="drawer"
-    />
-  );
-}
+// #endregion
 
 export type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerGrabberIndicatorProps,
   DrawerGrabberProps,
-  DrawerRootProps,
+  DrawerPositionerProps,
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/solid";
 
-export const Drawer = Object.assign(DrawerRoot, {
-  Backdrop: DrawerBackdrop,
-  Body: DrawerBody,
-  CloseTrigger: DrawerCloseTrigger,
-  Content: DrawerContent,
-  ContentInner: DrawerContentInner,
-  Description: DrawerDescription,
-  Footer: DrawerFooter,
-  Grabber: DrawerGrabber,
-  Header: DrawerHeader,
-  Positioner: DrawerPositioner,
-  Title: DrawerTitle,
-  Trigger: DrawerTrigger,
+export const Drawer = Object.assign(DrawerShorthand, {
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  ContentInner,
+  Description,
+  Footer,
+  Grabber,
+  GrabberIndicator,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });
