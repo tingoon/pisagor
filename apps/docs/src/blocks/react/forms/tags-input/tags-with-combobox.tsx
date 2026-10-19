@@ -41,8 +41,8 @@ export function TagsWithCombobox() {
         collection={collection}
         ids={{ control: `tags-control-${uid}`, input: `tags-input-${uid}` }}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => {
-          const next = value[0];
+        onValueChange={(details) => {
+          const next = details.value[0];
           if (next && !tagsInput.value.includes(next)) {
             tagsInput.addValue(next);
           }
@@ -59,9 +59,9 @@ export function TagsWithCombobox() {
                     {tag}
                   </TagsInput.Item>
                 ))}
-                <Combobox.FieldInput asChild>
+                <Combobox.Input asChild>
                   <TagsInput.Input placeholder="Search framework" />
-                </Combobox.FieldInput>
+                </Combobox.Input>
               </>
             )}
           </TagsInput.Context>

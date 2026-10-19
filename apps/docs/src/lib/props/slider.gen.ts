@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/slider.ts`, native HTML attributes omitted). */
 export const sliderProps: PropRow[] = [
   {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "SliderRecipeFn | undefined",
     defaultValue: "sliderRecipe",

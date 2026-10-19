@@ -84,8 +84,13 @@ function handleSelectNode(details: { selectedNodes?: TreeNodeType[] }) {
       </TreeView>
     </div>
     <div :class="styles.pane()">
-      <Tabs.Root v-if="activeItem" :class="styles.tabs()" :value="activeItem">
-        <Tabs.List variant="underline">
+      <Tabs.Root
+        v-if="activeItem"
+        :class="styles.tabs()"
+        :value="activeItem"
+        variant="underline"
+      >
+        <Tabs.List>
           <Tabs.Trigger :value="activeItem">
             <span :class="styles.tabLabel()">
               <span>{{ activeItem }}</span>

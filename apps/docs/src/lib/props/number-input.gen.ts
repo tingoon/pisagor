@@ -7,6 +7,24 @@ export type { PropRow };
 /** Own props from `@pisagor/contracts` (`packages/contracts/src/number-input.ts`, native HTML attributes omitted). */
 export const numberInputProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Control size.",
+  },
+  {
+    name: "surfaceVariant",
+    type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
+  },
+  {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
+    defaultValue: "`primary`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "NumberInputRecipeFn | undefined",
     defaultValue: "numberInputRecipe",

@@ -46,8 +46,12 @@ export function IdeLayout({ className }: IdeLayoutProps) {
       </div>
       <div className={styles.pane()}>
         {activeItem && (
-          <Tabs.Root className={styles.tabs()} value={activeItem}>
-            <Tabs.List variant="underline">
+          <Tabs.Root
+            className={styles.tabs()}
+            value={activeItem}
+            variant="underline"
+          >
+            <Tabs.List>
               <Tabs.Trigger value={activeItem}>
                 {activeItem}
                 <Button

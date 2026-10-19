@@ -45,8 +45,8 @@ export function IdeLayout(props: IdeLayoutProps) {
       <div class={styles.pane()}>
         <Show when={activeItem()}>
           {(item) => (
-            <Tabs.Root class={styles.tabs()} value={item()}>
-              <Tabs.List variant="underline">
+            <Tabs.Root class={styles.tabs()} value={item()} variant="underline">
+              <Tabs.List>
                 <Tabs.Trigger value={item()}>
                   {item()}
                   <Button
