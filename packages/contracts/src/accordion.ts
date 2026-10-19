@@ -18,7 +18,7 @@ export interface AccordionPresetItem {
  * Shared Accordion root contract: visual variants. Used by compound roots;
  * excludes host DOM attributes. (Item recipe owns the style override.)
  */
-export type AccordionRootContract = AccordionItemVariantProps;
+export interface AccordionRootContract extends AccordionItemVariantProps {}
 
 /**
  * Accordion shorthand content contract. Compose with `AccordionRootContract` /
