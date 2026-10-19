@@ -1,4 +1,3 @@
-import type { TreeNodeType } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 
@@ -30,40 +29,6 @@ export function CheckboxTree() {
     },
   });
 
-  const TreeNode = ({
-    indexPath,
-    node,
-  }: {
-    node: TreeNodeType;
-    indexPath: number[];
-  }) => {
-    return (
-      <TreeView.NodeProvider indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>
-              <TreeView.NodeCheckbox />
-              {node.name}
-            </TreeView.BranchControl>
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode
-                  indexPath={[...indexPath, index]}
-                  key={child.id}
-                  node={child}
-                />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.NodeCheckbox />
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
   const [checkedNodes, setCheckedNodes] = useState<string[]>(["readme.md"]);
 
   return (
@@ -73,13 +38,8 @@ export function CheckboxTree() {
           checkedValue={checkedNodes}
           collection={collection}
           onCheckedChange={({ checkedValue }) => setCheckedNodes(checkedValue)}
-        >
-          <TreeView.Tree>
-            {collection.rootNode.children?.map((node, index) => (
-              <TreeNode indexPath={[index]} key={node.id} node={node} />
-            ))}
-          </TreeView.Tree>
-        </TreeView>
+          checkbox
+        />
       </div>
       <p className="text-muted-foreground text-sm whitespace-pre-wrap">
         {JSON.stringify(checkedNodes, null, 2)}

@@ -7,20 +7,10 @@ import { TreeView } from "@pisagor/react";
 ## Anatomy
 
 ```tsx
-<TreeView collection={collection}>
-  <TreeView.Tree>
-    <TreeView.NodeProvider>
-      <TreeView.Branch>
-        <TreeView.BranchControl />
-        <TreeView.BranchContent />
-      </TreeView.Branch>
-      <TreeView.Item>
-        <TreeView.ItemText />
-      </TreeView.Item>
-    </TreeView.NodeProvider>
-  </TreeView.Tree>
-</TreeView>
+<TreeView collection={collection} />
 ```
+
+The shorthand walks `collection` and renders branches (indicator, folder icons, indent guide) and items (file icons from `fileIcons` / `itemIcon`), plus rename inputs while renaming and checkboxes with `checkbox`. Compose `TreeView.Root` and its parts for custom rows (see Compound).
 
 ## Examples
 

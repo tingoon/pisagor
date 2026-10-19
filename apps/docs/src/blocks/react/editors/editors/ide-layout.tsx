@@ -1,5 +1,5 @@
 import { XIcon } from "@phosphor-icons/react";
-import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
+import type { TreeNodeType } from "@pisagor/react";
 import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
@@ -36,13 +36,7 @@ export function IdeLayout({ className }: IdeLayoutProps) {
           onSelectionChange={({ selectedNodes }) =>
             handleSelectNode(selectedNodes)
           }
-        >
-          <TreeView.Tree>
-            {collection.rootNode.children?.map((node, index) => (
-              <TreeNode indexPath={[index]} key={node.id} node={node} />
-            ))}
-          </TreeView.Tree>
-        </TreeView>
+        />
       </div>
       <div className={styles.pane()}>
         {activeItem && (
@@ -72,32 +66,6 @@ export function IdeLayout({ className }: IdeLayoutProps) {
         )}
       </div>
     </div>
-  );
-}
-
-function TreeNode({ indexPath, node, ...rest }: NodeProviderProps) {
-  return (
-    <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
-      {node.children ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-
-          <TreeView.BranchContent>
-            {node.children.map((child, index) => (
-              <TreeNode
-                indexPath={[...indexPath, index]}
-                key={child.id}
-                node={child}
-              />
-            ))}
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      ) : (
-        <TreeView.Item>
-          <TreeView.ItemText>{node.name}</TreeView.ItemText>
-        </TreeView.Item>
-      )}
-    </TreeView.NodeProvider>
   );
 }
 

@@ -65,11 +65,13 @@ export const treeViewBranchRecipe = tv({
       "flex flex-1 items-center gap-(--item-gap)",
       "overflow-hidden text-ellipsis whitespace-nowrap",
     ],
+    trigger: [],
   },
 });
 
 export const treeViewItemRecipe = tv({
   slots: {
+    base: [],
     checkbox: "[&_svg]:size-3!",
     icon: "in-[[data-scope=tree-view][data-part=item]:has([data-scope=tree-view][data-part=node-checkbox])]:hidden",
     renameInput: [

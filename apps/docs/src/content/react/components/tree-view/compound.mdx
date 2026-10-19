@@ -1,17 +1,28 @@
 ## Anatomy
 
 ```tsx
-<TreeView collection={collection}>
+<TreeView.Root collection={collection}>
+  <TreeView.Label />
   <TreeView.Tree>
     <TreeView.NodeProvider>
       <TreeView.Branch>
-        <TreeView.BranchControl />
-        <TreeView.BranchContent />
+        <TreeView.BranchControl>
+          <TreeView.BranchIndicator />
+          <TreeView.BranchText />
+        </TreeView.BranchControl>
+        <TreeView.BranchContent>
+          <TreeView.BranchIndentGuide />
+        </TreeView.BranchContent>
       </TreeView.Branch>
       <TreeView.Item>
+        <TreeView.NodeCheckbox>
+          <TreeView.NodeCheckboxIndicator />
+        </TreeView.NodeCheckbox>
         <TreeView.ItemText />
       </TreeView.Item>
     </TreeView.NodeProvider>
   </TreeView.Tree>
-</TreeView>
+</TreeView.Root>
 ```
+
+Parts map 1:1 to Ark (`BranchIndicator` renders a caret by default). Icons, checkbox indicators, and rename inputs are yours to render in compound usage.

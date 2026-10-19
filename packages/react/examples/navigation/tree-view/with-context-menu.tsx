@@ -1,6 +1,8 @@
 import { Portal } from "@ark-ui/react";
 import {
+  FileIcon,
   FilePlusIcon,
+  FolderIcon,
   FolderPlusIcon,
   PencilSimpleIcon,
   TrashIcon,
@@ -43,7 +45,13 @@ export function WithContextMenu() {
           <TreeView.Branch>
             <ContextMenu.Root>
               <ContextMenu.ContextTrigger asChild>
-                <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
+                <TreeView.BranchControl>
+                  <TreeView.BranchIndicator />
+                  <TreeView.BranchText>
+                    <FolderIcon />
+                    {node.name}
+                  </TreeView.BranchText>
+                </TreeView.BranchControl>
               </ContextMenu.ContextTrigger>
               <Portal>
                 <ContextMenu.Positioner>
@@ -71,6 +79,7 @@ export function WithContextMenu() {
               </Portal>
             </ContextMenu.Root>
             <TreeView.BranchContent>
+              <TreeView.BranchIndentGuide />
               {node.children.map((child, index) => (
                 <TreeNode
                   indexPath={[...indexPath, index]}
@@ -84,6 +93,7 @@ export function WithContextMenu() {
           <ContextMenu.Root>
             <ContextMenu.ContextTrigger asChild>
               <TreeView.Item>
+                <FileIcon />
                 <TreeView.ItemText>{node.name}</TreeView.ItemText>
               </TreeView.Item>
             </ContextMenu.ContextTrigger>
@@ -110,13 +120,13 @@ export function WithContextMenu() {
 
   return (
     <div>
-      <TreeView collection={collection}>
+      <TreeView.Root collection={collection}>
         <TreeView.Tree>
           {collection.rootNode.children?.map((node, index) => (
             <TreeNode indexPath={[index]} key={node.id} node={node} />
           ))}
         </TreeView.Tree>
-      </TreeView>
+      </TreeView.Root>
     </div>
   );
 }

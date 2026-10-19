@@ -1,5 +1,4 @@
 import { FileCodeIcon, FileJsIcon, FileTextIcon } from "@phosphor-icons/react";
-import type { NodeProviderProps } from "@pisagor/react";
 import {
   createFileIcons,
   createTreeCollection,
@@ -39,41 +38,9 @@ export function CustomIcons() {
     },
   });
 
-  const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
-    return (
-      <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode
-                  indexPath={[...indexPath, index]}
-                  key={child.id}
-                  node={child}
-                />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
-
   return (
     <div>
-      <TreeView collection={collection} fileIcons={fileIcons}>
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} key={node.id} node={node} />
-          ))}
-        </TreeView.Tree>
-      </TreeView>
+      <TreeView collection={collection} fileIcons={fileIcons} />
     </div>
   );
 }
