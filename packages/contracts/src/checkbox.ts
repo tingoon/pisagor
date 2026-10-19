@@ -1,8 +1,10 @@
 import type {
   CheckboxGroupRecipeFn,
   CheckboxRecipeFn,
+  CheckboxRecipeSlot,
   CheckboxVariantProps,
 } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared CheckboxGroup root contract: recipe override. Used by compound roots;
@@ -28,4 +30,10 @@ export interface CheckboxRootContract extends CheckboxVariantProps {
    * @defaultValue checkboxRecipe
    */
   recipe?: CheckboxRecipeFn;
+}
+
+/** Checkbox shorthand contract. Compose with `CheckboxRootContract`. */
+export interface CheckboxContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<CheckboxRecipeSlot>;
 }
