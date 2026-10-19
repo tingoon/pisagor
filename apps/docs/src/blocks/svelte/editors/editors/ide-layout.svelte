@@ -54,25 +54,6 @@
   }
 </script>
 
-{#snippet treeNode(node: TreeNodeType, indexPath: number[])}
-  <TreeView.NodeProvider {indexPath} {node}>
-    {#if node.children}
-      <TreeView.Branch>
-        <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-        <TreeView.BranchContent>
-          {#each node.children as child, index}
-            {@render treeNode(child, [...indexPath, index])}
-          {/each}
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    {:else}
-      <TreeView.Item>
-        <TreeView.ItemText>{node.name}</TreeView.ItemText>
-      </TreeView.Item>
-    {/if}
-  </TreeView.NodeProvider>
-{/snippet}
-
 <div class={cn(styles.root(), className)}>
   <div class={styles.sidebar()}>
     <TreeView
@@ -82,13 +63,7 @@
       }: {
         selectedNodes: TreeNodeType[];
       }) => handleSelectNode(selectedNodes)}
-    >
-      <TreeView.Tree>
-        {#each collection.rootNode.children ?? [] as node, index}
-          {@render treeNode(node, [index])}
-        {/each}
-      </TreeView.Tree>
-    </TreeView>
+    />
   </div>
   <div class={styles.pane()}>
     {#if activeItem}
