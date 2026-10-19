@@ -2,6 +2,7 @@ import type {
   AccordionItemRecipeFn,
   AccordionItemRecipeSlot,
   AccordionItemVariantProps,
+  AccordionRecipeFn,
 } from "@pisagor/recipes";
 import type { SlotClassNames } from "./internal";
 
@@ -15,10 +16,17 @@ export interface AccordionPresetItem {
 }
 
 /**
- * Shared Accordion root contract: visual variants. Used by compound roots;
- * excludes host DOM attributes. (Item recipe owns the style override.)
+ * Shared Accordion root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
  */
-export type AccordionRootContract = AccordionItemVariantProps;
+export interface AccordionRootContract {
+  /**
+   * Style recipe override.
+   *
+   * @defaultValue accordionRecipe
+   */
+  recipe?: AccordionRecipeFn;
+}
 
 /**
  * Accordion shorthand content contract. Compose with `AccordionRootContract` /
@@ -26,7 +34,7 @@ export type AccordionRootContract = AccordionItemVariantProps;
  * are not applied twice. Content fields stay `unknown` so consumers can narrow
  * them.
  */
-export interface AccordionContract {
+export interface AccordionContract extends AccordionItemVariantProps {
   /** Shorthand items (Root + Item + Trigger + Content). */
   items?: AccordionPresetItem[];
 }
