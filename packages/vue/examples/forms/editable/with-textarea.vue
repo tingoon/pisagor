@@ -5,15 +5,17 @@ import { Button, Card, Editable, Field, Textarea } from "@pisagor/vue";
 
 <template>
   <Card>
-    <Card.Header
-      description="Double-click the text to start editing"
-      title="Edit description"
-    />
+    <Card.Header>
+      <Card.Title>Edit description</Card.Title>
+      <Card.Description>
+        Double-click the text to start editing
+      </Card.Description>
+    </Card.Header>
     <Card.Content>
       <Field.Group>
         <Field>
           <Field.Label>Description</Field.Label>
-          <Editable
+          <Editable.Root
             default-value="This is a longer description that can be edited. Click to edit and make changes."
             orientation="vertical"
           >
@@ -35,7 +37,7 @@ import { Button, Card, Editable, Field, Textarea } from "@pisagor/vue";
                 </Button>
               </Editable.SubmitTrigger>
             </Editable.Control>
-          </Editable>
+          </Editable.Root>
         </Field>
       </Field.Group>
     </Card.Content>

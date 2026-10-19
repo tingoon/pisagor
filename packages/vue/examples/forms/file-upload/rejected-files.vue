@@ -3,12 +3,12 @@ import { FileUpload } from "@pisagor/vue";
 </script>
 
 <template>
-  <FileUpload accept="image/*" :max-file-size="1024 * 1024" :max-files="3">
-    <FileUpload.Dropzone class="w-full">
-      <FileUpload.DropzoneIcon />
-      <FileUpload.Title>Drop up to 3 images</FileUpload.Title>
-      <FileUpload.Helper>Images only, max 1 MB each.</FileUpload.Helper>
-    </FileUpload.Dropzone>
-    <FileUpload.List />
-  </FileUpload>
+  <FileUpload
+    accept="image/*"
+    :class-names="{ dropzone: 'w-full' }"
+    helper="Images only, max 1 MB each."
+    :max-file-size="1024 * 1024"
+    :max-files="3"
+    title="Drop up to 3 images"
+  />
 </template>

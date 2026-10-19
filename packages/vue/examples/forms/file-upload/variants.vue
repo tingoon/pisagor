@@ -4,23 +4,15 @@ import { Button, FileUpload } from "@pisagor/vue";
 
 <template>
   <div class="flex flex-col gap-2">
-    <FileUpload>
-      <FileUpload.Dropzone variant="primary">
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Primary</FileUpload.Title>
-        <FileUpload.Trigger as-child>
-          <Button>Browse files</Button>
-        </FileUpload.Trigger>
-      </FileUpload.Dropzone>
+    <FileUpload title="Primary" variant="primary">
+      <template #trigger>
+        <Button>Browse files</Button>
+      </template>
     </FileUpload>
-    <FileUpload>
-      <FileUpload.Dropzone variant="secondary">
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Secondary</FileUpload.Title>
-        <FileUpload.Trigger as-child>
-          <Button>Browse files</Button>
-        </FileUpload.Trigger>
-      </FileUpload.Dropzone>
+    <FileUpload title="Secondary" variant="secondary">
+      <template #trigger>
+        <Button>Browse files</Button>
+      </template>
     </FileUpload>
   </div>
 </template>

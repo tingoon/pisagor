@@ -4,21 +4,21 @@ import { Editable, Input } from "@pisagor/vue";
 
 <template>
   <div class="flex flex-col gap-2">
-    <Editable default-value="Primary">
+    <Editable.Root default-value="Primary">
       <Editable.Area>
         <Editable.Input as-child>
           <Input class="w-full" />
         </Editable.Input>
         <Editable.Preview control-variant="primary" />
       </Editable.Area>
-    </Editable>
-    <Editable default-value="Secondary">
+    </Editable.Root>
+    <Editable.Root default-value="Secondary">
       <Editable.Area>
         <Editable.Input as-child>
           <Input class="w-full" />
         </Editable.Input>
         <Editable.Preview control-variant="secondary" />
       </Editable.Area>
-    </Editable>
+    </Editable.Root>
   </div>
 </template>

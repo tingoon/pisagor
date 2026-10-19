@@ -13,6 +13,7 @@ export interface CheckboxFieldProps
       | "checked"
       | "class"
       | "invalid"
+      | "label"
       | "name"
       | "onCheckedChange"
       | "onValueChange"

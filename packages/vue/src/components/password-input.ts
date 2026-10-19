@@ -1,13 +1,16 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import type { PasswordInputRootContract } from "@pisagor/contracts";
+import type {
+  PasswordInputContract,
+  PasswordInputRootContract,
+} from "@pisagor/contracts";
 import { passwordInputRecipe } from "@pisagor/recipes";
-import { defineComponent, h, type PropType } from "vue";
+import { type Component, defineComponent, h, type PropType } from "vue";
 import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
-import type { ClassValue } from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { InputGroup } from "./input-group";
 import type { InputGroupButtonProps } from "./input-group/input-group-core";
 import { useLocale } from "./provider/context";
@@ -17,7 +20,8 @@ type ArkPart = Parameters<typeof h>[0];
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps extends PasswordInputRootContract {
+export interface PasswordInputProps
+  extends PasswordInputRootContract, PasswordInputContract {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;
@@ -38,97 +42,62 @@ export interface PasswordInputProps extends PasswordInputRootContract {
 // #endregion
 
 // #region Parts
-const classProp = {
-  default: undefined,
-  type: [String, Object, Array] as PropType<ClassValue>,
-};
-
-const PasswordInputRoot = defineComponent({
-  inheritAttrs: false,
-  name: "PasswordInput.Root",
-  props: {
-    class: classProp,
-    recipe: {
-      default: passwordInputRecipe,
-      type: Function as PropType<typeof passwordInputRecipe>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        PasswordInputPrimitive.Root as ArkPart,
-        { ...attrs, class: props.recipe().base({ class: props.class }) },
-        slots,
-      );
-  },
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "PasswordInput",
+  recipe: passwordInputRecipe,
 });
 
-const PasswordInputControl = defineComponent({
-  inheritAttrs: false,
-  name: "PasswordInput.Control",
-  props: { class: classProp },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(PasswordInputPrimitive.Control as ArkPart, { asChild: true }, () =>
-        h(
-          InputGroup as ArkPart,
-          {
-            ...attrs,
-            class: passwordInputRecipe().control({ class: props.class }),
-          },
-          slots,
-        ),
-      );
-  },
+export const PasswordInputRoot = withProvider<PasswordInputRootContract>(
+  PasswordInputPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+export const PasswordInputLabel = withContext(PasswordInputPrimitive.Label, {
+  name: "Label",
 });
 
-const PasswordInputInput = defineComponent({
-  inheritAttrs: false,
-  name: "PasswordInput.Input",
-  setup(_, { attrs }) {
-    return () =>
-      h(
-        PasswordInputPrimitive.Input as ArkPart,
-        { ...attrs, asChild: true },
-        () => h(InputGroup.Input as ArkPart, { clearable: false }),
-      );
-  },
-});
+export const PasswordInputControl = withContext(
+  PasswordInputPrimitive.Control,
+  { name: "Control" },
+);
 
-const PasswordInputVisibilityTrigger = defineComponent({
+// Cast: Ark's Input props union is too complex for `withContext` (TS2590).
+export const PasswordInputInput = withContext(
+  PasswordInputPrimitive.Input as Component,
+  { name: "Input" },
+);
+
+const VisibilityTriggerBase = withContext(
+  PasswordInputPrimitive.VisibilityTrigger,
+  { name: "VisibilityTrigger" },
+);
+
+/** Visibility trigger with a localized default `aria-label`. */
+export const PasswordInputVisibilityTrigger = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput.VisibilityTrigger",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
 
     return () =>
-      h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
-        h(
-          PasswordInputPrimitive.VisibilityTrigger as ArkPart,
-          { ...attrs, asChild: true },
-          () =>
-            h(
-              InputGroup.Button as ArkPart,
-              {
-                "aria-label": m("passwordInput.togglePasswordVisibility"),
-                size: "icon-xs",
-                type: "button",
-                variant: "ghost",
-              },
-              () =>
-                slots.default?.() ??
-                h(PasswordInputPrimitive.Indicator as ArkPart, null, {
-                  default: () => h(PhEye),
-                  fallback: () => h(PhEyeSlash),
-                }),
-            ),
-        ),
+      h(
+        VisibilityTriggerBase as ArkPart,
+        {
+          "aria-label": m("passwordInput.togglePasswordVisibility"),
+          ...attrs,
+        },
+        slots,
       );
   },
 });
+
+export const PasswordInputIndicator = withContext(
+  PasswordInputPrimitive.Indicator,
+  { name: "Indicator" },
+);
 // #endregion
 
-// #region Component
+// #region Shorthand
 const PasswordInputShorthand = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput",
@@ -136,6 +105,10 @@ const PasswordInputShorthand = defineComponent({
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<PasswordInputProps["classNames"]>,
     },
     clearable: { default: false, type: Boolean },
     clearButtonProps: {
@@ -203,100 +176,108 @@ const PasswordInputShorthand = defineComponent({
       const { fallback, ...restIndicatorProps } = props.indicatorProps ?? {};
       const variantSlots = props.recipe();
 
+      const classNames = props.classNames;
+      const { surfaceVariant: _surfaceVariant, ...inputAttrs } =
+        attrs as Record<string, unknown>;
+
       return h(
-        PasswordInputPrimitive.Root as ArkPart,
+        PasswordInputRoot as ArkPart,
         {
-          class: variantSlots.base({ class: props.class }),
+          class: props.class,
           "data-size": props.size,
           defaultVisible: props.defaultVisible,
           invalid: props.invalid,
           onVisibilityChange: props.onVisibilityChange,
+          recipe: props.recipe,
           visible: props.visible,
         },
         () =>
-          h(PasswordInputPrimitive.Control as ArkPart, { asChild: true }, () =>
-            h(
-              InputGroup as ArkPart,
-              {
-                class: variantSlots.control(),
-                "data-clearable": props.clearable || undefined,
-                size: props.size,
-                variant: props.variant,
-              },
-              () => [
-                h(
-                  PasswordInputPrimitive.Input as ArkPart,
-                  {
-                    asChild: true,
-                    defaultValue: props.defaultValue,
-                    disabled: props.disabled,
-                    onInput: handleChange,
-                    placeholder: props.placeholder,
-                    readOnly: props.readOnly,
-                    ref: inputRef,
-                    value: props.value,
-                    ...(attrs as object),
-                  },
-                  () => h(InputGroup.Input as ArkPart, { clearable: false }),
-                ),
-                canClear.value
-                  ? h(
-                      InputGroup.Addon as ArkPart,
-                      { align: "inline-end", class: variantSlots.clearAddon() },
-                      () =>
-                        h(
-                          InputGroup.Button as ArkPart,
-                          {
-                            "aria-label": m("passwordInput.clear"),
-                            ...restClearButtonProps,
-                            "data-part": "clear-trigger",
-                            "data-scope": "password-input",
-                            onClick: (event: MouseEvent) => {
-                              handleClear();
-                              onClearClick?.(event);
-                            },
-                            size: "icon-xs",
-                            type: "button",
-                            variant: "ghost",
-                          },
-                          () => slots.clearButton?.() ?? h(PhX),
-                        ),
-                    )
-                  : null,
-                h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
+          h(
+            PasswordInputControl as ArkPart,
+            { asChild: true, class: classNames?.control },
+            () =>
+              h(
+                InputGroup as ArkPart,
+                {
+                  "data-clearable": props.clearable || undefined,
+                  size: props.size,
+                  variant: props.variant,
+                },
+                () => [
                   h(
-                    PasswordInputPrimitive.VisibilityTrigger as ArkPart,
+                    PasswordInputInput as ArkPart,
                     {
                       asChild: true,
-                      ...props.visibilityTriggerProps,
+                      class: classNames?.input,
+                      defaultValue: props.defaultValue,
+                      disabled: props.disabled,
+                      onInput: handleChange,
+                      placeholder: props.placeholder,
+                      readOnly: props.readOnly,
+                      ref: inputRef,
+                      value: props.value,
+                      ...inputAttrs,
                     },
-                    () =>
-                      h(
-                        InputGroup.Button as ArkPart,
+                    () => h(InputGroup.Input as ArkPart, { clearable: false }),
+                  ),
+                  canClear.value
+                    ? h(
+                        InputGroup.Addon as ArkPart,
                         {
-                          "aria-label": m(
-                            "passwordInput.togglePasswordVisibility",
-                          ),
-                          size: "icon-xs",
-                          type: "button",
-                          variant: "ghost",
+                          align: "inline-end",
+                          class: variantSlots.clearAddon({
+                            class: classNames?.clearAddon,
+                          }),
                         },
                         () =>
                           h(
-                            PasswordInputPrimitive.Indicator as ArkPart,
+                            InputGroup.Button as ArkPart,
                             {
-                              ...restIndicatorProps,
+                              ...restClearButtonProps,
+                              "aria-label": m("passwordInput.clear"),
+                              "data-part": "clear-trigger",
+                              "data-scope": "password-input",
+                              onClick: (event: MouseEvent) => {
+                                handleClear();
+                                onClearClick?.(event);
+                              },
+                              size: "icon-xs",
+                              type: "button",
+                              variant: "ghost",
                             },
-                            {
-                              default: () => slots.indicator?.() ?? h(PhEye),
-                              fallback: () => fallback ?? h(PhEyeSlash),
-                            },
+                            () => slots.clearButton?.() ?? h(PhX),
                           ),
-                      ),
+                      )
+                    : null,
+                  h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
+                    h(
+                      PasswordInputVisibilityTrigger as ArkPart,
+                      {
+                        ...props.visibilityTriggerProps,
+                        asChild: true,
+                        class: classNames?.visibilityTrigger,
+                      },
+                      () =>
+                        h(
+                          InputGroup.Button as ArkPart,
+                          { size: "icon-xs", type: "button", variant: "ghost" },
+                          () =>
+                            h(
+                              PasswordInputIndicator as ArkPart,
+                              {
+                                ...restIndicatorProps,
+                                class: classNames?.indicator,
+                              },
+                              {
+                                default: () => slots.indicator?.() ?? h(PhEye),
+                                fallback: () => fallback ?? h(PhEyeSlash),
+                              },
+                            ),
+                        ),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ),
       );
     };
@@ -306,8 +287,9 @@ const PasswordInputShorthand = defineComponent({
 
 export const PasswordInput = Object.assign(PasswordInputShorthand, {
   Control: PasswordInputControl,
-  Indicator: PasswordInputPrimitive.Indicator,
+  Indicator: PasswordInputIndicator,
   Input: PasswordInputInput,
+  Label: PasswordInputLabel,
   Root: PasswordInputRoot,
   VisibilityTrigger: PasswordInputVisibilityTrigger,
 });

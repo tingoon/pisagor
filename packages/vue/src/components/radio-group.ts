@@ -1,7 +1,6 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue";
 import type {
   RadioGroupItemControlProps,
-  RadioGroupItemHiddenInputProps,
   RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupRootProps as RadioGroupRootPrimitiveProps,
 } from "@ark-ui/vue";
@@ -85,7 +84,7 @@ const Root = defineComponent({
   },
 });
 
-const ItemRoot = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
+const Item = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
   name: "Item",
   slot: "base",
 });
@@ -97,33 +96,6 @@ const ItemControl = withContext<RadioGroupItemControlProps>(
     slot: "control",
   },
 );
-
-const Item = defineComponent({
-  inheritAttrs: false,
-  name: "RadioGroup.Item",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    tabIndex: { default: undefined, type: Number },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        ItemRoot as ArkPart,
-        {
-          ...attrs,
-          class: props.class as string | undefined,
-        },
-        () => [
-          h(ItemControl),
-          h(ItemText, null, slots.default),
-          h(ItemHiddenInput, { tabIndex: props.tabIndex }),
-        ],
-      );
-  },
-});
 
 const ItemText = defineComponent({
   inheritAttrs: false,
@@ -147,19 +119,7 @@ const ItemText = defineComponent({
   },
 });
 
-const ItemHiddenInput = defineComponent({
-  inheritAttrs: false,
-  name: "RadioGroup.ItemHiddenInput",
-  setup(_props, { attrs }) {
-    return () =>
-      h(
-        RadioGroupPrimitive.ItemHiddenInput as ArkPart,
-        {
-          ...attrs,
-        } as RadioGroupItemHiddenInputProps,
-      );
-  },
-});
+const ItemHiddenInput = RadioGroupPrimitive.ItemHiddenInput;
 
 const Label = defineComponent({
   inheritAttrs: false,
@@ -209,13 +169,17 @@ const RadioGroupShorthand = defineComponent({
         () =>
           props.items?.map((item) =>
             h(
-              Item,
+              Item as ArkPart,
               {
                 disabled: item.disabled,
                 key: item.value,
                 value: item.value,
               },
-              () => item.label,
+              () => [
+                h(ItemControl),
+                h(ItemText, null, () => item.label),
+                h(ItemHiddenInput as ArkPart),
+              ],
             ),
           ),
       );
@@ -224,6 +188,8 @@ const RadioGroupShorthand = defineComponent({
 // #endregion
 
 export type {
+  RadioGroupItemControlProps,
+  RadioGroupItemHiddenInputProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
 } from "@ark-ui/vue";

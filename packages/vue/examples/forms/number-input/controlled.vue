@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { NumberInput } from "@pisagor/vue";
+import { PhMinus, PhPlus } from "@phosphor-icons/vue";
+import { Button, Input, NumberInput } from "@pisagor/vue";
 import { ref } from "vue";
 
 const value = ref("1");
@@ -11,13 +12,23 @@ function onValueChange(next: number | string) {
 <template>
   <div class="flex flex-col gap-2 text-center text-sm">
     <p>Select the number 3</p>
-    <NumberInput :value="value" @value-change="onValueChange">
+    <NumberInput.Root :value="value" @value-change="onValueChange">
       <NumberInput.Control>
-        <NumberInput.DecrementTrigger />
-        <NumberInput.Input />
-        <NumberInput.IncrementTrigger />
+        <NumberInput.DecrementTrigger as-child>
+          <Button variant="ghost">
+            <PhMinus aria-hidden />
+          </Button>
+        </NumberInput.DecrementTrigger>
+        <NumberInput.Input as-child>
+          <Input />
+        </NumberInput.Input>
+        <NumberInput.IncrementTrigger as-child>
+          <Button variant="ghost">
+            <PhPlus aria-hidden />
+          </Button>
+        </NumberInput.IncrementTrigger>
       </NumberInput.Control>
-    </NumberInput>
+    </NumberInput.Root>
     <p class="text-center">{{ value === "3" ? "✅" : "❌" }}</p>
   </div>
 </template>

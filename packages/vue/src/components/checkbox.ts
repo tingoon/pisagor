@@ -8,15 +8,17 @@ import type {
 } from "@ark-ui/vue";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
 import type {
+  CheckboxContract,
   CheckboxGroupRootContract,
   CheckboxRootContract,
 } from "@pisagor/contracts";
 import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { contentProp, slotOrProp } from "../internal/shorthand";
 
 // #region Context
-const { withContext, withProvider } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Checkbox",
   recipe: checkboxRecipe,
 });
@@ -32,7 +34,10 @@ export interface CheckboxGroupProps
 
 type CheckboxRootProps = CheckboxRootPrimitiveProps & CheckboxRootContract;
 
-export type CheckboxProps = CheckboxRootProps;
+export interface CheckboxProps extends CheckboxRootProps, CheckboxContract {
+  /** Visible label rendered next to the control; also the `label` slot. */
+  label?: string;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -85,37 +90,25 @@ const ControlBase = withContext<CheckboxControlProps>(
   },
 );
 
+/**
+ * Control; mirrors the root `variant` as `data-variant`. Render your own
+ * indicators.
+ */
 const Control = defineComponent({
   inheritAttrs: false,
   name: "Checkbox.Control",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    size: {
-      default: undefined,
-      type: String as PropType<CheckboxRootContract["size"]>,
-    },
-    variant: {
-      default: undefined,
-      type: String as PropType<CheckboxRootContract["variant"]>,
-    },
-  },
-  setup(props, { attrs, slots }) {
+  setup(_, { attrs, slots }) {
+    const styles = useStyles();
+
     return () =>
       h(
         ControlBase,
         {
           ...attrs,
-          class: props.class as string | undefined,
-          "data-variant": props.variant ?? "primary",
+          "data-variant":
+            (styles.variants as CheckboxRootContract).variant ?? "primary",
         },
-        () =>
-          slots.default?.() ?? [
-            h(Indicator, null, () => h(PhCheck)),
-            h(Indicator, { indeterminate: true }, () => h(PhMinus)),
-          ],
+        slots,
       );
   },
 });
@@ -132,32 +125,38 @@ const Label = withContext<CheckboxLabelProps>(CheckboxPrimitive.Label, {
 });
 // #endregion
 
-// #region Closed
+// #region Shorthand
 const CheckboxShorthand = defineComponent({
   inheritAttrs: false,
   name: "Checkbox",
   props: {
-    class: {
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Object as PropType<CheckboxProps["classNames"]>,
     },
+    label: contentProp,
     tabIndex: { default: undefined, type: Number },
   },
-  setup(props, { attrs }) {
-    return () =>
-      h(
-        Root,
-        {
-          ...attrs,
-          class: props.class as string | undefined,
-        },
-        () => [
-          h(Control),
-          h(CheckboxPrimitive.HiddenInput as ArkPart, {
-            tabIndex: props.tabIndex,
-          }),
-        ],
-      );
+  setup(props, { attrs, slots }) {
+    return () => {
+      const classNames = props.classNames;
+      const label = slotOrProp(slots.label, props.label);
+
+      return h(Root, attrs, () => [
+        h(Control, { class: classNames?.base }, () => [
+          h(Indicator, { class: classNames?.indicator }, () => h(PhCheck)),
+          h(
+            Indicator,
+            { class: classNames?.indicator, indeterminate: true },
+            () => h(PhMinus),
+          ),
+        ]),
+        label ? h(Label, { class: classNames?.label }, label) : null,
+        h(CheckboxPrimitive.HiddenInput as ArkPart, {
+          tabIndex: props.tabIndex,
+        }),
+      ]);
+    };
   },
 });
 // #endregion

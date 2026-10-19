@@ -4,15 +4,12 @@ import { Button, FileUpload } from "@pisagor/vue";
 </script>
 
 <template>
-  <FileUpload directory>
-    <div class="flex justify-center">
-      <FileUpload.Trigger as-child>
-        <Button size="sm" variant="outline">
-          <PhFolder />
-          Select folder
-        </Button>
-      </FileUpload.Trigger>
-      <FileUpload.List />
-    </div>
+  <FileUpload class="items-center" directory :dropzone="false">
+    <template #trigger>
+      <Button size="sm" variant="outline">
+        <PhFolder />
+        Select folder
+      </Button>
+    </template>
   </FileUpload>
 </template>

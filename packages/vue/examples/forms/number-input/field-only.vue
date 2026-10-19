@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import { NumberInput } from "@pisagor/vue";
+import { Input, NumberInput } from "@pisagor/vue";
 </script>
 
 <template>
-  <NumberInput default-value="0">
+  <NumberInput.Root default-value="0">
     <NumberInput.Control>
-      <NumberInput.Input />
+      <NumberInput.Input as-child>
+        <Input />
+      </NumberInput.Input>
     </NumberInput.Control>
-  </NumberInput>
+  </NumberInput.Root>
 </template>

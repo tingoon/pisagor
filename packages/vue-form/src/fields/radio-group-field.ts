@@ -136,7 +136,15 @@ export const RadioGroupField = defineComponent({
                     h(
                       RadioGroup.Item as ArkPart,
                       { id: optionId, value: option.value },
-                      () => option.label,
+                      () => [
+                        h(RadioGroup.ItemControl as ArkPart),
+                        h(
+                          RadioGroup.ItemText as ArkPart,
+                          null,
+                          () => option.label,
+                        ),
+                        h(RadioGroup.ItemHiddenInput as ArkPart),
+                      ],
                     ),
                     h(
                       Field.Description as ArkPart,
@@ -149,7 +157,11 @@ export const RadioGroupField = defineComponent({
                 return h(
                   RadioGroup.Item as ArkPart,
                   { id: optionId, key: option.value, value: option.value },
-                  () => option.label,
+                  () => [
+                    h(RadioGroup.ItemControl as ArkPart),
+                    h(RadioGroup.ItemText as ArkPart, null, () => option.label),
+                    h(RadioGroup.ItemHiddenInput as ArkPart),
+                  ],
                 );
               }),
           ),

@@ -14,7 +14,8 @@ function prefix() {
     :default-value="90"
     :size="120"
     :thickness="10"
-  >
-    <CircularSlider.ValueText suffix="°" :prefix="prefix()" />
-  </CircularSlider>
+    show-value
+    value-suffix="°"
+    :value-prefix="prefix()"
+  />
 </template>

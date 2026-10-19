@@ -4,7 +4,7 @@ import { Button, Editable, Input } from "@pisagor/vue";
 </script>
 
 <template>
-  <Editable default-value="Editable content" disabled>
+  <Editable.Root default-value="Editable content" disabled>
     <Editable.Area>
       <Editable.Input as-child>
         <Input />
@@ -23,5 +23,5 @@ import { Button, Editable, Input } from "@pisagor/vue";
         </Button>
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
+  </Editable.Root>
 </template>

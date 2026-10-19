@@ -5,15 +5,17 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
 
 <template>
   <Card>
-    <Card.Header
-      description="Focus the field to start editing (default activation mode)"
-      title="Edit with focus"
-    />
+    <Card.Header>
+      <Card.Title>Edit with focus</Card.Title>
+      <Card.Description>
+        Focus the field to start editing (default activation mode)
+      </Card.Description>
+    </Card.Header>
     <Card.Content>
       <Field.Group>
         <Field>
           <Field.Label>Name</Field.Label>
-          <Editable activation-mode="focus" default-value="Jane Doe">
+          <Editable.Root activation-mode="focus" default-value="Jane Doe">
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />
@@ -32,11 +34,11 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
                 </Button>
               </Editable.SubmitTrigger>
             </Editable.Control>
-          </Editable>
+          </Editable.Root>
         </Field>
         <Field>
           <Field.Label>Username</Field.Label>
-          <Editable activation-mode="focus" default-value="@jane.doe">
+          <Editable.Root activation-mode="focus" default-value="@jane.doe">
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />
@@ -55,7 +57,7 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
                 </Button>
               </Editable.SubmitTrigger>
             </Editable.Control>
-          </Editable>
+          </Editable.Root>
         </Field>
       </Field.Group>
     </Card.Content>

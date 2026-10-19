@@ -1,13 +1,24 @@
 <script lang="ts" setup>
-import { NumberInput } from "@pisagor/vue";
+import { PhMinus, PhPlus } from "@phosphor-icons/vue";
+import { Button, Input, NumberInput } from "@pisagor/vue";
 </script>
 
 <template>
-  <NumberInput default-value="5">
+  <NumberInput.Root default-value="5">
     <NumberInput.Control>
-      <NumberInput.DecrementTrigger />
-      <NumberInput.Input placeholder="0" />
-      <NumberInput.IncrementTrigger />
+      <NumberInput.DecrementTrigger as-child>
+        <Button variant="ghost">
+          <PhMinus aria-hidden />
+        </Button>
+      </NumberInput.DecrementTrigger>
+      <NumberInput.Input as-child>
+        <Input placeholder="0" />
+      </NumberInput.Input>
+      <NumberInput.IncrementTrigger as-child>
+        <Button variant="ghost">
+          <PhPlus aria-hidden />
+        </Button>
+      </NumberInput.IncrementTrigger>
     </NumberInput.Control>
-  </NumberInput>
+  </NumberInput.Root>
 </template>

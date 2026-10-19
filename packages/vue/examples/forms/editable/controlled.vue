@@ -8,10 +8,12 @@ const isEditing = ref(false);
 
 <template>
   <Card>
-    <Card.Header
-      description="Click the edit button to start editing"
-      title="Edit user"
-    >
+    <Card.Header>
+      <Card.Title>Edit user</Card.Title>
+      <Card.Description>
+        Click the edit button to start editing
+      </Card.Description>
+
       <Card.Action>
         <Button
           :variant="isEditing ? 'outline' : 'ghost'"
@@ -26,7 +28,7 @@ const isEditing = ref(false);
       <Field.Group>
         <Field>
           <Field.Label>Name</Field.Label>
-          <Editable
+          <Editable.Root
             activation-mode="none"
             default-value="Jane Doe"
             :edit="isEditing"
@@ -37,11 +39,11 @@ const isEditing = ref(false);
               </Editable.Input>
               <Editable.Preview />
             </Editable.Area>
-          </Editable>
+          </Editable.Root>
         </Field>
         <Field>
           <Field.Label>Username</Field.Label>
-          <Editable
+          <Editable.Root
             activation-mode="none"
             default-value="@jane.doe"
             :edit="isEditing"
@@ -52,7 +54,7 @@ const isEditing = ref(false);
               </Editable.Input>
               <Editable.Preview />
             </Editable.Area>
-          </Editable>
+          </Editable.Root>
         </Field>
       </Field.Group>
     </Card.Content>

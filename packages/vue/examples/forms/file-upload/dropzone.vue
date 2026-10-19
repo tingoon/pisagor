@@ -3,11 +3,5 @@ import { FileUpload } from "@pisagor/vue";
 </script>
 
 <template>
-  <FileUpload>
-    <FileUpload.Dropzone>
-      <FileUpload.DropzoneIcon />
-      <FileUpload.Title>Drop your files here</FileUpload.Title>
-    </FileUpload.Dropzone>
-    <FileUpload.List />
-  </FileUpload>
+  <FileUpload title="Drop your files here" />
 </template>

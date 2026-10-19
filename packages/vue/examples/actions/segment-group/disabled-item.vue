@@ -6,6 +6,7 @@ const items = ["Profile", "Account", "Security", "Notifications"];
 
 <template>
   <SegmentGroup.Root class="rounded-lg" default-value="Profile">
+    <SegmentGroup.Indicator />
     <SegmentGroup.Item
       class="px-2 py-1.5 text-sm"
       v-for="item in items"
@@ -13,7 +14,9 @@ const items = ["Profile", "Account", "Security", "Notifications"];
       :disabled="item === 'Security'"
       :value="item"
     >
-      {{ item }}
+      <SegmentGroup.ItemText>{{ item }}</SegmentGroup.ItemText>
+      <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   </SegmentGroup.Root>
 </template>

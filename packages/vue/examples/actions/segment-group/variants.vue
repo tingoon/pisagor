@@ -11,23 +11,29 @@ const items = ["Profile", "Account", "Security", "Notifications"];
       default-value="Profile"
       variant="default"
     >
+      <SegmentGroup.Indicator />
       <SegmentGroup.Item
         class="px-2 py-1.5 text-sm"
         v-for="item in items"
         :key="item"
         :value="item"
       >
-        {{ item }}
+        <SegmentGroup.ItemText>{{ item }}</SegmentGroup.ItemText>
+        <SegmentGroup.ItemControl />
+        <SegmentGroup.ItemHiddenInput />
       </SegmentGroup.Item>
     </SegmentGroup.Root>
     <SegmentGroup.Root default-value="Profile" variant="underline">
+      <SegmentGroup.Indicator />
       <SegmentGroup.Item
         class="px-2 py-1.5 text-sm"
         v-for="item in items"
         :key="item"
         :value="item"
       >
-        {{ item }}
+        <SegmentGroup.ItemText>{{ item }}</SegmentGroup.ItemText>
+        <SegmentGroup.ItemControl />
+        <SegmentGroup.ItemHiddenInput />
       </SegmentGroup.Item>
     </SegmentGroup.Root>
     <SegmentGroup.Root
@@ -35,13 +41,16 @@ const items = ["Profile", "Account", "Security", "Notifications"];
       orientation="vertical"
       variant="underline"
     >
+      <SegmentGroup.Indicator />
       <SegmentGroup.Item
         class="px-2 py-1.5 text-sm"
         v-for="item in items"
         :key="item"
         :value="item"
       >
-        {{ item }}
+        <SegmentGroup.ItemText>{{ item }}</SegmentGroup.ItemText>
+        <SegmentGroup.ItemControl />
+        <SegmentGroup.ItemHiddenInput />
       </SegmentGroup.Item>
     </SegmentGroup.Root>
   </div>

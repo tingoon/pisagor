@@ -1,8 +1,13 @@
 ## Anatomy
 
 ```vue
-<InputOTP>
-  <InputOTP.Slot />
-  <InputOTP.Separator />
-</InputOTP>
+<InputOTP.Root>
+  <InputOTP.Label />
+  <InputOTP.Control>
+    <InputOTP.Input />
+    <InputOTP.Separator />
+  </InputOTP.Control>
+</InputOTP.Root>
 ```
+
+Parts map 1:1 to Ark `PinInput` (`Separator` is a Pisagor helper). The `InputOTP` shorthand renders `length` inputs with optional `groupSize` separators for you.

@@ -7,12 +7,10 @@ import { TagsInput } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<TagsInput>
-  <TagsInput.Context>
-    {({ value }) => value.map((tag, index) => <TagsInput.Item />)}
-  </TagsInput.Context>
-</TagsInput>
+<TagsInput :default-value="['React']" placeholder="Add tag" clearable />
 ```
+
+The shorthand renders the input group, every tag with its delete button and edit input, the text input, and an optional clear-all button. Compose `TagsInput.Root` and its parts directly for custom tags (see Compound).
 
 ## Examples
 

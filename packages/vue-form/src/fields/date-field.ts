@@ -92,34 +92,24 @@ export const DateField = defineComponent({
           orientation: props.orientation,
         },
         () =>
-          h(
-            DatePicker as ArkPart,
-            {
-              ...attrs,
-              defaultValue: props.defaultValue,
-              disabled: props.disabled,
-              invalid: props.invalid,
-              name: props.name,
-              onOpenChange: (details: { open: boolean }) => {
-                if (!details.open) {
-                  props.onBlur?.();
-                }
-              },
-              onValueChange: (nextValue: unknown) =>
-                props.onValueChange(nextValue ?? []),
-              variant: props.variant,
-              ...(props.value !== undefined
-                ? { value: props.value ?? [] }
-                : {}),
+          h(DatePicker as ArkPart, {
+            ...attrs,
+            defaultValue: props.defaultValue,
+            disabled: props.disabled,
+            invalid: props.invalid,
+            inputProps: { id: props.id },
+            name: props.name,
+            onOpenChange: (details: { open: boolean }) => {
+              if (!details.open) {
+                props.onBlur?.();
+              }
             },
-            () => [
-              h(DatePicker.Input as ArkPart, {
-                id: props.id,
-                placeholder: props.placeholder,
-              }),
-              h(DatePicker.Content as ArkPart),
-            ],
-          ),
+            onValueChange: (nextValue: unknown) =>
+              props.onValueChange(nextValue ?? []),
+            placeholder: props.placeholder,
+            variant: props.variant,
+            ...(props.value !== undefined ? { value: props.value ?? [] } : {}),
+          }),
       );
   },
 });

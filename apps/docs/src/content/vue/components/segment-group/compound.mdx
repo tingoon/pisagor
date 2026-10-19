@@ -2,9 +2,16 @@
 
 ```vue
 <SegmentGroup.Root>
-  <SegmentGroup.Item />
+  <SegmentGroup.Indicator />
+  <SegmentGroup.Item>
+    <SegmentGroup.ItemText />
+    <SegmentGroup.ItemControl />
+    <SegmentGroup.ItemHiddenInput />
+  </SegmentGroup.Item>
 </SegmentGroup.Root>
 ```
+
+Parts map 1:1 to Ark. The `SegmentGroup` shorthand renders the indicator and each item's text, control, and hidden input from `items`.
 
 ## Examples
 

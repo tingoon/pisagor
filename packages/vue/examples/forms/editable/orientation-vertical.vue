@@ -4,7 +4,7 @@ import { Button, Editable, Textarea } from "@pisagor/vue";
 </script>
 
 <template>
-  <Editable default-value="Editable content" orientation="vertical">
+  <Editable.Root default-value="Editable content" orientation="vertical">
     <Editable.Area>
       <Editable.Input as-child>
         <Textarea class="min-h-24" />
@@ -23,5 +23,5 @@ import { Button, Editable, Textarea } from "@pisagor/vue";
         </Button>
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
+  </Editable.Root>
 </template>

@@ -7,17 +7,10 @@ import { Editable } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<Editable>
-  <Editable.Area>
-    <Editable.Input />
-    <Editable.Preview />
-  </Editable.Area>
-  <Editable.Control>
-    <Editable.CancelTrigger />
-    <Editable.SubmitTrigger />
-  </Editable.Control>
-</Editable>
+<Editable placeholder="Click to edit" />
 ```
+
+The shorthand renders `Area` with an `Input` (or `Textarea` with `multiline`) and `Preview`, plus cancel/submit buttons unless `:show-controls="false"`. Compose `Editable.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

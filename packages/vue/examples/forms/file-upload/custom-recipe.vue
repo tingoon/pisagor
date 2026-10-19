@@ -15,22 +15,20 @@ const brandFileUploadRecipe = tv({
 </script>
 
 <template>
-  <FileUpload :recipe="brandFileUploadRecipe">
-    <FileUpload.Dropzone>
-      <FileUpload.DropzoneIcon />
-      <FileUpload.Title>Drop files here</FileUpload.Title>
+  <FileUpload
+    helper="You can upload up to 2 files at a time."
+    :recipe="brandFileUploadRecipe"
+    title="Drop files here"
+  >
+    <template #description>
       <div class="flex items-center justify-center gap-2">
         <Separator />
-        <FileUpload.Description>or</FileUpload.Description>
+        or
         <Separator />
       </div>
-      <FileUpload.Trigger as-child>
-        <Button>Browse files</Button>
-      </FileUpload.Trigger>
-      <FileUpload.Helper>
-        You can upload up to 2 files at a time.
-      </FileUpload.Helper>
-    </FileUpload.Dropzone>
-    <FileUpload.List />
+    </template>
+    <template #trigger>
+      <Button>Browse files</Button>
+    </template>
   </FileUpload>
 </template>
