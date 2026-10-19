@@ -55,6 +55,8 @@ export const defaultMessages = {
   "navigationMenu.label": "Main",
   "numberInput.decrement": "Decrement",
   "numberInput.increment": "Increment",
+  "pagination.next": "Next",
+  "pagination.previous": "Previous",
   "passwordInput.clear": "Clear",
   "passwordInput.togglePasswordVisibility": "Toggle password visibility",
   "phoneInput.empty": "No country found. Try a different search.",

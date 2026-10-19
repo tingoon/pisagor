@@ -2,7 +2,7 @@ import { Pagination } from "@pisagor/react";
 
 export function LinkUrls() {
   return (
-    <Pagination count={50} pageSize={10}>
+    <Pagination.Root count={50} pageSize={10}>
       <Pagination.ItemLink
         getHref={(page) => `/blog/page/${page}`}
         page="previous"
@@ -12,6 +12,6 @@ export function LinkUrls() {
       <Pagination.ItemLink getHref={(page) => `/blog/page/${page}`} page="next">
         Next
       </Pagination.ItemLink>
-    </Pagination>
+    </Pagination.Root>
   );
 }
