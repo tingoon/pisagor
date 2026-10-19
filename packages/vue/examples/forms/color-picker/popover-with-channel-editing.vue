@@ -3,7 +3,7 @@ import { Button, ColorPicker, Input } from "@pisagor/vue";
 </script>
 
 <template>
-  <ColorPicker format="rgba">
+  <ColorPicker.Root format="rgba">
     <ColorPicker.Control>
       <ColorPicker.Trigger as-child>
         <Button size="lg" variant="ghost">
@@ -12,22 +12,30 @@ import { Button, ColorPicker, Input } from "@pisagor/vue";
         </Button>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
-    <ColorPicker.Content>
-      <ColorPicker.Area>
-        <ColorPicker.AreaThumb />
-      </ColorPicker.Area>
-      <ColorPicker.ChannelSlider channel="hue" />
-      <div class="grid grid-cols-3 gap-2">
-        <ColorPicker.Input as-child channel="red">
-          <Input />
-        </ColorPicker.Input>
-        <ColorPicker.Input as-child channel="green">
-          <Input />
-        </ColorPicker.Input>
-        <ColorPicker.Input as-child channel="blue">
-          <Input />
-        </ColorPicker.Input>
-      </div>
-    </ColorPicker.Content>
-  </ColorPicker>
+    <Teleport to="body">
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area>
+            <ColorPicker.AreaBackground />
+            <ColorPicker.AreaThumb />
+          </ColorPicker.Area>
+          <ColorPicker.ChannelSlider channel="hue">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+          <div class="grid grid-cols-3 gap-2">
+            <ColorPicker.Input as-child channel="red">
+              <Input />
+            </ColorPicker.Input>
+            <ColorPicker.Input as-child channel="green">
+              <Input />
+            </ColorPicker.Input>
+            <ColorPicker.Input as-child channel="blue">
+              <Input />
+            </ColorPicker.Input>
+          </div>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </Teleport>
+  </ColorPicker.Root>
 </template>

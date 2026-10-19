@@ -1,36 +1,10 @@
 <script lang="ts" setup>
-import { ColorPicker, InputGroup } from "@pisagor/vue";
+import { ColorPicker } from "@pisagor/vue";
 </script>
 
 <template>
   <div class="flex flex-col gap-2">
-    <ColorPicker default-value="#eb5e41" format="hsla" variant="primary">
-      <ColorPicker.Control>
-        <InputGroup>
-          <ColorPicker.Trigger as-child>
-            <InputGroup.Addon>
-              <ColorPicker.SwatchPreview />
-            </InputGroup.Addon>
-          </ColorPicker.Trigger>
-          <ColorPicker.Input as-child>
-            <InputGroup.Input placeholder="Primary" />
-          </ColorPicker.Input>
-        </InputGroup>
-      </ColorPicker.Control>
-    </ColorPicker>
-    <ColorPicker default-value="#eb5e41" format="hsla" variant="secondary">
-      <ColorPicker.Control>
-        <InputGroup>
-          <ColorPicker.Trigger as-child>
-            <InputGroup.Addon>
-              <ColorPicker.SwatchPreview />
-            </InputGroup.Addon>
-          </ColorPicker.Trigger>
-          <ColorPicker.Input as-child>
-            <InputGroup.Input placeholder="Secondary" />
-          </ColorPicker.Input>
-        </InputGroup>
-      </ColorPicker.Control>
-    </ColorPicker>
+    <ColorPicker default-value="#eb5e41" format="hsla" variant="primary" />
+    <ColorPicker default-value="#eb5e41" format="hsla" variant="secondary" />
   </div>
 </template>

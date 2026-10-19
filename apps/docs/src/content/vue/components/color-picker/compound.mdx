@@ -1,21 +1,32 @@
 ## Anatomy
 
 ```vue
-<ColorPicker>
+<ColorPicker.Root>
   <ColorPicker.Control>
     <ColorPicker.Trigger>
       <ColorPicker.SwatchPreview />
     </ColorPicker.Trigger>
     <ColorPicker.Input />
+    <ColorPicker.ClearTrigger />
   </ColorPicker.Control>
-  <ColorPicker.Content>
-    <ColorPicker.Area>
-      <ColorPicker.AreaThumb />
-    </ColorPicker.Area>
-    <ColorPicker.View>
-      <ColorPicker.EyeDropperTrigger />
-      <ColorPicker.ChannelSlider />
-    </ColorPicker.View>
-  </ColorPicker.Content>
-</ColorPicker>
+  <Teleport to="body">
+    <ColorPicker.Positioner>
+      <ColorPicker.Content>
+        <ColorPicker.Area>
+          <ColorPicker.AreaBackground />
+          <ColorPicker.AreaThumb />
+        </ColorPicker.Area>
+        <ColorPicker.View>
+          <ColorPicker.EyeDropperTrigger />
+          <ColorPicker.ChannelSlider>
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+        </ColorPicker.View>
+      </ColorPicker.Content>
+    </ColorPicker.Positioner>
+  </Teleport>
+</ColorPicker.Root>
 ```
+
+Parts map 1:1 to Ark. Render `Teleport` and `Positioner` yourself, and pass icons to `EyeDropperTrigger`, `SwatchIndicator`, and `ClearTrigger`; the `ColorPicker` shorthand does this for you.

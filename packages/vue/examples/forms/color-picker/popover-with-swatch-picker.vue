@@ -13,7 +13,7 @@ const swatchPalette = [
 </script>
 
 <template>
-  <ColorPicker default-value="#eb5e41" format="hsla">
+  <ColorPicker.Root default-value="#eb5e41" format="hsla">
     <ColorPicker.Control>
       <ColorPicker.Trigger as-child>
         <Button size="lg" variant="ghost">
@@ -22,23 +22,31 @@ const swatchPalette = [
         </Button>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
-    <ColorPicker.Content>
-      <ColorPicker.Area>
-        <ColorPicker.AreaThumb />
-      </ColorPicker.Area>
-      <ColorPicker.View format="hsla">
-        <ColorPicker.ChannelSlider channel="hue" />
-      </ColorPicker.View>
-      <ColorPicker.SwatchGroup>
-        <ColorPicker.SwatchTrigger
-          class="size-4"
-          v-for="color in swatchPalette"
-          :key="color"
-          :value="color"
-        >
-          <ColorPicker.Swatch :value="color" />
-        </ColorPicker.SwatchTrigger>
-      </ColorPicker.SwatchGroup>
-    </ColorPicker.Content>
-  </ColorPicker>
+    <Teleport to="body">
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area>
+            <ColorPicker.AreaBackground />
+            <ColorPicker.AreaThumb />
+          </ColorPicker.Area>
+          <ColorPicker.View format="hsla">
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+          </ColorPicker.View>
+          <ColorPicker.SwatchGroup>
+            <ColorPicker.SwatchTrigger
+              class="size-4"
+              v-for="color in swatchPalette"
+              :key="color"
+              :value="color"
+            >
+              <ColorPicker.Swatch :value="color" />
+            </ColorPicker.SwatchTrigger>
+          </ColorPicker.SwatchGroup>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </Teleport>
+  </ColorPicker.Root>
 </template>

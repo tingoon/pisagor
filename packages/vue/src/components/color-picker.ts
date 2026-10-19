@@ -1,23 +1,33 @@
 import {
+  ark,
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
+  type HTMLArkProps,
   parseColor as parseColorArk,
   useColorPickerContext as useColorPicker,
 } from "@ark-ui/vue";
-import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import type { ColorPickerRootContract } from "@pisagor/contracts";
+import { PhEyedropper, PhX } from "@phosphor-icons/vue";
+import type {
+  ColorPickerContract,
+  ColorPickerRootContract,
+} from "@pisagor/contracts";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useLocale } from "./provider/context";
-
-type FormControlVariant = "primary" | "secondary";
-
-type ClassValue = Parameters<typeof cn>[0];
-
-import { defineComponent, h, type PropType, Teleport } from "vue";
+import {
+  type Component,
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+} from "vue";
 import { type LoosePropValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
+import { useLocale } from "./provider/context";
+
+type FormControlVariant = "primary" | "secondary";
+type ClassValue = Parameters<typeof cn>[0];
+type ArkPart = Parameters<typeof h>[0];
 
 // #region Context
 const { withContext, withProvider, useStyles } = createSlotRecipeContext({
@@ -26,93 +36,91 @@ const { withContext, withProvider, useStyles } = createSlotRecipeContext({
 });
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
-export interface ColorPickerProps extends ColorPickerRootContract {
-  class?: ClassValue;
-  variant?: FormControlVariant;
-  positioning?: unknown;
-  lazyMount?: boolean;
-  unmountOnExit?: boolean;
-  value?: string;
+// #region Types
+export interface ColorPickerRootProps extends ColorPickerRootContract {
+  /** The default color string when uncontrolled. Ignored when `value` is set. */
   defaultValue?: string;
-  clearable?: boolean;
+  positioning?: unknown;
+  /** The controlled color string. Pair with `onValueChange`. */
+  value?: string;
+  /** Called with the color string when the value changes. */
   onValueChange?: (value: string) => void;
 }
 
-export const parseColor = parseColorArk;
-
-function colorPickerTeleport(
-  content: ReturnType<typeof h> | Array<ReturnType<typeof h>>,
-) {
-  return h(Teleport, { to: "body" }, [content]);
+export interface ColorPickerProps
+  extends ColorPickerRootProps, ColorPickerContract {
+  /**
+   * Whether to show a clear button when a color is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /**
+   * Visual shell variant for the field input. When omitted, resolves from
+   * `Surface`.
+   */
+  variant?: FormControlVariant;
 }
 
-const RootBase = withProvider<ColorPickerProps>(ColorPickerPrimitive.Root, {
-  name: "Root",
-});
+export type ColorPickerClearTriggerProps = HTMLArkProps<"button">;
 
+export interface ColorPickerAreaProps {
+  /** Overlay a dot grid on the area. */
+  showDots?: boolean;
+}
+
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
+// #endregion
+
+// #region Parts
+/**
+ * Parses a color string into an Ark UI color object.
+ *
+ * @returns A parsed color value for use with ColorPicker APIs.
+ */
+export const parseColor = parseColorArk;
+
+const RootBase = withProvider(ColorPickerPrimitive.Root, { name: "Root" });
+
+/** Root with string `value` / `defaultValue` / `onValueChange`. */
 const Root = defineComponent({
   inheritAttrs: false,
-  name: "ColorPicker",
+  name: "ColorPicker.Root",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    clearable: { default: false, type: Boolean },
     defaultValue: {
       default: undefined,
       type: String as PropType<string | undefined>,
     },
-    lazyMount: { default: undefined, type: Boolean },
     onValueChange: {
       default: undefined,
-      type: Function as PropType<ColorPickerProps["onValueChange"]>,
+      type: Function as PropType<ColorPickerRootProps["onValueChange"]>,
     },
     positioning: {
-      default: { placement: "top-start" },
+      default: () => ({ placement: "top-start" }),
       type: Object as PropType<LoosePropValue>,
     },
-    recipe: {
-      default: colorPickerRecipe,
-      type: Function as PropType<typeof colorPickerRecipe>,
-    },
-    unmountOnExit: { default: undefined, type: Boolean },
     value: { default: undefined, type: String as PropType<string | undefined> },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
   },
   setup(props, { attrs, slots }) {
+    const handleValueChange = (details: ColorPickerValueChangeDetails) => {
+      props.onValueChange?.(details.valueAsString);
+    };
+
     return () => {
       const isControlled = props.value !== undefined;
-      const internalValue =
-        (isControlled ? undefined : props.defaultValue) ?? "";
-
-      const handleValueChange = (details: ColorPickerValueChangeDetails) => {
-        const next = (details as { valueAsString?: unknown }).valueAsString;
-        props.onValueChange?.(typeof next === "string" ? next : "");
-      };
 
       return h(
         RootBase as ArkPart,
         {
           ...attrs,
-          class: props.class,
-          defaultValue: internalValue
-            ? parseColorArk(internalValue)
-            : undefined,
-          lazyMount: props.lazyMount,
-          onValueChange: props.onValueChange ? handleValueChange : undefined,
-          positioning: props.positioning,
-          recipe: props.recipe,
-          unmountOnExit: props.unmountOnExit,
-          value:
-            isControlled && props.value
-              ? parseColorArk(props.value)
+          defaultValue:
+            !isControlled && props.defaultValue
+              ? parseColor(props.defaultValue)
               : undefined,
+          modelValue:
+            isControlled && props.value ? parseColor(props.value) : undefined,
+          onValueChange: handleValueChange,
+          positioning: props.positioning,
         },
         () => [
           slots.default?.(),
@@ -123,433 +131,27 @@ const Root = defineComponent({
   },
 });
 
-const ClearTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.ClearTrigger",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    clearable: { default: false, type: Boolean },
-    onClick: {
-      default: undefined,
-      type: Function as PropType<((event: MouseEvent) => void) | undefined>,
-    },
-  },
-  setup(props, { attrs }) {
-    const { m } = useLocale();
+const Label = withContext(ColorPickerPrimitive.Label, { name: "Label" });
 
-    return () => {
-      const api = useColorPicker();
-
-      if (!props.clearable) {
-        return null;
-      }
-
-      const apiTyped = api as {
-        getControlProps?: () =>
-          { disabled?: boolean; readOnly?: boolean } | undefined;
-        value?: {
-          getChannelValue?: (channel: string) => number | string | undefined;
-        };
-        setValue?: (value: unknown) => void;
-      };
-
-      const controlProps = apiTyped.getControlProps?.() as
-        { disabled?: boolean; readOnly?: boolean } | undefined;
-      if (controlProps?.disabled || controlProps?.readOnly) {
-        return null;
-      }
-
-      const isCleared =
-        Number(apiTyped.value?.getChannelValue?.("alpha")) === 0;
-      if (isCleared) {
-        return null;
-      }
-
-      return h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
-        h(
-          InputGroup.Button as ArkPart,
-          {
-            "aria-label": m("colorPicker.clearColor"),
-            ...attrs,
-            class: cn(props.class, (attrs as { class?: ClassValue }).class),
-            "data-part": "clear-trigger",
-            "data-scope": "color-picker",
-            onClick: (event: MouseEvent) => {
-              apiTyped.setValue?.(parseColorArk("rgba(0, 0, 0, 0)"));
-              props.onClick?.(event);
-            },
-            size: "icon-xs",
-            type: "button",
-            variant: "ghost",
-          },
-          () => h(PhX),
-        ),
-      );
-    };
-  },
-});
-
-const ControlBase = withContext(ColorPickerPrimitive.Control, {
+const Control = withContext(ColorPickerPrimitive.Control, {
   name: "Control",
 });
 
-const Control = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Control",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    clearable: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
-      h(ControlBase as ArkPart, { ...attrs, class: props.class }, () => [
-        slots.default?.(),
-        props.clearable ? h(ClearTrigger, { clearable: true }) : null,
-      ]);
-  },
+const Trigger = withContext(ColorPickerPrimitive.Trigger, {
+  name: "Trigger",
 });
 
-const Trigger = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Trigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(ColorPickerPrimitive.Trigger as ArkPart, { ...attrs }, () =>
-        slots.default?.(),
-      );
-  },
+const Positioner = withContext(ColorPickerPrimitive.Positioner, {
+  name: "Positioner",
 });
 
-const TransparencyGrid = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.TransparencyGrid",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
-
-    return () =>
-      h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
-        ...attrs,
-        class: cn(
-          styles.slots.transparencyGrid(),
-          props.class,
-          (attrs as { class?: ClassValue }).class,
-        ),
-      });
-  },
+const Content = withContext(ColorPickerPrimitive.Content, {
+  name: "Content",
 });
 
-const Content = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Content",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
+const View = withContext(ColorPickerPrimitive.View, { name: "View" });
 
-    return () =>
-      colorPickerTeleport(
-        h(ColorPickerPrimitive.Positioner as ArkPart, {}, () =>
-          h(
-            ColorPickerPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: cn(
-                styles.slots.content(),
-                props.class,
-                (attrs as { class?: ClassValue }).class,
-              ),
-            },
-            () => slots.default?.(),
-          ),
-        ),
-      );
-  },
-});
-
-const View = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.View",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.View as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.view(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const ChannelSlider = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.ChannelSlider",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots: children }) {
-    const styles = useStyles();
-
-    return () => {
-      const slots = styles.slots;
-
-      return h(
-        ColorPickerPrimitive.ChannelSlider as ArkPart,
-        {
-          ...attrs,
-          class: slots.channelSlider({
-            class: cn(props.class, (attrs as { class?: ClassValue }).class),
-          }),
-        },
-        () => [
-          children.default?.(),
-          h(ColorPickerPrimitive.ChannelSliderTrack as ArkPart, {
-            class: slots.channelSliderTrack(),
-          }),
-          h(ColorPickerPrimitive.ChannelSliderThumb as ArkPart, {
-            class: slots.channelSliderThumb(),
-          }),
-        ],
-      );
-    };
-  },
-});
-
-const EyeDropperTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.EyeDropperTrigger",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    size: { default: "icon-md", type: String },
-    variant: { default: "outline", type: String },
-  },
-  setup(props, { attrs, slots }) {
-    const { m } = useLocale();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.EyeDropperTrigger as ArkPart,
-        {
-          "aria-label": m("colorPicker.eyeDropper"),
-          ...attrs,
-          asChild: true,
-        } as unknown as Parameters<typeof h>[1],
-        () =>
-          h(
-            Button as ArkPart,
-            {
-              class: cn(props.class, (attrs as { class?: ClassValue }).class),
-              size: props.size,
-              variant: props.variant,
-            } as unknown as Parameters<typeof h>[1],
-            () => slots.default?.() ?? h(PhEyedropper),
-          ),
-      );
-  },
-});
-
-const SwatchGroup = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.SwatchGroup",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.SwatchGroup as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.swatchGroup(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const SwatchTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.SwatchTrigger",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.SwatchTrigger as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.swatchTrigger(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const Swatch = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Swatch",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.Swatch as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.swatch(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const SwatchIndicator = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.SwatchIndicator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.SwatchIndicator as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.swatchIndicator(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.() ?? h(PhCheck),
-      );
-  },
-});
-
-const ValueText = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.ValueText",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.ValueText as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.valueText(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const ValueSwatch = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.ValueSwatch",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.ValueSwatch as ArkPart,
-        {
-          ...attrs,
-          class: cn(
-            styles.slots.valueSwatch(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
-        },
-        () => slots.default?.(),
-      );
-  },
-});
+const AreaBase = withContext(ColorPickerPrimitive.Area, { name: "Area" });
 
 const Area = defineComponent({
   inheritAttrs: false,
@@ -561,41 +163,165 @@ const Area = defineComponent({
     },
     showDots: { default: false, type: Boolean },
   },
-  setup(props, { attrs, slots: children }) {
-    const styles = useStyles();
-
-    return () => {
-      const slots = styles.slots;
-
-      return h(
-        ColorPickerPrimitive.Area as ArkPart,
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        AreaBase as ArkPart,
         {
           ...attrs,
-          class: slots.area({
-            class: cn(
-              {
-                "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
-                  props.showDots,
-              },
-              props.class,
-              (attrs as { class?: ClassValue }).class,
-            ),
-          }),
+          class: cn(
+            {
+              "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
+                props.showDots,
+            },
+            props.class,
+          ),
         },
-        () => [
-          h(ColorPickerPrimitive.AreaBackground as ArkPart, {
-            class: slots.areaBackground(),
-          }),
-          children.default?.(),
-        ],
+        slots,
       );
-    };
   },
 });
 
-const AreaThumb = defineComponent({
+const AreaBackground = withContext(ColorPickerPrimitive.AreaBackground, {
+  name: "AreaBackground",
+});
+
+const AreaThumb = withContext(ColorPickerPrimitive.AreaThumb, {
+  name: "AreaThumb",
+});
+
+const ChannelSlider = withContext(ColorPickerPrimitive.ChannelSlider, {
+  name: "ChannelSlider",
+});
+
+const ChannelSliderLabel = withContext(
+  ColorPickerPrimitive.ChannelSliderLabel,
+  { name: "ChannelSliderLabel", slot: "label" },
+);
+
+const ChannelSliderTrack = withContext(
+  ColorPickerPrimitive.ChannelSliderTrack,
+  { name: "ChannelSliderTrack" },
+);
+
+const ChannelSliderThumb = withContext(
+  ColorPickerPrimitive.ChannelSliderThumb,
+  { name: "ChannelSliderThumb" },
+);
+
+const ChannelSliderValueText = withContext(
+  ColorPickerPrimitive.ChannelSliderValueText,
+  { name: "ChannelSliderValueText", slot: "valueText" },
+);
+
+// Cast: the Ark input props union is too complex for `withContext` to infer.
+const Input = withContext(ColorPickerPrimitive.ChannelInput as Component, {
+  defaultProps: { channel: "hex" },
+  name: "ChannelInput",
+  slot: "channelInput",
+});
+
+const TransparencyGrid = withContext(ColorPickerPrimitive.TransparencyGrid, {
+  name: "TransparencyGrid",
+});
+
+const EyeDropperTriggerBase = withContext(
+  ColorPickerPrimitive.EyeDropperTrigger,
+  { name: "EyeDropperTrigger" },
+);
+
+/** Eye dropper trigger with a localized default `aria-label`. */
+const EyeDropperTrigger = defineComponent({
   inheritAttrs: false,
-  name: "ColorPicker.AreaThumb",
+  name: "ColorPicker.EyeDropperTrigger",
+  setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
+    return () =>
+      h(
+        EyeDropperTriggerBase as ArkPart,
+        { "aria-label": m("colorPicker.eyeDropper"), ...attrs },
+        slots,
+      );
+  },
+});
+
+const FormatSelect = withContext(ColorPickerPrimitive.FormatSelect, {
+  name: "FormatSelect",
+});
+
+const FormatTrigger = withContext(ColorPickerPrimitive.FormatTrigger, {
+  name: "FormatTrigger",
+});
+
+const SwatchGroup = withContext(ColorPickerPrimitive.SwatchGroup, {
+  name: "SwatchGroup",
+});
+
+const SwatchTrigger = withContext(ColorPickerPrimitive.SwatchTrigger, {
+  name: "SwatchTrigger",
+});
+
+const Swatch = withContext(ColorPickerPrimitive.Swatch, { name: "Swatch" });
+
+const SwatchIndicator = withContext(ColorPickerPrimitive.SwatchIndicator, {
+  name: "SwatchIndicator",
+});
+
+const ValueText = withContext(ColorPickerPrimitive.ValueText, {
+  name: "ValueText",
+});
+
+const ValueSwatch = withContext(ColorPickerPrimitive.ValueSwatch, {
+  name: "ValueSwatch",
+});
+
+/**
+ * Clears the color (sets it fully transparent). Not an Ark part; renders a
+ * button with a localized default `aria-label`.
+ */
+const ClearTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "ColorPicker.ClearTrigger",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    onClick: {
+      default: undefined,
+      type: Function as PropType<((event: MouseEvent) => void) | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+    const styles = useStyles();
+    const api = useColorPicker();
+
+    return () =>
+      h(
+        ark.button as ArkPart,
+        {
+          "aria-label": m("colorPicker.clearColor"),
+          type: "button",
+          ...attrs,
+          class: styles.slots.clearTrigger({ class: cn(props.class) }),
+          "data-part": "clear-trigger",
+          "data-scope": "color-picker",
+          onClick: (event: MouseEvent) => {
+            api.value.setValue(parseColor("rgba(0, 0, 0, 0)"));
+            props.onClick?.(event);
+          },
+        },
+        slots,
+      );
+  },
+});
+
+/** Transparency grid with the current color on top, sized for input addons. */
+const SwatchPreview = defineComponent({
+  inheritAttrs: false,
+  name: "ColorPicker.SwatchPreview",
   props: {
     class: {
       default: undefined,
@@ -606,180 +332,219 @@ const AreaThumb = defineComponent({
     const styles = useStyles();
 
     return () =>
-      h(ColorPickerPrimitive.AreaThumb as ArkPart, {
-        ...attrs,
-        class: cn(
-          styles.slots.areaThumb(),
-          props.class,
-          (attrs as { class?: ClassValue }).class,
-        ),
-      });
-  },
-});
-
-const Input = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Input",
-  props: {
-    channel: { default: "hex", type: String },
-  },
-  setup(props, { attrs, slots }) {
-    return () =>
       h(
-        ColorPickerPrimitive.ChannelInput as ArkPart,
+        "div",
         {
           ...attrs,
-          channel: props.channel,
+          class: styles.slots.inputSwatch({ class: cn(props.class) }),
+          "data-part": "input-swatch",
+          "data-scope": "color-picker",
         },
-        () => slots.default?.(),
-      );
-  },
-});
-
-const Label = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Label",
-  setup(_, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        ColorPickerPrimitive.Label as ArkPart,
-        {
-          ...attrs,
-          class: styles.slots.label({
-            class: attrs.class as string | undefined,
+        [
+          h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
+            class: styles.slots.inputSwatchGrid(),
           }),
-        },
-        slots,
+          h(ColorPickerPrimitive.ValueSwatch as ArkPart, {
+            class: styles.slots.inputSwatchSwatch(),
+          }),
+        ],
       );
   },
 });
+// #endregion
 
-const FormatSelect = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.FormatSelect",
-  setup(_, { attrs }) {
-    const styles = useStyles();
-
-    return () =>
-      h(ColorPickerPrimitive.FormatSelect as ArkPart, {
-        ...attrs,
-        class: styles.slots.formatSelect({
-          class: attrs.class as string | undefined,
-        }),
-      });
-  },
-});
-
-const SwatchPreview = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.SwatchPreview",
+// #region Shorthand
+/** Clear button addon; hidden when disabled, read-only, or already cleared. */
+const ShorthandClearTrigger = defineComponent({
+  name: "ColorPicker.ShorthandClearTrigger",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
-  setup(props, { attrs, slots: children }) {
-    const styles = useStyles();
+  setup(props) {
+    const { m } = useLocale();
+    const api = useColorPicker();
 
     return () => {
-      const slots = styles.slots;
+      const controlProps = api.value.getControlProps() as {
+        disabled?: boolean;
+        readOnly?: boolean;
+      };
 
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: slots.inputSwatch({
-            class: cn(props.class, (attrs as { class?: ClassValue }).class),
-          }),
-          "data-part": "input-swatch",
-          "data-scope": "color-picker",
-        },
-        () => [
-          h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
-            class: slots.inputSwatchGrid(),
-          }),
-          h(ColorPickerPrimitive.ValueSwatch as ArkPart, {
-            class: slots.inputSwatchSwatch(),
-          }),
-          children.default?.(),
-        ],
+      if (
+        controlProps.disabled ||
+        controlProps.readOnly ||
+        api.value.value.getChannelValue("alpha") === 0
+      ) {
+        return null;
+      }
+
+      return h(InputGroup.Addon, { align: "inline-end" }, () =>
+        h(ClearTrigger, { asChild: true, class: props.class }, () =>
+          h(
+            InputGroup.Button as ArkPart,
+            {
+              "aria-label": m("colorPicker.clearColor"),
+              size: "icon-xs",
+              variant: "ghost",
+            },
+            () => h(PhX),
+          ),
+        ),
       );
     };
   },
 });
 
-const Field = defineComponent({
-  inheritAttrs: false,
-  name: "ColorPicker.Field",
+/** Area plus eye dropper, hue and alpha sliders. */
+const DefaultContent = defineComponent({
+  name: "ColorPicker.DefaultContent",
   props: {
-    clearable: { default: false, type: Boolean },
-    variant: {
+    classNames: {
       default: undefined,
-      type: String as PropType<"primary" | "secondary">,
+      type: Object as PropType<ColorPickerProps["classNames"]>,
     },
   },
-  setup(props, { attrs, slots }) {
+  setup(props) {
     const styles = useStyles();
 
-    return () =>
-      h(Root as ArkPart, { ...attrs, clearable: props.clearable }, () => [
-        h(Control as ArkPart, { clearable: false }, () => [
-          h(InputGroup, { variant: props.variant }, () => [
-            h(Trigger as ArkPart, { asChild: true }, () =>
-              h(InputGroup.Addon as ArkPart, () => h(SwatchPreview as ArkPart)),
-            ),
-            h(Input as ArkPart, { asChild: true }, () =>
-              h(InputGroup.Input as ArkPart, { clearable: false }),
-            ),
-            props.clearable
-              ? h(ClearTrigger as ArkPart, { clearable: true })
-              : null,
-          ]),
+    return () => {
+      const classNames = props.classNames;
+
+      return [
+        h(Area, { class: classNames?.area }, () => [
+          h(AreaBackground, { class: classNames?.areaBackground }),
+          h(AreaThumb, { class: classNames?.areaThumb }),
         ]),
-        h(Content as ArkPart, null, () => [
-          h(Area as ArkPart, null, () => h(AreaThumb as ArkPart)),
+        h(View as ArkPart, { class: classNames?.view, format: "hsla" }, () =>
           h(
-            View as ArkPart,
-            { format: "hsla" } as unknown as Parameters<typeof h>[1],
-            () => [
-              h("div", { class: styles.slots.channelRow() }, [
-                h(EyeDropperTrigger as ArkPart),
-                h("div", { class: styles.slots.channelStack() }, [
+            "div",
+            {
+              class: styles.slots.channelRow({
+                class: classNames?.channelRow,
+              }),
+            },
+            [
+              h(
+                EyeDropperTrigger,
+                { asChild: true, class: classNames?.eyeDropperTrigger },
+                () =>
+                  h(Button, { size: "icon-md", variant: "outline" }, () =>
+                    h(PhEyedropper),
+                  ),
+              ),
+              h(
+                "div",
+                {
+                  class: styles.slots.channelStack({
+                    class: classNames?.channelStack,
+                  }),
+                },
+                (["hue", "alpha"] as const).map((channel) =>
                   h(
                     ChannelSlider as ArkPart,
-                    { channel: "hue" } as unknown as Parameters<typeof h>[1],
+                    {
+                      channel,
+                      class: classNames?.channelSlider,
+                      key: channel,
+                    },
+                    () => [
+                      channel === "alpha"
+                        ? h(TransparencyGrid, {
+                            class: classNames?.transparencyGrid,
+                          })
+                        : null,
+                      h(ChannelSliderTrack, {
+                        class: classNames?.channelSliderTrack,
+                      }),
+                      h(ChannelSliderThumb, {
+                        class: classNames?.channelSliderThumb,
+                      }),
+                    ],
                   ),
-                  h(
-                    ChannelSlider as ArkPart,
-                    { channel: "alpha" } as unknown as Parameters<typeof h>[1],
-                    () => h(TransparencyGrid as ArkPart),
-                  ),
-                ]),
-              ]),
+                ),
+              ),
             ],
           ),
-        ]),
-        slots.default?.(),
-      ]);
+        ),
+      ];
+    };
   },
 });
 
-export const ColorPicker = Object.assign(Root, {
+export const ColorPickerShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "ColorPicker",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ColorPickerProps["classNames"]>,
+    },
+    clearable: { default: false, type: Boolean },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const classNames = props.classNames;
+
+      return h(Root as ArkPart, { ...attrs }, () => [
+        h(Control, { class: classNames?.control }, () =>
+          h(InputGroup, { variant: props.variant }, () => [
+            h(Trigger, { asChild: true, class: classNames?.trigger }, () =>
+              h(InputGroup.Addon, () =>
+                h(SwatchPreview, { class: classNames?.inputSwatch }),
+              ),
+            ),
+            h(
+              Input as ArkPart,
+              { asChild: true, class: classNames?.channelInput },
+              () => h(InputGroup.Input as ArkPart, { clearable: false }),
+            ),
+            props.clearable
+              ? h(ShorthandClearTrigger, { class: classNames?.clearTrigger })
+              : null,
+          ]),
+        ),
+        h(Teleport, { to: "body" }, [
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { class: classNames?.content }, () =>
+              slots.default
+                ? slots.default()
+                : h(DefaultContent, { classNames }),
+            ),
+          ),
+        ]),
+      ]);
+    };
+  },
+});
+// #endregion
+
+export const ColorPicker = Object.assign(ColorPickerShorthand, {
   Area,
+  AreaBackground,
   AreaThumb,
   ChannelInput: Input,
   ChannelSlider,
+  ChannelSliderLabel,
+  ChannelSliderThumb,
+  ChannelSliderTrack,
+  ChannelSliderValueText,
   ClearTrigger,
   Content,
   Control,
   EyeDropperTrigger,
-  Field,
   FormatSelect,
+  FormatTrigger,
   Input,
   Label,
+  Positioner,
+  Root,
   Swatch,
   SwatchGroup,
   SwatchIndicator,

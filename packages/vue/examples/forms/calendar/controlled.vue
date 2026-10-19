@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Calendar, Card, parseDate } from "@pisagor/vue";
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import { Button, Calendar, Card, parseDate } from "@pisagor/vue";
 import { ref } from "vue";
 
 const value = ref([parseDate(new Date())]);
@@ -15,10 +16,18 @@ function onValueChange(details: { value: typeof value.value }) {
       <Card.Content>
         <Calendar :value="value" @value-change="onValueChange">
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger as-child>
+              <Button size="icon-md" variant="ghost">
+                <PhCaretLeft aria-hidden class="rtl:rotate-180" />
+              </Button>
+            </Calendar.PrevTrigger>
             <Calendar.MonthSelect />
             <Calendar.YearSelect />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger as-child>
+              <Button size="icon-md" variant="ghost">
+                <PhCaretRight aria-hidden class="rtl:rotate-180" />
+              </Button>
+            </Calendar.NextTrigger>
           </Calendar.ViewControl>
           <Calendar.Table>
             <Calendar.WeekDays />

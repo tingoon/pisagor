@@ -6,7 +6,7 @@ const defaultValue = parseColor("#0485F7").toString("hsla");
 </script>
 
 <template>
-  <ColorPicker format="hsla" :default-value="defaultValue">
+  <ColorPicker.Root format="hsla" :default-value="defaultValue">
     <ColorPicker.Control>
       <InputGroup>
         <ColorPicker.Trigger as-child>
@@ -29,18 +29,34 @@ const defaultValue = parseColor("#0485F7").toString("hsla");
         </InputGroup.Addon>
       </InputGroup>
     </ColorPicker.Control>
-    <ColorPicker.Content>
-      <ColorPicker.Area show-dots>
-        <ColorPicker.AreaThumb />
-      </ColorPicker.Area>
-      <ColorPicker.View format="hsla">
-        <ColorPicker.ChannelSlider channel="hue" />
-        <ColorPicker.ChannelSlider channel="saturation" />
-        <ColorPicker.ChannelSlider channel="lightness" />
-        <ColorPicker.ChannelSlider channel="alpha">
-          <ColorPicker.TransparencyGrid />
-        </ColorPicker.ChannelSlider>
-      </ColorPicker.View>
-    </ColorPicker.Content>
-  </ColorPicker>
+    <Teleport to="body">
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area show-dots>
+            <ColorPicker.AreaBackground />
+            <ColorPicker.AreaThumb />
+          </ColorPicker.Area>
+          <ColorPicker.View format="hsla">
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.ChannelSlider channel="saturation">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.ChannelSlider channel="lightness">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.ChannelSlider channel="alpha">
+              <ColorPicker.TransparencyGrid />
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+          </ColorPicker.View>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </Teleport>
+  </ColorPicker.Root>
 </template>

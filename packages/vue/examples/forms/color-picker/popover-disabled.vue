@@ -3,7 +3,7 @@ import { Button, ColorPicker } from "@pisagor/vue";
 </script>
 
 <template>
-  <ColorPicker default-value="#eb5e41" disabled>
+  <ColorPicker.Root default-value="#eb5e41" disabled>
     <ColorPicker.Control>
       <ColorPicker.Trigger as-child>
         <Button size="lg" variant="ghost">
@@ -12,8 +12,14 @@ import { Button, ColorPicker } from "@pisagor/vue";
         </Button>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
-    <ColorPicker.Content>
-      <ColorPicker.Area />
-    </ColorPicker.Content>
-  </ColorPicker>
+    <Teleport to="body">
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area>
+            <ColorPicker.AreaBackground />
+          </ColorPicker.Area>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </Teleport>
+  </ColorPicker.Root>
 </template>

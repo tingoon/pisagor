@@ -3,7 +3,7 @@ import {
   type UseDatePickerContext,
   parseDate as arkParseDate,
 } from "@ark-ui/vue";
-import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import { PhCaretDown } from "@phosphor-icons/vue";
 import type { CalendarRootContract } from "@pisagor/contracts";
 import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -344,62 +344,45 @@ export const CalendarViewControl = defineComponent({
   },
 });
 
+const PrevTriggerBase = withContext(DatePickerPrimitive.PrevTrigger, {
+  name: "PrevTrigger",
+});
+
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
 export const CalendarPrevTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.PrevTrigger",
-  setup(_props, { attrs }) {
+  setup(_props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useStyles();
 
     return () =>
       h(
-        DatePickerPrimitive.PrevTrigger as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(
-            Button as ArkPart,
-            {
-              "aria-label": m("calendar.previousMonth"),
-              class: styles.slots.prevTrigger(),
-              size: "icon-md",
-              variant: "ghost",
-            },
-            () =>
-              h(PhCaretLeft, {
-                "aria-hidden": true,
-                class: styles.slots.prevIcon(),
-              }),
-          ),
+        PrevTriggerBase,
+        { "aria-label": m("calendar.previousMonth"), ...attrs },
+        slots,
       );
   },
 });
 
+const NextTriggerBase = withContext(DatePickerPrimitive.NextTrigger, {
+  name: "NextTrigger",
+});
+
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
 export const CalendarNextTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.NextTrigger",
-  setup(_props, { attrs }) {
+  setup(_props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useStyles();
 
     return () =>
       h(
-        DatePickerPrimitive.NextTrigger as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(
-            Button as ArkPart,
-            {
-              "aria-label": m("calendar.nextMonth"),
-              class: styles.slots.nextTrigger(),
-              size: "icon-md",
-              variant: "ghost",
-            },
-            () =>
-              h(PhCaretRight, {
-                "aria-hidden": true,
-                class: styles.slots.nextIcon(),
-              }),
-          ),
+        NextTriggerBase,
+        { "aria-label": m("calendar.nextMonth"), ...attrs },
+        slots,
       );
   },
 });

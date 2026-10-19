@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { calendarRecipe } from "@pisagor/recipes";
-import { Calendar, Card } from "@pisagor/vue";
+import { Button, Calendar, Card } from "@pisagor/vue";
 import { tv } from "tailwind-variants";
 
 const brandCalendarRecipe = tv({
@@ -19,9 +20,17 @@ const brandCalendarRecipe = tv({
     <Card.Content>
       <Calendar :recipe="brandCalendarRecipe">
         <Calendar.ViewControl>
-          <Calendar.PrevTrigger />
+          <Calendar.PrevTrigger as-child>
+            <Button size="icon-md" variant="ghost">
+              <PhCaretLeft aria-hidden class="rtl:rotate-180" />
+            </Button>
+          </Calendar.PrevTrigger>
           <Calendar.ViewDate />
-          <Calendar.NextTrigger />
+          <Calendar.NextTrigger as-child>
+            <Button size="icon-md" variant="ghost">
+              <PhCaretRight aria-hidden class="rtl:rotate-180" />
+            </Button>
+          </Calendar.NextTrigger>
         </Calendar.ViewControl>
         <Calendar.Table>
           <Calendar.WeekDays />

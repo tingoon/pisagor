@@ -3,11 +3,17 @@ import { ColorPicker } from "@pisagor/vue";
 </script>
 
 <template>
-  <ColorPicker default-value="hsla(0, 100%, 50%, 0.5)" format="rgba" inline>
+  <ColorPicker.Root
+    default-value="hsla(0, 100%, 50%, 0.5)"
+    format="rgba"
+    inline
+  >
     <ColorPicker.View format="rgba">
       <ColorPicker.ChannelSlider channel="alpha">
         <ColorPicker.TransparencyGrid />
+        <ColorPicker.ChannelSliderTrack />
+        <ColorPicker.ChannelSliderThumb />
       </ColorPicker.ChannelSlider>
     </ColorPicker.View>
-  </ColorPicker>
+  </ColorPicker.Root>
 </template>

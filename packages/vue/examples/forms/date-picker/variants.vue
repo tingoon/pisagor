@@ -1,65 +1,10 @@
 <script lang="ts" setup>
-import { Calendar, DatePicker } from "@pisagor/vue";
-import { defineComponent, h } from "vue";
-
-interface WeekDay {
-  narrow: string;
-  short: string;
-}
-
-const CalendarWeekDays = defineComponent({
-  name: "CalendarWeekDays",
-  setup() {
-    return () =>
-      h(Calendar.Context, null, {
-        default: (calendar: { weekDays: WeekDay[] }) =>
-          h(Calendar.TableHead, null, () =>
-            h(Calendar.TableRow, null, () =>
-              calendar.weekDays.map((weekDay) =>
-                h(
-                  Calendar.TableHeader,
-                  { key: weekDay.short },
-                  () => weekDay.narrow,
-                ),
-              ),
-            ),
-          ),
-      });
-  },
-});
-
-const CalendarBody = defineComponent({
-  name: "CalendarBody",
-  setup() {
-    return () => [
-      h(Calendar.ViewControl, null, () => [
-        h(Calendar.PrevTrigger),
-        h(Calendar.MonthSelect),
-        h(Calendar.YearSelect),
-        h(Calendar.NextTrigger),
-      ]),
-      h(Calendar.Table, null, () => [
-        h(CalendarWeekDays),
-        h(Calendar.TableDays),
-      ]),
-    ];
-  },
-});
+import { DatePicker } from "@pisagor/vue";
 </script>
 
 <template>
   <div class="flex flex-col gap-2">
-    <DatePicker variant="primary">
-      <DatePicker.Input placeholder="Primary" />
-      <DatePicker.Content>
-        <CalendarBody />
-      </DatePicker.Content>
-    </DatePicker>
-    <DatePicker variant="secondary">
-      <DatePicker.Input placeholder="Secondary" />
-      <DatePicker.Content>
-        <CalendarBody />
-      </DatePicker.Content>
-    </DatePicker>
+    <DatePicker variant="primary" placeholder="Primary" />
+    <DatePicker variant="secondary" placeholder="Secondary" />
   </div>
 </template>
