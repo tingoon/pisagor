@@ -300,15 +300,6 @@ export function EyedropperIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function SidebarSimpleIcon(props: IconProps): JSX.Element {
-  return (
-    <BaseIcon
-      {...props}
-      path="M104,40H56A16,16,0,0,0,40,56V200a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,160H56V56h48ZM200,40H152a16,16,0,0,0-16,16V200a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,160H152V56h48Z"
-    />
-  );
-}
-
 export function ArrowsInLineHorizontalIcon(props: IconProps): JSX.Element {
   return (
     <BaseIcon

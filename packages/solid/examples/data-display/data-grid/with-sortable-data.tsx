@@ -2,7 +2,11 @@ import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretUpIcon } from "@squidlab/phosphor-solid/icons";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  DotsSixVerticalIcon,
+} from "@squidlab/phosphor-solid/icons";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";
 
@@ -269,7 +273,9 @@ export function WithSortableData() {
             {data().map((user) => (
               <Sortable.Item value={user.id}>
                 <Sortable.ItemContent>
-                  <Sortable.Handle />
+                  <Sortable.Handle>
+                    <DotsSixVerticalIcon />
+                  </Sortable.Handle>
                   <div class="min-w-0 flex-1">
                     <p class="truncate text-sm font-medium">{user.name}</p>
                     <p class="text-muted-foreground truncate text-xs">

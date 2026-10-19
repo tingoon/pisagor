@@ -4,6 +4,7 @@ import {
   DatabaseIcon,
   HouseIcon,
   MagnifyingGlassIcon,
+  SidebarSimpleIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
 
@@ -60,7 +61,9 @@ export function WithSidebar() {
       <Sidebar.Inset>
         <Navbar>
           <Navbar.Brand class="gap-3">
-            <Sidebar.Trigger />
+            <Sidebar.Trigger>
+              <SidebarSimpleIcon class="rtl:rotate-180" />
+            </Sidebar.Trigger>
             <span class="text-sm font-medium">Dashboard</span>
           </Navbar.Brand>
 
