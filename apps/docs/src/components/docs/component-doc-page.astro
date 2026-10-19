@@ -12,6 +12,7 @@ import {
   extractExampleNames,
   hasCompoundDoc,
   listComponentDocTabs,
+  loadCompoundBody,
   loadCompoundDoc,
   loadProps,
   loadSkillBody,
@@ -77,8 +78,12 @@ const headings = [
 ];
 
 const exampleExportNames =
-  activeTab === "develop" && !showCompound
-    ? extractExampleNames(await loadSkillBody(framework, id, "develop"))
+  activeTab === "develop"
+    ? extractExampleNames(
+        showCompound
+          ? await loadCompoundBody(framework, id)
+          : await loadSkillBody(framework, id, "develop"),
+      )
     : [];
 
 const compoundHref = `${tabHref("develop")}/compound`;
@@ -162,6 +167,16 @@ const sectionItems = tabs.map((tab) => ({
         <div class={proseClass}>
           <PaneContent components={mdxComponents} />
         </div>
+
+        {framework !== "astro" && exampleExportNames.length > 0 ? (
+          <div
+            data-component-id={id}
+            data-docs-examples-host
+            data-export-names={JSON.stringify(exampleExportNames)}
+            data-kind="component"
+            hidden
+          />
+        ) : null}
       </div>
     ) : activeTab === "develop" ? (
       <div aria-label="Develop" id="doc-panel-develop" role="tabpanel">

@@ -126,6 +126,29 @@ const paneRawByFramework: Record<Framework, PaneRawLoaderMap> = {
   }),
 };
 
+const compoundRawByFramework: Record<Framework, PaneRawLoaderMap> = {
+  astro: import.meta.glob<string>(
+    "../content/astro/components/*/compound.mdx",
+    { import: "default", query: "?raw" },
+  ),
+  react: import.meta.glob<string>(
+    "../content/react/components/*/compound.mdx",
+    { import: "default", query: "?raw" },
+  ),
+  solid: import.meta.glob<string>(
+    "../content/solid/components/*/compound.mdx",
+    { import: "default", query: "?raw" },
+  ),
+  svelte: import.meta.glob<string>(
+    "../content/svelte/components/*/compound.mdx",
+    { import: "default", query: "?raw" },
+  ),
+  vue: import.meta.glob<string>("../content/vue/components/*/compound.mdx", {
+    import: "default",
+    query: "?raw",
+  }),
+};
+
 function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
 }
@@ -298,7 +321,7 @@ export function hasCompoundDoc(framework: Framework, id: string): boolean {
   );
 }
 
-/** Load the compound surface (`compound.mdx`). Anatomy only for now. */
+/** Load the compound surface (`compound.mdx`). */
 export async function loadCompoundDoc(
   framework: Framework,
   id: string,
@@ -312,6 +335,20 @@ export async function loadCompoundDoc(
   const { frontmatter } = await loadSkillMd(framework, id);
 
   return loadPaneMdx(loader, frontmatter);
+}
+
+/** Lazy-load compound MDX body (example-name extraction, etc.). */
+export async function loadCompoundBody(
+  framework: Framework,
+  id: string,
+): Promise<string> {
+  const raw = compoundRawByFramework[framework];
+  const key = findGlobKey(raw, compoundPathSuffix(framework, id));
+  const loader = key ? raw[key] : undefined;
+  if (!loader) return "";
+  const text = await loader();
+
+  return typeof text === "string" ? stripMdxFrontmatter(text) : "";
 }
 
 export type DevelopSurface = "shorthand" | "compound";
@@ -352,11 +389,11 @@ export function loadProps(id: string): PropRow[] | null {
   return rows as PropRow[];
 }
 
-/** Example export names referenced in develop MDX (`<Example name="…" />`). */
-export function extractExampleNames(developBody: string): string[] {
+/** Example export names referenced in MDX (`<Example name="…" />`). */
+export function extractExampleNames(mdxBody: string): string[] {
   const names: string[] = [];
   const re = /<Example\b[^>]*\bname=["']([^"']+)["']/g;
-  for (const match of developBody.matchAll(re)) {
+  for (const match of mdxBody.matchAll(re)) {
     const name = match[1];
     if (name && !names.includes(name)) names.push(name);
   }
