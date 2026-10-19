@@ -3,13 +3,20 @@
 ```tsx
 <AlertDialog.Root>
   <AlertDialog.Trigger />
-  <AlertDialog.Content>
-    <AlertDialog.Header>
-      <AlertDialog.Title />
-      <AlertDialog.Description />
-    </AlertDialog.Header>
-    <AlertDialog.Footer />
-  </AlertDialog.Content>
+  <AlertDialog.Backdrop />
+  <AlertDialog.Positioner>
+    <AlertDialog.Content>
+      <AlertDialog.Header>
+        <AlertDialog.Title />
+        <AlertDialog.Description />
+      </AlertDialog.Header>
+      <AlertDialog.Body />
+      <AlertDialog.Footer>
+        <AlertDialog.Cancel />
+        <AlertDialog.Action />
+      </AlertDialog.Footer>
+    </AlertDialog.Content>
+  </AlertDialog.Positioner>
 </AlertDialog.Root>
 ```
 
@@ -17,6 +24,6 @@
 
 ### Compound
 
-Assemble title, description, and actions from parts when the shorthand layout is not enough.
+Assemble title, description, and actions from parts when the shorthand layout is not enough. Wrap the backdrop and positioner in `Portal`.
 
 <Example name="Composition" />

@@ -19,13 +19,9 @@ export function WithDialog() {
             actions={
               <>
                 <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                <AlertDialog.CloseTrigger
-                  asChild={(props) => (
-                    <AlertDialog.Action {...props()} variant="destructive">
-                      Delete
-                    </AlertDialog.Action>
-                  )}
-                />
+                <AlertDialog.Action variant="destructive">
+                  Delete
+                </AlertDialog.Action>
               </>
             }
             description="This action cannot be undone."

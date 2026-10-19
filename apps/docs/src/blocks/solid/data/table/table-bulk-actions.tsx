@@ -20,6 +20,7 @@ import {
 } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { createMemo, createSignal, For, Show } from "solid-js";
+import { Portal } from "solid-js/web";
 import { tableBulkActionsBlock } from "#/styles/recipes/table";
 
 const styles = tableBulkActionsBlock();
@@ -153,46 +154,46 @@ export function TableBulkActions(props: TableBulkActionsProps) {
                   </Button>
                 )}
               />
-              <AlertDialog.Content>
-                <AlertDialog.Header>
-                  <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
-                  <AlertDialog.Description>
-                    This action cannot be undone.
-                  </AlertDialog.Description>
-                </AlertDialog.Header>
-                <AlertDialog.Body>
-                  <ul>
-                    <For each={selectedIds()}>
-                      {(id) => {
-                        const order = () => orders.find((o) => o.id === id);
+              <Portal>
+                <AlertDialog.Backdrop />
+                <AlertDialog.Positioner>
+                  <AlertDialog.Content>
+                    <AlertDialog.Header>
+                      <AlertDialog.Title>
+                        Delete selected orders?
+                      </AlertDialog.Title>
+                      <AlertDialog.Description>
+                        This action cannot be undone.
+                      </AlertDialog.Description>
+                    </AlertDialog.Header>
+                    <AlertDialog.Body>
+                      <ul>
+                        <For each={selectedIds()}>
+                          {(id) => {
+                            const order = () => orders.find((o) => o.id === id);
 
-                        return (
-                          <Show when={order()}>
-                            {(o) => (
-                              <li class={styles.deleteItem()}>
-                                {o().id} - {o().name}
-                              </li>
-                            )}
-                          </Show>
-                        );
-                      }}
-                    </For>
-                  </ul>
-                </AlertDialog.Body>
-                <AlertDialog.Footer>
-                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.CloseTrigger
-                    asChild={(closeProps) => (
-                      <AlertDialog.Action
-                        {...closeProps()}
-                        variant="destructive"
-                      >
+                            return (
+                              <Show when={order()}>
+                                {(o) => (
+                                  <li class={styles.deleteItem()}>
+                                    {o().id} - {o().name}
+                                  </li>
+                                )}
+                              </Show>
+                            );
+                          }}
+                        </For>
+                      </ul>
+                    </AlertDialog.Body>
+                    <AlertDialog.Footer>
+                      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                      <AlertDialog.Action variant="destructive">
                         Delete
                       </AlertDialog.Action>
-                    )}
-                  />
-                </AlertDialog.Footer>
-              </AlertDialog.Content>
+                    </AlertDialog.Footer>
+                  </AlertDialog.Content>
+                </AlertDialog.Positioner>
+              </Portal>
             </AlertDialog.Root>
           </div>
         </ActionBar.Content>
