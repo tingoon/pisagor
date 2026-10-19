@@ -2,6 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const breadcrumbRecipe = tv({
   slots: {
+    base: [],
     ellipsis: "flex size-4 items-center justify-center [&_svg]:size-full",
     list: [
       "flex flex-wrap items-center gap-1.5 sm:gap-2.5",

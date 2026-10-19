@@ -1,3 +1,4 @@
+import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { Portal } from "@ark-ui/react";
 import { Breadcrumb, Button, DropdownMenu } from "@pisagor/react";
 
@@ -8,7 +9,9 @@ export function WithMenu() {
         <Breadcrumb.Item>
           <Breadcrumb.Link href="https://example.com/">Home</Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <DropdownMenu.Root positioning={{ placement: "bottom-start" }}>
             <DropdownMenu.Trigger asChild>
@@ -17,7 +20,9 @@ export function WithMenu() {
                 size="icon-sm"
                 variant="ghost"
               >
-                <Breadcrumb.Ellipsis />
+                <Breadcrumb.Ellipsis>
+                  <DotsThreeIcon aria-hidden />
+                </Breadcrumb.Ellipsis>
               </Button>
             </DropdownMenu.Trigger>
             <Portal>
@@ -39,13 +44,17 @@ export function WithMenu() {
             </Portal>
           </DropdownMenu.Root>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Link href="https://example.com/">
             Products
           </Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
         </Breadcrumb.Item>
