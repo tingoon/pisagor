@@ -1,17 +1,107 @@
+import { Portal } from "solid-js/web";
+import {
+  ArchiveIcon,
+  ArrowBendDoubleUpLeftIcon,
+  ArrowBendUpLeftIcon,
+  BellIcon,
+  EnvelopeSimpleIcon,
+  FolderOpenIcon,
+  NotePencilIcon,
+  PaperPlaneTiltIcon,
+  PlusCircleIcon,
+  TrashIcon,
+  CaretRightIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { ContextMenu } from "@pisagor/solid";
 
 export function Default() {
   return (
-    <ContextMenu>
-      <ContextMenu.ContextTrigger class="flex h-32 w-64 items-center justify-center rounded-md border border-dashed text-sm">
-        Right click here
-      </ContextMenu.ContextTrigger>
-      <ContextMenu.Content>
-        <ContextMenu.Item value="back">Back</ContextMenu.Item>
-        <ContextMenu.Item value="forward">Forward</ContextMenu.Item>
+    <ContextMenu
+      classNames={{
+        content: "w-40",
+        trigger:
+          "flex aspect-video items-center justify-center rounded-2xl border border-dashed p-20 text-sm",
+      }}
+      trigger={
+        <>
+          <span class="hidden pointer-fine:inline-block">
+            Open the menu with a right-click
+          </span>
+          <span class="hidden pointer-coarse:inline-block">
+            Long press here
+          </span>
+        </>
+      }
+    >
+      <ContextMenu.ItemGroup>
+        <ContextMenu.Item value="forward">
+          <PaperPlaneTiltIcon /> Forward
+          <ContextMenu.Shortcut>⌘F</ContextMenu.Shortcut>
+        </ContextMenu.Item>
+        <ContextMenu.Item value="reply">
+          <ArrowBendUpLeftIcon /> Reply
+          <ContextMenu.Shortcut>⌘R</ContextMenu.Shortcut>
+        </ContextMenu.Item>
+        <ContextMenu.Item value="reply-all">
+          <ArrowBendDoubleUpLeftIcon /> Reply all
+          <ContextMenu.Shortcut>⌘A</ContextMenu.Shortcut>
+        </ContextMenu.Item>
+        <ContextMenu.Item value="archive">
+          <ArchiveIcon /> Archive
+          <ContextMenu.Shortcut>⌘Z</ContextMenu.Shortcut>
+        </ContextMenu.Item>
+        <ContextMenu.Sub>
+          <ContextMenu.TriggerItem>
+            <FolderOpenIcon /> Move to
+            <ContextMenu.Indicator>
+              <CaretRightIcon />
+            </ContextMenu.Indicator>
+          </ContextMenu.TriggerItem>
+          <Portal>
+            <ContextMenu.Positioner>
+              <ContextMenu.Content>
+                <ContextMenu.Item value="move-to-folder-1">
+                  <ArchiveIcon /> Junk
+                </ContextMenu.Item>
+                <ContextMenu.Item value="move-to-folder-2">
+                  <TrashIcon /> Trash
+                </ContextMenu.Item>
+                <ContextMenu.Item value="move-to-folder-3">
+                  <BellIcon /> Reminders
+                </ContextMenu.Item>
+                <ContextMenu.Sub>
+                  <ContextMenu.TriggerItem>
+                    <PlusCircleIcon />
+                    More
+                    <ContextMenu.Indicator>
+                      <CaretRightIcon />
+                    </ContextMenu.Indicator>
+                  </ContextMenu.TriggerItem>
+                  <Portal>
+                    <ContextMenu.Positioner>
+                      <ContextMenu.Content>
+                        <ContextMenu.Item value="move-to-folder-4">
+                          <NotePencilIcon />
+                          Drafts
+                        </ContextMenu.Item>
+                        <ContextMenu.Item value="move-to-folder-6">
+                          <EnvelopeSimpleIcon />
+                          Spam
+                        </ContextMenu.Item>
+                      </ContextMenu.Content>
+                    </ContextMenu.Positioner>
+                  </Portal>
+                </ContextMenu.Sub>
+              </ContextMenu.Content>
+            </ContextMenu.Positioner>
+          </Portal>
+        </ContextMenu.Sub>
         <ContextMenu.Separator />
-        <ContextMenu.Item value="reload">Reload</ContextMenu.Item>
-      </ContextMenu.Content>
+        <ContextMenu.Item value="delete" variant="destructive">
+          <TrashIcon /> Delete
+          <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
+        </ContextMenu.Item>
+      </ContextMenu.ItemGroup>
     </ContextMenu>
   );
 }

@@ -9,6 +9,7 @@ import {
 } from "@squidlab/phosphor-solid/icons";
 import type { RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
+import { Portal } from "solid-js/web";
 import { createMemo, createSignal } from "solid-js";
 
 interface User {
@@ -134,7 +135,7 @@ function ColumnVisibilityMenu<TData extends RowData>() {
   const table = useDataGrid<TData>();
 
   return (
-    <DropdownMenu positioning={{ placement: "bottom-end" }}>
+    <DropdownMenu.Root positioning={{ placement: "bottom-end" }}>
       <DropdownMenu.Trigger
         asChild={(props) => (
           <Button {...props()} size="sm" variant="outline">
@@ -143,22 +144,28 @@ function ColumnVisibilityMenu<TData extends RowData>() {
           </Button>
         )}
       />
-      <DropdownMenu.Content class="min-w-44">
-        {table
-          .getAllColumns()
-          .filter((column) => column.getCanHide())
-          .map((column) => (
-            <DropdownMenu.Item
-              closeOnSelect={false}
-              onClick={() => column.toggleVisibility(!column.getIsVisible())}
-              value={column.id}
-            >
-              <Checkbox checked={column.getIsVisible()} tabIndex={-1} />
-              {column.id}
-            </DropdownMenu.Item>
-          ))}
-      </DropdownMenu.Content>
-    </DropdownMenu>
+      <Portal>
+        <DropdownMenu.Positioner>
+          <DropdownMenu.Content class="min-w-44">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => (
+                <DropdownMenu.Item
+                  closeOnSelect={false}
+                  onClick={() =>
+                    column.toggleVisibility(!column.getIsVisible())
+                  }
+                  value={column.id}
+                >
+                  <Checkbox checked={column.getIsVisible()} tabIndex={-1} />
+                  {column.id}
+                </DropdownMenu.Item>
+              ))}
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Portal>
+    </DropdownMenu.Root>
   );
 }
 

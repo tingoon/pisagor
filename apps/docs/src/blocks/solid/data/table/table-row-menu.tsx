@@ -7,6 +7,7 @@ import {
   TrashIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
+import { Portal } from "solid-js/web";
 import { tableRowMenuBlock } from "#/styles/recipes/table";
 
 const styles = tableRowMenuBlock();
@@ -30,7 +31,7 @@ export function TableRowMenu(props: TableRowMenuProps) {
       <Table.Body>
         <For each={workspaceUsers.slice(0, 3)}>
           {(user) => (
-            <ContextMenu>
+            <ContextMenu.Root>
               <ContextMenu.ContextTrigger
                 asChild={(triggerProps) => (
                   <Table.Row {...triggerProps()}>
@@ -39,24 +40,28 @@ export function TableRowMenu(props: TableRowMenuProps) {
                   </Table.Row>
                 )}
               />
-              <ContextMenu.Content class={styles.menu()}>
-                <ContextMenu.Item value="view">
-                  <EyeIcon />
-                  View
-                  <ContextMenu.Shortcut>⌘ V</ContextMenu.Shortcut>
-                </ContextMenu.Item>
-                <ContextMenu.Item value="edit">
-                  <PencilSimpleIcon />
-                  Edit
-                  <ContextMenu.Shortcut>⌘ E</ContextMenu.Shortcut>
-                </ContextMenu.Item>
-                <ContextMenu.Item value="delete" variant="destructive">
-                  <TrashIcon />
-                  Delete
-                  <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
-                </ContextMenu.Item>
-              </ContextMenu.Content>
-            </ContextMenu>
+              <Portal>
+                <ContextMenu.Positioner>
+                  <ContextMenu.Content class={styles.menu()}>
+                    <ContextMenu.Item value="view">
+                      <EyeIcon />
+                      View
+                      <ContextMenu.Shortcut>⌘ V</ContextMenu.Shortcut>
+                    </ContextMenu.Item>
+                    <ContextMenu.Item value="edit">
+                      <PencilSimpleIcon />
+                      Edit
+                      <ContextMenu.Shortcut>⌘ E</ContextMenu.Shortcut>
+                    </ContextMenu.Item>
+                    <ContextMenu.Item value="delete" variant="destructive">
+                      <TrashIcon />
+                      Delete
+                      <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
+                    </ContextMenu.Item>
+                  </ContextMenu.Content>
+                </ContextMenu.Positioner>
+              </Portal>
+            </ContextMenu.Root>
           )}
         </For>
       </Table.Body>

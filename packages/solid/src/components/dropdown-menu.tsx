@@ -1,11 +1,15 @@
-import { Menu as MenuPrimitive } from "@ark-ui/solid";
+import { Menu as MenuPrimitive, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   MenuArrowProps,
+  MenuArrowTipProps,
   MenuCheckboxItemProps,
   MenuContentProps,
+  MenuIndicatorProps,
   MenuItemGroupLabelProps,
   MenuItemGroupProps,
+  MenuItemIndicatorProps,
   MenuItemProps,
+  MenuItemTextProps,
   MenuPositionerProps,
   MenuRadioItemGroupProps,
   MenuRadioItemProps,
@@ -15,428 +19,285 @@ import type {
   MenuTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  DropdownMenuItemGroupContract,
-  DropdownMenuItemRootContract,
-  DropdownMenuItemContract,
-  DropdownMenuRootContract,
   DropdownMenuContract,
+  DropdownMenuItemRootContract,
+  DropdownMenuRootContract,
 } from "@pisagor/contracts";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, Show, splitProps, useContext } from "solid-js";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import {
-  CaretRightIcon,
-  CheckIcon,
-  createSlotRecipeContext,
-} from "../internal";
+import { createSlotRecipeContext } from "../internal";
+import { type DialogTriggerRender, renderTrigger } from "./dialog";
 
 // #region Context
-const { Context: DropdownMenuStylesContext } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "DropdownMenu",
   recipe: dropdownMenuRecipe,
 });
 
-/** Parts also render outside Content, so styles fall back to the default recipe. */
-function useDropdownMenuSlots() {
-  const styles = useContext(DropdownMenuStylesContext);
+const { withContext: withItemContext, withProvider: withItemProvider } =
+  createSlotRecipeContext({
+    name: "DropdownMenu",
+    recipe: dropdownMenuItemRecipe,
+  });
 
-  return () => styles?.slots ?? dropdownMenuRecipe();
-}
+/** Zag looks menu elements up by `[data-scope="menu"]`; keep the Ark scope. */
+const menuScope = { "data-scope": "menu" } as const;
 // #endregion
 
-export interface DropdownMenuItemGroupProps
-  extends MenuItemGroupProps, DropdownMenuItemGroupContract {
-  heading?: string;
-}
-
-export type DropdownMenuItemProps = MenuItemProps &
-  DropdownMenuItemRootContract &
-  DropdownMenuItemContract;
-
-export interface DropdownMenuRadioItemGroupProps
-  extends MenuRadioItemGroupProps, DropdownMenuItemGroupContract {
-  heading?: string;
-}
-
+// #region Types
 export type DropdownMenuRootProps = MenuRootProps & DropdownMenuRootContract;
-export type DropdownMenuProps = DropdownMenuRootProps & DropdownMenuContract;
 
 export type DropdownMenuTriggerProps = MenuTriggerProps;
+
+export type DropdownMenuIndicatorProps = MenuIndicatorProps;
+
 export type DropdownMenuPositionerProps = MenuPositionerProps;
+
+export type DropdownMenuContentProps = MenuContentProps;
+
+export type DropdownMenuArrowProps = MenuArrowProps;
+
+export type DropdownMenuArrowTipProps = MenuArrowTipProps;
+
+export type DropdownMenuItemGroupProps = MenuItemGroupProps;
+
+export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
+
+export type DropdownMenuRadioItemGroupProps = MenuRadioItemGroupProps;
+
+export type DropdownMenuSeparatorProps = MenuSeparatorProps;
+
+export type DropdownMenuItemRootProps = MenuItemProps &
+  DropdownMenuItemRootContract;
+
+export type DropdownMenuItemProps = DropdownMenuItemRootProps;
 
 export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps &
   DropdownMenuItemRootContract;
 
-export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
-
 export type DropdownMenuRadioItemProps = MenuRadioItemProps &
   DropdownMenuItemRootContract;
-
-export type DropdownMenuSubContentProps = MenuContentProps &
-  DropdownMenuRootContract;
-
-export type DropdownMenuArrowProps = MenuArrowProps;
-export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export type DropdownMenuTriggerItemProps = MenuTriggerItemProps &
   DropdownMenuItemRootContract;
 
-export type DropdownMenuContentProps = MenuContentProps &
-  DropdownMenuRootContract;
+export type DropdownMenuItemTextProps = MenuItemTextProps;
 
-export type DropdownMenuShortcutProps = ComponentProps<"span">;
+export type DropdownMenuItemIndicatorProps = MenuItemIndicatorProps;
 
-export function DropdownMenuRoot(props: DropdownMenuRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["positioning"]);
+export type DropdownMenuShortcutProps = HTMLArkProps<"span">;
 
-  return (
-    <MenuPrimitive.Root
-      {...rest}
-      positioning={local.positioning ?? { placement: "bottom-end" }}
-    />
-  );
+export interface DropdownMenuProps
+  extends DropdownMenuRootProps, DropdownMenuContract {
+  /** Menu items. */
+  children?: JSX.Element;
+  /**
+   * Whether to render an arrow pointing at the trigger.
+   *
+   * @defaultValue false
+   */
+  showArrow?: boolean;
+  /** Trigger element that opens the menu (render fn preferred). */
+  trigger?: DialogTriggerRender;
 }
+// #endregion
 
-export function DropdownMenuTrigger(
-  props: DropdownMenuTriggerProps,
-): JSX.Element {
-  return <MenuPrimitive.Trigger {...props} />;
-}
+// #region Parts
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<DropdownMenuRootProps>(MenuPrimitive.Root, {
+  defaultProps: { positioning: { placement: "bottom-end" } },
+  name: "Root",
+  slot: "base",
+});
 
-export function DropdownMenuPositioner(
-  props: DropdownMenuPositionerProps,
-): JSX.Element {
+/** Nested menu root; opens to the side of its `TriggerItem`. */
+const Sub = withProvider<DropdownMenuRootProps>(MenuPrimitive.Root, {
+  defaultProps: { positioning: { placement: "right-start" } },
+  name: "Sub",
+  slot: "base",
+});
+
+const Trigger = withContext<DropdownMenuTriggerProps>(MenuPrimitive.Trigger, {
+  defaultProps: menuScope,
+  name: "Trigger",
+});
+
+const Indicator = withContext<DropdownMenuIndicatorProps>(
+  MenuPrimitive.Indicator,
+  { defaultProps: menuScope, name: "Indicator" },
+);
+
+const Positioner = withContext<DropdownMenuPositionerProps>(
+  MenuPrimitive.Positioner,
+  { defaultProps: menuScope, name: "Positioner" },
+);
+
+const Content = withContext<DropdownMenuContentProps>(MenuPrimitive.Content, {
+  defaultProps: menuScope,
+  name: "Content",
+});
+
+const Arrow = withContext<DropdownMenuArrowProps>(MenuPrimitive.Arrow, {
+  defaultProps: {
+    ...menuScope,
+    style: {
+      "--arrow-background": "var(--popover)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const ArrowTip = withContext<DropdownMenuArrowTipProps>(
+  MenuPrimitive.ArrowTip,
+  { defaultProps: menuScope, name: "ArrowTip" },
+);
+
+const ItemGroup = withContext<DropdownMenuItemGroupProps>(
+  MenuPrimitive.ItemGroup,
+  { defaultProps: menuScope, name: "ItemGroup" },
+);
+
+const ItemGroupLabel = withContext<DropdownMenuItemGroupLabelProps>(
+  MenuPrimitive.ItemGroupLabel,
+  { defaultProps: menuScope, name: "ItemGroupLabel" },
+);
+
+const RadioItemGroup = withContext<DropdownMenuRadioItemGroupProps>(
+  MenuPrimitive.RadioItemGroup,
+  { defaultProps: menuScope, name: "RadioItemGroup", part: "item-group" },
+);
+
+const Separator = withContext<DropdownMenuSeparatorProps>(
+  MenuPrimitive.Separator,
+  { defaultProps: menuScope, name: "Separator" },
+);
+
+const Shortcut = withContext<DropdownMenuShortcutProps>("span", {
+  name: "Shortcut",
+});
+
+const Item = withItemProvider<DropdownMenuItemProps>(MenuPrimitive.Item, {
+  defaultProps: menuScope,
+  name: "Item",
+  slot: "base",
+});
+
+const QuickItemBase = withItemProvider<DropdownMenuItemProps>(
+  MenuPrimitive.Item,
+  { defaultProps: menuScope, name: "QuickItem", part: "item", slot: "base" },
+);
+
+/** Stacked icon + label item for quick-action grids. */
+function QuickItem(props: DropdownMenuItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const slots = useDropdownMenuSlots();
+  const styles = useStyles();
 
   return (
-    <MenuPrimitive.Positioner
+    <QuickItemBase
       {...rest}
-      class={slots().positioner({ class: local.class })}
+      class={styles.slots.quickItem({ class: local.class })}
     />
   );
 }
 
-export function DropdownMenuContent(
-  props: DropdownMenuContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const slots = createMemo(() => (local.recipe ?? dropdownMenuRecipe)());
+const CheckboxItemBase = withItemProvider<DropdownMenuCheckboxItemProps>(
+  MenuPrimitive.CheckboxItem,
+  { defaultProps: menuScope, name: "CheckboxItem", part: "item", slot: "base" },
+);
 
-  return (
-    <DropdownMenuStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <Portal>
-        <DropdownMenuPositioner>
-          <MenuPrimitive.Content
-            {...rest}
-            class={slots().content({ class: local.class })}
-          />
-        </DropdownMenuPositioner>
-      </Portal>
-    </DropdownMenuStylesContext>
-  );
+/** Checkbox item; inset by default to leave room for `ItemIndicator`. */
+function CheckboxItem(props: DropdownMenuCheckboxItemProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["inset"]);
+
+  return <CheckboxItemBase {...rest} inset={local.inset ?? true} />;
 }
 
-export function DropdownMenuItemGroup(
-  props: DropdownMenuItemGroupProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "heading"]);
+const RadioItemBase = withItemProvider<DropdownMenuRadioItemProps>(
+  MenuPrimitive.RadioItem,
+  { defaultProps: menuScope, name: "RadioItem", part: "item", slot: "base" },
+);
 
-  return (
-    <MenuPrimitive.ItemGroup {...rest}>
-      <Show when={!!local.heading}>
-        <DropdownMenuItemGroupLabel>{local.heading}</DropdownMenuItemGroupLabel>
-      </Show>
-      {local.children}
-    </MenuPrimitive.ItemGroup>
-  );
+/** Radio item; inset by default to leave room for `ItemIndicator`. */
+function RadioItem(props: DropdownMenuRadioItemProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["inset"]);
+
+  return <RadioItemBase {...rest} inset={local.inset ?? true} />;
 }
 
-export function DropdownMenuSeparator(
-  props: DropdownMenuSeparatorProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useDropdownMenuSlots();
+const TriggerItem = withItemProvider<DropdownMenuTriggerItemProps>(
+  MenuPrimitive.TriggerItem,
+  { defaultProps: menuScope, name: "TriggerItem", slot: "base" },
+);
 
-  return (
-    <MenuPrimitive.Separator
-      {...rest}
-      class={slots().separator({ class: local.class })}
-    />
-  );
-}
+const ItemText = withItemContext<DropdownMenuItemTextProps>(
+  MenuPrimitive.ItemText,
+  { defaultProps: menuScope, name: "ItemText", slot: "text" },
+);
 
-export function DropdownMenuItem(props: DropdownMenuItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
-  const variant = () => local.variant ?? "default";
-  const recipe = () => local.recipe ?? dropdownMenuItemRecipe;
+const ItemIndicator = withItemContext<DropdownMenuItemIndicatorProps>(
+  MenuPrimitive.ItemIndicator,
+  { defaultProps: menuScope, name: "ItemIndicator", slot: "indicator" },
+);
+// #endregion
 
-  return (
-    <MenuPrimitive.Item
-      {...rest}
-      class={recipe()({ variant: variant() }).base({ class: local.class })}
-      data-variant={variant()}
-    />
-  );
-}
-
-export function DropdownMenuQuickItem(
-  props: DropdownMenuItemProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
-  const slots = useDropdownMenuSlots();
-  const variant = () => local.variant ?? "default";
-  const recipe = () => local.recipe ?? dropdownMenuItemRecipe;
-
-  return (
-    <MenuPrimitive.Item
-      {...rest}
-      class={recipe()({ variant: variant() }).base({
-        class: slots().quickItem({ class: local.class }),
-      })}
-    />
-  );
-}
-
-export function DropdownMenuCheckboxItem(
-  props: DropdownMenuCheckboxItemProps,
-): JSX.Element {
+// #region Shorthand
+export function DropdownMenuShorthand(props: DropdownMenuProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "children",
-    "recipe",
-    "class",
-    "variant",
+    "classNames",
+    "showArrow",
+    "trigger",
   ]);
-  const variant = () => local.variant ?? "default";
-  const slots = () =>
-    (local.recipe ?? dropdownMenuItemRecipe)({
-      inset: true,
-      variant: variant(),
-    });
 
   return (
-    <MenuPrimitive.CheckboxItem
-      {...rest}
-      class={slots().base({ class: local.class })}
-      data-variant={variant()}
-    >
-      <MenuPrimitive.ItemIndicator class={slots().indicator()}>
-        <CheckIcon />
-      </MenuPrimitive.ItemIndicator>
-      <MenuPrimitive.ItemText class={slots().text()}>
-        {local.children}
-      </MenuPrimitive.ItemText>
-    </MenuPrimitive.CheckboxItem>
-  );
-}
-
-export function DropdownMenuItemText(
-  props: ComponentProps<typeof MenuPrimitive.ItemText>,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-
-  return (
-    <MenuPrimitive.ItemText
-      {...rest}
-      class={dropdownMenuItemRecipe().text({ class: local.class })}
-    />
-  );
-}
-
-export function DropdownMenuItemIndicator(
-  props: ComponentProps<typeof MenuPrimitive.ItemIndicator>,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-
-  return (
-    <MenuPrimitive.ItemIndicator
-      {...rest}
-      class={dropdownMenuItemRecipe().indicator({ class: local.class })}
-    >
-      {local.children ?? <CheckIcon />}
-    </MenuPrimitive.ItemIndicator>
-  );
-}
-
-export function DropdownMenuRadioItemGroup(
-  props: DropdownMenuRadioItemGroupProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "heading"]);
-
-  return (
-    <MenuPrimitive.RadioItemGroup {...rest}>
-      <Show when={!!local.heading}>
-        <DropdownMenuItemGroupLabel>{local.heading}</DropdownMenuItemGroupLabel>
+    <Root {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <Trigger
+          asChild={renderTrigger(local.trigger)}
+          class={local.classNames?.trigger}
+        />
       </Show>
-      {local.children}
-    </MenuPrimitive.RadioItemGroup>
-  );
-}
 
-export function DropdownMenuItemGroupLabel(
-  props: DropdownMenuItemGroupLabelProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useDropdownMenuSlots();
-
-  return (
-    <MenuPrimitive.ItemGroupLabel
-      {...rest}
-      class={slots().itemGroupLabel({ class: local.class })}
-    />
-  );
-}
-
-export function DropdownMenuRadioItem(
-  props: DropdownMenuRadioItemProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "recipe",
-    "class",
-    "variant",
-  ]);
-  const variant = () => local.variant ?? "default";
-  const slots = () =>
-    (local.recipe ?? dropdownMenuItemRecipe)({
-      inset: true,
-      variant: variant(),
-    });
-
-  return (
-    <MenuPrimitive.RadioItem
-      {...rest}
-      class={slots().base({ class: local.class })}
-      data-variant={variant()}
-    >
-      <MenuPrimitive.ItemIndicator class={slots().indicator()}>
-        <CheckIcon />
-      </MenuPrimitive.ItemIndicator>
-      <MenuPrimitive.ItemText class={slots().text()}>
-        {local.children}
-      </MenuPrimitive.ItemText>
-    </MenuPrimitive.RadioItem>
-  );
-}
-
-export function DropdownMenuSub(props: DropdownMenuRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["positioning"]);
-
-  return (
-    <MenuPrimitive.Root
-      {...rest}
-      positioning={local.positioning ?? { placement: "right-start" }}
-    />
-  );
-}
-
-export function DropdownMenuSubContent(
-  props: DropdownMenuSubContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const slots = createMemo(() => (local.recipe ?? dropdownMenuRecipe)());
-
-  return (
-    <DropdownMenuStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
       <Portal>
-        <DropdownMenuPositioner>
-          <MenuPrimitive.Content
-            {...rest}
-            class={slots().content({ class: local.class })}
-          />
-        </DropdownMenuPositioner>
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show when={local.showArrow ?? false}>
+              <Arrow class={local.classNames?.arrow}>
+                <ArrowTip class={local.classNames?.arrowTip} />
+              </Arrow>
+            </Show>
+
+            {local.children}
+          </Content>
+        </Positioner>
       </Portal>
-    </DropdownMenuStylesContext>
+    </Root>
   );
 }
+// #endregion
 
-export function DropdownMenuTriggerItem(
-  props: DropdownMenuTriggerItemProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
-  const recipe = () => local.recipe ?? dropdownMenuItemRecipe;
-
-  return (
-    <MenuPrimitive.TriggerItem
-      {...rest}
-      class={recipe()({ variant: "default" }).base({ class: local.class })}
-    >
-      {local.children}
-      <DropdownMenuShortcut>
-        <CaretRightIcon />
-      </DropdownMenuShortcut>
-    </MenuPrimitive.TriggerItem>
-  );
-}
-
-export function DropdownMenuShortcut(
-  props: DropdownMenuShortcutProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const slots = useDropdownMenuSlots();
-
-  return (
-    <span
-      {...rest}
-      class={slots().shortcut({ class: local.class })}
-      data-part="shortcut"
-      data-scope="dropdown-menu"
-    />
-  );
-}
-
-export function DropdownMenuArrow(props: DropdownMenuArrowProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["style"]);
-  const slots = useDropdownMenuSlots();
-
-  return (
-    <MenuPrimitive.Arrow
-      {...rest}
-      style={{
-        "--arrow-background": "var(--popover)",
-        "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...(typeof local.style === "object" && local.style !== null
-          ? local.style
-          : {}),
-      }}
-    >
-      <MenuPrimitive.ArrowTip class={slots().arrowTip()} />
-    </MenuPrimitive.Arrow>
-  );
-}
-
-export const DropdownMenu = Object.assign(DropdownMenuRoot, {
-  Arrow: DropdownMenuArrow,
-  CheckboxItem: DropdownMenuCheckboxItem,
-  Content: DropdownMenuContent,
-  Item: DropdownMenuItem,
-  ItemGroup: DropdownMenuItemGroup,
-  ItemGroupLabel: DropdownMenuItemGroupLabel,
-  ItemIndicator: DropdownMenuItemIndicator,
-  ItemText: DropdownMenuItemText,
-  Positioner: DropdownMenuPositioner,
-  QuickItem: DropdownMenuQuickItem,
-  RadioItem: DropdownMenuRadioItem,
-  RadioItemGroup: DropdownMenuRadioItemGroup,
-  Separator: DropdownMenuSeparator,
-  Shortcut: DropdownMenuShortcut,
-  Sub: DropdownMenuSub,
-  SubContent: DropdownMenuSubContent,
-  Trigger: DropdownMenuTrigger,
-  TriggerItem: DropdownMenuTriggerItem,
+export const DropdownMenu = Object.assign(DropdownMenuShorthand, {
+  Arrow,
+  ArrowTip,
+  CheckboxItem,
+  Content,
+  Indicator,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemIndicator,
+  ItemText,
+  Positioner,
+  QuickItem,
+  RadioItem,
+  RadioItemGroup,
+  Root,
+  Separator,
+  Shortcut,
+  Sub,
+  Trigger,
+  TriggerItem,
 });

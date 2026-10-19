@@ -21,11 +21,15 @@ import type {
   ListboxRootContract,
   ListboxContract,
 } from "@pisagor/contracts";
-import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
+import {
+  dropdownMenuRecipe,
+  listboxItemRecipe,
+  listboxRecipe,
+} from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { CheckIcon, createSlotRecipeContext } from "../internal";
-import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
+import type { DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useLocale } from "./provider/context";
 
 // #region Context
@@ -216,9 +220,12 @@ export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
 }
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+
   return (
-    <DropdownMenu.Shortcut
-      {...props}
+    <span
+      {...rest}
+      class={dropdownMenuRecipe().shortcut({ class: local.class })}
       data-part="shortcut"
       data-scope="listbox"
     />

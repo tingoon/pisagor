@@ -13,7 +13,7 @@ export function MenuDialog() {
 
   return (
     <>
-      <DropdownMenu>
+      <DropdownMenu.Root>
         <DropdownMenu.Trigger
           asChild={(props) => (
             <Button {...props()} variant="outline">
@@ -21,21 +21,28 @@ export function MenuDialog() {
             </Button>
           )}
         />
-        <DropdownMenu.Content>
-          <DropdownMenu.Item onSelect={() => setIsOpen(true)} value="settings">
-            <GearIcon />
-            Open settings
-          </DropdownMenu.Item>
-          <DropdownMenu.Item disabled value="profile">
-            <UserIcon />
-            View profile
-          </DropdownMenu.Item>
-          <DropdownMenu.Item disabled value="help">
-            <InfoIcon />
-            Help
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu>
+        <Portal>
+          <DropdownMenu.Positioner>
+            <DropdownMenu.Content>
+              <DropdownMenu.Item
+                onSelect={() => setIsOpen(true)}
+                value="settings"
+              >
+                <GearIcon />
+                Open settings
+              </DropdownMenu.Item>
+              <DropdownMenu.Item disabled value="profile">
+                <UserIcon />
+                View profile
+              </DropdownMenu.Item>
+              <DropdownMenu.Item disabled value="help">
+                <InfoIcon />
+                Help
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Positioner>
+        </Portal>
+      </DropdownMenu.Root>
       <Dialog.Root onOpenChange={({ open }) => setIsOpen(open)} open={isOpen()}>
         <Portal>
           <Dialog.Backdrop />

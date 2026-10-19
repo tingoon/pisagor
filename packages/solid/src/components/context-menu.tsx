@@ -2,33 +2,37 @@ import {
   Menu as MenuPrimitive,
   type MenuContextTriggerProps,
 } from "@ark-ui/solid";
-import type { ContextMenuRootContract } from "@pisagor/contracts";
-import { contextMenuRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
-import { splitProps } from "solid-js";
 import type {
-  DropdownMenuContentProps,
-  DropdownMenuItemGroupProps,
-  DropdownMenuItemProps,
+  ContextMenuRootContract,
+  DropdownMenuContract,
+} from "@pisagor/contracts";
+import { contextMenuRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
+import { Portal } from "solid-js/web";
+import type {
   DropdownMenuRootProps,
-  DropdownMenuSeparatorProps,
   DropdownMenuShortcutProps,
-  DropdownMenuTriggerItemProps,
 } from "./dropdown-menu";
 import { DropdownMenu } from "./dropdown-menu";
 
+// #region Types
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export type ContextMenuContextTriggerProps = MenuContextTriggerProps &
   ContextMenuRootContract;
 
-export function ContextMenuRoot(props: ContextMenuRootProps): JSX.Element {
-  return <DropdownMenu {...props} />;
+export interface ContextMenuProps
+  extends ContextMenuRootProps, DropdownMenuContract {
+  /** Menu items. */
+  children?: JSX.Element;
+  /** Area that opens the menu on right-click or long press. */
+  trigger?: JSX.Element;
 }
+// #endregion
 
-export function ContextMenuContextTrigger(
-  props: ContextMenuContextTriggerProps,
-): JSX.Element {
+// #region Parts
+function ContextTrigger(props: ContextMenuContextTriggerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);
 
   return (
@@ -39,72 +43,66 @@ export function ContextMenuContextTrigger(
   );
 }
 
-export function ContextMenuContent(
-  props: DropdownMenuContentProps,
-): JSX.Element {
-  return <DropdownMenu.Content {...props} />;
-}
+function Shortcut(props: DropdownMenuShortcutProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
 
-export function ContextMenuItemGroup(
-  props: DropdownMenuItemGroupProps,
-): JSX.Element {
-  return <DropdownMenu.ItemGroup {...props} />;
-}
-
-export function ContextMenuSeparator(
-  props: DropdownMenuSeparatorProps,
-): JSX.Element {
-  return <DropdownMenu.Separator {...props} />;
-}
-
-export function ContextMenuItem(props: DropdownMenuItemProps): JSX.Element {
-  return <DropdownMenu.Item {...props} />;
-}
-
-export function ContextMenuSub(props: DropdownMenuRootProps): JSX.Element {
-  return <DropdownMenu.Sub {...props} />;
-}
-
-export function ContextMenuSubContent(
-  props: DropdownMenuContentProps,
-): JSX.Element {
-  return <DropdownMenu.SubContent {...props} />;
-}
-
-export function ContextMenuTriggerItem(
-  props: DropdownMenuTriggerItemProps,
-): JSX.Element {
-  return <DropdownMenu.TriggerItem {...props} />;
-}
-
-export function ContextMenuShortcut(
-  props: DropdownMenuShortcutProps,
-): JSX.Element {
   return (
-    <DropdownMenu.Shortcut
-      {...props}
+    <span
+      {...rest}
+      class={dropdownMenuRecipe().shortcut({ class: local.class })}
       data-part="shortcut"
       data-scope="context-menu"
     />
   );
 }
+// #endregion
 
-export const ContextMenu = Object.assign(ContextMenuRoot, {
+// #region Shorthand
+export function ContextMenuShorthand(props: ContextMenuProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "children",
+    "classNames",
+    "trigger",
+  ]);
+
+  return (
+    <DropdownMenu.Root {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <ContextTrigger class={local.classNames?.trigger}>
+          {local.trigger}
+        </ContextTrigger>
+      </Show>
+
+      <Portal>
+        <DropdownMenu.Positioner class={local.classNames?.positioner}>
+          <DropdownMenu.Content class={local.classNames?.content}>
+            {local.children}
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Portal>
+    </DropdownMenu.Root>
+  );
+}
+// #endregion
+
+export const ContextMenu = Object.assign(ContextMenuShorthand, {
   Arrow: DropdownMenu.Arrow,
+  ArrowTip: DropdownMenu.ArrowTip,
   CheckboxItem: DropdownMenu.CheckboxItem,
-  Content: ContextMenuContent,
-  ContextTrigger: ContextMenuContextTrigger,
-  Item: ContextMenuItem,
-  ItemGroup: ContextMenuItemGroup,
+  Content: DropdownMenu.Content,
+  ContextTrigger,
+  Indicator: DropdownMenu.Indicator,
+  Item: DropdownMenu.Item,
+  ItemGroup: DropdownMenu.ItemGroup,
   ItemGroupLabel: DropdownMenu.ItemGroupLabel,
   ItemIndicator: DropdownMenu.ItemIndicator,
   ItemText: DropdownMenu.ItemText,
   Positioner: DropdownMenu.Positioner,
   RadioItem: DropdownMenu.RadioItem,
   RadioItemGroup: DropdownMenu.RadioItemGroup,
-  Separator: ContextMenuSeparator,
-  Shortcut: ContextMenuShortcut,
-  Sub: ContextMenuSub,
-  SubContent: ContextMenuSubContent,
-  TriggerItem: ContextMenuTriggerItem,
+  Root: DropdownMenu.Root,
+  Separator: DropdownMenu.Separator,
+  Shortcut,
+  Sub: DropdownMenu.Sub,
+  TriggerItem: DropdownMenu.TriggerItem,
 });

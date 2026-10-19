@@ -1,4 +1,5 @@
 /** @jsxImportSource solid-js */
+import { Portal } from "solid-js/web";
 
 import { DropdownMenu, InputGroup } from "@pisagor/solid";
 import {
@@ -16,7 +17,7 @@ export function InputGroupWithMenu() {
     <InputGroup>
       <InputGroup.Input placeholder="Select file..." />
       <InputGroup.Addon align="inline-end">
-        <DropdownMenu>
+        <DropdownMenu.Root>
           <DropdownMenu.Trigger
             asChild={(props) => (
               <InputGroup.Button
@@ -29,21 +30,25 @@ export function InputGroupWithMenu() {
               </InputGroup.Button>
             )}
           />
-          <DropdownMenu.Content class={styles.menu()}>
-            <DropdownMenu.Item value="file">
-              <FileIcon />
-              Select file
-            </DropdownMenu.Item>
-            <DropdownMenu.Item value="folder">
-              <FolderIcon />
-              Select folder
-            </DropdownMenu.Item>
-            <DropdownMenu.Item value="copy-path">
-              <CopyIcon />
-              Copy path
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content class={styles.menu()}>
+                <DropdownMenu.Item value="file">
+                  <FileIcon />
+                  Select file
+                </DropdownMenu.Item>
+                <DropdownMenu.Item value="folder">
+                  <FolderIcon />
+                  Select folder
+                </DropdownMenu.Item>
+                <DropdownMenu.Item value="copy-path">
+                  <CopyIcon />
+                  Copy path
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
       </InputGroup.Addon>
     </InputGroup>
   );

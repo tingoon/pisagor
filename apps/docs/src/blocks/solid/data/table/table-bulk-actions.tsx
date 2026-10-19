@@ -126,7 +126,7 @@ export function TableBulkActions(props: TableBulkActionsProps) {
               <PencilSimpleIcon />
               Edit
             </Button>
-            <DropdownMenu positioning={{ placement: "top" }}>
+            <DropdownMenu.Root positioning={{ placement: "top" }}>
               <DropdownMenu.Trigger
                 asChild={(triggerProps) => (
                   <Button {...triggerProps()} size="sm" variant="secondary">
@@ -134,17 +134,21 @@ export function TableBulkActions(props: TableBulkActionsProps) {
                   </Button>
                 )}
               />
-              <DropdownMenu.Content>
-                <DropdownMenu.Item value="archive">
-                  <ArchiveIcon />
-                  Archive
-                </DropdownMenu.Item>
-                <DropdownMenu.Item value="duplicate">
-                  <CopyIcon />
-                  Duplicate
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu>
+              <Portal>
+                <DropdownMenu.Positioner>
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Item value="archive">
+                      <ArchiveIcon />
+                      Archive
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item value="duplicate">
+                      <CopyIcon />
+                      Duplicate
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Positioner>
+              </Portal>
+            </DropdownMenu.Root>
             <AlertDialog.Root>
               <AlertDialog.Trigger
                 asChild={(triggerProps) => (
