@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
+import { PhCaretDown, PhCaretUp, PhDotsSixVertical } from "@phosphor-icons/vue";
 import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/vue";
 import type {
@@ -271,7 +271,9 @@ const handleSortableChange = (nextIds: string[]) => {
         <Sortable :items="itemIds" :on-value-change="handleSortableChange">
           <Sortable.Item v-for="user in data" :key="user.id" :value="user.id">
             <Sortable.ItemContent>
-              <Sortable.Handle />
+              <Sortable.Handle>
+                <PhDotsSixVertical />
+              </Sortable.Handle>
               <div class="min-w-0 flex-1">
                 <p class="truncate text-sm font-medium">{{ user.name }}</p>
                 <p class="text-muted-foreground truncate text-xs">

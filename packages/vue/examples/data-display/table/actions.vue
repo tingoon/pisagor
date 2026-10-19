@@ -26,30 +26,34 @@ import { workspaceUsers } from "./helpers";
         <Table.Cell class="font-medium">{{ user.name }}</Table.Cell>
         <Table.Cell>{{ user.email }}</Table.Cell>
         <Table.Cell class="text-right">
-          <DropdownMenu :positioning="{ placement: 'left-end' }">
+          <DropdownMenu.Root :positioning="{ placement: 'left-end' }">
             <DropdownMenu.Trigger as-child>
               <Button size="icon-sm" variant="outline">
                 <PhDotsThreeVertical />
               </Button>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content class="min-w-40">
-              <DropdownMenu.Item value="view">
-                <PhEye />
-                View
-                <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item value="edit">
-                <PhPencilSimple />
-                Edit
-                <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item value="delete" variant="destructive">
-                <PhTrash />
-                Delete
-                <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
+            <Teleport to="body">
+              <DropdownMenu.Positioner>
+                <DropdownMenu.Content class="min-w-40">
+                  <DropdownMenu.Item value="view">
+                    <PhEye />
+                    View
+                    <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item value="edit">
+                    <PhPencilSimple />
+                    Edit
+                    <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item value="delete" variant="destructive">
+                    <PhTrash />
+                    Delete
+                    <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Positioner>
+            </Teleport>
+          </DropdownMenu.Root>
         </Table.Cell>
       </Table.Row>
     </Table.Body>
