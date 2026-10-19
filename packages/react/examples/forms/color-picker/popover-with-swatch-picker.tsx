@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Button, ColorPicker } from "@pisagor/react";
 
 export function PopoverWithSwatchPicker() {
@@ -14,7 +15,7 @@ export function PopoverWithSwatchPicker() {
   ];
 
   return (
-    <ColorPicker defaultValue="#eb5e41" format="hsla">
+    <ColorPicker.Root defaultValue="#eb5e41" format="hsla">
       <ColorPicker.Control>
         <ColorPicker.Trigger asChild>
           <Button size="lg" variant="ghost">
@@ -23,25 +24,33 @@ export function PopoverWithSwatchPicker() {
           </Button>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area>
-          <ColorPicker.AreaThumb />
-        </ColorPicker.Area>
-        <ColorPicker.View format="hsla">
-          <ColorPicker.ChannelSlider channel="hue" />
-        </ColorPicker.View>
-        <ColorPicker.SwatchGroup>
-          {swatches.map((color) => (
-            <ColorPicker.SwatchTrigger
-              className="size-4"
-              key={color}
-              value={color}
-            >
-              <ColorPicker.Swatch value={color} />
-            </ColorPicker.SwatchTrigger>
-          ))}
-        </ColorPicker.SwatchGroup>
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.View format="hsla">
+              <ColorPicker.ChannelSlider channel="hue">
+                <ColorPicker.ChannelSliderTrack />
+                <ColorPicker.ChannelSliderThumb />
+              </ColorPicker.ChannelSlider>
+            </ColorPicker.View>
+            <ColorPicker.SwatchGroup>
+              {swatches.map((color) => (
+                <ColorPicker.SwatchTrigger
+                  className="size-4"
+                  key={color}
+                  value={color}
+                >
+                  <ColorPicker.Swatch value={color} />
+                </ColorPicker.SwatchTrigger>
+              ))}
+            </ColorPicker.SwatchGroup>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

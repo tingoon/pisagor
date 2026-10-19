@@ -1,8 +1,10 @@
-import { ColorPicker, InputGroup } from "@pisagor/react";
+import { Portal } from "@ark-ui/react";
+import { EyedropperIcon } from "@phosphor-icons/react";
+import { Button, ColorPicker, InputGroup } from "@pisagor/react";
 
 export function CustomSpacing() {
   return (
-    <ColorPicker defaultValue="#eb5e41" format="hsla">
+    <ColorPicker.Root defaultValue="#eb5e41" format="hsla">
       <ColorPicker.Control>
         <InputGroup>
           <ColorPicker.Trigger asChild>
@@ -15,22 +17,36 @@ export function CustomSpacing() {
           </ColorPicker.Input>
         </InputGroup>
       </ColorPicker.Control>
-      <ColorPicker.Content className="[--space:--spacing(2)] sm:[--space:--spacing(4)]">
-        <ColorPicker.Area>
-          <ColorPicker.AreaThumb />
-        </ColorPicker.Area>
-        <ColorPicker.View format="hsla">
-          <div className="flex items-center gap-3">
-            <ColorPicker.EyeDropperTrigger />
-            <div className="flex flex-1 flex-col gap-2.5">
-              <ColorPicker.ChannelSlider channel="hue" />
-              <ColorPicker.ChannelSlider channel="alpha">
-                <ColorPicker.TransparencyGrid />
-              </ColorPicker.ChannelSlider>
-            </div>
-          </div>
-        </ColorPicker.View>
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content className="[--space:--spacing(2)] sm:[--space:--spacing(4)]">
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.View format="hsla">
+              <div className="flex items-center gap-3">
+                <ColorPicker.EyeDropperTrigger asChild>
+                  <Button size="icon-md" variant="outline">
+                    <EyedropperIcon />
+                  </Button>
+                </ColorPicker.EyeDropperTrigger>
+                <div className="flex flex-1 flex-col gap-2.5">
+                  <ColorPicker.ChannelSlider channel="hue">
+                    <ColorPicker.ChannelSliderTrack />
+                    <ColorPicker.ChannelSliderThumb />
+                  </ColorPicker.ChannelSlider>
+                  <ColorPicker.ChannelSlider channel="alpha">
+                    <ColorPicker.TransparencyGrid />
+                    <ColorPicker.ChannelSliderTrack />
+                    <ColorPicker.ChannelSliderThumb />
+                  </ColorPicker.ChannelSlider>
+                </div>
+              </div>
+            </ColorPicker.View>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

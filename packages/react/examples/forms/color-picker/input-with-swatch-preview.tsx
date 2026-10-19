@@ -2,7 +2,7 @@ import { ColorPicker, InputGroup } from "@pisagor/react";
 
 export function InputWithSwatchPreview() {
   return (
-    <ColorPicker defaultValue="#eb5e41">
+    <ColorPicker.Root defaultValue="#eb5e41">
       <ColorPicker.Control>
         <InputGroup>
           <InputGroup.Addon align="inline-start">
@@ -13,6 +13,6 @@ export function InputWithSwatchPreview() {
           </ColorPicker.Input>
         </InputGroup>
       </ColorPicker.Control>
-    </ColorPicker>
+    </ColorPicker.Root>
   );
 }

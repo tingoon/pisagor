@@ -1,8 +1,9 @@
+import { Portal } from "@ark-ui/react";
 import { Button, ColorPicker } from "@pisagor/react";
 
 export function PopoverDisabled() {
   return (
-    <ColorPicker defaultValue="#eb5e41" disabled>
+    <ColorPicker.Root defaultValue="#eb5e41" disabled>
       <ColorPicker.Control>
         <ColorPicker.Trigger asChild>
           <Button size="lg" variant="ghost">
@@ -11,9 +12,15 @@ export function PopoverDisabled() {
           </Button>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area />
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+            </ColorPicker.Area>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

@@ -5,7 +5,7 @@ export function SwatchPickerCustomIndicator() {
   const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 
   return (
-    <ColorPicker inline>
+    <ColorPicker.Root inline>
       <ColorPicker.SwatchGroup>
         {swatches.map((color) => (
           <ColorPicker.SwatchTrigger key={color} value={color}>
@@ -17,6 +17,6 @@ export function SwatchPickerCustomIndicator() {
           </ColorPicker.SwatchTrigger>
         ))}
       </ColorPicker.SwatchGroup>
-    </ColorPicker>
+    </ColorPicker.Root>
   );
 }
