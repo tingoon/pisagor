@@ -137,7 +137,8 @@ export function PasswordInputShorthand({
   onVisibilityChange,
   recipe = passwordInputRecipe,
   className,
-  surfaceVariant,
+  // InputGroup reads the surface from context; keep it off the DOM input.
+  surfaceVariant: _surfaceVariant,
   ...inputProps
 }: PasswordInputProps) {
   const { m } = useLocale();
@@ -175,7 +176,6 @@ export function PasswordInputShorthand({
         <InputGroup
           data-clearable={clearable || undefined}
           size={size}
-          surfaceVariant={surfaceVariant}
           variant={variant}
         >
           <Input
