@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
+  import type { ToolbarRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./toolbar.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & BaseToolbarProps;
+  type Props = HTMLAttributes<HTMLDivElement> & ToolbarRootContract;
 
   let { children, ...rest }: Props = $props();
 

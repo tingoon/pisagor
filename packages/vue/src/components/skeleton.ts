@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue";
-import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/contracts";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
@@ -10,12 +9,10 @@ export interface SkeletonTextProps {
   lines?: number;
 }
 
-export interface SkeletonProps extends BaseSkeletonProps {
+export interface SkeletonProps extends SkeletonRootContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 export const SkeletonRoot = defineComponent({
@@ -40,7 +37,7 @@ export const SkeletonRoot = defineComponent({
       const variantSlots = props.recipe({ size: props.size });
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
@@ -74,7 +71,7 @@ export const SkeletonCircle = defineComponent({
     return () => {
       const variantSlots = props.recipe({ size: props.size });
 
-      return h(ark.div as ArkPart, {
+      return h("div", {
         ...attrs,
         class: variantSlots.circle({ class: props.class }),
         "data-part": "circle",
@@ -107,7 +104,7 @@ export const SkeletonText = defineComponent({
       const variantSlots = props.recipe({ size: props.size });
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.text({ class: props.class }),

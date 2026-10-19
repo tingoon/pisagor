@@ -36,7 +36,15 @@ Host element props — match the runtime host, do not mix:
 | Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react`                     | No Ark types.                                                                                                      |
 | Never                           | `ComponentProps<typeof ark.tag>`                                | Prefer `HTMLArkProps<"tag">` (or `HTMLArkPropsWithRef` when forwarding `ref`).                                     |
 
-Solid: `HTMLArkProps<"tag">` from `@ark-ui/solid` for `ark.*`. Vue: runtime props/attrs (nothing to type). Svelte: `HTMLAttributes<Element>` from `svelte/elements` (`@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel).
+**When to use `ark.*` / `<Ark>` vs native (all frameworks):** Prefer a **native** tag for presentational / layout chrome. Use the Ark factory only when polymorphism (`asChild` / `as-child`) is meaningful — interactive triggers/close controls, link surfaces (`a` for router `Link`), or public roots/titles that consumers morph (`Button`, `Card` / `Card.Title`, `LinkBox`, `Item` root, `Announcement.Root`, `Breadcrumb.Link`, `AvatarGroup.Count`, heading titles). Do not expose polymorphism on Badge, Skeleton, Dialog Body/Header/Footer, Table cells, Field shells, or similar leaves. `withContext("div")` / `<div>` / `h("div", …)` are fine; see `alert`, `progress`, `app-shell`. Astro is native-only (no Ark / no `asChild`).
+
+| Framework | Polymorphic host props                                                              | Native host props                           |
+| --------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |
+| React     | `HTMLArkProps<"tag">` / `HTMLArkPropsWithRef<"tag">` (`@ark-ui/react` / `internal`) | `ComponentPropsWithRef<"tag">`              |
+| Solid     | `HTMLArkProps<"tag">` from `@ark-ui/solid` (includes `ref`)                         | `ComponentProps<"tag">` from `solid-js`     |
+| Vue       | Runtime via `ark.*` + attrs (no separate prop type)                                 | `h("tag", …)` / `withContext("tag")`        |
+| Svelte    | `<Ark as="tag">` when polymorphism needed                                           | `HTMLAttributes<Element>` on native `<tag>` |
+| Astro     | —                                                                                   | `HTMLAttributes<"tag">` from `astro/types`  |
 
 ---
 

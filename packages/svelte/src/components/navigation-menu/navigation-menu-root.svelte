@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+  import type { NavigationMenuRootContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -11,7 +10,7 @@
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: Snippet;
-  } & BaseNavigationMenuProps;
+  } & NavigationMenuRootContract;
 
   let { children, ...rest }: Props = $props();
   const { m } = useLocale();
@@ -28,6 +27,6 @@
   });
 </script>
 
-<Ark aria-label={m("navigationMenu.label")} as="nav" {...root.props}>
+<nav aria-label={m("navigationMenu.label")} {...root.props}>
   {@render children?.()}
-</Ark>
+</nav>

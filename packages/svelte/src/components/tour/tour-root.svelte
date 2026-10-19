@@ -5,7 +5,7 @@
     TourStepDetails,
     UseTourProps,
   } from "@ark-ui/svelte";
-  import type { TourProps as BaseTourProps } from "@pisagor/props";
+  import type { TourRootContract } from "@pisagor/contracts";
   import { tourRecipe } from "@pisagor/recipes";
   import { onDestroy } from "svelte";
   import { setTourContext } from "./tour.context";
@@ -16,7 +16,7 @@
       "keyboardNavigation" | "onStatusChange" | "onStepChange"
     > & {
       steps?: TourStepDetails[];
-    } & BaseTourProps;
+    } & TourRootContract;
 
   let {
     steps = [],

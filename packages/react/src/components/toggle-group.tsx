@@ -3,7 +3,11 @@ import {
   type ToggleGroupItemProps,
   type ToggleGroupRootProps as ToggleGroupRootPrimitiveProps,
 } from "@ark-ui/react";
-import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
+import type {
+  ToggleGroupPresetItem as BaseToggleGroupPresetItem,
+  ToggleGroupRootContract,
+  ToggleGroupContract,
+} from "@pisagor/contracts";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
@@ -44,24 +48,26 @@ function useToggleGroup() {
 // #endregion
 
 // #region Types
-interface ToggleGroupPresetItem {
-  value: string;
-  children: ReactNode;
-  disabled?: boolean;
+interface ToggleGroupPresetItem extends Omit<
+  BaseToggleGroupPresetItem,
+  "content"
+> {
+  content: ReactNode;
 }
 
 export interface ToggleGroupRootProps
   extends
     Omit<ToggleGroupRootPrimitiveProps, "onValueChange">,
     ToggleGroupItemOptions,
-    BaseToggleGroupRootProps {
+    Omit<ToggleGroupRootContract, "items"> {
   onValueChange?: (value: string | string[]) => void;
 }
 
-export interface ToggleGroupProps extends Omit<
-  ToggleGroupRootProps,
-  "children"
-> {
+export interface ToggleGroupProps
+  extends
+    Omit<ToggleGroupRootProps, "children" | "recipe">,
+    ToggleGroupRootContract,
+    ToggleGroupContract {
   items?: ToggleGroupPresetItem[];
 }
 // #endregion
@@ -141,7 +147,7 @@ export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
           key={item.value}
           value={item.value}
         >
-          {item.children}
+          {item.content}
         </ToggleGroupItem>
       ))}
     </ToggleGroupRoot>

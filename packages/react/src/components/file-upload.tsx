@@ -1,8 +1,6 @@
 import {
   FileUpload as FileUploadPrimitive,
-  ark,
   useFileUploadContext,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   FileUploadClearTriggerProps,
@@ -17,16 +15,16 @@ import type {
 } from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
-  FileUploadItemProps as BaseFileUploadItemProps,
-  FileUploadProps as BaseFileUploadRootProps,
-} from "@pisagor/props";
+  FileUploadItemRootContract,
+  FileUploadRootContract,
+} from "@pisagor/contracts";
 import {
   fileUploadItemRecipe,
   fileUploadRecipe,
   formControlZoneRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -49,12 +47,12 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 // #region Types
 
 export interface FileUploadItemRootProps
-  extends FileUploadItemProps, BaseFileUploadItemProps {}
+  extends FileUploadItemProps, FileUploadItemRootContract {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadRootPrimitiveProps, BaseFileUploadRootProps {
+  extends FileUploadRootPrimitiveProps, FileUploadRootContract {
   onValueChange?: (value: File[]) => void;
 }
 
@@ -73,13 +71,13 @@ export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
 
-export type FileUploadDropzoneIconProps = HTMLArkProps<"div">;
+export type FileUploadDropzoneIconProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadTitleProps = HTMLArkProps<"div">;
+export type FileUploadTitleProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadDescriptionProps = HTMLArkProps<"div">;
+export type FileUploadDescriptionProps = ComponentPropsWithRef<"div">;
 
-export type FileUploadHelperProps = HTMLArkProps<"div">;
+export type FileUploadHelperProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -152,14 +150,14 @@ export function FileUploadDropzoneIcon({
   const { slots } = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.dropzoneIcon({ className })}
       data-part="dropzone-icon"
       data-scope="file-upload"
     >
       {children || <UploadIcon />}
-    </ark.div>
+    </div>
   );
 }
 
@@ -167,7 +165,7 @@ export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
   const { slots } = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.title({ className })}
       data-part="title"
@@ -183,7 +181,7 @@ export function FileUploadDescription({
   const { slots } = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.description({ className })}
       data-part="description"
@@ -199,7 +197,7 @@ export function FileUploadHelper({
   const { slots } = useFileUpload();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.helper({ className })}
       data-part="dropzone-helper"

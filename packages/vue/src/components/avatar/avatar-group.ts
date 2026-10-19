@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
+import type { AvatarGroupRootContract } from "@pisagor/contracts";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../../internal";
@@ -13,7 +13,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const AvatarGroupRoot = withProvider(ark.div, {
+export const AvatarGroupRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });
@@ -32,7 +32,7 @@ export interface AvatarGroupUser {
   src?: string;
 }
 
-export interface AvatarGroupProps extends BaseAvatarGroupProps {
+export interface AvatarGroupProps extends AvatarGroupRootContract {
   class?: unknown;
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;

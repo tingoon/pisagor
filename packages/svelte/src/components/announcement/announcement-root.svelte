@@ -1,12 +1,13 @@
 <script lang="ts">
-  import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
+  import { Ark } from "@ark-ui/svelte";
+  import type { AnnouncementRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./announcement.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "role"> & {
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "role"> & {
     children?: import("svelte").Snippet;
     role?: "status" | "alert";
-  } & BaseAnnouncementProps;
+  } & AnnouncementRootContract;
 
   let { children, ...rest }: Props = $props();
 
@@ -17,6 +18,6 @@
   });
 </script>
 
-<div {...root.props}>
+<Ark as="div" {...root.props}>
   {@render children?.()}
-</div>
+</Ark>

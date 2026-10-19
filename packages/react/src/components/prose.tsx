@@ -1,10 +1,12 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface ProseProps
-  extends Omit<HTMLArkProps<"div">, "dangerouslySetInnerHTML">, BaseProseProps {
+  extends
+    Omit<ComponentPropsWithRef<"div">, "dangerouslySetInnerHTML">,
+    ProseRootContract {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.
    *
@@ -31,7 +33,7 @@ export function Prose({
   ...rest
 }: ProseProps) {
   return (
-    <ark.div
+    <div
       {...rest}
       {...(html
         ? {

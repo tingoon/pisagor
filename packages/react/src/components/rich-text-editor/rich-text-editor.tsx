@@ -1,4 +1,3 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import {
   ListBulletsIcon,
   ListNumbersIcon,
@@ -6,13 +5,13 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/contracts";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useMemo } from "react";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { useLocale } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
@@ -27,8 +26,8 @@ import {
 
 export interface RichTextEditorRootProps
   extends
-    Omit<HTMLArkProps<"div">, "defaultValue" | "onChange">,
-    BaseRichTextEditorRootProps {
+    Omit<ComponentPropsWithRef<"div">, "defaultValue" | "onChange">,
+    RichTextEditorRootContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Initial HTML content for uncontrolled usage. */
@@ -68,9 +67,9 @@ export interface RichTextEditorRootProps
   children?: ReactNode;
 }
 
-export type RichTextEditorToolbarProps = HTMLArkProps<"div">;
+export type RichTextEditorToolbarProps = ComponentPropsWithRef<"div">;
 
-export type RichTextEditorContentProps = HTMLArkProps<"div">;
+export type RichTextEditorContentProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
@@ -160,7 +159,7 @@ export function RichTextEditorRoot({
 
   return (
     <RichTextEditorContext value={contextValue}>
-      <ark.div
+      <div
         {...rest}
         {...controlProps}
         aria-disabled={disabled || undefined}
@@ -190,7 +189,7 @@ export function RichTextEditorRoot({
           </VisuallyHidden>
         ) : null}
         {children}
-      </ark.div>
+      </div>
     </RichTextEditorContext>
   );
 }
@@ -230,7 +229,7 @@ export function RichTextEditorToolbar({
   }
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.toolbar({ className })}
       data-part="toolbar"
@@ -289,7 +288,7 @@ export function RichTextEditorToolbar({
           </Toggle>
         </div>
       )}
-    </ark.div>
+    </div>
   );
 }
 
@@ -300,14 +299,14 @@ export function RichTextEditorContent({
   const { editor, slots } = useRichTextEditorState();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="content"
       data-scope="rich-text-editor"
     >
       <EditorContent editor={editor} />
-    </ark.div>
+    </div>
   );
 }
 // #endregion

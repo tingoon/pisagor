@@ -1,14 +1,16 @@
 ---
-import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
-import {
-  fieldRecipe,
-  type ProgressRecipeSlot,
-  progressRecipe,
-} from "@pisagor/recipes";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
+import { fieldRecipe, progressRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
-interface Props extends HTMLAttributes<"div">, BaseProgressProps {
+interface Props
+  extends HTMLAttributes<"div">,
+    ProgressRootContract,
+    ProgressContract {
   /**
    * The orientation of the progress bar.
    *
@@ -43,10 +45,7 @@ interface Props extends HTMLAttributes<"div">, BaseProgressProps {
    * @defaultValue 100
    */
   max?: number;
-  /** Optional label rendered above the progress bar. */
   label?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<ProgressRecipeSlot>;
 }
 
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({

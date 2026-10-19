@@ -1,10 +1,10 @@
-import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
-export interface SeparatorProps extends BaseSeparatorProps {
+export interface SeparatorProps extends SeparatorRootContract {
   class?: unknown;
   dataPart?: string;
   dataScope?: string;

@@ -4,7 +4,7 @@
     Portal,
     Toaster as ToasterPrimitive,
   } from "@ark-ui/svelte";
-  import type { ToastProps as BaseToastProps } from "@pisagor/props";
+  import type { ToastRootContract } from "@pisagor/contracts";
   import { toastRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { toast as defaultToast } from "./toast";
@@ -16,7 +16,7 @@
   > & {
     style?: string | undefined;
     toaster?: CreateToasterReturn;
-  } & BaseToastProps;
+  } & ToastRootContract;
 
   let {
     toaster: toasterInstance = defaultToast,

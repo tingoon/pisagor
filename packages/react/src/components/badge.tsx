@@ -1,11 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
+import type { BadgeRootContract } from "@pisagor/contracts";
+import { badgeRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
-export type BadgeVariant = BadgeVariantProps["variant"];
-
-export interface BadgeProps extends HTMLArkProps<"span">, BaseBadgeProps {}
+export interface BadgeProps
+  extends ComponentPropsWithRef<"span">, BadgeRootContract {}
 // #endregion
 
 // #region Component
@@ -18,7 +17,7 @@ export function Badge({
   ...rest
 }: BadgeProps) {
   return (
-    <ark.span
+    <span
       {...rest}
       className={recipe({ className, pill, size, variant })}
       data-part="root"

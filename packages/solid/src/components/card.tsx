@@ -1,7 +1,11 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
+import type {
+  CardHeaderContract,
+  CardRootContract,
+  CardContract,
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -13,20 +17,23 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface CardRootProps extends HTMLArkProps<"div">, BaseCardRootProps {}
+export interface CardRootProps extends HTMLArkProps<"div">, CardRootContract {}
 
-export type CardMediaProps = HTMLArkProps<"div"> & CardVariantProps;
+export type CardMediaProps = ComponentProps<"div"> & CardVariantProps;
 
-export interface CardHeaderProps extends Omit<HTMLArkProps<"div">, "title"> {
+export interface CardHeaderProps
+  extends Omit<ComponentProps<"div">, "title">, CardHeaderContract {
   description?: JSX.Element;
   title?: JSX.Element;
 }
 
 export type CardTitleProps = HTMLArkProps<"h3">;
-export type CardDescriptionProps = HTMLArkProps<"p">;
-export type CardActionProps = HTMLArkProps<"div">;
-export type CardContentProps = HTMLArkProps<"div">;
-export type CardFooterProps = HTMLArkProps<"div">;
+export type CardDescriptionProps = ComponentProps<"p">;
+export type CardActionProps = ComponentProps<"div">;
+export type CardContentProps = ComponentProps<"div">;
+export type CardFooterProps = ComponentProps<"div">;
+
+export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 // #region Parts
@@ -42,7 +49,7 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
   const variant = () => local.variant ?? "default";
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.media({ class: local.class, variant: variant() })}
       data-part="media"
@@ -54,13 +61,13 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
 
 export const CardTitle = withContext(ark.h3, { name: "Title" });
 
-export const CardDescription = withContext(ark.p, { name: "Description" });
+export const CardDescription = withContext("p", { name: "Description" });
 
-export const CardAction = withContext(ark.div, { name: "Action" });
+export const CardAction = withContext("div", { name: "Action" });
 
-export const CardContent = withContext(ark.div, { name: "Content" });
+export const CardContent = withContext("div", { name: "Content" });
 
-export const CardFooter = withContext(ark.div, { name: "Footer" });
+export const CardFooter = withContext("div", { name: "Footer" });
 
 export function CardHeader(props: CardHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -72,7 +79,7 @@ export function CardHeader(props: CardHeaderProps): JSX.Element {
   const styles = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={styles.slots.header({ class: local.class })}
       data-part="header"
@@ -85,7 +92,7 @@ export function CardHeader(props: CardHeaderProps): JSX.Element {
         <CardDescription>{local.description}</CardDescription>
       </Show>
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

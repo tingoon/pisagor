@@ -1,16 +1,11 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/vue";
-import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
-import {
-  fieldRecipe,
-  type ProgressRecipeSlot,
-  progressRecipe,
-} from "@pisagor/recipes";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
+import { fieldRecipe, progressRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -43,11 +38,8 @@ const ProgressRange = withContext(ProgressPrimitive.Range, {
 // #endregion
 
 // #region Types
-type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
-
-export interface ProgressProps extends BaseProgressProps {
+export interface ProgressProps extends ProgressRootContract, ProgressContract {
   class?: unknown;
-  classNames?: ProgressClassNames;
   /**
    * Initial value when uncontrolled.
    *
@@ -76,7 +68,7 @@ export const Progress = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<ProgressClassNames>,
+      type: Object as PropType<ProgressProps["classNames"]>,
     },
     defaultValue: { default: 0, type: Number },
     indeterminate: { default: false, type: Boolean },

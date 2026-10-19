@@ -1,10 +1,6 @@
-import {
-  PinInput as PinInputPrimitive,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { PinInput as PinInputPrimitive } from "@ark-ui/react";
 import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/react";
-import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
+import type { InputOtpRootContract } from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,
@@ -12,6 +8,7 @@ import {
 } from "@pisagor/recipes";
 
 import { createContext, use } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -34,15 +31,15 @@ function useInputOTP() {
 
 // #region Types
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  BaseInputOTPProps;
+  InputOtpRootContract;
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
+export type InputOTPSlotProps = PinInputInputProps & InputOtpRootContract;
 
-export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
+export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr">;
 // #endregion
 
 // #region Parts
@@ -112,7 +109,7 @@ export function InputOTPSlot({
   );
 }
 
-export const InputOTPSeparator = withContext(ark.hr, {
+export const InputOTPSeparator = withContext("hr", {
   name: "Separator",
 });
 // #endregion

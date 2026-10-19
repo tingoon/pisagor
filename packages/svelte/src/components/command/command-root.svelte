@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { CommandProps as BaseCommandProps } from "@pisagor/props";
+  import type { CommandRootContract } from "@pisagor/contracts";
   import { commandRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
@@ -7,7 +7,7 @@
   import { Context } from "./command.context";
 
   type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe"> &
-    BaseCommandProps;
+    CommandRootContract;
 
   let {
     recipe = commandRecipe,

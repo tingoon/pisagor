@@ -1,6 +1,5 @@
-import { Menu as MenuPrimitive, ark } from "@ark-ui/solid";
+import { Menu as MenuPrimitive } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   MenuArrowProps,
   MenuCheckboxItemProps,
   MenuContentProps,
@@ -16,9 +15,12 @@ import type {
   MenuTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  DropdownMenuItemProps as BaseDropdownMenuItemProps,
-  DropdownMenuProps as BaseDropdownMenuProps,
-} from "@pisagor/props";
+  DropdownMenuItemGroupContract,
+  DropdownMenuItemRootContract,
+  DropdownMenuItemContract,
+  DropdownMenuRootContract,
+  DropdownMenuContract,
+} from "@pisagor/contracts";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
@@ -43,42 +45,51 @@ function useDropdownMenuSlots() {
 }
 // #endregion
 
-export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
+export interface DropdownMenuItemGroupProps
+  extends MenuItemGroupProps, DropdownMenuItemGroupContract {
   heading?: string;
 }
 
 export interface DropdownMenuItemProps
-  extends MenuItemProps, BaseDropdownMenuItemProps {}
+  extends
+    MenuItemProps,
+    DropdownMenuItemRootContract,
+    DropdownMenuItemContract {}
 
-export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
+export interface DropdownMenuRadioItemGroupProps
+  extends MenuRadioItemGroupProps, DropdownMenuItemGroupContract {
   heading?: string;
 }
 
-export type DropdownMenuRootProps = MenuRootProps & BaseDropdownMenuProps;
+export type DropdownMenuRootProps = MenuRootProps & DropdownMenuRootContract;
+
+export interface DropdownMenuProps
+  extends DropdownMenuRootProps, DropdownMenuContract {}
+
 export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
 export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps, BaseDropdownMenuItemProps {}
+  extends MenuCheckboxItemProps, DropdownMenuItemRootContract {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
 export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps, BaseDropdownMenuItemProps {}
+  extends MenuRadioItemProps, DropdownMenuItemRootContract {}
 
 export interface DropdownMenuSubContentProps
-  extends MenuContentProps, BaseDropdownMenuProps {}
+  extends MenuContentProps, DropdownMenuRootContract {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps, BaseDropdownMenuItemProps {}
+  extends MenuTriggerItemProps, DropdownMenuItemRootContract {}
 
 export interface DropdownMenuContentProps
-  extends MenuContentProps, BaseDropdownMenuProps {}
+  extends MenuContentProps, DropdownMenuRootContract {}
 
-export type DropdownMenuShortcutProps = HTMLArkProps<"span">;
+export type DropdownMenuShortcutProps = ComponentProps<"span">;
 
 export function DropdownMenuRoot(props: DropdownMenuRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["positioning"]);
@@ -384,7 +395,7 @@ export function DropdownMenuShortcut(
   const slots = useDropdownMenuSlots();
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={slots().shortcut({ class: local.class })}
       data-part="shortcut"

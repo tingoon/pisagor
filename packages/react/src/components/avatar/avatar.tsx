@@ -1,17 +1,10 @@
 import { Avatar as AvatarPrimitive } from "@ark-ui/react";
-import type {
-  AvatarFallbackProps,
-  AvatarImageProps,
-  AvatarRootProps as AvatarRootPrimitiveProps,
-} from "@ark-ui/react";
-import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
-import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
+import type { AvatarFallbackProps, AvatarImageProps } from "@ark-ui/react";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
+import { avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import {
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../../internal";
+import type { ComponentProps, ReactNode } from "react";
+import { createSlotRecipeContext } from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -21,10 +14,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const AvatarRoot = withProvider(AvatarPrimitive.Root, {
+const AvatarRoot = withProvider(AvatarPrimitive.Root)<AvatarRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<AvatarRootPrimitiveProps & BaseAvatarRootProps>;
+});
 
 const AvatarImage = withContext(AvatarPrimitive.Image, {
   name: "Image",
@@ -36,25 +29,15 @@ const AvatarFallback = withContext(AvatarPrimitive.Fallback, {
 // #endregion
 
 // #region Types
-type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
+export type AvatarRootProps = ComponentProps<typeof AvatarRoot>;
 
-export interface AvatarProps extends Omit<
-  ComponentProps<typeof AvatarRoot>,
-  "children"
-> {
+export interface AvatarProps
+  extends Omit<AvatarRootProps, "children">, AvatarContract {
   /** Alt text for the avatar image */
   alt?: string;
-  /** Renders the fallback content shown until the image loads */
   fallback?: ReactNode;
-  /**
-   * Person name; used as default alt text and to derive initials when no
-   * fallback is given
-   */
-  name?: string;
   /** Renders the avatar image with the provided src */
   src?: string;
-  /** Slot class names */
-  classNames?: AvatarClassNames;
   /** Extra props forwarded to the avatar fallback element */
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "className">;
   /** Extra props forwarded to the avatar image element */

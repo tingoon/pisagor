@@ -1,5 +1,10 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
+  import type {
+    SelectPresetItem,
+    SelectRootContract,
+    SelectContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import SelectContent from "./select-content.svelte";
   import SelectItem from "./select-item.svelte";
@@ -7,16 +12,17 @@
   import SelectTrigger from "./select-trigger.svelte";
   import SelectValueText from "./select-value-text.svelte";
 
-  type PresetItem = { label: string; value: string };
+  type PresetItem = Omit<SelectPresetItem, "label"> & { label: string };
 
   type Props = Omit<
     ComponentProps<typeof SelectRoot>,
-    "children" | "collection"
-  > & {
-    clearable?: boolean;
-    items?: Array<PresetItem | string>;
-    placeholder?: string;
-  };
+    "children" | "collection" | "items" | "placeholder"
+  > &
+    Omit<SelectRootContract, "items" | "placeholder"> & {
+      clearable?: boolean;
+      items?: Array<PresetItem | string>;
+      placeholder?: string;
+    } & Omit<SelectContract, "items" | "placeholder">;
 
   let { clearable = false, items = [], placeholder, ...rest }: Props = $props();
 

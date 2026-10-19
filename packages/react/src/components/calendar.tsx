@@ -30,9 +30,9 @@ import {
   CaretRightIcon,
 } from "@phosphor-icons/react";
 import type {
-  CalendarProps as BaseCalendarProps,
-  CalendarTableCellProps as BaseCalendarTableCellProps,
-} from "@pisagor/props";
+  CalendarRootContract,
+  CalendarTableCellRootContract,
+} from "@pisagor/contracts";
 import {
   calendarRecipe,
   calendarTableCellRecipe,
@@ -91,7 +91,7 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
 export interface CalendarTableCellProps
-  extends DatePickerTableCellProps, BaseCalendarTableCellProps {}
+  extends DatePickerTableCellProps, CalendarTableCellRootContract {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
@@ -115,7 +115,7 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
 
 export type CalendarRootProps = DatePickerRootProps;
 
-export interface CalendarProps extends CalendarRootProps, BaseCalendarProps {
+export interface CalendarProps extends CalendarRootProps, CalendarRootContract {
   /** Visual shell variant for embedded selects. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

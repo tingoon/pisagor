@@ -4,7 +4,7 @@ import type {
   NumberInputRootProps as NumberInputRootPrimitiveProps,
   NumberInputScrubberProps,
 } from "@ark-ui/solid";
-import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
+import type { NumberInputRootContract } from "@pisagor/contracts";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,
@@ -32,7 +32,7 @@ export type NumberInputRootProps = Omit<
   NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  BaseNumberInputProps;
+  NumberInputRootContract;
 
 export interface NumberInputProps extends NumberInputRootProps {
   clearable?: boolean;

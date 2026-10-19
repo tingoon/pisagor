@@ -13,21 +13,17 @@ import type {
   ToasterProps as ToasterPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
-  ToastProps as BaseToasterRootProps,
-  ToastItemProps as BaseToastItemRootProps,
-} from "@pisagor/props";
-import {
-  type ToastItemRecipeSlot,
-  toastItemRecipe,
-  toastRecipe,
-} from "@pisagor/recipes";
+  ToastItemContract,
+  ToastItemRootContract,
+  ToastRootContract,
+} from "@pisagor/contracts";
+import { toastItemRecipe, toastRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
   CheckCircleIcon,
   InfoIcon,
-  type VariantClassNames,
   WarningCircleIcon,
   WarningIcon,
   XIcon,
@@ -44,22 +40,19 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
-
 export interface ToasterRootProps
   extends
     Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    BaseToasterRootProps {}
+    ToastRootContract {}
 
 export interface ToasterProps extends ToasterRootProps {
   toaster?: CreateToasterReturn<JSX.Element>;
 }
 
 export interface ToastItemRootProps
-  extends ToastRootProps, BaseToastItemRootProps {}
+  extends ToastRootProps, ToastItemRootContract {}
 
-export interface ToastItemProps extends ToastItemRootProps {
-  classNames?: ToastItemClassNames;
+export interface ToastItemProps extends ToastItemRootProps, ToastItemContract {
   actionsProps?: Omit<ComponentProps<"div">, "class">;
   actionTriggerProps?: Omit<
     ToastActionTriggerProps,
@@ -125,7 +118,7 @@ const ToastItemRoot: Component<ToastItemRootProps> = withProvider(
 
 function ToastItemContent(
   props: Omit<ToastItemProps, keyof ToastItemRootProps> &
-    Pick<ToastItemProps, "toast">,
+    Pick<ToastItemProps, "toast" | "classNames">,
 ): JSX.Element {
   const { m } = useLocale();
   const [local] = splitProps(props, [

@@ -3,7 +3,7 @@
     Editable as EditablePrimitive,
     type EditableRootProps as ArkEditableRootProps,
   } from "@ark-ui/svelte";
-  import type { EditableProps as BaseEditableProps } from "@pisagor/props";
+  import type { EditableRootContract } from "@pisagor/contracts";
   import { editableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./editable.context";
@@ -16,7 +16,7 @@
     onValueChange?: (value: string) => void;
     orientation?: "horizontal" | "vertical";
     value?: string;
-  } & BaseEditableProps;
+  } & EditableRootContract;
 
   let {
     orientation = "horizontal",

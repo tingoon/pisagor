@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./toolbar.context";
 
@@ -7,4 +6,4 @@
   const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<Ark as="p" {...part.props}>{@render children?.()}</Ark>
+<p {...part.props}>{@render children?.()}</p>

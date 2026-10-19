@@ -1,7 +1,6 @@
 import {
   Field as FieldPrimitive,
   Fieldset as FieldsetPrimitive,
-  ark,
 } from "@ark-ui/solid";
 import type {
   FieldErrorTextProps,
@@ -10,11 +9,10 @@ import type {
   FieldRootProps as FieldRootPrimitiveProps,
   FieldsetLegendProps,
   FieldsetRootProps,
-  HTMLArkProps,
 } from "@ark-ui/solid";
-import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
@@ -35,7 +33,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 // #endregion
 
 export interface FieldRootProps
-  extends FieldRootPrimitiveProps, BaseFieldProps {}
+  extends FieldRootPrimitiveProps, FieldRootContract {}
 
 export type FieldProps = FieldRootProps;
 
@@ -43,18 +41,19 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, BaseFieldProps {}
+export interface FieldSetProps extends FieldsetRootProps, FieldRootContract {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
-export interface FieldGroupProps extends HTMLArkProps<"div">, BaseFieldProps {}
+export interface FieldGroupProps
+  extends ComponentProps<"div">, FieldRootContract {}
 
-export type FieldContentProps = HTMLArkProps<"div">;
-export type FieldRequiredIndicatorProps = HTMLArkProps<"span">;
-export type FieldTitleProps = HTMLArkProps<"div">;
-export type FieldDescriptionProps = HTMLArkProps<"p">;
-export type FieldSeparatorProps = HTMLArkProps<"div">;
+export type FieldContentProps = ComponentProps<"div">;
+export type FieldRequiredIndicatorProps = ComponentProps<"span">;
+export type FieldTitleProps = ComponentProps<"div">;
+export type FieldDescriptionProps = ComponentProps<"p">;
+export type FieldSeparatorProps = ComponentProps<"div">;
 
 export const FieldRoot: Component<FieldRootProps> = withProvider(
   FieldPrimitive.Root,
@@ -104,12 +103,12 @@ export function FieldLegend(props: FieldLegendProps): JSX.Element {
   );
 }
 
-function FieldGroupElement(props: HTMLArkProps<"div">): JSX.Element {
+function FieldGroupElement(props: ComponentProps<"div">): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().group({ class: local.class })}
       data-part="group"
@@ -141,7 +140,7 @@ export function FieldContent(props: FieldContentProps): JSX.Element {
   const slots = useFieldSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().content({ class: local.class })}
       data-part="content"
@@ -184,7 +183,7 @@ export function FieldTitle(props: FieldTitleProps): JSX.Element {
   const slots = useFieldSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().title({ class: local.class })}
       data-part="title"
@@ -198,7 +197,7 @@ export function FieldDescription(props: FieldDescriptionProps): JSX.Element {
   const slots = useFieldSlots();
 
   return (
-    <ark.p
+    <p
       {...rest}
       class={slots().description({ class: local.class })}
       data-part="description"
@@ -213,7 +212,7 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
   const surfaceVariant = useFormControlSurface();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().separator({ class: local.class })}
       data-content={!!local.children}
@@ -231,7 +230,7 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
           {local.children}
         </span>
       </Show>
-    </ark.div>
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@
     Toggle as TogglePrimitive,
     type ToggleRootProps,
   } from "@ark-ui/svelte";
-  import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
+  import type { ToggleRootContract } from "@pisagor/contracts";
   import {
     type ButtonVariantProps,
     buttonRecipe,
@@ -21,7 +21,7 @@
     /** Called with the pressed state when the toggle changes. */
     onValueChange?: (value: boolean) => void;
     buttonRecipe?: typeof buttonRecipe;
-  } & BaseToggleProps;
+  } & ToggleRootContract;
 
   let {
     size = "md",

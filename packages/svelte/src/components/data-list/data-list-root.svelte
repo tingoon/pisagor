@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { DataListProps as BaseDataListProps } from "@pisagor/props";
+  import type { DataListRootContract } from "@pisagor/contracts";
   import { dataListRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -8,7 +7,7 @@
   type Props = HTMLAttributes<HTMLDListElement> & {
     children?: import("svelte").Snippet;
     orientation?: "horizontal" | "vertical";
-  } & BaseDataListProps;
+  } & DataListRootContract;
 
   let {
     orientation = "horizontal",
@@ -19,8 +18,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="dl"
+<dl
   {...rest}
   class={recipe({ class: cn(className) })}
   data-orientation={orientation}
@@ -28,4 +26,4 @@
   data-scope="data-list"
 >
   {@render children?.()}
-</Ark>
+</dl>

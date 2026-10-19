@@ -1,5 +1,5 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import { sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
@@ -57,7 +57,7 @@ export interface SidebarProps {
 }
 
 export interface SidebarProviderProps
-  extends Omit<SidebarProps, "className">, BaseSidebarProviderProps {}
+  extends Omit<SidebarProps, "className">, SidebarRootContract {}
 
 interface SidebarContextValue {
   isMobile: boolean;

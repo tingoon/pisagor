@@ -3,12 +3,12 @@
     Collapsible as CollapsiblePrimitive,
     type CollapsibleRootProps,
   } from "@ark-ui/svelte";
-  import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
+  import type { CollapsibleRootContract } from "@pisagor/contracts";
   import { collapsibleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./collapsible.context";
 
-  type Props = CollapsibleRootProps & BaseCollapsibleProps;
+  type Props = CollapsibleRootProps & CollapsibleRootContract;
 
   let {
     lazyMount,

@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue";
-import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
 import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
 import {
   computed,
@@ -41,7 +41,10 @@ interface SheetContextValue {
 }
 
 export interface SheetProps
-  extends Omit<DialogProps, "recipe">, BaseSheetProps {}
+  extends
+    Omit<DialogProps, "recipe" | "classNames">,
+    SheetRootContract,
+    SheetContract {}
 // #endregion
 
 // #region Context

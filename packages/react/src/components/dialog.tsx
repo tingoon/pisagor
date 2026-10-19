@@ -1,9 +1,4 @@
-import {
-  Dialog as DialogPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Dialog as DialogPrimitive, Portal } from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -13,9 +8,13 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
+import type {
+  DialogContract,
+  DialogHeaderContract,
+  DialogRootContract,
+} from "@pisagor/contracts";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
@@ -38,7 +37,7 @@ DialogModalContext.displayName = "DialogModalContext";
 
 // #region Types
 export interface DialogRootProps
-  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, DialogRootContract {}
 
 export interface DialogContentProps
   extends DialogContentPrimitiveProps, DialogVariantProps {
@@ -56,7 +55,7 @@ export interface DialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface DialogBodyProps extends HTMLArkProps<"div"> {
+export interface DialogBodyProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -65,22 +64,23 @@ export interface DialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = HTMLArkProps<"div">;
+export interface DialogHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, DialogHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 
 export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = HTMLArkProps<"div">;
+export type DialogFooterProps = ComponentPropsWithRef<"div">;
 
-export interface DialogProps extends Omit<DialogRootProps, "title"> {
-  /** Footer actions. */
+export interface DialogProps
+  extends Omit<DialogRootProps, "title">, DialogContract {
   actions?: ReactNode;
-  /** Header description content. */
   description?: ReactNode;
-  /** Header title content. */
   title?: ReactNode;
-  /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
 // #endregion
@@ -180,7 +180,7 @@ export function DialogBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({ className })}
         data-part="body"
@@ -193,19 +193,27 @@ export function DialogBody({
 export function DialogHeader({
   children,
   className,
+  description,
+  title,
   ...rest
 }: DialogHeaderProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
       data-scope="dialog"
     >
+      {title != null && <DialogTitle>{title}</DialogTitle>}
+
+      {description != null && (
+        <DialogDescription>{description}</DialogDescription>
+      )}
+
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -225,7 +233,7 @@ export function DialogFooter({ className, ...rest }: DialogFooterProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"

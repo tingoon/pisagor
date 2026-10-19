@@ -3,7 +3,7 @@
     Checkbox as CheckboxPrimitive,
     type CheckboxControlProps,
   } from "@ark-ui/svelte";
-  import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
+  import type { CheckboxRootContract } from "@pisagor/contracts";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, MinusIcon } from "phosphor-svelte";
@@ -14,7 +14,7 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = CheckboxControlProps &
-    BaseCheckboxProps & {
+    CheckboxRootContract & {
       recipe?: typeof checkboxRecipe;
     };
 

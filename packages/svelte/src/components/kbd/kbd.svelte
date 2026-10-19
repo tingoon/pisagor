@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { KbdProps as BaseKbdProps } from "@pisagor/props";
+  import type { KbdRootContract } from "@pisagor/contracts";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdProps;
+  } & KbdRootContract;
 
   let {
     variant = "default",
@@ -19,12 +18,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="kbd"
+<kbd
   {...rest}
   class={recipe({ class: cn(className), size, variant })}
   data-part="root"
   data-scope="kbd"
 >
   {@render children?.()}
-</Ark>
+</kbd>

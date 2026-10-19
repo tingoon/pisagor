@@ -1,19 +1,16 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+import type {
+  AspectRatioRootContract,
+  AspectRatioContract,
+} from "@pisagor/contracts";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import type { CSSProperties } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface AspectRatioProps
-  extends HTMLArkProps<"div">, BaseAspectRatioProps {
-  /**
-   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
-   * variable.
-   *
-   * @defaultValue 1
-   */
-  ratio?: number;
-}
+  extends
+    ComponentPropsWithRef<"div">,
+    AspectRatioRootContract,
+    AspectRatioContract {}
 // #endregion
 
 // #region Component
@@ -25,16 +22,12 @@ export function AspectRatio({
   ...rest
 }: AspectRatioProps) {
   return (
-    <ark.div
+    <div
       {...rest}
       className={recipe({ className })}
       data-part="root"
       data-scope="aspect-ratio"
-      style={
-        ratio === undefined
-          ? style
-          : ({ "--ratio": ratio, ...style } as CSSProperties)
-      }
+      style={ratio === undefined ? style : { "--ratio": ratio, ...style }}
     />
   );
 }

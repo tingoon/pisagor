@@ -5,7 +5,11 @@ import type {
   TabTriggerProps,
   TabsRootProps as TabsRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
+import type {
+  TabsPresetItem as BaseTabsPresetItem,
+  TabsRootContract,
+  TabsContract,
+} from "@pisagor/contracts";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -19,13 +23,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface LocalTabsRootProps
-  extends TabsRootPrimitiveProps, BaseTabsRootProps {}
+  extends TabsRootPrimitiveProps, TabsRootContract {}
 
-interface TabsPresetItem {
-  value: string;
+interface TabsPresetItem extends Omit<BaseTabsPresetItem, "label" | "content"> {
   label: JSX.Element;
   content: JSX.Element;
-  disabled?: boolean;
 }
 
 export type TabsListProps = TabListProps &
@@ -40,7 +42,8 @@ export type TabsListProps = TabListProps &
 export type TabsTriggerProps = TabTriggerProps;
 export type TabsContentProps = TabContentProps;
 
-export interface TabsProps extends Omit<LocalTabsRootProps, "children"> {
+export interface TabsProps
+  extends Omit<LocalTabsRootProps, "children">, TabsContract {
   items?: TabsPresetItem[];
   /**
    * Whether to render the animated active-tab indicator.

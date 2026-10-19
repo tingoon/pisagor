@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { NavigationMenuProps as BaseNavigationMenuRootProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/contracts";
 import {
   type NavigationMenuRecipeSlot,
   navigationMenuRecipe,
@@ -28,11 +31,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<NavigationMenuRecipeSlot>;
-
-export interface NavigationMenuRootProps extends BaseNavigationMenuRootProps {
+export interface NavigationMenuRootProps
+  extends NavigationMenuRootContract, NavigationMenuContract {
   class?: unknown;
 }
+
+export type NavigationMenuProps = NavigationMenuRootProps;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -72,7 +76,7 @@ function callHandler(handler: unknown, event: Event) {
 }
 
 // #region Parts
-const NavigationMenuNav = withProvider(ark.nav, {
+const NavigationMenuNav = withProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -94,7 +98,7 @@ export const NavigationMenuRoot = defineComponent({
   },
 });
 
-const NavigationMenuListBase = withContext(ark.ul, {
+const NavigationMenuListBase = withContext("ul", {
   name: "List",
 });
 
@@ -119,7 +123,7 @@ export const NavigationMenuList = defineComponent({
   },
 });
 
-const NavigationMenuItemBase = withContext(ark.li, {
+const NavigationMenuItemBase = withContext("li", {
   name: "Item",
 });
 
@@ -229,7 +233,7 @@ export const NavigationMenuContent = defineComponent({
 
     return () =>
       h(
-        ark.ul as ArkPart,
+        "ul",
         {
           ...attrs,
           class: styles.slots.content({
@@ -261,7 +265,7 @@ export const NavigationMenuLink = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<NavigationMenuClassNames>,
+      type: Object as PropType<VariantClassNames<NavigationMenuRecipeSlot>>,
     },
   },
   setup(props, { attrs, slots }) {

@@ -1,6 +1,6 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue";
-import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
+import { tooltipRecipe } from "@pisagor/recipes";
 import {
   computed,
   defineComponent,
@@ -9,11 +9,7 @@ import {
   Teleport,
   type VNodeChild,
 } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { provideStyles: provideTooltipStyles, withContext } =
@@ -28,14 +24,11 @@ export type TooltipTriggerHandle = (
   props: Record<string, unknown>,
 ) => VNodeChild;
 
-type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
-
-export interface TooltipProps extends BaseTooltipProps {
+export interface TooltipProps extends TooltipRootContract, TooltipContract {
   /** Class merged onto the tooltip content element */
   class?: unknown;
   arrowProps?: Record<string, unknown>;
   children?: VNodeChild | TooltipTriggerHandle;
-  classNames?: TooltipClassNames;
   closeDelay?: number;
   content: VNodeChild;
   contentProps?: Record<string, unknown>;
@@ -130,7 +123,7 @@ const TooltipShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<TooltipClassNames>,
+      type: Object as PropType<TooltipProps["classNames"]>,
     },
     content: {
       required: true,

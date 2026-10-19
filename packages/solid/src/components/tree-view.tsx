@@ -1,10 +1,8 @@
 import {
   TreeView as TreeViewPrimitive,
-  ark,
   createTreeCollection as arkCreateTreeCollection,
 } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
   TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
@@ -22,10 +20,10 @@ import type {
   TreeViewTreeProps,
 } from "@ark-ui/solid";
 import type {
-  TreeViewBranchProps as BaseTreeViewBranchProps,
-  TreeViewItemProps as BaseTreeViewItemProps,
-  TreeViewProps as BaseTreeViewProps,
-} from "@pisagor/props";
+  TreeViewBranchRootContract,
+  TreeViewItemRootContract,
+  TreeViewRootContract,
+} from "@pisagor/contracts";
 import {
   formControlToggleRecipe,
   treeViewBranchRecipe,
@@ -33,7 +31,7 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import {
   CaretRightIcon,
@@ -85,13 +83,16 @@ export interface TreeNodeType<T = unknown> {
 export type TreeCollection = arkTreeCollection;
 
 export interface TreeViewProps
-  extends TreeViewRootComponentProps, TreeViewContextProps, BaseTreeViewProps {}
+  extends
+    TreeViewRootComponentProps,
+    TreeViewContextProps,
+    TreeViewRootContract {}
 
 export interface TreeViewBranchProps
-  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, TreeViewBranchRootContract {}
 
 export interface TreeViewItemProps
-  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, TreeViewItemRootContract {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;
@@ -112,7 +113,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-type TreeViewItemIconProps = HTMLArkProps<"span">;
+type TreeViewItemIconProps = ComponentProps<"span">;
 
 export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0],
@@ -396,7 +397,7 @@ function TreeViewItemIcon(props: TreeViewItemIconProps): JSX.Element {
   const slots = useTreeViewItemSlots();
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={slots().icon({ class: local.class })}
       data-part="item-icon"

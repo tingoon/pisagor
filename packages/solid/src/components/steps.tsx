@@ -1,6 +1,5 @@
-import { Steps as StepsPrimitive, ark } from "@ark-ui/solid";
+import { Steps as StepsPrimitive } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
@@ -13,11 +12,11 @@ import type {
   StepsTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  StepsItemProps as BaseStepsItemProps,
-  StepsProps as BaseStepsRootProps,
-} from "@pisagor/props";
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CheckIcon, createSlotRecipeContext } from "../internal";
 
@@ -33,13 +32,13 @@ const {
 // #endregion
 
 export interface LocalStepsRootProps
-  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, StepsRootContract {}
 
 export interface LocalStepsItemProps
-  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, StepsItemRootContract {}
 
-export type StepsTitleProps = HTMLArkProps<"span">;
-export type StepsDescriptionProps = HTMLArkProps<"span">;
+export type StepsTitleProps = ComponentProps<"span">;
+export type StepsDescriptionProps = ComponentProps<"span">;
 
 export const StepsRoot: Component<LocalStepsRootProps> = withStepsProvider(
   StepsPrimitive.Root,
@@ -80,12 +79,12 @@ export const StepsSeparator: Component<StepsSeparatorProps> =
   withStepsItemContext(StepsPrimitive.Separator, { name: "Separator" });
 
 export const StepsTitle: Component<StepsTitleProps> = withStepsItemContext(
-  ark.span,
+  "span",
   { name: "Title" },
 );
 
 export const StepsDescription: Component<StepsDescriptionProps> =
-  withStepsItemContext(ark.span, { name: "Description" });
+  withStepsItemContext("span", { name: "Description" });
 
 export const StepsContent: Component<StepsContentProps> = withStepsContext(
   StepsPrimitive.Content,

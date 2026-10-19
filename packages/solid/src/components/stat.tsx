@@ -1,20 +1,15 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  StatProps as BaseStatRootProps,
-  StatTrendProps as BaseStatTrendProps,
-} from "@pisagor/props";
-import {
-  type StatRecipeSlot,
-  statRecipe,
-  statTrendRecipe,
-} from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+  StatContract,
+  StatRootContract,
+  StatTrendRootContract,
+} from "@pisagor/contracts";
+import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
   MinusIcon,
-  type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -27,27 +22,21 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type StatRootProps = HTMLArkProps<"div"> & BaseStatRootProps;
-export type StatLabelProps = HTMLArkProps<"div">;
-export type StatValueProps = HTMLArkProps<"div">;
-export type StatDescriptionProps = HTMLArkProps<"p">;
-export type StatTrendProps = HTMLArkProps<"div"> &
-  BaseStatTrendProps & {
-    /**
-     * Icon shown before the content. Defaults to an arrow matching `trend`;
-     * pass `null` to hide it.
-     */
+export type StatRootProps = ComponentProps<"div"> & StatRootContract;
+export type StatLabelProps = ComponentProps<"div">;
+export type StatValueProps = ComponentProps<"div">;
+export type StatDescriptionProps = ComponentProps<"p">;
+export type StatTrendProps = ComponentProps<"div"> &
+  StatTrendRootContract & {
     icon?: JSX.Element;
   };
 
-type StatClassNames = VariantClassNames<StatRecipeSlot>;
-
-export interface StatProps extends Omit<StatRootProps, "children"> {
+export interface StatProps
+  extends Omit<StatRootProps, "children">, StatContract {
   description?: JSX.Element;
   label?: JSX.Element;
   trend?: JSX.Element;
   value?: JSX.Element;
-  classNames?: StatClassNames;
   descriptionProps?: Omit<StatDescriptionProps, "children" | "class">;
   labelProps?: Omit<StatLabelProps, "children" | "class">;
   trendProps?: Omit<StatTrendProps, "children" | "class">;
@@ -56,16 +45,16 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export const StatRoot: Component<StatRootProps> = withProvider(ark.div, {
+export const StatRoot: Component<StatRootProps> = withProvider("div", {
   name: "Root",
   slot: "base",
 });
 
-export const StatLabel = withContext(ark.div, { name: "Label" });
+export const StatLabel = withContext("div", { name: "Label" });
 
-export const StatValue = withContext(ark.div, { name: "Value" });
+export const StatValue = withContext("div", { name: "Value" });
 
-export const StatDescription = withContext(ark.p, { name: "Description" });
+export const StatDescription = withContext("p", { name: "Description" });
 
 /** Leaf with its own recipe (`trend` variant stays on the part). */
 export function StatTrend(props: StatTrendProps): JSX.Element {
@@ -80,7 +69,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
   const trend = () => local.trend ?? "neutral";
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={(local.recipe ?? statTrendRecipe)({
         class: local.class,
@@ -101,7 +90,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
       )}
       <span class="sr-only">{m(`stat.trend.${trend()}` as MessageKey)}</span>
       {local.children}
-    </ark.div>
+    </div>
   );
 }
 // #endregion

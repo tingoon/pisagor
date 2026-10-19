@@ -1,17 +1,14 @@
-import { ark } from "@ark-ui/vue";
-import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface StatusProps extends BaseStatusProps {
+export interface StatusProps extends StatusRootContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Component
 export const Status = defineComponent({
@@ -35,7 +32,7 @@ export const Status = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           class: cn(

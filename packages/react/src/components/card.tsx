@@ -1,7 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
+import { ark } from "@ark-ui/react";
+import type {
+  CardContract,
+  CardHeaderContract,
+  CardRootContract,
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -12,20 +16,20 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider(ark.div, {
+export const CardRoot = withProvider(ark.div)<CardRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseCardRootProps>;
+});
 
 export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: HTMLArkProps<"div"> & CardVariantProps) {
+}: ComponentPropsWithRef<"div"> & CardVariantProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.media({ className, variant })}
       data-part="media"
@@ -41,19 +45,11 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: HTMLArkProps<"div"> & {
-  /** Supporting text rendered in `Card.Description`. */
-  description?: ReactNode;
-  /**
-   * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
-   * for another level).
-   */
-  title?: ReactNode;
-}) {
+}: CardHeaderProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -64,7 +60,7 @@ export function CardHeader({
       {description != null && <CardDescription>{description}</CardDescription>}
 
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -73,22 +69,22 @@ export const CardTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.p, {
+export const CardDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const CardAction = withContext(ark.div, {
+export const CardAction = withContext("div", {
   name: "Action",
   slot: "action",
 });
 
-export const CardContent = withContext(ark.div, {
+export const CardContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const CardFooter = withContext(ark.div, {
+export const CardFooter = withContext("div", {
   name: "Footer",
   slot: "footer",
 });
@@ -97,12 +93,18 @@ export const CardFooter = withContext(ark.div, {
 // #region Types
 export type CardRootProps = ComponentProps<typeof CardRoot>;
 export type CardMediaProps = ComponentProps<typeof CardMedia>;
-export type CardHeaderProps = ComponentProps<typeof CardHeader>;
+export interface CardHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, CardHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 export type CardTitleProps = ComponentProps<typeof CardTitle>;
 export type CardDescriptionProps = ComponentProps<typeof CardDescription>;
 export type CardActionProps = ComponentProps<typeof CardAction>;
 export type CardContentProps = ComponentProps<typeof CardContent>;
 export type CardFooterProps = ComponentProps<typeof CardFooter>;
+
+export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 CardMedia.displayName = "Card.Media";

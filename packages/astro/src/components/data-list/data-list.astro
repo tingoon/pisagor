@@ -1,15 +1,23 @@
 ---
-import type { DataListProps as BaseDataListProps } from "@pisagor/props";
+import type {
+  DataListContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import DataListItem from "./data-list-item.astro";
 import DataListRoot from "./data-list-root.astro";
 
-interface DataListPresetItem {
+interface DataListPresetItem
+  extends Omit<BaseDataListPresetItem, "label" | "value"> {
   label: string;
   value: string;
 }
 
-interface Props extends HTMLAttributes<"dl">, BaseDataListProps {
+interface Props
+  extends HTMLAttributes<"dl">,
+    DataListRootContract,
+    DataListContract {
   /**
    * The orientation of the data list.
    *

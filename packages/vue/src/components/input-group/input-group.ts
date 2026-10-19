@@ -1,7 +1,7 @@
 import type {
-  InputGroupControlProps as BaseInputGroupInputProps,
-  InputGroupTextareaControlProps as BaseInputGroupTextareaProps,
-} from "@pisagor/props";
+  InputGroupControlRootContract,
+  InputGroupTextareaControlRootContract,
+} from "@pisagor/contracts";
 import {
   inputGroupControlRecipe,
   inputGroupTextareaControlRecipe,
@@ -15,11 +15,11 @@ import { Textarea, type TextareaProps } from "../textarea";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface InputGroupInputProps extends BaseInputGroupInputProps {
+export interface InputGroupInputProps extends InputGroupControlRootContract {
   class?: unknown;
 }
 
-export interface InputGroupTextareaProps extends BaseInputGroupTextareaProps {
+export interface InputGroupTextareaProps extends InputGroupTextareaControlRootContract {
   class?: unknown;
 }
 // #endregion

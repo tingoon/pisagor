@@ -1,17 +1,22 @@
 <script lang="ts">
-  import type { DataListProps as BaseDataListProps } from "@pisagor/props";
+  import type {
+    DataListContract,
+    DataListPresetItem as BaseDataListPresetItem,
+    DataListRootContract,
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import DataListItem from "./data-list-item.svelte";
   import DataListRoot from "./data-list-root.svelte";
 
-  type DataListPresetItem = {
+  type DataListPresetItem = Omit<BaseDataListPresetItem, "label" | "value"> & {
     label: string;
     value: string;
   };
   type Props = Omit<HTMLAttributes<HTMLDListElement>, "children"> & {
     items?: DataListPresetItem[];
     orientation?: "horizontal" | "vertical";
-  } & BaseDataListProps;
+  } & DataListRootContract &
+    DataListContract;
 
   let {
     items,

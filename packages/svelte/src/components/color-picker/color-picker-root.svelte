@@ -4,7 +4,7 @@
     type ColorPickerRootProps as ArkRootProps,
     parseColor,
   } from "@ark-ui/svelte";
-  import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
+  import type { ColorPickerRootContract } from "@pisagor/contracts";
   import { colorPickerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./color-picker.context";
@@ -16,7 +16,7 @@
     defaultValue?: string;
     onValueChange?: (value: string) => void;
     value?: string;
-  } & BaseColorPickerProps;
+  } & ColorPickerRootContract;
 
   let {
     positioning = { placement: "top-start" },

@@ -2,17 +2,16 @@ import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
 } from "@ark-ui/solid";
-import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
-import {
-  formControlShellRecipe,
-  type TextareaRecipeSlot,
-  textareaRecipe,
-} from "@pisagor/recipes";
+import type {
+  TextareaContract,
+  TextareaRootContract,
+} from "@pisagor/contracts";
+import { formControlShellRecipe, textareaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
 import { Input } from "./input";
 import {
@@ -29,10 +28,10 @@ const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type TextareaRootProps = FieldTextareaProps &
-  BaseTextareaProps & {
+  TextareaRootContract &
+  TextareaContract & {
     variant?: FormControlVariant;
     /**
      * Initial value when uncontrolled. Solid has no native defaultValue on
@@ -44,7 +43,6 @@ type TextareaRootProps = FieldTextareaProps &
 export interface TextareaProps extends TextareaRootProps {
   clearable?: boolean;
   onValueChange?: (value: string) => void;
-  classNames?: TextareaClassNames;
 }
 
 function TextareaProvider(
@@ -74,9 +72,7 @@ function TextareaProvider(
   );
 }
 
-function TextareaField(
-  props: TextareaRootProps & { classNames?: TextareaClassNames },
-): JSX.Element {
+function TextareaField(props: TextareaRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "class",
@@ -139,7 +135,6 @@ function TextareaGroup(
 function TextareaClearableField(
   props: TextareaRootProps & {
     canClear?: boolean;
-    classNames?: TextareaClassNames;
   },
 ): JSX.Element {
   const [local, rest] = splitProps(props, [

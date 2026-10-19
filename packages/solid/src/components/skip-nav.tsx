@@ -1,22 +1,19 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type {
-  SkipNavProps as BaseSkipNavContentProps,
-  SkipNavProps as BaseSkipNavLinkProps,
-} from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { useLocale } from "./provider/context";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
-  extends HTMLArkProps<"a">, BaseSkipNavLinkProps {
+  extends HTMLArkProps<"a">, SkipNavRootContract {
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
+  extends ComponentProps<"div">, SkipNavRootContract {
   id?: string;
 }
 
@@ -49,7 +46,7 @@ export function SkipNavContent(props: SkipNavContentProps): JSX.Element {
   const slots = () => (local.recipe ?? skipNavRecipe)();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().content({ class: local.class })}
       data-part="content"

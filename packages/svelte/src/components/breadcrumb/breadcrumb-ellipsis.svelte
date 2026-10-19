@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { DotsThreeIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useBreadcrumb } from "./breadcrumb.context";
@@ -9,8 +8,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   aria-hidden="true"
   class={className}
@@ -19,4 +17,4 @@
   role="presentation"
 >
   <DotsThreeIcon class={slots.ellipsis()} />
-</Ark>
+</span>

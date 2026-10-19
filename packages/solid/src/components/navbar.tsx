@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
+import type { NavbarRootContract, NavbarContract } from "@pisagor/contracts";
 import { navbarRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -14,25 +13,27 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface NavbarRootProps
-  extends HTMLArkProps<"header">, BaseNavbarRootProps {}
+  extends ComponentProps<"header">, NavbarRootContract {}
 
-export type NavbarPartProps = HTMLArkProps<"div">;
-export type NavbarNavProps = HTMLArkProps<"nav">;
+export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 
-export const NavbarRoot: Component<NavbarRootProps> = withProvider(ark.header, {
+export type NavbarPartProps = ComponentProps<"div">;
+export type NavbarNavProps = ComponentProps<"nav">;
+
+export const NavbarRoot: Component<NavbarRootProps> = withProvider("header", {
   name: "Root",
   slot: "base",
 });
 
-export const NavbarBrand: Component<NavbarPartProps> = withContext(ark.div, {
+export const NavbarBrand: Component<NavbarPartProps> = withContext("div", {
   name: "Brand",
 });
 
-export const NavbarContent: Component<NavbarPartProps> = withContext(ark.div, {
+export const NavbarContent: Component<NavbarPartProps> = withContext("div", {
   name: "Content",
 });
 
-const NavbarNavBase: Component<NavbarNavProps> = withContext(ark.nav, {
+const NavbarNavBase: Component<NavbarNavProps> = withContext("nav", {
   name: "Nav",
 });
 
@@ -48,7 +49,7 @@ export function NavbarNav(props: NavbarNavProps): JSX.Element {
   );
 }
 
-export const NavbarActions: Component<NavbarPartProps> = withContext(ark.div, {
+export const NavbarActions: Component<NavbarPartProps> = withContext("div", {
   name: "Actions",
 });
 

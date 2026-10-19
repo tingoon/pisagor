@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { NavbarProps as BaseNavbarProps } from "@pisagor/props";
+  import type { NavbarRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./navbar.context";
 
-  type Props = HTMLAttributes<HTMLElement> & BaseNavbarProps;
+  type Props = HTMLAttributes<HTMLElement> & NavbarRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark as="header" {...root.props}>{@render children?.()}</Ark>
+<header {...root.props}>{@render children?.()}</header>

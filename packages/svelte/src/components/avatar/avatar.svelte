@@ -4,34 +4,26 @@
     AvatarImageProps,
     AvatarRootProps,
   } from "@ark-ui/svelte";
-  import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
-  import type { AvatarRecipeSlot } from "@pisagor/recipes";
+  import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
   import { getInitials } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal";
   import AvatarFallback from "./avatar-fallback.svelte";
   import AvatarImage from "./avatar-image.svelte";
   import AvatarRoot from "./avatar-root.svelte";
 
-  type Props = Omit<AvatarRootProps, "children"> & {
-    /** Alt text for the avatar image */
-    alt?: string;
-    /** Slot class names */
-    classNames?: VariantClassNames<AvatarRecipeSlot>;
-    /** Renders the fallback content shown until the image loads */
-    fallback?: string | Snippet;
-    /** Extra props forwarded to the avatar fallback element */
-    fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
-    /** Extra props forwarded to the avatar image element */
-    imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
-    /**
-     * Person name; used as default alt text and to derive initials when no
-     * fallback is given
-     */
-    name?: string;
-    /** Renders the avatar image with the provided src */
-    src?: string;
-  } & BaseAvatarProps;
+  type Props = Omit<AvatarRootProps, "children"> &
+    AvatarRootContract & {
+      /** Alt text for the avatar image */
+      alt?: string;
+      fallback?: string | Snippet;
+      /** Extra props forwarded to the avatar fallback element */
+      fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
+      /** Extra props forwarded to the avatar image element */
+      imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
+      name?: string;
+      /** Renders the avatar image with the provided src */
+      src?: string;
+    } & AvatarContract;
 
   let {
     alt,

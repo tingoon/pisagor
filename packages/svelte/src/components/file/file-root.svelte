@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { FileProps as BaseFileProps } from "@pisagor/props";
+  import type { FileRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./file.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
+  type Props = HTMLAttributes<HTMLDivElement> & FileRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark as="div" {...root.props}>{@render children?.()}</Ark>
+<div {...root.props}>{@render children?.()}</div>

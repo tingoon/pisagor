@@ -1,9 +1,4 @@
-import {
-  Dialog as AlertDialogPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Dialog as AlertDialogPrimitive, Portal } from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -13,12 +8,16 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
+import type {
+  AlertDialogContract,
+  AlertDialogHeaderContract,
+  AlertDialogRootContract,
+} from "@pisagor/contracts";
 import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
 } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -37,7 +36,7 @@ AlertDialogModalContext.displayName = "AlertDialogModalContext";
 
 // #region Types
 export interface AlertDialogRootProps
-  extends DialogRootPrimitiveProps, BaseAlertDialogRootProps {}
+  extends DialogRootPrimitiveProps, AlertDialogRootContract {}
 
 export interface AlertDialogContentProps
   extends DialogContentPrimitiveProps, AlertDialogVariantProps {
@@ -55,7 +54,7 @@ export interface AlertDialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
+export interface AlertDialogBodyProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -64,13 +63,19 @@ export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = HTMLArkProps<"div">;
+export interface AlertDialogHeaderProps
+  extends
+    Omit<ComponentPropsWithRef<"div">, "title">,
+    AlertDialogHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type AlertDialogFooterProps = HTMLArkProps<"div">;
+export type AlertDialogFooterProps = ComponentPropsWithRef<"div">;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
@@ -85,17 +90,13 @@ export interface AlertDialogActionProps
 export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps extends Omit<
-  AlertDialogRootProps,
-  "children" | "title"
-> {
-  /** Footer actions (typically Cancel / Action). */
+export interface AlertDialogProps
+  extends
+    Omit<AlertDialogRootProps, "children" | "title">,
+    AlertDialogContract {
   actions?: ReactNode;
-  /** Header description content. */
   description?: ReactNode;
-  /** Header title content. */
   title?: ReactNode;
-  /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
 // #endregion
@@ -205,7 +206,7 @@ export function AlertDialogBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({ className })}
         data-part="body"
@@ -218,19 +219,27 @@ export function AlertDialogBody({
 export function AlertDialogHeader({
   children,
   className,
+  description,
+  title,
   ...rest
 }: AlertDialogHeaderProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
       data-scope="alert-dialog"
     >
+      {title != null && <AlertDialogTitle>{title}</AlertDialogTitle>}
+
+      {description != null && (
+        <AlertDialogDescription>{description}</AlertDialogDescription>
+      )}
+
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -254,7 +263,7 @@ export function AlertDialogFooter({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"

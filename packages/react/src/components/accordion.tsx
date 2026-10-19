@@ -6,11 +6,14 @@ import type {
   AccordionRootProps,
 } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import {
-  type AccordionItemVariantProps,
-  accordionItemRecipe,
-} from "@pisagor/recipes";
+import type {
+  AccordionItemRootContract,
+  AccordionItemContract,
+  AccordionPresetItem as BaseAccordionPresetItem,
+  AccordionRootContract,
+  AccordionContract,
+} from "@pisagor/contracts";
+import { accordionItemRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -23,17 +26,24 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface AccordionItemProps
-  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
+  extends
+    AccordionItemPrimitiveProps,
+    AccordionItemRootContract,
+    AccordionItemContract {}
 
-interface AccordionPresetItem {
-  value: string;
+interface AccordionPresetItem extends Omit<
+  BaseAccordionPresetItem,
+  "title" | "content"
+> {
   title: ReactNode;
   content: ReactNode;
-  disabled?: boolean;
 }
 
 export interface AccordionProps
-  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
+  extends
+    Omit<AccordionRootProps, "children">,
+    AccordionRootContract,
+    AccordionContract {
   items?: AccordionPresetItem[];
 }
 // #endregion
@@ -51,7 +61,7 @@ export function AccordionRoot({
   );
 }
 
-export const AccordionItem = withProvider(AccordionPrimitive.Item, {
+export const AccordionItem = withProvider(AccordionPrimitive.Item)({
   name: "Item",
   slot: "base",
 }) as FunctionComponent<AccordionItemProps>;

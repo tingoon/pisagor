@@ -3,7 +3,7 @@ import {
   type SwapIndicatorProps,
   type SwapRootProps,
 } from "@ark-ui/solid";
-import type { SwapProps as BaseSwapProps } from "@pisagor/props";
+import type { SwapRootContract, SwapContract } from "@pisagor/contracts";
 import { swapRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -11,7 +11,8 @@ import { Show, splitProps } from "solid-js";
 export type SwapOnIndicatorProps = SwapIndicatorProps;
 export type SwapOffIndicatorProps = SwapIndicatorProps;
 
-export interface SwapProps extends SwapRootProps, BaseSwapProps {
+export interface SwapProps
+  extends SwapRootProps, SwapRootContract, SwapContract {
   off?: JSX.Element;
   on?: JSX.Element;
   offIndicatorProps?: Omit<

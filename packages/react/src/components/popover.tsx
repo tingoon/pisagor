@@ -1,9 +1,4 @@
-import {
-  Popover as PopoverPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Popover as PopoverPrimitive, Portal } from "@ark-ui/react";
 import type {
   PopoverAnchorProps,
   PopoverArrowProps,
@@ -14,9 +9,13 @@ import type {
   PopoverTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
+import type {
+  PopoverContract,
+  PopoverHeaderContract,
+  PopoverRootContract,
+} from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
-
+import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -35,7 +34,7 @@ const {
 
 // #region Types
 export interface PopoverContentProps
-  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, PopoverRootContract {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -44,16 +43,17 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
-  /** The description of the popover header */
+export interface PopoverHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, PopoverHeaderContract {
   description?: string;
-  /** The title of the popover header */
   title?: string;
 }
 
-export type PopoverBodyProps = HTMLArkProps<"div">;
+export type PopoverBodyProps = ComponentPropsWithRef<"div">;
 
-export type PopoverFooterProps = HTMLArkProps<"div">;
+export type PopoverFooterProps = ComponentPropsWithRef<"div">;
+
+export interface PopoverProps extends PopoverRootProps, PopoverContract {}
 // #endregion
 
 // #region Parts
@@ -122,7 +122,7 @@ export function PopoverHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -133,7 +133,7 @@ export function PopoverHeader({
       {!!description && <PopoverDescription>{description}</PopoverDescription>}
 
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -150,7 +150,7 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
 
   return (
     <ScrollArea>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({
           className: ["overflow-visible", className].filter(Boolean).join(" "),
@@ -162,7 +162,7 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
   );
 }
 
-export const PopoverFooter = withContext(ark.div, {
+export const PopoverFooter = withContext("div", {
   name: "Footer",
 });
 

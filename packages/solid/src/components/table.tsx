@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { TableProps as BaseTableProps } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/contracts";
 import { tableRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -12,18 +11,18 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
+export interface TableProps extends ComponentProps<"table">, TableRootContract {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = HTMLArkProps<"thead">;
-export type TableBodyProps = HTMLArkProps<"tbody">;
-export type TableFooterProps = HTMLArkProps<"tfoot">;
-export type TableRowProps = HTMLArkProps<"tr">;
-export type TableHeadProps = HTMLArkProps<"th">;
-export type TableCellProps = HTMLArkProps<"td">;
-export type TableCaptionProps = HTMLArkProps<"caption">;
+export type TableHeaderProps = ComponentProps<"thead">;
+export type TableBodyProps = ComponentProps<"tbody">;
+export type TableFooterProps = ComponentProps<"tfoot">;
+export type TableRowProps = ComponentProps<"tr">;
+export type TableHeadProps = ComponentProps<"th">;
+export type TableCellProps = ComponentProps<"td">;
+export type TableCaptionProps = ComponentProps<"caption">;
 
 export function TableRoot(props: TableProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -48,7 +47,7 @@ export function TableRoot(props: TableProps): JSX.Element {
       }}
     >
       <div class={slots().wrapper()} data-part="wrapper" data-scope="table">
-        <ark.table
+        <table
           {...rest}
           class={slots().base({ class: local.class })}
           data-hoverable={local.isHoverable ?? true}
@@ -61,32 +60,32 @@ export function TableRoot(props: TableProps): JSX.Element {
   );
 }
 
-export const TableHeader: Component<TableHeaderProps> = withContext(ark.thead, {
+export const TableHeader: Component<TableHeaderProps> = withContext("thead", {
   name: "Header",
 });
 
-export const TableBody: Component<TableBodyProps> = withContext(ark.tbody, {
+export const TableBody: Component<TableBodyProps> = withContext("tbody", {
   name: "Body",
 });
 
-export const TableFooter: Component<TableFooterProps> = withContext(ark.tfoot, {
+export const TableFooter: Component<TableFooterProps> = withContext("tfoot", {
   name: "Footer",
 });
 
-export const TableRow: Component<TableRowProps> = withContext(ark.tr, {
+export const TableRow: Component<TableRowProps> = withContext("tr", {
   name: "Row",
 });
 
-export const TableHead: Component<TableHeadProps> = withContext(ark.th, {
+export const TableHead: Component<TableHeadProps> = withContext("th", {
   name: "Head",
 });
 
-export const TableCell: Component<TableCellProps> = withContext(ark.td, {
+export const TableCell: Component<TableCellProps> = withContext("td", {
   name: "Cell",
 });
 
 export const TableCaption: Component<TableCaptionProps> = withContext(
-  ark.caption,
+  "caption",
   { name: "Caption" },
 );
 

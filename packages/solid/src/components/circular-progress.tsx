@@ -1,24 +1,22 @@
 import {
   Progress as ProgressPrimitive,
-  ark,
   useProgress,
   useProgressContext,
 } from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   ProgressRootProps,
   ProgressRootProviderProps,
   ProgressValueTextProps,
   UseProgressReturn,
 } from "@ark-ui/solid";
-import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/contracts";
+import { circularProgressRecipe } from "@pisagor/recipes";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -27,21 +25,22 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type CircularProgressTrackProps = HTMLArkProps<"svg">;
+type CircularProgressTrackProps = ComponentProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
-type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 type CircularProgressRootProps = ProgressRootProviderProps &
-  BaseCircularProgressProps;
+  CircularProgressRootContract;
 
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">, BaseCircularProgressProps {
+  extends
+    Omit<ProgressRootProps, "children">,
+    CircularProgressRootContract,
+    CircularProgressContract {
   size?: number;
   thickness?: number;
   indeterminate?: boolean;
   isValueVisible?: boolean;
   children?: JSX.Element;
-  classNames?: CircularProgressClassNames;
   trackProps?: Omit<
     CircularProgressTrackProps,
     "class" | "height" | "viewBox" | "width"
@@ -114,7 +113,7 @@ function CircularProgressTrack(
   const dashOffset = () => circumference() * (1 - percent());
 
   return (
-    <ark.svg
+    <svg
       {...props.trackProps}
       aria-hidden="true"
       class={styles.slots.track({ class: props.class })}
@@ -146,7 +145,7 @@ function CircularProgressTrack(
         stroke-linecap="round"
         stroke-width={thickness()}
       />
-    </ark.svg>
+    </svg>
   );
 }
 

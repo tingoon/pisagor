@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue";
-import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
+import type {
+  AnnouncementContract,
+  AnnouncementRootContract,
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -20,17 +23,16 @@ export const AnnouncementRoot = withProvider(ark.div, {
   slot: "base",
 });
 
-export const AnnouncementTitle = withContext(ark.span, {
+export const AnnouncementTitle = withContext("span", {
   name: "Title",
   slot: "title",
 });
 // #endregion
 
 // #region Types
-export interface AnnouncementProps extends BaseAnnouncementRootProps {
-  /** Optional badge or label rendered before the title. */
+export interface AnnouncementProps
+  extends AnnouncementRootContract, AnnouncementContract {
   badge?: VNodeChild;
-  /** Title content rendered inside `Announcement.Title`. */
   title?: VNodeChild;
   class?: unknown;
   /** Extra props forwarded to the announcement title element */

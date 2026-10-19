@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { formControlSeparatorRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -17,8 +16,7 @@
   const surfaceVariant = useFormControlSurface();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.separator({ class: cn(className) })}
   data-content={children ? "" : undefined}
@@ -33,4 +31,4 @@
       {@render children()}
     </span>
   {/if}
-</Ark>
+</div>

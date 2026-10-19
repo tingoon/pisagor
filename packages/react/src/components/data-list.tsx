@@ -1,12 +1,13 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { DataListProps as BaseDataListRootProps } from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-  dataListRecipe,
-} from "@pisagor/recipes";
-import type { ComponentProps, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import type {
+  DataListContract,
+  DataListItemContract,
+  DataListItemRootContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
+import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -22,12 +23,12 @@ export function DataListRoot({
   recipe = dataListRecipe,
   className,
   ...rest
-}: HTMLArkProps<"dl"> &
-  BaseDataListRootProps & {
+}: ComponentPropsWithRef<"dl"> &
+  DataListRootContract & {
     orientation?: "horizontal" | "vertical";
   }) {
   return (
-    <ark.dl
+    <dl
       {...rest}
       className={recipe({ className })}
       data-orientation={orientation}
@@ -35,11 +36,11 @@ export function DataListRoot({
       data-scope="data-list"
     >
       {children}
-    </ark.dl>
+    </dl>
   );
 }
 
-const DataListItemRoot = withProvider(ark.div, {
+const DataListItemRoot = withProvider("div")({
   defaultProps: {
     "data-part": "item",
   },
@@ -47,7 +48,7 @@ const DataListItemRoot = withProvider(ark.div, {
   slot: "base",
 });
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: {
     "data-part": "item-label",
   },
@@ -55,7 +56,7 @@ const DataListItemLabel = withContext(ark.dt, {
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: {
     "data-part": "item-value",
   },
@@ -69,10 +70,11 @@ export function DataListItem({
   className,
   classNames,
   ...rest
-}: ComponentProps<typeof DataListItemRoot> & {
-  value?: ReactNode;
-  classNames?: VariantClassNames<DataListItemRecipeSlot>;
-}) {
+}: ComponentProps<typeof DataListItemRoot> &
+  DataListItemRootContract &
+  DataListItemContract & {
+    value?: ReactNode;
+  }) {
   return (
     <DataListItemRoot {...rest} className={className}>
       {children != null && (
@@ -94,12 +96,16 @@ export function DataListItem({
 export type DataListRootProps = ComponentProps<typeof DataListRoot>;
 export type DataListItemProps = ComponentProps<typeof DataListItem>;
 
-interface DataListPresetItem {
+interface DataListPresetItem extends Omit<
+  BaseDataListPresetItem,
+  "label" | "value"
+> {
   label: ReactNode;
   value: ReactNode;
 }
 
-export interface DataListProps extends Omit<DataListRootProps, "children"> {
+export interface DataListProps
+  extends Omit<DataListRootProps, "children">, DataListContract {
   items?: DataListPresetItem[];
 }
 // #endregion

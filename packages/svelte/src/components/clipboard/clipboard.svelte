@@ -5,18 +5,14 @@
     type ClipboardRootProps,
   } from "@ark-ui/svelte";
   import type {
-    ClipboardProps as BaseClipboardProps,
-    ButtonProps,
-  } from "@pisagor/props";
-  import {
-    type ClipboardRecipeSlot,
-    clipboardRecipe,
-    formControlShellRecipe,
-  } from "@pisagor/recipes";
+    ButtonRootContract,
+    ClipboardContract,
+    ClipboardRootContract,
+  } from "@pisagor/contracts";
+  import { clipboardRecipe, formControlShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, ClipboardIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -33,45 +29,14 @@
 
   type FormControlVariant = "primary" | "secondary";
 
-  type Props = Omit<ClipboardRootProps, "children"> & {
-    /** Accessible label for icon-only copy buttons */
-    buttonAriaLabel?: string;
-    /**
-     * Size scale for the shell, button and value.
-     *
-     * @defaultValue "md"
-     */
-    size?: "sm" | "md" | "lg";
-    /**
-     * Size of the copy button.
-     *
-     * @defaultValue "icon-md"
-     */
-    buttonSize?: ButtonProps["size"];
-    /** Variant of the copy button */
-    buttonVariant?: ButtonProps["variant"];
-    /** Slot class names */
-    classNames?: VariantClassNames<ClipboardRecipeSlot>;
-    /**
-     * Visual shell variant for input/value display modes. Defaults to
-     * `primary`.
-     */
-    controlVariant?: FormControlVariant;
-    /** Icon shown after a successful copy */
-    copiedIcon?: Snippet;
-    /** Icon shown before copying */
-    copyIcon?: Snippet;
-    /** Optional label rendered above the control. */
-    label?: string;
-    /** Extra props forwarded to the label element */
-    labelProps?: Omit<ClipboardLabelProps, "children" | "class">;
-    /**
-     * Display mode for the copy control.
-     *
-     * @defaultValue "input"
-     */
-    variant?: "button" | "input" | "value";
-  } & BaseClipboardProps;
+  type Props = Omit<ClipboardRootProps, "children"> &
+    ClipboardRootContract & {
+      copiedIcon?: Snippet;
+      copyIcon?: Snippet;
+      label?: string;
+      /** Extra props forwarded to the label element */
+      labelProps?: Omit<ClipboardLabelProps, "children" | "class">;
+    } & ClipboardContract;
 
   let {
     size = "md",
@@ -91,7 +56,7 @@
   }: Props = $props();
 
   const buttonSize = $derived(
-    buttonSizeProp ?? (`icon-${size}` as ButtonProps["size"]),
+    buttonSizeProp ?? (`icon-${size}` as ButtonRootContract["size"]),
   );
   const valueSize = $derived(valueSizeProp ?? size);
   const slots = $derived(recipe({ size, valueSize }));

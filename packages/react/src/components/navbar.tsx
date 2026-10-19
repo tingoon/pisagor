@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
+import type { NavbarContract, NavbarRootContract } from "@pisagor/contracts";
 import { navbarRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -13,34 +12,34 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const NavbarRoot = withProvider(ark.header, {
+export const NavbarRoot = withProvider("header")<NavbarRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"header"> & BaseNavbarRootProps>;
+});
 
-export const NavbarBrand = withContext(ark.div, {
+export const NavbarBrand = withContext("div", {
   name: "Brand",
 });
 
-export const NavbarContent = withContext(ark.div, {
+export const NavbarContent = withContext("div", {
   name: "Content",
 });
 
-const NavbarNavBase = withContext(ark.nav, {
+const NavbarNavBase = withContext("nav", {
   name: "Nav",
 });
 
 export function NavbarNav({
   "aria-label": ariaLabelProp,
   ...rest
-}: HTMLArkProps<"nav">) {
+}: ComponentPropsWithRef<"nav">) {
   const { m } = useLocale();
   const ariaLabel = m("navbar.label", ariaLabelProp);
 
   return <NavbarNavBase {...rest} aria-label={ariaLabel} />;
 }
 
-export const NavbarActions = withContext(ark.div, {
+export const NavbarActions = withContext("div", {
   name: "Actions",
 });
 // #endregion
@@ -48,7 +47,9 @@ export const NavbarActions = withContext(ark.div, {
 // #region Types
 export type NavbarRootProps = ComponentProps<typeof NavbarRoot>;
 export type NavbarPartProps = ComponentProps<typeof NavbarBrand>;
-export type NavbarNavProps = HTMLArkProps<"nav">;
+export type NavbarNavProps = ComponentPropsWithRef<"nav">;
+
+export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 // #endregion
 
 // #region Display Names

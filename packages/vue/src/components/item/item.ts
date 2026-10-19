@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
@@ -20,7 +20,7 @@ const {
 // #endregion
 
 // #region Types
-export interface ItemProps extends BaseItemProps {
+export interface ItemProps extends ItemRootContract {
   class?: unknown;
 }
 
@@ -111,7 +111,7 @@ export const ItemMedia = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: styles.slots.media({
@@ -127,32 +127,32 @@ export const ItemMedia = defineComponent({
   },
 });
 
-export const ItemContent = withContext(ark.div, {
+export const ItemContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const ItemTitle = withContext(ark.div, {
+export const ItemTitle = withContext("div", {
   name: "Title",
   slot: "title",
 });
 
-export const ItemDescription = withContext(ark.p, {
+export const ItemDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const ItemActions = withContext(ark.div, {
+export const ItemActions = withContext("div", {
   name: "Actions",
   slot: "actions",
 });
 
-export const ItemHeader = withContext(ark.div, {
+export const ItemHeader = withContext("div", {
   name: "Header",
   slot: "header",
 });
 
-export const ItemFooter = withContext(ark.div, {
+export const ItemFooter = withContext("div", {
   name: "Footer",
   slot: "footer",
 });

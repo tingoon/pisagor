@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
@@ -13,12 +12,11 @@
   const slots = useFieldSlots();
 </script>
 
-<Ark
-  as="p"
+<p
   {...rest}
   class={slots.description({ class: cn(className) })}
   data-part="description"
   data-scope="field"
 >
   {@render children?.()}
-</Ark>
+</p>

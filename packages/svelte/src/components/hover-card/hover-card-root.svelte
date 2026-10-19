@@ -3,11 +3,11 @@
     HoverCard as HoverCardPrimitive,
     type HoverCardRootProps,
   } from "@ark-ui/svelte";
-  import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
+  import type { HoverCardRootContract } from "@pisagor/contracts";
   import { hoverCardRecipe } from "@pisagor/recipes";
   import { Context } from "./hover-card.context";
 
-  type Props = HoverCardRootProps & BaseHoverCardProps;
+  type Props = HoverCardRootProps & HoverCardRootContract;
 
   let {
     closeDelay = 300,

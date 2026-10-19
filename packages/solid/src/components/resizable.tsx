@@ -8,10 +8,9 @@ import type {
   SplitterRootProviderProps,
 } from "@ark-ui/solid";
 import type {
-  ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
-  ResizableProps as BaseResizableProps,
-  ResizableProps as BaseResizableRootProps,
-} from "@pisagor/props";
+  ResizableEdgeHandleRootContract,
+  ResizableRootContract,
+} from "@pisagor/contracts";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -44,7 +43,7 @@ export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
-  extends ComponentProps<"button">, BaseResizableEdgeHandleProps {
+  extends ComponentProps<"button">, ResizableEdgeHandleRootContract {
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
@@ -65,7 +64,7 @@ export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps 
 }
 
 export interface ResizableRootProps
-  extends SplitterRootProps, BaseResizableRootProps {}
+  extends SplitterRootProps, ResizableRootContract {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
@@ -73,7 +72,7 @@ export type ResizableResizeTriggerIndicatorProps =
 export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps, BaseResizableProps {}
+  extends SplitterRootProviderProps, ResizableRootContract {}
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,

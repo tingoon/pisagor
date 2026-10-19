@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+  import type { FieldRootContract } from "@pisagor/contracts";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -9,7 +8,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: Snippet;
-  } & BaseFieldProps;
+  } & FieldRootContract;
 
   let {
     recipe = fieldRecipe,
@@ -25,12 +24,11 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.group({ class: cn(className) })}
   data-part="group"
   data-scope="field"
 >
   {@render children?.()}
-</Ark>
+</div>

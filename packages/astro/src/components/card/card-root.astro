@@ -1,9 +1,9 @@
 ---
-import type { CardProps as BaseCardProps } from "@pisagor/props";
+import type { CardRootContract } from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./card.context";
 
-type Props = HTMLAttributes<"div"> & BaseCardProps;
+type Props = HTMLAttributes<"div"> & CardRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

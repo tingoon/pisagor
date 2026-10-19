@@ -1,9 +1,4 @@
-import {
-  Drawer as DrawerPrimitive,
-  Portal,
-  ark,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Drawer as DrawerPrimitive, Portal } from "@ark-ui/react";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
@@ -13,9 +8,13 @@ import type {
   DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTriggerProps,
 } from "@ark-ui/react";
-import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
+import type {
+  DrawerContract,
+  DrawerHeaderContract,
+  DrawerRootContract,
+} from "@pisagor/contracts";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
@@ -32,7 +31,7 @@ const {
 
 // #region Types
 export interface DrawerRootProps
-  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, DrawerRootContract {}
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   DrawerVariantProps;
@@ -40,14 +39,13 @@ export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
 export type DrawerContentProps = DrawerContentPrimitiveProps &
   DrawerVariantProps;
 
-export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
-  /** The description of the drawer */
+export interface DrawerHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, DrawerHeaderContract {
   description?: string;
-  /** The title of the drawer */
   title?: string;
 }
 
-export interface DrawerBodyProps extends HTMLArkProps<"div"> {
+export interface DrawerBodyProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -56,13 +54,15 @@ export interface DrawerBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = HTMLArkProps<"div">;
+export type DrawerContentInnerProps = ComponentPropsWithRef<"div">;
 
 export type DrawerDescriptionProps = ComponentProps<
   typeof DrawerPrimitive.Description
 >;
 
-export type DrawerFooterProps = HTMLArkProps<"div">;
+export type DrawerFooterProps = ComponentPropsWithRef<"div">;
+
+export interface DrawerProps extends DrawerRootProps, DrawerContract {}
 // #endregion
 
 // #region Parts
@@ -156,7 +156,7 @@ export function DrawerContentInner({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.contentInner({ className })}
       data-part="content-inner"
@@ -169,14 +169,14 @@ export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div className={slots.grabberWrapper()}>
+    <div className={slots.grabberWrapper()}>
       <DrawerPrimitive.Grabber
         {...rest}
         className={slots.grabber({ className })}
       >
         <DrawerPrimitive.GrabberIndicator className={slots.grabberIcon()} />
       </DrawerPrimitive.Grabber>
-    </ark.div>
+    </div>
   );
 }
 
@@ -190,7 +190,7 @@ export function DrawerHeader({
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -201,7 +201,7 @@ export function DrawerHeader({
       {!!description && <DrawerDescription>{description}</DrawerDescription>}
 
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -234,7 +234,7 @@ export function DrawerBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.body({ className })}
         data-part="body"
@@ -252,7 +252,7 @@ export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"

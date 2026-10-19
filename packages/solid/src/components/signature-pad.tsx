@@ -6,18 +6,16 @@ import type {
   SignaturePadRootProps as SignaturePadRootPrimitiveProps,
   SignaturePadSegmentProps,
 } from "@ark-ui/solid";
-import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
-import {
-  formControlZoneRecipe,
-  type SignaturePadRecipeSlot,
-  signaturePadRecipe,
-} from "@pisagor/recipes";
+import type {
+  SignaturePadContract,
+  SignaturePadRootContract,
+} from "@pisagor/contracts";
+import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import {
   ArrowCounterClockwiseIcon,
-  type VariantClassNames,
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
@@ -36,19 +34,14 @@ const {
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
 type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   variant?: FormControlVariant;
   invalid?: boolean;
-} & BaseSignaturePadRootProps;
+} & SignaturePadRootContract &
+  SignaturePadContract;
 
-export interface SignaturePadProps extends Omit<
-  SignaturePadRootProps,
-  "children"
-> {
-  classNames?: SignaturePadClassNames;
-}
+export type SignaturePadProps = Omit<SignaturePadRootProps, "children">;
 
 type SignaturePadClearProps = SignaturePadClearTriggerProps;
 

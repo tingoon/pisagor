@@ -1,5 +1,8 @@
 <script lang="ts">
-  import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
+  import type {
+    AnnouncementContract,
+    AnnouncementRootContract,
+  } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import AnnouncementRoot from "./announcement-root.svelte";
@@ -8,11 +11,12 @@
   type Props = Omit<
     HTMLAttributes<HTMLDivElement>,
     "title" | "children" | "role"
-  > & {
-    badge?: Snippet;
-    role?: "status" | "alert";
-    title?: string | Snippet;
-  } & BaseAnnouncementProps;
+  > &
+    AnnouncementRootContract & {
+      badge?: Snippet;
+      role?: "status" | "alert";
+      title?: string | Snippet;
+    } & AnnouncementContract;
 
   let {
     badge,

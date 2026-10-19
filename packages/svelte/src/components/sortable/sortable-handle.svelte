@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
@@ -49,8 +48,7 @@
   }
 </script>
 
-<Ark
-  as="button"
+<button
   {...rest}
   aria-disabled={sortable.disabled || undefined}
   aria-keyshortcuts={sortable.orientation === "vertical"
@@ -76,4 +74,4 @@
   {:else}
     <DotsSixVerticalIcon />
   {/if}
-</Ark>
+</button>

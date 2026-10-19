@@ -3,20 +3,22 @@
     JsonTreeViewRootProps,
     JsonTreeViewTreeProps,
   } from "@ark-ui/svelte";
-  import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
-  import type { JsonTreeViewRecipeSlot } from "@pisagor/recipes";
+  import type {
+    JsonTreeViewContract,
+    JsonTreeViewRootContract,
+  } from "@pisagor/contracts";
+
   import { CaretRightIcon } from "phosphor-svelte";
-  import type { VariantClassNames } from "../../internal";
+
   import JsonTreeViewRoot from "./json-tree-view-root.svelte";
   import JsonTreeViewTree from "./json-tree-view-tree.svelte";
 
   type Props = Omit<JsonTreeViewRootProps, "children"> & {
-    /** Slot class names */
-    classNames?: VariantClassNames<JsonTreeViewRecipeSlot>;
     renderValue?: JsonTreeViewTreeProps["renderValue"];
     /** Extra props forwarded to the json tree view tree element */
     treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "class" | "renderValue">;
-  } & BaseJsonTreeViewProps;
+  } & JsonTreeViewRootContract &
+    JsonTreeViewContract;
 
   let { renderValue, treeProps, classNames, ...rest }: Props = $props();
 </script>

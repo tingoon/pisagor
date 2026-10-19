@@ -1,19 +1,15 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type {
-  ItemProps as BaseItemGroupProps,
-  ItemProps as BaseItemSeparatorProps,
-} from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { itemRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 export interface ItemGroupProps
-  extends HTMLArkProps<"div">, BaseItemGroupProps {}
+  extends ComponentProps<"div">, ItemRootContract {}
 
 export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
+  extends Omit<SeparatorProps, "recipe">, ItemRootContract {}
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -27,7 +23,7 @@ export function ItemGroup(props: ItemGroupProps): JSX.Element {
 
   return (
     <ItemGroupContext value={{ variant: variant() }}>
-      <ark.div
+      <div
         {...rest}
         class={slots().group({ class: local.class })}
         data-part="group"
@@ -36,7 +32,7 @@ export function ItemGroup(props: ItemGroupProps): JSX.Element {
         role="list"
       >
         {local.children}
-      </ark.div>
+      </div>
     </ItemGroupContext>
   );
 }

@@ -9,20 +9,12 @@ import type {
   SliderTrackProps,
   SliderValueTextProps,
 } from "@ark-ui/react";
-import type { SliderProps as BaseSliderRootProps } from "@pisagor/props";
-import {
-  fieldRecipe,
-  type SliderRecipeSlot,
-  sliderRecipe,
-} from "@pisagor/recipes";
+import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
+import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import {
-  type FormControlVariant,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
@@ -50,20 +42,15 @@ function useSlider() {
 // #endregion
 
 // #region Types
-
 type SliderValueProps = SliderValueTextProps;
-
-type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
 type SliderRootProps = SliderRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSliderRootProps;
+} & SliderRootContract;
 
-export interface SliderProps extends Omit<
-  SliderRootProps,
-  "children" | "onValueChange"
-> {
+export interface SliderProps
+  extends Omit<SliderRootProps, "children" | "onValueChange">, SliderContract {
   /**
    * The interval between markers.
    *
@@ -89,7 +76,6 @@ export interface SliderProps extends Omit<
    */
   showValue?: boolean;
   children?: ReactNode;
-  /** Label rendered above the slider track. */
   label?: ReactNode;
   /**
    * Called when the slider value changes.
@@ -98,8 +84,6 @@ export interface SliderProps extends Omit<
    *   Receives the numeric value array directly, not Ark UI event details.
    */
   onValueChange?: (value: number[]) => void;
-  /** Slot class names */
-  classNames?: SliderClassNames;
   /** Extra props forwarded to the slider control element */
   controlProps?: Omit<SliderControlProps, "children" | "className">;
   /** Extra props forwarded to the slider range element */

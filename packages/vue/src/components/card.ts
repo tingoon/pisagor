@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
+import type {
+  CardHeaderContract,
+  CardRootContract,
+  CardContract,
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -14,12 +18,18 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Types
 export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
 
-export interface CardRootProps extends BaseCardRootProps {
+export interface CardRootProps extends CardRootContract {
   class?: unknown;
 }
-// #endregion
 
-type ArkPart = Parameters<typeof h>[0];
+export interface CardHeaderProps extends CardHeaderContract {
+  class?: unknown;
+  description?: string;
+  title?: string;
+}
+
+export interface CardProps extends CardRootProps, CardContract {}
+// #endregion
 
 // #region Parts
 export const CardRoot = withProvider(ark.div, {
@@ -45,7 +55,7 @@ export const CardMedia = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: styleSlots.media({
@@ -77,7 +87,7 @@ export const CardHeader = defineComponent({
 
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: styleSlots.header({ class: props.class }),
@@ -106,22 +116,22 @@ export const CardTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.p, {
+export const CardDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const CardAction = withContext(ark.div, {
+export const CardAction = withContext("div", {
   name: "Action",
   slot: "action",
 });
 
-export const CardContent = withContext(ark.div, {
+export const CardContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const CardFooter = withContext(ark.div, {
+export const CardFooter = withContext("div", {
   name: "Footer",
   slot: "footer",
 });

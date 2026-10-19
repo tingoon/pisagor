@@ -1,12 +1,9 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { BadgeRootContract } from "@pisagor/contracts";
+import { badgeRecipe } from "@pisagor/recipes";
+import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
-
-export interface BadgeProps extends HTMLArkProps<"span">, BaseBadgeProps {}
+export interface BadgeProps extends ComponentProps<"span">, BadgeRootContract {}
 
 export function Badge(props: BadgeProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -19,7 +16,7 @@ export function Badge(props: BadgeProps): JSX.Element {
   const recipe = () => local.recipe ?? badgeRecipe;
 
   return (
-    <ark.span
+    <span
       {...rest}
       class={recipe()({
         class: local.class,

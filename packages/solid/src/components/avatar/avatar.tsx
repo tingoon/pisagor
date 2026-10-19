@@ -4,19 +4,12 @@ import type {
   AvatarImageProps,
   AvatarRootProps as AvatarRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
-import {
-  type AvatarRecipeSlot,
-  type AvatarVariantProps,
-  avatarRecipe,
-} from "@pisagor/recipes";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
+import { avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import {
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../../internal";
+import { createSlotRecipeContext } from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -25,22 +18,13 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
+type AvatarRootProps = AvatarRootPrimitiveProps & AvatarRootContract;
 
-type AvatarRootProps = AvatarRootPrimitiveProps &
-  AvatarVariantProps &
-  BaseAvatarRootProps;
-
-export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
+export interface AvatarProps
+  extends Omit<AvatarRootProps, "children">, AvatarContract {
   alt?: string;
   fallback?: JSX.Element;
-  /**
-   * Person name; used as default alt text and to derive initials when no
-   * fallback is given
-   */
-  name?: string;
   src?: string;
-  classNames?: AvatarClassNames;
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
 }

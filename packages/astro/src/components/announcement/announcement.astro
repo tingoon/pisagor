@@ -1,19 +1,22 @@
 ---
-import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
+import type {
+  AnnouncementContract,
+  AnnouncementRootContract,
+} from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import AnnouncementRoot from "./announcement-root.astro";
 import AnnouncementTitle from "./announcement-title.astro";
 
 interface Props
-  extends Omit<HTMLAttributes<"div">, "title">,
-    BaseAnnouncementProps {
+  extends Omit<HTMLAttributes<"div">, "title" | "role">,
+    AnnouncementRootContract,
+    AnnouncementContract {
   /**
    * The ARIA role of the announcement.
    *
    * @defaultValue "status"
    */
   role?: "status" | "alert";
-  /** Title content rendered inside `Announcement.Title`. */
   title?: string;
 }
 

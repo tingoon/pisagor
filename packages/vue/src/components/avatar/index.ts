@@ -4,12 +4,7 @@ import {
   AvatarGroupShorthand,
 } from "./avatar-group";
 
-export type {
-  AvatarClassNames,
-  AvatarProps,
-  AvatarShape,
-  AvatarSize,
-} from "./avatar";
+export type { AvatarProps, AvatarShape, AvatarSize } from "./avatar";
 export { Avatar } from "./avatar";
 export type { AvatarGroupProps, AvatarGroupUser } from "./avatar-group";
 export {

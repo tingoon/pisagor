@@ -1,4 +1,7 @@
-import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
+import type {
+  DataTableBodyContract,
+  DataTableRootContract,
+} from "@pisagor/contracts";
 import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
@@ -37,7 +40,7 @@ export type DataTableProps<TData extends RowData> = {
    */
   features?: DataTableFeatures;
 } & Omit<TableOptions<DataTableFeatures, TData>, "features"> &
-  BaseDataTableProps;
+  DataTableRootContract;
 
 interface DataTableHeaderProps {
   children: ReactNode;
@@ -55,9 +58,8 @@ interface DataTableHeadProps extends TableHeadProps {
   columnId?: string;
 }
 
-interface DataTableBodyProps {
+interface DataTableBodyProps extends DataTableBodyContract {
   children: ReactNode;
-  /** Shown when the row model is empty. */
   empty?: ReactNode;
 }
 

@@ -1,7 +1,18 @@
 import { ark, type HTMLArkProps, Presence } from "@ark-ui/solid";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+import type {
+  ActionBarActionItem as BaseActionBarActionItem,
+  ActionBarRootContract,
+  ActionBarContract,
+  ActionBarValueContract,
+} from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type { Accessor, Component, JSX, ParentProps } from "solid-js";
+import type {
+  Accessor,
+  Component,
+  ComponentProps,
+  JSX,
+  ParentProps,
+} from "solid-js";
 import {
   createEffect,
   createMemo,
@@ -45,19 +56,20 @@ const { ActionBarStateContext, useActionBarState } =
   createContext("ActionBarState")<ActionBarState>();
 // #endregion
 
-interface ActionBarActionItem {
+interface ActionBarActionItem extends Omit<
+  BaseActionBarActionItem,
+  "icon" | "label"
+> {
   icon?: JSX.Element;
-  /** Stable key; defaults to `label`. */
-  id?: string;
   label: string;
   onClick: () => void;
-  disabled?: boolean;
 }
 
 export interface ActionBarProps
   extends
     Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
-    BaseActionBarProps {
+    ActionBarRootContract,
+    ActionBarContract {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   open?: boolean;
@@ -68,16 +80,17 @@ export interface ActionBarProps
 }
 
 export type ActionBarTriggerProps = HTMLArkProps<"button">;
-export type ActionBarContentProps = HTMLArkProps<"div">;
+export type ActionBarContentProps = ComponentProps<"div">;
 export type ActionBarSeparatorProps = SeparatorProps;
 export type ActionBarCloseProps = HTMLArkProps<"button">;
 
-export interface ActionBarValueProps extends BadgeProps {
+export interface ActionBarValueProps
+  extends BadgeProps, ActionBarValueContract {
   count: number;
   label?: string;
 }
 
-export type ActionBarBodyProps = HTMLArkProps<"div">;
+export type ActionBarBodyProps = ComponentProps<"div">;
 
 const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
 
@@ -231,7 +244,7 @@ export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
     <Portal>
       <Presence
         asChild={(presenceProps) => (
-          <ark.div
+          <div
             {...presenceProps({
               class: styles.slots.positioner(),
             })}
@@ -240,7 +253,7 @@ export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
             data-scope="action-bar"
             style={{ "--gutter": gutter() }}
           >
-            <ark.div
+            <div
               {...rest}
               aria-labelledby={local["aria-labelledby"]}
               class={styles.slots.content({ class: local.class })}
@@ -248,7 +261,7 @@ export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
               data-scope="action-bar"
               role="toolbar"
             />
-          </ark.div>
+          </div>
         )}
         lazyMount={state.lazyMount}
         present={state.isOpen()}
@@ -322,10 +335,9 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
   );
 }
 
-export const ActionBarBody: Component<ActionBarBodyProps> = withContext(
-  ark.div,
-  { name: "Body" },
-);
+export const ActionBarBody: Component<ActionBarBodyProps> = withContext("div", {
+  name: "Body",
+});
 
 export const ActionBar = Object.assign(ActionBarRoot, {
   Body: ActionBarBody,

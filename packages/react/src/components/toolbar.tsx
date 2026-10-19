@@ -1,14 +1,9 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import { ark } from "@ark-ui/react";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
+import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
-import type {
-  ComponentProps,
-  FunctionComponent,
-  KeyboardEvent,
-  ReactNode,
-} from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import type { ComponentProps, KeyboardEvent, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -18,14 +13,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider(ark.div, {
+export const ToolbarRoot = withProvider("div")<ToolbarRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  Omit<HTMLArkProps<"div">, "title"> & BaseToolbarRootProps
->;
+});
 
-export const ToolbarHeading = withContext(ark.div, {
+export const ToolbarHeading = withContext("div", {
   name: "Heading",
 });
 
@@ -33,11 +26,11 @@ export const ToolbarTitle = withContext(ark.h2, {
   name: "Title",
 });
 
-export const ToolbarDescription = withContext(ark.p, {
+export const ToolbarDescription = withContext("p", {
   name: "Description",
 });
 
-export const ToolbarActions = withContext(ark.div, {
+export const ToolbarActions = withContext("div", {
   defaultProps: {
     "aria-orientation": "horizontal",
     onKeyDown: (event: KeyboardEvent<HTMLDivElement>) =>
@@ -49,22 +42,16 @@ export const ToolbarActions = withContext(ark.div, {
 // #endregion
 
 // #region Types
-type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
-
 export type ToolbarRootProps = ComponentProps<typeof ToolbarRoot>;
 export type ToolbarTitleProps = ComponentProps<typeof ToolbarTitle>;
 export type ToolbarDescriptionProps = ComponentProps<typeof ToolbarDescription>;
 export type ToolbarActionsProps = ComponentProps<typeof ToolbarActions>;
 
-export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
-  /** Trailing action buttons or controls. */
+export interface ToolbarProps
+  extends Omit<ToolbarRootProps, "children" | "title">, ToolbarContract {
   actions?: ReactNode;
-  /** Supporting copy below the title. */
   description?: ReactNode;
-  /** Section heading. */
   title?: ReactNode;
-  /** Slot class names */
-  classNames?: ToolbarClassNames;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

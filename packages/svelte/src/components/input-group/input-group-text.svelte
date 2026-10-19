@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { InputGroupTextProps as BaseInputGroupTextProps } from "@pisagor/props";
+  import type { InputGroupTextRootContract } from "@pisagor/contracts";
   import { inputGroupTextRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLSpanElement> & {
     children?: import("svelte").Snippet;
-  } & BaseInputGroupTextProps;
+  } & InputGroupTextRootContract;
 
   let {
     recipe = inputGroupTextRecipe,
@@ -17,12 +16,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="text"
   data-scope="input-group"
 >
   {@render children?.()}
-</Ark>
+</span>

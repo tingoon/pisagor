@@ -1,19 +1,13 @@
-import { ark } from "@ark-ui/vue";
 import type {
-  DataListItemProps as BaseDataListItemProps,
-  DataListProps as BaseDataListRootProps,
-} from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-  dataListRecipe,
-} from "@pisagor/recipes";
+  DataListContract,
+  DataListItemContract,
+  DataListItemRootContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
+import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -23,14 +17,15 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-interface DataListPresetItem {
+interface DataListPresetItem extends Omit<
+  BaseDataListPresetItem,
+  "label" | "value"
+> {
   label: VNodeChild;
   value: VNodeChild;
 }
 
-type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
-
-interface DataListRootProps extends BaseDataListRootProps {
+interface DataListRootProps extends DataListRootContract {
   /**
    * The orientation of the data list.
    *
@@ -40,13 +35,17 @@ interface DataListRootProps extends BaseDataListRootProps {
   class?: unknown;
 }
 
-export interface DataListProps extends Omit<DataListRootProps, "children"> {
+export interface DataListProps
+  extends
+    Omit<DataListRootProps, "children">,
+    DataListRootContract,
+    DataListContract {
   items?: DataListPresetItem[];
 }
 
-export interface DataListItemProps extends BaseDataListItemProps {
+export interface DataListItemProps
+  extends DataListItemRootContract, DataListItemContract {
   class?: unknown;
-  classNames?: DataListClassNames;
   value?: VNodeChild;
 }
 // #endregion
@@ -72,7 +71,7 @@ export const DataListRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.dl,
+        "dl",
         {
           ...attrs,
           class: props.recipe({ class: props.class }),
@@ -85,19 +84,19 @@ export const DataListRoot = defineComponent({
   },
 });
 
-const DataListItemRoot = withProvider(ark.div, {
+const DataListItemRoot = withProvider("div", {
   defaultProps: { "data-part": "item" },
   name: "Item",
   slot: "base",
 });
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: { "data-part": "item-value" },
   name: "ItemValue",
   slot: "value",
@@ -113,7 +112,7 @@ export const DataListItem = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<DataListClassNames>,
+      type: Object as PropType<DataListItemProps["classNames"]>,
     },
     value: {
       default: undefined,

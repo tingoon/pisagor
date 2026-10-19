@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { MenuProps as BaseMenuProps } from "@pisagor/props";
+  import type { MenuRootContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -10,7 +9,7 @@
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: Snippet;
-  } & BaseMenuProps;
+  } & MenuRootContract;
 
   let { children, ...rest }: Props = $props();
 
@@ -21,4 +20,4 @@
   });
 </script>
 
-<Ark as="nav" {...root.props}>{@render children?.()}</Ark>
+<nav {...root.props}>{@render children?.()}</nav>

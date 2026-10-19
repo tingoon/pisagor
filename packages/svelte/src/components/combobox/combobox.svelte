@@ -1,5 +1,10 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
+  import type {
+    ComboboxPresetItem,
+    ComboboxRootContract,
+    ComboboxContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import ComboboxContent from "./combobox-content.svelte";
   import ComboboxInput from "./combobox-input.svelte";
@@ -7,18 +12,26 @@
   import ComboboxList from "./combobox-list.svelte";
   import ComboboxRoot from "./combobox-root.svelte";
 
-  type PresetItem = { label: string; value: string };
+  type PresetItem = Omit<ComboboxPresetItem, "label"> & { label: string };
 
   type Props = Omit<
     ComponentProps<typeof ComboboxRoot>,
-    "children" | "collection"
-  > & {
-    clearable?: boolean;
-    id?: string;
-    items?: Array<PresetItem | string>;
-  };
+    "children" | "collection" | "items" | "placeholder"
+  > &
+    Omit<ComboboxRootContract, "items" | "placeholder"> & {
+      clearable?: boolean;
+      id?: string;
+      items?: Array<PresetItem | string>;
+      placeholder?: string;
+    } & Omit<ComboboxContract, "items" | "placeholder">;
 
-  let { clearable = false, items = [], id, ...rest }: Props = $props();
+  let {
+    clearable = false,
+    items = [],
+    id,
+    placeholder,
+    ...rest
+  }: Props = $props();
 
   const normalized = $derived(
     items.map((item) =>
@@ -29,7 +42,7 @@
 </script>
 
 <ComboboxRoot {...rest} {collection}>
-  <ComboboxInput {clearable} {id} />
+  <ComboboxInput {clearable} {id} {placeholder} />
   <ComboboxContent>
     <ComboboxList>
       {#each normalized as item (item.value)}

@@ -1,9 +1,12 @@
-import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { workspaceUsers } from "./helpers";
 
 export function Default() {
-  const statusVariants: Record<string, BadgeVariant> = {
+  const statusVariants: Record<
+    string,
+    NonNullable<BadgeVariantProps["variant"]>
+  > = {
     active: "success",
     inactive: "destructive",
     invited: "info",

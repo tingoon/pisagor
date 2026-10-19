@@ -1,23 +1,22 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
-  import {
-    type DataListItemRecipeSlot,
-    dataListItemRecipe,
-  } from "@pisagor/recipes";
+  import type {
+    DataListItemContract,
+    DataListItemRootContract,
+  } from "@pisagor/contracts";
+  import { dataListItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
+
   import { Context } from "./data-list.context";
   import DataListItemLabel from "./data-list-item-label.svelte";
   import DataListItemValue from "./data-list-item-value.svelte";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: Snippet;
-    classNames?: VariantClassNames<DataListItemRecipeSlot>;
     value?: string | Snippet;
-  } & BaseDataListItemProps;
+  } & DataListItemRootContract &
+    DataListItemContract;
 
   let {
     value,
@@ -37,8 +36,7 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.base({ class: cn(className) })}
   data-part="item"
@@ -58,4 +56,4 @@
       {/if}
     </DataListItemValue>
   {/if}
-</Ark>
+</div>

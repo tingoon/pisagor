@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { ScrollArea } from "../scroll-area";
@@ -15,5 +14,5 @@
 </script>
 
 <ScrollArea {scrollFade}>
-  <Ark as="div" {...part.props}>{@render children?.()}</Ark>
-</ScrollArea>
+  <div {...part.props}>{@render children?.()}</div></ScrollArea
+>

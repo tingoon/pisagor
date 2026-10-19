@@ -3,7 +3,7 @@
     RatingGroup as RatingGroupPrimitive,
     type RatingGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { RatingProps as BaseRatingProps } from "@pisagor/props";
+  import type { RatingRootContract } from "@pisagor/contracts";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
@@ -14,7 +14,7 @@
   type Props = RatingGroupRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseRatingProps;
+  } & RatingRootContract;
 
   let {
     variant: variantProp,

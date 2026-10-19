@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useSidebar } from "./sidebar.context";
@@ -12,8 +11,7 @@
   const ctx = useSidebar();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={ctx.slots.menuBadge({ class: cn(className) })}
   data-part="menu-badge"
@@ -21,4 +19,4 @@
   data-sidebar="menu-badge"
 >
   {@render children?.()}
-</Ark>
+</div>

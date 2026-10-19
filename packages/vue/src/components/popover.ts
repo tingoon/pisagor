@@ -1,5 +1,9 @@
-import { Popover as PopoverPrimitive, ark } from "@ark-ui/vue";
-import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
+import { Popover as PopoverPrimitive } from "@ark-ui/vue";
+import type {
+  PopoverHeaderContract,
+  PopoverRootContract,
+  PopoverContract,
+} from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,
@@ -28,18 +32,18 @@ const {
 // #endregion
 
 // #region Types
-export interface PopoverContentProps extends BasePopoverContentProps {
+export interface PopoverContentProps extends PopoverRootContract {
   class?: unknown;
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps {
+export interface PopoverHeaderProps extends PopoverHeaderContract {
   class?: unknown;
   description?: string;
   title?: string;
 }
 
-export interface PopoverProps {
+export interface PopoverProps extends PopoverContract {
   lazyMount?: boolean;
   modal?: boolean;
   unmountOnExit?: boolean;
@@ -232,7 +236,7 @@ export const PopoverBody = defineComponent({
   },
 });
 
-export const PopoverFooter = withContext(ark.div, {
+export const PopoverFooter = withContext("div", {
   name: "Footer",
 });
 

@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
@@ -23,20 +22,20 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: HTMLArkProps<"div"> & BaseFrameRootProps) {
+}: ComponentPropsWithRef<"div"> & FrameRootContract) {
   const slots = recipe({ size });
 
   return (
     <SurfaceContext value={{ depth: 0, variant: "secondary" }}>
       <FrameStylesContext value={{ slots, variants: {} as never }}>
-        <ark.div
+        <div
           {...rest}
           className={slots.base({ className })}
           data-part="root"
           data-scope="frame"
         >
           {children}
-        </ark.div>
+        </div>
       </FrameStylesContext>
     </SurfaceContext>
   );
@@ -46,11 +45,11 @@ export function FramePanel({
   children,
   className,
   ...rest
-}: HTMLArkProps<"div">) {
+}: ComponentPropsWithRef<"div">) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.panel({ className })}
       data-part="panel"
@@ -59,11 +58,11 @@ export function FramePanel({
       <SurfaceContext value={{ depth: 1, variant: "default" }}>
         {children}
       </SurfaceContext>
-    </ark.div>
+    </div>
   );
 }
 
-export const FrameHeader = withContext(ark.header, {
+export const FrameHeader = withContext("header", {
   defaultProps: {
     "data-part": "panel-header",
   },
@@ -71,7 +70,7 @@ export const FrameHeader = withContext(ark.header, {
   slot: "panelHeader",
 });
 
-export const FrameTitle = withContext(ark.div, {
+export const FrameTitle = withContext("div", {
   defaultProps: {
     "data-part": "panel-title",
   },
@@ -79,7 +78,7 @@ export const FrameTitle = withContext(ark.div, {
   slot: "panelTitle",
 });
 
-export const FrameDescription = withContext(ark.div, {
+export const FrameDescription = withContext("div", {
   defaultProps: {
     "data-part": "panel-description",
   },
@@ -87,7 +86,7 @@ export const FrameDescription = withContext(ark.div, {
   slot: "panelDescription",
 });
 
-export const FrameFooter = withContext(ark.footer, {
+export const FrameFooter = withContext("footer", {
   defaultProps: {
     "data-part": "panel-footer",
   },

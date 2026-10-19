@@ -1,14 +1,11 @@
-import { ark } from "@ark-ui/vue";
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Types
-export interface ProseProps extends BaseProseProps {
+export interface ProseProps extends ProseRootContract {
   class?: unknown;
   /**
    * Trusted HTML content rendered as-is.
@@ -47,7 +44,7 @@ export const Prose = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(props.recipe(), props.class),

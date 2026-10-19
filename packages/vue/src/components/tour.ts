@@ -6,7 +6,7 @@ import {
   useTour,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import type { TourProps as BaseTourRootProps } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -49,7 +49,7 @@ interface TourContextProps {
   tour: UnwrapRef<UseTourReturn>;
 }
 
-export interface TourRootProps extends BaseTourRootProps {
+export interface TourRootProps extends TourRootContract {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -497,7 +497,7 @@ export const TourActions = defineComponent({
 
       const content = () =>
         h(
-          (insideControl ? ark.div : DialogFooter) as ArkPart,
+          (insideControl ? "div" : DialogFooter) as ArkPart,
           insideControl
             ? {
                 ...attrs,

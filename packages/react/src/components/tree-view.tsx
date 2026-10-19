@@ -1,8 +1,6 @@
 import {
   TreeView as TreeViewPrimitive,
-  ark,
   createTreeCollection as arkCreateTreeCollection,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   TreeCollection as arkTreeCollection,
@@ -28,10 +26,10 @@ import {
   MinusIcon,
 } from "@phosphor-icons/react";
 import type {
-  TreeViewBranchProps as BaseTreeViewBranchProps,
-  TreeViewItemProps as BaseTreeViewItemProps,
-  TreeViewProps as BaseTreeViewProps,
-} from "@pisagor/props";
+  TreeViewBranchRootContract,
+  TreeViewItemRootContract,
+  TreeViewRootContract,
+} from "@pisagor/contracts";
 import {
   formControlToggleRecipe,
   treeViewBranchRecipe,
@@ -40,7 +38,7 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
-import type { JSX } from "react";
+import type { ComponentPropsWithRef, JSX } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -101,13 +99,13 @@ export interface TreeViewProps
   extends
     TreeViewPrimitive.RootComponentProps,
     TreeViewContextProps,
-    BaseTreeViewProps {}
+    TreeViewRootContract {}
 
 export interface TreeViewBranchProps
-  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, TreeViewBranchRootContract {}
 
 export interface TreeViewItemProps
-  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, TreeViewItemRootContract {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;
@@ -143,7 +141,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-type TreeViewItemIconProps = HTMLArkProps<"span">;
+type TreeViewItemIconProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
@@ -391,7 +389,7 @@ function TreeViewItemIcon({ className, ...rest }: TreeViewItemIconProps) {
   const slots = item?.slots ?? treeViewItemRecipe();
 
   return (
-    <ark.span
+    <span
       {...rest}
       className={slots.icon({ className })}
       data-part="item-icon"

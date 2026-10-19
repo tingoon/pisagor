@@ -1,8 +1,6 @@
 import {
   Field as FieldPrimitive,
   Fieldset as FieldsetPrimitive,
-  ark,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   FieldErrorTextProps,
@@ -12,13 +10,13 @@ import type {
   FieldsetLegendProps,
   FieldsetRootProps,
 } from "@ark-ui/react";
-import type {
-  FieldProps as BaseFieldGroupProps,
-  FieldProps as BaseFieldRootProps,
-  FieldProps as BaseFieldSetProps,
-} from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
@@ -40,7 +38,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 
 // #region Types
 export interface FieldRootProps
-  extends FieldRootPrimitiveProps, BaseFieldRootProps {}
+  extends FieldRootPrimitiveProps, FieldRootContract {}
 
 export type FieldProps = FieldRootProps;
 
@@ -49,30 +47,30 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, BaseFieldSetProps {}
+export interface FieldSetProps extends FieldsetRootProps, FieldRootContract {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends HTMLArkProps<"div">, BaseFieldGroupProps {}
+  extends ComponentPropsWithRef<"div">, FieldRootContract {}
 
-export type FieldContentProps = HTMLArkProps<"div">;
+export type FieldContentProps = ComponentPropsWithRef<"div">;
 
-export type FieldRequiredIndicatorProps = HTMLArkProps<"span">;
+export type FieldRequiredIndicatorProps = ComponentPropsWithRef<"span">;
 
-export type FieldTitleProps = HTMLArkProps<"div">;
+export type FieldTitleProps = ComponentPropsWithRef<"div">;
 
 export type FieldDescriptionProps = ComponentProps<
   typeof FieldPrimitive.HelperText
 >;
 
-export type FieldSeparatorProps = HTMLArkProps<"div">;
+export type FieldSeparatorProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export const FieldRoot = withProvider(FieldPrimitive.Root, {
+export const FieldRoot = withProvider(FieldPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<FieldRootProps>;
@@ -120,14 +118,14 @@ export function FieldGroup({
 
   return (
     <FieldStylesContext value={{ slots, variants: {} as never }}>
-      <ark.div
+      <div
         {...rest}
         className={slots.group({ className })}
         data-part="group"
         data-scope="field"
       >
         {children}
-      </ark.div>
+      </div>
     </FieldStylesContext>
   );
 }
@@ -136,7 +134,7 @@ export function FieldContent({ className, ...rest }: FieldContentProps) {
   const slots = useFieldSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="content"
@@ -175,7 +173,7 @@ export function FieldTitle({ className, ...rest }: FieldTitleProps) {
   const slots = useFieldSlots();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.title({ className })}
       data-part="title"
@@ -209,7 +207,7 @@ export function FieldSeparator({
   const surfaceVariant = useFormControlSurface();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.separator({ className })}
       data-content={!!children}
@@ -228,7 +226,7 @@ export function FieldSeparator({
           {children}
         </span>
       )}
-    </ark.div>
+    </div>
   );
 }
 

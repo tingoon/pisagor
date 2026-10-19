@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useDialog } from "./dialog.context";
@@ -12,12 +11,11 @@
   const { slots } = useDialog();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.header({ class: cn(className) })}
   data-part="header"
   data-scope="dialog"
 >
   {@render children?.()}
-</Ark>
+</div>

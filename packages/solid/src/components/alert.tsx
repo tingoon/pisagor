@@ -1,11 +1,10 @@
-import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
-import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
+import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
+import { alertRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import {
   CheckCircleIcon,
   InfoIcon,
-  type VariantClassNames,
   WarningCircleIcon,
   WarningIcon,
   createSlotRecipeContext,
@@ -19,8 +18,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type AlertRootProps = Omit<ComponentProps<"div">, "title"> &
-  BaseAlertRootProps;
+export type AlertRootProps = ComponentProps<"div"> & AlertRootContract;
 
 export type AlertTitleProps = ComponentProps<"div">;
 
@@ -28,22 +26,12 @@ export type AlertDescriptionProps = ComponentProps<"div">;
 
 export type AlertActionProps = ComponentProps<"div">;
 
-type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
-
-export interface AlertProps extends Omit<AlertRootProps, "children"> {
-  /** Trailing action area. */
+export interface AlertProps
+  extends Omit<AlertRootProps, "children" | "title">, AlertContract {
   action?: JSX.Element;
-  /** Description content. */
   description?: JSX.Element;
-  /**
-   * Leading icon, rendered as a direct child so the grid layout aligns. Status
-   * variants get a default icon; pass `null` to hide it.
-   */
   icon?: JSX.Element;
-  /** Bold title line. */
   title?: JSX.Element;
-  /** Slot class names */
-  classNames?: AlertClassNames;
   /** Extra props forwarded to the alert action element */
   actionProps?: Omit<AlertActionProps, "children" | "class">;
   /** Extra props forwarded to the alert description element */

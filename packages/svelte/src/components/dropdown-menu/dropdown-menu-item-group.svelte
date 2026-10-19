@@ -3,9 +3,12 @@
     Menu as MenuPrimitive,
     type MenuItemGroupProps,
   } from "@ark-ui/svelte";
+  import type { DropdownMenuItemGroupContract } from "@pisagor/contracts";
   import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
 
-  type Props = MenuItemGroupProps & { heading?: string };
+  type Props = MenuItemGroupProps & {
+    heading?: string;
+  } & DropdownMenuItemGroupContract;
 
   let { children, heading, ...rest }: Props = $props();
 </script>

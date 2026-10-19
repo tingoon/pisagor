@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/contracts";
 import { surfaceRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import {
   SurfaceContext,
@@ -16,7 +15,8 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps extends HTMLArkProps<"div">, BaseSurfaceProps {}
+export interface SurfaceProps
+  extends ComponentProps<"div">, SurfaceRootContract {}
 
 export function Surface(props: SurfaceProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -42,7 +42,7 @@ export function Surface(props: SurfaceProps): JSX.Element {
 
   return (
     <SurfaceContext value={surface()}>
-      <ark.div
+      <div
         {...rest}
         class={(local.recipe ?? surfaceRecipe)({
           bordered: local.bordered ?? false,
@@ -57,7 +57,7 @@ export function Surface(props: SurfaceProps): JSX.Element {
         data-variant={surface().variant}
       >
         {local.children}
-      </ark.div>
+      </div>
     </SurfaceContext>
   );
 }

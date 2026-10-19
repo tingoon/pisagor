@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import type { ItemRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useItem } from "./item.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseItemProps;
+  } & ItemRootContract;
 
   let {
     variant = "default",
@@ -19,8 +18,7 @@
   const { slots } = useItem();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.media({ class: cn(className), variant })}
   data-part="media"
@@ -28,4 +26,4 @@
   data-variant={variant}
 >
   {@render children?.()}
-</Ark>
+</div>

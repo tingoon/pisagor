@@ -6,9 +6,11 @@ import type {
   RadioGroupRootProps as RadioGroupRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
-  RadioGroupItemProps as BaseRadioGroupItemProps,
-  RadioGroupProps as BaseRadioGroupRootProps,
-} from "@pisagor/props";
+  RadioGroupItemRootContract,
+  RadioGroupPresetItem as BaseRadioGroupPresetItem,
+  RadioGroupRootContract,
+  RadioGroupContract,
+} from "@pisagor/contracts";
 import {
   formControlRadioToggleRecipe,
   radioGroupItemRecipe,
@@ -22,25 +24,24 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-interface RadioGroupPresetItem {
-  disabled?: boolean;
+interface RadioGroupPresetItem extends Omit<BaseRadioGroupPresetItem, "label"> {
   label: JSX.Element;
-  value: string;
 }
 
 export interface RadioGroupRootProps
   extends
     Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
-    BaseRadioGroupRootProps {
+    RadioGroupRootContract {
   onValueChange?: (value: string | null) => void;
 }
 
-export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
+export interface RadioGroupProps
+  extends Omit<RadioGroupRootProps, "children">, RadioGroupContract {
   items?: RadioGroupPresetItem[];
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupItemPrimitiveProps, BaseRadioGroupItemProps {
+  extends RadioGroupItemPrimitiveProps, RadioGroupItemRootContract {
   variant?: FormControlVariant;
 }
 

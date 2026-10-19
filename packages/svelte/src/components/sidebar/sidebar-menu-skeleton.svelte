@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { Skeleton } from "../skeleton";
@@ -14,8 +13,7 @@
   const ctx = useSidebar();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={ctx.slots.menuSkeleton({ class: cn(className) })}
   data-part="menu-skeleton"
@@ -34,4 +32,4 @@
     data-sidebar="menu-skeleton-text"
     style="--skeleton-width: 70%"
   />
-</Ark>
+</div>

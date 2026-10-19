@@ -7,9 +7,19 @@ import {
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+import type {
+  ActionBarActionItem as BaseActionBarActionItem,
+  ActionBarRootContract,
+  ActionBarContract,
+  ActionBarValueContract,
+} from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type { MouseEvent, PropsWithChildren, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  MouseEvent,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
@@ -76,23 +86,20 @@ function useActionBar() {
 // #endregion
 
 // #region Types
-interface ActionBarActionItem {
-  /** Stable key; defaults to `label`. */
-  id?: string;
-  /** Icon rendered before the label */
+interface ActionBarActionItem extends Omit<
+  BaseActionBarActionItem,
+  "icon" | "label"
+> {
   icon?: ReactNode;
-  /** Button label */
   label: string;
-  /** Called when the button is clicked */
   onClick: () => void;
-  /** Whether the button is disabled */
-  disabled?: boolean;
 }
 
 export interface ActionBarProps
   extends
     Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
-    BaseActionBarProps {
+    ActionBarRootContract,
+    ActionBarContract {
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *
@@ -116,9 +123,7 @@ export interface ActionBarProps
   open?: boolean;
   /** Placement and gutter of the action bar. */
   positioning?: ActionBarStateValue["positioning"];
-  /** Action buttons rendered inside the auto-generated ActionBar.Content */
   actions?: ActionBarActionItem[];
-  /** Number of selected items rendered via ActionBar.Value */
   count?: number;
   /** The function to call when the open state of the action bar changes. */
   onOpenChange?: (open: boolean) => void;
@@ -126,20 +131,19 @@ export interface ActionBarProps
 
 export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export type ActionBarContentProps = HTMLArkProps<"div">;
+export type ActionBarContentProps = ComponentPropsWithRef<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
 export type ActionBarCloseProps = HTMLArkProps<"button">;
 
-export interface ActionBarValueProps extends BadgeProps {
-  /** The number of items selected */
+export interface ActionBarValueProps
+  extends BadgeProps, ActionBarValueContract {
   count: number;
-  /** The label of the selection trigger */
   label?: string;
 }
 
-export type ActionBarBodyProps = HTMLArkProps<"div">;
+export type ActionBarBodyProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Constants
@@ -297,14 +301,14 @@ export function ActionBarContent({
         present={isOpen}
         unmountOnExit={unmountOnExit}
       >
-        <ark.div
+        <div
           className={slots.positioner({ placement })}
           data-part="positioner"
           data-placement={placement}
           data-scope="action-bar"
           style={{ "--gutter": gutter }}
         >
-          <ark.div
+          <div
             {...rest}
             aria-labelledby={ariaLabelledby}
             className={slots.content({ className })}
@@ -312,7 +316,7 @@ export function ActionBarContent({
             data-scope="action-bar"
             role="toolbar"
           />
-        </ark.div>
+        </div>
       </Presence>
     </Portal>
   );
@@ -384,7 +388,7 @@ export function ActionBarValue({
   );
 }
 
-export const ActionBarBody = withContext(ark.div, {
+export const ActionBarBody = withContext("div", {
   name: "Body",
 });
 // #endregion

@@ -3,7 +3,7 @@
     Dialog as DialogPrimitive,
     type DialogContentProps as ArkDialogContentProps,
   } from "@ark-ui/svelte";
-  import type { DialogProps as BaseDialogProps } from "@pisagor/props";
+  import type { DialogRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
@@ -13,9 +13,8 @@
   const { m } = useLocale();
 
   type Props = ArkDialogContentProps & {
-    bottomStickOnMobile?: boolean;
     showCloseButton?: boolean;
-  } & BaseDialogProps;
+  } & DialogRootContract;
 
   let {
     size = "md",

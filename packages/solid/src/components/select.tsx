@@ -1,12 +1,10 @@
 import {
   Select as SelectPrimitive,
-  ark,
   createListCollection,
   useSelectContext,
 } from "@ark-ui/solid";
 import type {
   CollectionItem,
-  HTMLArkProps,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
@@ -16,14 +14,19 @@ import type {
   SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
 } from "@ark-ui/solid";
-import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
+import type {
+  SelectItemGroupContract,
+  SelectPresetItem as BaseSelectPresetItem,
+  SelectRootContract,
+  SelectContract,
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import {
   createContext,
   createMemo,
@@ -62,9 +65,8 @@ const SelectControlContext = createContext<FormControlShellVariantProps>({});
 
 type FormControlVariant = "primary" | "secondary";
 
-interface SelectPresetItem {
+interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -76,12 +78,12 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
-} & BaseSelectRootProps;
+} & Omit<SelectRootContract, "items">;
 
-export interface SelectProps extends Omit<
-  SelectRootProps,
-  "children" | "collection"
-> {
+export interface SelectProps
+  extends
+    Omit<SelectRootProps, "children" | "collection" | "items" | "placeholder">,
+    Omit<SelectContract, "items"> {
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
@@ -94,11 +96,12 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
+export interface SelectItemGroupProps
+  extends SelectItemGroupPrimitiveProps, SelectItemGroupContract {
   heading?: string | JSX.Element;
 }
 
-export type SelectEmptyProps = HTMLArkProps<"div">;
+export type SelectEmptyProps = ComponentProps<"div">;
 
 export const SelectContext = SelectPrimitive.Context;
 
@@ -309,7 +312,7 @@ export function SelectEmpty(props: SelectEmptyProps): JSX.Element {
 
   return (
     <Show when={select().empty}>
-      <ark.div
+      <div
         {...rest}
         class={slots().empty({ class: local.class })}
         role="presentation"

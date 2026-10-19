@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { AppShellTriggerContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps, Snippet } from "svelte";
   import Button from "../button.svelte";
@@ -20,7 +21,7 @@
     toggle: () => void;
     size?: ComponentProps<typeof Button>["size"];
     variant?: ComponentProps<typeof Button>["variant"];
-  };
+  } & AppShellTriggerContract;
 
   let {
     placement,

@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { CardProps as BaseCardProps } from "@pisagor/props";
+  import type { CardRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./card.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseCardProps;
+  } & CardRootContract;
 
   let {
     variant = "default",
@@ -20,8 +19,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.media({ class: cn(className), variant })}
   data-part="media"
@@ -29,4 +27,4 @@
   data-variant={variant}
 >
   {@render children?.()}
-</Ark>
+</div>

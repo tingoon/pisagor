@@ -3,7 +3,7 @@
     DatePicker as DatePickerPrimitive,
     type DatePickerRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
+  import type { DatePickerRootContract } from "@pisagor/contracts";
   import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
   import { setCalendarSlotsContext } from "../calendar/calendar.context";
   import { setDatePickerSlotsContext } from "./date-picker.context";
@@ -14,7 +14,7 @@
     calendarRecipe?: typeof calendarRecipe;
     onValueChange?: (value: ArkRootProps["value"]) => void;
     variant?: FormControlVariant;
-  } & BaseDatePickerProps;
+  } & DatePickerRootContract;
 
   let {
     variant,

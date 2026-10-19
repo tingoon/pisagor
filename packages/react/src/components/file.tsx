@@ -1,8 +1,7 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { FileIcon } from "@phosphor-icons/react";
-import type { FileProps as BaseFileRootProps } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
@@ -14,21 +13,21 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider(ark.div, {
+export const FileRoot = withProvider("div")<FileRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseFileRootProps>;
+});
 
 export function FileMedia({
   variant = "icon",
   children,
   className,
   ...rest
-}: HTMLArkProps<"div"> & FileVariantProps) {
+}: ComponentPropsWithRef<"div"> & FileVariantProps) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.media({ className, variant })}
       data-part="media"
@@ -36,21 +35,21 @@ export function FileMedia({
       data-variant={variant}
     >
       {children ?? <FileIcon />}
-    </ark.div>
+    </div>
   );
 }
 
-export const FileContent = withContext(ark.div, {
+export const FileContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const FileName = withContext(ark.div, {
+export const FileName = withContext("div", {
   name: "Name",
   slot: "name",
 });
 
-export const FileMeta = withContext(ark.div, {
+export const FileMeta = withContext("div", {
   name: "Meta",
   slot: "meta",
 });
@@ -59,24 +58,24 @@ export function FileSize({
   value,
   className,
   ...rest
-}: Omit<HTMLArkProps<"div">, "children"> & {
+}: Omit<ComponentPropsWithRef<"div">, "children"> & {
   value: number;
 }) {
   const { slots } = useStyles();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.size({ className })}
       data-part="size"
       data-scope="file"
     >
       <Format.Byte value={value} />
-    </ark.div>
+    </div>
   );
 }
 
-export const FileActions = withContext(ark.div, {
+export const FileActions = withContext("div", {
   name: "Actions",
   slot: "actions",
 });
@@ -91,17 +90,13 @@ export type FileSizeProps = ComponentProps<typeof FileSize>;
 export type FileActionsProps = ComponentProps<typeof FileActions>;
 export type FileContentProps = ComponentProps<typeof FileContent>;
 
-export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
-  /** Size in bytes; rendered with `Format.Byte` when set. */
-  size?: number;
-  /** Optional subtitle (type, modified date, etc.). */
-  meta?: ReactNode;
-  /** Display name for the file. */
-  name: ReactNode;
-  /** Trailing actions (download, remove, …). */
+export interface FileProps
+  extends Omit<FileRootProps, "children">, FileContract {
   actions?: ReactNode;
-  /** Leading media; defaults to a file icon. */
   media?: ReactNode;
+  meta?: ReactNode;
+  name: ReactNode;
+  size?: number;
 }
 // #endregion
 

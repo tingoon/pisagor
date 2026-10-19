@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import {
@@ -56,11 +55,6 @@
   }
 </script>
 
-<Ark
-  as="li"
-  {...part.props}
-  onfocusout={handleFocusOut}
-  onkeydown={handleKeyDown}
->
+<li {...part.props} onfocusout={handleFocusOut} onkeydown={handleKeyDown}>
   {@render children?.()}
-</Ark>
+</li>

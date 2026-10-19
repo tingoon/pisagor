@@ -1,5 +1,9 @@
 import { Dialog as AlertDialogPrimitive } from "@ark-ui/vue";
-import type { AlertDialogProps as BaseAlertDialogProps } from "@pisagor/props";
+import type {
+  AlertDialogContract,
+  AlertDialogHeaderContract,
+  AlertDialogRootContract,
+} from "@pisagor/contracts";
 import {
   type AlertDialogRecipe,
   type AlertDialogVariantProps,
@@ -49,16 +53,21 @@ export interface AlertDialogBodyProps {
   scrollFade?: boolean;
 }
 
-export interface AlertDialogHeaderProps {
+export interface AlertDialogHeaderProps extends AlertDialogHeaderContract {
   class?: unknown;
   description?: string;
   title?: string;
 }
 
-export interface AlertDialogProps extends BaseAlertDialogProps {
+export interface AlertDialogProps
+  extends AlertDialogRootContract, AlertDialogContract {
+  actions?: VNodeChild;
   collapsible?: boolean;
+  description?: string;
   lazyMount?: boolean;
   modal?: boolean;
+  title?: string;
+  trigger?: VNodeChild;
   unmountOnExit?: boolean;
 }
 // #endregion

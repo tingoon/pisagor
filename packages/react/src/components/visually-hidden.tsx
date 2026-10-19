@@ -1,10 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/contracts";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface VisuallyHiddenProps
-  extends HTMLArkProps<"span">, BaseVisuallyHiddenProps {}
+  extends ComponentPropsWithRef<"span">, VisuallyHiddenRootContract {}
 // #endregion
 
 // #region Component
@@ -15,7 +15,7 @@ export function VisuallyHidden({
   ...rest
 }: VisuallyHiddenProps) {
   return (
-    <ark.span
+    <span
       {...rest}
       className={recipe({ className })}
       data-part="root"

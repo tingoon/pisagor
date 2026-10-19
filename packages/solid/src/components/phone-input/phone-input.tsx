@@ -1,7 +1,9 @@
 import { createListCollection } from "@ark-ui/solid";
-import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
+import type {
+  PhoneInputContract,
+  PhoneInputRootContract,
+} from "@pisagor/contracts";
 import {
-  type PhoneInputRecipeSlot,
   type PhoneInputVariantProps,
   phoneInputRecipe,
 } from "@pisagor/recipes";
@@ -26,16 +28,11 @@ import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useLocale } from "../provider/context";
-import {
-  CaretUpDownIcon,
-  GlobeIcon,
-  type VariantClassNames,
-} from "../../internal";
+import { CaretUpDownIcon, GlobeIcon } from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 export type Country = CountryCode;
 
 interface CountrySelectOption {
@@ -43,7 +40,8 @@ interface CountrySelectOption {
   value: Country;
 }
 
-export interface PhoneInputProps extends BasePhoneInputProps {
+export interface PhoneInputProps
+  extends PhoneInputRootContract, PhoneInputContract {
   variant?: FormControlVariant;
   defaultCountry?: Country;
   invalid?: boolean;
@@ -57,7 +55,6 @@ export interface PhoneInputProps extends BasePhoneInputProps {
   name?: string;
   id?: string;
   class?: string;
-  classNames?: PhoneInputClassNames;
   inputProps?: Omit<
     InputProps,
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"

@@ -12,8 +12,8 @@ compatibility: Requires tailwind-variants and @pisagor/recipes.
 
 Shared `tv()` recipes — visual variants for `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte`, `@pisagor/astro`.
 
-- **`@pisagor/presets` `src/contracts/`** — recipe modules
-- **`@pisagor/presets/pisagor`** — default skin entry (re-exports contracts)
+- **`@pisagor/presets` `src/recipes/`** — recipe modules
+- **`@pisagor/presets/pisagor`** — default skin entry (re-exports recipes)
 - **`@pisagor/presets/styles`** — Tailwind `@source` for this skin
 - **`@pisagor/recipes`** — stable import; re-exports `presets/pisagor` + `./styles` → presets styles
 - **Framework `styles.css`** — `@import "@pisagor/recipes/styles"` (not presets directly)
@@ -37,7 +37,7 @@ Block demo recipes live in the docs app (`apps/docs/src/styles/recipes/`), not i
 - **Library look stays in presets** — no local `tv()` / duplicate variant maps in framework packages.
 - Framework components only wire `recipe` → `class` / slots; they do not redefine appearance.
 - Layout / one-off consumer spacing → `className` / `class` on the component, not a new recipe.
-- Add or change variants in `@pisagor/presets` (`src/contracts/<name>.ts`), consumed via `@pisagor/recipes`.
+- Add or change variants in `@pisagor/presets` (`src/recipes/<name>.ts`), consumed via `@pisagor/recipes`.
 - Prefer a recipe even for minimal / empty `base` when a component exposes a class surface (e.g. `scrollspy`).
 
 ## Gold pattern
@@ -66,8 +66,8 @@ These have **no className/style surface** of their own (re-exports, context, or 
 
 ## Source
 
-`@pisagor/recipes` → `@pisagor/presets/pisagor` → `packages/presets/src/contracts/<name>.ts`  
-`@pisagor/recipes/styles` → `@pisagor/presets/styles` (`@source` over contracts)  
+`@pisagor/recipes` → `@pisagor/presets/pisagor` → `packages/presets/src/recipes/<name>.ts`  
+`@pisagor/recipes/styles` → `@pisagor/presets/styles` (`@source` over recipes)  
 Block recipes → `apps/docs/src/styles/recipes/<name>.ts`
 
 Swap skins by updating both `packages/recipes/src/index.ts` and `packages/recipes/src/styles.css`. Do not alias `@pisagor/recipes` to a JS-only path.

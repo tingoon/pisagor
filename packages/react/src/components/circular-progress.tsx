@@ -1,9 +1,7 @@
 import {
   Progress as ProgressPrimitive,
-  ark,
   useProgress,
   useProgressContext,
-  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   ProgressRootProps,
@@ -11,13 +9,17 @@ import type {
   ProgressValueTextProps,
   UseProgressReturn,
 } from "@ark-ui/react";
-import type { CircularProgressProps as BaseCircularProgressRootProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/contracts";
+import { circularProgressRecipe } from "@pisagor/recipes";
+import type {
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -27,11 +29,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider, {
+const CircularProgressRoot = withProvider(ProgressPrimitive.RootProvider)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  ProgressRootProviderProps & BaseCircularProgressRootProps
+  ProgressRootProviderProps & CircularProgressRootContract
 >;
 
 /**
@@ -66,7 +68,7 @@ interface CircularProgressTrackPartProps {
   className?: string;
   rangeClassName?: string;
   trackProps?: Omit<
-    HTMLArkProps<"svg">,
+    ComponentPropsWithRef<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
 }
@@ -90,7 +92,7 @@ function CircularProgressTrack({
   const dashOffset = circumference * (1 - percent);
 
   return (
-    <ark.svg
+    <svg
       {...trackProps}
       aria-hidden="true"
       className={slots.track({ className })}
@@ -120,16 +122,17 @@ function CircularProgressTrack({
         strokeLinecap="round"
         strokeWidth={thickness}
       />
-    </ark.svg>
+    </svg>
   );
 }
 // #endregion
 
 // #region Types
-type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
-
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">, BaseCircularProgressRootProps {
+  extends
+    Omit<ProgressRootProps, "children">,
+    CircularProgressRootContract,
+    CircularProgressContract {
   /**
    * Visual size preset for the progress circle.
    *
@@ -151,11 +154,9 @@ export interface CircularProgressProps
   /** When true, renders the numeric value text centered inside the circle. */
   isValueVisible?: boolean;
   children?: ReactNode;
-  /** Slot class names */
-  classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
-    HTMLArkProps<"svg">,
+    ComponentPropsWithRef<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
   /** Extra props forwarded to the circular progress value element */

@@ -4,11 +4,14 @@
     type ProgressValueTextProps,
     useProgress,
   } from "@ark-ui/svelte";
-  import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-  import type { CircularProgressRecipeSlot } from "@pisagor/recipes";
+  import type {
+    CircularProgressContract,
+    CircularProgressRootContract,
+  } from "@pisagor/contracts";
+
   import type { Snippet } from "svelte";
   import type { SVGAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
+
   import { getProgressbarProps } from "./circular-progress.context";
   import CircularProgressRoot from "./circular-progress-root.svelte";
   import CircularProgressTrack from "./circular-progress-track.svelte";
@@ -17,8 +20,6 @@
 
   type Props = Omit<ProgressRootProps, "children"> & {
     children?: Snippet;
-    /** Slot class names */
-    classNames?: VariantClassNames<CircularProgressRecipeSlot>;
     /**
      * Whether to show indeterminate progress.
      *
@@ -46,7 +47,8 @@
     >;
     /** Extra props forwarded to the circular progress value element */
     valueProps?: Omit<ProgressValueTextProps, "children" | "class">;
-  } & BaseCircularProgressProps;
+  } & CircularProgressRootContract &
+    CircularProgressContract;
 
   let {
     size = 32,

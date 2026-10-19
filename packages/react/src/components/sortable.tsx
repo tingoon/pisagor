@@ -1,12 +1,16 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
-  SortableItemProps as BaseSortableItemProps,
-  SortableProps as BaseSortableRootProps,
-} from "@pisagor/props";
+  SortableItemRootContract,
+  SortableRootContract,
+} from "@pisagor/contracts";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
-import type { DragEvent, KeyboardEvent, ReactNode } from "react";
+import type {
+  ComponentPropsWithRef,
+  DragEvent,
+  KeyboardEvent,
+  ReactNode,
+} from "react";
 import {
   createContext,
   use,
@@ -84,7 +88,9 @@ function useSortableItem() {
 
 // #region Types
 export interface SortableRootProps
-  extends Omit<HTMLArkProps<"div">, "onDragStart">, BaseSortableRootProps {
+  extends
+    Omit<ComponentPropsWithRef<"div">, "onDragStart">,
+    SortableRootContract {
   /**
    * Layout axis for drop indicators and keyboard moves.
    *
@@ -105,14 +111,14 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends HTMLArkProps<"div">, BaseSortableItemProps {
+  extends ComponentPropsWithRef<"div">, SortableItemRootContract {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
 }
 
-export type SortableHandleProps = HTMLArkProps<"div">;
+export type SortableHandleProps = ComponentPropsWithRef<"div">;
 
-export type SortableItemContentProps = HTMLArkProps<"div">;
+export type SortableItemContentProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Hooks
@@ -366,7 +372,7 @@ export function SortableRoot({
 
   return (
     <SortableContext value={contextValue}>
-      <ark.div
+      <div
         {...rest}
         className={recipe({ className, orientation })}
         data-orientation={orientation}
@@ -375,7 +381,7 @@ export function SortableRoot({
         role="list"
       >
         {children}
-      </ark.div>
+      </div>
       <span aria-live="polite" className="sr-only">
         {moved &&
           formatMessage(m("sortable.moved"), {
@@ -402,7 +408,7 @@ export function SortableItem({
   return (
     <SortableItemStylesContext value={{ slots, variants: {} as never }}>
       <SortableItemStateContext value={{ id: value, isDragging }}>
-        <ark.div
+        <div
           {...rest}
           {...itemProps}
           className={slots.base({ className, disabled })}
@@ -411,7 +417,7 @@ export function SortableItem({
           role="listitem"
         >
           {children}
-        </ark.div>
+        </div>
       </SortableItemStateContext>
     </SortableItemStylesContext>
   );
@@ -443,7 +449,7 @@ export function SortableHandle({
   }, [id, registerHandle, unregisterHandle]);
 
   return (
-    <ark.div
+    <div
       {...rest}
       aria-disabled={disabled || undefined}
       aria-keyshortcuts={
@@ -494,7 +500,7 @@ export function SortableHandle({
       tabIndex={disabled ? -1 : 0}
     >
       {children ?? <DotsSixVerticalIcon />}
-    </ark.div>
+    </div>
   );
 }
 
@@ -505,7 +511,7 @@ export function SortableItemContent({
   const { slots } = useSortableItem();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="item-content"

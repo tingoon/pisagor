@@ -299,10 +299,7 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
 function buildRecipesCatalog(): RecipesCatalog {
   // `@pisagor/recipes` re-exports `@pisagor/presets/pisagor`; the recipe
   // sources live in the presets package contracts.
-  const recipesRoot = path.join(
-    workspaceRoot,
-    "packages/presets/src/contracts",
-  );
+  const recipesRoot = path.join(workspaceRoot, "packages/presets/src/recipes");
   const recipes: Record<string, CatalogFile> = {};
   if (existsSync(recipesRoot)) {
     for (const file of readdirSync(recipesRoot)) {

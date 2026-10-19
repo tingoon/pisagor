@@ -1,5 +1,5 @@
 import { Toggle as TogglePrimitive, type ToggleRootProps } from "@ark-ui/solid";
-import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
+import type { ToggleRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -9,7 +9,7 @@ import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface ToggleProps extends ToggleRootProps, BaseToggleProps {
+export interface ToggleProps extends ToggleRootProps, ToggleRootContract {
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   onValueChange?: (value: boolean) => void;
   buttonRecipe?: typeof buttonRecipe;

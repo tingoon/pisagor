@@ -1,10 +1,12 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
-  TimelineItemProps as BaseTimelineItemProps,
-  TimelineProps as BaseTimelineRootProps,
-} from "@pisagor/props";
+  TimelineContract,
+  TimelineItemContract,
+  TimelineItemRootContract,
+  TimelinePresetItem as BaseTimelinePresetItem,
+  TimelineRootContract,
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -20,9 +22,9 @@ export function TimelineRoot({
   recipe = timelineRecipe,
   className,
   ...rest
-}: HTMLArkProps<"ol"> & BaseTimelineRootProps) {
+}: ComponentPropsWithRef<"ol"> & TimelineRootContract) {
   return (
-    <ark.ol
+    <ol
       {...rest}
       className={recipe({ className, orientation })}
       data-orientation={orientation}
@@ -32,20 +34,20 @@ export function TimelineRoot({
   );
 }
 
-export const TimelineItem = withProvider(ark.li, {
+export const TimelineItem = withProvider("li")<TimelineItemRootContract>({
   defaultProps: {
     "data-part": "item",
   },
   name: "Item",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"li"> & BaseTimelineItemProps>;
+});
 
-export const TimelineIndicator = withContext(ark.div, {
+export const TimelineIndicator = withContext("div", {
   name: "Indicator",
   slot: "indicator",
 });
 
-export const TimelineSeparator = withContext(ark.div, {
+export const TimelineSeparator = withContext("div", {
   defaultProps: {
     "aria-hidden": "true",
   },
@@ -53,17 +55,17 @@ export const TimelineSeparator = withContext(ark.div, {
   slot: "separator",
 });
 
-export const TimelineContent = withContext(ark.div, {
+export const TimelineContent = withContext("div", {
   name: "Content",
   slot: "content",
 });
 
-export const TimelineTitle = withContext(ark.div, {
+export const TimelineTitle = withContext("div", {
   name: "Title",
   slot: "title",
 });
 
-export const TimelineDescription = withContext(ark.div, {
+export const TimelineDescription = withContext("div", {
   name: "Description",
   slot: "description",
 });
@@ -71,7 +73,9 @@ export const TimelineDescription = withContext(ark.div, {
 
 // #region Types
 export type TimelineRootProps = ComponentProps<typeof TimelineRoot>;
-export type TimelineItemProps = ComponentProps<typeof TimelineItem>;
+export type TimelineItemRootProps = ComponentProps<typeof TimelineItem>;
+export interface TimelineItemProps
+  extends TimelineItemRootProps, TimelineItemContract {}
 export type TimelineIndicatorProps = ComponentProps<typeof TimelineIndicator>;
 export type TimelineContentProps = ComponentProps<typeof TimelineContent>;
 export type TimelineTitleProps = ComponentProps<typeof TimelineTitle>;
@@ -80,15 +84,17 @@ export type TimelineDescriptionProps = ComponentProps<
 >;
 export type TimelineSeparatorProps = ComponentProps<typeof TimelineSeparator>;
 
-export interface TimelinePresetItem {
-  /** Stable key for the item when title is not a string. */
-  id?: string;
+export interface TimelinePresetItem extends Omit<
+  BaseTimelinePresetItem,
+  "title" | "description" | "indicator"
+> {
   title: ReactNode;
   description?: ReactNode;
   indicator?: ReactNode;
 }
 
-export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
+export interface TimelineProps
+  extends Omit<TimelineRootProps, "children">, TimelineContract {
   items?: TimelinePresetItem[];
 }
 // #endregion

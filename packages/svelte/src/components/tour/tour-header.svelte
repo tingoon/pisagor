@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -12,12 +11,11 @@
   const dialogSlots = $derived(dialogRecipe());
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={dialogSlots.header({ class: cn(className) })}
   data-part="header"
   data-scope="tour"
 >
   {@render children?.()}
-</Ark>
+</div>

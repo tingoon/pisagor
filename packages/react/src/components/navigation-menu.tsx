@@ -1,9 +1,16 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
-import type { FunctionComponent, KeyboardEvent } from "react";
+import type {
+  ComponentPropsWithRef,
+  FunctionComponent,
+  KeyboardEvent,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -37,15 +44,18 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 
 // #region Types
 export interface NavigationMenuProps
-  extends HTMLArkProps<"nav">, BaseNavigationMenuProps {}
+  extends
+    ComponentPropsWithRef<"nav">,
+    NavigationMenuRootContract,
+    NavigationMenuContract {}
 
-export type NavigationMenuPartProps = HTMLArkProps<"ul">;
+export type NavigationMenuPartProps = ComponentPropsWithRef<"ul">;
 
-export type NavigationMenuItemProps = HTMLArkProps<"li">;
+export type NavigationMenuItemProps = ComponentPropsWithRef<"li">;
 
 export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
 
-export type NavigationMenuContentProps = HTMLArkProps<"ul">;
+export type NavigationMenuContentProps = ComponentPropsWithRef<"ul">;
 
 export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
@@ -102,7 +112,7 @@ function focusContentLink(contentId: string, position: "first" | "last") {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav = withProvider(ark.nav, {
+const NavigationMenuNav = withProvider("nav")({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<NavigationMenuProps>;
@@ -124,7 +134,7 @@ export function NavigationMenuRoot({
   );
 }
 
-const NavigationMenuListBase = withContext(ark.ul, {
+const NavigationMenuListBase = withContext("ul", {
   name: "List",
 });
 
@@ -145,7 +155,7 @@ export function NavigationMenuList({
   );
 }
 
-const NavigationMenuItemBase = withContext(ark.li, {
+const NavigationMenuItemBase = withContext("li", {
   name: "Item",
 });
 
@@ -250,7 +260,7 @@ export function NavigationMenuContent({
   }
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       className={slots.content({ className })}
       data-part="content"

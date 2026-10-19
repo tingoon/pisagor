@@ -1,11 +1,14 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbRootProps,
-} from "@pisagor/props";
+  BreadcrumbContract,
+  BreadcrumbItemContract,
+  BreadcrumbItemRootContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -30,20 +33,18 @@ const {
 // #endregion
 
 // #region Types
-interface BreadcrumbPresetItem {
+interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
   label: ReactNode;
-  href?: string;
-  isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = HTMLArkProps<"ol">;
+export type BreadcrumbListProps = ComponentPropsWithRef<"ol">;
 export type BreadcrumbLinkProps = HTMLArkProps<"a">;
-export type BreadcrumbPageProps = HTMLArkProps<"span">;
-export type BreadcrumbSeparatorProps = HTMLArkProps<"li">;
-export type BreadcrumbEllipsisProps = HTMLArkProps<"span">;
+export type BreadcrumbPageProps = ComponentPropsWithRef<"span">;
+export type BreadcrumbSeparatorProps = ComponentPropsWithRef<"li">;
+export type BreadcrumbEllipsisProps = ComponentPropsWithRef<"span">;
 
 export interface BreadcrumbRootProps
-  extends HTMLArkProps<"nav">, BaseBreadcrumbRootProps {
+  extends ComponentPropsWithRef<"nav">, BreadcrumbRootContract {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -52,7 +53,8 @@ export interface BreadcrumbRootProps
   "aria-label"?: string;
 }
 
-export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
+export interface BreadcrumbProps
+  extends Omit<BreadcrumbRootProps, "children">, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 // #endregion
@@ -70,35 +72,39 @@ export function BreadcrumbRoot({
 
   return (
     <BreadcrumbStylesContext value={{ slots, variants: {} as never }}>
-      <ark.nav
+      <nav
         {...rest}
         aria-label={ariaLabel}
         data-part="root"
         data-scope="breadcrumb"
       >
         {children}
-      </ark.nav>
+      </nav>
     </BreadcrumbStylesContext>
   );
 }
 
-export const BreadcrumbList = withBreadcrumbContext(ark.ol, {
+export const BreadcrumbList = withBreadcrumbContext("ol", {
   defaultProps: { role: "list" },
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider(ark.li, {
+export const BreadcrumbItem = withBreadcrumbItemProvider(
+  "li",
+)<BreadcrumbItemRootContract>({
   name: "Item",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"li"> & BaseBreadcrumbItemProps>;
+});
 
-export type BreadcrumbItemProps = ComponentProps<typeof BreadcrumbItem>;
+export type BreadcrumbItemRootProps = ComponentProps<typeof BreadcrumbItem>;
+export interface BreadcrumbItemProps
+  extends BreadcrumbItemRootProps, BreadcrumbItemContract {}
 
 export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
   name: "Link",
 });
 
-export const BreadcrumbPage = withBreadcrumbItemContext(ark.span, {
+export const BreadcrumbPage = withBreadcrumbItemContext("span", {
   defaultProps: { "aria-current": "page" },
   name: "Page",
 });
@@ -111,7 +117,7 @@ export function BreadcrumbSeparator({
   const { slots } = useStyles();
 
   return (
-    <ark.li
+    <li
       {...rest}
       aria-hidden="true"
       className={slots.separator({ className })}
@@ -120,7 +126,7 @@ export function BreadcrumbSeparator({
       role="presentation"
     >
       {children ?? <CaretRightIcon />}
-    </ark.li>
+    </li>
   );
 }
 
@@ -132,7 +138,7 @@ export function BreadcrumbEllipsis({
   const { slots } = useStyles();
 
   return (
-    <ark.span
+    <span
       {...rest}
       className={slots.ellipsis({ className })}
       data-part="ellipsis"
@@ -140,7 +146,7 @@ export function BreadcrumbEllipsis({
     >
       <DotsThreeIcon aria-hidden />
       <span className="sr-only">{m("breadcrumb.more")}</span>
-    </ark.span>
+    </span>
   );
 }
 // #endregion

@@ -12,7 +12,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu">
+<li class={slots.wrapper()} data-part="item-wrapper" data-scope="menu">
   <Ark
     as="a"
     {...rest}
@@ -24,4 +24,4 @@
   >
     {@render children?.()}
   </Ark>
-</Ark>
+</li>

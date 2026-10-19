@@ -1,6 +1,6 @@
 import { ark, useHotkey, type HTMLArkProps } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -15,7 +15,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import type { CSSProperties } from "react";
+import type { ComponentPropsWithRef, CSSProperties } from "react";
 import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -65,7 +65,7 @@ export function useSidebar(): SidebarContextProps {
 
 // #region Types
 export interface SidebarProviderProps
-  extends HTMLArkProps<"div">, BaseSidebarProviderProps {
+  extends ComponentPropsWithRef<"div">, SidebarRootContract {
   /**
    * The default open state of the sidebar.
    *
@@ -109,7 +109,7 @@ export interface SidebarProps extends Omit<
   className?: string;
 }
 
-export interface SidebarContentProps extends HTMLArkProps<"div"> {
+export interface SidebarContentProps extends ComponentPropsWithRef<"div"> {
   /**
    * Whether to add a scroll fade effect to the sidebar content.
    *
@@ -140,7 +140,7 @@ export interface SidebarMenuActionProps extends HTMLArkProps<"button"> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends HTMLArkProps<"div"> {
+export interface SidebarMenuSkeletonProps extends ComponentPropsWithRef<"div"> {
   showIcon?: boolean;
 }
 
@@ -158,15 +158,15 @@ export interface SidebarMenuSubButtonProps
 
 export type SidebarRailProps = HTMLArkProps<"button">;
 
-export type SidebarInsetProps = HTMLArkProps<"main">;
+export type SidebarInsetProps = ComponentPropsWithRef<"main">;
 
-export type SidebarHeaderProps = HTMLArkProps<"div">;
+export type SidebarHeaderProps = ComponentPropsWithRef<"div">;
 
-export type SidebarFooterProps = HTMLArkProps<"div">;
+export type SidebarFooterProps = ComponentPropsWithRef<"div">;
 
-export type SidebarGroupProps = HTMLArkProps<"div">;
+export type SidebarGroupProps = ComponentPropsWithRef<"div">;
 
-export type SidebarGroupLabelProps = HTMLArkProps<"div">;
+export type SidebarGroupLabelProps = ComponentPropsWithRef<"div">;
 
 export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   /**
@@ -178,17 +178,17 @@ export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = HTMLArkProps<"div">;
+export type SidebarGroupContentProps = ComponentPropsWithRef<"div">;
 
-export type SidebarMenuProps = HTMLArkProps<"ul">;
+export type SidebarMenuProps = ComponentPropsWithRef<"ul">;
 
-export type SidebarMenuItemProps = HTMLArkProps<"li">;
+export type SidebarMenuItemProps = ComponentPropsWithRef<"li">;
 
-export type SidebarMenuBadgeProps = HTMLArkProps<"div">;
+export type SidebarMenuBadgeProps = ComponentPropsWithRef<"div">;
 
-export type SidebarMenuSubProps = HTMLArkProps<"ul">;
+export type SidebarMenuSubProps = ComponentPropsWithRef<"ul">;
 
-export type SidebarMenuSubItemProps = HTMLArkProps<"li">;
+export type SidebarMenuSubItemProps = ComponentPropsWithRef<"li">;
 // #endregion
 
 // #region Constants
@@ -276,7 +276,7 @@ export function SidebarProvider({
   return (
     <SidebarStylesContext value={{ slots, variants: {} as never }}>
       <SidebarStateContext value={stateValue}>
-        <ark.div
+        <div
           {...rest}
           className={slots.wrapper({ className })}
           data-part="wrapper"
@@ -309,14 +309,14 @@ export function SidebarRoot(props: SidebarProps) {
 
   if (collapsible === "none") {
     return (
-      <ark.div
+      <div
         {...rest}
         className={slots.base({ className })}
         data-part="root"
         data-scope="sidebar"
       >
         {children}
-      </ark.div>
+      </div>
     );
   }
 
@@ -339,14 +339,14 @@ export function SidebarRoot(props: SidebarProps) {
             <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
             <Sheet.Description>{m("sidebar.description")}</Sheet.Description>
           </Sheet.Header>
-          <ark.div className={slots.mobileBody()}>{children}</ark.div>
+          <div className={slots.mobileBody()}>{children}</div>
         </Sheet.Content>
       </Sheet>
     );
   }
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.peer({ className })}
       data-collapsible={state === "collapsed" ? collapsible : ""}
@@ -356,26 +356,26 @@ export function SidebarRoot(props: SidebarProps) {
       data-state={state}
       data-variant={variant}
     >
-      <ark.div
+      <div
         className={slots.gap({ padded, placement })}
         data-part="gap"
         data-scope="sidebar"
       />
-      <ark.div
+      <div
         className={slots.container({ padded, placement })}
         data-part="container"
         data-scope="sidebar"
       >
-        <ark.div
+        <div
           className={slots.inner()}
           data-part="inner"
           data-scope="sidebar"
           data-sidebar="sidebar"
         >
           {children}
-        </ark.div>
-      </ark.div>
-    </ark.div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -398,9 +398,7 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
       variant="ghost"
     >
       <SidebarSimpleIcon className={slots.triggerIcon()} />
-      <ark.span className={slots.triggerLabel()}>
-        {m("sidebar.toggle")}
-      </ark.span>
+      <span className={slots.triggerLabel()}>{m("sidebar.toggle")}</span>
     </Button>
   );
 }
@@ -429,7 +427,7 @@ export function SidebarInset({ className, ...rest }: SidebarInsetProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.main
+    <main
       {...rest}
       className={slots.inset({ className })}
       data-part="inset"
@@ -455,7 +453,7 @@ export function SidebarHeader({ className, ...rest }: SidebarHeaderProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.header({ className })}
       data-part="header"
@@ -469,7 +467,7 @@ export function SidebarFooter({ className, ...rest }: SidebarFooterProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.footer({ className })}
       data-part="footer"
@@ -502,7 +500,7 @@ export function SidebarContent({
 
   return (
     <ScrollArea className={slots.scrollArea()} scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={slots.content({ className })}
         data-part="content"
@@ -517,7 +515,7 @@ export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.group({ className })}
       data-part="group"
@@ -534,7 +532,7 @@ export function SidebarGroupLabel({
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.groupLabel({ className })}
       data-part="group-label"
@@ -578,7 +576,7 @@ export function SidebarGroupContent({
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.groupContent({ className })}
       data-part="group-content"
@@ -592,7 +590,7 @@ export function SidebarMenu({ className, ...rest }: SidebarMenuProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       className={slots.menu({ className })}
       data-part="menu"
@@ -606,7 +604,7 @@ export function SidebarMenuItem({ className, ...rest }: SidebarMenuItemProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.li
+    <li
       {...rest}
       className={slots.menuItem({ className })}
       data-part="menu-item"
@@ -700,7 +698,7 @@ export function SidebarMenuBadge({
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.menuBadge({ className })}
       data-part="menu-badge"
@@ -718,7 +716,7 @@ export function SidebarMenuSkeleton({
   const { slots } = useSidebar();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.menuSkeleton({ className })}
       data-part="menu-skeleton"
@@ -740,7 +738,7 @@ export function SidebarMenuSkeleton({
           } as CSSProperties
         }
       />
-    </ark.div>
+    </div>
   );
 }
 
@@ -748,7 +746,7 @@ export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
   const { slots } = useSidebar();
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       className={slots.menuSub({ className })}
       data-part="menu-sub"
@@ -765,7 +763,7 @@ export function SidebarMenuSubItem({
   const { slots } = useSidebar();
 
   return (
-    <ark.li
+    <li
       {...props}
       className={slots.menuSubItem({ className })}
       data-part="menu-sub-item"

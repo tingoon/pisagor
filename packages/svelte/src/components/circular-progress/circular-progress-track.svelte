@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark, useProgressContext } from "@ark-ui/svelte";
+  import { useProgressContext } from "@ark-ui/svelte";
   import type { SVGAttributes } from "svelte/elements";
   import { useStyles } from "./circular-progress.context";
 
@@ -39,8 +39,7 @@
   });
 </script>
 
-<Ark
-  as="svg"
+<svg
   {...trackProps}
   aria-hidden="true"
   class={styles.slots.track({ class: className })}
@@ -72,4 +71,4 @@
     stroke-linecap="round"
     stroke-width={thickness}
   ></circle>
-</Ark>
+</svg>

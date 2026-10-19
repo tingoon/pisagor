@@ -1,5 +1,4 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -33,14 +32,14 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = HTMLArkProps<"div"> &
+type FileInputRootProps = ComponentProps<"div"> &
   FileInputVariantProps &
-  BaseFileInputProps & {
+  FileInputRootContract & {
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;
@@ -90,7 +89,7 @@ function FileInputRoot(props: FileInputRootProps): JSX.Element {
         variants: {},
       }}
     >
-      <ark.div
+      <div
         {...rest}
         class={formControlGroupShellRecipe({
           class: cn(slots().root(), local.class),

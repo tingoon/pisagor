@@ -2,12 +2,12 @@ import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
 } from "@ark-ui/react";
-import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
+import type { HighlightRootContract } from "@pisagor/contracts";
 import { highlightRecipe } from "@pisagor/recipes";
 
 // #region Types
 export interface HighlightProps
-  extends HighlightPrimitiveProps, BaseHighlightProps {}
+  extends HighlightPrimitiveProps, HighlightRootContract {}
 // #endregion
 
 // #region Component

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withBottomNavigationItemContext } from "./bottom-navigation.context";
 
@@ -11,4 +10,4 @@
   });
 </script>
 
-<Ark as="span" {...part.props}>{@render children?.()}</Ark>
+<span {...part.props}>{@render children?.()}</span>

@@ -21,21 +21,18 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import type {
-  ToastProps as BaseToasterRootProps,
-  ToastItemProps as BaseToastItemProps,
-} from "@pisagor/props";
-import {
-  type ToastItemRecipeSlot,
-  toastItemRecipe,
-  toastRecipe,
-} from "@pisagor/recipes";
+  ToastItemContract,
+  ToastItemRootContract,
+  ToastRootContract,
+} from "@pisagor/contracts";
+import { toastItemRecipe, toastRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
   CSSProperties,
   FunctionComponent,
   ReactNode,
 } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
@@ -48,12 +45,10 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
-
 export interface ToasterRootProps
   extends
     Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    BaseToasterRootProps {}
+    ToastRootContract {}
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
@@ -61,11 +56,9 @@ export interface ToasterProps extends ToasterRootProps {
 }
 
 export interface ToastItemRootProps
-  extends ToastRootProps, BaseToastItemProps {}
+  extends ToastRootProps, ToastItemRootContract {}
 
-export interface ToastItemProps extends ToastItemRootProps {
-  /** Slot class names */
-  classNames?: ToastItemClassNames;
+export interface ToastItemProps extends ToastItemRootProps, ToastItemContract {
   /** Extra props forwarded to the toast actions container element */
   actionsProps?: Omit<ComponentProps<"div">, "className">;
   /** Extra props forwarded to the toast action trigger element */
@@ -127,7 +120,7 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-const ToastItemRoot = withProvider(ToastPrimitive.Root, {
+const ToastItemRoot = withProvider(ToastPrimitive.Root)({
   name: "Item",
   slot: "base",
 }) as FunctionComponent<ToastItemRootProps>;
@@ -142,7 +135,7 @@ function ToastItemContent({
   toast: toastData,
   classNames,
 }: Omit<ToastItemProps, keyof ToastItemRootProps> &
-  Pick<ToastItemProps, "toast">) {
+  Pick<ToastItemProps, "toast" | "classNames">) {
   const { m } = useLocale();
   const { slots } = useStyles();
   const ToastIcon = toastData.type

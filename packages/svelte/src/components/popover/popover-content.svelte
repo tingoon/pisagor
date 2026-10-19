@@ -4,7 +4,7 @@
     type PopoverContentProps as ArkPopoverContentProps,
     Portal,
   } from "@ark-ui/svelte";
-  import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
+  import type { PopoverRootContract } from "@pisagor/contracts";
   import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
@@ -16,7 +16,7 @@
 
   type Props = ArkPopoverContentProps & {
     showCloseButton?: boolean;
-  } & BasePopoverProps;
+  } & PopoverRootContract;
 
   let {
     showCloseButton = false,

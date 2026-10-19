@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue";
 import type {
-  BottomNavigationItemProps as BaseBottomNavigationItemProps,
-  BottomNavigationProps as BaseBottomNavigationRootProps,
-} from "@pisagor/props";
+  BottomNavigationItemRootContract,
+  BottomNavigationRootContract,
+} from "@pisagor/contracts";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
@@ -42,7 +42,7 @@ const BottomNavigationValueKey: InjectionKey<Ref<string | undefined>> = Symbol(
 // #endregion
 
 // #region Types
-export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps {
+export interface BottomNavigationRootProps extends BottomNavigationRootContract {
   class?: unknown;
   /**
    * Value of the item for the current page; that item gets
@@ -53,7 +53,7 @@ export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps {
+export interface BottomNavigationItemProps extends BottomNavigationItemRootContract {
   class?: unknown;
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
@@ -65,7 +65,7 @@ export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider(ark.nav, {
+const BottomNavigationNav = withBottomNavigationProvider("nav", {
   name: "Root",
   slot: "base",
 });
@@ -92,7 +92,7 @@ export const BottomNavigationRoot = defineComponent({
   },
 });
 
-export const BottomNavigationList = withBottomNavigationContext(ark.div, {
+export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
@@ -137,7 +137,7 @@ export const BottomNavigationItem = defineComponent({
 });
 
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
-  ark.span,
+  "span",
   {
     defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
     name: "ItemIcon",
@@ -146,7 +146,7 @@ export const BottomNavigationItemIcon = withBottomNavigationItemContext(
 );
 
 export const BottomNavigationItemLabel = withBottomNavigationItemContext(
-  ark.span,
+  "span",
   {
     defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",

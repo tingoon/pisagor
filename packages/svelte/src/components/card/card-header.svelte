@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
+  import type { CardHeaderContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./card.context";
   import CardDescription from "./card-description.svelte";
@@ -9,14 +9,14 @@
     children?: import("svelte").Snippet;
     description?: string | import("svelte").Snippet;
     title?: string | import("svelte").Snippet;
-  };
+  } & CardHeaderContract;
 
   let { children, description, title, ...rest }: Props = $props();
 
   const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   {#if title != null}
     <CardTitle
       >{#if typeof title === "string"}
@@ -38,4 +38,4 @@
   {/if}
 
   {@render children?.()}
-</Ark>
+</div>

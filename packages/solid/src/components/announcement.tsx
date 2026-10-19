@@ -1,7 +1,10 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
+import type {
+  AnnouncementContract,
+  AnnouncementRootContract,
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -13,20 +16,18 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type AnnouncementRootProps = Omit<HTMLArkProps<"div">, "title"> &
-  BaseAnnouncementRootProps & {
+export type AnnouncementRootProps = HTMLArkProps<"div"> &
+  AnnouncementRootContract & {
     role?: "status" | "alert";
   };
 
-export type AnnouncementTitleProps = HTMLArkProps<"span">;
+export type AnnouncementTitleProps = ComponentProps<"span">;
 
-export interface AnnouncementProps extends Omit<
-  AnnouncementRootProps,
-  "children"
-> {
-  /** Optional badge or label rendered before the title. */
+export interface AnnouncementProps
+  extends
+    Omit<AnnouncementRootProps, "children" | "title">,
+    AnnouncementContract {
   badge?: JSX.Element;
-  /** Title content rendered inside `Announcement.Title`. */
   title?: JSX.Element;
   /** Extra props forwarded to the announcement title element */
   titleProps?: Omit<AnnouncementTitleProps, "children" | "class">;
@@ -43,18 +44,26 @@ export const AnnouncementRoot: Component<AnnouncementRootProps> = withProvider(
   },
 );
 
-export const AnnouncementTitle = withContext(ark.span, { name: "Title" });
+export const AnnouncementTitle = withContext("span", { name: "Title" });
 // #endregion
 
 // #region Shorthand
 export function AnnouncementShorthand(props: AnnouncementProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["badge", "title", "titleProps"]);
+  const [local, rest] = splitProps(props, [
+    "badge",
+    "title",
+    "titleProps",
+    "classNames",
+  ]);
 
   return (
     <AnnouncementRoot {...rest}>
       {local.badge}
       <Show when={local.title !== undefined}>
-        <AnnouncementTitle {...local.titleProps}>
+        <AnnouncementTitle
+          {...local.titleProps}
+          class={local.classNames?.title}
+        >
           {local.title}
         </AnnouncementTitle>
       </Show>

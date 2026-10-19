@@ -1,16 +1,12 @@
-import { PinInput as PinInputPrimitive, ark } from "@ark-ui/solid";
-import type {
-  HTMLArkProps,
-  PinInputInputProps,
-  PinInputRootProps,
-} from "@ark-ui/solid";
-import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
+import { PinInput as PinInputPrimitive } from "@ark-ui/solid";
+import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/solid";
+import type { InputOtpRootContract } from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
@@ -48,15 +44,15 @@ function useInputOTP() {
 // #endregion
 
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  BaseInputOTPProps;
+  InputOtpRootContract;
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
+export type InputOTPSlotProps = PinInputInputProps & InputOtpRootContract;
 
-export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
+export type InputOTPSeparatorProps = ComponentProps<"hr">;
 
 /** `class` targets the control; size/variant flow to each slot input. */
 export function InputOTPRoot(props: InputOTPProps): JSX.Element {
@@ -139,7 +135,7 @@ export function InputOTPSlot(props: InputOTPSlotProps): JSX.Element {
 }
 
 export const InputOTPSeparator: Component<InputOTPSeparatorProps> = withContext(
-  ark.hr,
+  "hr",
   { name: "Separator" },
 );
 

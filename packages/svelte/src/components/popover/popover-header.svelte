@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
+  import type { PopoverHeaderContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./popover.context";
   import PopoverDescription from "./popover-description.svelte";
@@ -7,17 +7,15 @@
 
   type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
     children?: import("svelte").Snippet;
-    /** The description of the popover header */
     description?: string;
-    /** The title of the popover header */
     title?: string;
-  };
+  } & PopoverHeaderContract;
 
   let { children, description, title, ...rest }: Props = $props();
   const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...part.props}>
+<div {...part.props}>
   {#if title}
     <PopoverTitle>{title}</PopoverTitle>
   {/if}
@@ -25,4 +23,4 @@
     <PopoverDescription>{description}</PopoverDescription>
   {/if}
   {@render children?.()}
-</Ark>
+</div>

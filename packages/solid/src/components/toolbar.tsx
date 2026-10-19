@@ -1,10 +1,10 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
+import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -14,31 +14,29 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export type ToolbarTitleProps = HTMLArkProps<"h2">;
-export type ToolbarDescriptionProps = HTMLArkProps<"p">;
-export type ToolbarActionsProps = HTMLArkProps<"div">;
-type ToolbarHeadingProps = HTMLArkProps<"div">;
-type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
+export type ToolbarDescriptionProps = ComponentProps<"p">;
+export type ToolbarActionsProps = ComponentProps<"div">;
+type ToolbarHeadingProps = ComponentProps<"div">;
 
-export type ToolbarRootProps = Omit<HTMLArkProps<"div">, "title"> &
-  BaseToolbarProps;
+export type ToolbarRootProps = ComponentProps<"div"> & ToolbarRootContract;
 
-export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
+export interface ToolbarProps
+  extends Omit<ToolbarRootProps, "children" | "title">, ToolbarContract {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
-  classNames?: ToolbarClassNames;
   actionsProps?: Omit<ToolbarActionsProps, "children" | "class">;
   descriptionProps?: Omit<ToolbarDescriptionProps, "children" | "class">;
   titleProps?: Omit<ToolbarTitleProps, "children" | "class">;
 }
 
-export const ToolbarRoot: Component<ToolbarRootProps> = withProvider(ark.div, {
+export const ToolbarRoot: Component<ToolbarRootProps> = withProvider("div", {
   name: "Root",
   slot: "base",
 });
 
 export const ToolbarHeading: Component<ToolbarHeadingProps> = withContext(
-  ark.div,
+  "div",
   { name: "Heading" },
 );
 
@@ -47,10 +45,10 @@ export const ToolbarTitle: Component<ToolbarTitleProps> = withContext(ark.h2, {
 });
 
 export const ToolbarDescription: Component<ToolbarDescriptionProps> =
-  withContext(ark.p, { name: "Description" });
+  withContext("p", { name: "Description" });
 
 export const ToolbarActions: Component<ToolbarActionsProps> = withContext(
-  ark.div,
+  "div",
   {
     defaultProps: {
       "aria-orientation": "horizontal",

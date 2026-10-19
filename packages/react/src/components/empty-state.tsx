@@ -1,8 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { ark } from "@ark-ui/react";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/contracts";
+import { emptyStateRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -12,14 +15,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const EmptyStateRoot = withProvider(ark.div, {
+export const EmptyStateRoot = withProvider(ark.div)<EmptyStateRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  Omit<HTMLArkProps<"div">, "title"> & BaseEmptyStateRootProps
->;
+});
 
-export const EmptyStateMedia = withContext(ark.div, {
+export const EmptyStateMedia = withContext("div", {
   name: "Media",
   slot: "media",
 });
@@ -29,12 +30,12 @@ export const EmptyStateTitle = withContext(ark.h3, {
   slot: "title",
 });
 
-export const EmptyStateDescription = withContext(ark.p, {
+export const EmptyStateDescription = withContext("p", {
   name: "Description",
   slot: "description",
 });
 
-export const EmptyStateActions = withContext(ark.div, {
+export const EmptyStateActions = withContext("div", {
   name: "Actions",
   slot: "actions",
 });
@@ -49,19 +50,12 @@ export type EmptyStateDescriptionProps = ComponentProps<
 >;
 export type EmptyStateActionsProps = ComponentProps<typeof EmptyStateActions>;
 
-type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
-
-export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
-  /** Action buttons or links. */
+export interface EmptyStateProps
+  extends Omit<EmptyStateRootProps, "children" | "title">, EmptyStateContract {
   actions?: ReactNode;
-  /** Supporting copy. */
   description?: ReactNode;
-  /** Icon or illustration shown above the title. */
   media?: ReactNode;
-  /** Primary heading. */
   title?: ReactNode;
-  /** Slot class names */
-  classNames?: EmptyStateClassNames;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
+  import type { AvatarGroupRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./avatar-group.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & BaseAvatarGroupProps;
+  type Props = HTMLAttributes<HTMLDivElement> & AvatarGroupRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark as="div" {...root.props}>{@render children?.()}</Ark>
+<div {...root.props}>{@render children?.()}</div>

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
+  import type { BreadcrumbRootContract } from "@pisagor/contracts";
   import { breadcrumbRecipe } from "@pisagor/recipes";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -8,7 +7,8 @@
 
   const { m } = useLocale();
 
-  type Props = HTMLAttributes<HTMLElement> & BaseBreadcrumbProps;
+  type Props = HTMLAttributes<HTMLElement> &
+    Omit<BreadcrumbRootContract, "items">;
 
   let {
     "aria-label": ariaLabel = m("breadcrumb.label"),
@@ -26,8 +26,7 @@
   });
 </script>
 
-<Ark
-  as="nav"
+<nav
   {...rest}
   aria-label={ariaLabel}
   class={className}
@@ -35,4 +34,4 @@
   data-scope="breadcrumb"
 >
   {@render children?.()}
-</Ark>
+</nav>

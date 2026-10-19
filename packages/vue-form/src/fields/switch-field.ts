@@ -7,7 +7,6 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 interface SwitchControlProps {
   class?: unknown;
-  classNames?: unknown;
   disabled?: boolean;
   onValueChange: (value: boolean) => void;
   readOnly?: boolean;

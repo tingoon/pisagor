@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { KbdGroupProps as BaseKbdGroupProps } from "@pisagor/props";
+  import type { KbdGroupRootContract } from "@pisagor/contracts";
   import { kbdGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdGroupProps;
+  } & KbdGroupRootContract;
 
   let {
     recipe = kbdGroupRecipe,
@@ -17,12 +16,11 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="group"
   data-scope="kbd"
 >
   {@render children?.()}
-</Ark>
+</div>

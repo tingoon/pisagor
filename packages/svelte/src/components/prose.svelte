@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { ProseProps as BaseProseProps } from "@pisagor/props";
+  import type { ProseRootContract } from "@pisagor/contracts";
   import { proseRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -13,7 +12,7 @@
      * DOMPurify.sanitize(html)`. Recommended for user-generated content.
      */
     sanitize?: (html: string) => string;
-  } & BaseProseProps;
+  } & ProseRootContract;
 
   let {
     html,
@@ -26,23 +25,19 @@
 </script>
 
 {#if html}
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >
     {@html sanitize ? sanitize(html) : html}
-  </Ark>
-{:else}
-  <Ark
-    as="div"
+  </div>{:else}
+  <div
     {...rest}
     class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >
     {@render children?.()}
-  </Ark>
-{/if}
+  </div>{/if}

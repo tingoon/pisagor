@@ -1,4 +1,7 @@
-import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
+import type {
+  DataGridBodyContract,
+  DataGridRootContract,
+} from "@pisagor/contracts";
 import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes";
 import {
   cn,
@@ -63,8 +66,12 @@ export type DataGridProps<TData extends RowData = RowData> = {
    * @defaultValue dataGridFeatures
    */
   features?: DataGridFeatures;
-} & BaseDataGridProps &
+} & DataGridRootContract &
   Omit<TableOptions<DataGridFeatures, TData>, "features">;
+
+interface DataGridBodyProps extends DataGridBodyContract {
+  empty?: VNodeChild;
+}
 
 interface DataGridHeadProps {
   class?: unknown;
@@ -477,7 +484,7 @@ export const DataGridBody = defineComponent({
     empty: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<
-        VNodeChild | undefined
+        DataGridBodyProps["empty"]
       >,
     },
   },
@@ -521,7 +528,7 @@ export const DataGridVirtualBody = defineComponent({
     empty: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<
-        VNodeChild | undefined
+        DataGridBodyProps["empty"]
       >,
     },
     estimateSize: { default: 40, type: Number },

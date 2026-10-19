@@ -1,7 +1,10 @@
 import { createListCollection } from "@ark-ui/react";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
-import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
-import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";
+import type {
+  PhoneInputContract,
+  PhoneInputRootContract,
+} from "@pisagor/contracts";
+import { phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -17,14 +20,11 @@ import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useLocale } from "../provider/context";
-import type { FormControlVariant, VariantClassNames } from "../../internal";
+import type { FormControlVariant } from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
-
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
-
 interface CountrySelectOption {
   label: string;
   value?: Country;
@@ -53,7 +53,8 @@ export interface PhoneInputProps
       | "countrySelectComponent"
       | "inputComponent"
     >,
-    BasePhoneInputProps {
+    PhoneInputRootContract,
+    PhoneInputContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Default country when no value is provided */
@@ -64,8 +65,6 @@ export interface PhoneInputProps
   value?: string;
   /** Called with the E.164 phone number when the value changes */
   onChange?: (value: string) => void;
-  /** Slot class names */
-  classNames?: PhoneInputClassNames;
   /** Tel input props (except `className`). */
   inputProps?: Omit<
     InputProps,

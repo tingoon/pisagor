@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withFileUploadContext } from "./file-upload.context";
 
@@ -9,4 +8,4 @@
   });
 </script>
 
-<Ark as="div" {...part.props}>{@render children?.()}</Ark>
+<div {...part.props}>{@render children?.()}</div>

@@ -2,26 +2,21 @@ import {
   FieldInput as InputPrimitive,
   type FieldInputProps,
 } from "@ark-ui/solid";
-import type { InputProps as BaseInputProps } from "@pisagor/props";
-import {
-  type InputRecipeSlot,
-  inputRecipe,
-  inputRootRecipe,
-} from "@pisagor/recipes";
+import type { InputContract, InputRootContract } from "@pisagor/contracts";
+import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../../hooks";
-import type { VariantClassNames } from "../../internal";
+
 import { callEventHandler } from "../../utils";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 type FormControlVariant = "primary" | "secondary";
-type InputClassNames = VariantClassNames<InputRecipeSlot>;
 export interface InputProps
-  extends Omit<FieldInputProps, "size">, BaseInputProps {
+  extends Omit<FieldInputProps, "size">, InputRootContract, InputContract {
   /**
    * Initial value when uncontrolled. Solid has no native defaultValue on
    * inputs.
@@ -29,8 +24,12 @@ export interface InputProps
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
   onValueChange?: (value: string) => void;
-  rootRecipe?: typeof inputRootRecipe;
-  classNames?: InputClassNames;
+  /**
+   * Clearable-slot style recipe.
+   *
+   * @defaultValue inputRecipe
+   */
+  slotRecipe?: typeof inputRecipe;
 }
 
 export function Input(props: InputProps): JSX.Element {
@@ -47,7 +46,7 @@ export function Input(props: InputProps): JSX.Element {
     "onChange",
     "onValueChange",
     "recipe",
-    "rootRecipe",
+    "slotRecipe",
     "class",
     "classNames",
   ]);
@@ -102,8 +101,8 @@ export function Input(props: InputProps): JSX.Element {
     surfaceVariant,
     variant: variant(),
   });
-  const slots = () => (local.recipe ?? inputRecipe)();
-  const rootRecipeFn = () => local.rootRecipe ?? inputRootRecipe;
+  const slots = () => (local.slotRecipe ?? inputRecipe)();
+  const rootRecipeFn = () => local.recipe ?? inputRootRecipe;
 
   const applyDefaultValueRef = (el: HTMLInputElement) => {
     if (

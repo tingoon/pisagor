@@ -1,5 +1,10 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
+  import type {
+    ListboxPresetItem,
+    ListboxRootContract,
+    ListboxContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import ListboxContent from "./listbox-content.svelte";
   import ListboxEmpty from "./listbox-empty.svelte";
@@ -7,17 +12,17 @@
   import ListboxItemText from "./listbox-item-text.svelte";
   import ListboxRoot from "./listbox-root.svelte";
 
-  type PresetItem = { disabled?: boolean; label: string; value: string };
+  type PresetItem = Omit<ListboxPresetItem, "label"> & { label: string };
 
   type Props = Omit<
     ComponentProps<typeof ListboxRoot>,
     "children" | "collection"
   > & {
     collection?: ComponentProps<typeof ListboxRoot>["collection"];
-    /** Content shown when there are no items. */
     emptyText?: string;
     items?: PresetItem[];
-  };
+  } & ListboxRootContract &
+    ListboxContract;
 
   let {
     collection: collectionProp,

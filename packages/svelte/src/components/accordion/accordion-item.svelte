@@ -3,11 +3,16 @@
     Accordion as AccordionPrimitive,
     type AccordionItemProps as ArkAccordionItemProps,
   } from "@ark-ui/svelte";
-  import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
+  import type {
+    AccordionItemRootContract,
+    AccordionItemContract,
+  } from "@pisagor/contracts";
   import { withProvider } from "./accordion.context";
 
   type Props = ArkAccordionItemProps &
-    BaseAccordionItemProps & { size?: "sm" | "md" | "lg" };
+    AccordionItemRootContract & {
+      size?: "sm" | "md" | "lg";
+    } & AccordionItemContract;
 
   let { children, ...rest }: Props = $props();
 

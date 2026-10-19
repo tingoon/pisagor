@@ -5,11 +5,11 @@ import type {
   SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
 } from "@ark-ui/solid";
-import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
+import { switchRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -20,15 +20,14 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type SwitchRootProps = SwitchRootPrimitiveProps & {
   variant?: FormControlVariant;
-} & BaseSwitchRootProps;
+} & SwitchRootContract;
 
-export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
+export interface SwitchProps
+  extends Omit<SwitchRootProps, "children">, SwitchContract {
   onValueChange?: (value: boolean) => void;
-  classNames?: SwitchClassNames;
   controlProps?: Omit<SwitchControlProps, "children" | "class">;
   hiddenInputProps?: Omit<SwitchHiddenInputProps, "class">;
   thumbProps?: Omit<SwitchThumbProps, "children" | "class">;

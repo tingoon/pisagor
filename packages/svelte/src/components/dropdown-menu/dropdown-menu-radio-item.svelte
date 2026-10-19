@@ -3,12 +3,17 @@
     Menu as MenuPrimitive,
     type MenuRadioItemProps,
   } from "@ark-ui/svelte";
-  import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
+  import type {
+    DropdownMenuItemRootContract,
+    DropdownMenuItemContract,
+  } from "@pisagor/contracts";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon } from "phosphor-svelte";
 
-  type Props = MenuRadioItemProps & BaseDropdownMenuItemProps;
+  type Props = MenuRadioItemProps &
+    DropdownMenuItemRootContract &
+    DropdownMenuItemContract;
 
   let {
     variant = "default",

@@ -1,18 +1,13 @@
-import { ark } from "@ark-ui/vue";
-import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
+import type { BadgeRootContract } from "@pisagor/contracts";
+import { badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
-
-export interface BadgeProps extends BaseBadgeProps {
+export interface BadgeProps extends BadgeRootContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Component
 export const Badge = defineComponent({
@@ -37,7 +32,7 @@ export const Badge = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           class: props.recipe({

@@ -1,17 +1,14 @@
-import { ark } from "@ark-ui/vue";
-import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
+import type { VisuallyHiddenRootContract } from "@pisagor/contracts";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface VisuallyHiddenProps extends BaseVisuallyHiddenProps {
+export interface VisuallyHiddenProps extends VisuallyHiddenRootContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Component
 /** Hides content visually while keeping it available to assistive technology. */
@@ -31,7 +28,7 @@ export const VisuallyHidden = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           class: cn(props.recipe(), props.class),

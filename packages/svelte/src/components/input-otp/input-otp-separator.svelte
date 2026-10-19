@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./input-otp.context";
 
@@ -7,4 +6,4 @@
   const part = withContext(() => rest, { name: "Separator" });
 </script>
 
-<Ark as="hr" {...part.props} />
+<hr {...part.props} />

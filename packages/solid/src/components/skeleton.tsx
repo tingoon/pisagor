@@ -1,23 +1,18 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type {
-  SkeletonProps as BaseSkeletonCircleProps,
-  SkeletonProps as BaseSkeletonRootProps,
-  SkeletonProps as BaseSkeletonTextProps,
-} from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/contracts";
 import { skeletonRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 
 export interface SkeletonTextProps
-  extends HTMLArkProps<"div">, BaseSkeletonTextProps {
+  extends ComponentProps<"div">, SkeletonRootContract {
   lines?: number;
 }
 
 export interface SkeletonRootProps
-  extends HTMLArkProps<"div">, BaseSkeletonRootProps {}
+  extends ComponentProps<"div">, SkeletonRootContract {}
 
 export interface SkeletonCircleProps
-  extends HTMLArkProps<"div">, BaseSkeletonCircleProps {}
+  extends ComponentProps<"div">, SkeletonRootContract {}
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "size", "class"]);
@@ -25,7 +20,7 @@ export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
     (local.recipe ?? skeletonRecipe)({ size: local.size ?? "md" });
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().base({ class: local.class })}
       data-part="root"
@@ -40,7 +35,7 @@ export function SkeletonCircle(props: SkeletonCircleProps): JSX.Element {
     (local.recipe ?? skeletonRecipe)({ size: local.size ?? "md" });
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().circle({ class: local.class })}
       data-part="circle"
@@ -56,7 +51,7 @@ export function SkeletonText(props: SkeletonTextProps): JSX.Element {
   const lines = () => local.lines ?? 2;
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots().text({ class: local.class })}
       data-part="text"
@@ -65,7 +60,7 @@ export function SkeletonText(props: SkeletonTextProps): JSX.Element {
       <For each={Array.from({ length: lines() }, (_, index) => index)}>
         {(index) => <div class={slots().line()} data-index={index} />}
       </For>
-    </ark.div>
+    </div>
   );
 }
 

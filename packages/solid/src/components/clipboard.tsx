@@ -3,12 +3,14 @@ import type {
   ClipboardControlProps,
   ClipboardIndicatorProps,
   ClipboardInputProps,
-  ClipboardRootProps,
+  ClipboardRootProps as ClipboardRootPrimitiveProps,
   ClipboardValueTextProps,
 } from "@ark-ui/solid";
-import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
+import type {
+  ClipboardContract,
+  ClipboardRootContract,
+} from "@pisagor/contracts";
 import {
-  type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
   formControlShellRecipe,
@@ -16,12 +18,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import {
-  CheckIcon,
-  ClipboardIcon,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { CheckIcon, ClipboardIcon, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -35,21 +32,14 @@ const { Context: ClipboardStylesContext, withContext } =
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
+
+type ClipboardRootProps = ClipboardRootPrimitiveProps & ClipboardRootContract;
 
 export interface ClipboardProps
-  extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
-  /** Size scale for the shell, button and value. @defaultValue "md" */
-  size?: "sm" | "md" | "lg";
-  buttonSize?: ButtonProps["size"];
-  buttonVariant?: ButtonProps["variant"];
-  controlVariant?: FormControlVariant;
-  variant?: "button" | "input" | "value";
-  buttonAriaLabel?: string;
+  extends Omit<ClipboardRootProps, "children" | "label">, ClipboardContract {
   copiedIcon?: JSX.Element;
   copyIcon?: JSX.Element;
-  label?: string;
-  classNames?: ClipboardClassNames;
+  label?: JSX.Element;
   labelProps?: Omit<
     ComponentProps<typeof ClipboardPrimitive.Label>,
     "children" | "class"

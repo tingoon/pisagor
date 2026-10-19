@@ -1,4 +1,8 @@
 <script lang="ts">
+  import type {
+    MarqueeRootContract,
+    MarqueeContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps, Snippet } from "svelte";
   import MarqueeContent from "./marquee-content.svelte";
   import MarqueeItem from "./marquee-item.svelte";
@@ -6,7 +10,8 @@
 
   type Props = Omit<ComponentProps<typeof MarqueeRoot>, "children"> & {
     items?: Array<string | Snippet>;
-  };
+  } & MarqueeRootContract &
+    MarqueeContract;
 
   let { items, ...rest }: Props = $props();
 </script>

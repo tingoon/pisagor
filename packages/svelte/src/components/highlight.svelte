@@ -3,11 +3,11 @@
     Highlight as HighlightPrimitive,
     type HighlightProps as ArkHighlightProps,
   } from "@ark-ui/svelte";
-  import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
+  import type { HighlightRootContract } from "@pisagor/contracts";
   import { highlightRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
-  type Props = ArkHighlightProps & BaseHighlightProps;
+  type Props = ArkHighlightProps & HighlightRootContract;
 
   let { recipe = highlightRecipe, class: className, ...rest }: Props = $props();
 </script>

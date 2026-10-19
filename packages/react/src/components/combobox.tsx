@@ -20,7 +20,12 @@ import type {
   ComboboxTriggerProps,
 } from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
+import type {
+  ComboboxItemGroupContract,
+  ComboboxPresetItem as BaseComboboxPresetItem,
+  ComboboxRootContract,
+  ComboboxContract,
+} from "@pisagor/contracts";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,
@@ -64,9 +69,8 @@ export function useComboboxRoot() {
 
 // #region Types
 
-interface ComboboxPresetItem {
+interface ComboboxPresetItem extends Omit<BaseComboboxPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -78,12 +82,12 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Input size. Defaults to `md`. */
   size?: InputRootVariantProps["size"];
   onValueChange?: (value: string[]) => void;
-} & BaseComboboxRootProps;
+} & Omit<ComboboxRootContract, "items">;
 
-export interface ComboboxProps extends Omit<
-  ComboboxRootProps,
-  "children" | "collection"
-> {
+export interface ComboboxProps
+  extends
+    Omit<ComboboxRootProps, "children" | "collection">,
+    Omit<ComboboxContract, "items" | "placeholder"> {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -91,6 +95,7 @@ export interface ComboboxProps extends Omit<
    */
   clearable?: boolean;
   items?: Array<ComboboxPresetItem | string>;
+  placeholder?: string;
 }
 
 export interface ComboboxInputProps
@@ -115,8 +120,8 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
-  /** The heading of the group */
+export interface ComboboxItemGroupProps
+  extends ComboboxItemGroupPrimitiveProps, ComboboxItemGroupContract {
   heading?: string | ReactNode;
 }
 

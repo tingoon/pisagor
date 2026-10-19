@@ -51,7 +51,7 @@ Package UI is **Solid JSX** in `.tsx` files (`solid-js` + `@ark-ui/solid`).
 
 ### Slot recipe context (`createSlotRecipeContext`)
 
-Internal helper at `src/internal/create-slot-recipe-context.tsx` (not public `utils`). Same API as React: `{ name, recipe }`, `withProvider` / `withContext`, `Context` / `useStyles`. Same naming as React: PascalCase `name`; part `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`); camelCase keys pass `slot` + kebab `data-part` via `defaultProps`. Emitted `data-part` / `data-scope` must match React. Prefer native / `ark.*` hosts; Ark primitives when `asChild` / polymorphism is needed. Thin non-style state uses package `createContext` from `utils` with getter values (Solid idiom).
+Internal helper at `src/internal/create-slot-recipe-context.tsx` (not public `utils`). Same API as React: `{ name, recipe }`, `withProvider` / `withContext`, `Context` / `useStyles`. Same naming as React: PascalCase `name`; part `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`); camelCase keys pass `slot` + kebab `data-part` via `defaultProps`. Emitted `data-part` / `data-scope` must match React. Prefer a **native** tag string (`"div"`) / `<div>` for layout hosts; use `ark.*` + `HTMLArkProps` only when `asChild` polymorphism is required; use Ark machine primitives for headless parts. Solid `HTMLArkProps` already includes `ref` — do not add a React-style `HTMLArkPropsWithRef`. Thin non-style state uses package `createContext` from `utils` with getter values (Solid idiom).
 
 ### Context file (`<name>.context.tsx`)
 
@@ -74,9 +74,9 @@ Only for **foldered** multi-file components. Same rules as React — provide wit
 - Icons: `@squidlab/phosphor-solid` (icons from `@squidlab/phosphor-solid/icons`, `IconProvider` and types from the root). Shared SVG stand-ins may live in `src/internal/icons`.
 - Class merging: `cn` from `@pisagor/utils`.
 
-### Shared props (`@pisagor/props`)
+### Shared props (`@pisagor/contracts`)
 
-Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Solid [`button.tsx`](../../../packages/solid/src/components/button.tsx).
+Same contract as React — extend `BaseFooProps` from `@pisagor/contracts`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Solid [`button.tsx`](../../../packages/solid/src/components/button.tsx).
 
 ---
 

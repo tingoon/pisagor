@@ -1,9 +1,9 @@
 ---
-import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div">, BaseSeparatorProps {
+interface Props extends HTMLAttributes<"div">, SeparatorRootContract {
   /**
    * The orientation of the separator.
    *

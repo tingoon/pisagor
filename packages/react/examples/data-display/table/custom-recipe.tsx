@@ -1,6 +1,5 @@
-import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
-import { tableRecipe } from "@pisagor/recipes";
+import { type BadgeVariantProps, tableRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 import { workspaceUsers } from "./helpers";
 
@@ -15,7 +14,10 @@ const brandTableRecipe = tv({
 });
 
 export function CustomRecipe() {
-  const statusVariants: Record<string, BadgeVariant> = {
+  const statusVariants: Record<
+    string,
+    NonNullable<BadgeVariantProps["variant"]>
+  > = {
     active: "success",
     inactive: "destructive",
     invited: "info",

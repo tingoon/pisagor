@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Ark, useHotkey } from "@ark-ui/svelte";
-  import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
+  import { useHotkey } from "@ark-ui/svelte";
+  import type { SidebarRootContract } from "@pisagor/contracts";
   import { sidebarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { onMount } from "svelte";
@@ -33,7 +33,7 @@
     /** Called when the open state of the sidebar changes. */
     onOpenChange?: (open: boolean) => void;
     style?: string | undefined;
-  } & BaseSidebarProps;
+  } & SidebarRootContract;
 
   let {
     defaultOpen = true,
@@ -134,8 +134,7 @@
   );
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.wrapper({ class: cn(className) })}
   data-part="wrapper"
@@ -143,4 +142,4 @@
   style={wrapperStyle}
 >
   {@render children?.()}
-</Ark>
+</div>

@@ -4,9 +4,11 @@ import {
   useListCollection,
 } from "@ark-ui/solid";
 import type {
-  CommandProps as BaseCommandDialogContentProps,
-  CommandProps as BaseCommandProps,
-} from "@pisagor/props";
+  CommandContract,
+  CommandDialogContract,
+  CommandPresetItem,
+  CommandRootContract,
+} from "@pisagor/contracts";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -41,9 +43,10 @@ const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
 // #endregion
 
 export interface CommandDialogContentProps
-  extends DialogContentProps, BaseCommandDialogContentProps {
+  extends DialogContentProps, CommandDialogContract {
   description?: string;
   title?: string;
+  recipe?: typeof commandRecipe;
 }
 
 export interface CommandInputProps extends Omit<
@@ -56,33 +59,38 @@ export interface CommandInputProps extends Omit<
 export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
-export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {
+export interface CommandRootProps<T extends CollectionItem = CollectionItem>
+  extends
+    Omit<
+      ComboboxRootProps<T>,
+      "emptyText" | "items" | "placeholder" | "recipe"
+    >,
+    CommandRootContract {
   class?: string;
 }
 
-export interface CommandShorthandItem {
-  /** Optional group heading. */
-  group?: string;
-  /** Leading icon. */
+export interface CommandProps<T extends CollectionItem = CollectionItem>
+  extends
+    Omit<CommandRootProps<T>, "children">,
+    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
+  emptyText?: JSX.Element;
+  placeholder?: string;
+}
+
+export interface CommandShorthandItem extends Omit<
+  CommandPresetItem,
+  "label" | "icon"
+> {
   icon?: JSX.Element;
-  /** Visible label, also used for filtering. */
   label: string;
-  /** Keyboard shortcut hint. */
-  shortcut?: string;
-  /** Unique value. */
-  value: string;
 }
 
 export interface CommandShorthandProps extends Omit<
   CommandProps<CommandShorthandItem>,
   "collection" | "children"
 > {
-  /** Text shown when nothing matches. */
   emptyText?: JSX.Element;
-  /** Items to render; filtering and grouping are handled for you. */
   items: CommandShorthandItem[];
-  /** Input placeholder. */
   placeholder?: string;
 }
 
@@ -153,7 +161,9 @@ export function CommandDialogContent(
   );
 }
 
-function CommandRootFrame(props: Omit<CommandProps, "recipe">): JSX.Element {
+function CommandRootFrame(
+  props: Omit<CommandRootProps, "recipe">,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useStyles();
 
@@ -172,9 +182,9 @@ function CommandRootFrame(props: Omit<CommandProps, "recipe">): JSX.Element {
 }
 
 export function CommandRoot<T extends CollectionItem = CollectionItem>(
-  props: CommandProps<T>,
+  props: CommandRootProps<T>,
 ): JSX.Element {
-  const [local, rest] = splitProps(props as CommandProps, ["recipe"]);
+  const [local, rest] = splitProps(props as CommandRootProps, ["recipe"]);
 
   const slots = createMemo(() => (local.recipe ?? commandRecipe)());
 

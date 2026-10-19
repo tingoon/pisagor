@@ -3,7 +3,7 @@
     RadioGroup as RadioGroupPrimitive,
     type RadioGroupItemProps as ArkRadioGroupItemProps,
   } from "@ark-ui/svelte";
-  import type { RadioGroupItemProps as BaseRadioGroupItemProps } from "@pisagor/props";
+  import type { RadioGroupItemRootContract } from "@pisagor/contracts";
   import {
     formControlRadioToggleRecipe,
     radioGroupItemRecipe,
@@ -16,7 +16,7 @@
   type Props = ArkRadioGroupItemProps & {
     variant?: FormControlVariant;
     tabindex?: number | null;
-  } & BaseRadioGroupItemProps;
+  } & RadioGroupItemRootContract;
 
   let {
     variant: variantProp,

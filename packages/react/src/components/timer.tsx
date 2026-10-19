@@ -1,20 +1,19 @@
-import {
-  Timer as TimerPrimitive,
-  ark,
-  useTimerContext,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react";
 import type {
   TimerActionTriggerProps,
   TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
 } from "@ark-ui/react";
 import type {
-  TimerItemGroupProps as BaseTimerItemGroupProps,
-  TimerProps as BaseTimerRootProps,
-} from "@pisagor/props";
+  TimerItemGroupRootContract,
+  TimerRootContract,
+} from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -44,7 +43,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
+  extends ComponentPropsWithRef<"div">, TimerItemGroupRootContract {
   /**
    * The orientation of the timer item group.
    *
@@ -56,20 +55,20 @@ export interface TimerItemGroupProps
 export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
-  extends TimerRootPrimitiveProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, TimerRootContract {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = HTMLArkProps<"div">;
+export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider(TimerPrimitive.Root, {
+const TimerRootBase = withTimerProvider(TimerPrimitive.Root)({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<TimerRootPrimitiveProps & BaseTimerRootProps>;
+}) as FunctionComponent<TimerRootPrimitiveProps & TimerRootContract>;
 
 export function TimerRoot({
   isControlsVisible,
@@ -111,10 +110,12 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
+const TimerItemGroupBase = withTimerItemGroupProvider("div")({
   name: "ItemGroup",
   slot: "base",
-}) as FunctionComponent<HTMLArkProps<"div"> & BaseTimerItemGroupProps>;
+}) as FunctionComponent<
+  ComponentPropsWithRef<"div"> & TimerItemGroupRootContract
+>;
 
 export function TimerItemGroup({
   orientation = "vertical",
@@ -152,7 +153,7 @@ export function TimerItem({
 
 TimerItem.displayName = "Timer.Item";
 
-export const TimerItemLabel = withTimerItemGroupContext(ark.div, {
+export const TimerItemLabel = withTimerItemGroupContext("div", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",

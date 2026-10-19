@@ -1,20 +1,16 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+  import type {
+    AspectRatioRootContract,
+    AspectRatioContract,
+  } from "@pisagor/contracts";
   import { aspectRatioRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-    /**
-     * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
-     * variable.
-     *
-     * @defaultValue 1
-     */
-    ratio?: number;
-  } & BaseAspectRatioProps;
+  } & AspectRatioRootContract &
+    AspectRatioContract;
 
   let {
     ratio,
@@ -26,8 +22,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({ class: cn(className) })}
   data-part="root"
@@ -35,4 +30,4 @@
   style={ratio === undefined ? style : `--ratio: ${ratio}; ${style ?? ""}`}
 >
   {@render children?.()}
-</Ark>
+</div>

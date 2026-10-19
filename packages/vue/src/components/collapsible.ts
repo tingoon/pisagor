@@ -1,6 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
+import type { CollapsibleRootContract } from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -19,7 +19,7 @@ const {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CollapsibleRootProps extends BaseCollapsibleRootProps {
+export interface CollapsibleRootProps extends CollapsibleRootContract {
   class?: unknown;
 }
 // #endregion

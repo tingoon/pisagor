@@ -1,4 +1,3 @@
-import { ark } from "@ark-ui/vue";
 import {
   PhListBullets,
   PhListNumbers,
@@ -6,7 +5,7 @@ import {
   PhTextItalic,
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
-import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/contracts";
 import {
   formControlShellRecipe,
   type RichTextEditorRecipe,
@@ -39,7 +38,7 @@ interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-export interface RichTextEditorRootProps extends BaseRichTextEditorRootProps {
+export interface RichTextEditorRootProps extends RichTextEditorRootContract {
   "aria-label"?: string;
   /** Initial HTML content for uncontrolled usage. */
   defaultValue?: string;
@@ -202,7 +201,7 @@ export const RichTextEditorRoot = defineComponent({
         (props.id ? undefined : m("richTextEditor.label"));
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           ...controlProps,
@@ -271,7 +270,7 @@ export const RichTextEditorToolbar = defineComponent({
       };
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: recipeSlots.toolbar({ class: props.class }),
@@ -386,7 +385,7 @@ export const RichTextEditorContent = defineComponent({
       const recipeSlots = context?.slots;
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: recipeSlots?.content({ class: props.class }),

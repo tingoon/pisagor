@@ -1,18 +1,19 @@
 <script lang="ts">
-  import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
+  import { Ark } from "@ark-ui/svelte";
+  import type { EmptyStateRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
 
   import { withProvider } from "./empty-state.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
+  type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseEmptyStateProps;
+  } & EmptyStateRootContract;
 
   let { children, ...rest }: Props = $props();
 
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<div {...root.props}>
+<Ark as="div" {...root.props}>
   {@render children?.()}
-</div>
+</Ark>

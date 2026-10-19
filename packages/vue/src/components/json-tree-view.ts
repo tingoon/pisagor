@@ -1,16 +1,12 @@
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue";
 import { PhCaretRight } from "@phosphor-icons/vue";
-import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
-import {
-  type JsonTreeViewRecipeSlot,
-  jsonTreeViewRecipe,
-} from "@pisagor/recipes";
+import type {
+  JsonTreeViewContract,
+  JsonTreeViewRootContract,
+} from "@pisagor/contracts";
+import { jsonTreeViewRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -20,14 +16,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
 type JsonTreeViewRenderValue = (props: { node: unknown }) => unknown;
 
-export interface JsonTreeViewProps extends BaseJsonTreeViewProps {
+export interface JsonTreeViewProps
+  extends JsonTreeViewRootContract, JsonTreeViewContract {
   class?: unknown;
-  /** Slot class names */
-  classNames?: JsonTreeViewClassNames;
   data: object;
   defaultExpandedDepth?: number;
   lazyMount?: boolean;
@@ -60,7 +54,7 @@ const JsonTreeViewShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<JsonTreeViewClassNames>,
+      type: Object as PropType<JsonTreeViewProps["classNames"]>,
     },
     data: { required: true, type: Object as PropType<object> },
     defaultExpandedDepth: { default: undefined, type: Number },

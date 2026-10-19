@@ -1,4 +1,4 @@
-import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
+import type { AppShellRootContract } from "@pisagor/contracts";
 import { appShellRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import {
@@ -44,7 +44,7 @@ const APP_SHELL_BANNER_ROW =
   '"banner banner banner banner banner banner banner"';
 
 export interface AppShellRootProps
-  extends ComponentProps<"div">, BaseAppShellRootProps {
+  extends ComponentProps<"div">, AppShellRootContract {
   /**
    * Whether to disable the `mod+\\` hotkey that toggles the start panel.
    *

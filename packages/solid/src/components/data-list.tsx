@@ -1,16 +1,14 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  DataListItemProps as BaseDataListItemProps,
-  DataListProps as BaseDataListRootProps,
-} from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-  dataListRecipe,
-} from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+  DataListContract,
+  DataListItemContract,
+  DataListItemRootContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
+import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -20,30 +18,32 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
-
-interface DataListPresetItem {
+interface DataListPresetItem extends Omit<
+  BaseDataListPresetItem,
+  "label" | "value"
+> {
   label: JSX.Element;
   value: JSX.Element;
 }
 
 export interface DataListRootProps
-  extends HTMLArkProps<"dl">, BaseDataListRootProps {
+  extends ComponentProps<"dl">, DataListRootContract {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface DataListProps extends Omit<DataListRootProps, "children"> {
+export interface DataListProps
+  extends
+    Omit<DataListRootProps, "children" | "recipe">,
+    DataListRootContract,
+    DataListContract {
   items?: DataListPresetItem[];
 }
 
-type DataListItemRootProps = HTMLArkProps<"div"> & BaseDataListItemProps;
+type DataListItemRootProps = ComponentProps<"div"> & DataListItemRootContract;
 
-export interface DataListItemProps extends Omit<
-  DataListItemRootProps,
-  "value"
-> {
+export interface DataListItemProps
+  extends Omit<DataListItemRootProps, "value">, DataListItemContract {
   value?: JSX.Element;
-  classNames?: DataListClassNames;
 }
 // #endregion
 
@@ -52,7 +52,7 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation", "recipe", "class"]);
 
   return (
-    <ark.dl
+    <dl
       {...rest}
       class={(local.recipe ?? dataListRecipe)({ class: local.class })}
       data-orientation={local.orientation ?? "horizontal"}
@@ -62,18 +62,19 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   );
 }
 
-const DataListItemRoot: Component<DataListItemRootProps> = withProvider(
-  ark.div,
-  { defaultProps: { "data-part": "item" }, name: "Item", slot: "base" },
-);
+const DataListItemRoot: Component<DataListItemRootProps> = withProvider("div", {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
+});
 
-const DataListItemLabel = withContext(ark.dt, {
+const DataListItemLabel = withContext("dt", {
   defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",
 });
 
-const DataListItemValue = withContext(ark.dd, {
+const DataListItemValue = withContext("dd", {
   defaultProps: { "data-part": "item-value" },
   name: "ItemValue",
   slot: "value",

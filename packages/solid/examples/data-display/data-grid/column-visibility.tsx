@@ -1,4 +1,4 @@
-import type { BadgeVariant } from "@pisagor/solid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/solid";
 import type { ColumnDef, VisibilityState } from "@pisagor/solid/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/solid/data-grid";
@@ -51,7 +51,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<User["status"], BadgeVariant> = {
+const statusVariants: Record<
+  User["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

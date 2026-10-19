@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
+  import type { SurfaceRootContract } from "@pisagor/contracts";
   import { surfaceRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -19,7 +18,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseSurfaceProps;
+  } & SurfaceRootContract;
 
   let {
     bordered = false,
@@ -54,8 +53,7 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={recipe({
     bordered,
@@ -70,4 +68,4 @@
   data-variant={surface.variant}
 >
   {@render children?.()}
-</Ark>
+</div>

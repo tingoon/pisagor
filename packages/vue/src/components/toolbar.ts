@@ -1,13 +1,9 @@
 import { ark } from "@ark-ui/vue";
-import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import type { ToolbarContract, ToolbarRootContract } from "@pisagor/contracts";
+import { toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -17,12 +13,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider(ark.div, {
+export const ToolbarRoot = withProvider("div", {
   name: "Root",
   slot: "base",
 });
 
-export const ToolbarHeading = withContext(ark.div, {
+export const ToolbarHeading = withContext("div", {
   name: "Heading",
 });
 
@@ -30,11 +26,11 @@ export const ToolbarTitle = withContext(ark.h2, {
   name: "Title",
 });
 
-export const ToolbarDescription = withContext(ark.p, {
+export const ToolbarDescription = withContext("p", {
   name: "Description",
 });
 
-export const ToolbarActions = withContext(ark.div, {
+export const ToolbarActions = withContext("div", {
   defaultProps: {
     "aria-orientation": "horizontal",
     onKeydown: handleRovingFocusKeyDown,
@@ -45,14 +41,11 @@ export const ToolbarActions = withContext(ark.div, {
 // #endregion
 
 // #region Types
-type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
-
-export interface ToolbarProps extends BaseToolbarRootProps {
+export interface ToolbarProps extends ToolbarRootContract, ToolbarContract {
   actions?: VNodeChild;
   description?: VNodeChild;
   title?: VNodeChild;
   class?: unknown;
-  classNames?: ToolbarClassNames;
   actionsProps?: Record<string, unknown>;
   descriptionProps?: Record<string, unknown>;
   titleProps?: Record<string, unknown>;
@@ -78,7 +71,7 @@ export const ToolbarShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<ToolbarClassNames>,
+      type: Object as PropType<ToolbarProps["classNames"]>,
     },
     description: {
       default: undefined,

@@ -19,7 +19,7 @@ import type {
   UseTourReturn,
 } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import type { TourProps as BaseTourProps } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { MouseEvent } from "react";
@@ -66,7 +66,7 @@ export type TourStepType = TourStepDetails;
 
 export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
-export interface TourProps extends TourRootProps, BaseTourProps {
+export interface TourProps extends TourRootProps, TourRootContract {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -256,7 +256,7 @@ export function TourBody({
 
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <ark.div
+      <div
         {...rest}
         className={dialogSlots.body({ className })}
         data-part="body"
@@ -276,18 +276,18 @@ export function TourHeader({
   children,
   className,
   ...rest
-}: DialogHeaderProps) {
+}: Omit<DialogHeaderProps, "description" | "title">) {
   const dialogSlots = dialogRecipe();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={dialogSlots.header({ className })}
       data-part="header"
       data-scope="tour"
     >
       {children}
-    </ark.div>
+    </div>
   );
 }
 
@@ -349,7 +349,7 @@ export function TourFooter({
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <ark.div
+      <div
         className={dialogSlots.footer({ className })}
         data-part="control"
         data-scope="tour"
@@ -357,7 +357,7 @@ export function TourFooter({
         <TourInsideControlContext value={true}>
           {children}
         </TourInsideControlContext>
-      </ark.div>
+      </div>
     </TourPrimitive.Control>
   );
 }
@@ -375,7 +375,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
   }
 
   const content = (
-    <ark.div
+    <div
       {...(insideControl ? rest : {})}
       className={cn(
         !insideControl && dialogSlots.footer(),
@@ -400,7 +400,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
           </Button>
         </TourActionTrigger>
       ))}
-    </ark.div>
+    </div>
   );
 
   if (insideControl) {

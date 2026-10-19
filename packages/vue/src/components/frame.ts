@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue";
-import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -20,10 +19,8 @@ const {
 });
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-
 // #region Types
-export interface FrameRootProps extends BaseFrameRootProps {
+export interface FrameRootProps extends FrameRootContract {
   class?: unknown;
 }
 // #endregion
@@ -69,7 +66,7 @@ export const FrameRoot = defineComponent({
       const variantSlots = recipeSlots.value;
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
@@ -107,7 +104,7 @@ export const FramePanel = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: variantSlots.panel({ class: props.class }),
@@ -120,7 +117,7 @@ export const FramePanel = defineComponent({
   },
 });
 
-export const FrameTitle = withContext(ark.div, {
+export const FrameTitle = withContext("div", {
   defaultProps: {
     "data-part": "panel-title",
   },
@@ -128,7 +125,7 @@ export const FrameTitle = withContext(ark.div, {
   slot: "panelTitle",
 });
 
-export const FrameDescription = withContext(ark.div, {
+export const FrameDescription = withContext("div", {
   defaultProps: {
     "data-part": "panel-description",
   },
@@ -136,7 +133,7 @@ export const FrameDescription = withContext(ark.div, {
   slot: "panelDescription",
 });
 
-export const FrameHeader = withContext(ark.header, {
+export const FrameHeader = withContext("header", {
   defaultProps: {
     "data-part": "panel-header",
   },
@@ -144,7 +141,7 @@ export const FrameHeader = withContext(ark.header, {
   slot: "panelHeader",
 });
 
-export const FrameFooter = withContext(ark.footer, {
+export const FrameFooter = withContext("footer", {
   defaultProps: {
     "data-part": "panel-footer",
   },

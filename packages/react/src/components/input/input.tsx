@@ -2,29 +2,23 @@ import {
   FieldInput as InputPrimitive,
   type FieldInputProps,
 } from "@ark-ui/react";
-import type { InputProps as BaseInputProps } from "@pisagor/props";
-import {
-  type InputRecipeSlot,
-  inputRecipe,
-  inputRootRecipe,
-} from "@pisagor/recipes";
+import type { InputContract, InputRootContract } from "@pisagor/contracts";
+import { inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
-import type { FormControlVariant, VariantClassNames } from "../../internal";
+import type { FormControlVariant } from "../../internal";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 // #region Types
-
-type InputClassNames = VariantClassNames<InputRecipeSlot>;
-
 export interface InputProps
   extends
     Omit<FieldInputProps, "size">,
     RefAttributes<HTMLInputElement>,
-    BaseInputProps {
+    InputRootContract,
+    InputContract {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -37,14 +31,11 @@ export interface InputProps
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
   /**
-   * Root style recipe. Defaults to `inputRootRecipe` from
-   * `@pisagor/recipes/input`.
+   * Clearable-slot style recipe.
    *
-   * @defaultValue inputRootRecipe
+   * @defaultValue inputRecipe
    */
-  rootRecipe?: typeof inputRootRecipe;
-  /** Slot class names */
-  classNames?: InputClassNames;
+  slotRecipe?: typeof inputRecipe;
 }
 // #endregion
 
@@ -61,8 +52,8 @@ export function Input({
   ref,
   onChange,
   onValueChange,
-  recipe = inputRecipe,
-  rootRecipe = inputRootRecipe,
+  recipe = inputRootRecipe,
+  slotRecipe = inputRecipe,
   className,
   classNames,
   ...rest
@@ -90,7 +81,7 @@ export function Input({
     variant: resolved.variant,
   };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = recipe();
+  const slots = slotRecipe();
 
   const changeHandler: ChangeEventHandler<HTMLInputElement> | undefined =
     skipClearable
@@ -107,7 +98,7 @@ export function Input({
       <InputPrimitive
         {...rest}
         {...controlProps}
-        className={rootRecipe({ className, size, ...shellArgs })}
+        className={recipe({ className, size, ...shellArgs })}
         data-size={size}
         defaultValue={defaultValue}
         disabled={disabled}

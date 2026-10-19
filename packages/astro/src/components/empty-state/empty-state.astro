@@ -1,8 +1,9 @@
 ---
-import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
-import type { EmptyStateRecipeSlot } from "@pisagor/recipes";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
-import type { VariantClassNames } from "../../internal";
 import EmptyStateActions from "./empty-state-actions.astro";
 import EmptyStateDescription from "./empty-state-description.astro";
 import EmptyStateMedia from "./empty-state-media.astro";
@@ -11,13 +12,10 @@ import EmptyStateTitle from "./empty-state-title.astro";
 
 interface Props
   extends Omit<HTMLAttributes<"div">, "title">,
-    BaseEmptyStateProps {
-  /** Primary heading. */
+    EmptyStateRootContract,
+    EmptyStateContract {
   title?: string;
-  /** Supporting copy. */
   description?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<EmptyStateRecipeSlot>;
 }
 
 const { title, description, classNames, ...rest } = Astro.props;

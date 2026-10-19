@@ -5,12 +5,11 @@ import type {
   SignaturePadDrawingOptions,
 } from "@ark-ui/vue";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
-import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
-import {
-  formControlZoneRecipe,
-  type SignaturePadRecipeSlot,
-  signaturePadRecipe,
-} from "@pisagor/recipes";
+import type {
+  SignaturePadContract,
+  SignaturePadRootContract,
+} from "@pisagor/contracts";
+import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -20,11 +19,7 @@ import {
   type PropType,
   provide,
 } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -41,13 +36,10 @@ type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
 
-type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
-
 // #region Types
-export interface SignaturePadProps extends BaseSignaturePadProps {
+export interface SignaturePadProps
+  extends SignaturePadRootContract, SignaturePadContract {
   class?: unknown;
-  /** Slot class names */
-  classNames?: SignaturePadClassNames;
   /** The default paths of the signature pad. */
   defaultPaths?: string[];
   /** Whether the signature pad is disabled. */
@@ -235,7 +227,7 @@ const SignaturePadShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<SignaturePadClassNames>,
+      type: Object as PropType<SignaturePadProps["classNames"]>,
     },
     defaultPaths: {
       default: undefined,

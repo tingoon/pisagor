@@ -1,5 +1,4 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -7,7 +6,11 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useRef, useState } from "react";
-import type { ChangeEventHandler, ComponentProps } from "react";
+import type {
+  ChangeEventHandler,
+  ComponentProps,
+  ComponentPropsWithRef,
+} from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
@@ -34,15 +37,15 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = HTMLArkProps<"div"> &
+type FileInputRootProps = ComponentPropsWithRef<"div"> &
   FileInputVariantProps &
-  BaseFileInputProps & {
+  FileInputRootContract & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -100,7 +103,7 @@ function FileInputRoot({
 
   return (
     <FileInputStylesContext value={{ slots, variants: {} as never }}>
-      <ark.div
+      <div
         {...rest}
         {...controlProps}
         className={formControlGroupShellRecipe({
@@ -115,7 +118,7 @@ function FileInputRoot({
         role="group"
       >
         {children}
-      </ark.div>
+      </div>
     </FileInputStylesContext>
   );
 }

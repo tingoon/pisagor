@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+  import type { StatusRootContract } from "@pisagor/contracts";
   import { statusRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseStatusProps;
+  } & StatusRootContract;
 
   let {
     recipe = statusRecipe,
@@ -19,8 +18,7 @@
   }: Props = $props();
 </script>
 
-<Ark
-  as="span"
+<span
   {...rest}
   class={recipe({ class: cn(className), size, variant })}
   data-part="indicator"
@@ -28,4 +26,4 @@
   data-size={size}
 >
   {@render children?.()}
-</Ark>
+</span>

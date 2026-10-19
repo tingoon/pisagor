@@ -1,5 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue";
-import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
+import type { HoverCardRootContract } from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,
@@ -20,7 +20,7 @@ const { provideStyles: provideHoverCardStyles, useStyles } =
 // #endregion
 
 // #region Types
-export interface HoverCardProps extends BaseHoverCardProps {
+export interface HoverCardProps extends HoverCardRootContract {
   closeDelay?: number;
   lazyMount?: boolean;
   openDelay?: number;

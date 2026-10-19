@@ -15,9 +15,12 @@ import type {
 } from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
-  ListboxItemProps as BaseListboxItemProps,
-  ListboxProps as BaseListboxRootProps,
-} from "@pisagor/props";
+  ListboxItemRootContract,
+  ListboxItemContract,
+  ListboxPresetItem as BaseListboxPresetItem,
+  ListboxRootContract,
+  ListboxContract,
+} from "@pisagor/contracts";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { type ReactNode, useMemo } from "react";
@@ -43,10 +46,9 @@ const { Context: ListboxItemStylesContext, useStyles: useListboxItem } =
 // #endregion
 
 // #region Types
-interface ListboxPresetItem extends CollectionItem {
+interface ListboxPresetItem
+  extends CollectionItem, Omit<BaseListboxPresetItem, "label"> {
   label: string;
-  value: string;
-  disabled?: boolean;
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -54,20 +56,20 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-} & BaseListboxRootProps;
+} & Omit<ListboxRootContract, "emptyText" | "items">;
 
-export interface ListboxProps extends Omit<
-  ListboxRootProps,
-  "children" | "collection"
-> {
+export interface ListboxProps
+  extends Omit<ListboxRootProps, "children" | "collection">, ListboxContract {
   collection?: ListboxRootProps["collection"];
-  /** Content shown when there are no items. */
   emptyText?: ReactNode;
   items?: ListboxPresetItem[];
 }
 
 export interface ListboxItemProps
-  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
+  extends
+    ListboxItemPrimitiveProps,
+    ListboxItemRootContract,
+    ListboxItemContract {}
 
 export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   /** The heading of the listbox item group. */

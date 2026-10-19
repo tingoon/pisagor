@@ -15,9 +15,9 @@ const brandToggleGroupRecipe = tv({
     multiple
     :default-value="['bold']"
     :items="[
-      { children: 'Bold', value: 'bold' },
-      { children: 'Italic', value: 'italic' },
-      { children: 'Underline', value: 'underline' },
+      { content: 'Bold', value: 'bold' },
+      { content: 'Italic', value: 'italic' },
+      { content: 'Underline', value: 'underline' },
     ]"
     :recipe="brandToggleGroupRecipe"
   />

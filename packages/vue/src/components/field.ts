@@ -1,10 +1,9 @@
 import {
   Field as FieldPrimitive,
   Fieldset as FieldsetPrimitive,
-  ark,
   useFieldContext,
 } from "@ark-ui/vue";
-import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
@@ -43,7 +42,7 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FieldProps extends BaseFieldProps {
+export interface FieldProps extends FieldRootContract {
   class?: unknown;
   orientation?: "horizontal" | "responsive" | "vertical";
   reverse?: boolean;
@@ -220,7 +219,7 @@ export const FieldLabel = defineComponent({
       const variantSlots = styles.slots;
 
       return h(
-        (field ? FieldPrimitive.Label : ark.label) as ArkPart,
+        (field ? FieldPrimitive.Label : "label") as ArkPart,
         {
           ...attrs,
           asChild: props.asChild,

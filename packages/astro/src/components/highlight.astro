@@ -1,5 +1,5 @@
 ---
-import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
+import type { HighlightRootContract } from "@pisagor/contracts";
 import { highlightRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
@@ -8,7 +8,7 @@ interface HighlightChunk {
   text: string;
 }
 
-interface Props extends HTMLAttributes<"mark">, BaseHighlightProps {
+interface Props extends HTMLAttributes<"mark">, HighlightRootContract {
   /** Text to search within. */
   text: string;
   /** Query string or list of query strings to highlight. */

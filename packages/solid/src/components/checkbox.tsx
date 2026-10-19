@@ -7,9 +7,9 @@ import type {
   CheckboxRootProps,
 } from "@ark-ui/solid";
 import type {
-  CheckboxGroupProps as BaseCheckboxGroupProps,
-  CheckboxProps as BaseCheckboxProps,
-} from "@pisagor/props";
+  CheckboxGroupRootContract,
+  CheckboxRootContract,
+} from "@pisagor/contracts";
 import {
   checkboxGroupRecipe,
   checkboxRecipe,
@@ -25,16 +25,16 @@ type FormControlVariant = "primary" | "secondary";
 export interface CheckboxGroupProps
   extends
     Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
-    BaseCheckboxGroupProps {
+    CheckboxGroupRootContract {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
+export interface CheckboxProps extends CheckboxRootProps, CheckboxRootContract {
   onValueChange?: (value: boolean) => void;
 }
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps &
-  Pick<BaseCheckboxProps, "recipe">;
+  Pick<CheckboxRootContract, "recipe">;
 
 function CheckIcon() {
   return (
@@ -161,7 +161,7 @@ export function CheckboxCompoundRoot(
 /** The styled box; renders check / minus indicators when empty. */
 export function CheckboxControl(
   props: CheckboxControlProps &
-    BaseCheckboxProps & {
+    CheckboxRootContract & {
       recipe?: typeof checkboxRecipe;
     },
 ): JSX.Element {

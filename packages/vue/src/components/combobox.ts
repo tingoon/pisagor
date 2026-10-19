@@ -10,7 +10,12 @@ import type {
   ListCollection,
 } from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
-import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
+import type {
+  ComboboxItemGroupContract,
+  ComboboxPresetItem as BaseComboboxPresetItem,
+  ComboboxRootContract,
+  ComboboxContract,
+} from "@pisagor/contracts";
 import { comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -66,7 +71,7 @@ const [provideComboboxControl, , useComboboxControlRef] = createContext(
 )<ComboboxControlValue>({ defaultValue: {}, strict: false });
 
 // #region Types
-interface ComboboxPresetItem {
+interface ComboboxPresetItem extends Omit<BaseComboboxPresetItem, "label"> {
   label: string;
   value: string;
 }
@@ -81,9 +86,12 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   size?: ComboboxInputProps["size"];
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
-} & BaseComboboxRootProps;
+} & Omit<ComboboxRootContract, "items">;
 
-export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
+export interface ComboboxProps
+  extends
+    Omit<ComboboxRootProps, "children" | "items">,
+    Omit<ComboboxContract, "items"> {
   items?: Array<ComboboxPresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
@@ -91,6 +99,7 @@ export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
    * @defaultValue false
    */
   clearable?: boolean;
+  placeholder?: string;
 }
 
 export interface ComboboxInputProps {
@@ -102,12 +111,15 @@ export interface ComboboxInputProps {
   class?: unknown;
 }
 
-export interface ComboboxItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxItemGroupContract {
   heading?: string | VNodeChild;
   class?: unknown;
 }
 
-export interface ComboboxControlProps extends BaseComboboxRootProps {
+export interface ComboboxControlProps extends Omit<
+  ComboboxRootContract,
+  "items" | "placeholder"
+> {
   class?: unknown;
 }
 // #endregion

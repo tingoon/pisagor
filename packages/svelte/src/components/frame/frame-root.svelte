@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { FrameProps as BaseFrameProps } from "@pisagor/props";
+  import type { FrameRootContract } from "@pisagor/contracts";
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -10,7 +9,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseFrameProps;
+  } & FrameRootContract;
 
   let {
     children,
@@ -30,12 +29,11 @@
   });
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="frame"
 >
   {@render children?.()}
-</Ark>
+</div>

@@ -13,7 +13,11 @@ import {
   PauseIcon,
   PlayIcon,
 } from "@phosphor-icons/react";
-import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
+import type {
+  CarouselPresetItem as BaseCarouselPresetItem,
+  CarouselRootContract,
+  CarouselContract,
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -29,23 +33,23 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface CarouselRootProps
-  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, Omit<CarouselRootContract, "slides"> {}
 
-interface CarouselPresetItem {
+interface CarouselPresetItem extends Omit<BaseCarouselPresetItem, "content"> {
   content: ReactNode;
-  key?: string;
 }
 
-export interface CarouselProps extends Omit<
-  CarouselRootProps,
-  "children" | "slideCount"
-> {
+export interface CarouselProps
+  extends
+    Omit<CarouselRootProps, "children" | "slideCount" | "recipe">,
+    CarouselRootContract,
+    CarouselContract {
   slides?: CarouselPresetItem[];
 }
 // #endregion
 
 // #region Parts
-const CarouselRootBase = withProvider(CarouselPrimitive.Root, {
+const CarouselRootBase = withProvider(CarouselPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<CarouselRootProps>;

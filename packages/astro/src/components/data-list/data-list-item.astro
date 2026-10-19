@@ -1,15 +1,19 @@
 ---
-import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
-import type { DataListItemRecipeSlot } from "@pisagor/recipes";
+import type {
+  DataListItemContract,
+  DataListItemRootContract,
+} from "@pisagor/contracts";
+
 import type { HTMLAttributes } from "astro/types";
-import type { VariantClassNames } from "../../internal";
+
 import { withContext, withProvider } from "./data-list.context";
 
-interface Props extends HTMLAttributes<"div">, BaseDataListItemProps {
+interface Props
+  extends HTMLAttributes<"div">,
+    DataListItemRootContract,
+    DataListItemContract {
   /** Value rendered as `dd`. */
   value?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<DataListItemRecipeSlot>;
 }
 
 const { value, classNames, ...rest } = Astro.props;

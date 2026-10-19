@@ -1,12 +1,8 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue";
-import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
+import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
+import { switchRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -18,14 +14,11 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 
 type FormControlVariant = "primary" | "secondary";
 
-type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
-
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface SwitchProps extends BaseSwitchProps {
+export interface SwitchProps extends SwitchRootContract, SwitchContract {
   class?: unknown;
-  classNames?: SwitchClassNames;
   variant?: FormControlVariant;
 }
 // #endregion
@@ -113,7 +106,7 @@ const SwitchShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<SwitchClassNames>,
+      type: Object as PropType<SwitchProps["classNames"]>,
     },
     variant: {
       default: undefined,

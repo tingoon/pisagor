@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
-  import type { FileProps as BaseFileProps } from "@pisagor/props";
+  import type { FileRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { FileIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./file.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
+  type Props = HTMLAttributes<HTMLDivElement> & FileRootContract;
 
   let {
     variant = "icon",
@@ -18,8 +17,7 @@
   const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="div"
+<div
   {...rest}
   class={slots.media({ class: cn(className), variant })}
   data-part="media"
@@ -31,4 +29,4 @@
   {:else}
     <FileIcon />
   {/if}
-</Ark>
+</div>

@@ -4,19 +4,11 @@ import {
   PhWarning,
   PhWarningCircle,
 } from "@phosphor-icons/vue";
-import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
-import {
-  type AlertRecipeSlot,
-  type AlertVariantProps,
-  alertRecipe,
-} from "@pisagor/recipes";
+import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
+import { type AlertVariantProps, alertRecipe } from "@pisagor/recipes";
 import { defineComponent, h } from "vue";
 import type { Component, PropType, VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -45,22 +37,11 @@ export const AlertAction = withContext("div", {
 // #endregion
 
 // #region Types
-type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
-
-export interface AlertProps extends BaseAlertRootProps {
-  /** Trailing action area. */
+export interface AlertProps extends AlertRootContract, AlertContract {
   action?: VNodeChild;
-  /** Description content. */
   description?: VNodeChild;
-  /**
-   * Leading icon, rendered as a direct child so the grid layout aligns. Status
-   * variants get a default icon; pass `null` to hide it.
-   */
   icon?: VNodeChild;
-  /** Bold title line. */
   title?: VNodeChild;
-  /** Slot class names */
-  classNames?: AlertClassNames;
   class?: unknown;
   /** Extra props forwarded to the alert action element */
   actionProps?: Record<string, unknown>;
@@ -97,7 +78,7 @@ export const AlertShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<AlertClassNames>,
+      type: Object as PropType<AlertProps["classNames"]>,
     },
     description: {
       default: undefined,

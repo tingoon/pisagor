@@ -1,12 +1,11 @@
 import {
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
-  ark,
   parseColor as parseColorArk,
   useColorPickerContext as useColorPicker,
 } from "@ark-ui/vue";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
+import type { ColorPickerRootContract } from "@pisagor/contracts";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useLocale } from "./provider/context";
@@ -42,7 +41,7 @@ function useColorPickerSlots() {
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface ColorPickerProps extends BaseColorPickerProps {
+export interface ColorPickerProps extends ColorPickerRootContract {
   class?: ClassValue;
   variant?: FormControlVariant;
   positioning?: unknown;
@@ -727,7 +726,7 @@ export const ColorPickerSwatchPreview = defineComponent({
       const slots = getSlots();
 
       return h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: slots.inputSwatch({

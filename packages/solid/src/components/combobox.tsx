@@ -18,7 +18,12 @@ import type {
   ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
 } from "@ark-ui/solid";
-import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
+import type {
+  ComboboxItemGroupContract,
+  ComboboxPresetItem as BaseComboboxPresetItem,
+  ComboboxRootContract,
+  ComboboxContract,
+} from "@pisagor/contracts";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,
@@ -81,9 +86,8 @@ export function useComboboxRoot() {
 
 type FormControlVariant = "primary" | "secondary";
 
-interface ComboboxPresetItem {
+interface ComboboxPresetItem extends Omit<BaseComboboxPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -95,14 +99,18 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Input size. Defaults to `md`. */
   size?: InputRootVariantProps["size"];
   onValueChange?: (value: string[]) => void;
-} & BaseComboboxRootProps;
+} & Omit<ComboboxRootContract, "items">;
 
-export interface ComboboxProps extends Omit<
-  ComboboxRootProps,
-  "children" | "collection"
-> {
+export interface ComboboxProps
+  extends
+    Omit<
+      ComboboxRootProps,
+      "children" | "collection" | "items" | "placeholder"
+    >,
+    Omit<ComboboxContract, "items"> {
   clearable?: boolean;
   items?: Array<ComboboxPresetItem | string>;
+  placeholder?: string;
 }
 
 export interface ComboboxInputProps
@@ -112,7 +120,8 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
+export interface ComboboxItemGroupProps
+  extends ComboboxItemGroupPrimitiveProps, ComboboxItemGroupContract {
   heading?: string | JSX.Element;
 }
 

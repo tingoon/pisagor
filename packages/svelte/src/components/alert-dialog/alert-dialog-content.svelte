@@ -4,7 +4,7 @@
     Portal,
     type DialogContentProps as ArkDialogContentProps,
   } from "@ark-ui/svelte";
-  import type { AlertDialogProps as BaseAlertDialogProps } from "@pisagor/props";
+  import type { AlertDialogRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
@@ -16,9 +16,8 @@
   const { m } = useLocale();
 
   type Props = ArkDialogContentProps & {
-    bottomStickOnMobile?: boolean;
     showCloseButton?: boolean;
-  } & BaseAlertDialogProps;
+  } & AlertDialogRootContract;
 
   let {
     size = "md",

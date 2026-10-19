@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { getContext } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { MENU_INSIDE_LIST, withContext } from "./menu.context";
@@ -10,7 +9,7 @@
 </script>
 
 {#if insideList}
-  <Ark as="li" {...part.props} aria-hidden="true" />
+  <li {...part.props} aria-hidden="true" />
 {:else}
-  <Ark as="hr" {...part.props} aria-hidden="true" />
+  <hr {...part.props} aria-hidden="true" />
 {/if}

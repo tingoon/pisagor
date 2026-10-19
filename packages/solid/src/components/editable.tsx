@@ -9,7 +9,7 @@ import type {
   EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/solid";
-import type { EditableProps as BaseEditableProps } from "@pisagor/props";
+import type { EditableRootContract } from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
@@ -36,7 +36,7 @@ export type EditableRootProps = Omit<
   "onValueChange" | "value" | "defaultValue"
 >;
 
-export interface EditableProps extends EditableRootProps, BaseEditableProps {
+export interface EditableProps extends EditableRootProps, EditableRootContract {
   orientation?: "horizontal" | "vertical";
   defaultValue?: string;
   value?: string;

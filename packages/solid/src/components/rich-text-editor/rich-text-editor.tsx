@@ -1,10 +1,9 @@
-import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
+import type { RichTextEditorRootContract } from "@pisagor/contracts";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
-import type { JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import {
   createEffect,
   createSignal,
@@ -34,8 +33,8 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
   extends
-    Omit<HTMLArkProps<"div">, "defaultValue" | "onChange">,
-    BaseRichTextEditorRootProps {
+    Omit<ComponentProps<"div">, "defaultValue" | "onChange">,
+    RichTextEditorRootContract {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -49,8 +48,8 @@ export interface RichTextEditorRootProps
   children?: JSX.Element;
 }
 
-export type RichTextEditorToolbarProps = HTMLArkProps<"div">;
-export type RichTextEditorContentProps = HTMLArkProps<"div">;
+export type RichTextEditorToolbarProps = ComponentProps<"div">;
+export type RichTextEditorContentProps = ComponentProps<"div">;
 
 export function RichTextEditorRoot(
   props: RichTextEditorRootProps,
@@ -149,7 +148,7 @@ export function RichTextEditorRoot(
         slots: slots(),
       }}
     >
-      <ark.div
+      <div
         {...rest}
         aria-disabled={local.disabled || undefined}
         aria-invalid={local.invalid || undefined}
@@ -181,7 +180,7 @@ export function RichTextEditorRoot(
           )}
         </Show>
         {local.children}
-      </ark.div>
+      </div>
     </RichTextEditorContext>
   );
 }
@@ -217,7 +216,7 @@ export function RichTextEditorToolbar(
   return (
     <Show when={editor()}>
       {(instance) => (
-        <ark.div
+        <div
           {...rest}
           class={slots.toolbar({ class: local.class })}
           data-part="toolbar"
@@ -292,7 +291,7 @@ export function RichTextEditorToolbar(
           >
             {local.children}
           </Show>
-        </ark.div>
+        </div>
       )}
     </Show>
   );
@@ -305,7 +304,7 @@ export function RichTextEditorContent(
   const { registerHost, slots } = useRichTextEditorState();
 
   return (
-    <ark.div
+    <div
       {...rest}
       class={slots.content({ class: local.class })}
       data-part="content"

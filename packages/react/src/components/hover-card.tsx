@@ -5,7 +5,7 @@ import type {
   HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
 } from "@ark-ui/react";
-import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
+import type { HoverCardRootContract } from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 
@@ -18,7 +18,7 @@ const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
 
 // #region Types
 export interface HoverCardRootProps
-  extends HoverCardRootPrimitiveProps, BaseHoverCardRootProps {}
+  extends HoverCardRootPrimitiveProps, HoverCardRootContract {}
 
 export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
   /**

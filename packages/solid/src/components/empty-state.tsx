@@ -1,9 +1,12 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/contracts";
+import { emptyStateRecipe } from "@pisagor/recipes";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -13,26 +16,18 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type EmptyStateRootProps = Omit<HTMLArkProps<"div">, "title"> &
-  BaseEmptyStateRootProps;
-export type EmptyStateMediaProps = HTMLArkProps<"div">;
+export type EmptyStateRootProps = HTMLArkProps<"div"> & EmptyStateRootContract;
+export type EmptyStateMediaProps = ComponentProps<"div">;
 export type EmptyStateTitleProps = HTMLArkProps<"h3">;
-export type EmptyStateDescriptionProps = HTMLArkProps<"p">;
-export type EmptyStateActionsProps = HTMLArkProps<"div">;
+export type EmptyStateDescriptionProps = ComponentProps<"p">;
+export type EmptyStateActionsProps = ComponentProps<"div">;
 
-type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
-
-export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
-  /** Action buttons or links. */
+export interface EmptyStateProps
+  extends Omit<EmptyStateRootProps, "children" | "title">, EmptyStateContract {
   actions?: JSX.Element;
-  /** Supporting copy. */
   description?: JSX.Element;
-  /** Icon or illustration shown above the title. */
   media?: JSX.Element;
-  /** Primary heading. */
   title?: JSX.Element;
-  /** Slot class names */
-  classNames?: EmptyStateClassNames;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "class">;
   /** Extra props forwarded to the description element */
@@ -50,15 +45,15 @@ export const EmptyStateRoot: Component<EmptyStateRootProps> = withProvider(
   { name: "Root", slot: "base" },
 );
 
-export const EmptyStateMedia = withContext(ark.div, { name: "Media" });
+export const EmptyStateMedia = withContext("div", { name: "Media" });
 
 export const EmptyStateTitle = withContext(ark.h3, { name: "Title" });
 
-export const EmptyStateDescription = withContext(ark.p, {
+export const EmptyStateDescription = withContext("p", {
   name: "Description",
 });
 
-export const EmptyStateActions = withContext(ark.div, { name: "Actions" });
+export const EmptyStateActions = withContext("div", { name: "Actions" });
 // #endregion
 
 // #region Shorthand

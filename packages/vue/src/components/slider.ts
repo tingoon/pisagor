@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue";
-import type { SliderProps as BaseSliderProps } from "@pisagor/props";
+import type { SliderContract, SliderRootContract } from "@pisagor/contracts";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, inject, provide } from "vue";
@@ -18,7 +18,7 @@ type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface SliderProps extends BaseSliderProps {
+export interface SliderProps extends SliderRootContract, SliderContract {
   class?: unknown;
   defaultValue?: number[];
   disabled?: boolean;

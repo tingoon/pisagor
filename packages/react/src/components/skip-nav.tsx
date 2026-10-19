@@ -1,15 +1,13 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type {
-  SkipNavProps as BaseSkipNavContentProps,
-  SkipNavProps as BaseSkipNavLinkProps,
-} from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 import { useLocale } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps
-  extends HTMLArkProps<"a">, BaseSkipNavLinkProps {
+  extends HTMLArkProps<"a">, SkipNavRootContract {
   /**
    * The id of the element to skip to.
    *
@@ -21,7 +19,7 @@ export interface SkipNavLinkProps
 }
 
 export interface SkipNavContentProps
-  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
+  extends ComponentPropsWithRef<"div">, SkipNavRootContract {
   /**
    * The id that SkipNavLink links to.
    *
@@ -68,7 +66,7 @@ export function SkipNavContent({
   const slots = recipe();
 
   return (
-    <ark.div
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="content"

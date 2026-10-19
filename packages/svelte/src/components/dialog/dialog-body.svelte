@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { ScrollArea } from "../scroll-area";
@@ -20,13 +19,12 @@
 </script>
 
 <ScrollArea {scrollFade}>
-  <Ark
-    as="div"
+  <div
     {...rest}
     class={slots.body({ class: cn(className) })}
     data-part="body"
     data-scope="dialog"
   >
     {@render children?.()}
-  </Ark>
-</ScrollArea>
+  </div></ScrollArea
+>

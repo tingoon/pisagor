@@ -39,7 +39,7 @@ Instruction priority: [Core Boundaries](./.rulesync/rules/core.md).
 │   ├── svelte/               Svelte UI (`@pisagor/svelte`)
 │   ├── svelte-form/          Svelte form fields (`@pisagor/svelte-form`)
 │   ├── astro/                Static Astro UI (`@pisagor/astro`)
-│   ├── props/                Shared prop contracts (`@pisagor/props`)
+│   ├── contracts/            Shared prop contracts (`@pisagor/contracts`)
 │   ├── recipes/              tv() class recipes (`@pisagor/recipes`)
 │   ├── tokens/               Design tokens / Tailwind theme (`@pisagor/tokens`)
 │   ├── utils/                Class-name helpers (`@pisagor/utils`)
@@ -48,7 +48,7 @@ Instruction priority: [Core Boundaries](./.rulesync/rules/core.md).
 └── .cursor/                  Generated Cursor output (`bun run rulesync`)
 ```
 
-`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes; `@pisagor/props` = framework-agnostic prop types. UI packages import tokens via their `styles` entries.
+`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes; `@pisagor/contracts` = framework-agnostic prop types. UI packages import tokens via their `styles` entries.
 
 Package implementation guidance lives in [`.rulesync/rules/integrations/`](./.rulesync/rules/integrations/). Prefer [`@pisagor/mcp`](./packages/mcp) (`bunx @pisagor/mcp`) when available.
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark, Select as SelectPrimitive } from "@ark-ui/svelte";
+  import { Select as SelectPrimitive } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -18,14 +18,13 @@
 <SelectPrimitive.Context>
   {#snippet render(select)}
     {#if select().empty}
-      <Ark
-        as="div"
+      <div
         {...rest}
         class={slots.empty({ class: cn(className) })}
         role="presentation"
       >
         {@render children?.()}
-      </Ark>
+      </div>
     {/if}
   {/snippet}
 </SelectPrimitive.Context>

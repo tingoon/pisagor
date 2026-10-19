@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { setSurfaceContext } from "../surface/surface.context";
   import { withContext } from "./frame.context";
@@ -15,4 +14,4 @@
   setSurfaceContext({ depth: 1, variant: "default" });
 </script>
 
-<Ark as="div" {...part.props}>{@render children?.()}</Ark>
+<div {...part.props}>{@render children?.()}</div>

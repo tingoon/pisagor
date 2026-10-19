@@ -1,12 +1,15 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import {
   focusNavigationMenuContentLink,
   handleNavigationMenuContentKeyDown,
   handleNavigationMenuListKeyDown,
 } from "@pisagor/utils";
-import type { Accessor, Component, JSX } from "solid-js";
+import type { Accessor, Component, ComponentProps, JSX } from "solid-js";
 import {
   createSignal,
   createContext as createSolidContext,
@@ -58,12 +61,15 @@ function useNavigationMenuItem(part: string) {
 
 // #region Types
 export interface NavigationMenuProps
-  extends HTMLArkProps<"nav">, BaseNavigationMenuProps {}
+  extends
+    ComponentProps<"nav">,
+    NavigationMenuRootContract,
+    NavigationMenuContract {}
 
-export type NavigationMenuPartProps = HTMLArkProps<"ul">;
-export type NavigationMenuItemProps = HTMLArkProps<"li">;
+export type NavigationMenuPartProps = ComponentProps<"ul">;
+export type NavigationMenuItemProps = ComponentProps<"li">;
 export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
-export type NavigationMenuContentProps = HTMLArkProps<"ul">;
+export type NavigationMenuContentProps = ComponentProps<"ul">;
 
 export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
@@ -72,10 +78,10 @@ export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav: Component<NavigationMenuProps> = withProvider(
-  ark.nav,
-  { name: "Root", slot: "base" },
-);
+const NavigationMenuNav: Component<NavigationMenuProps> = withProvider("nav", {
+  name: "Root",
+  slot: "base",
+});
 
 export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   const { m } = useLocale();
@@ -89,7 +95,7 @@ export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
 }
 
 const NavigationMenuListBase: Component<NavigationMenuPartProps> = withContext(
-  ark.ul,
+  "ul",
   { name: "List" },
 );
 
@@ -112,7 +118,7 @@ export function NavigationMenuList(
 }
 
 const NavigationMenuItemBase: Component<NavigationMenuItemProps> = withContext(
-  ark.li,
+  "li",
   { name: "Item" },
 );
 
@@ -215,7 +221,7 @@ export function NavigationMenuContent(
   const item = useNavigationMenuItem("Content");
 
   return (
-    <ark.ul
+    <ul
       {...rest}
       class={styles.slots.content({ class: local.class })}
       data-part="content"

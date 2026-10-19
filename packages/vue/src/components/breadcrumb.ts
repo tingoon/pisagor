@@ -1,9 +1,12 @@
 import { ark } from "@ark-ui/vue";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbRootProps,
-} from "@pisagor/props";
+  BreadcrumbItemRootContract,
+  BreadcrumbItemContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+  BreadcrumbContract,
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import {
   computed,
@@ -35,13 +38,19 @@ const {
 // #endregion
 
 // #region Types
-export interface BreadcrumbPresetItem {
+export interface BreadcrumbPresetItem extends Omit<
+  BaseBreadcrumbPresetItem,
+  "label"
+> {
   href?: string;
   isCurrentPage?: boolean;
   label: VNodeChild;
 }
 
-export interface BreadcrumbRootProps extends BaseBreadcrumbRootProps {
+export interface BreadcrumbRootProps extends Omit<
+  BreadcrumbRootContract,
+  "items"
+> {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -50,16 +59,16 @@ export interface BreadcrumbRootProps extends BaseBreadcrumbRootProps {
   ariaLabel?: string;
 }
 
-export interface BreadcrumbProps extends BreadcrumbRootProps {
+export interface BreadcrumbProps
+  extends BreadcrumbRootProps, BreadcrumbRootContract, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 
-export interface BreadcrumbItemProps extends BaseBreadcrumbItemProps {
+export interface BreadcrumbItemProps
+  extends BreadcrumbItemRootContract, BreadcrumbItemContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 export const BreadcrumbRoot = defineComponent({
@@ -85,7 +94,7 @@ export const BreadcrumbRoot = defineComponent({
 
     return () =>
       h(
-        ark.nav as ArkPart,
+        "nav",
         {
           ...attrs,
           "aria-label": m("breadcrumb.label", props.ariaLabel),
@@ -97,12 +106,12 @@ export const BreadcrumbRoot = defineComponent({
   },
 });
 
-export const BreadcrumbList = withBreadcrumbContext(ark.ol, {
+export const BreadcrumbList = withBreadcrumbContext("ol", {
   defaultProps: { role: "list" },
   name: "List",
 });
 
-export const BreadcrumbItem = withBreadcrumbItemProvider(ark.li, {
+export const BreadcrumbItem = withBreadcrumbItemProvider("li", {
   name: "Item",
   slot: "base",
 });
@@ -111,7 +120,7 @@ export const BreadcrumbLink = withBreadcrumbItemContext(ark.a, {
   name: "Link",
 });
 
-export const BreadcrumbPage = withBreadcrumbItemContext(ark.span, {
+export const BreadcrumbPage = withBreadcrumbItemContext("span", {
   defaultProps: { "aria-current": "page" },
   name: "Page",
 });
@@ -130,7 +139,7 @@ export const BreadcrumbSeparator = defineComponent({
 
     return () =>
       h(
-        ark.li as ArkPart,
+        "li",
         {
           ...attrs,
           "aria-hidden": "true",
@@ -152,7 +161,7 @@ export const BreadcrumbEllipsis = defineComponent({
 
     return () =>
       h(
-        ark.span as ArkPart,
+        "span",
         {
           ...attrs,
           "aria-hidden": "true",

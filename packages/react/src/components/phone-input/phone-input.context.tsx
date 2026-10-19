@@ -1,19 +1,17 @@
+import type { PhoneInputContract } from "@pisagor/contracts";
 import type {
   PhoneInputRecipe,
-  PhoneInputRecipeSlot,
   PhoneInputVariantProps,
 } from "@pisagor/recipes";
 import type { ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
-import type { FormControlVariant, VariantClassNames } from "../../internal";
+import type { FormControlVariant } from "../../internal";
 import { createContext } from "../../utils";
-
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 interface PhoneInputContextValue {
-  classNames?: PhoneInputClassNames;
+  classNames?: PhoneInputContract["classNames"];
   inputProps?: Omit<
     InputProps,
     "className" | "onChange" | "onBlur" | "size" | "type" | "value"

@@ -1,12 +1,11 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue";
-import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
-import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
+import type {
+  ScrollAreaContract,
+  ScrollAreaRootContract,
+} from "@pisagor/contracts";
+import { scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -51,11 +50,10 @@ const ScrollAreaViewport = defineComponent({
 });
 
 // #region Types
-type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
-export interface ScrollAreaProps extends BaseScrollAreaRootProps {
+export interface ScrollAreaProps
+  extends ScrollAreaRootContract, ScrollAreaContract {
   class?: unknown;
-  classNames?: ScrollAreaClassNames;
   scrollFade?: boolean;
   scrollbarProps?: Record<string, unknown>;
   thumbProps?: Record<string, unknown>;
@@ -74,7 +72,7 @@ const ScrollAreaShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<ScrollAreaClassNames>,
+      type: Object as PropType<ScrollAreaProps["classNames"]>,
     },
     scrollbarProps: {
       default: undefined,

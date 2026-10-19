@@ -1,6 +1,9 @@
 <script lang="ts">
   import { Portal } from "@ark-ui/svelte";
-  import type { CommandProps as BaseCommandProps } from "@pisagor/props";
+  import type {
+    CommandDialogContract,
+    CommandRootContract,
+  } from "@pisagor/contracts";
   import { commandRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
@@ -21,7 +24,8 @@
   > & {
     description?: string;
     title?: string;
-  } & BaseCommandProps;
+  } & CommandDialogContract &
+    Pick<CommandRootContract, "recipe">;
 
   let {
     size = "lg",

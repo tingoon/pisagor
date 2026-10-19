@@ -1,10 +1,13 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  BreadcrumbItemProps as BaseBreadcrumbItemProps,
-  BreadcrumbProps as BaseBreadcrumbProps,
-} from "@pisagor/props";
+  BreadcrumbItemRootContract,
+  BreadcrumbItemContract,
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+  BreadcrumbContract,
+} from "@pisagor/contracts";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import {
   CaretRightIcon,
@@ -29,26 +32,31 @@ const {
 });
 // #endregion
 
-interface BreadcrumbPresetItem {
+interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
   label: JSX.Element;
-  href?: string;
-  isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = HTMLArkProps<"ol">;
+export type BreadcrumbListProps = ComponentProps<"ol">;
 export interface BreadcrumbItemProps
-  extends HTMLArkProps<"li">, BaseBreadcrumbItemProps {}
+  extends
+    ComponentProps<"li">,
+    BreadcrumbItemRootContract,
+    BreadcrumbItemContract {}
 export type BreadcrumbLinkProps = HTMLArkProps<"a">;
-export type BreadcrumbPageProps = HTMLArkProps<"span">;
-export type BreadcrumbSeparatorProps = HTMLArkProps<"li">;
-export type BreadcrumbEllipsisProps = HTMLArkProps<"span">;
+export type BreadcrumbPageProps = ComponentProps<"span">;
+export type BreadcrumbSeparatorProps = ComponentProps<"li">;
+export type BreadcrumbEllipsisProps = ComponentProps<"span">;
 
 export interface BreadcrumbRootProps
-  extends HTMLArkProps<"nav">, BaseBreadcrumbProps {
+  extends ComponentProps<"nav">, Omit<BreadcrumbRootContract, "items"> {
   "aria-label"?: string;
 }
 
-export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
+export interface BreadcrumbProps
+  extends
+    Omit<BreadcrumbRootProps, "children" | "recipe">,
+    BreadcrumbRootContract,
+    BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
 }
 
@@ -66,26 +74,26 @@ export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
         variants: {},
       }}
     >
-      <ark.nav
+      <nav
         {...rest}
         aria-label={m("breadcrumb.label", local["aria-label"])}
         data-part="root"
         data-scope="breadcrumb"
       >
         {local.children}
-      </ark.nav>
+      </nav>
     </BreadcrumbStylesContext>
   );
 }
 
 export const BreadcrumbList: Component<BreadcrumbListProps> =
-  withBreadcrumbContext(ark.ol, {
+  withBreadcrumbContext("ol", {
     defaultProps: { role: "list" },
     name: "List",
   });
 
 export const BreadcrumbItem: Component<BreadcrumbItemProps> =
-  withBreadcrumbItemProvider(ark.li, {
+  withBreadcrumbItemProvider("li", {
     name: "Item",
     slot: "base",
   });
@@ -94,7 +102,7 @@ export const BreadcrumbLink: Component<BreadcrumbLinkProps> =
   withBreadcrumbItemContext(ark.a, { name: "Link" });
 
 export const BreadcrumbPage: Component<BreadcrumbPageProps> =
-  withBreadcrumbItemContext(ark.span, {
+  withBreadcrumbItemContext("span", {
     defaultProps: { "aria-current": "page" },
     name: "Page",
   });
@@ -106,7 +114,7 @@ export function BreadcrumbSeparator(
   const styles = useStyles();
 
   return (
-    <ark.li
+    <li
       {...rest}
       aria-hidden="true"
       class={styles.slots.separator({ class: local.class })}
@@ -115,7 +123,7 @@ export function BreadcrumbSeparator(
       role="presentation"
     >
       {local.children ?? <CaretRightIcon />}
-    </ark.li>
+    </li>
   );
 }
 
@@ -125,7 +133,7 @@ export function BreadcrumbEllipsis(
   const styles = useStyles();
 
   return (
-    <ark.span
+    <span
       {...props}
       aria-hidden="true"
       data-part="ellipsis"
@@ -133,7 +141,7 @@ export function BreadcrumbEllipsis(
       role="presentation"
     >
       <DotsThreeIcon class={styles.slots.ellipsis()} />
-    </ark.span>
+    </span>
   );
 }
 

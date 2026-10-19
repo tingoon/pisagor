@@ -1,10 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface SeparatorProps
-  extends HTMLArkProps<"div">, BaseSeparatorProps {
+  extends ComponentPropsWithRef<"div">, SeparatorRootContract {
   /**
    * The orientation of the separator.
    *
@@ -29,7 +29,7 @@ export function Separator({
   ...rest
 }: SeparatorProps) {
   return (
-    <ark.div
+    <div
       {...rest}
       aria-orientation={decorative ? undefined : orientation}
       className={recipe({ className })}

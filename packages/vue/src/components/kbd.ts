@@ -1,24 +1,18 @@
-import { ark } from "@ark-ui/vue";
-import type {
-  KbdGroupProps as BaseKbdGroupProps,
-  KbdProps as BaseKbdProps,
-} from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/contracts";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface KbdProps extends BaseKbdProps {
+export interface KbdProps extends KbdRootContract {
   class?: unknown;
 }
 
-export interface KbdGroupProps extends BaseKbdGroupProps {
+export interface KbdGroupProps extends KbdGroupRootContract {
   class?: unknown;
 }
 // #endregion
-
-type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 export const KbdRoot = defineComponent({
@@ -45,7 +39,7 @@ export const KbdRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.kbd as ArkPart,
+        "kbd",
         {
           ...attrs,
           class: cn(
@@ -76,7 +70,7 @@ export const KbdGroup = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        ark.div as ArkPart,
+        "div",
         {
           ...attrs,
           class: cn(props.recipe(), props.class),

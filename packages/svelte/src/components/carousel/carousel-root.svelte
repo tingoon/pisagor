@@ -3,10 +3,10 @@
     Carousel as CarouselPrimitive,
     type CarouselRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
+  import type { CarouselRootContract } from "@pisagor/contracts";
   import { withProvider } from "./carousel.context";
 
-  type Props = ArkRootProps & BaseCarouselProps;
+  type Props = ArkRootProps & Omit<CarouselRootContract, "slides">;
 
   let {
     children,
