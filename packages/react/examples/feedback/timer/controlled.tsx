@@ -13,7 +13,7 @@ export function Controlled() {
       </output>
       <Card className="rounded-3xl [--space:--spacing(6)]">
         <Card.Content>
-          <Timer
+          <Timer.Root
             className="items-center gap-2"
             onComplete={() => setCompleted(true)}
             onTick={() => setTicks((t) => t + 1)}
@@ -42,7 +42,7 @@ export function Controlled() {
                 </Button>
               </Timer.Reset>
             </Timer.Control>
-          </Timer>
+          </Timer.Root>
         </Card.Content>
       </Card>
     </div>

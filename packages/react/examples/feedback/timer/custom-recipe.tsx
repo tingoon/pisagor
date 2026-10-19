@@ -13,7 +13,7 @@ const brandTimerRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <Timer autoStart recipe={brandTimerRecipe}>
+    <Timer.Root autoStart recipe={brandTimerRecipe}>
       <Timer.Area>
         <Timer.ItemGroup>
           <Timer.Item type="days" />
@@ -35,6 +35,6 @@ export function CustomRecipe() {
           <Timer.ItemLabel>Seconds</Timer.ItemLabel>
         </Timer.ItemGroup>
       </Timer.Area>
-    </Timer>
+    </Timer.Root>
   );
 }

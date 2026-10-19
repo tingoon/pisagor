@@ -4,7 +4,7 @@ export function OrientationVertical() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer
+        <Timer.Root
           autoStart
           className="items-center gap-2"
           countdown
@@ -21,7 +21,7 @@ export function OrientationVertical() {
               <Timer.ItemLabel>seconds</Timer.ItemLabel>
             </Timer.ItemGroup>
           </Timer.Area>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   );

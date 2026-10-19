@@ -5,7 +5,7 @@ export function Interval() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer interval={100} targetMs={60 * 1000}>
+        <Timer.Root interval={100} targetMs={60 * 1000}>
           <Timer.Area>
             <Timer.ItemGroup>
               <Timer.Item type="seconds" />
@@ -29,7 +29,7 @@ export function Interval() {
               </Button>
             </Timer.Pause>
           </Timer.Control>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   );
