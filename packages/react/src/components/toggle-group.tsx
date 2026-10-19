@@ -8,11 +8,16 @@ import type {
   ToggleGroupRootContract,
   ToggleGroupContract,
 } from "@pisagor/contracts";
-import { toggleGroupRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  toggleGroupRecipe,
+  toggleRecipe,
+} from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { Toggle, type ToggleProps } from "./toggle";
+import type { ToggleProps } from "./toggle";
 
 // #region Context
 const { Context: ToggleGroupStylesContext, useStyles } =
@@ -115,34 +120,37 @@ export function ToggleGroupRoot({
   );
 }
 
-export function ToggleGroupItem({
-  value,
-  className,
-  ...rest
-}: ToggleGroupItemProps) {
+/** Item; styled like `Toggle` from the group's `variant` / `size`. */
+export function ToggleGroupItem({ className, ...rest }: ToggleGroupItemProps) {
   const { slots, variant, size, spacing } = useToggleGroup();
 
   return (
-    <ToggleGroupPrimitive.Item asChild value={value}>
-      <Toggle
-        {...rest}
-        className={slots.item({ className })}
-        data-spacing={spacing}
-        data-variant={variant}
-        size={size}
-        variant={variant}
-      />
-    </ToggleGroupPrimitive.Item>
+    <ToggleGroupPrimitive.Item
+      {...rest}
+      className={cn(
+        buttonRecipe({ clickEffect: false, variant }).base(),
+        toggleRecipe({ size }),
+        slots.item({ className }),
+      )}
+      data-spacing={spacing}
+      data-variant={variant}
+    />
   );
 }
 // #endregion
 
 // #region Shorthand
-export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
+export function ToggleGroupShorthand({
+  classNames,
+  className,
+  items,
+  ...rest
+}: ToggleGroupProps) {
   return (
-    <ToggleGroupRoot {...rest}>
+    <ToggleGroupRoot {...rest} className={cn(classNames?.base, className)}>
       {items?.map((item) => (
         <ToggleGroupItem
+          className={classNames?.item}
           disabled={item.disabled}
           key={item.value}
           value={item.value}
