@@ -7,6 +7,7 @@ export function Compound() {
         <Tabs.Trigger value="tab-1">Profile</Tabs.Trigger>
         <Tabs.Trigger value="tab-2">Settings</Tabs.Trigger>
         <Tabs.Trigger value="tab-3">Security</Tabs.Trigger>
+        <Tabs.Indicator />
       </Tabs.List>
       <Tabs.Content
         className="text-muted-foreground p-4 text-center text-xs"

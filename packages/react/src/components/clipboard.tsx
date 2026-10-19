@@ -1,37 +1,33 @@
 import {
   Clipboard as ClipboardPrimitive,
-  type ClipboardRootProps,
+  type ClipboardRootProps as ClipboardRootPrimitiveProps,
 } from "@ark-ui/react";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
 import type {
   ClipboardContract,
   ClipboardRootContract,
 } from "@pisagor/contracts";
-import {
-  type ClipboardVariantProps,
-  clipboardRecipe,
-  formControlShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { clipboardRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
-import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: ClipboardStylesContext, withContext } =
-  createSlotRecipeContext({
-    name: "Clipboard",
-    recipe: clipboardRecipe,
-  });
+const { Context, withContext } = createSlotRecipeContext({
+  name: "Clipboard",
+  recipe: clipboardRecipe,
+});
 // #endregion
 
 // #region Types
+type ClipboardRootProps = ClipboardRootPrimitiveProps & ClipboardRootContract;
+
 export interface ClipboardProps
   extends
-    Omit<ClipboardRootProps, "children">,
-    ClipboardRootContract,
+    Omit<ClipboardRootProps, "children" | "variant">,
+    Omit<ClipboardRootContract, "variant">,
     ClipboardContract {
   copiedIcon?: ReactNode;
   copyIcon?: ReactNode;
@@ -45,85 +41,78 @@ export interface ClipboardProps
 // #endregion
 
 // #region Parts
-function ClipboardProvider({
+function Root({
   size = "md",
-  valueSize = "md",
-  children,
+  valueSize,
+  variant,
+  surfaceVariant,
   recipe = clipboardRecipe,
-}: {
-  children: ReactNode;
-  size?: ClipboardVariantProps["size"];
-  valueSize?: ClipboardVariantProps["valueSize"];
-  /**
-   * Style recipe. Defaults to `clipboardRecipe` from
-   * `@pisagor/recipes/clipboard`.
-   *
-   * @defaultValue clipboardRecipe
-   */
-  recipe?: typeof clipboardRecipe;
-}) {
-  const slots = recipe({ size, valueSize });
+  className,
+  children,
+  ...rest
+}: ClipboardRootProps) {
+  const surfaceFromContext = useFormControlSurface();
+  const resolved = {
+    size,
+    surfaceVariant: surfaceVariant ?? surfaceFromContext,
+    valueSize: valueSize ?? size,
+    variant,
+  };
+  const slots = recipe(resolved);
 
   return (
-    <ClipboardStylesContext
-      value={{ slots, variants: { size, valueSize } as never }}
-    >
-      {children}
-    </ClipboardStylesContext>
+    <Context value={{ slots, variants: resolved as never }}>
+      <ClipboardPrimitive.Root {...rest} className={className}>
+        {children}
+      </ClipboardPrimitive.Root>
+    </Context>
   );
 }
 
-function ClipboardRoot({ children, className, ...rest }: ClipboardRootProps) {
-  return (
-    <ClipboardPrimitive.Root {...rest} className={className}>
-      {children}
-    </ClipboardPrimitive.Root>
-  );
-}
+const Control = withContext<ComponentProps<typeof ClipboardPrimitive.Control>>(
+  ClipboardPrimitive.Control,
+  {
+    name: "Control",
+  },
+);
 
-const ClipboardControl = withContext<
-  ComponentProps<typeof ClipboardPrimitive.Control>
->(ClipboardPrimitive.Control, {
-  name: "Control",
-});
+const Input = withContext<ComponentProps<typeof ClipboardPrimitive.Input>>(
+  ClipboardPrimitive.Input,
+  {
+    name: "Input",
+  },
+);
 
-const ClipboardInput = withContext<
-  ComponentProps<typeof ClipboardPrimitive.Input>
->(ClipboardPrimitive.Input, {
-  name: "Input",
-});
-
-const ClipboardValue = withContext<
+const ValueText = withContext<
   ComponentProps<typeof ClipboardPrimitive.ValueText>
->(ClipboardPrimitive.ValueText, {
-  name: "Value",
-});
+>(ClipboardPrimitive.ValueText, { name: "ValueText" });
 
-const ClipboardIndicator = withContext<
+const Indicator = withContext<
   ComponentProps<typeof ClipboardPrimitive.Indicator>
 >(ClipboardPrimitive.Indicator, {
   name: "Indicator",
 });
 
-const ClipboardField = withContext<ComponentProps<"div">>("div", {
+const Field = withContext<ComponentProps<"div">>("div", {
   name: "Field",
 });
 
-const ClipboardLabel = withContext<
-  ComponentProps<typeof ClipboardPrimitive.Label>
->(ClipboardPrimitive.Label, {
-  name: "Label",
-});
+const Label = withContext<ComponentProps<typeof ClipboardPrimitive.Label>>(
+  ClipboardPrimitive.Label,
+  {
+    name: "Label",
+  },
+);
 // #endregion
 
 // #region Closed
-export function Clipboard({
+function ClipboardShorthand({
   size = "md",
   buttonSize = `icon-${size ?? "md"}` as ButtonProps["size"],
   buttonVariant,
-  controlVariant: controlVariantProp,
+  controlVariant,
   valueSize = size ?? "md",
-  variant = "input",
+  variant: displayVariant = "input",
   buttonAriaLabel: buttonAriaLabelProp,
   copiedIcon = <CheckIcon />,
   copyIcon = <ClipboardIcon />,
@@ -136,32 +125,15 @@ export function Clipboard({
 }: ClipboardProps) {
   const { m } = useLocale();
   const buttonAriaLabel = m("clipboard.copy", buttonAriaLabelProp);
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: controlVariantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-  const shellClassName = formControlShellRecipe({ size, ...shellArgs });
 
   const control = (
-    <ClipboardControl className={classNames?.control}>
-      {variant === "input" && (
-        <ClipboardInput
-          {...controlProps}
-          className={cn(shellClassName, classNames?.input)}
-          readOnly
-        />
+    <Control className={classNames?.control}>
+      {displayVariant === "input" && (
+        <Input className={classNames?.input} readOnly />
       )}
 
-      {variant === "value" && (
-        <ClipboardValue
-          {...controlProps}
-          className={cn(shellClassName, classNames?.value)}
-        />
+      {displayVariant === "value" && (
+        <ValueText className={classNames?.valueText} />
       )}
 
       <ClipboardPrimitive.Trigger asChild>
@@ -171,38 +143,44 @@ export function Clipboard({
           type="button"
           variant={buttonVariant}
         >
-          <ClipboardIndicator
-            className={classNames?.indicator}
-            copied={copiedIcon}
-          >
+          <Indicator className={classNames?.indicator} copied={copiedIcon}>
             {copyIcon}
-          </ClipboardIndicator>
+          </Indicator>
         </Button>
       </ClipboardPrimitive.Trigger>
-    </ClipboardControl>
+    </Control>
   );
 
   return (
-    <ClipboardProvider recipe={recipe} size={size} valueSize={valueSize}>
-      <ClipboardRoot {...rest} className={className}>
-        {label ? (
-          <ClipboardField className={classNames?.field}>
-            <ClipboardLabel {...labelProps} className={classNames?.label}>
-              {label}
-            </ClipboardLabel>
-            {control}
-          </ClipboardField>
-        ) : (
-          control
-        )}
-      </ClipboardRoot>
-    </ClipboardProvider>
+    <Root
+      {...rest}
+      className={className}
+      recipe={recipe}
+      size={size}
+      valueSize={valueSize}
+      variant={controlVariant}
+    >
+      {label ? (
+        <Field className={classNames?.field}>
+          <Label {...labelProps} className={classNames?.label}>
+            {label}
+          </Label>
+          {control}
+        </Field>
+      ) : (
+        control
+      )}
+    </Root>
   );
 }
 // #endregion
 
-// #region Display Names
-ClipboardProvider.displayName = "Clipboard.Provider";
-ClipboardRoot.displayName = "Clipboard.Root";
-Clipboard.displayName = "Clipboard";
-// #endregion
+export const Clipboard = Object.assign(ClipboardShorthand, {
+  Control,
+  Field,
+  Indicator,
+  Input,
+  Label,
+  Root,
+  ValueText,
+});

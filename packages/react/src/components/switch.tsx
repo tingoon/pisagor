@@ -1,5 +1,4 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/react";
-import type { ComponentProps } from "react";
 import type {
   SwitchControlProps,
   SwitchHiddenInputProps,
@@ -9,21 +8,16 @@ import type {
 import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
-import type { FormControlVariant } from "../internal";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Switch",
   recipe: switchRecipe,
 });
 // #endregion
 
 // #region Types
-type SwitchRootProps = SwitchRootPrimitiveProps & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-} & SwitchRootContract;
+type SwitchRootProps = SwitchRootPrimitiveProps & SwitchRootContract;
 
 export interface SwitchProps
   extends Omit<SwitchRootProps, "children">, SwitchContract {
@@ -37,60 +31,25 @@ export interface SwitchProps
 // #endregion
 
 // #region Parts
-function SwitchRoot({
-  size = "md",
-  variant: variantProp,
-  children,
-  recipe = switchRecipe,
-  className,
-  ...rest
-}: SwitchRootProps) {
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlShellProps = { "data-variant": resolved.variant };
-  const slots = recipe({ ...shellArgs, size });
+const Root = withProvider<SwitchRootProps>(SwitchPrimitive.Root, {
+  name: "Root",
+});
 
-  return (
-    <SwitchStylesContext value={{ slots, variants: shellArgs as never }}>
-      <SwitchPrimitive.Root
-        {...rest}
-        {...controlShellProps}
-        className={slots.base({ className })}
-      >
-        {children}
-      </SwitchPrimitive.Root>
-    </SwitchStylesContext>
-  );
-}
-
-const SwitchControl = withContext<
-  ComponentProps<typeof SwitchPrimitive.Control>
->(SwitchPrimitive.Control, {
+const Control = withContext<SwitchControlProps>(SwitchPrimitive.Control, {
   name: "Control",
 });
 
-const SwitchThumb = withContext<ComponentProps<typeof SwitchPrimitive.Thumb>>(
-  SwitchPrimitive.Thumb,
-  {
-    name: "Thumb",
-  },
-);
+const Thumb = withContext<SwitchThumbProps>(SwitchPrimitive.Thumb, {
+  name: "Thumb",
+});
 
-function SwitchHiddenInput(props: SwitchHiddenInputProps) {
+function HiddenInput(props: SwitchHiddenInputProps) {
   return <SwitchPrimitive.HiddenInput {...props} />;
 }
 // #endregion
 
 // #region Closed
 function SwitchShorthand({
-  size,
-  variant,
   controlProps,
   hiddenInputProps,
   thumbProps,
@@ -99,23 +58,15 @@ function SwitchShorthand({
   ...rest
 }: SwitchProps) {
   return (
-    <SwitchRoot {...rest} className={className} size={size} variant={variant}>
-      <SwitchControl {...controlProps} className={classNames?.control}>
-        <SwitchThumb {...thumbProps} className={classNames?.thumb} />
-      </SwitchControl>
+    <Root {...rest} className={className}>
+      <Control {...controlProps} className={classNames?.control}>
+        <Thumb {...thumbProps} className={classNames?.thumb} />
+      </Control>
 
-      <SwitchHiddenInput {...hiddenInputProps} />
-    </SwitchRoot>
+      <HiddenInput {...hiddenInputProps} />
+    </Root>
   );
 }
-// #endregion
-
-// #region Display Names
-SwitchRoot.displayName = "Switch.Root";
-SwitchHiddenInput.displayName = "Switch.HiddenInput";
-SwitchControl.displayName = "Switch.Control";
-SwitchThumb.displayName = "Switch.Thumb";
-
 // #endregion
 
 export type {
@@ -125,8 +76,8 @@ export type {
 } from "@ark-ui/react";
 
 export const Switch = Object.assign(SwitchShorthand, {
-  Control: SwitchControl,
-  HiddenInput: SwitchHiddenInput,
-  Root: SwitchRoot,
-  Thumb: SwitchThumb,
+  Control,
+  HiddenInput,
+  Root,
+  Thumb,
 });

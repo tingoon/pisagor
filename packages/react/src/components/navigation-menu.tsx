@@ -108,10 +108,7 @@ function focusContentLink(contentId: string, position: "first" | "last") {
 // #region Parts
 const NavigationMenuNav = withProvider<
   ComponentProps<"nav"> & NavigationMenuRootContract
->("nav", {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<NavigationMenuProps>;
+>("nav", { name: "Root" }) as FunctionComponent<NavigationMenuProps>;
 
 export function NavigationMenuRoot({
   "aria-label": ariaLabel,

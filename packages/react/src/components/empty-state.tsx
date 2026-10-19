@@ -17,32 +17,23 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const EmptyStateRoot = withProvider<
   ComponentProps<typeof ark.div> & EmptyStateRootContract
->(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+>(ark.div, { name: "Root" });
 
 export const EmptyStateMedia = withContext<ComponentProps<"div">>("div", {
   name: "Media",
-  slot: "media",
 });
 
 export const EmptyStateTitle = withContext<ComponentProps<typeof ark.h3>>(
   ark.h3,
-  {
-    name: "Title",
-    slot: "title",
-  },
+  { name: "Title" },
 );
 
 export const EmptyStateDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
-  slot: "description",
 });
 
 export const EmptyStateActions = withContext<ComponentProps<"div">>("div", {
   name: "Actions",
-  slot: "actions",
 });
 // #endregion
 

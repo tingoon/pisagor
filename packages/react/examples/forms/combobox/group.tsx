@@ -1,5 +1,6 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { Combobox } from "@pisagor/react";
+import { Portal, useFilter, useListCollection } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
+import { Combobox, InputGroup } from "@pisagor/react";
 
 export function Group() {
   const initialItems = [
@@ -26,20 +27,41 @@ export function Group() {
       collection={collection}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Combobox.Input placeholder="Select a timezone" />
-      <Combobox.Content className="w-60">
-        <Combobox.List>
-          {collection.group().map(([continent, group]) => (
-            <Combobox.ItemGroup heading={continent} key={continent}>
-              {group.map((item) => (
-                <Combobox.Item item={item} key={item.value}>
-                  {item.label}
-                </Combobox.Item>
+      <Combobox.Control>
+        <InputGroup>
+          <Combobox.Input asChild>
+            <InputGroup.Input placeholder="Select a timezone" />
+          </Combobox.Input>
+          <InputGroup.Addon align="inline-end">
+            <InputGroup.Button asChild size="icon-xs" variant="ghost">
+              <Combobox.Trigger>
+                <CaretUpDownIcon aria-hidden />
+              </Combobox.Trigger>
+            </InputGroup.Button>
+          </InputGroup.Addon>
+        </InputGroup>
+      </Combobox.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Combobox.Content className="w-60">
+            <Combobox.List>
+              {collection.group().map(([continent, group]) => (
+                <Combobox.ItemGroup key={continent}>
+                  <Combobox.ItemGroupLabel>{continent}</Combobox.ItemGroupLabel>
+                  {group.map((item) => (
+                    <Combobox.Item item={item} key={item.value} persistFocus>
+                      {item.label}
+                      <Combobox.ItemIndicator>
+                        <CheckIcon />
+                      </Combobox.ItemIndicator>
+                    </Combobox.Item>
+                  ))}
+                </Combobox.ItemGroup>
               ))}
-            </Combobox.ItemGroup>
-          ))}
-        </Combobox.List>
-      </Combobox.Content>
+            </Combobox.List>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Combobox.Root>
   );
 }

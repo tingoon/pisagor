@@ -7,7 +7,8 @@ export function GroupLabel() {
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.ItemGroup heading="Account">
+        <DropdownMenu.ItemGroup>
+          <DropdownMenu.ItemGroupLabel>Account</DropdownMenu.ItemGroupLabel>
           <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
           <DropdownMenu.Item value="billing">Billing</DropdownMenu.Item>
         </DropdownMenu.ItemGroup>

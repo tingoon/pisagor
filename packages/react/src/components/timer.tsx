@@ -65,7 +65,6 @@ export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #region Parts
 const TimerRootBase = withTimerProvider<TimerRootProps>(TimerPrimitive.Root, {
   name: "Root",
-  slot: "base",
 });
 
 export function TimerRoot({
@@ -155,7 +154,6 @@ TimerItem.displayName = "Timer.Item";
 export const TimerItemLabel = withTimerItemGroupContext<ComponentProps<"div">>(
   "div",
   {
-    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",
   },

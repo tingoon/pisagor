@@ -45,10 +45,7 @@ export type StepsDescriptionProps = ComponentProps<"span">;
 // #region Parts
 export const StepsRoot = withStepsProvider<
   ComponentProps<typeof StepsPrimitive.Root> & StepsRootContract
->(StepsPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<StepsRootProps>;
+>(StepsPrimitive.Root, { name: "Root" }) as FunctionComponent<StepsRootProps>;
 
 export const StepsList = withStepsContext<
   ComponentProps<typeof StepsPrimitive.List>
@@ -112,11 +109,7 @@ export const StepsContent = withStepsContext<
 
 export const StepsCompletedContent = withStepsContext<
   ComponentProps<typeof StepsPrimitive.CompletedContent>
->(StepsPrimitive.CompletedContent, {
-  defaultProps: { "data-part": "completed-content" },
-  name: "CompletedContent",
-  slot: "completedContent",
-});
+>(StepsPrimitive.CompletedContent, { name: "CompletedContent" });
 
 export function StepsPrevTrigger(props: StepsPrevTriggerProps) {
   return <StepsPrimitive.PrevTrigger {...props} />;

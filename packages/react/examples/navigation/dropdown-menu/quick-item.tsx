@@ -15,7 +15,8 @@ export function QuickItem() {
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-44">
-        <DropdownMenu.ItemGroup heading="Actions">
+        <DropdownMenu.ItemGroup>
+          <DropdownMenu.ItemGroupLabel>Actions</DropdownMenu.ItemGroupLabel>
           <DropdownMenu.Item value="edit">
             <PencilIcon />
             Edit

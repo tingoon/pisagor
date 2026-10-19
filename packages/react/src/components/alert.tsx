@@ -41,10 +41,7 @@ export interface AlertProps
 // #endregion
 
 // #region Parts
-export const AlertRoot = withProvider<AlertRootProps>("div", {
-  name: "Root",
-  slot: "base",
-});
+export const AlertRoot = withProvider<AlertRootProps>("div", { name: "Root" });
 
 export const AlertTitle = withContext<AlertTitleProps>("div", {
   name: "Title",

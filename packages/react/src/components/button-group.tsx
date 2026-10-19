@@ -14,14 +14,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const ButtonGroupRoot = withProvider<
   ComponentProps<"fieldset"> & ButtonGroupRootContract
->("fieldset", {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<ComponentProps<"fieldset"> & ButtonGroupRootContract>;
+>("fieldset", { name: "Root" }) as FunctionComponent<
+  ComponentProps<"fieldset"> & ButtonGroupRootContract
+>;
 
 export const ButtonGroupText = withContext<ComponentProps<"div">>("div", {
   name: "Text",
-  slot: "text",
 });
 
 export function ButtonGroupSeparator({

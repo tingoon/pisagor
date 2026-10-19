@@ -35,7 +35,8 @@ export function WithFooter() {
         <Command.Empty />
         <Command.List>
           {collection.group().map(([group, items]) => (
-            <Command.ItemGroup heading={group} key={group}>
+            <Command.ItemGroup key={group}>
+              <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
               {items.map((item) => (
                 <Command.Item item={item} key={item.value}>
                   {item.label}

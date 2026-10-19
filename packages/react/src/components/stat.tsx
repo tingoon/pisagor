@@ -19,25 +19,19 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const StatRoot = withProvider<ComponentProps<"div"> & StatRootContract>(
   "div",
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export const StatLabel = withContext<ComponentProps<"div">>("div", {
   name: "Label",
-  slot: "label",
 });
 
 export const StatValue = withContext<ComponentProps<"div">>("div", {
   name: "Value",
-  slot: "value",
 });
 
 export const StatDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
-  slot: "description",
 });
 
 const TREND_ICONS = {

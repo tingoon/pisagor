@@ -17,14 +17,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const AnnouncementRoot = withProvider<
   ComponentProps<typeof ark.div> & AnnouncementRootContract
->(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+>(ark.div, { name: "Root" });
 
 export const AnnouncementTitle = withContext<ComponentProps<"span">>("span", {
   name: "Title",
-  slot: "title",
 });
 // #endregion
 

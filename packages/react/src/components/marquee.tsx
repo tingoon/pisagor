@@ -43,10 +43,7 @@ export interface MarqueeProps
 // #region Parts
 const MarqueeRootBase = withProvider<
   ComponentProps<typeof MarqueePrimitive.Root> & MarqueeRootContract
->(MarqueePrimitive.Root, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+>(MarqueePrimitive.Root, { name: "Root" }) as FunctionComponent<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
 >;
 

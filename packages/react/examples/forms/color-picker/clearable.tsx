@@ -13,7 +13,7 @@ export function Clearable() {
       <Field>
         <Field.Label>Input group</Field.Label>
         <ColorPicker onValueChange={setValue} value={value}>
-          <ColorPicker.Control clearable={false}>
+          <ColorPicker.Control>
             <InputGroup>
               <ColorPicker.Trigger asChild>
                 <InputGroup.Addon>
@@ -21,7 +21,7 @@ export function Clearable() {
                 </InputGroup.Addon>
               </ColorPicker.Trigger>
               <ColorPicker.Input asChild>
-                <InputGroup.Input clearable={false} />
+                <InputGroup.Input />
               </ColorPicker.Input>
               <ColorPicker.ClearTrigger />
             </InputGroup>

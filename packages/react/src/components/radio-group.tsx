@@ -1,55 +1,57 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react";
 import type {
+  RadioGroupItemControlProps,
+  RadioGroupItemHiddenInputProps,
   RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
   RadioGroupRootProps as RadioGroupRootPrimitiveProps,
 } from "@ark-ui/react";
 import type {
+  RadioGroupContract,
   RadioGroupItemRootContract,
   RadioGroupPresetItem as BaseRadioGroupPresetItem,
   RadioGroupRootContract,
-  RadioGroupContract,
 } from "@pisagor/contracts";
 import {
   fieldRecipe,
-  formControlRadioToggleRecipe,
   radioGroupItemRecipe,
   radioGroupRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
-import type { FormControlVariant } from "../internal";
-import { useFormControlSurface } from "./surface/use-form-control-surface";
+import { createSlotRecipeContext } from "../internal";
+
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "RadioGroup",
+  recipe: radioGroupItemRecipe,
+});
+// #endregion
 
 // #region Types
-
 interface RadioGroupPresetItem extends Omit<BaseRadioGroupPresetItem, "label"> {
   label: ReactNode;
 }
 
-export interface RadioGroupRootProps
-  extends
-    Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
-    RadioGroupRootContract {
-  onValueChange?: (value: string | null) => void;
-}
+export type RadioGroupRootProps = Omit<
+  RadioGroupRootPrimitiveProps,
+  "onValueChange"
+> &
+  RadioGroupRootContract & {
+    onValueChange?: (value: string | null) => void;
+  };
 
 export interface RadioGroupProps
   extends Omit<RadioGroupRootProps, "children">, RadioGroupContract {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps
-  extends RadioGroupItemPrimitiveProps, RadioGroupItemRootContract {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-}
-
+type RadioGroupItemProps = RadioGroupItemPrimitiveProps &
+  RadioGroupItemRootContract;
 // #endregion
 
 // #region Parts
-export function RadioGroupRoot({
+function Root({
   children,
   onValueChange,
   recipe = radioGroupRecipe,
@@ -69,62 +71,51 @@ export function RadioGroupRoot({
   );
 }
 
-export function RadioGroupItem({
-  variant: variantProp,
-  tabIndex,
-  children,
-  recipe = radioGroupItemRecipe,
-  className,
-  ...rest
-}: RadioGroupItemProps) {
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
-  const slots = recipe();
+const ItemRoot = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+});
 
+const ItemControl = withContext<RadioGroupItemControlProps>(
+  RadioGroupPrimitive.ItemControl,
+  {
+    name: "ItemControl",
+    slot: "control",
+  },
+);
+
+function Item({ tabIndex, children, ...rest }: RadioGroupItemProps) {
   return (
-    <RadioGroupPrimitive.Item {...rest} className={slots.base({ className })}>
-      <RadioGroupPrimitive.ItemControl
-        {...controlProps}
-        className={cn(
-          formControlRadioToggleRecipe({ ...shellArgs }),
-          slots.control(),
-        )}
-      />
+    <ItemRoot {...rest}>
+      <ItemControl />
 
-      <RadioGroupItemText>{children}</RadioGroupItemText>
+      <ItemText>{children}</ItemText>
 
-      <RadioGroupPrimitive.ItemHiddenInput tabIndex={tabIndex} />
-    </RadioGroupPrimitive.Item>
+      <ItemHiddenInput tabIndex={tabIndex} />
+    </ItemRoot>
   );
 }
 
-export function RadioGroupItemText({
-  children,
-  className,
-  ...rest
-}: RadioGroupItemTextProps) {
+function ItemText({ children, className, ...rest }: RadioGroupItemTextProps) {
   return (
     <RadioGroupPrimitive.ItemText
       {...rest}
-      className={cn(fieldRecipe().label(), className)}
+      className={fieldRecipe().label({ className })}
     >
       {children}
     </RadioGroupPrimitive.ItemText>
   );
 }
 
-export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
+function ItemHiddenInput(props: RadioGroupItemHiddenInputProps) {
+  return <RadioGroupPrimitive.ItemHiddenInput {...props} />;
+}
+
+function Label({ children, className, ...rest }: RadioGroupLabelProps) {
   return (
     <RadioGroupPrimitive.Label
       {...rest}
-      className={cn(fieldRecipe().label(), rest.className)}
+      className={fieldRecipe().label({ className })}
     >
       {children}
     </RadioGroupPrimitive.Label>
@@ -133,29 +124,17 @@ export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
 // #endregion
 
 // #region Shorthand
-export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
+function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
   return (
-    <RadioGroupRoot {...rest}>
+    <Root {...rest}>
       {items.map((item) => (
-        <RadioGroupItem
-          disabled={item.disabled}
-          key={item.value}
-          value={item.value}
-        >
+        <Item disabled={item.disabled} key={item.value} value={item.value}>
           {item.label}
-        </RadioGroupItem>
+        </Item>
       ))}
-    </RadioGroupRoot>
+    </Root>
   );
 }
-// #endregion
-
-// #region Display Names
-RadioGroupRoot.displayName = "RadioGroup.Root";
-RadioGroupItem.displayName = "RadioGroup.Item";
-RadioGroupItemText.displayName = "RadioGroup.ItemText";
-RadioGroupLabel.displayName = "RadioGroup.Label";
-
 // #endregion
 
 export type {
@@ -164,8 +143,10 @@ export type {
 } from "@ark-ui/react";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
-  Item: RadioGroupItem,
-  ItemText: RadioGroupItemText,
-  Label: RadioGroupLabel,
-  Root: RadioGroupRoot,
+  Item,
+  ItemControl,
+  ItemHiddenInput,
+  ItemText,
+  Label,
+  Root,
 });

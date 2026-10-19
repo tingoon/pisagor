@@ -70,11 +70,6 @@ export type ListboxItemProps = ListboxItemPrimitiveProps &
   ListboxItemRootContract &
   ListboxItemContract;
 
-export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
-  /** The heading of the listbox item group. */
-  heading?: string;
-}
-
 // #endregion
 
 // #region Parts
@@ -142,24 +137,11 @@ export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
   );
 }
 
-export function ListboxItemGroup({
-  children,
-  heading,
-  className,
-  ...rest
-}: ListboxItemGroupProps) {
-  const { slots } = useListbox();
-
-  return (
-    <ListboxPrimitive.ItemGroup
-      {...rest}
-      className={slots.itemGroup({ className })}
-    >
-      {!!heading && <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>}
-      {children}
-    </ListboxPrimitive.ItemGroup>
+export const ListboxItemGroup =
+  withListboxContext<ListboxItemGroupPrimitiveProps>(
+    ListboxPrimitive.ItemGroup,
+    { name: "ItemGroup" },
   );
-}
 
 export function ListboxItemGroupLabel({
   className,
@@ -279,6 +261,7 @@ ListboxShortcut.displayName = "Listbox.Shortcut";
 export type {
   ListboxContentProps,
   ListboxEmptyProps,
+  ListboxItemGroupProps,
   ListboxItemGroupLabelProps,
   ListboxItemIndicatorProps,
   ListboxItemTextProps,

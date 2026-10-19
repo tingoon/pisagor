@@ -28,10 +28,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 const CircularProgressRoot = withProvider<
   ComponentProps<typeof ProgressPrimitive.RootProvider> &
     CircularProgressRootContract
->(ProgressPrimitive.RootProvider, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+>(ProgressPrimitive.RootProvider, { name: "Root" }) as FunctionComponent<
   ProgressRootProviderProps & CircularProgressRootContract
 >;
 
@@ -53,18 +50,12 @@ function getProgressbarProps(progress: UseProgressReturn) {
 
 const CircularProgressValueWrapper = withContext<ComponentProps<"span">>(
   "span",
-  {
-    defaultProps: { "data-part": "value-wrapper" },
-    name: "ValueWrapper",
-    slot: "valueWrapper",
-  },
+  { name: "ValueWrapper" },
 );
 
-const CircularProgressValue = withContext<
+const CircularProgressValueText = withContext<
   ComponentProps<typeof ProgressPrimitive.ValueText>
->(ProgressPrimitive.ValueText, {
-  name: "Value",
-});
+>(ProgressPrimitive.ValueText, { name: "ValueText" });
 
 interface CircularProgressTrackPartProps {
   size?: number;
@@ -215,9 +206,9 @@ export function CircularProgress({
     >
       {isValueVisible && (
         <CircularProgressValueWrapper className={classNames?.valueWrapper}>
-          <CircularProgressValue
+          <CircularProgressValueText
             {...valueProps}
-            className={classNames?.value}
+            className={classNames?.valueText}
           />
         </CircularProgressValueWrapper>
       )}

@@ -14,10 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const NavbarRoot = withProvider<
   ComponentProps<"header"> & NavbarRootContract
->("header", {
-  name: "Root",
-  slot: "base",
-});
+>("header", { name: "Root" });
 
 export const NavbarBrand = withContext<ComponentProps<"div">>("div", {
   name: "Brand",

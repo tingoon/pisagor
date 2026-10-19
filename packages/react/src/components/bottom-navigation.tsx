@@ -66,10 +66,7 @@ export type BottomNavigationItemLabelProps = ComponentProps<"span">;
 // #region Parts
 const BottomNavigationNav = withBottomNavigationProvider<
   ComponentProps<"nav"> & BottomNavigationRootContract
->("nav", {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<ComponentProps<"nav">>;
+>("nav", { name: "Root" }) as FunctionComponent<ComponentProps<"nav">>;
 
 export function BottomNavigationRoot({
   value,
@@ -127,7 +124,7 @@ export function BottomNavigationItem({
 export const BottomNavigationItemIcon = withBottomNavigationItemContext<
   ComponentProps<"span">
 >("span", {
-  defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+  defaultProps: { "aria-hidden": true },
   name: "ItemIcon",
   slot: "icon",
 });
@@ -135,7 +132,6 @@ export const BottomNavigationItemIcon = withBottomNavigationItemContext<
 export const BottomNavigationItemLabel = withBottomNavigationItemContext<
   ComponentProps<"span">
 >("span", {
-  defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
   slot: "label",
 });

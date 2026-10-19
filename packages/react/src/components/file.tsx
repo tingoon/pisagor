@@ -15,10 +15,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const FileRoot = withProvider<ComponentProps<"div"> & FileRootContract>(
   "div",
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export function FileMedia({
@@ -44,17 +41,14 @@ export function FileMedia({
 
 export const FileContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
-  slot: "content",
 });
 
 export const FileName = withContext<ComponentProps<"div">>("div", {
   name: "Name",
-  slot: "name",
 });
 
 export const FileMeta = withContext<ComponentProps<"div">>("div", {
   name: "Meta",
-  slot: "meta",
 });
 
 export function FileSize({
@@ -80,7 +74,6 @@ export function FileSize({
 
 export const FileActions = withContext<ComponentProps<"div">>("div", {
   name: "Actions",
-  slot: "actions",
 });
 // #endregion
 

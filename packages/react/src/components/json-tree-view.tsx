@@ -43,7 +43,6 @@ const JsonTreeViewRoot = withProvider<
   ComponentProps<typeof JsonTreeViewPrimitive.Root> & JsonTreeViewRootContract
 >(JsonTreeViewPrimitive.Root, {
   name: "Root",
-  slot: "base",
 }) as FunctionComponent<JsonTreeViewRootProps>;
 
 const JsonTreeViewTree = withContext<

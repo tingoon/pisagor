@@ -60,10 +60,7 @@ export interface SegmentGroupItemProps
 // #region Parts
 const SegmentGroupRootBase = withProvider<
   ComponentProps<typeof SegmentGroupPrimitive.Root> & SegmentGroupRootContract
->(SegmentGroupPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
+>(SegmentGroupPrimitive.Root, { name: "Root" }) as FunctionComponent<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 >;
 
@@ -112,11 +109,7 @@ export function SegmentGroupItem({
 
 const SegmentGroupItemText = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.ItemText>
->(SegmentGroupPrimitive.ItemText, {
-  defaultProps: { "data-part": "item-text" },
-  name: "ItemText",
-  slot: "itemText",
-});
+>(SegmentGroupPrimitive.ItemText, { name: "ItemText" });
 
 export const SegmentGroupIndicator = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.Indicator>

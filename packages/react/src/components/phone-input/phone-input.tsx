@@ -1,5 +1,5 @@
-import { createListCollection } from "@ark-ui/react";
-import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
+import { createListCollection, Portal } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon, GlobeIcon } from "@phosphor-icons/react";
 import type {
   PhoneInputContract,
   PhoneInputRootContract,
@@ -16,13 +16,21 @@ import RPNPhoneInput, {
   type Country,
   getCountryCallingCode,
 } from "react-phone-number-input";
+import { createSlotRecipeContext } from "../../internal";
+import type { FormControlVariant } from "../../internal";
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useLocale } from "../provider/context";
-import type { FormControlVariant } from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
+
+// #region Context
+const { Context } = createSlotRecipeContext({
+  name: "PhoneInput",
+  recipe: phoneInputRecipe,
+});
+// #endregion
 
 // #region Types
 interface CountrySelectOption {
@@ -81,11 +89,7 @@ type PhoneInputContainerProps = ComponentProps<"div">;
 // #endregion
 
 // #region Parts
-function PhoneInputContainer({
-  children,
-  className,
-  ...rest
-}: PhoneInputContainerProps) {
+function Container({ children, className, ...rest }: PhoneInputContainerProps) {
   const { size, variant } = usePhoneInput();
 
   return (
@@ -103,7 +107,7 @@ function PhoneInputContainer({
   );
 }
 
-function PhoneInputFlag({ country, countryName }: FlagProps) {
+function Flag({ country, countryName }: FlagProps) {
   const { classNames, slots } = usePhoneInput();
   const flagClassName = slots.flag({ className: classNames?.flag });
   const emoji = country ? phoneInputFlags[country] : undefined;
@@ -118,6 +122,8 @@ function PhoneInputFlag({ country, countryName }: FlagProps) {
     <span
       aria-label={countryName}
       className={cn(slots.flagEmoji(), flagClassName)}
+      data-part="flag"
+      data-scope="phone-input"
       role="img"
     >
       {emoji}
@@ -125,7 +131,7 @@ function PhoneInputFlag({ country, countryName }: FlagProps) {
   );
 }
 
-function PhoneInputField({
+function Field({
   value,
   ref,
   onBlur,
@@ -155,7 +161,7 @@ function PhoneInputField({
   );
 }
 
-function PhoneInputCountrySelect({
+function CountrySelect({
   disabled,
   readOnly,
   value,
@@ -187,8 +193,8 @@ function PhoneInputCountrySelect({
       className={slots.countryRoot()}
       collection={collection}
       disabled={isDisabled}
-      onValueChange={(nextValue) => {
-        onChange(nextValue[0] as Country | undefined);
+      onValueChange={(details) => {
+        onChange(details.value[0] as Country | undefined);
       }}
       positioning={{ sameWidth: false }}
       value={value ? [value] : []}
@@ -218,7 +224,7 @@ function PhoneInputCountrySelect({
               variant="ghost"
             >
               {value ? (
-                <PhoneInputFlag
+                <Flag
                   country={value}
                   countryName={
                     items.find((item) => item.value === value)?.label ?? value
@@ -231,40 +237,47 @@ function PhoneInputCountrySelect({
           </Combobox.Trigger>
         </Combobox.Control>
       </InputGroup.Addon>
-      <Combobox.Content
-        {...popupProps}
-        className={slots.popup({ className: classNames?.popup })}
-      >
-        <div className={slots.searchGroup()}>
-          <InputGroup size={size}>
-            <Combobox.FieldInput asChild>
-              <InputGroup.Input
-                className={slots.search({ className: classNames?.search })}
-                placeholder={m("phoneInput.search")}
-              />
-            </Combobox.FieldInput>
-          </InputGroup>
-        </div>
-        <Combobox.List>
-          {items.map((item) => (
-            <Combobox.Item item={item} key={item.value}>
-              <PhoneInputFlag country={item.value} countryName={item.label} />
-              <span className={slots.itemLabel()}>{item.label}</span>
-              <span className={slots.itemCode()}>
-                +{getCountryCallingCode(item.value)}
-              </span>
-            </Combobox.Item>
-          ))}
-        </Combobox.List>
-        <Combobox.Empty>{m("phoneInput.empty")}</Combobox.Empty>
-      </Combobox.Content>
+      <Portal>
+        <Combobox.Positioner>
+          <Combobox.Content
+            {...popupProps}
+            className={slots.popup({ className: classNames?.popup })}
+          >
+            <div className={slots.searchGroup()}>
+              <InputGroup size={size}>
+                <Combobox.Input asChild>
+                  <InputGroup.Input
+                    className={slots.search({ className: classNames?.search })}
+                    placeholder={m("phoneInput.search")}
+                  />
+                </Combobox.Input>
+              </InputGroup>
+            </div>
+            <Combobox.List>
+              {items.map((item) => (
+                <Combobox.Item item={item} key={item.value}>
+                  <Flag country={item.value} countryName={item.label} />
+                  <span className={slots.itemLabel()}>{item.label}</span>
+                  <span className={slots.itemCode()}>
+                    +{getCountryCallingCode(item.value)}
+                  </span>
+                  <Combobox.ItemIndicator>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              ))}
+            </Combobox.List>
+            <Combobox.Empty>{m("phoneInput.empty")}</Combobox.Empty>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Combobox.Root>
   );
 }
 // #endregion
 
 // #region Closed
-export function PhoneInput({
+function PhoneInputShorthand({
   size = "md",
   variant,
   defaultCountry,
@@ -295,22 +308,31 @@ export function PhoneInput({
   );
 
   return (
-    <PhoneInputContext value={contextValue}>
-      <RPNPhoneInput
-        {...rest}
-        className={className}
-        containerComponent={PhoneInputContainer}
-        countrySelectComponent={PhoneInputCountrySelect}
-        data-disabled={disabled || undefined}
-        defaultCountry={defaultCountry}
-        disabled={disabled}
-        flagComponent={PhoneInputFlag}
-        inputComponent={PhoneInputField}
-        onChange={(nextValue) => onChange?.(nextValue ?? "")}
-        smartCaret={false}
-        value={value || undefined}
-      />
-    </PhoneInputContext>
+    <Context value={{ slots, variants: { size } as never }}>
+      <PhoneInputContext value={contextValue}>
+        <RPNPhoneInput
+          {...rest}
+          className={className}
+          containerComponent={Container}
+          countrySelectComponent={CountrySelect}
+          data-disabled={disabled || undefined}
+          defaultCountry={defaultCountry}
+          disabled={disabled}
+          flagComponent={Flag}
+          inputComponent={Field}
+          onChange={(nextValue) => onChange?.(nextValue ?? "")}
+          smartCaret={false}
+          value={value || undefined}
+        />
+      </PhoneInputContext>
+    </Context>
   );
 }
 // #endregion
+
+export const PhoneInput = Object.assign(PhoneInputShorthand, {
+  Container,
+  CountrySelect,
+  Field,
+  Flag,
+});

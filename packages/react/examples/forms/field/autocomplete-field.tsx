@@ -1,5 +1,6 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { Autocomplete, Combobox, Field } from "@pisagor/react";
+import { Portal, useFilter, useListCollection } from "@ark-ui/react";
+import { CheckIcon } from "@phosphor-icons/react";
+import { Autocomplete, Combobox, Field, InputGroup } from "@pisagor/react";
 
 export function AutocompleteField() {
   const initialItems = [
@@ -28,20 +29,33 @@ export function AutocompleteField() {
         collection={collection}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
       >
-        <Autocomplete.Input
-          aria-label="Search items"
-          placeholder="Search items…"
-        />
-        <Autocomplete.Content>
-          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item} key={item.value}>
-                {item.label}
-              </Autocomplete.Item>
-            ))}
-          </Combobox.List>
-        </Autocomplete.Content>
+        <Autocomplete.Control>
+          <InputGroup>
+            <Autocomplete.Input asChild>
+              <InputGroup.Input
+                aria-label="Search items"
+                placeholder="Search items…"
+              />
+            </Autocomplete.Input>
+          </InputGroup>
+        </Autocomplete.Control>
+        <Portal>
+          <Combobox.Positioner>
+            <Autocomplete.Content>
+              <Autocomplete.Empty>No items found.</Autocomplete.Empty>
+              <Autocomplete.List>
+                {collection.items.map((item) => (
+                  <Autocomplete.Item item={item} key={item.value} persistFocus>
+                    {item.label}
+                    <Combobox.ItemIndicator>
+                      <CheckIcon />
+                    </Combobox.ItemIndicator>
+                  </Autocomplete.Item>
+                ))}
+              </Autocomplete.List>
+            </Autocomplete.Content>
+          </Combobox.Positioner>
+        </Portal>
       </Autocomplete.Root>
       <Field.Description>Select an item.</Field.Description>
     </Field>

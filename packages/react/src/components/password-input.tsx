@@ -196,7 +196,7 @@ function PasswordInputControl({ className, ...rest }: InputGroupProps) {
 function PasswordInputInput(props: PasswordInputInputProps) {
   return (
     <PasswordInputPrimitive.Input {...props} asChild>
-      <InputGroup.Input clearable={false} />
+      <InputGroup.Input />
     </PasswordInputPrimitive.Input>
   );
 }

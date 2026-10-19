@@ -1,5 +1,6 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { Autocomplete } from "@pisagor/react";
+import { Portal, useFilter, useListCollection } from "@ark-ui/react";
+import { CheckIcon } from "@phosphor-icons/react";
+import { Autocomplete, Combobox, InputGroup } from "@pisagor/react";
 
 export function Group() {
   const initialItems = [
@@ -26,21 +27,43 @@ export function Group() {
       collection={collection}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Autocomplete.Input placeholder="Select a timezone" />
-      <Autocomplete.Content className="w-60">
-        <Autocomplete.Empty />
-        <Autocomplete.List>
-          {collection.group().map(([continent, group]) => (
-            <Autocomplete.ItemGroup heading={continent} key={continent}>
-              {group.map((item) => (
-                <Autocomplete.Item item={item} key={item.value}>
-                  {item.label}
-                </Autocomplete.Item>
+      <Autocomplete.Control>
+        <InputGroup>
+          <Autocomplete.Input asChild>
+            <InputGroup.Input placeholder="Select a timezone" />
+          </Autocomplete.Input>
+        </InputGroup>
+      </Autocomplete.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Autocomplete.Content className="w-60">
+            <Autocomplete.Empty>
+              No results found. Try a different search.
+            </Autocomplete.Empty>
+            <Autocomplete.List>
+              {collection.group().map(([continent, group]) => (
+                <Autocomplete.ItemGroup key={continent}>
+                  <Autocomplete.ItemGroupLabel>
+                    {continent}
+                  </Autocomplete.ItemGroupLabel>
+                  {group.map((item) => (
+                    <Autocomplete.Item
+                      item={item}
+                      key={item.value}
+                      persistFocus
+                    >
+                      {item.label}
+                      <Combobox.ItemIndicator>
+                        <CheckIcon />
+                      </Combobox.ItemIndicator>
+                    </Autocomplete.Item>
+                  ))}
+                </Autocomplete.ItemGroup>
               ))}
-            </Autocomplete.ItemGroup>
-          ))}
-        </Autocomplete.List>
-      </Autocomplete.Content>
+            </Autocomplete.List>
+          </Autocomplete.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Autocomplete.Root>
   );
 }

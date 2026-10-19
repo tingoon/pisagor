@@ -1,4 +1,5 @@
-import { createListCollection } from "@ark-ui/react";
+import { Portal, createListCollection } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   Checkbox,
   Field,
@@ -29,16 +30,28 @@ function FormControlsDemo() {
       <Field>
         <Field.Label htmlFor="surface-team">Team</Field.Label>
         <Select.Root collection={selectCollection} id="surface-team">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Choose a team" />
-          </Select.Trigger>
-          <Select.Content>
-            {selectCollection.items.map((item) => (
-              <Select.Item item={item} key={item}>
-                {item}
-              </Select.Item>
-            ))}
-          </Select.Content>
+          <Select.Control>
+            <Select.Trigger>
+              <Select.ValueText placeholder="Choose a team" />
+              <Select.Indicator>
+                <CaretUpDownIcon />
+              </Select.Indicator>
+            </Select.Trigger>
+          </Select.Control>
+          <Portal>
+            <Select.Positioner>
+              <Select.Content>
+                {selectCollection.items.map((item) => (
+                  <Select.Item item={item} key={item}>
+                    {item}
+                    <Select.ItemIndicator>
+                      <CheckIcon />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Positioner>
+          </Portal>
         </Select.Root>
       </Field>
 

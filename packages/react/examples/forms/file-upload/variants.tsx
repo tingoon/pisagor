@@ -3,8 +3,8 @@ import { Button, FileUpload } from "@pisagor/react";
 export function Variants() {
   return (
     <div className="flex flex-col gap-2">
-      <FileUpload>
-        <FileUpload.Dropzone variant="primary">
+      <FileUpload variant="primary">
+        <FileUpload.Dropzone>
           <FileUpload.DropzoneIcon />
           <FileUpload.Title>Primary</FileUpload.Title>
           <FileUpload.Trigger asChild>
@@ -12,8 +12,8 @@ export function Variants() {
           </FileUpload.Trigger>
         </FileUpload.Dropzone>
       </FileUpload>
-      <FileUpload>
-        <FileUpload.Dropzone variant="secondary">
+      <FileUpload variant="secondary">
+        <FileUpload.Dropzone>
           <FileUpload.DropzoneIcon />
           <FileUpload.Title>Secondary</FileUpload.Title>
           <FileUpload.Trigger asChild>

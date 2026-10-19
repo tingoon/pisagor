@@ -37,16 +37,12 @@ export function TimelineRoot({
 export const TimelineItem = withProvider<
   ComponentProps<"li"> & TimelineItemRootContract
 >("li", {
-  defaultProps: {
-    "data-part": "item",
-  },
   name: "Item",
   slot: "base",
 });
 
 export const TimelineIndicator = withContext<ComponentProps<"div">>("div", {
   name: "Indicator",
-  slot: "indicator",
 });
 
 export const TimelineSeparator = withContext<ComponentProps<"div">>("div", {
@@ -54,22 +50,18 @@ export const TimelineSeparator = withContext<ComponentProps<"div">>("div", {
     "aria-hidden": "true",
   },
   name: "Separator",
-  slot: "separator",
 });
 
 export const TimelineContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
-  slot: "content",
 });
 
 export const TimelineTitle = withContext<ComponentProps<"div">>("div", {
   name: "Title",
-  slot: "title",
 });
 
 export const TimelineDescription = withContext<ComponentProps<"div">>("div", {
   name: "Description",
-  slot: "description",
 });
 // #endregion
 

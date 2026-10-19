@@ -21,10 +21,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 const MenuRootBase = withProvider<ComponentProps<"nav"> & MenuRootContract>(
   "nav",
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export function MenuRoot({
@@ -59,9 +56,7 @@ export const MenuGroup = withContext<ComponentProps<"div">>("div", {
 });
 
 export const MenuGroupLabel = withContext<ComponentProps<"div">>("div", {
-  defaultProps: { "data-part": "group-label" },
   name: "GroupLabel",
-  slot: "groupLabel",
 });
 
 export function MenuItem({

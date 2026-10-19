@@ -30,7 +30,8 @@ export function Groups() {
           {collection.group().map(([group, items], index) => (
             <>
               {index !== 0 && <Command.Separator />}
-              <Command.ItemGroup heading={group} key={group}>
+              <Command.ItemGroup key={group}>
+                <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
                 {items.map((item) => (
                   <Command.Item item={item} key={item.value}>
                     {item.label}

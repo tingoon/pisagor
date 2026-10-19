@@ -1,5 +1,9 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { AppleLogoIcon } from "@phosphor-icons/react";
+import { Portal, useFilter, useListCollection } from "@ark-ui/react";
+import {
+  AppleLogoIcon,
+  CaretUpDownIcon,
+  CheckIcon,
+} from "@phosphor-icons/react";
 import { Combobox, InputGroup } from "@pisagor/react";
 
 export function WithStartIcon() {
@@ -20,20 +24,39 @@ export function WithStartIcon() {
       collection={collection}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <Combobox.Input placeholder="Search fruits...">
-        <InputGroup.Addon align="inline-start">
-          <AppleLogoIcon />
-        </InputGroup.Addon>
-      </Combobox.Input>
-      <Combobox.Content>
-        <Combobox.List>
-          {collection.items.map((item) => (
-            <Combobox.Item item={item} key={item.value}>
-              {item.label}
-            </Combobox.Item>
-          ))}
-        </Combobox.List>
-      </Combobox.Content>
+      <Combobox.Control>
+        <InputGroup>
+          <InputGroup.Addon align="inline-start">
+            <AppleLogoIcon />
+          </InputGroup.Addon>
+          <Combobox.Input asChild>
+            <InputGroup.Input placeholder="Search fruits..." />
+          </Combobox.Input>
+          <InputGroup.Addon align="inline-end">
+            <InputGroup.Button asChild size="icon-xs" variant="ghost">
+              <Combobox.Trigger>
+                <CaretUpDownIcon aria-hidden />
+              </Combobox.Trigger>
+            </InputGroup.Button>
+          </InputGroup.Addon>
+        </InputGroup>
+      </Combobox.Control>
+      <Portal>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.List>
+              {collection.items.map((item) => (
+                <Combobox.Item item={item} key={item.value} persistFocus>
+                  {item.label}
+                  <Combobox.ItemIndicator>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              ))}
+            </Combobox.List>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Portal>
     </Combobox.Root>
   );
 }

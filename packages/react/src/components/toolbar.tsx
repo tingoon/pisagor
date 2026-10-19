@@ -15,10 +15,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #region Parts
 export const ToolbarRoot = withProvider<
   ComponentProps<"div"> & ToolbarRootContract
->("div", {
-  name: "Root",
-  slot: "base",
-});
+>("div", { name: "Root" });
 
 export const ToolbarHeading = withContext<ComponentProps<"div">>("div", {
   name: "Heading",

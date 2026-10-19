@@ -6,75 +6,84 @@ import {
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
 import type { RichTextEditorRootContract } from "@pisagor/contracts";
-import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { richTextEditorRecipe } from "@pisagor/recipes";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useMemo } from "react";
 import type { ComponentPropsWithRef, ReactNode } from "react";
+import { createSlotRecipeContext } from "../../internal";
 import { useLocale } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
-import type { FormControlVariant } from "../../internal";
 import {
   RichTextEditorContext,
   useRichTextEditorState,
 } from "./rich-text-editor.context";
 
+// #region Context
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
+  name: "RichTextEditor",
+  recipe: richTextEditorRecipe,
+});
+// #endregion
+
 // #region Types
+type RichTextEditorRootProps = Omit<
+  ComponentPropsWithRef<"div">,
+  "defaultValue" | "onChange"
+> &
+  RichTextEditorRootContract & {
+    /** Initial HTML content for uncontrolled usage. */
+    defaultValue?: string;
+    /** Controlled HTML content. */
+    value?: string;
+    /** Called with HTML when the document changes. */
+    onValueChange?: (value: string) => void;
+    /** Called when the editor loses focus. */
+    onBlur?: () => void;
+    /** Native form field name for a hidden input mirroring the HTML value. */
+    name?: string;
+    /**
+     * Whether the editor is read-only.
+     *
+     * @defaultValue false
+     */
+    readOnly?: boolean;
+    /**
+     * Whether the editor is disabled.
+     *
+     * @defaultValue false
+     */
+    disabled?: boolean;
+    /**
+     * Marks the control as invalid for styling and assistive tech.
+     *
+     * @defaultValue false
+     */
+    invalid?: boolean;
+    /**
+     * Accessible name for the editing region.
+     *
+     * @defaultValue "Rich text editor"
+     */
+    "aria-label"?: string;
+    children?: ReactNode;
+  };
 
-export interface RichTextEditorRootProps
-  extends
-    Omit<ComponentPropsWithRef<"div">, "defaultValue" | "onChange">,
-    RichTextEditorRootContract {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-  /** Initial HTML content for uncontrolled usage. */
-  defaultValue?: string;
-  /** Controlled HTML content. */
-  value?: string;
-  /** Called with HTML when the document changes. */
-  onValueChange?: (value: string) => void;
-  /** Called when the editor loses focus. */
-  onBlur?: () => void;
-  /** Native form field name for a hidden input mirroring the HTML value. */
-  name?: string;
-  /**
-   * Whether the editor is read-only.
-   *
-   * @defaultValue false
-   */
-  readOnly?: boolean;
-  /**
-   * Whether the editor is disabled.
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
-  /**
-   * Marks the control as invalid for styling and assistive tech.
-   *
-   * @defaultValue false
-   */
-  invalid?: boolean;
-  /**
-   * Accessible name for the editing region.
-   *
-   * @defaultValue "Rich text editor"
-   */
-  "aria-label"?: string;
-  children?: ReactNode;
-}
+type RichTextEditorToolbarProps = ComponentPropsWithRef<"div">;
 
-export type RichTextEditorToolbarProps = ComponentPropsWithRef<"div">;
-
-export type RichTextEditorContentProps = ComponentPropsWithRef<"div">;
+type RichTextEditorContentProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export function RichTextEditorRoot({
-  variant: variantProp,
+const RootBase = withProvider<RichTextEditorRootProps>("div", {
+  defaultProps: {
+    role: "group",
+  },
+  name: "Root",
+});
+
+function Root({
   defaultValue,
   disabled = false,
   invalid = false,
@@ -86,23 +95,11 @@ export function RichTextEditorRoot({
   id,
   onBlur,
   onValueChange,
-  recipe = richTextEditorRecipe,
-  className,
   ...rest
 }: RichTextEditorRootProps) {
   const { m } = useLocale();
-  const resolved = {
-    surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
-  };
-  const shellArgs = {
-    surfaceVariant: resolved.surfaceVariant,
-    variant: resolved.variant,
-  };
-  const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel =
     ariaLabel ?? (id ? undefined : m("richTextEditor.label"));
-  const slots = recipe();
 
   const editor = useEditor({
     content: value ?? defaultValue ?? "<p></p>",
@@ -155,28 +152,20 @@ export function RichTextEditorRoot({
     });
   }, [editor, id, invalid]);
 
-  const contextValue = useMemo(() => ({ editor, slots }), [editor, slots]);
+  const contextValue = useMemo(() => ({ editor }), [editor]);
 
   return (
-    <RichTextEditorContext value={contextValue}>
-      <div
-        {...rest}
-        {...controlProps}
-        aria-disabled={disabled || undefined}
-        aria-invalid={invalid || undefined}
-        aria-label={resolvedAriaLabel}
-        aria-readonly={readOnly || undefined}
-        className={cn(
-          formControlShellRecipe({ ...shellArgs }),
-          slots.base({ className }),
-        )}
-        data-disabled={disabled ? "true" : undefined}
-        data-invalid={invalid ? "true" : undefined}
-        data-part="root"
-        data-readonly={readOnly ? "true" : undefined}
-        data-scope="rich-text-editor"
-        role="group"
-      >
+    <RootBase
+      {...rest}
+      aria-disabled={disabled || undefined}
+      aria-invalid={invalid || undefined}
+      aria-label={resolvedAriaLabel}
+      aria-readonly={readOnly || undefined}
+      data-disabled={disabled ? "true" : undefined}
+      data-invalid={invalid ? "true" : undefined}
+      data-readonly={readOnly ? "true" : undefined}
+    >
+      <RichTextEditorContext value={contextValue}>
         {name ? (
           <VisuallyHidden>
             <input
@@ -189,18 +178,19 @@ export function RichTextEditorRoot({
           </VisuallyHidden>
         ) : null}
         {children}
-      </div>
-    </RichTextEditorContext>
+      </RichTextEditorContext>
+    </RootBase>
   );
 }
 
-export function RichTextEditorToolbar({
-  children,
-  className,
-  ...rest
-}: RichTextEditorToolbarProps) {
+const ToolbarBase = withContext<RichTextEditorToolbarProps>("div", {
+  name: "Toolbar",
+});
+
+function Toolbar({ children, className, ...rest }: RichTextEditorToolbarProps) {
   const { m } = useLocale();
-  const { editor, slots } = useRichTextEditorState();
+  const { slots } = useStyles();
+  const { editor } = useRichTextEditorState();
   const activeMarks = useEditorState({
     editor,
     selector: ({ editor: current }) => {
@@ -229,12 +219,7 @@ export function RichTextEditorToolbar({
   }
 
   return (
-    <div
-      {...rest}
-      className={slots.toolbar({ className })}
-      data-part="toolbar"
-      data-scope="rich-text-editor"
-    >
+    <ToolbarBase {...rest} className={className}>
       {children ?? (
         <div className={slots.inline()}>
           <Toggle
@@ -288,45 +273,46 @@ export function RichTextEditorToolbar({
           </Toggle>
         </div>
       )}
-    </div>
+    </ToolbarBase>
   );
 }
 
-export function RichTextEditorContent({
-  className,
-  ...rest
-}: RichTextEditorContentProps) {
-  const { editor, slots } = useRichTextEditorState();
+const ContentBase = withContext<RichTextEditorContentProps>("div", {
+  name: "Content",
+});
+
+function Content({ className, ...rest }: RichTextEditorContentProps) {
+  const { editor } = useRichTextEditorState();
 
   return (
-    <div
-      {...rest}
-      className={slots.content({ className })}
-      data-part="content"
-      data-scope="rich-text-editor"
-    >
+    <ContentBase {...rest} className={className}>
       <EditorContent editor={editor} />
-    </div>
+    </ContentBase>
   );
 }
 // #endregion
 
 // #region Shorthand
-export function RichTextEditorShorthand(
+function RichTextEditorShorthand(
   props: Omit<RichTextEditorRootProps, "children">,
 ) {
   return (
-    <RichTextEditorRoot {...props}>
-      <RichTextEditorToolbar />
+    <Root {...props}>
+      <Toolbar />
 
-      <RichTextEditorContent />
-    </RichTextEditorRoot>
+      <Content />
+    </Root>
   );
 }
 // #endregion
 
-// #region Display Names
-RichTextEditorRoot.displayName = "RichTextEditor.Root";
-RichTextEditorToolbar.displayName = "RichTextEditor.Toolbar";
-RichTextEditorContent.displayName = "RichTextEditor.Content";
-// #endregion
+export type {
+  RichTextEditorContentProps,
+  RichTextEditorRootProps,
+  RichTextEditorToolbarProps,
+};
+
+export const RichTextEditorRoot = Root;
+export const RichTextEditorToolbar = Toolbar;
+export const RichTextEditorContent = Content;
+export { RichTextEditorShorthand };

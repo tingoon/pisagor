@@ -66,7 +66,6 @@ export type FieldSeparatorProps = ComponentPropsWithRef<"div">;
 // #region Parts
 export const FieldRoot = withProvider<FieldRootProps>(FieldPrimitive.Root, {
   name: "Root",
-  slot: "base",
 });
 
 export function FieldSet({

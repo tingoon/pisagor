@@ -32,10 +32,7 @@ export type CardProps = CardRootProps & CardContract;
 // #endregion
 
 // #region Parts
-export const CardRoot = withProvider<CardRootProps>(ark.div, {
-  name: "Root",
-  slot: "base",
-});
+export const CardRoot = withProvider<CardRootProps>(ark.div, { name: "Root" });
 
 export function CardMedia({
   variant = "default",
@@ -80,29 +77,22 @@ export function CardHeader({
   );
 }
 
-export const CardTitle = withContext<CardTitleProps>(ark.h3, {
-  name: "Title",
-  slot: "title",
-});
+export const CardTitle = withContext<CardTitleProps>(ark.h3, { name: "Title" });
 
 export const CardDescription = withContext<CardDescriptionProps>("p", {
   name: "Description",
-  slot: "description",
 });
 
 export const CardAction = withContext<CardActionProps>("div", {
   name: "Action",
-  slot: "action",
 });
 
 export const CardContent = withContext<CardContentProps>("div", {
   name: "Content",
-  slot: "content",
 });
 
 export const CardFooter = withContext<CardFooterProps>("div", {
   name: "Footer",
-  slot: "footer",
 });
 // #endregion
 

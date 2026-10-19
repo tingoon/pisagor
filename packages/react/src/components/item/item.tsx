@@ -73,32 +73,26 @@ export function ItemMedia({
 
 export const ItemContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
-  slot: "content",
 });
 
 export const ItemTitle = withContext<ComponentProps<"div">>("div", {
   name: "Title",
-  slot: "title",
 });
 
 export const ItemDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
-  slot: "description",
 });
 
 export const ItemActions = withContext<ComponentProps<"div">>("div", {
   name: "Actions",
-  slot: "actions",
 });
 
 export const ItemHeader = withContext<ComponentProps<"div">>("div", {
   name: "Header",
-  slot: "header",
 });
 
 export const ItemFooter = withContext<ComponentProps<"div">>("div", {
   name: "Footer",
-  slot: "footer",
 });
 // #endregion
 

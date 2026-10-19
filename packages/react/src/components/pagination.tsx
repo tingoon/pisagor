@@ -48,10 +48,7 @@ export interface PaginationItemLinkProps extends ButtonProps {
 // #region Parts
 const PaginationRootBase = withProvider<PaginationRootProps>(
   PaginationPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export function PaginationRoot({ children, ...rest }: PaginationRootProps) {

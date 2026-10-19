@@ -1,6 +1,7 @@
 import { createContext, createElement, use } from "react";
 import type { ElementType, FunctionComponent } from "react";
 import type { ClassValue, VariantProps } from "tailwind-variants";
+import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 
 type SlotClassProps = {
   className?: ClassValue;
@@ -28,10 +29,21 @@ type RecipeVariantProps<R extends SlotRecipeFn> =
   string extends keyof VariantProps<R> ? Record<never, never> : VariantProps<R>;
 
 export interface WithSlotRecipeOptions<Slot extends string = string> {
-  /** PascalCase part name (`Alert.Title`). */
+  /**
+   * PascalCase part name (`Alert.Title`). Only required field — `slot` and
+   * `part` are derived from this when omitted.
+   */
   name: string;
-  /** Recipe slot; defaults to kebab-case of `name` (`Root` → `base`). */
+  /**
+   * Recipe slot. When omitted: `Root` → `base`, otherwise camelCase of `name`
+   * (`ClearTrigger` → `clearTrigger`).
+   */
   slot?: Slot;
+  /**
+   * `data-part` value. When omitted: `Root` → `root`, otherwise kebab-case of
+   * `name` (`ClearTrigger` → `clear-trigger`).
+   */
+  part?: string;
   defaultProps?: Record<string, unknown>;
 }
 
@@ -82,6 +94,11 @@ function toKebabCase(value: string) {
     .toLowerCase();
 }
 
+/** PascalCase part name → recipe slot key (`ClearTrigger` → `clearTrigger`). */
+function toCamelCase(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
 export function createSlotRecipeContext<
   const Name extends string,
   R extends SlotRecipeFn,
@@ -95,15 +112,23 @@ export function createSlotRecipeContext<
   const dataScope = toKebabCase(name);
   StylesContext.displayName = `${name}Context`;
 
+  function resolveSlot(options: WithSlotRecipeOptions<Slot>) {
+    return (options.slot ??
+      (options.name === "Root" ? "base" : toCamelCase(options.name))) as Slot;
+  }
+
+  function resolvePart(options: WithSlotRecipeOptions<Slot>) {
+    return (
+      options.part ??
+      (options.name === "Root" ? "root" : toKebabCase(options.name))
+    );
+  }
+
   /** `data-part` / `data-scope` always win over consumer props. */
-  function dataIdentity(
-    defaultProps: Record<string, unknown> | undefined,
-    slot: string,
-  ) {
+  function dataIdentity(options: WithSlotRecipeOptions<Slot>) {
     return {
-      "data-part":
-        defaultProps?.["data-part"] ?? (slot === "base" ? "root" : slot),
-      "data-scope": defaultProps?.["data-scope"] ?? dataScope,
+      "data-part": resolvePart(options),
+      "data-scope": options.defaultProps?.["data-scope"] ?? dataScope,
     };
   }
 
@@ -115,11 +140,6 @@ export function createSlotRecipeContext<
     }
 
     return styles;
-  }
-
-  function resolveSlot(options: WithSlotRecipeOptions<Slot>) {
-    return (options.slot ??
-      (options.name === "Root" ? "base" : toKebabCase(options.name))) as Slot;
   }
 
   /**
@@ -142,11 +162,21 @@ export function createSlotRecipeContext<
         props as Record<string, unknown>,
         recipe,
       );
+      const surfaceFromContext = useFormControlSurface();
+      const recipeKeys = new Set(variantKeysOf(recipe));
       const resolved = {
         ...defaultRecipe.defaultVariants,
         ...recipe.defaultVariants,
         ...variants,
-      } as Variants;
+      } as Variants & { surfaceVariant?: unknown };
+
+      if (
+        recipeKeys.has("surfaceVariant") &&
+        resolved.surfaceVariant === undefined
+      ) {
+        resolved.surfaceVariant = surfaceFromContext;
+      }
+
       const slots = recipe(resolved as never) as Slots;
       const { className, ...dom } = rest as Record<string, unknown> & {
         className?: ClassValue;
@@ -170,7 +200,7 @@ export function createSlotRecipeContext<
           ...dataAttrs,
           ...options.defaultProps,
           ...dom,
-          ...dataIdentity(options.defaultProps, slot),
+          ...dataIdentity(options),
           className: (slots[slot] as SlotFn)({
             className: [defaultClassName, className],
           }),
@@ -205,7 +235,7 @@ export function createSlotRecipeContext<
       return createElement(Component, {
         ...options.defaultProps,
         ...rest,
-        ...dataIdentity(options.defaultProps, slot),
+        ...dataIdentity(options),
         className: (slots[slot] as SlotFn)({
           className: [defaultClassName, className],
         }),

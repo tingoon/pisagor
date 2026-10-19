@@ -57,10 +57,7 @@ export interface CarouselProps
 // #region Parts
 const CarouselRootBase = withProvider<CarouselRootProps>(
   CarouselPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
+  { name: "Root" },
 );
 
 export function CarouselRoot({
@@ -162,20 +159,12 @@ export function CarouselAutoplayTrigger({
 
 export const CarouselProgressText = withContext<CarouselProgressTextProps>(
   CarouselPrimitive.ProgressText,
-  {
-    defaultProps: { "data-part": "progress-text" },
-    name: "ProgressText",
-    slot: "progressText",
-  },
+  { name: "ProgressText" },
 );
 
 export const CarouselIndicatorGroup = withContext<CarouselIndicatorGroupProps>(
   CarouselPrimitive.IndicatorGroup,
-  {
-    defaultProps: { "data-part": "indicator-group" },
-    name: "IndicatorGroup",
-    slot: "indicatorGroup",
-  },
+  { name: "IndicatorGroup" },
 );
 
 export const CarouselIndicator = withContext<CarouselIndicatorProps>(
@@ -187,11 +176,7 @@ export const CarouselIndicator = withContext<CarouselIndicatorProps>(
 
 export const CarouselItemGroup = withContext<CarouselItemGroupProps>(
   CarouselPrimitive.ItemGroup,
-  {
-    defaultProps: { "data-part": "item-group" },
-    name: "ItemGroup",
-    slot: "itemGroup",
-  },
+  { name: "ItemGroup" },
 );
 
 export const CarouselItem = withContext<CarouselItemProps>(
