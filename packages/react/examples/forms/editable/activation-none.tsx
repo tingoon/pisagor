@@ -12,7 +12,7 @@ export function ActivationNone() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="none" defaultValue="Jane Doe">
+            <Editable.Root activationMode="none" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -36,11 +36,11 @@ export function ActivationNone() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="none" defaultValue="@jane.doe">
+            <Editable.Root activationMode="none" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -64,7 +64,7 @@ export function ActivationNone() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

@@ -12,7 +12,7 @@ export function Dblclick() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="dblclick" defaultValue="Jane Doe">
+            <Editable.Root activationMode="dblclick" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -31,11 +31,11 @@ export function Dblclick() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="dblclick" defaultValue="@jane.doe">
+            <Editable.Root activationMode="dblclick" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -54,7 +54,7 @@ export function Dblclick() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

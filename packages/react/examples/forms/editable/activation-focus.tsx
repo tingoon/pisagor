@@ -12,7 +12,7 @@ export function ActivationFocus() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="focus" defaultValue="Jane Doe">
+            <Editable.Root activationMode="focus" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -31,11 +31,11 @@ export function ActivationFocus() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="focus" defaultValue="@jane.doe">
+            <Editable.Root activationMode="focus" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
@@ -54,7 +54,7 @@ export function ActivationFocus() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

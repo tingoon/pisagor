@@ -52,10 +52,13 @@ export const editableRecipe = tv({
       "data-[orientation=vertical]:items-end",
       "flex items-center gap-2",
     ],
+    cancelTrigger: [],
     control: [
       "group-data-[orientation=vertical]/editable:flex-col",
       "inline-flex items-center gap-2",
     ],
+    editTrigger: [],
+    input: [],
     preview: [
       "w-full justify-start",
       "px-3",
@@ -66,6 +69,7 @@ export const editableRecipe = tv({
       "in-[[data-scope=editable][data-part=area]:has(textarea)]:items-start",
       "motion-reduce:transition-none!",
     ],
+    submitTrigger: [],
   },
   variants: {
     surfaceVariant: surfaceVariantOptions,

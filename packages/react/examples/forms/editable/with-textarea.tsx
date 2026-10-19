@@ -12,7 +12,7 @@ export function WithTextarea() {
         <Field.Group>
           <Field>
             <Field.Label>Description</Field.Label>
-            <Editable>
+            <Editable.Root>
               <Editable.Area>
                 <Editable.Input asChild>
                   <Textarea className="min-h-24" />
@@ -31,7 +31,7 @@ export function WithTextarea() {
                   </Button>
                 </Editable.SubmitTrigger>
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

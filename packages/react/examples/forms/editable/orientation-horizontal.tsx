@@ -3,7 +3,7 @@ import { Button, Editable, Input } from "@pisagor/react";
 
 export function OrientationHorizontal() {
   return (
-    <Editable>
+    <Editable.Root>
       <Editable.Area>
         <Editable.Input asChild>
           <Input />
@@ -22,6 +22,6 @@ export function OrientationHorizontal() {
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

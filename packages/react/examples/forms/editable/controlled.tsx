@@ -32,7 +32,7 @@ export function Controlled() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable
+            <Editable.Root
               activationMode="none"
               defaultValue="Jane Doe"
               edit={isEditing}
@@ -43,11 +43,11 @@ export function Controlled() {
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable
+            <Editable.Root
               activationMode="none"
               defaultValue="@jane.doe"
               edit={isEditing}
@@ -58,7 +58,7 @@ export function Controlled() {
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

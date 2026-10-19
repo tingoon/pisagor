@@ -1,17 +1,26 @@
 import { Editable as EditablePrimitive } from "@ark-ui/react";
 import type {
+  EditableAreaProps,
   EditableCancelTriggerProps,
+  EditableControlProps,
   EditableEditTriggerProps,
   EditableInputProps as EditableInputPrimitiveProps,
   EditablePreviewProps as EditablePreviewPrimitiveProps,
   EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
 } from "@ark-ui/react";
-import type { EditableRootContract } from "@pisagor/contracts";
+import { CheckIcon, XIcon } from "@phosphor-icons/react";
+import type {
+  EditableContract,
+  EditableRootContract,
+} from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
-import type { ButtonProps } from "./button";
+import { Button, type ButtonProps } from "./button";
+import { Input as TextInput, type InputProps } from "./input";
+import { useLocale } from "./provider/context";
+import { Textarea } from "./textarea";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -81,6 +90,19 @@ export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
    */
   buttonRecipe?: typeof buttonRecipe;
 }
+export interface EditableShorthandProps
+  extends Omit<EditableProps, "children">, EditableContract {
+  /** Render a `Textarea` instead of a single-line `Input`. */
+  multiline?: boolean;
+  /**
+   * Whether to render cancel and submit buttons.
+   *
+   * @defaultValue true
+   */
+  showControls?: boolean;
+  /** Input and preview size. */
+  size?: InputProps["size"];
+}
 // #endregion
 
 // #region Parts
@@ -114,13 +136,13 @@ function Root({
   );
 }
 
-const Area = withContext(EditablePrimitive.Area, {
+const Area = withContext<EditableAreaProps>(EditablePrimitive.Area, {
   name: "Area",
 });
 
-function Input(props: EditableInputProps) {
-  return <EditablePrimitive.Input {...props} />;
-}
+const Input = withContext<EditableInputProps>(EditablePrimitive.Input, {
+  name: "Input",
+});
 
 function Preview({
   controlVariant = "primary",
@@ -149,20 +171,73 @@ function Preview({
   );
 }
 
-const Control = withContext(EditablePrimitive.Control, {
+const Control = withContext<EditableControlProps>(EditablePrimitive.Control, {
   name: "Control",
 });
 
-function EditTrigger(props: EditableEditTriggerProps) {
-  return <EditablePrimitive.EditTrigger {...props} />;
-}
+const EditTrigger = withContext<EditableEditTriggerProps>(
+  EditablePrimitive.EditTrigger,
+  { name: "EditTrigger" },
+);
 
-function CancelTrigger(props: EditableCancelTriggerProps) {
-  return <EditablePrimitive.CancelTrigger {...props} />;
-}
+const CancelTrigger = withContext<EditableCancelTriggerProps>(
+  EditablePrimitive.CancelTrigger,
+  { name: "CancelTrigger" },
+);
 
-function SubmitTrigger(props: EditableSubmitTriggerProps) {
-  return <EditablePrimitive.SubmitTrigger {...props} />;
+const SubmitTrigger = withContext<EditableSubmitTriggerProps>(
+  EditablePrimitive.SubmitTrigger,
+  { name: "SubmitTrigger" },
+);
+// #endregion
+
+// #region Shorthand
+const iconSize = { lg: "icon-lg", md: "icon-md", sm: "icon-sm" } as const;
+
+export function EditableShorthand({
+  classNames,
+  multiline = false,
+  placeholder,
+  showControls = true,
+  size = "md",
+  ...rest
+}: EditableShorthandProps) {
+  const { m } = useLocale();
+  const buttonSize = iconSize[size ?? "md"] ?? "icon-md";
+
+  return (
+    <Root {...rest} placeholder={placeholder}>
+      <Area className={classNames?.area}>
+        <Input asChild className={classNames?.input}>
+          {multiline ? <Textarea /> : <TextInput size={size} />}
+        </Input>
+        <Preview className={classNames?.preview} size={size} />
+      </Area>
+
+      {showControls && (
+        <Control className={classNames?.control}>
+          <CancelTrigger asChild className={classNames?.cancelTrigger}>
+            <Button
+              aria-label={m("editable.cancel")}
+              size={buttonSize}
+              variant="outline"
+            >
+              <XIcon />
+            </Button>
+          </CancelTrigger>
+          <SubmitTrigger asChild className={classNames?.submitTrigger}>
+            <Button
+              aria-label={m("editable.submit")}
+              size={buttonSize}
+              variant="outline"
+            >
+              <CheckIcon />
+            </Button>
+          </SubmitTrigger>
+        </Control>
+      )}
+    </Root>
+  );
 }
 // #endregion
 
@@ -174,12 +249,13 @@ export type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/react";
 
-export const Editable = Object.assign(Root, {
+export const Editable = Object.assign(EditableShorthand, {
   Area,
   CancelTrigger,
   Control,
   EditTrigger,
   Input,
   Preview,
+  Root,
   SubmitTrigger,
 });

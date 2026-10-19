@@ -33,6 +33,8 @@ export const defaultMessages = {
   "datePicker.clear": "Clear",
   "datePicker.openCalendar": "Open calendar",
   "dialog.close": "Close",
+  "editable.cancel": "Cancel",
+  "editable.submit": "Save",
   "fileInput.browse": "Choose file",
   "fileInput.placeholder": "No file chosen",
   "fileUpload.error.FILE_EXISTS": "File already added.",

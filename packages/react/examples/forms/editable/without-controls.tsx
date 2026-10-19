@@ -11,25 +11,25 @@ export function WithoutControls() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable defaultValue="Jane Doe">
+            <Editable.Root defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Email</Field.Label>
-            <Editable defaultValue="jane.doe@example.com">
+            <Editable.Root defaultValue="jane.doe@example.com">
               <Editable.Area>
                 <Editable.Input asChild>
                   <Input />
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>
