@@ -3,12 +3,12 @@
     Fieldset as FieldsetPrimitive,
     type FieldsetRootProps,
   } from "@ark-ui/svelte";
-  import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+  import type { FieldRootContract } from "@pisagor/contracts";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./field.context";
 
-  type Props = FieldsetRootProps & BaseFieldProps;
+  type Props = FieldsetRootProps & FieldRootContract;
 
   let {
     recipe = fieldRecipe,

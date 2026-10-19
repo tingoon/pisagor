@@ -3,7 +3,7 @@
     Checkbox as CheckboxPrimitive,
     type CheckboxRootProps,
   } from "@ark-ui/svelte";
-  import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
+  import type { CheckboxRootContract } from "@pisagor/contracts";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, MinusIcon } from "phosphor-svelte";
@@ -13,7 +13,7 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = CheckboxRootProps &
-    BaseCheckboxProps & {
+    CheckboxRootContract & {
       onValueChange?: (value: boolean) => void;
       /** Forwarded to the hidden input (Svelte DOM attr). */
       tabindex?: number | null;

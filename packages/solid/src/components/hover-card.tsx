@@ -5,7 +5,7 @@ import type {
   HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid";
-import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
+import type { HoverCardRootContract } from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -21,7 +21,7 @@ const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalHoverCardRootProps
-  extends HoverCardRootPrimitiveProps, BaseHoverCardRootProps {}
+  extends HoverCardRootPrimitiveProps, HoverCardRootContract {}
 
 export type HoverCardProps = LocalHoverCardRootProps;
 

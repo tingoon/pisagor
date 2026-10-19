@@ -6,7 +6,7 @@ import type {
   ImageCropperRootProps as ImageCropperRootPrimitiveProps,
   ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/solid";
-import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
+import type { ImageCropperRootContract } from "@pisagor/contracts";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -26,7 +26,7 @@ const {
 export interface ImageCropperRootProps
   extends
     Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
-    BaseImageCropperRootProps {
+    ImageCropperRootContract {
   src?: string;
   alt?: string;
   cropShape?: "rectangle" | "circle";

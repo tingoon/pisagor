@@ -1,14 +1,16 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/react";
 import type {
   ProgressRangeProps,
-  ProgressRootProps as ProgressRootPrimitiveProps,
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/react";
-import type { ProgressProps as BaseProgressRootProps } from "@pisagor/props";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
+import { progressRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -18,13 +20,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ProgressRoot = withProvider(ProgressPrimitive.Root, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
-  Omit<ProgressRootPrimitiveProps, "value"> &
-    BaseProgressRootProps & { value?: number | null }
->;
+const ProgressRoot = withProvider(ProgressPrimitive.Root)<ProgressRootContract>(
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 const ProgressHeader = withContext("div", {
   name: "Header",
@@ -44,10 +45,10 @@ const ProgressRange = withContext(ProgressPrimitive.Range, {
 // #endregion
 
 // #region Types
-export interface ProgressProps extends Omit<
-  ComponentProps<typeof ProgressRoot>,
-  "children" | "value"
-> {
+export type ProgressRootProps = ComponentProps<typeof ProgressRoot>;
+
+export interface ProgressProps
+  extends Omit<ProgressRootProps, "children" | "value">, ProgressContract {
   /**
    * Whether to show indeterminate progress.
    *
@@ -63,10 +64,7 @@ export interface ProgressProps extends Omit<
    */
   value?: number;
   children?: ReactNode;
-  /** Optional label rendered above the progress bar. */
-  label?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<ProgressRecipeSlot>;
+  label?: ReactNode;
   /** Extra props forwarded to the progress range element */
   rangeProps?: Omit<ProgressRangeProps, "children" | "className">;
   /** Extra props forwarded to the progress track element */

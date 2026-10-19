@@ -1,7 +1,7 @@
 import type {
-  SortableItemProps as BaseSortableItemProps,
-  SortableProps as BaseSortableRootProps,
-} from "@pisagor/props";
+  SortableItemRootContract,
+  SortableRootContract,
+} from "@pisagor/contracts";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
 import type { Accessor, ComponentProps, JSX } from "solid-js";
@@ -62,7 +62,7 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends Omit<ComponentProps<"div">, "onDragStart">, BaseSortableRootProps {
+  extends Omit<ComponentProps<"div">, "onDragStart">, SortableRootContract {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -70,7 +70,7 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentProps<"div">, BaseSortableItemProps {
+  extends ComponentProps<"div">, SortableItemRootContract {
   value: string;
 }
 

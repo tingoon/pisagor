@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { KbdProps as BaseKbdProps } from "@pisagor/props";
+  import type { KbdRootContract } from "@pisagor/contracts";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdProps;
+  } & KbdRootContract;
 
   let {
     variant = "default",

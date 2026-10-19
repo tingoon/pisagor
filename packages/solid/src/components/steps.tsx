@@ -12,9 +12,9 @@ import type {
   StepsTriggerProps,
 } from "@ark-ui/solid";
 import type {
-  StepsItemProps as BaseStepsItemProps,
-  StepsProps as BaseStepsRootProps,
-} from "@pisagor/props";
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -32,10 +32,10 @@ const {
 // #endregion
 
 export interface LocalStepsRootProps
-  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, StepsRootContract {}
 
 export interface LocalStepsItemProps
-  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, StepsItemRootContract {}
 
 export type StepsTitleProps = ComponentProps<"span">;
 export type StepsDescriptionProps = ComponentProps<"span">;

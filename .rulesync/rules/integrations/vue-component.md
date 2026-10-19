@@ -105,16 +105,16 @@ Applies to the published workspace component package (`@pisagor/vue`):
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
-- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
+- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/contracts` — see [Shared props (`@pisagor/contracts`)](#shared-props-pisagorcontracts).
 - Use relative imports (`../internal/…` from flat files, `../../internal/…` from foldered files; same for `hooks`) within the package.
 - Import icons from `@phosphor-icons/vue` (e.g. `PhCaretDown`).
 - Class merging: `cn` from `@pisagor/utils`.
 
-### Shared props (`@pisagor/props`)
+### Shared props (`@pisagor/contracts`)
 
-Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
+Framework-agnostic visual props live in [`@pisagor/contracts`](../../../packages/contracts). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
 
-- Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
+- Import: `import type { FooProps as BaseFooProps } from "@pisagor/contracts"`.
 - Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
 - Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Vue [`button.ts`](../../../packages/vue/src/components/button.ts).
@@ -269,9 +269,9 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 ### Do
 
 - Export `interface FooProps` when props are part of the public API.
-- Prefer extending `@pisagor/props` shared props: `export interface ButtonProps extends BaseButtonProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
+- Prefer extending `@pisagor/contracts` shared props: `export interface ButtonProps extends BaseButtonProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
 - Use `Omit<…>` when a convenience prop conflicts with an Ark prop signature.
-- Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Prefer extending `@pisagor/contracts` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.
 - Styling entry: use **`class`** (Vue), not `className`. Type as `class?: unknown` (or `ClassValue` when already imported) so object/array class bindings work.
 - Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../internal/types` (or `../../internal/types` from a folder).

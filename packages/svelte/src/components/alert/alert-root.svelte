@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { AlertProps as BaseAlertProps } from "@pisagor/props";
+  import type { AlertRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./alert.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseAlertProps;
+  } & AlertRootContract;
 
   let { children, ...rest }: Props = $props();
 

@@ -1,11 +1,11 @@
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface ProseProps extends BaseProseProps {
+export interface ProseProps extends ProseRootContract {
   class?: unknown;
   /**
    * Trusted HTML content rendered as-is.

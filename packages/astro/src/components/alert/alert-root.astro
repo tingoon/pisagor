@@ -1,9 +1,9 @@
 ---
-import type { AlertProps as BaseAlertProps } from "@pisagor/props";
+import type { AlertRootContract } from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./alert.context";
 
-type Props = HTMLAttributes<"div"> & BaseAlertProps;
+type Props = HTMLAttributes<"div"> & AlertRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

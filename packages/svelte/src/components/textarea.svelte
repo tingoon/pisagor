@@ -1,13 +1,12 @@
 <script lang="ts">
   import { Field, type FieldTextareaProps } from "@ark-ui/svelte";
-  import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
-  import {
-    formControlShellRecipe,
-    type TextareaRecipeSlot,
-    textareaRecipe,
-  } from "@pisagor/recipes";
+  import type {
+    TextareaContract,
+    TextareaRootContract,
+  } from "@pisagor/contracts";
+  import { formControlShellRecipe, textareaRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { VariantClassNames } from "../internal";
+
   import InputClearButton from "./input/input-clear-button.svelte";
   import InputGroupAddon from "./input-group/input-group-addon.svelte";
   import InputGroupRoot from "./input-group/input-group-root.svelte";
@@ -22,12 +21,12 @@
      * @defaultValue false
      */
     clearable?: boolean;
-    classNames?: VariantClassNames<TextareaRecipeSlot>;
     /** Called with the string value when the textarea changes. */
     onValueChange?: (value: string) => void;
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseTextareaProps;
+  } & TextareaRootContract &
+    TextareaContract;
 
   let {
     variant: variantProp,

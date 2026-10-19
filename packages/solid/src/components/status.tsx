@@ -1,9 +1,10 @@
-import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface StatusProps extends ComponentProps<"span">, BaseStatusProps {
+export interface StatusProps
+  extends ComponentProps<"span">, StatusRootContract {
   size?: StatusVariantProps["size"];
   variant?: StatusVariantProps["variant"];
 }

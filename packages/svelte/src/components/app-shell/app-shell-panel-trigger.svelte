@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { AppShellTriggerContract } from "@pisagor/contracts";
   import {
     ArrowsInLineHorizontalIcon,
     ArrowsOutLineHorizontalIcon,
@@ -20,7 +21,7 @@
     children?: Snippet;
     off?: Snippet;
     on?: Snippet;
-  };
+  } & AppShellTriggerContract;
 
   let {
     placement = "start",

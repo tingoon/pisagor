@@ -1,7 +1,4 @@
-import type {
-  ItemProps as BaseItemGroupProps,
-  ItemProps as BaseItemSeparatorProps,
-} from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { itemRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
@@ -10,10 +7,10 @@ import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
 export interface ItemGroupProps
-  extends ComponentPropsWithRef<"div">, BaseItemGroupProps {}
+  extends ComponentPropsWithRef<"div">, ItemRootContract {}
 
 export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
+  extends Omit<SeparatorProps, "recipe">, ItemRootContract {}
 // #endregion
 
 // #region Parts

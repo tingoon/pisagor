@@ -3,18 +3,14 @@ import {
   type JsonTreeViewRootProps as JsonTreeViewRootPrimitiveProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/solid";
-import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
-import {
-  type JsonTreeViewRecipeSlot,
-  jsonTreeViewRecipe,
-} from "@pisagor/recipes";
+import type {
+  JsonTreeViewContract,
+  JsonTreeViewRootContract,
+} from "@pisagor/contracts";
+import { jsonTreeViewRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import {
-  CaretRightIcon,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { CaretRightIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -24,14 +20,16 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
+  extends
+    JsonTreeViewRootPrimitiveProps,
+    JsonTreeViewRootContract,
+    JsonTreeViewContract {}
 
 export interface JsonTreeViewProps extends Omit<
   JsonTreeViewRootProps,
   "children"
 > {
   renderValue?: JsonTreeViewTreeProps["renderValue"];
-  classNames?: VariantClassNames<JsonTreeViewRecipeSlot>;
   treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "class" | "renderValue">;
 }
 

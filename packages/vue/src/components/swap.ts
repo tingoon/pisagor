@@ -1,5 +1,5 @@
 import { Swap as SwapPrimitive } from "@ark-ui/vue";
-import type { SwapProps as BaseSwapProps } from "@pisagor/props";
+import type { SwapRootContract, SwapContract } from "@pisagor/contracts";
 import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -8,7 +8,7 @@ import type { ClassValue } from "../internal";
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
-export interface SwapProps extends BaseSwapProps {
+export interface SwapProps extends SwapRootContract, SwapContract {
   class?: unknown;
   lazyMount?: boolean;
   /**
@@ -19,9 +19,7 @@ export interface SwapProps extends BaseSwapProps {
    */
   swap?: boolean;
   unmountOnExit?: boolean;
-  /** Content shown when swapped on. */
   on?: VNodeChild;
-  /** Content shown when swapped off. */
   off?: VNodeChild;
   /** Extra props forwarded to the `on` indicator element. */
   onIndicatorProps?: Record<string, unknown>;

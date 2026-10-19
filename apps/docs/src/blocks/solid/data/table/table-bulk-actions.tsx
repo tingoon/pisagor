@@ -1,5 +1,6 @@
 /** @jsxImportSource solid-js */
 
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import {
   ActionBar,
   AlertDialog,
@@ -22,8 +23,6 @@ import { createMemo, createSignal, For, Show } from "solid-js";
 import { tableBulkActionsBlock } from "#/styles/recipes/table";
 
 const styles = tableBulkActionsBlock();
-
-type BadgeVariant = "warning" | "info" | "success";
 
 export interface TableBulkActionsProps {
   class?: string;
@@ -202,7 +201,10 @@ export function TableBulkActions(props: TableBulkActionsProps) {
   );
 }
 
-const statusVariants: Record<string, BadgeVariant> = {
+const statusVariants: Record<
+  string,
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   pending: "warning",
   progress: "info",
   transit: "success",

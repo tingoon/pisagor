@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../../internal";
@@ -24,7 +24,7 @@ export function ItemRoot({
   recipe = itemRecipe,
   className,
   ...rest
-}: HTMLArkProps<"div"> & BaseItemProps) {
+}: HTMLArkProps<"div"> & ItemRootContract) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const resolved = {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
+  import type { DatePickerRootContract } from "@pisagor/contracts";
   import {
     datePickerRecipe,
     type FormControlGroupShellVariantProps,
@@ -19,7 +19,7 @@
       children?: Snippet;
       clearable?: boolean;
       value?: string | undefined;
-    } & BaseDatePickerProps;
+    } & DatePickerRootContract;
 
   let {
     clearable = false,

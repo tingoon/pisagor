@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue";
-import type { SkipNavProps as BaseSkipNavLinkProps } from "@pisagor/props";
+import type { SkipNavRootContract } from "@pisagor/contracts";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -7,7 +7,7 @@ import type { ClassValue } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Types
-export interface SkipNavLinkProps extends BaseSkipNavLinkProps {
+export interface SkipNavLinkProps extends SkipNavRootContract {
   class?: unknown;
 }
 

@@ -12,7 +12,7 @@ import type {
   DatePickerValueTextProps,
 } from "@ark-ui/react";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
+import type { DatePickerRootContract } from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { type ComponentProps, createContext, type ReactNode, use } from "react";
 import { useClearableInput } from "../hooks";
@@ -64,7 +64,7 @@ export interface DatePickerInputProps
 }
 
 export interface DatePickerTimeInputProps
-  extends Omit<InputProps, "recipe">, BaseDatePickerProps {
+  extends Omit<InputProps, "recipe">, DatePickerRootContract {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -85,7 +85,7 @@ export interface DatePickerContentProps extends DatePickerContentPrimitiveProps 
 export interface DatePickerRootProps
   extends
     Omit<DatePickerRootPrimitiveProps, "onValueChange">,
-    BaseDatePickerProps {
+    DatePickerRootContract {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;

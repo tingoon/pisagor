@@ -1,18 +1,15 @@
-import type {
-  KbdGroupProps as BaseKbdGroupProps,
-  KbdProps as BaseKbdProps,
-} from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/contracts";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface KbdProps extends BaseKbdProps {
+export interface KbdProps extends KbdRootContract {
   class?: unknown;
 }
 
-export interface KbdGroupProps extends BaseKbdGroupProps {
+export interface KbdGroupProps extends KbdGroupRootContract {
   class?: unknown;
 }
 // #endregion

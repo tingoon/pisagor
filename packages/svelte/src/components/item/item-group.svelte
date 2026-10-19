@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import type { ItemRootContract } from "@pisagor/contracts";
   import { itemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -7,7 +7,7 @@
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseItemProps;
+  } & ItemRootContract;
 
   let {
     variant = "default",

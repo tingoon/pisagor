@@ -1,12 +1,10 @@
-import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
+import type { BadgeRootContract } from "@pisagor/contracts";
+import { badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
-
-export interface BadgeProps extends BaseBadgeProps {
+export interface BadgeProps extends BadgeRootContract {
   class?: unknown;
 }
 // #endregion

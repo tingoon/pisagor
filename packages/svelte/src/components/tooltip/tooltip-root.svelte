@@ -3,11 +3,11 @@
     Tooltip as TooltipPrimitive,
     type TooltipRootProps,
   } from "@ark-ui/svelte";
-  import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
+  import type { TooltipRootContract } from "@pisagor/contracts";
   import { tooltipRecipe } from "@pisagor/recipes";
   import { Context } from "./tooltip.context";
 
-  type Props = TooltipRootProps & BaseTooltipProps;
+  type Props = TooltipRootProps & TooltipRootContract;
 
   let {
     closeDelay = 150,

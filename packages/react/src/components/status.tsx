@@ -1,10 +1,10 @@
-import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { statusRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface StatusProps
-  extends ComponentPropsWithRef<"span">, BaseStatusProps {}
+  extends ComponentPropsWithRef<"span">, StatusRootContract {}
 // #endregion
 
 // #region Component

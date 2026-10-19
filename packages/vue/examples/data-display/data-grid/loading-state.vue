@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
-import type { BadgeVariant } from "@pisagor/vue";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Button, Checkbox, Skeleton, Table } from "@pisagor/vue";
 import type {
   CellContext,
@@ -59,7 +59,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<FullUser["status"], BadgeVariant> = {
+const statusVariants: Record<
+  FullUser["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

@@ -1,4 +1,4 @@
-import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
+import type { NavbarRootContract, NavbarContract } from "@pisagor/contracts";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -13,7 +13,9 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface NavbarRootProps
-  extends ComponentProps<"header">, BaseNavbarRootProps {}
+  extends ComponentProps<"header">, NavbarRootContract {}
+
+export interface NavbarProps extends NavbarRootProps, NavbarContract {}
 
 export type NavbarPartProps = ComponentProps<"div">;
 export type NavbarNavProps = ComponentProps<"nav">;

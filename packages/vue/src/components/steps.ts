@@ -1,9 +1,9 @@
 import { Steps as StepsPrimitive } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
-  StepsItemProps as BaseStepsItemProps,
-  StepsProps as BaseStepsRootProps,
-} from "@pisagor/props";
+  StepsItemRootContract,
+  StepsRootContract,
+} from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -28,11 +28,11 @@ const {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface StepsItemProps extends BaseStepsItemProps {
+export interface StepsItemProps extends StepsItemRootContract {
   class?: unknown;
 }
 
-export interface StepsRootProps extends BaseStepsRootProps {
+export interface StepsRootProps extends StepsRootContract {
   class?: unknown;
 }
 // #endregion

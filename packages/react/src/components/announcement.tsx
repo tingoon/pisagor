@@ -1,7 +1,10 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
+import { ark } from "@ark-ui/react";
+import type {
+  AnnouncementContract,
+  AnnouncementRootContract,
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -12,14 +15,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const AnnouncementRoot = withProvider(ark.div, {
-  name: "Root",
-  slot: "base",
-}) as FunctionComponent<
-  HTMLArkProps<"div"> & {
-    role?: "status" | "alert";
-  } & BaseAnnouncementRootProps
->;
+export const AnnouncementRoot = withProvider(ark.div)<AnnouncementRootContract>(
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export const AnnouncementTitle = withContext("span", {
   name: "Title",
@@ -28,16 +29,19 @@ export const AnnouncementTitle = withContext("span", {
 // #endregion
 
 // #region Types
-export type AnnouncementRootProps = ComponentProps<typeof AnnouncementRoot>;
+export type AnnouncementRootProps = Omit<
+  ComponentProps<typeof AnnouncementRoot>,
+  "role"
+> & {
+  role?: "status" | "alert";
+};
 export type AnnouncementTitleProps = ComponentProps<typeof AnnouncementTitle>;
 
-export interface AnnouncementProps extends Omit<
-  AnnouncementRootProps,
-  "children" | "title"
-> {
-  /** Optional badge or label rendered before the title. */
+export interface AnnouncementProps
+  extends
+    Omit<AnnouncementRootProps, "children" | "title">,
+    AnnouncementContract {
   badge?: ReactNode;
-  /** Title content rendered inside `Announcement.Title`. */
   title?: ReactNode;
   /** Extra props forwarded to the announcement title element */
   titleProps?: Omit<AnnouncementTitleProps, "children" | "className">;

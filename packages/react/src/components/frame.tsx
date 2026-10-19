@@ -1,4 +1,4 @@
-import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -22,7 +22,7 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & BaseFrameRootProps) {
+}: ComponentPropsWithRef<"div"> & FrameRootContract) {
   const slots = recipe({ size });
 
   return (

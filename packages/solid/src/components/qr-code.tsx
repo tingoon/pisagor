@@ -5,7 +5,7 @@ import type {
   QrCodeOverlayProps,
   QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
+import type { QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -19,7 +19,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface LocalQrCodeRootProps
-  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps {}
+  extends QrCodeRootPrimitiveProps, QrCodeRootContract {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 

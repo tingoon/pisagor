@@ -7,7 +7,12 @@ import {
   useListCollection,
 } from "@ark-ui/vue";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import type { CommandProps as BaseCommandProps } from "@pisagor/props";
+import type {
+  CommandDialogContract,
+  CommandPresetItem,
+  CommandRootContract,
+  CommandContract,
+} from "@pisagor/contracts";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -42,21 +47,20 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {}
+  extends
+    Omit<
+      ComboboxRootProps<T>,
+      "emptyText" | "items" | "placeholder" | "recipe"
+    >,
+    CommandRootContract,
+    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
+  emptyText?: VNodeChild;
+  placeholder?: string;
+}
 
 interface CommandDialogContentProps
-  extends DialogContentProps, BaseCommandProps {
-  /**
-   * The description of the dialog
-   *
-   * @defaultValue "Search for a command to run..."
-   */
+  extends DialogContentProps, CommandDialogContract {
   description?: string;
-  /**
-   * The title of the dialog
-   *
-   * @defaultValue "Command Palette"
-   */
   title?: string;
 }
 
@@ -69,12 +73,13 @@ interface CommandInputProps {
    */
   size?: InputProps["size"];
 }
-export interface CommandShorthandItem {
+export interface CommandShorthandItem extends Omit<
+  CommandPresetItem,
+  "label" | "icon"
+> {
   /** Optional group heading. */
   group?: string;
-  /** Leading icon. */
   icon?: VNodeChild;
-  /** Visible label, also used for filtering. */
   label: string;
   /** Keyboard shortcut hint. */
   shortcut?: string;
@@ -82,12 +87,12 @@ export interface CommandShorthandItem {
   value: string;
 }
 
-export interface CommandShorthandProps {
-  /** Text shown when nothing matches. */
+export interface CommandShorthandProps extends Omit<
+  CommandProps<CommandShorthandItem>,
+  "collection"
+> {
   emptyText?: VNodeChild;
-  /** Items to render; filtering and grouping are handled for you. */
   items: CommandShorthandItem[];
-  /** Input placeholder. */
   placeholder?: string;
 }
 // #endregion

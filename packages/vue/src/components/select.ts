@@ -9,7 +9,12 @@ import type {
   SelectRootProps as ArkSelectRootProps,
 } from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
-import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
+import type {
+  SelectItemGroupContract,
+  SelectPresetItem as BaseSelectPresetItem,
+  SelectRootContract,
+  SelectContract,
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -63,7 +68,7 @@ const [provideSelectControl, , useSelectControlRef] = createContext(
 )<FormControlShellVariantProps>({ defaultValue: {}, strict: false });
 
 // #region Types
-interface SelectPresetItem {
+interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
   value: string;
 }
@@ -78,9 +83,12 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   size?: FormControlShellVariantProps["size"];
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & BaseSelectRootProps;
+} & Omit<SelectRootContract, "items">;
 
-export interface SelectProps extends Omit<SelectRootProps, "children"> {
+export interface SelectProps
+  extends
+    Omit<SelectRootProps, "children" | "items">,
+    Omit<SelectContract, "items"> {
   items?: Array<SelectPresetItem | string>;
   /**
    * Whether to show a clear button when a value is selected.
@@ -93,8 +101,16 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
 
 export type SelectTriggerSize = FormControlShellVariantProps["size"];
 
-export interface SelectTriggerProps extends BaseSelectRootProps {
+export interface SelectTriggerProps extends Omit<
+  SelectRootContract,
+  "items" | "placeholder"
+> {
   class?: unknown;
+}
+
+export interface SelectItemGroupProps extends SelectItemGroupContract {
+  class?: unknown;
+  heading?: string | VNodeChild;
 }
 // #endregion
 

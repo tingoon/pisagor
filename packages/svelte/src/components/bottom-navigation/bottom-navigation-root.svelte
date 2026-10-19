@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BottomNavigationProps as BaseBottomNavigationProps } from "@pisagor/props";
+  import type { BottomNavigationRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
   import {
@@ -8,7 +8,7 @@
   } from "./bottom-navigation.context";
 
   type Props = HTMLAttributes<HTMLElement> &
-    BaseBottomNavigationProps & {
+    BottomNavigationRootContract & {
       /**
        * Value of the item for the current page; that item gets
        * `aria-current="page"`.

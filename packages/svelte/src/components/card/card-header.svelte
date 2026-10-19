@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { CardHeaderContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./card.context";
   import CardDescription from "./card-description.svelte";
@@ -8,7 +9,7 @@
     children?: import("svelte").Snippet;
     description?: string | import("svelte").Snippet;
     title?: string | import("svelte").Snippet;
-  };
+  } & CardHeaderContract;
 
   let { children, description, title, ...rest }: Props = $props();
 

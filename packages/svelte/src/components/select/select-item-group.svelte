@@ -3,12 +3,13 @@
     Select as SelectPrimitive,
     type SelectItemGroupProps as ArkSelectItemGroupProps,
   } from "@ark-ui/svelte";
+  import type { SelectItemGroupContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import SelectItemGroupLabel from "./select-item-group-label.svelte";
 
   type Props = ArkSelectItemGroupProps & {
     heading?: string | Snippet;
-  };
+  } & SelectItemGroupContract;
 
   let { children, heading, ...rest }: Props = $props();
 </script>

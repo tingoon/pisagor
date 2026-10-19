@@ -39,7 +39,7 @@
     "@ark-ui/react": "^5.39.2",
     "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
-    "@pisagor/props": "workspace:*",
+    "@pisagor/contracts": "workspace:*",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",

@@ -2,7 +2,10 @@ import {
   PhArrowsInLineHorizontal,
   PhArrowsOutLineHorizontal,
 } from "@phosphor-icons/vue";
-import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
+import type {
+  AppShellRootContract,
+  AppShellTriggerContract,
+} from "@pisagor/contracts";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
@@ -492,8 +495,24 @@ function useRegisteredRailState({
 // #endregion
 
 // #region Types (Root)
-export interface AppShellRootProps extends BaseAppShellRootProps {
+export interface AppShellRootProps extends AppShellRootContract {
   class?: unknown;
+}
+
+export interface AppShellPanelTriggerProps extends AppShellTriggerContract {
+  class?: unknown;
+  off?: VNodeChild;
+  on?: VNodeChild;
+  onClick?: (event: MouseEvent) => void;
+  placement?: AppShellPlacement;
+}
+
+export interface AppShellInspectorTriggerProps extends AppShellTriggerContract {
+  class?: unknown;
+  off?: VNodeChild;
+  on?: VNodeChild;
+  onClick?: (event: MouseEvent) => void;
+  placement?: AppShellPlacement;
 }
 // #endregion
 

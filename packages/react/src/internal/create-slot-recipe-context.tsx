@@ -125,16 +125,19 @@ export function createSlotRecipeContext<
     return styles;
   }
 
-  function withProvider<C extends ElementType>(
+  type ProviderProps<C extends ElementType, P> = ComponentProps<C> & P;
+
+  function createProvider<C extends ElementType, P extends object>(
     Component: C,
     options: WithSlotRecipeOptions<Slot>,
-  ): FunctionComponent<ComponentProps<C> & SlotRecipeProps<R>> {
+  ): FunctionComponent<ProviderProps<C, P>> {
     const partName = options.name;
     const slot = (options.slot ??
       (partName === "Root" ? "base" : toKebabCase(partName))) as Slot;
 
-    function ProviderComponent(props: ComponentProps<C> & SlotRecipeProps<R>) {
-      const recipe = (props.recipe ?? defaultRecipe) as R;
+    function ProviderComponent(props: ProviderProps<C, P>) {
+      const recipe = ((props as SlotRecipeProps<R>).recipe ??
+        defaultRecipe) as R;
       const { rest, variants } = splitRecipeProps(
         props as Record<string, unknown>,
         recipe,
@@ -178,6 +181,33 @@ export function createSlotRecipeContext<
     ProviderComponent.displayName = `${name}.${partName}`;
 
     return ProviderComponent;
+  }
+
+  /**
+   * Options → root component. Call-signature interface keeps `P`'s constraint /
+   * default visible to the language service (a returned generic function
+   * otherwise widens to bare `<P>`, which IDEs often surface as `any`).
+   */
+  interface WithProviderBind<C extends ElementType> {
+    <P extends object = SlotRecipeProps<R>>(
+      options: WithSlotRecipeOptions<Slot>,
+    ): FunctionComponent<ProviderProps<C, P>>;
+  }
+
+  /**
+   * Host element first (inferred), optional root contract on the options call.
+   * TypeScript cannot express `withProvider<Contract>("div")({…})` (no partial
+   * type-argument inference), so the contract goes on the second call:
+   *
+   * `withProvider("div")<AlertRootContract>({ name: "Root", slot: "base" })`
+   * `withProvider("div")({ name: "Root", slot: "base" })`
+   */
+  function withProvider<C extends ElementType>(
+    Component: C,
+  ): WithProviderBind<C> {
+    return <P extends object = SlotRecipeProps<R>>(
+      options: WithSlotRecipeOptions<Slot>,
+    ) => createProvider<C, P>(Component, options);
   }
 
   function withContext<C extends ElementType>(

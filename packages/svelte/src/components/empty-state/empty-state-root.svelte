@@ -1,13 +1,13 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
+  import type { EmptyStateRootContract } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
 
   import { withProvider } from "./empty-state.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseEmptyStateProps;
+  } & EmptyStateRootContract;
 
   let { children, ...rest }: Props = $props();
 

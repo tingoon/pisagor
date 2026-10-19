@@ -9,7 +9,11 @@ import type {
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
-import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
+import type {
+  DialogContract,
+  DialogHeaderContract,
+  DialogRootContract,
+} from "@pisagor/contracts";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -36,8 +40,8 @@ const { DialogModalContext, useDialogModal } =
   createContext("DialogModal")<DialogModalState>();
 // #endregion
 
-export interface LocalDialogRootProps
-  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
+export interface DialogRootProps
+  extends DialogRootPrimitiveProps, DialogRootContract {}
 
 export interface DialogContentProps
   extends DialogContentPrimitiveProps, DialogVariantProps {
@@ -49,7 +53,11 @@ export interface DialogBodyProps extends ComponentProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = ComponentProps<"div">;
+export interface DialogHeaderProps
+  extends Omit<ComponentProps<"div">, "title">, DialogHeaderContract {
+  description?: JSX.Element;
+  title?: JSX.Element;
+}
 
 export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
@@ -57,7 +65,8 @@ export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
 
 export type DialogFooterProps = ComponentProps<"div">;
 
-export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
+export interface DialogProps
+  extends Omit<DialogRootProps, "title">, DialogContract {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
@@ -70,7 +79,7 @@ export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
     | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
 }
 
-export function DialogRoot(props: LocalDialogRootProps): JSX.Element {
+export function DialogRoot(props: DialogRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal", "recipe"]);
   const modal = () => local.modal ?? true;
   const slots = createMemo(() => (local.recipe ?? dialogRecipe)());
@@ -190,7 +199,12 @@ export function DialogBody(props: DialogBodyProps): JSX.Element {
 }
 
 export function DialogHeader(props: DialogHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "class",
+    "description",
+    "title",
+  ]);
   const styles = useStyles();
 
   return (
@@ -199,7 +213,15 @@ export function DialogHeader(props: DialogHeaderProps): JSX.Element {
       class={styles.slots.header({ class: local.class })}
       data-part="header"
       data-scope="dialog"
-    />
+    >
+      <Show when={local.title !== undefined}>
+        <DialogTitle>{local.title}</DialogTitle>
+      </Show>
+      <Show when={local.description !== undefined}>
+        <DialogDescription>{local.description}</DialogDescription>
+      </Show>
+      {local.children}
+    </div>
   );
 }
 
@@ -295,7 +317,6 @@ export type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
   DialogDescriptionProps,
-  DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";

@@ -1,6 +1,10 @@
 <script lang="ts">
   import { useHotkey } from "@ark-ui/svelte";
-  import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+  import type {
+    ActionBarActionItem,
+    ActionBarRootContract,
+    ActionBarContract,
+  } from "@pisagor/contracts";
   import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
   import { XIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
@@ -11,11 +15,8 @@
   import ActionBarSeparator from "./action-bar-separator.svelte";
   import ActionBarValue from "./action-bar-value.svelte";
 
-  type ActionItem = {
-    disabled?: boolean;
+  type ActionItem = Omit<ActionBarActionItem, "icon" | "label"> & {
     icon?: Snippet;
-    /** Stable key; defaults to `label`. */
-    id?: string;
     label: string;
     onClick: () => void;
   };
@@ -33,7 +34,8 @@
       placement?: "bottom" | "bottom-start" | "bottom-end";
     };
     unmountOnExit?: boolean;
-  } & BaseActionBarProps;
+  } & ActionBarRootContract &
+    ActionBarContract;
 
   let {
     closeOnEscape = true,

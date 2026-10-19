@@ -3,10 +3,10 @@
     Progress as ProgressPrimitive,
     type ProgressRootProps,
   } from "@ark-ui/svelte";
-  import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
+  import type { ProgressRootContract } from "@pisagor/contracts";
   import { withProvider } from "./progress.context";
 
-  type Props = ProgressRootProps & BaseProgressProps;
+  type Props = ProgressRootProps & ProgressRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

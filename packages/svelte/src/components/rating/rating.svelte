@@ -5,12 +5,12 @@
     RatingGroupItemProps,
     RatingGroupRootProps,
   } from "@ark-ui/svelte";
-  import type { RatingProps as BaseRatingProps } from "@pisagor/props";
-  import type { RatingRecipeSlot } from "@pisagor/recipes";
+  import type { RatingContract, RatingRootContract } from "@pisagor/contracts";
+
   import { StarIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
+
   import RatingControl from "./rating-control.svelte";
   import RatingIndicator from "./rating-indicator.svelte";
   import RatingItem from "./rating-item.svelte";
@@ -19,15 +19,8 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
-    /** Slot class names */
-    classNames?: VariantClassNames<RatingRecipeSlot>;
     /** Extra props forwarded to the rating control element */
     controlProps?: Omit<RatingGroupControlProps, "children" | "class">;
-    /**
-     * The icon component to use for the rating.
-     *
-     * @defaultValue StarIcon
-     */
     icon?: Component;
     /** Extra props forwarded to each rating item indicator element */
     indicatorProps?: Omit<
@@ -44,7 +37,8 @@
     onValueChange?: (value: number) => void;
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseRatingProps;
+  } & RatingRootContract &
+    RatingContract;
 
   let {
     controlProps,

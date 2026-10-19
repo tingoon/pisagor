@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SkipNavProps as BaseSkipNavProps } from "@pisagor/props";
+  import type { SkipNavRootContract } from "@pisagor/contracts";
   import { skipNavRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@
   type Props = Omit<HTMLAttributes<HTMLDivElement>, "id"> & {
     children?: import("svelte").Snippet;
     id?: string;
-  } & BaseSkipNavProps;
+  } & SkipNavRootContract;
 
   let {
     id = SKIP_NAV_ID,

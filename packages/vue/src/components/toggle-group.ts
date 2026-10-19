@@ -1,5 +1,9 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue";
-import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
+import type {
+  ToggleGroupPresetItem as BaseToggleGroupPresetItem,
+  ToggleGroupRootContract,
+  ToggleGroupContract,
+} from "@pisagor/contracts";
 import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -34,7 +38,10 @@ interface ToggleGroupContextValue {
   variant: ToggleGroupVariant;
 }
 
-export interface ToggleGroupRootProps extends BaseToggleGroupRootProps {
+export interface ToggleGroupRootProps extends Omit<
+  ToggleGroupRootContract,
+  "items"
+> {
   class?: unknown;
   defaultValue?: string[];
   disabled?: boolean;
@@ -47,16 +54,27 @@ export interface ToggleGroupRootProps extends BaseToggleGroupRootProps {
   value?: string[];
 }
 
-export interface ToggleGroupPresetItem {
+export interface ToggleGroupPresetItem extends Omit<
+  BaseToggleGroupPresetItem,
+  "content"
+> {
   value: string;
   disabled?: boolean;
-  children: VNodeChild;
+  content: VNodeChild;
 }
 
 export interface ToggleGroupItemProps {
   class?: unknown;
   disabled?: boolean;
   value: string;
+}
+
+export interface ToggleGroupProps
+  extends
+    Omit<ToggleGroupRootProps, "children">,
+    ToggleGroupRootContract,
+    ToggleGroupContract {
+  items?: ToggleGroupPresetItem[];
 }
 
 type ArkPart = Parameters<typeof h>[0];
@@ -250,7 +268,7 @@ export const ToggleGroupShorthand = defineComponent({
             h(
               ToggleGroupItem as ArkPart,
               { disabled: item.disabled, key: item.value, value: item.value },
-              () => item.children,
+              () => item.content,
             ),
           ) ?? [],
       );

@@ -3,7 +3,7 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputItemProps as ArkItemProps,
   } from "@ark-ui/svelte";
-  import type { TagsInputItemProps as BaseTagsInputItemProps } from "@pisagor/props";
+  import type { TagsInputItemRootContract } from "@pisagor/contracts";
   import { tagsInputItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { TagsInputItemStylesContext } from "./tags-input.context";
@@ -12,7 +12,9 @@
   import TagsInputItemPreview from "./tags-input-item-preview.svelte";
   import TagsInputItemText from "./tags-input-item-text.svelte";
 
-  type Props = ArkItemProps & { showDelete?: boolean } & BaseTagsInputItemProps;
+  type Props = ArkItemProps & {
+    showDelete?: boolean;
+  } & TagsInputItemRootContract;
 
   let {
     showDelete = true,

@@ -1,8 +1,8 @@
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
-import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
 import type { ColumnDef } from "@pisagor/react/data-grid";
 import { DataGrid } from "@pisagor/react/data-grid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { type ReactNode, useMemo } from "react";
 
 interface User {
@@ -45,7 +45,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<User["status"], BadgeVariant> = {
+const statusVariants: Record<
+  User["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

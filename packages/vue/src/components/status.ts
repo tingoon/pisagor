@@ -1,11 +1,11 @@
-import type { StatusProps as BaseStatusProps } from "@pisagor/props";
+import type { StatusRootContract } from "@pisagor/contracts";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface StatusProps extends BaseStatusProps {
+export interface StatusProps extends StatusRootContract {
   class?: unknown;
 }
 // #endregion

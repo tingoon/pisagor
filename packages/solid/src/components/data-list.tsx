@@ -1,15 +1,14 @@
 import type {
-  DataListItemProps as BaseDataListItemProps,
-  DataListProps as BaseDataListRootProps,
-} from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-  dataListRecipe,
-} from "@pisagor/recipes";
+  DataListContract,
+  DataListItemContract,
+  DataListItemRootContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
+import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -19,28 +18,32 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-interface DataListPresetItem {
+interface DataListPresetItem extends Omit<
+  BaseDataListPresetItem,
+  "label" | "value"
+> {
   label: JSX.Element;
   value: JSX.Element;
 }
 
 export interface DataListRootProps
-  extends ComponentProps<"dl">, BaseDataListRootProps {
+  extends ComponentProps<"dl">, DataListRootContract {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface DataListProps extends Omit<DataListRootProps, "children"> {
+export interface DataListProps
+  extends
+    Omit<DataListRootProps, "children" | "recipe">,
+    DataListRootContract,
+    DataListContract {
   items?: DataListPresetItem[];
 }
 
-type DataListItemRootProps = ComponentProps<"div"> & BaseDataListItemProps;
+type DataListItemRootProps = ComponentProps<"div"> & DataListItemRootContract;
 
-export interface DataListItemProps extends Omit<
-  DataListItemRootProps,
-  "value"
-> {
+export interface DataListItemProps
+  extends Omit<DataListItemRootProps, "value">, DataListItemContract {
   value?: JSX.Element;
-  classNames?: VariantClassNames<DataListItemRecipeSlot>;
 }
 // #endregion
 

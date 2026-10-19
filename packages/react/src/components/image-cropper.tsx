@@ -5,7 +5,7 @@ import type {
   ImageCropperRootProps as ImageCropperRootPrimitiveProps,
   ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/react";
-import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
+import type { ImageCropperRootContract } from "@pisagor/contracts";
 import { imageCropperRecipe } from "@pisagor/recipes";
 
 import { createSlotRecipeContext } from "../internal";
@@ -25,7 +25,7 @@ const {
 export interface ImageCropperRootProps
   extends
     Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
-    BaseImageCropperRootProps {
+    ImageCropperRootContract {
   /**
    * Image URL for the auto-rendered cropper layout.
    *

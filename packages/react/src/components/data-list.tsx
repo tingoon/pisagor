@@ -1,11 +1,13 @@
-import type { DataListProps as BaseDataListRootProps } from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-  dataListRecipe,
-} from "@pisagor/recipes";
+import type {
+  DataListContract,
+  DataListItemContract,
+  DataListItemRootContract,
+  DataListPresetItem as BaseDataListPresetItem,
+  DataListRootContract,
+} from "@pisagor/contracts";
+import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -22,7 +24,7 @@ export function DataListRoot({
   className,
   ...rest
 }: ComponentPropsWithRef<"dl"> &
-  BaseDataListRootProps & {
+  DataListRootContract & {
     orientation?: "horizontal" | "vertical";
   }) {
   return (
@@ -38,7 +40,7 @@ export function DataListRoot({
   );
 }
 
-const DataListItemRoot = withProvider("div", {
+const DataListItemRoot = withProvider("div")({
   defaultProps: {
     "data-part": "item",
   },
@@ -68,10 +70,11 @@ export function DataListItem({
   className,
   classNames,
   ...rest
-}: ComponentProps<typeof DataListItemRoot> & {
-  value?: ReactNode;
-  classNames?: VariantClassNames<DataListItemRecipeSlot>;
-}) {
+}: ComponentProps<typeof DataListItemRoot> &
+  DataListItemRootContract &
+  DataListItemContract & {
+    value?: ReactNode;
+  }) {
   return (
     <DataListItemRoot {...rest} className={className}>
       {children != null && (
@@ -93,12 +96,16 @@ export function DataListItem({
 export type DataListRootProps = ComponentProps<typeof DataListRoot>;
 export type DataListItemProps = ComponentProps<typeof DataListItem>;
 
-interface DataListPresetItem {
+interface DataListPresetItem extends Omit<
+  BaseDataListPresetItem,
+  "label" | "value"
+> {
   label: ReactNode;
   value: ReactNode;
 }
 
-export interface DataListProps extends Omit<DataListRootProps, "children"> {
+export interface DataListProps
+  extends Omit<DataListRootProps, "children">, DataListContract {
   items?: DataListPresetItem[];
 }
 // #endregion

@@ -13,7 +13,7 @@ Multi-framework UI library: React, Vue, Solid, Svelte, and Astro components on A
 | [`@pisagor/svelte`](./packages/svelte)           | Svelte UI                      |
 | [`@pisagor/svelte-form`](./packages/svelte-form) | Svelte form fields + TanStack  |
 | [`@pisagor/astro`](./packages/astro)             | Static Astro UI                |
-| [`@pisagor/props`](./packages/props)             | Shared prop type contracts     |
+| [`@pisagor/contracts`](./packages/contracts)     | Shared prop type contracts     |
 | [`@pisagor/utils`](./packages/utils)             | `cn` and shared helpers        |
 | [`@pisagor/tokens`](./packages/tokens)           | Design tokens / Tailwind theme |
 | [`@pisagor/recipes`](./packages/recipes)         | Shared `tv()` class recipes    |

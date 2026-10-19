@@ -1,4 +1,4 @@
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -39,13 +39,13 @@ type NativeFileInputProps = Omit<
 
 type FileInputRootProps = ComponentPropsWithRef<"div"> &
   FileInputVariantProps &
-  BaseFileInputProps & {
+  FileInputRootContract & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */

@@ -9,17 +9,13 @@ import type {
   ProgressValueChangeDetails,
   UseProgressReturn,
 } from "@ark-ui/vue";
-import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/contracts";
+import { circularProgressRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -128,11 +124,11 @@ const CircularProgressTrack = defineComponent({
 // #endregion
 
 // #region Types
-type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 export interface CircularProgressProps
   extends
-    BaseCircularProgressProps,
+    CircularProgressRootContract,
+    CircularProgressContract,
     Pick<
       ProgressRootProps,
       | "defaultValue"
@@ -146,7 +142,6 @@ export interface CircularProgressProps
       | "translations"
     > {
   class?: unknown;
-  classNames?: CircularProgressClassNames;
   indeterminate?: boolean;
   isValueVisible?: boolean;
   size?: number;
@@ -171,7 +166,7 @@ export const CircularProgress = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<CircularProgressClassNames>,
+      type: Object as PropType<CircularProgressProps["classNames"]>,
     },
     defaultValue: {
       default: undefined,

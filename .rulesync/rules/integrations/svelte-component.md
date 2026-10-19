@@ -111,9 +111,9 @@ For **foldered** multi-file components. Export `createSlotRecipeContext` binding
 - Icons: `phosphor-svelte` (e.g. `import { XIcon } from "phosphor-svelte"`).
 - Class merging: `cn` from `@pisagor/utils`.
 
-### Shared props (`@pisagor/props`)
+### Shared props (`@pisagor/contracts`)
 
-Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Svelte [`button.svelte`](../../../packages/svelte/src/components/button.svelte).
+Same contract as React — extend `BaseFooProps` from `@pisagor/contracts`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Svelte [`button.svelte`](../../../packages/svelte/src/components/button.svelte).
 
 ---
 

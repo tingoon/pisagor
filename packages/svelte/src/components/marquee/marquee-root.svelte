@@ -3,14 +3,14 @@
     Marquee as MarqueePrimitive,
     type MarqueeRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
+  import type { MarqueeRootContract } from "@pisagor/contracts";
   import { withProvider } from "./marquee.context";
   import MarqueeEdge from "./marquee-edge.svelte";
 
   type Props = Omit<ArkRootProps, "side"> & {
     orientation?: "horizontal" | "vertical";
     showEdges?: boolean;
-  } & BaseMarqueeProps;
+  } & Omit<MarqueeRootContract, "items">;
 
   let {
     orientation = "horizontal",

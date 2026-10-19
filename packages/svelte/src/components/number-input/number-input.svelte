@@ -3,7 +3,7 @@
     NumberInput as NumberInputPrimitive,
     type NumberInputRootProps,
   } from "@ark-ui/svelte";
-  import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
+  import type { NumberInputRootContract } from "@pisagor/contracts";
   import {
     buttonRecipe,
     formControlGroupShellRecipe,
@@ -27,7 +27,7 @@
     placeholder?: string | null | undefined;
     size?: "sm" | "md" | "lg";
     variant?: FormControlVariant;
-  } & BaseNumberInputProps;
+  } & NumberInputRootContract;
 
   let {
     size = "md",

@@ -8,7 +8,11 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
+import type {
+  DialogContract,
+  DialogHeaderContract,
+  DialogRootContract,
+} from "@pisagor/contracts";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
@@ -33,7 +37,7 @@ DialogModalContext.displayName = "DialogModalContext";
 
 // #region Types
 export interface DialogRootProps
-  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, DialogRootContract {}
 
 export interface DialogContentProps
   extends DialogContentPrimitiveProps, DialogVariantProps {
@@ -60,7 +64,11 @@ export interface DialogBodyProps extends ComponentPropsWithRef<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = ComponentPropsWithRef<"div">;
+export interface DialogHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, DialogHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
 
 export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
@@ -68,14 +76,11 @@ export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
 
 export type DialogFooterProps = ComponentPropsWithRef<"div">;
 
-export interface DialogProps extends Omit<DialogRootProps, "title"> {
-  /** Footer actions. */
+export interface DialogProps
+  extends Omit<DialogRootProps, "title">, DialogContract {
   actions?: ReactNode;
-  /** Header description content. */
   description?: ReactNode;
-  /** Header title content. */
   title?: ReactNode;
-  /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
 // #endregion
@@ -188,6 +193,8 @@ export function DialogBody({
 export function DialogHeader({
   children,
   className,
+  description,
+  title,
   ...rest
 }: DialogHeaderProps) {
   const { slots } = useStyles();
@@ -199,6 +206,12 @@ export function DialogHeader({
       data-part="header"
       data-scope="dialog"
     >
+      {title != null && <DialogTitle>{title}</DialogTitle>}
+
+      {description != null && (
+        <DialogDescription>{description}</DialogDescription>
+      )}
+
       {children}
     </div>
   );

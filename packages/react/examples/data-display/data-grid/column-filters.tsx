@@ -4,7 +4,6 @@ import {
   FunnelIcon,
   MagnifyingGlassIcon,
 } from "@phosphor-icons/react";
-import type { BadgeVariant } from "@pisagor/react";
 import {
   Badge,
   Button,
@@ -17,6 +16,7 @@ import {
 } from "@pisagor/react";
 import type { ColumnDef } from "@pisagor/react/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/react/data-grid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import type { ColumnFiltersState, RowData } from "@tanstack/react-table";
 import { type ReactNode, useMemo, useState } from "react";
 
@@ -60,7 +60,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<User["status"], BadgeVariant> = {
+const statusVariants: Record<
+  User["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

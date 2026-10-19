@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
+import type { AvatarGroupRootContract } from "@pisagor/contracts";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -14,7 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface AvatarGroupRootProps
-  extends ComponentProps<"div">, BaseAvatarGroupRootProps {}
+  extends ComponentProps<"div">, AvatarGroupRootContract {}
 
 export interface AvatarGroupProps extends Omit<
   AvatarGroupRootProps,

@@ -5,7 +5,7 @@ import type {
   NumberInputScrubberProps,
 } from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
+import type { NumberInputRootContract } from "@pisagor/contracts";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,
@@ -33,7 +33,7 @@ export type NumberInputRootProps = Omit<
   NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  BaseNumberInputProps;
+  NumberInputRootContract;
 
 export interface NumberInputProps extends NumberInputRootProps {
   /**

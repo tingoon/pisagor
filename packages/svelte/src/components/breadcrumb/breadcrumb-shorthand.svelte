@@ -1,4 +1,9 @@
 <script lang="ts">
+  import type {
+    BreadcrumbPresetItem,
+    BreadcrumbRootContract,
+    BreadcrumbContract,
+  } from "@pisagor/contracts";
   import type { ComponentProps } from "svelte";
   import BreadcrumbItem from "./breadcrumb-item.svelte";
   import BreadcrumbLink from "./breadcrumb-link.svelte";
@@ -7,15 +12,14 @@
   import BreadcrumbRoot from "./breadcrumb-root.svelte";
   import BreadcrumbSeparator from "./breadcrumb-separator.svelte";
 
-  type PresetItem = {
-    href?: string;
-    isCurrentPage?: boolean;
+  type PresetItem = Omit<BreadcrumbPresetItem, "label"> & {
     label: string;
   };
 
   type Props = Omit<ComponentProps<typeof BreadcrumbRoot>, "children"> & {
     items?: PresetItem[];
-  };
+  } & BreadcrumbRootContract &
+    BreadcrumbContract;
 
   let { items, ...rest }: Props = $props();
 </script>

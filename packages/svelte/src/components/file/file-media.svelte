@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { FileProps as BaseFileProps } from "@pisagor/props";
+  import type { FileRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { FileIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useStyles } from "./file.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
+  type Props = HTMLAttributes<HTMLDivElement> & FileRootContract;
 
   let {
     variant = "icon",

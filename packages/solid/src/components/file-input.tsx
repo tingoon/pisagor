@@ -1,4 +1,4 @@
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import type { FileInputRootContract } from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -34,12 +34,12 @@ type NativeFileInputProps = Omit<
 
 type FileInputRootProps = ComponentProps<"div"> &
   FileInputVariantProps &
-  BaseFileInputProps & {
+  FileInputRootContract & {
     disabled?: boolean;
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, FileInputRootContract {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;

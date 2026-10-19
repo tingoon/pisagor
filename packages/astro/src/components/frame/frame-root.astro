@@ -1,9 +1,9 @@
 ---
-import type { FrameProps as BaseFrameProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./frame.context";
 
-type Props = HTMLAttributes<"div"> & BaseFrameProps;
+type Props = HTMLAttributes<"div"> & FrameRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

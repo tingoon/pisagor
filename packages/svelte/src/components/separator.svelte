@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+  import type { SeparatorRootContract } from "@pisagor/contracts";
   import { separatorRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -12,7 +12,7 @@
      * @defaultValue false
      */
     decorative?: boolean;
-  } & BaseSeparatorProps;
+  } & SeparatorRootContract;
 
   let {
     recipe = separatorRecipe,

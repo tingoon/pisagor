@@ -1,4 +1,7 @@
-import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
+import type {
+  DataTableBodyContract,
+  DataTableRootContract,
+} from "@pisagor/contracts";
 import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
@@ -29,7 +32,7 @@ export type DataTableProps<TData extends RowData> = {
   children: JSX.Element;
   class?: string;
   features?: DataTableFeatures;
-} & BaseDataTableProps &
+} & DataTableRootContract &
   Omit<TableOptions<DataTableFeatures, TData>, "features">;
 
 interface DataTableHeaderProps {
@@ -42,7 +45,7 @@ interface DataTableHeadProps extends TableHeadProps {
   columnId?: string;
 }
 
-interface DataTableBodyProps {
+interface DataTableBodyProps extends DataTableBodyContract {
   children: JSX.Element;
   empty?: JSX.Element;
 }

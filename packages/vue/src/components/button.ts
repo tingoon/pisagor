@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/vue";
-import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
+import type { ButtonRootContract } from "@pisagor/contracts";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 import { Spinner } from "./spinner";
 
 // #region Types
-export interface ButtonProps extends BaseButtonProps {
+export interface ButtonProps extends ButtonRootContract {
   disabled?: boolean;
   type?: "button" | "reset" | "submit";
   class?: unknown;

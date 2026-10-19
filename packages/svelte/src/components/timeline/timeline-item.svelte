@@ -1,9 +1,14 @@
 <script lang="ts">
-  import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
+  import type {
+    TimelineItemRootContract,
+    TimelineItemContract,
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./timeline.context";
 
-  type Props = HTMLAttributes<HTMLLIElement> & BaseTimelineItemProps;
+  type Props = HTMLAttributes<HTMLLIElement> &
+    TimelineItemRootContract &
+    TimelineItemContract;
 
   let { children, ...rest }: Props = $props();
 

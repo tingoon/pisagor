@@ -1,9 +1,9 @@
 ---
-import type { InputGroupTextProps as BaseInputGroupTextProps } from "@pisagor/props";
+import type { InputGroupTextRootContract } from "@pisagor/contracts";
 import { inputGroupTextRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span"> & BaseInputGroupTextProps;
+type Props = HTMLAttributes<"span"> & InputGroupTextRootContract;
 
 const {
   recipe = inputGroupTextRecipe,

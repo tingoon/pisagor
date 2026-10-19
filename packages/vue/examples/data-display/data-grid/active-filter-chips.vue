@@ -5,7 +5,7 @@ import {
   PhMagnifyingGlass,
   PhX,
 } from "@phosphor-icons/vue";
-import type { BadgeVariant } from "@pisagor/vue";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Checkbox, InputGroup, Pagination, Table } from "@pisagor/vue";
 import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
 import type {
@@ -64,7 +64,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<FullUser["status"], BadgeVariant> = {
+const statusVariants: Record<
+  FullUser["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

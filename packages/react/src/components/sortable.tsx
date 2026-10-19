@@ -1,8 +1,8 @@
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
-  SortableItemProps as BaseSortableItemProps,
-  SortableProps as BaseSortableRootProps,
-} from "@pisagor/props";
+  SortableItemRootContract,
+  SortableRootContract,
+} from "@pisagor/contracts";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
 import type {
@@ -90,7 +90,7 @@ function useSortableItem() {
 export interface SortableRootProps
   extends
     Omit<ComponentPropsWithRef<"div">, "onDragStart">,
-    BaseSortableRootProps {
+    SortableRootContract {
   /**
    * Layout axis for drop indicators and keyboard moves.
    *
@@ -111,7 +111,7 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentPropsWithRef<"div">, BaseSortableItemProps {
+  extends ComponentPropsWithRef<"div">, SortableItemRootContract {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
 }

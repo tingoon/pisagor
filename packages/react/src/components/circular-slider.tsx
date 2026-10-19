@@ -11,7 +11,7 @@ import type {
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
 } from "@ark-ui/react";
-import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
+import type { CircularSliderRootContract } from "@pisagor/contracts";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
@@ -67,7 +67,7 @@ export interface CircularSliderProps
   extends
     CircularSliderRootProps,
     Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
-    BaseCircularSliderProps {
+    CircularSliderRootContract {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   onValueChange?: (value: number) => void;

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+  import type { SkeletonRootContract } from "@pisagor/contracts";
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     lines?: number;
-  } & BaseSkeletonProps;
+  } & SkeletonRootContract;
 
   let {
     lines = 2,

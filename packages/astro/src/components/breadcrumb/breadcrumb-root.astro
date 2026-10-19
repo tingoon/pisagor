@@ -1,9 +1,11 @@
 ---
-import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
+import type { BreadcrumbRootContract } from "@pisagor/contracts";
 import { defaultMessages } from "@pisagor/utils";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"nav">, BaseBreadcrumbProps {
+interface Props
+  extends HTMLAttributes<"nav">,
+    Omit<BreadcrumbRootContract, "items"> {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *

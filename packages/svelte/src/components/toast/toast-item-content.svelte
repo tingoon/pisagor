@@ -7,7 +7,7 @@
     ToastOptions,
     ToastTitleProps,
   } from "@ark-ui/svelte";
-  import type { ToastItemRecipeSlot } from "@pisagor/recipes";
+  import type { ToastItemContract } from "@pisagor/contracts";
   import {
     CheckCircleIcon,
     InfoIcon,
@@ -17,7 +17,6 @@
   } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
   import Spinner from "../spinner.svelte";
@@ -31,7 +30,6 @@
       ToastActionTriggerProps,
       "asChild" | "children" | "class" | "onclick"
     >;
-    classNames?: VariantClassNames<ToastItemRecipeSlot>;
     closeTriggerProps?: Omit<
       ToastCloseTriggerProps,
       "asChild" | "children" | "class"
@@ -40,7 +38,7 @@
     iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
     titleProps?: Omit<ToastTitleProps, "children" | "class">;
     toast: ToastOptions;
-  };
+  } & Pick<ToastItemContract, "classNames">;
 
   let {
     actionsProps,

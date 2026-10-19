@@ -1,8 +1,9 @@
 import { ark } from "@ark-ui/vue";
 import type {
-  MenuItemProps as BaseMenuItemProps,
-  MenuProps as BaseMenuRootProps,
-} from "@pisagor/props";
+  MenuItemRootContract,
+  MenuRootContract,
+  MenuContract,
+} from "@pisagor/contracts";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -24,11 +25,11 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface MenuRootProps extends BaseMenuRootProps {
+export interface MenuRootProps extends MenuRootContract {
   class?: unknown;
 }
 
-export interface MenuItemProps extends BaseMenuItemProps {
+export interface MenuItemProps extends MenuItemRootContract {
   class?: unknown;
   type?: string;
 }
@@ -37,6 +38,8 @@ export interface MenuLinkProps {
   active?: boolean;
   class?: unknown;
 }
+
+export interface MenuProps extends MenuRootProps, MenuContract {}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

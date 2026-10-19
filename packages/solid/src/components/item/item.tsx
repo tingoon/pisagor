@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
@@ -14,7 +14,7 @@ const {
 } = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
 // #endregion
 
-export interface ItemProps extends HTMLArkProps<"div">, BaseItemProps {}
+export interface ItemProps extends HTMLArkProps<"div">, ItemRootContract {}
 
 export type ItemMediaProps = ComponentProps<"div"> & ItemVariantProps;
 export type ItemHeaderProps = ComponentProps<"div">;

@@ -2,17 +2,16 @@ import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
 } from "@ark-ui/react";
-import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
-import {
-  formControlShellRecipe,
-  type TextareaRecipeSlot,
-  textareaRecipe,
-} from "@pisagor/recipes";
+import type {
+  TextareaContract,
+  TextareaRootContract,
+} from "@pisagor/contracts";
+import { formControlShellRecipe, textareaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
-import type { FormControlVariant, VariantClassNames } from "../internal";
+import type { FormControlVariant } from "../internal";
 import { Input } from "./input";
 import {
   InputGroupAddon,
@@ -29,15 +28,14 @@ const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
 
 // #region Types
 
-type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
-
 type TextareaRootProps = FieldTextareaProps &
   RefAttributes<HTMLTextAreaElement> & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
+export interface TextareaProps
+  extends TextareaRootProps, TextareaRootContract, TextareaContract {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -46,8 +44,6 @@ export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
   clearable?: boolean;
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
-  /** Slot class names */
-  classNames?: TextareaClassNames;
 }
 // #endregion
 
@@ -56,7 +52,7 @@ function TextareaProvider({
   children,
   size = "md",
   recipe = textareaRecipe,
-}: BaseTextareaProps & {
+}: TextareaRootContract & {
   children: ReactNode;
 }) {
   const slots = recipe({ size });
@@ -73,7 +69,7 @@ function TextareaField({
   className,
   classNames,
   ...rest
-}: TextareaRootProps & { classNames?: TextareaClassNames }) {
+}: TextareaRootProps & Pick<TextareaContract, "classNames">) {
   const { slots } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
@@ -120,10 +116,10 @@ function TextareaClearableField({
   className,
   classNames,
   ...rest
-}: TextareaRootProps & {
-  canClear?: boolean;
-  classNames?: TextareaClassNames;
-}) {
+}: TextareaRootProps &
+  Pick<TextareaContract, "classNames"> & {
+    canClear?: boolean;
+  }) {
   const { slots } = useStyles();
 
   return (

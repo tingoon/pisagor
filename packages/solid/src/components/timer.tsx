@@ -8,9 +8,9 @@ import type {
   TimerSeparatorProps,
 } from "@ark-ui/solid";
 import type {
-  TimerItemGroupProps as BaseTimerItemGroupProps,
-  TimerProps as BaseTimerRootProps,
-} from "@pisagor/props";
+  TimerItemGroupRootContract,
+  TimerRootContract,
+} from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
@@ -38,14 +38,14 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<"div">, BaseTimerItemGroupProps {
+  extends ComponentProps<"div">, TimerItemGroupRootContract {
   orientation?: "horizontal" | "vertical";
 }
 
 export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
-  extends TimerRootPrimitiveProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, TimerRootContract {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }
@@ -53,7 +53,7 @@ export interface TimerRootProps
 export type TimerItemLabelProps = ComponentProps<"div">;
 
 const TimerRootProvider: Component<
-  TimerRootPrimitiveProps & BaseTimerRootProps
+  TimerRootPrimitiveProps & TimerRootContract
 > = withTimerProvider(TimerPrimitive.Root, { name: "Root", slot: "base" });
 
 export function TimerRoot(props: TimerRootProps): JSX.Element {
@@ -99,7 +99,7 @@ export const TimerArea: Component<TimerAreaProps> = withTimerContext(
 );
 
 const TimerItemGroupBase: Component<
-  ComponentProps<"div"> & BaseTimerItemGroupProps
+  ComponentProps<"div"> & TimerItemGroupRootContract
 > = withTimerItemGroupProvider("div", {
   name: "ItemGroup",
   slot: "base",

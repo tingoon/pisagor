@@ -1,21 +1,14 @@
 import { PhArrowDown, PhArrowUp, PhMinus } from "@phosphor-icons/vue";
 import type {
-  StatProps as BaseStatProps,
-  StatTrendProps as BaseStatTrendProps,
-} from "@pisagor/props";
+  StatContract,
+  StatRootContract,
+  StatTrendRootContract,
+} from "@pisagor/contracts";
 import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
-import type {
-  StatRecipeSlot,
-  StatTrendVariantProps,
-  StatVariantProps,
-} from "@pisagor/recipes";
+import type { StatTrendVariantProps, StatVariantProps } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Slot recipe context
@@ -29,11 +22,8 @@ const { withContext, withProvider } = createSlotRecipeContext({
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
 type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
-type StatClassNames = VariantClassNames<StatRecipeSlot>;
-
-export interface StatProps extends BaseStatProps {
+export interface StatProps extends StatRootContract, StatContract {
   class?: unknown;
-  classNames?: StatClassNames;
 
   label?: VNodeChild;
   value?: VNodeChild;
@@ -46,8 +36,13 @@ export interface StatProps extends BaseStatProps {
   trendProps?: Record<string, unknown>;
 }
 
-export interface StatTrendProps extends BaseStatTrendProps {
+export interface StatTrendProps extends StatTrendRootContract {
   class?: unknown;
+  /**
+   * Icon shown before the content. Defaults to an arrow matching `trend`; pass
+   * `false` to hide it (or use the `icon` slot).
+   */
+  icon?: boolean;
 }
 // #endregion
 
@@ -139,7 +134,7 @@ export const StatShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<StatClassNames>,
+      type: Object as PropType<StatProps["classNames"]>,
     },
     description: {
       default: undefined,

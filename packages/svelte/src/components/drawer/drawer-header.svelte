@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { DrawerHeaderContract } from "@pisagor/contracts";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { withContext } from "./drawer.context";
@@ -9,7 +10,7 @@
     children?: Snippet;
     description?: string;
     title?: string;
-  };
+  } & DrawerHeaderContract;
 
   let { children, description, title, ...rest }: Props = $props();
   const part = withContext(() => rest, { name: "Header" });

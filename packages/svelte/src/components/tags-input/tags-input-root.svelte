@@ -3,7 +3,7 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
-  import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
+  import type { TagsInputRootContract } from "@pisagor/contracts";
   import { tagsInputRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./tags-input.context";
@@ -12,7 +12,7 @@
   import TagsInputItem from "./tags-input-item.svelte";
 
   type Props = Omit<ArkRootProps, "onValueChange"> &
-    BaseTagsInputProps & {
+    TagsInputRootContract & {
       clearable?: boolean;
       onValueChange?: (value: string[]) => void;
       placeholder?: string;

@@ -6,7 +6,6 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { BadgeVariant } from "@pisagor/react";
 import {
   ActionBar,
   AlertDialog,
@@ -16,6 +15,7 @@ import {
   DropdownMenu,
   Table,
 } from "@pisagor/react";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import { tableBulkActionsBlock } from "#/styles/recipes/table";
@@ -185,7 +185,10 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
   );
 }
 
-const statusVariants: Record<string, BadgeVariant> = {
+const statusVariants: Record<
+  string,
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   pending: "warning",
   progress: "info",
   transit: "success",

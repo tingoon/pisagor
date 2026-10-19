@@ -1,18 +1,18 @@
 ---
-import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
-import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
+import type { AvatarContract, AvatarRootContract } from "@pisagor/contracts";
+import { avatarRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
-interface Props extends HTMLAttributes<"div">, BaseAvatarProps {
+interface Props
+  extends HTMLAttributes<"div">,
+    AvatarRootContract,
+    AvatarContract {
   /** Alt text for the avatar image */
   alt?: string;
-  /** Fallback text shown when `src` is omitted */
   fallback?: string;
   /** Image source URL */
   src?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<AvatarRecipeSlot>;
 }
 
 const { withContext, withProvider } = createSlotRecipeContext({

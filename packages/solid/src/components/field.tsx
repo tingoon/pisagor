@@ -10,7 +10,7 @@ import type {
   FieldsetLegendProps,
   FieldsetRootProps,
 } from "@ark-ui/solid";
-import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
@@ -33,7 +33,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 // #endregion
 
 export interface FieldRootProps
-  extends FieldRootPrimitiveProps, BaseFieldProps {}
+  extends FieldRootPrimitiveProps, FieldRootContract {}
 
 export type FieldProps = FieldRootProps;
 
@@ -41,13 +41,13 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, BaseFieldProps {}
+export interface FieldSetProps extends FieldsetRootProps, FieldRootContract {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends ComponentProps<"div">, BaseFieldProps {}
+  extends ComponentProps<"div">, FieldRootContract {}
 
 export type FieldContentProps = ComponentProps<"div">;
 export type FieldRequiredIndicatorProps = ComponentProps<"span">;

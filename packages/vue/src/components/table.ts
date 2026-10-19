@@ -1,4 +1,4 @@
-import type { TableProps as BaseTableProps } from "@pisagor/props";
+import type { TableRootContract } from "@pisagor/contracts";
 import { tableRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -12,7 +12,7 @@ const { provideStyles: provideTableStyles, withContext } =
 // #endregion
 
 // #region Types
-export interface TableProps extends BaseTableProps {
+export interface TableProps extends TableRootContract {
   class?: unknown;
   /**
    * Whether the table rows are hoverable.

@@ -9,7 +9,11 @@ import type {
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/solid";
-import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
+import type {
+  AlertDialogContract,
+  AlertDialogHeaderContract,
+  AlertDialogRootContract,
+} from "@pisagor/contracts";
 import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
@@ -38,7 +42,7 @@ const { AlertDialogModalContext, useAlertDialogModal } =
 // #endregion
 
 export interface AlertDialogRootProps
-  extends DialogRootPrimitiveProps, BaseAlertDialogRootProps {}
+  extends DialogRootPrimitiveProps, AlertDialogRootContract {}
 
 export interface AlertDialogContentProps
   extends DialogContentPrimitiveProps, AlertDialogVariantProps {
@@ -50,7 +54,11 @@ export interface AlertDialogBodyProps extends ComponentProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = ComponentProps<"div">;
+export interface AlertDialogHeaderProps
+  extends Omit<ComponentProps<"div">, "title">, AlertDialogHeaderContract {
+  description?: JSX.Element;
+  title?: JSX.Element;
+}
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
@@ -66,10 +74,10 @@ export interface AlertDialogActionProps
 export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps extends Omit<
-  AlertDialogRootProps,
-  "children" | "title"
-> {
+export interface AlertDialogProps
+  extends
+    Omit<AlertDialogRootProps, "children" | "title">,
+    AlertDialogContract {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
@@ -218,7 +226,12 @@ export function AlertDialogBody(props: AlertDialogBodyProps): JSX.Element {
 }
 
 export function AlertDialogHeader(props: AlertDialogHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "class",
+    "description",
+    "title",
+  ]);
   const styles = useStyles();
 
   return (
@@ -227,7 +240,15 @@ export function AlertDialogHeader(props: AlertDialogHeaderProps): JSX.Element {
       class={styles.slots.header({ class: local.class })}
       data-part="header"
       data-scope="alert-dialog"
-    />
+    >
+      <Show when={local.title !== undefined}>
+        <AlertDialogTitle>{local.title}</AlertDialogTitle>
+      </Show>
+      <Show when={local.description !== undefined}>
+        <AlertDialogDescription>{local.description}</AlertDialogDescription>
+      </Show>
+      {local.children}
+    </div>
   );
 }
 

@@ -6,13 +6,13 @@ import type {
   TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
 } from "@ark-ui/solid";
-import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
+import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
+import { tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
@@ -23,7 +23,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipRootPrimitiveProps, BaseTooltipRootProps {}
+  extends TooltipRootPrimitiveProps, TooltipRootContract {}
 
 export type TooltipTriggerHandleProps =
   JSX.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -31,12 +31,12 @@ export type TooltipTriggerHandle = (
   props: TooltipTriggerHandleProps,
 ) => JSX.Element;
 
-export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
+export interface TooltipProps
+  extends Omit<TooltipRootProps, "children">, TooltipContract {
   children: JSX.Element | TooltipTriggerHandle;
   content: JSX.Element;
   /** Class merged onto the tooltip content element */
   class?: string;
-  classNames?: VariantClassNames<TooltipRecipeSlot>;
   /**
    * Whether to render the arrow.
    *

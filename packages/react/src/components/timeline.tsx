@@ -1,14 +1,12 @@
 import type {
-  TimelineItemProps as BaseTimelineItemProps,
-  TimelineProps as BaseTimelineRootProps,
-} from "@pisagor/props";
+  TimelineContract,
+  TimelineItemContract,
+  TimelineItemRootContract,
+  TimelinePresetItem as BaseTimelinePresetItem,
+  TimelineRootContract,
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -24,7 +22,7 @@ export function TimelineRoot({
   recipe = timelineRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"ol"> & BaseTimelineRootProps) {
+}: ComponentPropsWithRef<"ol"> & TimelineRootContract) {
   return (
     <ol
       {...rest}
@@ -36,13 +34,13 @@ export function TimelineRoot({
   );
 }
 
-export const TimelineItem = withProvider("li", {
+export const TimelineItem = withProvider("li")<TimelineItemRootContract>({
   defaultProps: {
     "data-part": "item",
   },
   name: "Item",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"li"> & BaseTimelineItemProps>;
+});
 
 export const TimelineIndicator = withContext("div", {
   name: "Indicator",
@@ -75,7 +73,9 @@ export const TimelineDescription = withContext("div", {
 
 // #region Types
 export type TimelineRootProps = ComponentProps<typeof TimelineRoot>;
-export type TimelineItemProps = ComponentProps<typeof TimelineItem>;
+export type TimelineItemRootProps = ComponentProps<typeof TimelineItem>;
+export interface TimelineItemProps
+  extends TimelineItemRootProps, TimelineItemContract {}
 export type TimelineIndicatorProps = ComponentProps<typeof TimelineIndicator>;
 export type TimelineContentProps = ComponentProps<typeof TimelineContent>;
 export type TimelineTitleProps = ComponentProps<typeof TimelineTitle>;
@@ -84,15 +84,17 @@ export type TimelineDescriptionProps = ComponentProps<
 >;
 export type TimelineSeparatorProps = ComponentProps<typeof TimelineSeparator>;
 
-export interface TimelinePresetItem {
-  /** Stable key for the item when title is not a string. */
-  id?: string;
+export interface TimelinePresetItem extends Omit<
+  BaseTimelinePresetItem,
+  "title" | "description" | "indicator"
+> {
   title: ReactNode;
   description?: ReactNode;
   indicator?: ReactNode;
 }
 
-export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
+export interface TimelineProps
+  extends Omit<TimelineRootProps, "children">, TimelineContract {
   items?: TimelinePresetItem[];
 }
 // #endregion

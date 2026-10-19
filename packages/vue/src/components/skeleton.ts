@@ -1,4 +1,4 @@
-import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+import type { SkeletonRootContract } from "@pisagor/contracts";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
@@ -9,7 +9,7 @@ export interface SkeletonTextProps {
   lines?: number;
 }
 
-export interface SkeletonProps extends BaseSkeletonProps {
+export interface SkeletonProps extends SkeletonRootContract {
   class?: unknown;
 }
 // #endregion

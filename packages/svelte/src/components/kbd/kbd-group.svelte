@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { KbdGroupProps as BaseKbdGroupProps } from "@pisagor/props";
+  import type { KbdGroupRootContract } from "@pisagor/contracts";
   import { kbdGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdGroupProps;
+  } & KbdGroupRootContract;
 
   let {
     recipe = kbdGroupRecipe,

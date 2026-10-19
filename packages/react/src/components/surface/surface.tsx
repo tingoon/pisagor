@@ -1,4 +1,4 @@
-import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
+import type { SurfaceRootContract } from "@pisagor/contracts";
 import { surfaceRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";
@@ -17,7 +17,7 @@ const AUTO_VARIANTS = [
 ] as const satisfies readonly SurfaceVariant[];
 
 export interface SurfaceProps
-  extends ComponentPropsWithRef<"div">, BaseSurfaceProps {}
+  extends ComponentPropsWithRef<"div">, SurfaceRootContract {}
 // #endregion
 
 // #region Component

@@ -19,7 +19,7 @@ import type {
   UseTourReturn,
 } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import type { TourProps as BaseTourProps } from "@pisagor/props";
+import type { TourRootContract } from "@pisagor/contracts";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { MouseEvent } from "react";
@@ -66,7 +66,7 @@ export type TourStepType = TourStepDetails;
 
 export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
-export interface TourProps extends TourRootProps, BaseTourProps {
+export interface TourProps extends TourRootProps, TourRootContract {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -276,7 +276,7 @@ export function TourHeader({
   children,
   className,
   ...rest
-}: DialogHeaderProps) {
+}: Omit<DialogHeaderProps, "description" | "title">) {
   const dialogSlots = dialogRecipe();
 
   return (

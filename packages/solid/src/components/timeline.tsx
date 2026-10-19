@@ -1,7 +1,10 @@
 import type {
-  TimelineItemProps as BaseTimelineItemProps,
-  TimelineProps as BaseTimelineRootProps,
-} from "@pisagor/props";
+  TimelineItemRootContract,
+  TimelineItemContract,
+  TimelinePresetItem as BaseTimelinePresetItem,
+  TimelineRootContract,
+  TimelineContract,
+} from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -16,10 +19,13 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface TimelineRootProps
-  extends ComponentProps<"ol">, BaseTimelineRootProps {}
+  extends ComponentProps<"ol">, Omit<TimelineRootContract, "items"> {}
 
 export interface TimelineItemProps
-  extends ComponentProps<"li">, BaseTimelineItemProps {}
+  extends
+    ComponentProps<"li">,
+    TimelineItemRootContract,
+    TimelineItemContract {}
 
 export type TimelineIndicatorProps = ComponentProps<"div">;
 export type TimelineContentProps = ComponentProps<"div">;
@@ -27,14 +33,20 @@ export type TimelineTitleProps = ComponentProps<"div">;
 export type TimelineDescriptionProps = ComponentProps<"div">;
 export type TimelineSeparatorProps = ComponentProps<"div">;
 
-export interface TimelinePresetItem {
-  id?: string;
+export interface TimelinePresetItem extends Omit<
+  BaseTimelinePresetItem,
+  "title" | "description" | "indicator"
+> {
   title: JSX.Element;
   description?: JSX.Element;
   indicator?: JSX.Element;
 }
 
-export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
+export interface TimelineProps
+  extends
+    Omit<TimelineRootProps, "children" | "recipe">,
+    Omit<TimelineRootContract, "items">,
+    TimelineContract {
   items?: TimelinePresetItem[];
 }
 // #endregion

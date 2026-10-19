@@ -4,13 +4,13 @@
     type DatePickerTableCellProps,
     type DatePickerTableCellTriggerProps,
   } from "@ark-ui/svelte";
-  import type { CalendarTableCellProps as BaseCalendarTableCellProps } from "@pisagor/props";
+  import type { CalendarTableCellRootContract } from "@pisagor/contracts";
   import { calendarTableCellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
   type Props = Omit<DatePickerTableCellTriggerProps, "value"> &
     Pick<DatePickerTableCellProps, "value" | "visibleRange"> &
-    BaseCalendarTableCellProps;
+    CalendarTableCellRootContract;
 
   let {
     value,

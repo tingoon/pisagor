@@ -1,10 +1,10 @@
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
 export interface ProseProps
-  extends Omit<ComponentProps<"div">, "innerHTML">, BaseProseProps {
+  extends Omit<ComponentProps<"div">, "innerHTML">, ProseRootContract {
   html?: string;
   /**
    * Sanitizer applied to `html` before injection, e.g. `(html) =>

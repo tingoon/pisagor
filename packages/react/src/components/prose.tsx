@@ -1,4 +1,4 @@
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import type { ProseRootContract } from "@pisagor/contracts";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 
@@ -6,7 +6,7 @@ import type { ComponentPropsWithRef } from "react";
 export interface ProseProps
   extends
     Omit<ComponentPropsWithRef<"div">, "dangerouslySetInnerHTML">,
-    BaseProseProps {
+    ProseRootContract {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.
    *

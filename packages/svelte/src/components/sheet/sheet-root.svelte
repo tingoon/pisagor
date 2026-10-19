@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+  import type { SheetRootContract } from "@pisagor/contracts";
   import { sheetRecipe } from "@pisagor/recipes";
   import type { ComponentProps } from "svelte";
   import DialogRoot from "../dialog/dialog-root.svelte";
   import { Context } from "./sheet.context";
 
   type Props = Omit<ComponentProps<typeof DialogRoot>, "recipe"> &
-    BaseSheetProps;
+    SheetRootContract;
 
   let { recipe = sheetRecipe, children, ...rest }: Props = $props();
   const slots = $derived(recipe());

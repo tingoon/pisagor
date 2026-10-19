@@ -5,11 +5,14 @@ import type {
   AccordionItemTriggerProps,
   AccordionRootProps,
 } from "@ark-ui/solid";
-import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import {
-  type AccordionItemVariantProps,
-  accordionItemRecipe,
-} from "@pisagor/recipes";
+import type {
+  AccordionItemRootContract,
+  AccordionItemContract,
+  AccordionPresetItem as BaseAccordionPresetItem,
+  AccordionRootContract,
+  AccordionContract,
+} from "@pisagor/contracts";
+import { accordionItemRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
@@ -23,17 +26,24 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
+  extends
+    AccordionItemPrimitiveProps,
+    AccordionItemRootContract,
+    AccordionItemContract {}
 
-interface AccordionPresetItem {
-  value: string;
+interface AccordionPresetItem extends Omit<
+  BaseAccordionPresetItem,
+  "title" | "content"
+> {
   title: JSX.Element;
   content: JSX.Element;
-  disabled?: boolean;
 }
 
 export interface AccordionProps
-  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
+  extends
+    Omit<AccordionRootProps, "children">,
+    AccordionRootContract,
+    Omit<AccordionContract, "items"> {
   items?: AccordionPresetItem[];
 }
 // #endregion

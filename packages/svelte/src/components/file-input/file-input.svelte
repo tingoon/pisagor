@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+  import type { FileInputRootContract } from "@pisagor/contracts";
   import {
     type FormControlGroupShellVariantProps,
     fileInputRecipe,
@@ -26,7 +26,7 @@
       onFilesChange?: (files: globalThis.File[]) => void;
       onValueChange?: (files: globalThis.File[]) => void;
       placeholder?: string;
-    } & BaseFileInputProps;
+    } & FileInputRootContract;
 
   let {
     size = "md",

@@ -5,7 +5,11 @@ import {
   PhPause,
   PhPlay,
 } from "@phosphor-icons/vue";
-import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
+import type {
+  CarouselPresetItem as BaseCarouselPresetItem,
+  CarouselRootContract,
+  CarouselContract,
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -21,12 +25,15 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface CarouselPresetItem {
+export interface CarouselPresetItem extends Omit<
+  BaseCarouselPresetItem,
+  "content"
+> {
   content: VNodeChild;
   key?: string;
 }
 
-export interface CarouselProps extends BaseCarouselProps {
+export interface CarouselProps extends CarouselRootContract, CarouselContract {
   class?: unknown;
   slides?: CarouselPresetItem[];
   spacing?: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SortableItemProps as BaseSortableItemProps } from "@pisagor/props";
+  import type { SortableItemRootContract } from "@pisagor/contracts";
   import { sortableItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -7,7 +7,7 @@
 
   type Props = HTMLAttributes<HTMLLIElement> & {
     value: string;
-  } & BaseSortableItemProps;
+  } & SortableItemRootContract;
 
   let {
     value,

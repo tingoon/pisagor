@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
+import type { SidebarRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -70,7 +70,7 @@ export function useSidebar(): SidebarContextProps {
 // #endregion
 
 export interface SidebarProviderProps
-  extends HTMLArkProps<"div">, Pick<BaseSidebarProps, "recipe"> {
+  extends HTMLArkProps<"div">, Pick<SidebarRootContract, "recipe"> {
   /**
    * Initial open state. A stored value in `localStorage` (`sidebar_state`) wins
    * after mount.

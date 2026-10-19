@@ -1,4 +1,4 @@
-import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
+import type { FrameRootContract } from "@pisagor/contracts";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -20,7 +20,7 @@ const {
 // #endregion
 
 // #region Types
-export interface FrameRootProps extends BaseFrameRootProps {
+export interface FrameRootProps extends FrameRootContract {
   class?: unknown;
 }
 // #endregion

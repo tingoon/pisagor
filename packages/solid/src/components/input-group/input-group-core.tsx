@@ -1,8 +1,8 @@
 import type {
-  InputGroupAddonProps as BaseInputGroupAddonProps,
-  InputGroupButtonProps as BaseInputGroupButtonProps,
-  InputGroupTextProps as BaseInputGroupTextProps,
-} from "@pisagor/props";
+  InputGroupAddonRootContract,
+  InputGroupButtonRootContract,
+  InputGroupTextRootContract,
+} from "@pisagor/contracts";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
@@ -24,16 +24,16 @@ export interface InputGroupProps
   extends ComponentProps<"div">, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends ComponentProps<"div">, BaseInputGroupAddonProps {}
+  extends ComponentProps<"div">, InputGroupAddonRootContract {}
 
 export interface InputGroupButtonProps
   extends
     Omit<ButtonProps, "size" | "recipe">,
     InputGroupButtonVariantProps,
-    BaseInputGroupButtonProps {}
+    InputGroupButtonRootContract {}
 
 export interface InputGroupTextProps
-  extends ComponentProps<"span">, BaseInputGroupTextProps {}
+  extends ComponentProps<"span">, InputGroupTextRootContract {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

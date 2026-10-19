@@ -14,7 +14,12 @@ import type {
   SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
 } from "@ark-ui/solid";
-import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
+import type {
+  SelectItemGroupContract,
+  SelectPresetItem as BaseSelectPresetItem,
+  SelectRootContract,
+  SelectContract,
+} from "@pisagor/contracts";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -60,9 +65,8 @@ const SelectControlContext = createContext<FormControlShellVariantProps>({});
 
 type FormControlVariant = "primary" | "secondary";
 
-interface SelectPresetItem {
+interface SelectPresetItem extends Omit<BaseSelectPresetItem, "label"> {
   label: string;
-  value: string;
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
@@ -74,12 +78,12 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
-} & BaseSelectRootProps;
+} & Omit<SelectRootContract, "items">;
 
-export interface SelectProps extends Omit<
-  SelectRootProps,
-  "children" | "collection"
-> {
+export interface SelectProps
+  extends
+    Omit<SelectRootProps, "children" | "collection" | "items" | "placeholder">,
+    Omit<SelectContract, "items"> {
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
@@ -92,7 +96,8 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
+export interface SelectItemGroupProps
+  extends SelectItemGroupPrimitiveProps, SelectItemGroupContract {
   heading?: string | JSX.Element;
 }
 

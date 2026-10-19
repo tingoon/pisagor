@@ -1,9 +1,9 @@
 <script lang="ts">
   import { Tabs as TabsPrimitive, type TabsRootProps } from "@ark-ui/svelte";
-  import type { TabsProps as BaseTabsProps } from "@pisagor/props";
+  import type { TabsRootContract } from "@pisagor/contracts";
   import { withProvider } from "./tabs.context";
 
-  type Props = TabsRootProps & BaseTabsProps;
+  type Props = TabsRootProps & TabsRootContract;
 
   let { children, ...rest }: Props = $props();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });

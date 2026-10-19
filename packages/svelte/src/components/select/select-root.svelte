@@ -4,7 +4,7 @@
     Select as SelectPrimitive,
     type SelectRootProps as ArkSelectRootProps,
   } from "@ark-ui/svelte";
-  import type { SelectProps as BaseSelectProps } from "@pisagor/props";
+  import type { SelectRootContract } from "@pisagor/contracts";
   import {
     type FormControlShellVariantProps,
     selectRecipe,
@@ -19,7 +19,7 @@
     variant?: FormControlVariant;
     /** Trigger size. Defaults to `md`. */
     size?: FormControlShellVariantProps["size"];
-  } & BaseSelectProps;
+  } & Omit<SelectRootContract, "items">;
 
   let {
     onValueChange,

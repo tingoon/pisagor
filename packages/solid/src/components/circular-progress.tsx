@@ -9,14 +9,14 @@ import type {
   ProgressValueTextProps,
   UseProgressReturn,
 } from "@ark-ui/solid";
-import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
+import type {
+  CircularProgressContract,
+  CircularProgressRootContract,
+} from "@pisagor/contracts";
+import { circularProgressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles, withContext, withProvider } = createSlotRecipeContext({
@@ -29,16 +29,18 @@ type CircularProgressTrackProps = ComponentProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
 
 type CircularProgressRootProps = ProgressRootProviderProps &
-  BaseCircularProgressProps;
+  CircularProgressRootContract;
 
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">, BaseCircularProgressProps {
+  extends
+    Omit<ProgressRootProps, "children">,
+    CircularProgressRootContract,
+    CircularProgressContract {
   size?: number;
   thickness?: number;
   indeterminate?: boolean;
   isValueVisible?: boolean;
   children?: JSX.Element;
-  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
   trackProps?: Omit<
     CircularProgressTrackProps,
     "class" | "height" | "viewBox" | "width"

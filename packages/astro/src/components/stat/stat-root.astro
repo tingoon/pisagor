@@ -1,9 +1,9 @@
 ---
-import type { StatProps as BaseStatProps } from "@pisagor/props";
+import type { StatRootContract } from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./stat.context";
 
-type Props = HTMLAttributes<"div"> & BaseStatProps;
+type Props = HTMLAttributes<"div"> & StatRootContract;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

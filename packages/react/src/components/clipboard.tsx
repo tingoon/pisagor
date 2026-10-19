@@ -3,20 +3,18 @@ import {
   type ClipboardRootProps,
 } from "@ark-ui/react";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
-import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
+import type {
+  ClipboardContract,
+  ClipboardRootContract,
+} from "@pisagor/contracts";
 import {
-  type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
   formControlShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import {
-  type FormControlVariant,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -31,39 +29,13 @@ const { Context: ClipboardStylesContext, withContext } =
 
 // #region Types
 export interface ClipboardProps
-  extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
-  /**
-   * Size of the copy button.
-   *
-   * @defaultValue "icon-md"
-   */
-  buttonSize?: ButtonProps["size"];
-  /**
-   * Size scale of the input, label and copy button.
-   *
-   * @defaultValue "md"
-   */
-  size?: "sm" | "md" | "lg";
-  /** Variant of the copy button */
-  buttonVariant?: ButtonProps["variant"];
-  /** Visual shell variant for input/value display modes. Defaults to `primary`. */
-  controlVariant?: FormControlVariant;
-  /**
-   * Display mode for the copy control.
-   *
-   * @defaultValue "input"
-   */
-  variant?: "button" | "input" | "value";
-  /** Accessible label for icon-only copy buttons */
-  buttonAriaLabel?: string;
-  /** Icon shown after a successful copy */
+  extends
+    Omit<ClipboardRootProps, "children">,
+    ClipboardRootContract,
+    ClipboardContract {
   copiedIcon?: ReactNode;
-  /** Icon shown before copying */
   copyIcon?: ReactNode;
-  /** Optional label rendered above the control. */
-  label?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<ClipboardRecipeSlot>;
+  label?: ReactNode;
   /** Extra props forwarded to the label element */
   labelProps?: Omit<
     ComponentProps<typeof ClipboardPrimitive.Label>,

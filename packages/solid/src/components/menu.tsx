@@ -1,8 +1,9 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
-  MenuItemProps as BaseMenuItemProps,
-  MenuProps as BaseMenuRootProps,
-} from "@pisagor/props";
+  MenuItemRootContract,
+  MenuRootContract,
+  MenuContract,
+} from "@pisagor/contracts";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -18,13 +19,15 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface MenuRootProps
-  extends ComponentProps<"nav">, BaseMenuRootProps {}
+  extends ComponentProps<"nav">, MenuRootContract {}
+
+export interface MenuProps extends MenuRootProps, MenuContract {}
 
 export type MenuPartProps = ComponentProps<"div">;
 export type MenuListProps = ComponentProps<"ul">;
 
 export interface MenuItemProps
-  extends HTMLArkProps<"button">, BaseMenuItemProps {}
+  extends HTMLArkProps<"button">, MenuItemRootContract {}
 
 export interface MenuLinkProps extends HTMLArkProps<"a"> {
   active?: boolean;

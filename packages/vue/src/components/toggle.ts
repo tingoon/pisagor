@@ -1,5 +1,5 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue";
-import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
+import type { ToggleRootContract } from "@pisagor/contracts";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -13,7 +13,7 @@ import type { ClassValue } from "../internal";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ToggleProps extends BaseToggleProps {
+export interface ToggleProps extends ToggleRootContract {
   class?: unknown;
 }
 // #endregion

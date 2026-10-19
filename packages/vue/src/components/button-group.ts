@@ -1,4 +1,4 @@
-import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
+import type { ButtonGroupRootContract } from "@pisagor/contracts";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -14,7 +14,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ButtonGroupProps extends BaseButtonGroupProps {
+export interface ButtonGroupProps extends ButtonGroupRootContract {
   class?: unknown;
 }
 // #endregion

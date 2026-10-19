@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SortableProps as BaseSortableProps } from "@pisagor/props";
+  import type { SortableRootContract } from "@pisagor/contracts";
   import { sortableRecipe } from "@pisagor/recipes";
   import { cn, formatMessage } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -11,7 +11,7 @@
     items: string[];
     onValueChange?: (items: string[]) => void;
     orientation?: "vertical" | "horizontal";
-  } & BaseSortableProps;
+  } & SortableRootContract;
 
   let {
     orientation = "vertical",

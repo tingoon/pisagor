@@ -17,6 +17,6 @@
 <Input
   clearable
   onValueChange={(next) => (value = next)}
-  recipe={brandInputRecipe}
+  slotRecipe={brandInputRecipe}
   {value}
 />

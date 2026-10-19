@@ -8,9 +8,9 @@ import type {
 } from "@ark-ui/react";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
-  CheckboxGroupProps as BaseCheckboxGroupProps,
-  CheckboxProps as BaseCheckboxProps,
-} from "@pisagor/props";
+  CheckboxGroupRootContract,
+  CheckboxRootContract,
+} from "@pisagor/contracts";
 import {
   checkboxGroupRecipe,
   checkboxRecipe,
@@ -25,11 +25,12 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 export interface CheckboxGroupProps
   extends
     Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
-    BaseCheckboxGroupProps {
+    CheckboxGroupRootContract {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {}
+export interface CheckboxProps
+  extends CheckboxRootProps, CheckboxRootContract {}
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
   recipe?: typeof checkboxRecipe;
@@ -136,7 +137,7 @@ export function CheckboxControl({
   className,
   ...rest
 }: CheckboxControlProps &
-  BaseCheckboxProps & {
+  CheckboxRootContract & {
     recipe?: typeof checkboxRecipe;
   }) {
   const surfaceVariant = useFormControlSurface();

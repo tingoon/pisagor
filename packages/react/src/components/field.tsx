@@ -10,11 +10,7 @@ import type {
   FieldsetLegendProps,
   FieldsetRootProps,
 } from "@ark-ui/react";
-import type {
-  FieldProps as BaseFieldGroupProps,
-  FieldProps as BaseFieldRootProps,
-  FieldProps as BaseFieldSetProps,
-} from "@pisagor/props";
+import type { FieldRootContract } from "@pisagor/contracts";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
@@ -42,7 +38,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 
 // #region Types
 export interface FieldRootProps
-  extends FieldRootPrimitiveProps, BaseFieldRootProps {}
+  extends FieldRootPrimitiveProps, FieldRootContract {}
 
 export type FieldProps = FieldRootProps;
 
@@ -51,14 +47,14 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, BaseFieldSetProps {}
+export interface FieldSetProps extends FieldsetRootProps, FieldRootContract {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends ComponentPropsWithRef<"div">, BaseFieldGroupProps {}
+  extends ComponentPropsWithRef<"div">, FieldRootContract {}
 
 export type FieldContentProps = ComponentPropsWithRef<"div">;
 
@@ -74,7 +70,7 @@ export type FieldSeparatorProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export const FieldRoot = withProvider(FieldPrimitive.Root, {
+export const FieldRoot = withProvider(FieldPrimitive.Root)({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<FieldRootProps>;

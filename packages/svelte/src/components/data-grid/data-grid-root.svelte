@@ -1,5 +1,5 @@
 <script generics="TData extends RowData = RowData" lang="ts">
-  import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
+  import type { DataGridRootContract } from "@pisagor/contracts";
   import { dataGridRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type {
@@ -22,7 +22,7 @@
     features?: DataGridFeatures;
     columnResizeMode?: "onChange" | "onEnd";
   } & Omit<TableOptions<DataGridFeatures, TData>, "features"> &
-    BaseDataGridProps;
+    DataGridRootContract;
 
   let {
     children,

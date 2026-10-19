@@ -1,20 +1,12 @@
 import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
-  StatProps as BaseStatRootProps,
-  StatTrendProps as BaseStatTrendProps,
-} from "@pisagor/props";
-import {
-  type StatRecipeSlot,
-  statRecipe,
-  statTrendRecipe,
-} from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+  StatContract,
+  StatRootContract,
+  StatTrendRootContract,
+} from "@pisagor/contracts";
+import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal";
 import { useLocale, type MessageKey } from "./provider/context";
 
 // #region Context
@@ -25,10 +17,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider("div", {
+export const StatRoot = withProvider("div")<StatRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"div"> & BaseStatRootProps>;
+});
 
 export const StatLabel = withContext("div", {
   name: "Label",
@@ -52,10 +44,6 @@ const TREND_ICONS = {
 };
 
 export interface StatTrendOwnProps {
-  /**
-   * Icon shown before the content. Defaults to an arrow matching `trend`; pass
-   * `null` to hide it.
-   */
   icon?: ReactNode;
 }
 
@@ -66,7 +54,7 @@ export function StatTrend({
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & BaseStatTrendProps & StatTrendOwnProps) {
+}: ComponentPropsWithRef<"div"> & StatTrendRootContract & StatTrendOwnProps) {
   const { m } = useLocale();
 
   return (
@@ -92,17 +80,12 @@ export type StatValueProps = ComponentProps<typeof StatValue>;
 export type StatDescriptionProps = ComponentProps<typeof StatDescription>;
 export type StatTrendProps = ComponentProps<typeof StatTrend>;
 
-export interface StatProps extends Omit<StatRootProps, "children"> {
-  /** Supporting copy below the value. */
+export interface StatProps
+  extends Omit<StatRootProps, "children">, StatContract {
   description?: ReactNode;
-  /** Metric label. */
   label?: ReactNode;
-  /** Trend indicator content. */
   trend?: ReactNode;
-  /** Primary metric value (display copy — not a controlled input). */
   value?: ReactNode;
-  /** Slot class names */
-  classNames?: VariantClassNames<StatRecipeSlot>;
   /** Extra props forwarded to the description element */
   descriptionProps?: Omit<StatDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the label element */

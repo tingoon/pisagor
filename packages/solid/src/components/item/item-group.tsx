@@ -1,7 +1,4 @@
-import type {
-  ItemProps as BaseItemGroupProps,
-  ItemProps as BaseItemSeparatorProps,
-} from "@pisagor/props";
+import type { ItemRootContract } from "@pisagor/contracts";
 import { itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -9,10 +6,10 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 export interface ItemGroupProps
-  extends ComponentProps<"div">, BaseItemGroupProps {}
+  extends ComponentProps<"div">, ItemRootContract {}
 
 export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
+  extends Omit<SeparatorProps, "recipe">, ItemRootContract {}
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -3,9 +3,9 @@ import {
   useTimerContext as useTimer,
 } from "@ark-ui/vue";
 import type {
-  TimerItemGroupProps as BaseTimerItemGroupProps,
-  TimerProps as BaseTimerRootProps,
-} from "@pisagor/props";
+  TimerItemGroupRootContract,
+  TimerRootContract,
+} from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -36,7 +36,7 @@ const {
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-export interface TimerRootProps extends BaseTimerRootProps {
+export interface TimerRootProps extends TimerRootContract {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
@@ -45,7 +45,7 @@ export interface TimerRootProps extends BaseTimerRootProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface TimerItemGroupProps extends BaseTimerItemGroupProps {
+export interface TimerItemGroupProps extends TimerItemGroupRootContract {
   class?: unknown;
   /**
    * The orientation of the timer item group.

@@ -1,9 +1,14 @@
 <script lang="ts">
-  import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
+  import type {
+    BreadcrumbItemRootContract,
+    BreadcrumbItemContract,
+  } from "@pisagor/contracts";
   import type { HTMLAttributes } from "svelte/elements";
   import { withBreadcrumbItemProvider } from "./breadcrumb.context";
 
-  type Props = HTMLAttributes<HTMLLIElement> & BaseBreadcrumbItemProps;
+  type Props = HTMLAttributes<HTMLLIElement> &
+    BreadcrumbItemRootContract &
+    BreadcrumbItemContract;
 
   let { children, ...rest }: Props = $props();
 

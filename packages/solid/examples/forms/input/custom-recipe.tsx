@@ -11,5 +11,7 @@ const brandInputRecipe = tv({
 });
 
 export function CustomRecipe() {
-  return <Input clearable defaultValue="Pisagor" recipe={brandInputRecipe} />;
+  return (
+    <Input clearable defaultValue="Pisagor" slotRecipe={brandInputRecipe} />
+  );
 }

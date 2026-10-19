@@ -12,7 +12,11 @@ import type {
   CarouselPrevTriggerProps,
   CarouselRootProps as CarouselRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
+import type {
+  CarouselPresetItem as BaseCarouselPresetItem,
+  CarouselRootContract,
+  CarouselContract,
+} from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -34,17 +38,17 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface CarouselRootProps
-  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, Omit<CarouselRootContract, "slides"> {}
 
-interface CarouselPresetItem {
+interface CarouselPresetItem extends Omit<BaseCarouselPresetItem, "content"> {
   content: JSX.Element;
-  key?: string;
 }
 
-export interface CarouselProps extends Omit<
-  CarouselRootProps,
-  "children" | "slideCount"
-> {
+export interface CarouselProps
+  extends
+    Omit<CarouselRootProps, "children" | "slideCount" | "recipe">,
+    CarouselRootContract,
+    CarouselContract {
   slides?: CarouselPresetItem[];
 }
 

@@ -1,4 +1,4 @@
-import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
+import type { ScrollspyRootContract } from "@pisagor/contracts";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { onCleanup, onMount, splitProps } from "solid-js";
@@ -10,7 +10,7 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
-  extends ComponentProps<"div">, BaseScrollspyProps {
+  extends ComponentProps<"div">, ScrollspyRootContract {
   history?: boolean;
   offset?: number;
   smooth?: boolean;

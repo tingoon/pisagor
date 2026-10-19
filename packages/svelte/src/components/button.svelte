@@ -1,13 +1,13 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
+  import type { ButtonRootContract } from "@pisagor/contracts";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import Spinner from "./spinner.svelte";
 
   type Props = Omit<HTMLButtonAttributes, "disabled" | "type"> &
-    BaseButtonProps & {
+    ButtonRootContract & {
       children?: import("svelte").Snippet;
       disabled?: boolean | null;
       type?: "button" | "reset" | "submit" | null;

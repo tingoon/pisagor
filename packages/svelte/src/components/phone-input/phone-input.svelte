@@ -1,8 +1,10 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
-  import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
+  import type {
+    PhoneInputContract,
+    PhoneInputRootContract,
+  } from "@pisagor/contracts";
   import {
-    type PhoneInputRecipeSlot,
     type PhoneInputVariantProps,
     phoneInputRecipe,
   } from "@pisagor/recipes";
@@ -28,9 +30,6 @@
   const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
-  type PhoneInputClassNames = Partial<
-    Record<Exclude<PhoneInputRecipeSlot, "base">, string>
-  >;
   type Country = CountryCode;
   type Props = {
     class?: ClassValue;
@@ -46,7 +45,6 @@
     placeholder?: string;
     name?: string;
     id?: string;
-    classNames?: PhoneInputClassNames;
     inputProps?: Omit<
       ComponentProps<typeof Input>,
       "class" | "onChange" | "onBlur" | "size" | "type" | "value"
@@ -55,7 +53,8 @@
       ComponentProps<typeof ComboboxContent>,
       "class" | "children"
     >;
-  } & BasePhoneInputProps;
+  } & PhoneInputRootContract &
+    PhoneInputContract;
 
   let {
     size = "md",

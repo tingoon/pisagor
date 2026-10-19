@@ -1,3 +1,4 @@
+import type { AppShellTriggerContract } from "@pisagor/contracts";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, Show, splitProps } from "solid-js";
@@ -36,10 +37,8 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps extends Omit<
-  ButtonProps,
-  "children"
-> {
+export interface AppShellInspectorTriggerProps
+  extends Omit<ButtonProps, "children">, AppShellTriggerContract {
   placement?: AppShellPlacement;
   children?: JSX.Element;
   off?: JSX.Element;

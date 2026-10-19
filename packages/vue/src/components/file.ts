@@ -1,5 +1,5 @@
 import { PhFile } from "@phosphor-icons/vue";
-import type { FileProps as BaseFileProps } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -15,15 +15,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 export type FileMediaVariant = NonNullable<FileVariantProps["variant"]>;
 
 // #region Types
-export interface FileProps extends BaseFileProps {
+export interface FileProps extends FileRootContract, FileContract {
   class?: unknown;
-  /** Leading media; defaults to a file icon. */
+  actions?: VNodeChild;
   media?: VNodeChild;
-  /** Optional subtitle (type, modified date, etc.). */
   meta?: VNodeChild;
-  /** Display name for the file. */
   name: VNodeChild;
-  /** Size in bytes; rendered with `Format.Byte` when set. */
   size?: number;
 }
 // #endregion

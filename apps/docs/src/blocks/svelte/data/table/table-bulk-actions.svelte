@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { BadgeVariantProps } from "@pisagor/recipes";
   import {
     ActionBar,
     AlertDialog,
@@ -20,8 +21,6 @@
   import { tableBulkActionsBlock } from "#/styles/recipes/table";
 
   const styles = tableBulkActionsBlock();
-
-  type BadgeVariant = "warning" | "info" | "success";
 
   interface Props {
     class?: string;
@@ -53,7 +52,10 @@
     },
   ];
 
-  const statusVariants: Record<string, BadgeVariant> = {
+  const statusVariants: Record<
+    string,
+    NonNullable<BadgeVariantProps["variant"]>
+  > = {
     pending: "warning",
     progress: "info",
     transit: "success",

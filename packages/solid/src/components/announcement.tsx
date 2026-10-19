@@ -1,5 +1,8 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
+import type {
+  AnnouncementContract,
+  AnnouncementRootContract,
+} from "@pisagor/contracts";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -14,19 +17,17 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export type AnnouncementRootProps = HTMLArkProps<"div"> &
-  BaseAnnouncementRootProps & {
+  AnnouncementRootContract & {
     role?: "status" | "alert";
   };
 
 export type AnnouncementTitleProps = ComponentProps<"span">;
 
-export interface AnnouncementProps extends Omit<
-  AnnouncementRootProps,
-  "children" | "title"
-> {
-  /** Optional badge or label rendered before the title. */
+export interface AnnouncementProps
+  extends
+    Omit<AnnouncementRootProps, "children" | "title">,
+    AnnouncementContract {
   badge?: JSX.Element;
-  /** Title content rendered inside `Announcement.Title`. */
   title?: JSX.Element;
   /** Extra props forwarded to the announcement title element */
   titleProps?: Omit<AnnouncementTitleProps, "children" | "class">;
@@ -48,13 +49,21 @@ export const AnnouncementTitle = withContext("span", { name: "Title" });
 
 // #region Shorthand
 export function AnnouncementShorthand(props: AnnouncementProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["badge", "title", "titleProps"]);
+  const [local, rest] = splitProps(props, [
+    "badge",
+    "title",
+    "titleProps",
+    "classNames",
+  ]);
 
   return (
     <AnnouncementRoot {...rest}>
       {local.badge}
       <Show when={local.title !== undefined}>
-        <AnnouncementTitle {...local.titleProps}>
+        <AnnouncementTitle
+          {...local.titleProps}
+          class={local.classNames?.title}
+        >
           {local.title}
         </AnnouncementTitle>
       </Show>

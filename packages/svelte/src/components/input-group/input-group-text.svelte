@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { InputGroupTextProps as BaseInputGroupTextProps } from "@pisagor/props";
+  import type { InputGroupTextRootContract } from "@pisagor/contracts";
   import { inputGroupTextRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLSpanElement> & {
     children?: import("svelte").Snippet;
-  } & BaseInputGroupTextProps;
+  } & InputGroupTextRootContract;
 
   let {
     recipe = inputGroupTextRecipe,

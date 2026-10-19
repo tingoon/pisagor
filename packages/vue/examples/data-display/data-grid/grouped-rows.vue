@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCaretDown, PhCaretRight } from "@phosphor-icons/vue";
-import type { BadgeVariant } from "@pisagor/vue";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Select, Table } from "@pisagor/vue";
 import type { CellContext, ColumnDef } from "@pisagor/vue/data-grid";
 import { DataGrid } from "@pisagor/vue/data-grid";
@@ -55,7 +55,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const statusVariants: Record<FullUser["status"], BadgeVariant> = {
+const statusVariants: Record<
+  FullUser["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   active: "success",
   inactive: "destructive",
   invited: "info",

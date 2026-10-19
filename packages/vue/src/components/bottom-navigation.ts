@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue";
 import type {
-  BottomNavigationItemProps as BaseBottomNavigationItemProps,
-  BottomNavigationProps as BaseBottomNavigationRootProps,
-} from "@pisagor/props";
+  BottomNavigationItemRootContract,
+  BottomNavigationRootContract,
+} from "@pisagor/contracts";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
@@ -42,7 +42,7 @@ const BottomNavigationValueKey: InjectionKey<Ref<string | undefined>> = Symbol(
 // #endregion
 
 // #region Types
-export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps {
+export interface BottomNavigationRootProps extends BottomNavigationRootContract {
   class?: unknown;
   /**
    * Value of the item for the current page; that item gets
@@ -53,7 +53,7 @@ export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps {
+export interface BottomNavigationItemProps extends BottomNavigationItemRootContract {
   class?: unknown;
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;

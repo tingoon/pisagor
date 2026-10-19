@@ -1,12 +1,11 @@
 import { ark } from "@ark-ui/vue";
-import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
+import type {
+  EmptyStateContract,
+  EmptyStateRootContract,
+} from "@pisagor/contracts";
+import { emptyStateRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type ClassValue,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -43,15 +42,13 @@ export const EmptyStateActions = withContext("div", {
 // #endregion
 
 // #region Types
-type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
-
-export interface EmptyStateProps extends BaseEmptyStateRootProps {
+export interface EmptyStateProps
+  extends EmptyStateRootContract, EmptyStateContract {
   actions?: VNodeChild;
   description?: VNodeChild;
   media?: VNodeChild;
   title?: VNodeChild;
   class?: unknown;
-  classNames?: EmptyStateClassNames;
   actionsProps?: Record<string, unknown>;
   descriptionProps?: Record<string, unknown>;
   mediaProps?: Record<string, unknown>;
@@ -78,7 +75,7 @@ export const EmptyStateShorthand = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<EmptyStateClassNames>,
+      type: Object as PropType<EmptyStateProps["classNames"]>,
     },
     description: {
       default: undefined,

@@ -1,5 +1,9 @@
 import { ark, type HTMLArkProps } from "@ark-ui/solid";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
+import type {
+  CardHeaderContract,
+  CardRootContract,
+  CardContract,
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -13,11 +17,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface CardRootProps extends HTMLArkProps<"div">, BaseCardRootProps {}
+export interface CardRootProps extends HTMLArkProps<"div">, CardRootContract {}
 
 export type CardMediaProps = ComponentProps<"div"> & CardVariantProps;
 
-export interface CardHeaderProps extends Omit<ComponentProps<"div">, "title"> {
+export interface CardHeaderProps
+  extends Omit<ComponentProps<"div">, "title">, CardHeaderContract {
   description?: JSX.Element;
   title?: JSX.Element;
 }
@@ -27,6 +32,8 @@ export type CardDescriptionProps = ComponentProps<"p">;
 export type CardActionProps = ComponentProps<"div">;
 export type CardContentProps = ComponentProps<"div">;
 export type CardFooterProps = ComponentProps<"div">;
+
+export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 // #region Parts

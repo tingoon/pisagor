@@ -4,14 +4,14 @@
     type DrawerContentProps,
     Portal,
   } from "@ark-ui/svelte";
-  import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+  import type { DrawerRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./drawer.context";
   import DrawerBackdrop from "./drawer-backdrop.svelte";
   import DrawerGrabber from "./drawer-grabber.svelte";
   import DrawerPositioner from "./drawer-positioner.svelte";
 
-  type Props = DrawerContentProps & BaseDrawerProps;
+  type Props = DrawerContentProps & DrawerRootContract;
 
   const SWIPE_DIRECTION_TO_PLACEMENT = {
     down: "bottom",

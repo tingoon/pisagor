@@ -1,8 +1,8 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
-  BottomNavigationItemProps as BaseBottomNavigationItemProps,
-  BottomNavigationProps as BaseBottomNavigationRootProps,
-} from "@pisagor/props";
+  BottomNavigationItemRootContract,
+  BottomNavigationRootContract,
+} from "@pisagor/contracts";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
@@ -36,7 +36,7 @@ const BottomNavigationValueContext = createContext<string | undefined>(
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends ComponentPropsWithRef<"nav">, BaseBottomNavigationRootProps {
+  extends ComponentPropsWithRef<"nav">, BottomNavigationRootContract {
   /**
    * Value of the item for the current page; that item gets
    * `aria-current="page"`.
@@ -49,7 +49,7 @@ export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = ComponentPropsWithRef<"div">;
 
 export interface BottomNavigationItemProps
-  extends HTMLArkProps<"a">, BaseBottomNavigationItemProps {
+  extends HTMLArkProps<"a">, BottomNavigationItemRootContract {
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
   /** Whether the item is disabled. */
@@ -64,7 +64,7 @@ export type BottomNavigationItemLabelProps = ComponentPropsWithRef<"span">;
 // #endregion
 
 // #region Parts
-const BottomNavigationNav = withBottomNavigationProvider("nav", {
+const BottomNavigationNav = withBottomNavigationProvider("nav")({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<ComponentPropsWithRef<"nav">>;
@@ -90,7 +90,7 @@ export const BottomNavigationList = withBottomNavigationContext("div", {
   name: "List",
 });
 
-const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
+const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a)({
   name: "Item",
   slot: "base",
 }) as FunctionComponent<HTMLArkProps<"a">>;

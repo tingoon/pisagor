@@ -5,18 +5,13 @@ import type {
   SignaturePadRootProps as SignaturePadRootPrimitiveProps,
 } from "@ark-ui/react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
-import {
-  formControlZoneRecipe,
-  type SignaturePadRecipeSlot,
-  signaturePadRecipe,
-} from "@pisagor/recipes";
+import type {
+  SignaturePadContract,
+  SignaturePadRootContract,
+} from "@pisagor/contracts";
+import { formControlZoneRecipe, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  type FormControlVariant,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -38,15 +33,10 @@ type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */
   invalid?: boolean;
-} & BaseSignaturePadRootProps;
+} & SignaturePadRootContract &
+  SignaturePadContract;
 
-export interface SignaturePadProps extends Omit<
-  SignaturePadRootProps,
-  "children"
-> {
-  /** Slot class names */
-  classNames?: VariantClassNames<SignaturePadRecipeSlot>;
-}
+export type SignaturePadProps = Omit<SignaturePadRootProps, "children">;
 
 type SignaturePadClearProps = SignaturePadClearTriggerProps;
 

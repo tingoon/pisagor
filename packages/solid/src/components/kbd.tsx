@@ -1,15 +1,12 @@
-import type {
-  KbdGroupProps as BaseKbdGroupProps,
-  KbdProps as BaseKbdProps,
-} from "@pisagor/props";
+import type { KbdGroupRootContract, KbdRootContract } from "@pisagor/contracts";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface KbdProps extends ComponentProps<"kbd">, BaseKbdProps {}
+export interface KbdProps extends ComponentProps<"kbd">, KbdRootContract {}
 
 export interface KbdGroupProps
-  extends ComponentProps<"div">, BaseKbdGroupProps {}
+  extends ComponentProps<"div">, KbdGroupRootContract {}
 
 export function KbdRoot(props: KbdProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -3,11 +3,11 @@
     Drawer as DrawerPrimitive,
     type DrawerPositionerProps,
   } from "@ark-ui/svelte";
-  import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+  import type { DrawerRootContract } from "@pisagor/contracts";
   import { cn } from "@pisagor/utils";
   import { useStyles } from "./drawer.context";
 
-  type Props = DrawerPositionerProps & BaseDrawerProps;
+  type Props = DrawerPositionerProps & DrawerRootContract;
 
   let {
     variant = "default",

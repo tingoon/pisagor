@@ -1,19 +1,16 @@
-import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
+import type {
+  AspectRatioRootContract,
+  AspectRatioContract,
+} from "@pisagor/contracts";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal";
 
 // #region Types
-export interface AspectRatioProps extends BaseAspectRatioProps {
+export interface AspectRatioProps
+  extends AspectRatioRootContract, AspectRatioContract {
   class?: unknown;
-  /**
-   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
-   * variable.
-   *
-   * @defaultValue 1
-   */
-  ratio?: number;
 }
 // #endregion
 
@@ -26,7 +23,7 @@ export const AspectRatio = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    ratio: { default: undefined, type: Number },
+    ratio: { default: undefined, type: [Number, String] },
     recipe: {
       default: aspectRatioRecipe,
       type: Function as PropType<typeof aspectRatioRecipe>,

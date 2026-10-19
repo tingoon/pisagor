@@ -13,7 +13,7 @@ import type {
   FloatingPanelTriggerProps,
 } from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
+import type { FloatingPanelRootContract } from "@pisagor/contracts";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 
 import { use, type ComponentPropsWithRef } from "react";
@@ -38,7 +38,7 @@ function useFloatingPanelSlots() {
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends FloatingPanelRootPrimitiveProps, BaseFloatingPanelRootProps {}
+  extends FloatingPanelRootPrimitiveProps, FloatingPanelRootContract {}
 
 export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   /**

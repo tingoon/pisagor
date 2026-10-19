@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+  import type { SkeletonRootContract } from "@pisagor/contracts";
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseSkeletonProps;
+  } & SkeletonRootContract;
 
   let {
     size = "md",

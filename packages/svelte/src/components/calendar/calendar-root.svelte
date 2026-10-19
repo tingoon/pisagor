@@ -3,7 +3,7 @@
     DatePicker as CalendarPrimitive,
     type DatePickerRootProps,
   } from "@ark-ui/svelte";
-  import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
+  import type { CalendarRootContract } from "@pisagor/contracts";
   import { calendarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { Context } from "./calendar.context";
@@ -13,7 +13,7 @@
 
   type Props = DatePickerRootProps & {
     variant?: FormControlVariant;
-  } & BaseCalendarProps;
+  } & CalendarRootContract;
 
   let {
     variant: _variant,

@@ -5,11 +5,14 @@ import type {
   ProgressTrackProps,
   ProgressValueTextProps,
 } from "@ark-ui/solid";
-import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
+import type {
+  ProgressContract,
+  ProgressRootContract,
+} from "@pisagor/contracts";
+import { progressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Field } from "./field";
 
 // #region Context
@@ -22,17 +25,17 @@ const { withContext, withProvider } = createSlotRecipeContext({
 type ProgressHeaderProps = ComponentProps<"div">;
 
 type ProgressRootProps = Omit<ProgressRootPrimitiveProps, "value"> &
-  BaseProgressProps & {
+  ProgressRootContract & {
     value?: number | null;
   };
 
-export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
+export interface ProgressProps
+  extends Omit<ProgressRootProps, "children">, ProgressContract {
   indeterminate?: boolean;
   isValueVisible?: boolean;
   value?: number;
   children?: JSX.Element;
-  label?: string;
-  classNames?: VariantClassNames<ProgressRecipeSlot>;
+  label?: JSX.Element;
   rangeProps?: Omit<ProgressRangeProps, "children" | "class">;
   trackProps?: Omit<ProgressTrackProps, "children" | "class">;
   valueProps?: Omit<ProgressValueTextProps, "children" | "class">;

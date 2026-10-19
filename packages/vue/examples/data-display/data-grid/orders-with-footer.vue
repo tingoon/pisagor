@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BadgeVariant } from "@pisagor/vue";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { Badge, Table } from "@pisagor/vue";
 import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
 import type {
@@ -44,7 +44,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const orderStatusVariants: Record<Order["status"], BadgeVariant> = {
+const orderStatusVariants: Record<
+  Order["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   cancelled: "destructive",
   delivered: "success",
   pending: "warning",

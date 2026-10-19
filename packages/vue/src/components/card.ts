@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue";
-import type { CardProps as BaseCardRootProps } from "@pisagor/props";
+import type {
+  CardHeaderContract,
+  CardRootContract,
+  CardContract,
+} from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -14,9 +18,17 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #region Types
 export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
 
-export interface CardRootProps extends BaseCardRootProps {
+export interface CardRootProps extends CardRootContract {
   class?: unknown;
 }
+
+export interface CardHeaderProps extends CardHeaderContract {
+  class?: unknown;
+  description?: string;
+  title?: string;
+}
+
+export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 // #region Parts

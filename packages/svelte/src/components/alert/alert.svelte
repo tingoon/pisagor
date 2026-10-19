@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { AlertProps as BaseAlertProps } from "@pisagor/props";
-  import type { AlertRecipeSlot } from "@pisagor/recipes";
+  import type { AlertContract, AlertRootContract } from "@pisagor/contracts";
   import {
     CheckCircleIcon,
     InfoIcon,
@@ -9,20 +8,18 @@
   } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal";
   import AlertAction from "./alert-action.svelte";
   import AlertDescription from "./alert-description.svelte";
   import AlertRoot from "./alert-root.svelte";
   import AlertTitle from "./alert-title.svelte";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
-    action?: string | Snippet;
-    classNames?: VariantClassNames<AlertRecipeSlot>;
-    description?: string | Snippet;
-    /** Leading icon. Status variants get a default icon; pass `null` to hide it. */
-    icon?: Snippet | null;
-    title?: string | Snippet;
-  } & BaseAlertProps;
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> &
+    AlertRootContract & {
+      action?: string | Snippet;
+      description?: string | Snippet;
+      icon?: Snippet | null;
+      title?: string | Snippet;
+    } & AlertContract;
 
   let {
     variant,

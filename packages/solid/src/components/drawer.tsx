@@ -9,7 +9,11 @@ import type {
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/solid";
-import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
+import type {
+  DrawerHeaderContract,
+  DrawerRootContract,
+  DrawerContract,
+} from "@pisagor/contracts";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -26,7 +30,7 @@ const {
 // #endregion
 
 export interface LocalDrawerRootProps
-  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, DrawerRootContract {}
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   DrawerVariantProps;
@@ -34,7 +38,8 @@ export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
 export type DrawerContentProps = DrawerContentPrimitiveProps &
   DrawerVariantProps;
 
-export interface DrawerHeaderProps extends ComponentProps<"div"> {
+export interface DrawerHeaderProps
+  extends ComponentProps<"div">, DrawerHeaderContract {
   description?: string;
   title?: string;
 }
@@ -46,6 +51,8 @@ export interface DrawerBodyProps extends ComponentProps<"div"> {
 export type DrawerContentInnerProps = ComponentProps<"div">;
 export type DrawerDescriptionProps = ComponentProps<"div">;
 export type DrawerFooterProps = ComponentProps<"div">;
+
+export interface DrawerProps extends LocalDrawerRootProps, DrawerContract {}
 
 export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe"]);

@@ -1,6 +1,9 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
+import type {
+  NavigationMenuRootContract,
+  NavigationMenuContract,
+} from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
 import type {
@@ -41,7 +44,10 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentPropsWithRef<"nav">, BaseNavigationMenuProps {}
+  extends
+    ComponentPropsWithRef<"nav">,
+    NavigationMenuRootContract,
+    NavigationMenuContract {}
 
 export type NavigationMenuPartProps = ComponentPropsWithRef<"ul">;
 
@@ -106,7 +112,7 @@ function focusContentLink(contentId: string, position: "first" | "last") {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav = withProvider("nav", {
+const NavigationMenuNav = withProvider("nav")({
   name: "Root",
   slot: "base",
 }) as FunctionComponent<NavigationMenuProps>;

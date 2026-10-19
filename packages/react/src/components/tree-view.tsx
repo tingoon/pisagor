@@ -26,10 +26,10 @@ import {
   MinusIcon,
 } from "@phosphor-icons/react";
 import type {
-  TreeViewBranchProps as BaseTreeViewBranchProps,
-  TreeViewItemProps as BaseTreeViewItemProps,
-  TreeViewProps as BaseTreeViewProps,
-} from "@pisagor/props";
+  TreeViewBranchRootContract,
+  TreeViewItemRootContract,
+  TreeViewRootContract,
+} from "@pisagor/contracts";
 import {
   formControlToggleRecipe,
   treeViewBranchRecipe,
@@ -99,13 +99,13 @@ export interface TreeViewProps
   extends
     TreeViewPrimitive.RootComponentProps,
     TreeViewContextProps,
-    BaseTreeViewProps {}
+    TreeViewRootContract {}
 
 export interface TreeViewBranchProps
-  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, TreeViewBranchRootContract {}
 
 export interface TreeViewItemProps
-  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, TreeViewItemRootContract {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;

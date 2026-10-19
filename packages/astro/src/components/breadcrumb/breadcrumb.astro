@@ -1,5 +1,9 @@
 ---
-import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
+import type {
+  BreadcrumbPresetItem as BaseBreadcrumbPresetItem,
+  BreadcrumbRootContract,
+  BreadcrumbContract,
+} from "@pisagor/contracts";
 import type { HTMLAttributes } from "astro/types";
 import BreadcrumbItem from "./breadcrumb-item.astro";
 import BreadcrumbLink from "./breadcrumb-link.astro";
@@ -8,13 +12,14 @@ import BreadcrumbPage from "./breadcrumb-page.astro";
 import BreadcrumbRoot from "./breadcrumb-root.astro";
 import BreadcrumbSeparator from "./breadcrumb-separator.astro";
 
-interface BreadcrumbPresetItem {
+interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
   label: string;
-  href?: string;
-  isCurrentPage?: boolean;
 }
 
-interface Props extends HTMLAttributes<"nav">, BaseBreadcrumbProps {
+interface Props
+  extends HTMLAttributes<"nav">,
+    BreadcrumbRootContract,
+    BreadcrumbContract {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *

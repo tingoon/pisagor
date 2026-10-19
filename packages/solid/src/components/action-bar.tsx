@@ -1,5 +1,10 @@
 import { ark, type HTMLArkProps, Presence } from "@ark-ui/solid";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+import type {
+  ActionBarActionItem as BaseActionBarActionItem,
+  ActionBarRootContract,
+  ActionBarContract,
+  ActionBarValueContract,
+} from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {
   Accessor,
@@ -51,19 +56,20 @@ const { ActionBarStateContext, useActionBarState } =
   createContext("ActionBarState")<ActionBarState>();
 // #endregion
 
-interface ActionBarActionItem {
+interface ActionBarActionItem extends Omit<
+  BaseActionBarActionItem,
+  "icon" | "label"
+> {
   icon?: JSX.Element;
-  /** Stable key; defaults to `label`. */
-  id?: string;
   label: string;
   onClick: () => void;
-  disabled?: boolean;
 }
 
 export interface ActionBarProps
   extends
     Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
-    BaseActionBarProps {
+    ActionBarRootContract,
+    ActionBarContract {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   open?: boolean;
@@ -78,7 +84,8 @@ export type ActionBarContentProps = ComponentProps<"div">;
 export type ActionBarSeparatorProps = SeparatorProps;
 export type ActionBarCloseProps = HTMLArkProps<"button">;
 
-export interface ActionBarValueProps extends BadgeProps {
+export interface ActionBarValueProps
+  extends BadgeProps, ActionBarValueContract {
   count: number;
   label?: string;
 }

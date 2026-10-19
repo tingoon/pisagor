@@ -1,16 +1,18 @@
 <script lang="ts">
   import type { TabsRootProps } from "@ark-ui/svelte";
-  import type { TabsProps as BaseTabsProps } from "@pisagor/props";
+  import type {
+    TabsPresetItem as BaseTabsPresetItem,
+    TabsRootContract,
+    TabsContract,
+  } from "@pisagor/contracts";
   import TabsContent from "./tabs-content.svelte";
   import TabsList from "./tabs-list.svelte";
   import TabsRoot from "./tabs-root.svelte";
   import TabsTrigger from "./tabs-trigger.svelte";
 
-  type TabsPresetItem = {
+  type TabsPresetItem = Omit<BaseTabsPresetItem, "content" | "label"> & {
     content: string;
-    disabled?: boolean;
     label: string;
-    value: string;
   };
   type Props = Omit<TabsRootProps, "children"> & {
     items?: TabsPresetItem[];
@@ -20,7 +22,8 @@
      * @defaultValue true
      */
     showIndicator?: boolean;
-  } & BaseTabsProps;
+  } & TabsRootContract &
+    TabsContract;
 
   let {
     variant,

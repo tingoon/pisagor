@@ -1,12 +1,7 @@
 import { FileIcon } from "@phosphor-icons/react";
-import type { FileProps as BaseFileRootProps } from "@pisagor/props";
+import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
@@ -18,10 +13,10 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider("div", {
+export const FileRoot = withProvider("div")<FileRootContract>({
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"div"> & BaseFileRootProps>;
+});
 
 export function FileMedia({
   variant = "icon",
@@ -95,17 +90,13 @@ export type FileSizeProps = ComponentProps<typeof FileSize>;
 export type FileActionsProps = ComponentProps<typeof FileActions>;
 export type FileContentProps = ComponentProps<typeof FileContent>;
 
-export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
-  /** Size in bytes; rendered with `Format.Byte` when set. */
-  size?: number;
-  /** Optional subtitle (type, modified date, etc.). */
-  meta?: ReactNode;
-  /** Display name for the file. */
-  name: ReactNode;
-  /** Trailing actions (download, remove, …). */
+export interface FileProps
+  extends Omit<FileRootProps, "children">, FileContract {
   actions?: ReactNode;
-  /** Leading media; defaults to a file icon. */
   media?: ReactNode;
+  meta?: ReactNode;
+  name: ReactNode;
+  size?: number;
 }
 // #endregion
 

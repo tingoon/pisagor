@@ -1,10 +1,15 @@
 <script lang="ts">
   import { Menu as MenuPrimitive, type MenuItemProps } from "@ark-ui/svelte";
-  import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
+  import type {
+    DropdownMenuItemRootContract,
+    DropdownMenuItemContract,
+  } from "@pisagor/contracts";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 
-  type Props = MenuItemProps & BaseDropdownMenuItemProps;
+  type Props = MenuItemProps &
+    DropdownMenuItemRootContract &
+    DropdownMenuItemContract;
 
   let {
     variant = "default",

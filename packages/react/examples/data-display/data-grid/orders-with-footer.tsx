@@ -1,7 +1,7 @@
-import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
 import type { ColumnDef, SortingState } from "@pisagor/react/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/react/data-grid";
+import type { BadgeVariantProps } from "@pisagor/recipes";
 import { type ReactNode, useMemo, useState } from "react";
 
 interface Order {
@@ -31,7 +31,10 @@ const FIRST_NAMES = [
   "Olivia",
 ];
 
-const orderStatusVariants: Record<Order["status"], BadgeVariant> = {
+const orderStatusVariants: Record<
+  Order["status"],
+  NonNullable<BadgeVariantProps["variant"]>
+> = {
   cancelled: "destructive",
   delivered: "success",
   pending: "warning",

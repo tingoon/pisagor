@@ -7,7 +7,7 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+import type { SheetRootContract, SheetContract } from "@pisagor/contracts";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
@@ -42,7 +42,8 @@ export interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-export interface SheetProps extends DialogRootProps, BaseSheetProps {}
+export interface SheetProps
+  extends DialogRootProps, SheetRootContract, SheetContract {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 

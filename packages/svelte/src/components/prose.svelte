@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ProseProps as BaseProseProps } from "@pisagor/props";
+  import type { ProseRootContract } from "@pisagor/contracts";
   import { proseRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
@@ -12,7 +12,7 @@
      * DOMPurify.sanitize(html)`. Recommended for user-generated content.
      */
     sanitize?: (html: string) => string;
-  } & BaseProseProps;
+  } & ProseRootContract;
 
   let {
     html,
