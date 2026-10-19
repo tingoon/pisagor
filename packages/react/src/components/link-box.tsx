@@ -12,15 +12,20 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const LinkBoxRoot = withProvider<LinkBoxRootContract>(ark.div, {
+export const LinkBoxRoot = withProvider<
+  ComponentProps<typeof ark.div> & LinkBoxRootContract
+>(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<HTMLArkProps<"div"> & LinkBoxRootContract>;
 
-export const LinkOverlayLink = withContext(ark.a, {
-  name: "Overlay",
-  slot: "overlay",
-});
+export const LinkOverlayLink = withContext<ComponentProps<typeof ark.a>>(
+  ark.a,
+  {
+    name: "Overlay",
+    slot: "overlay",
+  },
+);
 // #endregion
 
 // #region Types

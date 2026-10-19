@@ -58,11 +58,9 @@ export interface ListboxProps
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps
-  extends
-    ListboxItemPrimitiveProps,
-    ListboxItemRootContract,
-    ListboxItemContract {}
+export type ListboxItemProps = ListboxItemPrimitiveProps &
+  ListboxItemRootContract &
+  ListboxItemContract;
 
 export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   heading?: string;

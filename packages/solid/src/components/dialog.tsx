@@ -40,8 +40,7 @@ const { DialogModalContext, useDialogModal } =
   createContext("DialogModal")<DialogModalState>();
 // #endregion
 
-export interface DialogRootProps
-  extends DialogRootPrimitiveProps, DialogRootContract {}
+export type DialogRootProps = DialogRootPrimitiveProps & DialogRootContract;
 
 export interface DialogContentProps
   extends DialogContentPrimitiveProps, DialogVariantProps {

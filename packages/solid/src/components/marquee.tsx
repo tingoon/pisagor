@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/solid";
 import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -36,7 +36,9 @@ export interface MarqueeProps
 
 const MarqueeRootProvider: Component<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
-> = withProvider<MarqueeRootContract>(MarqueePrimitive.Root, {
+> = withProvider<
+  ComponentProps<typeof MarqueePrimitive.Root> & MarqueeRootContract
+>(MarqueePrimitive.Root, {
   name: "Root",
   slot: "base",
 });
@@ -80,15 +82,13 @@ export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
   );
 }
 
-export const MarqueeItem: Component<MarqueeItemProps> = withContext(
-  MarqueePrimitive.Item,
-  { name: "Item" },
-);
+export const MarqueeItem: Component<MarqueeItemProps> = withContext<
+  ComponentProps<typeof MarqueePrimitive.Item>
+>(MarqueePrimitive.Item, { name: "Item" });
 
-export const MarqueeEdge: Component<MarqueeEdgeProps> = withContext(
-  MarqueePrimitive.Edge,
-  { name: "Edge" },
-);
+export const MarqueeEdge: Component<MarqueeEdgeProps> = withContext<
+  ComponentProps<typeof MarqueePrimitive.Edge>
+>(MarqueePrimitive.Edge, { name: "Edge" });
 
 export function MarqueeShorthand(props: MarqueeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);

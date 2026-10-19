@@ -6,7 +6,7 @@ import type {
   DataListRootContract,
 } from "@pisagor/contracts";
 import { dataListItemRecipe, dataListRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -23,7 +23,7 @@ export function DataListRoot({
   recipe = dataListRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"dl"> &
+}: ComponentProps<"dl"> &
   DataListRootContract & {
     orientation?: "horizontal" | "vertical";
   }) {
@@ -40,7 +40,9 @@ export function DataListRoot({
   );
 }
 
-const DataListItemRoot = withProvider<DataListItemRootContract>("div", {
+const DataListItemRoot = withProvider<
+  ComponentProps<"div"> & DataListItemRootContract
+>("div", {
   defaultProps: {
     "data-part": "item",
   },
@@ -48,7 +50,7 @@ const DataListItemRoot = withProvider<DataListItemRootContract>("div", {
   slot: "base",
 });
 
-const DataListItemLabel = withContext("dt", {
+const DataListItemLabel = withContext<ComponentProps<"dt">>("dt", {
   defaultProps: {
     "data-part": "item-label",
   },
@@ -56,7 +58,7 @@ const DataListItemLabel = withContext("dt", {
   slot: "label",
 });
 
-const DataListItemValue = withContext("dd", {
+const DataListItemValue = withContext<ComponentProps<"dd">>("dd", {
   defaultProps: {
     "data-part": "item-value",
   },

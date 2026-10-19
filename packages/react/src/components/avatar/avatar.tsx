@@ -14,16 +14,23 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const AvatarRoot = withProvider<AvatarRootContract>(AvatarPrimitive.Root, {
+const AvatarRoot = withProvider<
+  ComponentProps<typeof AvatarPrimitive.Root> & AvatarRootContract
+>(AvatarPrimitive.Root, {
   name: "Root",
   slot: "base",
 });
 
-const AvatarImage = withContext(AvatarPrimitive.Image, {
-  name: "Image",
-});
+const AvatarImage = withContext<ComponentProps<typeof AvatarPrimitive.Image>>(
+  AvatarPrimitive.Image,
+  {
+    name: "Image",
+  },
+);
 
-const AvatarFallback = withContext(AvatarPrimitive.Fallback, {
+const AvatarFallback = withContext<
+  ComponentProps<typeof AvatarPrimitive.Fallback>
+>(AvatarPrimitive.Fallback, {
   name: "Fallback",
 });
 // #endregion

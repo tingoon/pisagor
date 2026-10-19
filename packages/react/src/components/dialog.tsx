@@ -36,8 +36,7 @@ DialogModalContext.displayName = "DialogModalContext";
 // #endregion
 
 // #region Types
-export interface DialogRootProps
-  extends DialogRootPrimitiveProps, DialogRootContract {}
+export type DialogRootProps = DialogRootPrimitiveProps & DialogRootContract;
 
 export interface DialogContentProps
   extends DialogContentPrimitiveProps, DialogVariantProps {

@@ -5,7 +5,7 @@ import type {
   StatTrendRootContract,
 } from "@pisagor/contracts";
 import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale, type MessageKey } from "./provider/context";
 
@@ -17,22 +17,25 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const StatRoot = withProvider<StatRootContract>("div", {
-  name: "Root",
-  slot: "base",
-});
+export const StatRoot = withProvider<ComponentProps<"div"> & StatRootContract>(
+  "div",
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
-export const StatLabel = withContext("div", {
+export const StatLabel = withContext<ComponentProps<"div">>("div", {
   name: "Label",
   slot: "label",
 });
 
-export const StatValue = withContext("div", {
+export const StatValue = withContext<ComponentProps<"div">>("div", {
   name: "Value",
   slot: "value",
 });
 
-export const StatDescription = withContext("p", {
+export const StatDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
   slot: "description",
 });
@@ -54,7 +57,7 @@ export function StatTrend({
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & StatTrendRootContract & StatTrendOwnProps) {
+}: ComponentProps<"div"> & StatTrendRootContract & StatTrendOwnProps) {
   const { m } = useLocale();
 
   return (

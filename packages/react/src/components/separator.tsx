@@ -1,10 +1,10 @@
 import type { SeparatorRootContract } from "@pisagor/contracts";
 import { separatorRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 
 // #region Types
 export interface SeparatorProps
-  extends ComponentPropsWithRef<"div">, SeparatorRootContract {
+  extends ComponentProps<"div">, SeparatorRootContract {
   /**
    * The orientation of the separator.
    *

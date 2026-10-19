@@ -5,11 +5,10 @@ import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
-export interface ItemGroupProps
-  extends ComponentProps<"div">, ItemRootContract {}
+export type ItemGroupProps = ComponentProps<"div"> & ItemRootContract;
 
-export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">, ItemRootContract {}
+export type ItemSeparatorProps = Omit<SeparatorProps, "recipe"> &
+  ItemRootContract;
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [

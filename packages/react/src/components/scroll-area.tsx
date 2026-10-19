@@ -21,13 +21,12 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-const ScrollAreaRoot = withProvider<ScrollAreaRootContract>(
-  ScrollAreaPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
-) as FunctionComponent<ScrollAreaRootPrimitiveProps & ScrollAreaRootContract>;
+const ScrollAreaRoot = withProvider<
+  ComponentProps<typeof ScrollAreaPrimitive.Root> & ScrollAreaRootContract
+>(ScrollAreaPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+}) as FunctionComponent<ScrollAreaRootPrimitiveProps & ScrollAreaRootContract>;
 
 function ScrollAreaViewport({
   children,
@@ -46,11 +45,15 @@ function ScrollAreaViewport({
   );
 }
 
-const ScrollAreaScrollbar = withContext(ScrollAreaPrimitive.Scrollbar, {
+const ScrollAreaScrollbar = withContext<
+  ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>
+>(ScrollAreaPrimitive.Scrollbar, {
   name: "Scrollbar",
 });
 
-const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, {
+const ScrollAreaThumb = withContext<
+  ComponentProps<typeof ScrollAreaPrimitive.Thumb>
+>(ScrollAreaPrimitive.Thumb, {
   name: "Thumb",
 });
 // #endregion

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   CardContract,
   CardHeaderContract,
@@ -15,8 +15,24 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
+// #region Types
+export type CardRootProps = HTMLArkProps<"div"> & CardRootContract;
+export type CardTitleProps = HTMLArkProps<"h3">;
+export type CardDescriptionProps = ComponentProps<"p">;
+export type CardActionProps = ComponentProps<"div">;
+export type CardContentProps = ComponentProps<"div">;
+export type CardFooterProps = ComponentProps<"div">;
+export type CardMediaProps = ComponentPropsWithRef<"div"> & CardVariantProps;
+export interface CardHeaderProps
+  extends Omit<ComponentPropsWithRef<"div">, "title">, CardHeaderContract {
+  description?: ReactNode;
+  title?: ReactNode;
+}
+export type CardProps = CardRootProps & CardContract;
+// #endregion
+
 // #region Parts
-export const CardRoot = withProvider<CardRootContract>(ark.div, {
+export const CardRoot = withProvider<CardRootProps>(ark.div, {
   name: "Root",
   slot: "base",
 });
@@ -25,7 +41,7 @@ export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & CardVariantProps) {
+}: CardMediaProps) {
   const { slots } = useStyles();
 
   return (
@@ -64,47 +80,30 @@ export function CardHeader({
   );
 }
 
-export const CardTitle = withContext(ark.h3, {
+export const CardTitle = withContext<CardTitleProps>(ark.h3, {
   name: "Title",
   slot: "title",
 });
 
-export const CardDescription = withContext("p", {
+export const CardDescription = withContext<CardDescriptionProps>("p", {
   name: "Description",
   slot: "description",
 });
 
-export const CardAction = withContext("div", {
+export const CardAction = withContext<CardActionProps>("div", {
   name: "Action",
   slot: "action",
 });
 
-export const CardContent = withContext("div", {
+export const CardContent = withContext<CardContentProps>("div", {
   name: "Content",
   slot: "content",
 });
 
-export const CardFooter = withContext("div", {
+export const CardFooter = withContext<CardFooterProps>("div", {
   name: "Footer",
   slot: "footer",
 });
-// #endregion
-
-// #region Types
-export type CardRootProps = ComponentProps<typeof CardRoot>;
-export type CardMediaProps = ComponentProps<typeof CardMedia>;
-export interface CardHeaderProps
-  extends Omit<ComponentPropsWithRef<"div">, "title">, CardHeaderContract {
-  description?: ReactNode;
-  title?: ReactNode;
-}
-export type CardTitleProps = ComponentProps<typeof CardTitle>;
-export type CardDescriptionProps = ComponentProps<typeof CardDescription>;
-export type CardActionProps = ComponentProps<typeof CardAction>;
-export type CardContentProps = ComponentProps<typeof CardContent>;
-export type CardFooterProps = ComponentProps<typeof CardFooter>;
-
-export interface CardProps extends CardRootProps, CardContract {}
 // #endregion
 
 CardMedia.displayName = "Card.Media";

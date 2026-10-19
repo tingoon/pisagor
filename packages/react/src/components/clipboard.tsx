@@ -81,27 +81,37 @@ function ClipboardRoot({ children, className, ...rest }: ClipboardRootProps) {
   );
 }
 
-const ClipboardControl = withContext(ClipboardPrimitive.Control, {
+const ClipboardControl = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Control>
+>(ClipboardPrimitive.Control, {
   name: "Control",
 });
 
-const ClipboardInput = withContext(ClipboardPrimitive.Input, {
+const ClipboardInput = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Input>
+>(ClipboardPrimitive.Input, {
   name: "Input",
 });
 
-const ClipboardValue = withContext(ClipboardPrimitive.ValueText, {
+const ClipboardValue = withContext<
+  ComponentProps<typeof ClipboardPrimitive.ValueText>
+>(ClipboardPrimitive.ValueText, {
   name: "Value",
 });
 
-const ClipboardIndicator = withContext(ClipboardPrimitive.Indicator, {
+const ClipboardIndicator = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Indicator>
+>(ClipboardPrimitive.Indicator, {
   name: "Indicator",
 });
 
-const ClipboardField = withContext("div", {
+const ClipboardField = withContext<ComponentProps<"div">>("div", {
   name: "Field",
 });
 
-const ClipboardLabel = withContext(ClipboardPrimitive.Label, {
+const ClipboardLabel = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Label>
+>(ClipboardPrimitive.Label, {
   name: "Label",
 });
 // #endregion

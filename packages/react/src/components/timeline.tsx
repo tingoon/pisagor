@@ -6,7 +6,7 @@ import type {
   TimelineRootContract,
 } from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -22,7 +22,7 @@ export function TimelineRoot({
   recipe = timelineRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"ol"> & TimelineRootContract) {
+}: ComponentProps<"ol"> & TimelineRootContract) {
   return (
     <ol
       {...rest}
@@ -34,7 +34,9 @@ export function TimelineRoot({
   );
 }
 
-export const TimelineItem = withProvider<TimelineItemRootContract>("li", {
+export const TimelineItem = withProvider<
+  ComponentProps<"li"> & TimelineItemRootContract
+>("li", {
   defaultProps: {
     "data-part": "item",
   },
@@ -42,12 +44,12 @@ export const TimelineItem = withProvider<TimelineItemRootContract>("li", {
   slot: "base",
 });
 
-export const TimelineIndicator = withContext("div", {
+export const TimelineIndicator = withContext<ComponentProps<"div">>("div", {
   name: "Indicator",
   slot: "indicator",
 });
 
-export const TimelineSeparator = withContext("div", {
+export const TimelineSeparator = withContext<ComponentProps<"div">>("div", {
   defaultProps: {
     "aria-hidden": "true",
   },
@@ -55,17 +57,17 @@ export const TimelineSeparator = withContext("div", {
   slot: "separator",
 });
 
-export const TimelineContent = withContext("div", {
+export const TimelineContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
   slot: "content",
 });
 
-export const TimelineTitle = withContext("div", {
+export const TimelineTitle = withContext<ComponentProps<"div">>("div", {
   name: "Title",
   slot: "title",
 });
 
-export const TimelineDescription = withContext("div", {
+export const TimelineDescription = withContext<ComponentProps<"div">>("div", {
   name: "Description",
   slot: "description",
 });
@@ -74,8 +76,7 @@ export const TimelineDescription = withContext("div", {
 // #region Types
 export type TimelineRootProps = ComponentProps<typeof TimelineRoot>;
 export type TimelineItemRootProps = ComponentProps<typeof TimelineItem>;
-export interface TimelineItemProps
-  extends TimelineItemRootProps, TimelineItemContract {}
+export type TimelineItemProps = TimelineItemRootProps & TimelineItemContract;
 export type TimelineIndicatorProps = ComponentProps<typeof TimelineIndicator>;
 export type TimelineContentProps = ComponentProps<typeof TimelineContent>;
 export type TimelineTitleProps = ComponentProps<typeof TimelineTitle>;

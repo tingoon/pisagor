@@ -17,8 +17,7 @@ const {
 // #endregion
 
 // #region Types
-export interface FrameRootProps
-  extends ComponentProps<"div">, FrameRootContract {}
+export type FrameRootProps = ComponentProps<"div"> & FrameRootContract;
 
 export type FramePanelProps = ComponentProps<"div">;
 export type FrameHeaderProps = ComponentProps<"header">;
@@ -80,25 +79,25 @@ export function FramePanel(props: FramePanelProps): JSX.Element {
   );
 }
 
-export const FrameHeader = withContext("header", {
+export const FrameHeader = withContext<ComponentProps<"header">>("header", {
   defaultProps: { "data-part": "panel-header" },
   name: "Header",
   slot: "panelHeader",
 });
 
-export const FrameTitle = withContext("div", {
+export const FrameTitle = withContext<ComponentProps<"div">>("div", {
   defaultProps: { "data-part": "panel-title" },
   name: "Title",
   slot: "panelTitle",
 });
 
-export const FrameDescription = withContext("div", {
+export const FrameDescription = withContext<ComponentProps<"div">>("div", {
   defaultProps: { "data-part": "panel-description" },
   name: "Description",
   slot: "panelDescription",
 });
 
-export const FrameFooter = withContext("footer", {
+export const FrameFooter = withContext<ComponentProps<"footer">>("footer", {
   defaultProps: { "data-part": "panel-footer" },
   name: "Footer",
   slot: "panelFooter",

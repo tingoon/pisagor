@@ -80,8 +80,7 @@ export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps 
   withHandle?: boolean;
 }
 
-export interface ResizableRootProps
-  extends SplitterRootProps, ResizableRootContract {}
+export type ResizableRootProps = SplitterRootProps & ResizableRootContract;
 
 export type ResizablePanelProps = SplitterPanelProps;
 
@@ -90,8 +89,8 @@ export type ResizableResizeTriggerIndicatorProps =
 
 export type ResizableContextProps = SplitterContextProps;
 
-export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps, ResizableRootContract {}
+export type ResizableRootProviderProps = SplitterRootProviderProps &
+  ResizableRootContract;
 // #endregion
 
 // #region Parts
@@ -213,13 +212,13 @@ export function ResizableEdgeHandle({
   );
 }
 
-export const ResizableRoot = withProvider<ResizableRootContract>(
+export const ResizableRoot = withProvider<ResizableRootProps>(
   SplitterPrimitive.Root,
   {
     name: "Root",
     slot: "base",
   },
-) as import("react").FunctionComponent<ResizableRootProps>;
+);
 
 export function ResizablePanel(props: ResizablePanelProps) {
   return <SplitterPrimitive.Panel {...props} />;

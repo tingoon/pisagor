@@ -11,7 +11,7 @@ import type {
   TabsContract,
 } from "@pisagor/contracts";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type { FunctionComponent, ReactNode, ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -22,8 +22,7 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TabsRootProps
-  extends TabsRootPrimitiveProps, TabsRootContract {}
+export type TabsRootProps = TabsRootPrimitiveProps & TabsRootContract;
 
 interface TabsPresetItem extends Omit<BaseTabsPresetItem, "label" | "content"> {
   label: ReactNode;
@@ -52,7 +51,9 @@ export interface TabsProps
 // #endregion
 
 // #region Parts
-export const TabsRoot = withProvider<TabsRootContract>(TabsPrimitive.Root, {
+export const TabsRoot = withProvider<
+  ComponentProps<typeof TabsPrimitive.Root> & TabsRootContract
+>(TabsPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<TabsRootProps>;
@@ -80,11 +81,15 @@ export function TabsList({
   );
 }
 
-export const TabsTrigger = withContext(TabsPrimitive.Trigger, {
+export const TabsTrigger = withContext<
+  ComponentProps<typeof TabsPrimitive.Trigger>
+>(TabsPrimitive.Trigger, {
   name: "Trigger",
 });
 
-export const TabsContent = withContext(TabsPrimitive.Content, {
+export const TabsContent = withContext<
+  ComponentProps<typeof TabsPrimitive.Content>
+>(TabsPrimitive.Content, {
   name: "Content",
 });
 // #endregion

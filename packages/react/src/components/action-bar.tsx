@@ -15,7 +15,7 @@ import type {
 } from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {
-  ComponentPropsWithRef,
+  ComponentProps,
   MouseEvent,
   PropsWithChildren,
   ReactNode,
@@ -131,7 +131,7 @@ export interface ActionBarProps
 
 export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export type ActionBarContentProps = ComponentPropsWithRef<"div">;
+export type ActionBarContentProps = ComponentProps<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
@@ -143,7 +143,7 @@ export interface ActionBarValueProps
   label?: string;
 }
 
-export type ActionBarBodyProps = ComponentPropsWithRef<"div">;
+export type ActionBarBodyProps = ComponentProps<"div">;
 // #endregion
 
 // #region Constants
@@ -388,7 +388,7 @@ export function ActionBarValue({
   );
 }
 
-export const ActionBarBody = withContext("div", {
+export const ActionBarBody = withContext<ComponentProps<"div">>("div", {
   name: "Body",
 });
 // #endregion

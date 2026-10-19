@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/solid";
 import type { QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -18,16 +18,17 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface LocalQrCodeRootProps
-  extends QrCodeRootPrimitiveProps, QrCodeRootContract {}
+export type LocalQrCodeRootProps = QrCodeRootPrimitiveProps &
+  QrCodeRootContract;
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 
-const QrCodeRootProvider: Component<LocalQrCodeRootProps> =
-  withProvider<QrCodeRootContract>(QrCodePrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+const QrCodeRootProvider: Component<LocalQrCodeRootProps> = withProvider<
+  ComponentProps<typeof QrCodePrimitive.Root> & QrCodeRootContract
+>(QrCodePrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
 export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);
@@ -53,10 +54,9 @@ export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
   );
 }
 
-export const QrCodeOverlay: Component<QrCodeOverlayProps> = withContext(
-  QrCodePrimitive.Overlay,
-  { name: "Overlay" },
-);
+export const QrCodeOverlay: Component<QrCodeOverlayProps> = withContext<
+  ComponentProps<typeof QrCodePrimitive.Overlay>
+>(QrCodePrimitive.Overlay, { name: "Overlay" });
 
 export function QrCodeDownload(props: QrCodeDownloadProps): JSX.Element {
   return <QrCodePrimitive.DownloadTrigger {...props} />;

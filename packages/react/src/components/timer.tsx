@@ -1,6 +1,8 @@
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react";
 import type {
   TimerActionTriggerProps,
+  TimerAreaProps,
+  TimerControlProps,
   TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
 } from "@ark-ui/react";
@@ -9,11 +11,7 @@ import type {
   TimerRootContract,
 } from "@pisagor/contracts";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-} from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -65,13 +63,10 @@ export type TimerItemLabelProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-const TimerRootBase = withTimerProvider<TimerRootContract>(
-  TimerPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
-) as FunctionComponent<TimerRootPrimitiveProps & TimerRootContract>;
+const TimerRootBase = withTimerProvider<TimerRootProps>(TimerPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
 export function TimerRoot({
   isControlsVisible,
@@ -109,17 +104,17 @@ export function TimerRoot({
   );
 }
 
-export const TimerArea = withTimerContext(TimerPrimitive.Area, {
+export const TimerArea = withTimerContext<TimerAreaProps>(TimerPrimitive.Area, {
   name: "Area",
 });
 
-const TimerItemGroupBase =
-  withTimerItemGroupProvider<TimerItemGroupRootContract>("div", {
+const TimerItemGroupBase = withTimerItemGroupProvider<TimerItemGroupProps>(
+  "div",
+  {
     name: "ItemGroup",
     slot: "base",
-  }) as FunctionComponent<
-    ComponentPropsWithRef<"div"> & TimerItemGroupRootContract
-  >;
+  },
+);
 
 export function TimerItemGroup({
   orientation = "vertical",
@@ -157,11 +152,14 @@ export function TimerItem({
 
 TimerItem.displayName = "Timer.Item";
 
-export const TimerItemLabel = withTimerItemGroupContext("div", {
-  defaultProps: { "data-part": "item-label" },
-  name: "ItemLabel",
-  slot: "label",
-});
+export const TimerItemLabel = withTimerItemGroupContext<ComponentProps<"div">>(
+  "div",
+  {
+    defaultProps: { "data-part": "item-label" },
+    name: "ItemLabel",
+    slot: "label",
+  },
+);
 
 export function TimerSeparator({
   children,
@@ -180,9 +178,12 @@ export function TimerSeparator({
   );
 }
 
-export const TimerControl = withTimerContext(TimerPrimitive.Control, {
-  name: "Control",
-});
+export const TimerControl = withTimerContext<TimerControlProps>(
+  TimerPrimitive.Control,
+  {
+    name: "Control",
+  },
+);
 
 export function TimerActionTrigger(props: TimerActionTriggerProps) {
   return <TimerPrimitive.ActionTrigger {...props} />;

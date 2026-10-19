@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/solid";
 import type { CollapsibleRootContract } from "@pisagor/contracts";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
@@ -23,8 +23,8 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalCollapsibleRootProps
-  extends CollapsibleRootPrimitiveProps, CollapsibleRootContract {}
+export type LocalCollapsibleRootProps = CollapsibleRootPrimitiveProps &
+  CollapsibleRootContract;
 // #endregion
 
 // #region Parts
@@ -64,7 +64,10 @@ export function CollapsibleRoot(props: LocalCollapsibleRootProps): JSX.Element {
 }
 
 export const CollapsibleTrigger: Component<CollapsibleTriggerProps> =
-  withContext(CollapsiblePrimitive.Trigger, { name: "Trigger" });
+  withContext<ComponentProps<typeof CollapsiblePrimitive.Trigger>>(
+    CollapsiblePrimitive.Trigger,
+    { name: "Trigger" },
+  );
 
 /** `class` targets the inner body wrapper; the content slot animates height. */
 export function CollapsibleContent(

@@ -39,7 +39,7 @@ export interface MenuLinkProps {
   class?: unknown;
 }
 
-export interface MenuProps extends MenuRootProps, MenuContract {}
+export type MenuProps = MenuRootProps & MenuContract;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

@@ -8,11 +8,9 @@ export interface SkeletonTextProps
   lines?: number;
 }
 
-export interface SkeletonRootProps
-  extends ComponentProps<"div">, SkeletonRootContract {}
+export type SkeletonRootProps = ComponentProps<"div"> & SkeletonRootContract;
 
-export interface SkeletonCircleProps
-  extends ComponentProps<"div">, SkeletonRootContract {}
+export type SkeletonCircleProps = ComponentProps<"div"> & SkeletonRootContract;
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "size", "class"]);

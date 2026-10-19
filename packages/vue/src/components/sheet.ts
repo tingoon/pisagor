@@ -40,11 +40,9 @@ interface SheetContextValue {
   slots: SheetRecipe;
 }
 
-export interface SheetProps
-  extends
-    Omit<DialogProps, "recipe" | "classNames">,
-    SheetRootContract,
-    SheetContract {}
+export type SheetProps = Omit<DialogProps, "recipe" | "classNames"> &
+  SheetRootContract &
+  SheetContract;
 // #endregion
 
 // #region Context

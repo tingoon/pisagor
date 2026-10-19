@@ -16,33 +16,14 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-// #region Parts
-export const AlertRoot = withProvider<AlertRootContract>("div", {
-  name: "Root",
-  slot: "base",
-});
-
-export const AlertTitle = withContext("div", {
-  name: "Title",
-});
-
-export const AlertDescription = withContext("div", {
-  name: "Description",
-});
-
-export const AlertAction = withContext("div", {
-  name: "Action",
-});
-// #endregion
-
 // #region Types
-export type AlertRootProps = ComponentProps<typeof AlertRoot>;
+export type AlertRootProps = ComponentProps<"div"> & AlertRootContract;
 
-export type AlertTitleProps = ComponentProps<typeof AlertTitle>;
+export type AlertTitleProps = ComponentProps<"div">;
 
-export type AlertDescriptionProps = ComponentProps<typeof AlertDescription>;
+export type AlertDescriptionProps = ComponentProps<"div">;
 
-export type AlertActionProps = ComponentProps<typeof AlertAction>;
+export type AlertActionProps = ComponentProps<"div">;
 
 export interface AlertProps
   extends Omit<AlertRootProps, "children" | "title">, AlertContract {
@@ -57,6 +38,25 @@ export interface AlertProps
   /** Extra props forwarded to the alert title element */
   titleProps?: Omit<AlertTitleProps, "children" | "className">;
 }
+// #endregion
+
+// #region Parts
+export const AlertRoot = withProvider<AlertRootProps>("div", {
+  name: "Root",
+  slot: "base",
+});
+
+export const AlertTitle = withContext<AlertTitleProps>("div", {
+  name: "Title",
+});
+
+export const AlertDescription = withContext<AlertDescriptionProps>("div", {
+  name: "Description",
+});
+
+export const AlertAction = withContext<AlertActionProps>("div", {
+  name: "Action",
+});
 // #endregion
 
 // #region Shorthand

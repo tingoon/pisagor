@@ -37,8 +37,8 @@ function useFloatingPanelSlots() {
 // #endregion
 
 // #region Types
-export interface FloatingPanelRootProps
-  extends FloatingPanelRootPrimitiveProps, FloatingPanelRootContract {}
+export type FloatingPanelRootProps = FloatingPanelRootPrimitiveProps &
+  FloatingPanelRootContract;
 
 export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   /**

@@ -1,5 +1,5 @@
 import { createContext, createElement, use } from "react";
-import type { ComponentProps, ElementType, FunctionComponent } from "react";
+import type { ElementType, FunctionComponent } from "react";
 import type { ClassValue, VariantProps } from "tailwind-variants";
 
 type SlotClassProps = {
@@ -117,17 +117,26 @@ export function createSlotRecipeContext<
     return styles;
   }
 
-  type ProviderProps<C extends ElementType, P> = ComponentProps<C> & P;
+  function resolveSlot(options: WithSlotRecipeOptions<Slot>) {
+    return (options.slot ??
+      (options.name === "Root" ? "base" : toKebabCase(options.name))) as Slot;
+  }
 
-  function createProvider<C extends ElementType, P extends object>(
-    Component: C,
+  /**
+   * Styled root. Pass the full props type — nothing is inferred from the host
+   * (`P` is optional and defaults to `{}`). `ref` is a normal React 19 prop on
+   * `P` (use `ComponentProps<"tag">`):
+   *
+   * `withProvider<AlertRootProps>("div", { name: "Root", slot: "base" })`
+   */
+  function withProvider<P extends object = Record<never, never>>(
+    Component: ElementType,
     options: WithSlotRecipeOptions<Slot>,
-  ): FunctionComponent<ProviderProps<C, P>> {
+  ): FunctionComponent<P> {
     const partName = options.name;
-    const slot = (options.slot ??
-      (partName === "Root" ? "base" : toKebabCase(partName))) as Slot;
+    const slot = resolveSlot(options);
 
-    function ProviderComponent(props: ProviderProps<C, P>) {
+    function ProviderComponent(props: P) {
       const recipe = ((props as { recipe?: R }).recipe ?? defaultRecipe) as R;
       const { rest, variants } = splitRecipeProps(
         props as Record<string, unknown>,
@@ -175,39 +184,21 @@ export function createSlotRecipeContext<
   }
 
   /**
-   * Styled root. Pass the shared root contract as `P` — variants / `recipe` are
-   * not inferred from the recipe (same shape as Vue / Solid):
+   * Styled descendant. Same shape as `withProvider`; `P` is optional:
    *
-   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
+   * `withContext<AlertTitleProps>("div", { name: "Title" })`
+   * `withContext("div", { name: "Title" })`
    */
-  function withProvider<P extends object, C extends ElementType = ElementType>(
-    Component: C,
+  function withContext<P extends object = Record<never, never>>(
+    Component: ElementType,
     options: WithSlotRecipeOptions<Slot>,
-  ): FunctionComponent<ProviderProps<C, P>> {
-    return createProvider<C, P>(Component, options);
-  }
-
-  /**
-   * Styled descendant. Optional `P` extends the host props (defaults to none):
-   *
-   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
-   * { name: "Title" })`
-   */
-  function withContext<
-    P extends object = Record<never, never>,
-    C extends ElementType = ElementType,
-  >(
-    Component: C,
-    options: WithSlotRecipeOptions<Slot>,
-  ): FunctionComponent<ComponentProps<C> & P> {
+  ): FunctionComponent<P> {
     const partName = options.name;
-    const slot = (options.slot ??
-      (partName === "Root" ? "base" : toKebabCase(partName))) as Slot;
+    const slot = resolveSlot(options);
 
-    function SlotComponent(props: ComponentProps<C> & P) {
+    function SlotComponent(props: P) {
       const { slots } = useStyles();
-      const { className, ...rest } = props as ComponentProps<C> &
-        P & { className?: ClassValue };
+      const { className, ...rest } = props as P & { className?: ClassValue };
       const defaultClassName = options.defaultProps?.className as
         ClassValue | undefined;
 

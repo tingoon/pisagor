@@ -57,7 +57,7 @@ const {
 - Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
 - Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file (e.g. `useStyles: useTagsInput` + `useStyles: useTagsInputItem`). Public re-exports can use `export { useStyles as useFoo }`.
 - `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag string (`"div"`) for layout/presentational hosts; use `ark.*` only when `asChild` polymorphism is required; use Ark machine primitives for headless parts.
-- `withProvider` requires the shared root contract as `P` (variants / `recipe` are not inferred from the recipe): `withProvider<FooRootContract>("div", { name: "Root", slot: "base" })`. `withContext` accepts an optional extra `P` (defaults to none). Same call shape as Vue / Solid.
+- `withProvider` / `withContext` take the **full props type** as `P` (optional, defaults to `{}`) — nothing is inferred from the host argument: `withProvider<FooRootProps>("div", { name: "Root", slot: "base" })`, `withContext<FooTitleProps>("div", { name: "Title" })`. Define public part props with `type FooRootProps = ComponentProps<"div"> & FooRootContract` (React 19: `ComponentProps<"tag">` includes `ref`). Prefer named `*Props` over inline intersections. Same call shape as Vue / Solid.
 - Hand-written roots that need dual providers: `<FooStylesContext value={{ slots, variants }}>` around the primitive (and a thin state context when needed).
 - Thin **non-style** state uses `createContext` from package `utils` (or raw React `createContext`) — keep it separate from the slot-recipe Context.
 
@@ -154,7 +154,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 - Re-export types, hooks, or `RootProvider` only when part of the public API.
 - Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that.
-- For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Type `ark.*` hosts (only when `asChild` is needed) with `HTMLArkProps<"tag">`, or `HTMLArkPropsWithRef<"tag">` from `../internal` when `ref` is forwarded — do not mix in `ComponentPropsWithRef` / separate `PolymorphicProps` / `RefAttributes`. Type native hosts with `ComponentPropsWithRef<"tag">` only. Reserve `ComponentProps` for third-party components that do not export props.
+- For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Type `ark.*` hosts (only when `asChild` is needed) with `HTMLArkProps<"tag">`, or `ArkComponentProps<"tag">` from `../internal` when `ref` is forwarded — do not mix in `ComponentProps` / separate `PolymorphicProps` / `RefAttributes`. Type native hosts with `ComponentProps<"tag">` (React 19 includes `ref`). Use `ComponentProps<typeof X>` only for third-party components that do not export props.
 - Pure Ark props: re-export from the **barrel** (`export type { FooRootProps } from "@ark-ui/react"`). Component modules import for signatures only — do not `export type { FooRootProps }` there. When the local name must extend/omit the Ark type of the same name, import as `FooRootProps as FooRootPrimitiveProps` (`{ArkName}PrimitiveProps`; value alias stays `Foo as FooPrimitive`).
 - Do **not** add identity aliases (`type FooProps = FooRootPrimitiveProps` or empty `interface FooProps extends FooRootPrimitiveProps {}`). Import and use the Ark type directly. Rename aliases only when the public name differs (`ComboboxFieldInputProps = ComboboxInputPrimitiveProps`, `TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps`).
 - Barrel may alias for public names (`DatePickerRootProps as DatePickerProps`).
@@ -258,15 +258,15 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 
 ### Do
 
-- Prefer Ark-exported part props (`AccordionRootProps`, `DialogContentProps`, `HighlightProps`) over `ComponentProps<typeof Primitive.Part>`. For `ark.*` hosts (polymorphic only) use `HTMLArkProps<"div">`, or `HTMLArkPropsWithRef<"div">` from `../internal` when `ref` is forwarded; for native tags use `ComponentPropsWithRef<"div">` — never combine Ark and native prop types on the same host.
+- Prefer Ark-exported part props (`AccordionRootProps`, `DialogContentProps`, `HighlightProps`) over `ComponentProps<typeof Primitive.Part>`. For `ark.*` hosts (polymorphic only) use `HTMLArkProps<"div">`, or `ArkComponentProps<"div">` from `../internal` when `ref` is forwarded; for native tags use `ComponentProps<"div">` — never combine Ark and native prop types on the same host.
 - Re-export **unchanged** Ark props from the component **barrel** (`index.ts`): `export type { AccordionRootProps } from "@ark-ui/react"`. Do not `export type { AccordionRootProps }` from the component module — import there only for local signatures / `extends`.
 - Library-owned props (`Omit` / `extends` with extra fields / renamed aliases) stay in the component module and are re-exported from the barrel via `export type { FooProps } from "./foo"`.
 - Do not invent passthrough aliases — if nothing is added, use the imported Ark `*Props` name as-is.
 - When a local `FooRootProps` extends/omits Ark’s same-named type, import as `type FooRootProps as FooRootPrimitiveProps` (insert `Primitive` before `Props`, not after the component name).
-- Ark `*Props` / `HTMLArkProps` are typically `ComponentPropsWithoutRef`. When a closed `ark.*` wrapper forwards `ref`, extend `HTMLArkPropsWithRef<"tag">` instead of `HTMLArkProps` + `RefAttributes`. For Ark primitive wrappers (`FieldInputProps`, …), intersect `RefAttributes<Element>` when needed.
+- Ark `*Props` / `HTMLArkProps` are typically `ComponentPropsWithoutRef`. When a closed `ark.*` wrapper forwards `ref`, extend `ArkComponentProps<"tag">` instead of `HTMLArkProps` + `RefAttributes`. For Ark primitive wrappers (`FieldInputProps`, …), intersect `RefAttributes<Element>` when needed.
 - Note Ark naming quirks (e.g. tabs compound uses `TabListProps` / `TabTriggerProps` / `TabContentProps`, not `TabsListProps`).
-- Use `export interface FooProps` when props are part of the public API.
-- Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).
+- Prefer `type` for prop aliases and empty intersections (`type FooRootProps = ComponentProps<"div"> & FooRootContract`). Use `export interface FooProps` only when the declaration adds its own members.
+- Combine with `type FooProps = FooRootProps & FooVariantProps` when there are no extra fields. For closed single exports without a Root part, put the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
 - Prefer extending `@pisagor/contracts` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
@@ -275,7 +275,7 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Convenience prop conflicts with primitive prop         | `type SelectRootProps = Omit<SelectRootPrimitiveProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectRootPrimitiveProps<Item>;` + re-declare `onValueChange` with a different signature |
 | Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">`                           | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`)                                  |
-| Preserve primitive contracts by default                | `interface DialogBodyProps extends ComponentPropsWithRef<"div"> {}`                             | `type DialogBodyProps = Omit<ComponentPropsWithRef<"div">, "role">` without an explicit conflict                 |
+| Preserve primitive contracts by default                | `type DialogBodyProps = ComponentProps<"div">`                                                  | `type DialogBodyProps = Omit<ComponentProps<"div">, "role">` without an explicit conflict                        |
 
 ### Do not
 

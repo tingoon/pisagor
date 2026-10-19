@@ -29,8 +29,8 @@ const {
 } = createSlotRecipeContext({ name: "Drawer", recipe: drawerRecipe });
 // #endregion
 
-export interface LocalDrawerRootProps
-  extends DrawerRootPrimitiveProps, DrawerRootContract {}
+export type LocalDrawerRootProps = DrawerRootPrimitiveProps &
+  DrawerRootContract;
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
   DrawerVariantProps;
@@ -52,7 +52,7 @@ export type DrawerContentInnerProps = ComponentProps<"div">;
 export type DrawerDescriptionProps = ComponentProps<"div">;
 export type DrawerFooterProps = ComponentProps<"div">;
 
-export interface DrawerProps extends LocalDrawerRootProps, DrawerContract {}
+export type DrawerProps = LocalDrawerRootProps & DrawerContract;
 
 export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe"]);

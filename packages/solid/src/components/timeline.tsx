@@ -6,7 +6,7 @@ import type {
   TimelineContract,
 } from "@pisagor/contracts";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -18,14 +18,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TimelineRootProps
-  extends ComponentProps<"ol">, Omit<TimelineRootContract, "items"> {}
+export type TimelineRootProps = ComponentProps<"ol"> &
+  Omit<TimelineRootContract, "items">;
 
-export interface TimelineItemProps
-  extends
-    ComponentProps<"li">,
-    TimelineItemRootContract,
-    TimelineItemContract {}
+export type TimelineItemProps = ComponentProps<"li"> &
+  TimelineItemRootContract &
+  TimelineItemContract;
 
 export type TimelineIndicatorProps = ComponentProps<"div">;
 export type TimelineContentProps = ComponentProps<"div">;
@@ -70,27 +68,35 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
   );
 }
 
-export const TimelineItem: Component<TimelineItemProps> =
-  withProvider<TimelineItemRootContract>("li", {
-    defaultProps: { "data-part": "item" },
-    name: "Item",
-    slot: "base",
-  });
+export const TimelineItem = withProvider<TimelineItemProps>("li", {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
+});
 
-export const TimelineIndicator = withContext("div", { name: "Indicator" });
+export const TimelineIndicator = withContext<TimelineIndicatorProps>("div", {
+  name: "Indicator",
+});
 
-export const TimelineSeparator = withContext("div", {
+export const TimelineSeparator = withContext<TimelineSeparatorProps>("div", {
   defaultProps: { "aria-hidden": "true" },
   name: "Separator",
 });
 
-export const TimelineContent = withContext("div", { name: "Content" });
-
-export const TimelineTitle = withContext("div", { name: "Title" });
-
-export const TimelineDescription = withContext("div", {
-  name: "Description",
+export const TimelineContent = withContext<TimelineContentProps>("div", {
+  name: "Content",
 });
+
+export const TimelineTitle = withContext<TimelineTitleProps>("div", {
+  name: "Title",
+});
+
+export const TimelineDescription = withContext<TimelineDescriptionProps>(
+  "div",
+  {
+    name: "Description",
+  },
+);
 // #endregion
 
 // #region Shorthand

@@ -1,11 +1,5 @@
 import { createContext, createMemo, splitProps, useContext } from "solid-js";
-import type {
-  Component,
-  ComponentProps,
-  JSX,
-  ParentProps,
-  ValidComponent,
-} from "solid-js";
+import type { Component, JSX, ParentProps, ValidComponent } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import type { ClassValue, VariantProps } from "tailwind-variants";
 
@@ -121,19 +115,15 @@ export function createSlotRecipeContext<
   /**
    * Styled root: provides styles to descendants and renders `component` with
    * the `slot` class, `data-scope` / `data-part` and variant `data-*`. Pass the
-   * shared root contract as `P` — variants / `recipe` are not inferred from the
-   * recipe:
+   * full props type as `P` — nothing is inferred from the host (same call shape
+   * as React / Vue):
    *
-   * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
+   * `withProvider<AlertRootProps>("div", { name: "Root", slot: "base" })`
    */
-  function withProvider<
-    P extends object,
-    C extends ValidComponent = ValidComponent,
-  >(
-    component: C,
+  function withProvider<P extends object = Record<never, never>>(
+    component: ValidComponent,
     options: WithSlotRecipeOptions<Slot>,
-  ): Component<ComponentProps<C> & P> {
-    // Widen for `Dynamic`: props are forwarded untouched, typed by the return.
+  ): Component<P> {
     const host: ValidComponent = component;
     const slot = slotOf(options);
     const defaultClass = options.defaultProps?.class as ClassValue;
@@ -191,18 +181,15 @@ export function createSlotRecipeContext<
   }
 
   /**
-   * Styled descendant. Optional `P` extends the host props (defaults to none):
+   * Styled descendant. Same shape as `withProvider`; `P` is optional:
    *
-   * `withContext("div", { name: "Title" })` `withContext<TitleContract>("div",
-   * { name: "Title" })`
+   * `withContext<AlertTitleProps>("div", { name: "Title" })`
+   * `withContext("div", { name: "Title" })`
    */
-  function withContext<
-    P extends object = Record<never, never>,
-    C extends ValidComponent = ValidComponent,
-  >(
-    component: C,
+  function withContext<P extends object = Record<never, never>>(
+    component: ValidComponent,
     options: WithSlotRecipeOptions<Slot>,
-  ): Component<ComponentProps<C> & P> {
+  ): Component<P> {
     const host: ValidComponent = component;
     const slot = slotOf(options);
     const defaultClass = options.defaultProps?.class as ClassValue;

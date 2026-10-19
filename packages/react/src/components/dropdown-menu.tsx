@@ -46,11 +46,11 @@ export interface DropdownMenuItemGroupProps
   heading?: string;
 }
 
-export interface DropdownMenuItemRootProps
-  extends MenuItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuItemRootProps = MenuItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuItemProps
-  extends DropdownMenuItemRootProps, DropdownMenuItemContract {}
+export type DropdownMenuItemProps = DropdownMenuItemRootProps &
+  DropdownMenuItemContract;
 
 export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
@@ -63,31 +63,30 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps &
+  DropdownMenuItemRootContract;
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuRadioItemProps = MenuRadioItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuSubContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuSubContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuTriggerItemProps = MenuTriggerItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuShortcutProps = ComponentPropsWithRef<"span">;
 
-export interface DropdownMenuProps
-  extends DropdownMenuRootProps, DropdownMenuContract {}
+export type DropdownMenuProps = DropdownMenuRootProps & DropdownMenuContract;
 // #endregion
 
 // #region Parts

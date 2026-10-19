@@ -63,16 +63,15 @@ export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps 
   withHandle?: boolean;
 }
 
-export interface ResizableRootProps
-  extends SplitterRootProps, ResizableRootContract {}
+export type ResizableRootProps = SplitterRootProps & ResizableRootContract;
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
   SplitterResizeTriggerIndicatorProps;
 export type ResizableContextProps = SplitterContextProps;
 
-export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps, ResizableRootContract {}
+export type ResizableRootProviderProps = SplitterRootProviderProps &
+  ResizableRootContract;
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,

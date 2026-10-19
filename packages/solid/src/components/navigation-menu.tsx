@@ -60,11 +60,9 @@ function useNavigationMenuItem(part: string) {
 // #endregion
 
 // #region Types
-export interface NavigationMenuProps
-  extends
-    ComponentProps<"nav">,
-    NavigationMenuRootContract,
-    NavigationMenuContract {}
+export type NavigationMenuProps = ComponentProps<"nav"> &
+  NavigationMenuRootContract &
+  NavigationMenuContract;
 
 export type NavigationMenuPartProps = ComponentProps<"ul">;
 export type NavigationMenuItemProps = ComponentProps<"li">;
@@ -78,11 +76,12 @@ export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
 // #endregion
 
 // #region Parts
-const NavigationMenuNav: Component<NavigationMenuProps> =
-  withProvider<NavigationMenuRootContract>("nav", {
-    name: "Root",
-    slot: "base",
-  });
+const NavigationMenuNav: Component<NavigationMenuProps> = withProvider<
+  ComponentProps<"nav"> & NavigationMenuRootContract
+>("nav", {
+  name: "Root",
+  slot: "base",
+});
 
 export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   const { m } = useLocale();
@@ -95,10 +94,9 @@ export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   );
 }
 
-const NavigationMenuListBase: Component<NavigationMenuPartProps> = withContext(
-  "ul",
-  { name: "List" },
-);
+const NavigationMenuListBase: Component<NavigationMenuPartProps> = withContext<
+  ComponentProps<"ul">
+>("ul", { name: "List" });
 
 export function NavigationMenuList(
   props: NavigationMenuPartProps,
@@ -118,10 +116,9 @@ export function NavigationMenuList(
   );
 }
 
-const NavigationMenuItemBase: Component<NavigationMenuItemProps> = withContext(
-  "li",
-  { name: "Item" },
-);
+const NavigationMenuItemBase: Component<NavigationMenuItemProps> = withContext<
+  ComponentProps<"li">
+>("li", { name: "Item" });
 
 export function NavigationMenuItem(
   props: NavigationMenuItemProps,

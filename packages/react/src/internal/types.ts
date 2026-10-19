@@ -1,12 +1,12 @@
 import type { PolymorphicProps } from "@ark-ui/react";
-import type { ComponentPropsWithRef, JSX } from "react";
+import type { ComponentProps, JSX } from "react";
 
 /** Visual style shared by all form controls (`variant` prop). */
 export type FormControlVariant = "primary" | "secondary";
 
 /**
- * `ark.*` host props when the wrapper forwards `ref` (React 19 prop). Prefer
- * Ark’s `HTMLArkProps<"tag">` when `ref` is not part of the public API.
+ * Native host props + Ark `PolymorphicProps` (`asChild`) for `ark.*` wrappers.
+ * Prefer Ark’s `HTMLArkProps<"tag">` when polymorphism is not needed.
  */
-export type HTMLArkPropsWithRef<T extends keyof JSX.IntrinsicElements> =
-  ComponentPropsWithRef<T> & PolymorphicProps;
+export type ArkComponentProps<T extends keyof JSX.IntrinsicElements> =
+  ComponentProps<T> & PolymorphicProps;

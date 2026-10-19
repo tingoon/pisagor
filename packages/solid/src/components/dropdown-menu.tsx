@@ -50,11 +50,9 @@ export interface DropdownMenuItemGroupProps
   heading?: string;
 }
 
-export interface DropdownMenuItemProps
-  extends
-    MenuItemProps,
-    DropdownMenuItemRootContract,
-    DropdownMenuItemContract {}
+export type DropdownMenuItemProps = MenuItemProps &
+  DropdownMenuItemRootContract &
+  DropdownMenuItemContract;
 
 export interface DropdownMenuRadioItemGroupProps
   extends MenuRadioItemGroupProps, DropdownMenuItemGroupContract {
@@ -62,32 +60,30 @@ export interface DropdownMenuRadioItemGroupProps
 }
 
 export type DropdownMenuRootProps = MenuRootProps & DropdownMenuRootContract;
-
-export interface DropdownMenuProps
-  extends DropdownMenuRootProps, DropdownMenuContract {}
+export type DropdownMenuProps = DropdownMenuRootProps & DropdownMenuContract;
 
 export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps &
+  DropdownMenuItemRootContract;
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuRadioItemProps = MenuRadioItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuSubContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuSubContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps, DropdownMenuItemRootContract {}
+export type DropdownMenuTriggerItemProps = MenuTriggerItemProps &
+  DropdownMenuItemRootContract;
 
-export interface DropdownMenuContentProps
-  extends MenuContentProps, DropdownMenuRootContract {}
+export type DropdownMenuContentProps = MenuContentProps &
+  DropdownMenuRootContract;
 
 export type DropdownMenuShortcutProps = ComponentProps<"span">;
 

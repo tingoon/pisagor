@@ -13,20 +13,23 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface ButtonGroupProps
-  extends ComponentProps<"fieldset">, ButtonGroupRootContract {}
+export type ButtonGroupProps = ComponentProps<"fieldset"> &
+  ButtonGroupRootContract;
 
 export type ButtonGroupTextProps = ComponentProps<"div">;
 // #endregion
 
 // #region Parts
-export const ButtonGroupRoot: Component<ButtonGroupProps> =
-  withProvider<ButtonGroupRootContract>("fieldset", {
-    name: "Root",
-    slot: "base",
-  });
+export const ButtonGroupRoot: Component<ButtonGroupProps> = withProvider<
+  ComponentProps<"fieldset"> & ButtonGroupRootContract
+>("fieldset", {
+  name: "Root",
+  slot: "base",
+});
 
-export const ButtonGroupText = withContext("div", { name: "Text" });
+export const ButtonGroupText = withContext<ComponentProps<"div">>("div", {
+  name: "Text",
+});
 
 export function ButtonGroupSeparator(props: SeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation", "class"]);

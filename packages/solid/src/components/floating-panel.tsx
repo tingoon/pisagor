@@ -41,8 +41,8 @@ function useFloatingPanelSlots() {
 }
 // #endregion
 
-export interface LocalFloatingPanelRootProps
-  extends FloatingPanelRootPrimitiveProps, FloatingPanelRootContract {}
+export type LocalFloatingPanelRootProps = FloatingPanelRootPrimitiveProps &
+  FloatingPanelRootContract;
 
 export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   resizable?: boolean;

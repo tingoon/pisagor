@@ -104,11 +104,14 @@ function RatingRoot({
   );
 }
 
-const RatingControl = withContext(RatingGroupPrimitive.Control, {
-  name: "Control",
-});
+const RatingControl = withContext<RatingControlProps>(
+  RatingGroupPrimitive.Control,
+  {
+    name: "Control",
+  },
+);
 
-const RatingItem = withContext(RatingGroupPrimitive.Item, {
+const RatingItem = withContext<RatingItemProps>(RatingGroupPrimitive.Item, {
   name: "Item",
 });
 

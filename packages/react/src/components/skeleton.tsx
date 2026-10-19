@@ -13,11 +13,11 @@ export interface SkeletonTextProps
   lines?: number;
 }
 
-export interface SkeletonRootProps
-  extends ComponentPropsWithRef<"div">, SkeletonRootContract {}
+export type SkeletonRootProps = ComponentPropsWithRef<"div"> &
+  SkeletonRootContract;
 
-export interface SkeletonCircleProps
-  extends ComponentPropsWithRef<"div">, SkeletonRootContract {}
+export type SkeletonCircleProps = ComponentPropsWithRef<"div"> &
+  SkeletonRootContract;
 // #endregion
 
 // #region Parts

@@ -43,8 +43,8 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 
 type FormControlVariant = "primary" | "secondary";
 
-export interface FileUploadItemRootProps
-  extends FileUploadItemProps, FileUploadItemRootContract {}
+export type FileUploadItemRootProps = FileUploadItemProps &
+  FileUploadItemRootContract;
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 

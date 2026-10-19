@@ -4,6 +4,7 @@ import {
 } from "@ark-ui/react";
 import type {
   CollectionItem,
+  ListboxContentProps,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
   ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
@@ -65,11 +66,9 @@ export interface ListboxProps
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps
-  extends
-    ListboxItemPrimitiveProps,
-    ListboxItemRootContract,
-    ListboxItemContract {}
+export type ListboxItemProps = ListboxItemPrimitiveProps &
+  ListboxItemRootContract &
+  ListboxItemContract;
 
 export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   /** The heading of the listbox item group. */
@@ -103,9 +102,12 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   );
 }
 
-export const ListboxContent = withListboxContext(ListboxPrimitive.Content, {
-  name: "Content",
-});
+export const ListboxContent = withListboxContext<ListboxContentProps>(
+  ListboxPrimitive.Content,
+  {
+    name: "Content",
+  },
+);
 
 export function ListboxItem({
   variant = "default",

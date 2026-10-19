@@ -212,16 +212,14 @@ export function createSlotRecipeContext<
    * Styled root: provides styles to descendants and renders `component` with
    * the `slot` class, `data-scope` / `data-part` and variant `data-*`. Pass the
    * shared root contract as `P` — variants / `recipe` are not inferred from the
-   * recipe:
+   * recipe (same call shape as React / Solid):
    *
    * `withProvider<AlertRootContract>("div", { name: "Root", slot: "base" })`
    */
-  function withProvider<P extends object>(
+  function withProvider<P extends object = Record<never, never>>(
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,
   ): SlotRecipePart<P & PartClassProps> {
-    type Props = P & PartClassProps;
-
     const partName = `${name}.${options.name}`;
 
     const slot = slotOf(options);
@@ -229,9 +227,9 @@ export function createSlotRecipeContext<
     const runtimeProps = runtimePropsOf(
       defaultRecipe,
       true,
-    ) as ComponentObjectPropsOptions<Props>;
+    ) as ComponentObjectPropsOptions<P & PartClassProps>;
 
-    const part = defineComponent<Props>(
+    const part = defineComponent<P & PartClassProps>(
       (props, { attrs, slots: children }) => {
         const values = props as Record<string, unknown>;
         const recipe = computed(() => (values.recipe ?? defaultRecipe) as R);
@@ -308,8 +306,6 @@ export function createSlotRecipeContext<
     component: SlotHost,
     options: WithSlotRecipeOptions<Slot>,
   ): SlotRecipePart<P & PartClassProps> {
-    type Props = P & PartClassProps;
-
     const partName = `${name}.${options.name}`;
 
     const slot = slotOf(options);
@@ -317,9 +313,9 @@ export function createSlotRecipeContext<
     const runtimeProps = runtimePropsOf(
       defaultRecipe,
       false,
-    ) as ComponentObjectPropsOptions<Props>;
+    ) as ComponentObjectPropsOptions<P & PartClassProps>;
 
-    const part = defineComponent<Props>(
+    const part = defineComponent<P & PartClassProps>(
       (props, { attrs, slots: children }) => {
         const styles = useStyles();
         const values = props as Record<string, unknown>;

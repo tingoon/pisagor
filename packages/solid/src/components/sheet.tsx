@@ -38,8 +38,9 @@ export interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-export interface SheetProps
-  extends Omit<DialogRootProps, "recipe">, SheetRootContract, SheetContract {}
+export type SheetProps = Omit<DialogRootProps, "recipe"> &
+  SheetRootContract &
+  SheetContract;
 
 export type SheetTriggerProps = DialogTriggerProps;
 export type SheetCloseTriggerProps = DialogCloseTriggerProps;

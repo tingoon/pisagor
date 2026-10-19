@@ -31,36 +31,35 @@ const {
 } = createSlotRecipeContext({ name: "Steps", recipe: stepsItemRecipe });
 // #endregion
 
-export interface LocalStepsRootProps
-  extends StepsRootPrimitiveProps, StepsRootContract {}
+export type LocalStepsRootProps = StepsRootPrimitiveProps & StepsRootContract;
 
-export interface LocalStepsItemProps
-  extends StepsItemPrimitiveProps, StepsItemRootContract {}
+export type LocalStepsItemProps = StepsItemPrimitiveProps &
+  StepsItemRootContract;
 
 export type StepsTitleProps = ComponentProps<"span">;
 export type StepsDescriptionProps = ComponentProps<"span">;
 
-export const StepsRoot: Component<LocalStepsRootProps> =
-  withStepsProvider<StepsRootContract>(StepsPrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+export const StepsRoot: Component<LocalStepsRootProps> = withStepsProvider<
+  ComponentProps<typeof StepsPrimitive.Root> & StepsRootContract
+>(StepsPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export const StepsList: Component<StepsListProps> = withStepsContext(
-  StepsPrimitive.List,
-  { name: "List" },
-);
+export const StepsList: Component<StepsListProps> = withStepsContext<
+  ComponentProps<typeof StepsPrimitive.List>
+>(StepsPrimitive.List, { name: "List" });
 
-export const StepsItem: Component<LocalStepsItemProps> =
-  withStepsItemProvider<StepsItemRootContract>(StepsPrimitive.Item, {
-    name: "Item",
-    slot: "base",
-  });
+export const StepsItem: Component<LocalStepsItemProps> = withStepsItemProvider<
+  ComponentProps<typeof StepsPrimitive.Item> & StepsItemRootContract
+>(StepsPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+});
 
-export const StepsTrigger: Component<StepsTriggerProps> = withStepsItemContext(
-  StepsPrimitive.Trigger,
-  { name: "Trigger" },
-);
+export const StepsTrigger: Component<StepsTriggerProps> = withStepsItemContext<
+  ComponentProps<typeof StepsPrimitive.Trigger>
+>(StepsPrimitive.Trigger, { name: "Trigger" });
 
 export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
@@ -78,27 +77,31 @@ export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
 }
 
 export const StepsSeparator: Component<StepsSeparatorProps> =
-  withStepsItemContext(StepsPrimitive.Separator, { name: "Separator" });
+  withStepsItemContext<ComponentProps<typeof StepsPrimitive.Separator>>(
+    StepsPrimitive.Separator,
+    { name: "Separator" },
+  );
 
-export const StepsTitle: Component<StepsTitleProps> = withStepsItemContext(
-  "span",
-  { name: "Title" },
-);
+export const StepsTitle: Component<StepsTitleProps> = withStepsItemContext<
+  ComponentProps<"span">
+>("span", { name: "Title" });
 
 export const StepsDescription: Component<StepsDescriptionProps> =
-  withStepsItemContext("span", { name: "Description" });
+  withStepsItemContext<ComponentProps<"span">>("span", { name: "Description" });
 
-export const StepsContent: Component<StepsContentProps> = withStepsContext(
-  StepsPrimitive.Content,
-  { name: "Content" },
-);
+export const StepsContent: Component<StepsContentProps> = withStepsContext<
+  ComponentProps<typeof StepsPrimitive.Content>
+>(StepsPrimitive.Content, { name: "Content" });
 
 export const StepsCompletedContent: Component<StepsCompletedContentProps> =
-  withStepsContext(StepsPrimitive.CompletedContent, {
-    defaultProps: { "data-part": "completed-content" },
-    name: "CompletedContent",
-    slot: "completedContent",
-  });
+  withStepsContext<ComponentProps<typeof StepsPrimitive.CompletedContent>>(
+    StepsPrimitive.CompletedContent,
+    {
+      defaultProps: { "data-part": "completed-content" },
+      name: "CompletedContent",
+      slot: "completedContent",
+    },
+  );
 
 export function StepsPrevTrigger(props: StepsPrevTriggerProps): JSX.Element {
   return <StepsPrimitive.PrevTrigger {...props} />;

@@ -18,8 +18,8 @@ import { DropdownMenu } from "./dropdown-menu";
 // #region Types
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
-export interface ContextMenuContextTriggerProps
-  extends MenuContextTriggerProps, ContextMenuRootContract {}
+export type ContextMenuContextTriggerProps = MenuContextTriggerProps &
+  ContextMenuRootContract;
 // #endregion
 
 // #region Parts

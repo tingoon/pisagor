@@ -28,7 +28,7 @@ export interface CardHeaderProps extends CardHeaderContract {
   title?: string;
 }
 
-export interface CardProps extends CardRootProps, CardContract {}
+export type CardProps = CardRootProps & CardContract;
 // #endregion
 
 // #region Parts

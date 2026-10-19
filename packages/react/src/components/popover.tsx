@@ -15,7 +15,7 @@ import type {
   PopoverRootContract,
 } from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -53,7 +53,7 @@ export type PopoverBodyProps = ComponentPropsWithRef<"div">;
 
 export type PopoverFooterProps = ComponentPropsWithRef<"div">;
 
-export interface PopoverProps extends PopoverRootProps, PopoverContract {}
+export type PopoverProps = PopoverRootProps & PopoverContract;
 // #endregion
 
 // #region Parts
@@ -162,7 +162,7 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
   );
 }
 
-export const PopoverFooter = withContext("div", {
+export const PopoverFooter = withContext<ComponentProps<"div">>("div", {
   name: "Footer",
 });
 

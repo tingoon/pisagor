@@ -15,8 +15,7 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps
-  extends ComponentProps<"div">, SurfaceRootContract {}
+export type SurfaceProps = ComponentProps<"div"> & SurfaceRootContract;
 
 export function Surface(props: SurfaceProps): JSX.Element {
   const [local, rest] = splitProps(props, [

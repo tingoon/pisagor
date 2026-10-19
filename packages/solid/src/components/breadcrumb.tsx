@@ -37,11 +37,9 @@ interface BreadcrumbPresetItem extends Omit<BaseBreadcrumbPresetItem, "label"> {
 }
 
 export type BreadcrumbListProps = ComponentProps<"ol">;
-export interface BreadcrumbItemProps
-  extends
-    ComponentProps<"li">,
-    BreadcrumbItemRootContract,
-    BreadcrumbItemContract {}
+export type BreadcrumbItemProps = ComponentProps<"li"> &
+  BreadcrumbItemRootContract &
+  BreadcrumbItemContract;
 export type BreadcrumbLinkProps = HTMLArkProps<"a">;
 export type BreadcrumbPageProps = ComponentProps<"span">;
 export type BreadcrumbSeparatorProps = ComponentProps<"li">;

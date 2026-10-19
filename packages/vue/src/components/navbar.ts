@@ -21,7 +21,7 @@ export interface NavbarRootProps extends NavbarRootContract {
   class?: unknown;
 }
 
-export interface NavbarProps extends NavbarRootProps, NavbarContract {}
+export type NavbarProps = NavbarRootProps & NavbarContract;
 // #endregion
 
 // #region Parts

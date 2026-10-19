@@ -29,8 +29,8 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface LocalPaginationRootProps
-  extends PaginationRootPrimitiveProps, PaginationRootContract {}
+export type LocalPaginationRootProps = PaginationRootPrimitiveProps &
+  PaginationRootContract;
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

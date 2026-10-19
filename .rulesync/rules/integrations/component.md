@@ -29,22 +29,22 @@ Blank line before `return`: put one empty line between the preceding statements 
 
 Host element props — match the runtime host, do not mix:
 
-| Host                            | React props type                                                | Notes                                                                                                              |
-| ------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `ark.button` / `ark.div` / …    | `HTMLArkProps<"tag">` from `@ark-ui/react`                      | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentPropsWithRef` / `PolymorphicProps`.      |
-| `ark.*` when `ref` is forwarded | `HTMLArkPropsWithRef<"tag">` from `packages/react/src/internal` | Use instead of `HTMLArkProps` + `RefAttributes`. Do **not** mix with `HTMLArkProps` / separate `PolymorphicProps`. |
-| Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react`                     | No Ark types.                                                                                                      |
-| Never                           | `ComponentProps<typeof ark.tag>`                                | Prefer `HTMLArkProps<"tag">` (or `HTMLArkPropsWithRef` when forwarding `ref`).                                     |
+| Host                                  | React props type                                              | Notes                                                                                                           |
+| ------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `ark.button` / `ark.div` / …          | `HTMLArkProps<"tag">` from `@ark-ui/react`                    | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentProps` / `PolymorphicProps`.          |
+| `ark.*` when `asChild` + native props | `ArkComponentProps<"tag">` from `packages/react/src/internal` | `ComponentProps<"tag">` + `PolymorphicProps`. Do **not** mix with `HTMLArkProps` / separate `PolymorphicProps`. |
+| Native `<button>` / `<div>` / …       | `ComponentProps<"tag">` from `react`                          | No Ark types.                                                                                                   |
+| Never                                 | `ComponentProps<typeof ark.tag>`                              | Prefer `HTMLArkProps<"tag">` (or `ArkComponentProps` when `asChild` + native props).                            |
 
 **When to use `ark.*` / `<Ark>` vs native (all frameworks):** Prefer a **native** tag for presentational / layout chrome. Use the Ark factory only when polymorphism (`asChild` / `as-child`) is meaningful — interactive triggers/close controls, link surfaces (`a` for router `Link`), or public roots/titles that consumers morph (`Button`, `Card` / `Card.Title`, `LinkBox`, `Item` root, `Announcement.Root`, `Breadcrumb.Link`, `AvatarGroup.Count`, heading titles). Do not expose polymorphism on Badge, Skeleton, Dialog Body/Header/Footer, Table cells, Field shells, or similar leaves. `withContext("div")` / `<div>` / `h("div", …)` are fine; see `alert`, `progress`, `app-shell`. Astro is native-only (no Ark / no `asChild`).
 
-| Framework | Polymorphic host props                                                              | Native host props                           |
-| --------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |
-| React     | `HTMLArkProps<"tag">` / `HTMLArkPropsWithRef<"tag">` (`@ark-ui/react` / `internal`) | `ComponentPropsWithRef<"tag">`              |
-| Solid     | `HTMLArkProps<"tag">` from `@ark-ui/solid` (includes `ref`)                         | `ComponentProps<"tag">` from `solid-js`     |
-| Vue       | Runtime via `ark.*` + attrs (no separate prop type)                                 | `h("tag", …)` / `withContext("tag")`        |
-| Svelte    | `<Ark as="tag">` when polymorphism needed                                           | `HTMLAttributes<Element>` on native `<tag>` |
-| Astro     | —                                                                                   | `HTMLAttributes<"tag">` from `astro/types`  |
+| Framework | Polymorphic host props                                                            | Native host props                           |
+| --------- | --------------------------------------------------------------------------------- | ------------------------------------------- |
+| React     | `HTMLArkProps<"tag">` / `ArkComponentProps<"tag">` (`@ark-ui/react` / `internal`) | `ComponentProps<"tag">`                     |
+| Solid     | `HTMLArkProps<"tag">` from `@ark-ui/solid` (includes `ref`)                       | `ComponentProps<"tag">` from `solid-js`     |
+| Vue       | Runtime via `ark.*` + attrs (no separate prop type)                               | `h("tag", …)` / `withContext("tag")`        |
+| Svelte    | `<Ark as="tag">` when polymorphism needed                                         | `HTMLAttributes<Element>` on native `<tag>` |
+| Astro     | —                                                                                 | `HTMLAttributes<"tag">` from `astro/types`  |
 
 ---
 

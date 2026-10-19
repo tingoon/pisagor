@@ -3,14 +3,12 @@ import type {
   AspectRatioContract,
 } from "@pisagor/contracts";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 
 // #region Types
-export interface AspectRatioProps
-  extends
-    ComponentPropsWithRef<"div">,
-    AspectRatioRootContract,
-    AspectRatioContract {}
+export type AspectRatioProps = ComponentProps<"div"> &
+  AspectRatioRootContract &
+  AspectRatioContract;
 // #endregion
 
 // #region Component

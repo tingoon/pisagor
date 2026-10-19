@@ -68,8 +68,7 @@ export interface DropdownMenuPositionerProps extends DropdownMenuRootContract {
   class?: unknown;
 }
 
-export interface DropdownMenuProps
-  extends DropdownMenuRootProps, DropdownMenuContract {}
+export type DropdownMenuProps = DropdownMenuRootProps & DropdownMenuContract;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

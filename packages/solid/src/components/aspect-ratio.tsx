@@ -6,8 +6,9 @@ import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface AspectRatioProps
-  extends ComponentProps<"div">, AspectRatioRootContract, AspectRatioContract {}
+export type AspectRatioProps = ComponentProps<"div"> &
+  AspectRatioRootContract &
+  AspectRatioContract;
 
 export function AspectRatio(props: AspectRatioProps): JSX.Element {
   const [local, rest] = splitProps(props, [

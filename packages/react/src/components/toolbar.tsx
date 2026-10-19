@@ -13,24 +13,26 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const ToolbarRoot = withProvider<ToolbarRootContract>("div", {
+export const ToolbarRoot = withProvider<
+  ComponentProps<"div"> & ToolbarRootContract
+>("div", {
   name: "Root",
   slot: "base",
 });
 
-export const ToolbarHeading = withContext("div", {
+export const ToolbarHeading = withContext<ComponentProps<"div">>("div", {
   name: "Heading",
 });
 
-export const ToolbarTitle = withContext(ark.h2, {
+export const ToolbarTitle = withContext<ComponentProps<typeof ark.h2>>(ark.h2, {
   name: "Title",
 });
 
-export const ToolbarDescription = withContext("p", {
+export const ToolbarDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
 });
 
-export const ToolbarActions = withContext("div", {
+export const ToolbarActions = withContext<ComponentProps<"div">>("div", {
   defaultProps: {
     "aria-orientation": "horizontal",
     onKeyDown: (event: KeyboardEvent<HTMLDivElement>) =>

@@ -12,11 +12,9 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface FileRootProps
-  extends ComponentProps<"div">, FileRootContract {}
+export type FileRootProps = ComponentProps<"div"> & FileRootContract;
 
-export interface FileMediaProps
-  extends ComponentProps<"div">, FileVariantProps {}
+export type FileMediaProps = ComponentProps<"div"> & FileVariantProps;
 export type FileNameProps = ComponentProps<"div">;
 export type FileMetaProps = ComponentProps<"div">;
 
@@ -36,11 +34,12 @@ export interface FileProps
   media?: JSX.Element;
 }
 
-export const FileRoot: Component<FileRootProps> =
-  withProvider<FileRootContract>("div", {
-    name: "Root",
-    slot: "base",
-  });
+export const FileRoot: Component<FileRootProps> = withProvider<
+  ComponentProps<"div"> & FileRootContract
+>("div", {
+  name: "Root",
+  slot: "base",
+});
 
 export function FileMedia(props: FileMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
@@ -60,15 +59,21 @@ export function FileMedia(props: FileMediaProps): JSX.Element {
   );
 }
 
-export const FileContent: Component<FileContentProps> = withContext("div", {
+export const FileContent: Component<FileContentProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Content",
 });
 
-export const FileName: Component<FileNameProps> = withContext("div", {
+export const FileName: Component<FileNameProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Name",
 });
 
-export const FileMeta: Component<FileMetaProps> = withContext("div", {
+export const FileMeta: Component<FileMetaProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Meta",
 });
 
@@ -88,7 +93,9 @@ export function FileSize(props: FileSizeProps): JSX.Element {
   );
 }
 
-export const FileActions: Component<FileActionsProps> = withContext("div", {
+export const FileActions: Component<FileActionsProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Actions",
 });
 

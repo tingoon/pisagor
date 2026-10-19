@@ -12,29 +12,35 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface NavbarRootProps
-  extends ComponentProps<"header">, NavbarRootContract {}
+export type NavbarRootProps = ComponentProps<"header"> & NavbarRootContract;
 
-export interface NavbarProps extends NavbarRootProps, NavbarContract {}
+export type NavbarProps = NavbarRootProps & NavbarContract;
 
 export type NavbarPartProps = ComponentProps<"div">;
 export type NavbarNavProps = ComponentProps<"nav">;
 
-export const NavbarRoot: Component<NavbarRootProps> =
-  withProvider<NavbarRootContract>("header", {
-    name: "Root",
-    slot: "base",
-  });
+export const NavbarRoot: Component<NavbarRootProps> = withProvider<
+  ComponentProps<"header"> & NavbarRootContract
+>("header", {
+  name: "Root",
+  slot: "base",
+});
 
-export const NavbarBrand: Component<NavbarPartProps> = withContext("div", {
+export const NavbarBrand: Component<NavbarPartProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Brand",
 });
 
-export const NavbarContent: Component<NavbarPartProps> = withContext("div", {
+export const NavbarContent: Component<NavbarPartProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Content",
 });
 
-const NavbarNavBase: Component<NavbarNavProps> = withContext("nav", {
+const NavbarNavBase: Component<NavbarNavProps> = withContext<
+  ComponentProps<"nav">
+>("nav", {
   name: "Nav",
 });
 
@@ -50,7 +56,9 @@ export function NavbarNav(props: NavbarNavProps): JSX.Element {
   );
 }
 
-export const NavbarActions: Component<NavbarPartProps> = withContext("div", {
+export const NavbarActions: Component<NavbarPartProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Actions",
 });
 

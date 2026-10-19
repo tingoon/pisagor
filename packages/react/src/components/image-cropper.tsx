@@ -2,6 +2,7 @@ import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react";
 import type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
+  ImageCropperImageProps,
   ImageCropperRootProps as ImageCropperRootPrimitiveProps,
   ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
 } from "@ark-ui/react";
@@ -84,9 +85,12 @@ export function ImageCropperRoot({
   );
 }
 
-export const ImageCropperImage = withContext(ImageCropperPrimitive.Image, {
-  name: "Image",
-});
+export const ImageCropperImage = withContext<ImageCropperImageProps>(
+  ImageCropperPrimitive.Image,
+  {
+    name: "Image",
+  },
+);
 
 export function ImageCropperSelection({
   axis = "both",

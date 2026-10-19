@@ -125,8 +125,8 @@ export interface ComboboxItemGroupProps
   heading?: string | ReactNode;
 }
 
-export interface ComboboxItemProps
-  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
+export type ComboboxItemProps = ComboboxItemPrimitiveProps &
+  ComboboxVariantProps;
 
 export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
 

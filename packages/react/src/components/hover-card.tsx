@@ -17,8 +17,8 @@ const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface HoverCardRootProps
-  extends HoverCardRootPrimitiveProps, HoverCardRootContract {}
+export type HoverCardRootProps = HoverCardRootPrimitiveProps &
+  HoverCardRootContract;
 
 export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
   /**

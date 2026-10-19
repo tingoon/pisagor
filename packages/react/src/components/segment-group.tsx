@@ -10,7 +10,7 @@ import type {
   SegmentGroupContract,
 } from "@pisagor/contracts";
 import { segmentGroupRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type { FunctionComponent, ReactNode, ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -58,13 +58,12 @@ export interface SegmentGroupItemProps
 // #endregion
 
 // #region Parts
-const SegmentGroupRootBase = withProvider<SegmentGroupRootContract>(
-  SegmentGroupPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
-) as FunctionComponent<
+const SegmentGroupRootBase = withProvider<
+  ComponentProps<typeof SegmentGroupPrimitive.Root> & SegmentGroupRootContract
+>(SegmentGroupPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+}) as FunctionComponent<
   SegmentGroupRootPrimitiveProps & Omit<SegmentGroupRootContract, "items">
 >;
 
@@ -111,18 +110,19 @@ export function SegmentGroupItem({
   );
 }
 
-const SegmentGroupItemText = withContext(SegmentGroupPrimitive.ItemText, {
+const SegmentGroupItemText = withContext<
+  ComponentProps<typeof SegmentGroupPrimitive.ItemText>
+>(SegmentGroupPrimitive.ItemText, {
   defaultProps: { "data-part": "item-text" },
   name: "ItemText",
   slot: "itemText",
 });
 
-export const SegmentGroupIndicator = withContext(
-  SegmentGroupPrimitive.Indicator,
-  {
-    name: "Indicator",
-  },
-);
+export const SegmentGroupIndicator = withContext<
+  ComponentProps<typeof SegmentGroupPrimitive.Indicator>
+>(SegmentGroupPrimitive.Indicator, {
+  name: "Indicator",
+});
 // #endregion
 
 // #region Shorthand

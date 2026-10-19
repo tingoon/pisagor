@@ -37,8 +37,8 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface CarouselRootProps
-  extends CarouselRootPrimitiveProps, Omit<CarouselRootContract, "slides"> {}
+export type CarouselRootProps = CarouselRootPrimitiveProps &
+  Omit<CarouselRootContract, "slides">;
 
 interface CarouselPresetItem extends Omit<BaseCarouselPresetItem, "content"> {
   content: JSX.Element;

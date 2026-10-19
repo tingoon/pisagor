@@ -3,7 +3,7 @@ import { badgeRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface BadgeProps extends ComponentProps<"span">, BadgeRootContract {}
+export type BadgeProps = ComponentProps<"span"> & BadgeRootContract;
 
 export function Badge(props: BadgeProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/solid";
 import type { SwitchContract, SwitchRootContract } from "@pisagor/contracts";
 import { switchRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -73,15 +73,13 @@ function SwitchRoot(props: SwitchRootProps): JSX.Element {
   );
 }
 
-const SwitchControl: Component<SwitchControlProps> = withContext(
-  SwitchPrimitive.Control,
-  { name: "Control" },
-);
+const SwitchControl: Component<SwitchControlProps> = withContext<
+  ComponentProps<typeof SwitchPrimitive.Control>
+>(SwitchPrimitive.Control, { name: "Control" });
 
-const SwitchThumb: Component<SwitchThumbProps> = withContext(
-  SwitchPrimitive.Thumb,
-  { name: "Thumb" },
-);
+const SwitchThumb: Component<SwitchThumbProps> = withContext<
+  ComponentProps<typeof SwitchPrimitive.Thumb>
+>(SwitchPrimitive.Thumb, { name: "Thumb" });
 
 function SwitchHiddenInput(props: SwitchHiddenInputProps): JSX.Element {
   return <SwitchPrimitive.HiddenInput {...props} />;

@@ -41,30 +41,30 @@ export interface ProgressProps
   valueProps?: Omit<ProgressValueTextProps, "children" | "class">;
 }
 
-const ProgressRoot: Component<ProgressRootProps> =
-  withProvider<ProgressRootContract>(ProgressPrimitive.Root, {
-    name: "Root",
-    slot: "base",
-  });
+const ProgressRoot: Component<ProgressRootProps> = withProvider<
+  ComponentProps<typeof ProgressPrimitive.Root> & ProgressRootContract
+>(ProgressPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-const ProgressHeader: Component<ProgressHeaderProps> = withContext("div", {
+const ProgressHeader: Component<ProgressHeaderProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Header",
 });
 
-const ProgressValue: Component<ProgressValueTextProps> = withContext(
-  ProgressPrimitive.ValueText,
-  { name: "Value" },
-);
+const ProgressValue: Component<ProgressValueTextProps> = withContext<
+  ComponentProps<typeof ProgressPrimitive.ValueText>
+>(ProgressPrimitive.ValueText, { name: "Value" });
 
-const ProgressTrack: Component<ProgressTrackProps> = withContext(
-  ProgressPrimitive.Track,
-  { name: "Track" },
-);
+const ProgressTrack: Component<ProgressTrackProps> = withContext<
+  ComponentProps<typeof ProgressPrimitive.Track>
+>(ProgressPrimitive.Track, { name: "Track" });
 
-const ProgressRange: Component<ProgressRangeProps> = withContext(
-  ProgressPrimitive.Range,
-  { name: "Range" },
-);
+const ProgressRange: Component<ProgressRangeProps> = withContext<
+  ComponentProps<typeof ProgressPrimitive.Range>
+>(ProgressPrimitive.Range, { name: "Range" });
 
 export function Progress(props: ProgressProps): JSX.Element {
   const [local, rest] = splitProps(props, [

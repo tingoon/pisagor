@@ -1,4 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/react";
+import type { ComponentProps } from "react";
 import type {
   SwitchControlProps,
   SwitchHiddenInputProps,
@@ -68,13 +69,18 @@ function SwitchRoot({
   );
 }
 
-const SwitchControl = withContext(SwitchPrimitive.Control, {
+const SwitchControl = withContext<
+  ComponentProps<typeof SwitchPrimitive.Control>
+>(SwitchPrimitive.Control, {
   name: "Control",
 });
 
-const SwitchThumb = withContext(SwitchPrimitive.Thumb, {
-  name: "Thumb",
-});
+const SwitchThumb = withContext<ComponentProps<typeof SwitchPrimitive.Thumb>>(
+  SwitchPrimitive.Thumb,
+  {
+    name: "Thumb",
+  },
+);
 
 function SwitchHiddenInput(props: SwitchHiddenInputProps) {
   return <SwitchPrimitive.HiddenInput {...props} />;

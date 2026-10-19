@@ -14,7 +14,7 @@ import type {
   AccordionContract,
 } from "@pisagor/contracts";
 import { accordionItemRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type { FunctionComponent, ReactNode, ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -25,11 +25,9 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface AccordionItemProps
-  extends
-    AccordionItemPrimitiveProps,
-    AccordionItemRootContract,
-    AccordionItemContract {}
+export type AccordionItemProps = AccordionItemPrimitiveProps &
+  AccordionItemRootContract &
+  AccordionItemContract;
 
 interface AccordionPresetItem extends Omit<
   BaseAccordionPresetItem,
@@ -61,13 +59,12 @@ export function AccordionRoot({
   );
 }
 
-export const AccordionItem = withProvider<AccordionItemRootContract>(
-  AccordionPrimitive.Item,
-  {
-    name: "Item",
-    slot: "base",
-  },
-) as FunctionComponent<AccordionItemProps>;
+export const AccordionItem = withProvider<
+  ComponentProps<typeof AccordionPrimitive.Item> & AccordionItemRootContract
+>(AccordionPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+}) as FunctionComponent<AccordionItemProps>;
 
 export function AccordionItemTrigger({
   children,

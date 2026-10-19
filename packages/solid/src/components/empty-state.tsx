@@ -40,18 +40,29 @@ export interface EmptyStateProps
 // #endregion
 
 // #region Parts
-export const EmptyStateRoot: Component<EmptyStateRootProps> =
-  withProvider<EmptyStateRootContract>(ark.div, { name: "Root", slot: "base" });
+export const EmptyStateRoot: Component<EmptyStateRootProps> = withProvider<
+  ComponentProps<typeof ark.div> & EmptyStateRootContract
+>(ark.div, {
+  name: "Root",
+  slot: "base",
+});
 
-export const EmptyStateMedia = withContext("div", { name: "Media" });
+export const EmptyStateMedia = withContext<ComponentProps<"div">>("div", {
+  name: "Media",
+});
 
-export const EmptyStateTitle = withContext(ark.h3, { name: "Title" });
+export const EmptyStateTitle = withContext<ComponentProps<typeof ark.h3>>(
+  ark.h3,
+  { name: "Title" },
+);
 
-export const EmptyStateDescription = withContext("p", {
+export const EmptyStateDescription = withContext<ComponentProps<"p">>("p", {
   name: "Description",
 });
 
-export const EmptyStateActions = withContext("div", { name: "Actions" });
+export const EmptyStateActions = withContext<ComponentProps<"div">>("div", {
+  name: "Actions",
+});
 // #endregion
 
 // #region Shorthand

@@ -29,8 +29,7 @@ export interface CheckboxGroupProps
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps
-  extends CheckboxRootProps, CheckboxRootContract {}
+export type CheckboxProps = CheckboxRootProps & CheckboxRootContract;
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
   recipe?: typeof checkboxRecipe;

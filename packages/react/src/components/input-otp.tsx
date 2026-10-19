@@ -7,6 +7,7 @@ import {
   inputRootRecipe,
 } from "@pisagor/recipes";
 
+import type { ComponentProps } from "react";
 import { createContext, use } from "react";
 import type { ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -109,7 +110,7 @@ export function InputOTPSlot({
   );
 }
 
-export const InputOTPSeparator = withContext("hr", {
+export const InputOTPSeparator = withContext<ComponentProps<"hr">>("hr", {
   name: "Separator",
 });
 // #endregion

@@ -1,7 +1,7 @@
 import { FileIcon } from "@phosphor-icons/react";
 import type { FileContract, FileRootContract } from "@pisagor/contracts";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
@@ -13,17 +13,20 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Parts
-export const FileRoot = withProvider<FileRootContract>("div", {
-  name: "Root",
-  slot: "base",
-});
+export const FileRoot = withProvider<ComponentProps<"div"> & FileRootContract>(
+  "div",
+  {
+    name: "Root",
+    slot: "base",
+  },
+);
 
 export function FileMedia({
   variant = "icon",
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & FileVariantProps) {
+}: ComponentProps<"div"> & FileVariantProps) {
   const { slots } = useStyles();
 
   return (
@@ -39,17 +42,17 @@ export function FileMedia({
   );
 }
 
-export const FileContent = withContext("div", {
+export const FileContent = withContext<ComponentProps<"div">>("div", {
   name: "Content",
   slot: "content",
 });
 
-export const FileName = withContext("div", {
+export const FileName = withContext<ComponentProps<"div">>("div", {
   name: "Name",
   slot: "name",
 });
 
-export const FileMeta = withContext("div", {
+export const FileMeta = withContext<ComponentProps<"div">>("div", {
   name: "Meta",
   slot: "meta",
 });
@@ -58,7 +61,7 @@ export function FileSize({
   value,
   className,
   ...rest
-}: Omit<ComponentPropsWithRef<"div">, "children"> & {
+}: Omit<ComponentProps<"div">, "children"> & {
   value: number;
 }) {
   const { slots } = useStyles();
@@ -75,7 +78,7 @@ export function FileSize({
   );
 }
 
-export const FileActions = withContext("div", {
+export const FileActions = withContext<ComponentProps<"div">>("div", {
   name: "Actions",
   slot: "actions",
 });

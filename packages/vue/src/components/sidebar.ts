@@ -56,8 +56,8 @@ export interface SidebarProps {
   variant?: SidebarVariant;
 }
 
-export interface SidebarProviderProps
-  extends Omit<SidebarProps, "className">, SidebarRootContract {}
+export type SidebarProviderProps = Omit<SidebarProps, "className"> &
+  SidebarRootContract;
 
 interface SidebarContextValue {
   isMobile: boolean;

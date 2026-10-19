@@ -22,11 +22,9 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface LocalAccordionItemProps
-  extends
-    AccordionItemPrimitiveProps,
-    AccordionItemRootContract,
-    AccordionItemContract {}
+export type LocalAccordionItemProps = AccordionItemPrimitiveProps &
+  AccordionItemRootContract &
+  AccordionItemContract;
 
 export interface AccordionPresetItem extends Omit<
   BaseAccordionPresetItem,

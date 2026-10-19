@@ -7,8 +7,7 @@ import { highlightRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface HighlightProps
-  extends HighlightPrimitiveProps, HighlightRootContract {}
+export type HighlightProps = HighlightPrimitiveProps & HighlightRootContract;
 
 export function Highlight(props: HighlightProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);

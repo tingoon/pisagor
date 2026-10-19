@@ -13,8 +13,8 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface AvatarGroupRootProps
-  extends ComponentProps<"div">, AvatarGroupRootContract {}
+export type AvatarGroupRootProps = ComponentProps<"div"> &
+  AvatarGroupRootContract;
 
 export interface AvatarGroupProps extends Omit<
   AvatarGroupRootProps,
@@ -32,13 +32,16 @@ export interface AvatarGroupProps extends Omit<
 
 export type AvatarGroupCountProps = HTMLArkProps<"div">;
 
-export const AvatarGroupRoot: Component<AvatarGroupRootProps> =
-  withProvider<AvatarGroupRootContract>("div", { name: "Root", slot: "base" });
+export const AvatarGroupRoot: Component<AvatarGroupRootProps> = withProvider<
+  ComponentProps<"div"> & AvatarGroupRootContract
+>("div", {
+  name: "Root",
+  slot: "base",
+});
 
-export const AvatarGroupCount: Component<AvatarGroupCountProps> = withContext(
-  ark.div,
-  { name: "Count" },
-);
+export const AvatarGroupCount: Component<AvatarGroupCountProps> = withContext<
+  ComponentProps<typeof ark.div>
+>(ark.div, { name: "Count" });
 
 export function AvatarGroupShorthand(props: AvatarGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["max", "users"]);

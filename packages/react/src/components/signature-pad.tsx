@@ -2,7 +2,9 @@ import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react";
 import type {
   SignaturePadClearTriggerProps,
   SignaturePadControlProps,
+  SignaturePadGuideProps,
   SignaturePadRootProps as SignaturePadRootPrimitiveProps,
+  SignaturePadSegmentProps,
 } from "@ark-ui/react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import type {
@@ -106,9 +108,12 @@ function SignaturePadControl({
   );
 }
 
-const SignaturePadSegment = withContext(SignaturePadPrimitive.Segment, {
-  name: "Segment",
-});
+const SignaturePadSegment = withContext<SignaturePadSegmentProps>(
+  SignaturePadPrimitive.Segment,
+  {
+    name: "Segment",
+  },
+);
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
   const { m } = useLocale();
@@ -131,9 +136,12 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
   );
 }
 
-const SignaturePadGuide = withContext(SignaturePadPrimitive.Guide, {
-  name: "Guide",
-});
+const SignaturePadGuide = withContext<SignaturePadGuideProps>(
+  SignaturePadPrimitive.Guide,
+  {
+    name: "Guide",
+  },
+);
 // #endregion
 
 // #region Closed

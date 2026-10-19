@@ -19,8 +19,8 @@ import { DropdownMenu } from "./dropdown-menu";
 
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
-export interface ContextMenuContextTriggerProps
-  extends MenuContextTriggerProps, ContextMenuRootContract {}
+export type ContextMenuContextTriggerProps = MenuContextTriggerProps &
+  ContextMenuRootContract;
 
 export function ContextMenuRoot(props: ContextMenuRootProps): JSX.Element {
   return <DropdownMenu {...props} />;

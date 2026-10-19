@@ -14,7 +14,7 @@ const {
 } = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
 // #endregion
 
-export interface ItemProps extends HTMLArkProps<"div">, ItemRootContract {}
+export type ItemProps = HTMLArkProps<"div"> & ItemRootContract;
 
 export type ItemMediaProps = ComponentProps<"div"> & ItemVariantProps;
 export type ItemHeaderProps = ComponentProps<"div">;
@@ -82,27 +82,36 @@ export function ItemMedia(props: ItemMediaProps): JSX.Element {
   );
 }
 
-export const ItemContent: Component<ItemContentProps> = withContext("div", {
+export const ItemContent: Component<ItemContentProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Content",
 });
 
-export const ItemTitle: Component<ItemTitleProps> = withContext("div", {
+export const ItemTitle: Component<ItemTitleProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Title",
 });
 
-export const ItemDescription: Component<ItemDescriptionProps> = withContext(
-  "p",
-  { name: "Description" },
-);
+export const ItemDescription: Component<ItemDescriptionProps> = withContext<
+  ComponentProps<"p">
+>("p", { name: "Description" });
 
-export const ItemActions: Component<ItemActionsProps> = withContext("div", {
+export const ItemActions: Component<ItemActionsProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Actions",
 });
 
-export const ItemHeader: Component<ItemHeaderProps> = withContext("div", {
+export const ItemHeader: Component<ItemHeaderProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Header",
 });
 
-export const ItemFooter: Component<ItemFooterProps> = withContext("div", {
+export const ItemFooter: Component<ItemFooterProps> = withContext<
+  ComponentProps<"div">
+>("div", {
   name: "Footer",
 });

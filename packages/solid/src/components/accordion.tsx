@@ -13,7 +13,7 @@ import type {
   AccordionContract,
 } from "@pisagor/contracts";
 import { accordionItemRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { Component, JSX, ComponentProps } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
@@ -25,11 +25,9 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface LocalAccordionItemProps
-  extends
-    AccordionItemPrimitiveProps,
-    AccordionItemRootContract,
-    AccordionItemContract {}
+export type LocalAccordionItemProps = AccordionItemPrimitiveProps &
+  AccordionItemRootContract &
+  AccordionItemContract;
 
 interface AccordionPresetItem extends Omit<
   BaseAccordionPresetItem,
@@ -60,11 +58,12 @@ export function AccordionRoot(props: AccordionRootProps): JSX.Element {
   );
 }
 
-export const AccordionItem: Component<LocalAccordionItemProps> =
-  withProvider<AccordionItemRootContract>(AccordionPrimitive.Item, {
-    name: "Item",
-    slot: "base",
-  });
+export const AccordionItem: Component<LocalAccordionItemProps> = withProvider<
+  ComponentProps<typeof AccordionPrimitive.Item> & AccordionItemRootContract
+>(AccordionPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+});
 
 export function AccordionItemTrigger(
   props: AccordionItemTriggerProps,

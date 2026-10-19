@@ -65,7 +65,9 @@ export type BottomNavigationItemLabelProps = ComponentProps<"span">;
 
 // #region Parts
 const BottomNavigationNav: Component<ComponentProps<"nav">> =
-  withBottomNavigationProvider<BottomNavigationRootContract>("nav", {
+  withBottomNavigationProvider<
+    ComponentProps<"nav"> & BottomNavigationRootContract
+  >("nav", {
     name: "Root",
     slot: "base",
   });
@@ -87,12 +89,14 @@ export function BottomNavigationRoot(
 }
 
 export const BottomNavigationList: Component<BottomNavigationListProps> =
-  withBottomNavigationContext("div", {
+  withBottomNavigationContext<ComponentProps<"div">>("div", {
     name: "List",
   });
 
 const BottomNavigationItemBase: Component<HTMLArkProps<"a">> =
-  withBottomNavigationItemProvider<BottomNavigationItemRootContract>(ark.a, {
+  withBottomNavigationItemProvider<
+    ComponentProps<typeof ark.a> & BottomNavigationItemRootContract
+  >(ark.a, {
     name: "Item",
     slot: "base",
   });
@@ -126,14 +130,14 @@ export function BottomNavigationItem(
 }
 
 export const BottomNavigationItemIcon: Component<BottomNavigationItemIconProps> =
-  withBottomNavigationItemContext("span", {
+  withBottomNavigationItemContext<ComponentProps<"span">>("span", {
     defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
     name: "ItemIcon",
     slot: "icon",
   });
 
 export const BottomNavigationItemLabel: Component<BottomNavigationItemLabelProps> =
-  withBottomNavigationItemContext("span", {
+  withBottomNavigationItemContext<ComponentProps<"span">>("span", {
     defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
     slot: "label",

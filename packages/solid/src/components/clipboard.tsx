@@ -87,29 +87,31 @@ function ClipboardRoot(props: ClipboardRootProps): JSX.Element {
   return <ClipboardPrimitive.Root {...props} />;
 }
 
-const ClipboardControl: Component<ClipboardControlProps> = withContext(
-  ClipboardPrimitive.Control,
-  { name: "Control" },
-);
+const ClipboardControl: Component<ClipboardControlProps> = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Control>
+>(ClipboardPrimitive.Control, { name: "Control" });
 
-const ClipboardInput: Component<ClipboardInputProps> = withContext(
-  ClipboardPrimitive.Input,
-  { name: "Input" },
-);
+const ClipboardInput: Component<ClipboardInputProps> = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Input>
+>(ClipboardPrimitive.Input, { name: "Input" });
 
-const ClipboardValue: Component<ClipboardValueTextProps> = withContext(
-  ClipboardPrimitive.ValueText,
-  { name: "Value" },
-);
+const ClipboardValue: Component<ClipboardValueTextProps> = withContext<
+  ComponentProps<typeof ClipboardPrimitive.ValueText>
+>(ClipboardPrimitive.ValueText, { name: "Value" });
 
-const ClipboardIndicator: Component<ClipboardIndicatorProps> = withContext(
-  ClipboardPrimitive.Indicator,
-  { name: "Indicator" },
-);
+const ClipboardIndicator: Component<ClipboardIndicatorProps> = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Indicator>
+>(ClipboardPrimitive.Indicator, { name: "Indicator" });
 
-const ClipboardField = withContext("div", { name: "Field" });
+const ClipboardField = withContext<ComponentProps<"div">>("div", {
+  name: "Field",
+});
 
-const ClipboardLabel = withContext(ClipboardPrimitive.Label, { name: "Label" });
+const ClipboardLabel = withContext<
+  ComponentProps<typeof ClipboardPrimitive.Label>
+>(ClipboardPrimitive.Label, {
+  name: "Label",
+});
 // #endregion
 
 // #region Shorthand

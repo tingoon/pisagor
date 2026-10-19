@@ -59,11 +59,13 @@ interface CircularProgressTrackPartProps {
   >;
 }
 
-const CircularProgressRoot: Component<CircularProgressRootProps> =
-  withProvider<CircularProgressRootContract>(ProgressPrimitive.RootProvider, {
-    name: "Root",
-    slot: "base",
-  });
+const CircularProgressRoot: Component<CircularProgressRootProps> = withProvider<
+  ComponentProps<typeof ProgressPrimitive.RootProvider> &
+    CircularProgressRootContract
+>(ProgressPrimitive.RootProvider, {
+  name: "Root",
+  slot: "base",
+});
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /
@@ -81,16 +83,22 @@ function getProgressbarProps(progress: ReturnType<UseProgressReturn>) {
   } as const;
 }
 
-const CircularProgressValueWrapper = withContext("span", {
-  defaultProps: { "data-part": "value-wrapper" },
-  name: "ValueWrapper",
-  slot: "valueWrapper",
-});
+const CircularProgressValueWrapper = withContext<ComponentProps<"span">>(
+  "span",
+  {
+    defaultProps: { "data-part": "value-wrapper" },
+    name: "ValueWrapper",
+    slot: "valueWrapper",
+  },
+);
 
 const CircularProgressValue: Component<CircularProgressValueProps> =
-  withContext(ProgressPrimitive.ValueText, {
-    name: "Value",
-  });
+  withContext<ComponentProps<typeof ProgressPrimitive.ValueText>>(
+    ProgressPrimitive.ValueText,
+    {
+      name: "Value",
+    },
+  );
 
 function CircularProgressTrack(
   props: CircularProgressTrackPartProps,
