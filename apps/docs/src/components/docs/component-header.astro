@@ -23,7 +23,7 @@ const { surfaces } = Astro.props;
 >
   {surfaces ? (
     <DocsNavSegmentGroup
-      client:load
+      client:only="react"
       aria-label="Component surfaces"
       items={[
         {

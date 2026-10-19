@@ -137,7 +137,7 @@ const sectionItems = tabs.map((tab) => ({
 
   <div slot="toc-actions">
     <DocsNavSegmentGroup
-      client:load
+      client:only="react"
       aria-label="Documentation sections"
       className="w-full [&_[data-part=item]]:min-w-0 [&_[data-part=item]]:flex-1"
       items={sectionItems}
@@ -147,7 +147,7 @@ const sectionItems = tabs.map((tab) => ({
 
   <div class="mb-8 xl:hidden" slot="nav">
     <DocsNavSegmentGroup
-      client:load
+      client:only="react"
       aria-label="Documentation sections"
       items={sectionItems}
       value={activeTab}
