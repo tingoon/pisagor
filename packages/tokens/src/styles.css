@@ -69,6 +69,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-slide-up: slideUp var(--duration-normal) var(--ease-out);
   --animate-slide-down: slideDown var(--duration-normal) var(--ease-out);
+  --animate-slide-left: slideLeft var(--duration-normal) var(--ease-out);
+  --animate-slide-right: slideRight var(--duration-normal) var(--ease-out);
   --animate-expand: expand var(--duration-normal) var(--ease-out);
   --animate-collapse: collapse var(--duration-normal) var(--ease-out);
   --animate-marquee-x: marqueeX var(--marquee-duration) linear infinite
@@ -92,6 +94,22 @@
     }
     to {
       height: var(--height);
+    }
+  }
+  @keyframes slideLeft {
+    from {
+      width: var(--width);
+    }
+    to {
+      width: 0;
+    }
+  }
+  @keyframes slideRight {
+    from {
+      width: 0;
+    }
+    to {
+      width: var(--width);
     }
   }
   @keyframes expand {
