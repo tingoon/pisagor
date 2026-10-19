@@ -1,11 +1,11 @@
 import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { Portal } from "solid-js/web";
 import { ContextMenu } from "@pisagor/solid";
-import { useState } from "react";
+import { createSignal } from "solid-js";
 
 export function Checkboxes() {
-  const [showGrid, setShowGrid] = useState(true);
-  const [zoom, setZoom] = useState("100");
+  const [showGrid, setShowGrid] = createSignal(true);
+  const [zoom, setZoom] = createSignal("100");
 
   return (
     <ContextMenu.Root>
@@ -16,7 +16,7 @@ export function Checkboxes() {
         <ContextMenu.Positioner>
           <ContextMenu.Content class="w-44">
             <ContextMenu.CheckboxItem
-              checked={showGrid}
+              checked={showGrid()}
               onCheckedChange={setShowGrid}
               value="grid"
             >
@@ -28,7 +28,7 @@ export function Checkboxes() {
             <ContextMenu.Separator />
             <ContextMenu.RadioItemGroup
               onValueChange={(details) => setZoom(details.value)}
-              value={zoom}
+              value={zoom()}
             >
               <ContextMenu.ItemGroupLabel>Zoom</ContextMenu.ItemGroupLabel>
               <ContextMenu.RadioItem value="50">
