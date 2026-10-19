@@ -1,4 +1,3 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
 export function Scrollable() {
@@ -30,35 +29,6 @@ export function Scrollable() {
     },
     { group: "Meta-frameworks", label: "Wasp", value: "wasp" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
 
-  const { collection, filter } = useListCollection({
-    filter: contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
-
-  return (
-    <Command
-      collection={collection}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input placeholder="Search frameworks..." />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          {collection.group().map(([group, items]) => (
-            <Command.ItemGroup key={group}>
-              <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
-              {items.map((item) => (
-                <Command.Item item={item} key={item.value}>
-                  {item.label}
-                </Command.Item>
-              ))}
-            </Command.ItemGroup>
-          ))}
-        </Command.List>
-      </Command.Content>
-    </Command>
-  );
+  return <Command items={initialItems} placeholder="Search frameworks..." />;
 }

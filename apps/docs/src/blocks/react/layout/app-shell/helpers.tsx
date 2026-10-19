@@ -18,6 +18,7 @@ import {
   Kbd,
   Popover,
   Sidebar,
+  InputGroup,
 } from "@pisagor/react";
 import { useState } from "react";
 import { tv } from "tailwind-variants";
@@ -260,8 +261,7 @@ export function SearchCommand() {
     <Command.Dialog
       onOpenChange={(details) => setOpen(details.open)}
       open={open}
-    >
-      <Command.DialogTrigger asChild>
+      trigger={
         <Button className={styles.searchTrigger()} variant="outline">
           <MagnifyingGlassIcon />
           Search…
@@ -270,31 +270,39 @@ export function SearchCommand() {
             <Kbd>K</Kbd>
           </Kbd.Group>
         </Button>
-      </Command.DialogTrigger>
-      <Command.DialogContent>
-        <Command
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          onValueChange={() => setOpen(false)}
-        >
-          <Command.Input placeholder="Search pages…" />
-          <Command.Content>
-            <Command.Empty>No pages found.</Command.Empty>
-            <Command.List>
-              {collection.group().map(([group, items]) => (
-                <Command.ItemGroup key={group}>
-                  <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
-                  {items.map((item) => (
-                    <Command.Item item={item} key={item.value}>
-                      {item.label}
-                    </Command.Item>
-                  ))}
-                </Command.ItemGroup>
-              ))}
-            </Command.List>
-          </Command.Content>
-        </Command>
-      </Command.DialogContent>
+      }
+    >
+      <Command.Root
+        collection={collection}
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+        onValueChange={() => setOpen(false)}
+      >
+        <Command.Control>
+          <InputGroup className="bg-input/32 rounded-lg">
+            <InputGroup.Addon>
+              <MagnifyingGlassIcon aria-hidden className="opacity-64" />
+            </InputGroup.Addon>
+            <Command.Input asChild>
+              <InputGroup.Input autoFocus placeholder="Search pages…" />
+            </Command.Input>
+          </InputGroup>
+        </Command.Control>
+        <Command.Content>
+          <Command.Empty>No pages found.</Command.Empty>
+          <Command.List>
+            {collection.group().map(([group, items]) => (
+              <Command.ItemGroup key={group}>
+                <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
+                {items.map((item) => (
+                  <Command.Item item={item} key={item.value}>
+                    {item.label}
+                  </Command.Item>
+                ))}
+              </Command.ItemGroup>
+            ))}
+          </Command.List>
+        </Command.Content>
+      </Command.Root>
     </Command.Dialog>
   );
 }
