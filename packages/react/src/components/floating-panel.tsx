@@ -1,352 +1,302 @@
 import { FloatingPanel as FloatingPanelPrimitive, Portal } from "@ark-ui/react";
 import type {
-  FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
+  FloatingPanelBodyProps,
   FloatingPanelCloseTriggerProps,
-  FloatingPanelContentProps as FloatingPanelContentPrimitiveProps,
+  FloatingPanelContentProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
+  FloatingPanelPositionerProps,
   FloatingPanelResizeTriggerProps,
   FloatingPanelRootProps as FloatingPanelRootPrimitiveProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
 } from "@ark-ui/react";
-import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
+import {
+  ArrowsOutIcon,
+  CornersInIcon,
+  MinusIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import type { FloatingPanelRootContract } from "@pisagor/contracts";
+import type { FloatingPanelRecipeSlot } from "@pisagor/recipes";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-
-import { use, type ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { Button, type ButtonProps } from "./button";
+import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: FloatingPanelStylesContext } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "FloatingPanel",
   recipe: floatingPanelRecipe,
 });
-
-/** Optional fallback so consumers outside Root still resolve slots. */
-function useFloatingPanelSlots() {
-  const styles = use(FloatingPanelStylesContext);
-
-  return styles?.slots ?? floatingPanelRecipe();
-}
 // #endregion
 
 // #region Types
 export type FloatingPanelRootProps = FloatingPanelRootPrimitiveProps &
   FloatingPanelRootContract;
 
-export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
+export type FloatingPanelFooterProps = ComponentPropsWithRef<"div">;
+
+export interface FloatingPanelProps extends FloatingPanelRootProps {
+  /** Footer action area. */
+  actions?: ReactNode;
+  /** Panel body content. */
+  children?: ReactNode;
+  /** Per-slot class name overrides. */
+  classNames?: Partial<Record<FloatingPanelRecipeSlot, string>>;
+  /** Leading header content, such as an icon. */
+  icon?: ReactNode;
   /**
-   * Whether to enable a resizable panel.
+   * Whether to render resize handles on every edge and corner.
    *
    * @defaultValue true
    */
   resizable?: boolean;
-}
-
-export type FloatingPanelMinimizeProps = Omit<
-  FloatingPanelStageTriggerProps,
-  "stage"
-> &
-  ButtonProps;
-
-export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
-
-export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
-
-export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps {
   /**
-   * Whether to add a fade effect to the scroll area.
+   * Whether to add a fade effect to the scrollable body.
    *
    * @defaultValue false
    */
   scrollFade?: boolean;
+  /**
+   * Whether to show the close button in the header.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  /**
+   * Whether to show minimize, maximize and restore buttons in the header.
+   *
+   * @defaultValue true
+   */
+  showStageControls?: boolean;
+  /** Panel title. */
+  title?: ReactNode;
+  /** Trigger element that opens the panel. */
+  trigger?: ReactNode;
 }
-
-export type FloatingPanelFooterProps = ComponentPropsWithRef<"div">;
 // #endregion
 
 // #region Parts
-export function FloatingPanelRoot({
-  children,
-  recipe = floatingPanelRecipe,
-  ...rest
-}: FloatingPanelRootProps) {
-  const slots = recipe();
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<FloatingPanelRootProps>(FloatingPanelPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-  return (
-    <FloatingPanelStylesContext value={{ slots, variants: {} as never }}>
-      <FloatingPanelPrimitive.Root {...rest}>
-        {children}
-      </FloatingPanelPrimitive.Root>
-    </FloatingPanelStylesContext>
-  );
-}
+const Trigger = withContext<FloatingPanelTriggerProps>(
+  FloatingPanelPrimitive.Trigger,
+  { name: "Trigger" },
+);
 
-export function FloatingPanelTrigger(props: FloatingPanelTriggerProps) {
-  return <FloatingPanelPrimitive.Trigger {...props} />;
-}
+const Positioner = withContext<FloatingPanelPositionerProps>(
+  FloatingPanelPrimitive.Positioner,
+  { name: "Positioner" },
+);
 
-export function FloatingPanelContent({
-  children,
-  resizable = true,
-  className,
-  ...rest
-}: FloatingPanelContentProps) {
-  const slots = useFloatingPanelSlots();
+const Content = withContext<FloatingPanelContentProps>(
+  FloatingPanelPrimitive.Content,
+  { name: "Content" },
+);
 
-  return (
-    <Portal>
-      <FloatingPanelPrimitive.Positioner className={slots.positioner()}>
-        <FloatingPanelPrimitive.Content
-          {...rest}
-          className={slots.content({ className })}
-        >
-          {children}
+const DragTrigger = withContext<FloatingPanelDragTriggerProps>(
+  FloatingPanelPrimitive.DragTrigger,
+  { name: "DragTrigger" },
+);
 
-          {resizable && (
-            <>
-              <FloatingPanelResizeTrigger axis="n" />
-              <FloatingPanelResizeTrigger axis="e" />
-              <FloatingPanelResizeTrigger axis="w" />
-              <FloatingPanelResizeTrigger axis="s" />
-              <FloatingPanelResizeTrigger axis="ne" />
-              <FloatingPanelResizeTrigger axis="se" />
-              <FloatingPanelResizeTrigger axis="sw" />
-              <FloatingPanelResizeTrigger axis="nw" />
-            </>
-          )}
-        </FloatingPanelPrimitive.Content>
-      </FloatingPanelPrimitive.Positioner>
-    </Portal>
-  );
-}
+const Header = withContext<FloatingPanelHeaderProps>(
+  FloatingPanelPrimitive.Header,
+  { name: "Header" },
+);
 
-export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
-  return <FloatingPanelPrimitive.DragTrigger {...props} />;
-}
+const Title = withContext<FloatingPanelTitleProps>(
+  FloatingPanelPrimitive.Title,
+  { name: "Title" },
+);
 
-export function FloatingPanelHeader({
-  children,
-  className,
-  ...rest
-}: FloatingPanelHeaderProps) {
-  const slots = useFloatingPanelSlots();
+const Control = withContext<FloatingPanelControlProps>(
+  FloatingPanelPrimitive.Control,
+  { name: "Control" },
+);
 
-  return (
-    <FloatingPanelDragTrigger>
-      <FloatingPanelPrimitive.Header
-        {...rest}
-        className={slots.header({ className })}
-      >
-        {children}
-      </FloatingPanelPrimitive.Header>
-    </FloatingPanelDragTrigger>
-  );
-}
+const StageTrigger = withContext<FloatingPanelStageTriggerProps>(
+  FloatingPanelPrimitive.StageTrigger,
+  { name: "StageTrigger" },
+);
 
-export function FloatingPanelControl({
-  children,
-  className,
-  ...rest
-}: FloatingPanelControlProps) {
-  const slots = useFloatingPanelSlots();
+const CloseTrigger = withContext<FloatingPanelCloseTriggerProps>(
+  FloatingPanelPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
 
-  return (
-    <FloatingPanelPrimitive.Control
-      {...rest}
-      className={slots.control({ className })}
-    >
-      {children}
-    </FloatingPanelPrimitive.Control>
-  );
-}
+const ResizeTrigger = withContext<FloatingPanelResizeTriggerProps>(
+  FloatingPanelPrimitive.ResizeTrigger,
+  { name: "ResizeTrigger" },
+);
 
-export function FloatingPanelMinimize({
-  size = "icon-xs",
-  variant = "ghost",
-  ...rest
-}: FloatingPanelMinimizeProps) {
-  const { m } = useLocale();
+const Body = withContext<FloatingPanelBodyProps>(FloatingPanelPrimitive.Body, {
+  name: "Body",
+});
 
-  return (
-    <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
-      <Button
-        aria-label={m("floatingPanel.minimize")}
-        size={size}
-        variant={variant}
-      >
-        <MinusIcon />
-      </Button>
-    </FloatingPanelPrimitive.StageTrigger>
-  );
-}
-
-export function FloatingPanelMaximize({
-  size = "icon-xs",
-  variant = "ghost",
-  ...rest
-}: FloatingPanelMaximizeProps) {
-  const { m } = useLocale();
-
-  return (
-    <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
-      <Button
-        aria-label={m("floatingPanel.maximize")}
-        size={size}
-        variant={variant}
-      >
-        <ArrowsOutIcon />
-      </Button>
-    </FloatingPanelPrimitive.StageTrigger>
-  );
-}
-
-export function FloatingPanelRestore({
-  size = "icon-xs",
-  variant = "outline",
-  ...rest
-}: FloatingPanelRestoreProps) {
-  const { m } = useLocale();
-  const slots = useFloatingPanelSlots();
-
-  return (
-    <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
-      <Button
-        aria-label={m("floatingPanel.restore")}
-        size={size}
-        variant={variant}
-      >
-        <CornersInIcon className={slots.maximizedIcon()} />
-        <ArrowsOutIcon className={slots.minimizedIcon()} />
-      </Button>
-    </FloatingPanelPrimitive.StageTrigger>
-  );
-}
-
-export function FloatingPanelTitle({
-  children,
-  className,
-  ...rest
-}: FloatingPanelTitleProps) {
-  const slots = useFloatingPanelSlots();
-
-  return (
-    <FloatingPanelPrimitive.Title
-      {...rest}
-      className={slots.title({ className })}
-    >
-      {children}
-    </FloatingPanelPrimitive.Title>
-  );
-}
-
-export function FloatingPanelResizeTrigger(
-  props: FloatingPanelResizeTriggerProps,
-) {
-  return <FloatingPanelPrimitive.ResizeTrigger {...props} />;
-}
-
-export function FloatingPanelStageTrigger(
-  props: FloatingPanelStageTriggerProps,
-) {
-  return <FloatingPanelPrimitive.StageTrigger {...props} />;
-}
-
-export function FloatingPanelCloseTrigger(
-  props: FloatingPanelCloseTriggerProps,
-) {
-  return <FloatingPanelPrimitive.CloseTrigger {...props} />;
-}
-
-export function FloatingPanelBody({
-  scrollFade = false,
-  children,
-  className,
-  ...rest
-}: FloatingPanelBodyProps) {
-  const slots = useFloatingPanelSlots();
-
-  return (
-    <ScrollArea scrollFade={scrollFade}>
-      <FloatingPanelPrimitive.Body
-        {...rest}
-        className={slots.body({ className })}
-      >
-        {children}
-      </FloatingPanelPrimitive.Body>
-    </ScrollArea>
-  );
-}
-
-export function FloatingPanelFooter({
-  children,
-  className,
-  ...rest
-}: FloatingPanelFooterProps) {
-  const slots = useFloatingPanelSlots();
-
-  return (
-    <div
-      {...rest}
-      className={slots.footer({ className })}
-      data-part="footer"
-      data-scope="floating-panel"
-    >
-      {children}
-    </div>
-  );
-}
+const Footer = withContext<FloatingPanelFooterProps>("div", { name: "Footer" });
 // #endregion
 
-// #region Display Names
-FloatingPanelRoot.displayName = "FloatingPanel";
-FloatingPanelTrigger.displayName = "FloatingPanel.Trigger";
-FloatingPanelContent.displayName = "FloatingPanel.Content";
-FloatingPanelDragTrigger.displayName = "FloatingPanel.DragTrigger";
-FloatingPanelHeader.displayName = "FloatingPanel.Header";
-FloatingPanelControl.displayName = "FloatingPanel.Control";
-FloatingPanelMinimize.displayName = "FloatingPanel.Minimize";
-FloatingPanelMaximize.displayName = "FloatingPanel.Maximize";
-FloatingPanelRestore.displayName = "FloatingPanel.Restore";
-FloatingPanelTitle.displayName = "FloatingPanel.Title";
-FloatingPanelResizeTrigger.displayName = "FloatingPanel.ResizeTrigger";
-FloatingPanelStageTrigger.displayName = "FloatingPanel.StageTrigger";
-FloatingPanelCloseTrigger.displayName = "FloatingPanel.CloseTrigger";
-FloatingPanelBody.displayName = "FloatingPanel.Body";
-FloatingPanelFooter.displayName = "FloatingPanel.Footer";
+// #region Shorthand
+const resizeAxes = ["n", "e", "w", "s", "ne", "se", "sw", "nw"] as const;
 
+function StageControls() {
+  const { m } = useLocale();
+  const { slots } = useStyles();
+
+  return (
+    <>
+      <StageTrigger asChild stage="minimized">
+        <Button
+          aria-label={m("floatingPanel.minimize")}
+          size="icon-xs"
+          variant="ghost"
+        >
+          <MinusIcon />
+        </Button>
+      </StageTrigger>
+
+      <StageTrigger asChild stage="maximized">
+        <Button
+          aria-label={m("floatingPanel.maximize")}
+          size="icon-xs"
+          variant="ghost"
+        >
+          <ArrowsOutIcon />
+        </Button>
+      </StageTrigger>
+
+      <StageTrigger asChild stage="default">
+        <Button
+          aria-label={m("floatingPanel.restore")}
+          size="icon-xs"
+          variant="outline"
+        >
+          <CornersInIcon className={slots.maximizedIcon()} />
+          <ArrowsOutIcon className={slots.minimizedIcon()} />
+        </Button>
+      </StageTrigger>
+    </>
+  );
+}
+
+export function FloatingPanelShorthand({
+  actions,
+  children,
+  classNames,
+  icon,
+  resizable = true,
+  scrollFade = false,
+  showCloseButton = true,
+  showStageControls = true,
+  title,
+  trigger,
+  ...rest
+}: FloatingPanelProps) {
+  const { m } = useLocale();
+  const hasControls = showStageControls || showCloseButton;
+
+  return (
+    <Root {...rest}>
+      {trigger !== undefined && (
+        <Trigger asChild className={classNames?.trigger}>
+          {trigger}
+        </Trigger>
+      )}
+
+      <Portal>
+        <Positioner className={classNames?.positioner}>
+          <Content className={classNames?.content}>
+            <DragTrigger className={classNames?.dragTrigger}>
+              <Header className={classNames?.header}>
+                {icon}
+
+                {title !== undefined && (
+                  <Title className={classNames?.title}>{title}</Title>
+                )}
+
+                {hasControls && (
+                  <Control className={classNames?.control}>
+                    {showStageControls && <StageControls />}
+
+                    {showCloseButton && (
+                      <CloseTrigger
+                        asChild
+                        className={classNames?.closeTrigger}
+                      >
+                        <Button
+                          aria-label={m("floatingPanel.close")}
+                          size="icon-xs"
+                        >
+                          <XIcon />
+                        </Button>
+                      </CloseTrigger>
+                    )}
+                  </Control>
+                )}
+              </Header>
+            </DragTrigger>
+
+            {children !== undefined && (
+              <ScrollArea scrollFade={scrollFade}>
+                <Body className={classNames?.body}>{children}</Body>
+              </ScrollArea>
+            )}
+
+            {actions !== undefined && (
+              <Footer className={classNames?.footer}>{actions}</Footer>
+            )}
+
+            {resizable &&
+              resizeAxes.map((axis) => (
+                <ResizeTrigger
+                  axis={axis}
+                  className={classNames?.resizeTrigger}
+                  key={axis}
+                />
+              ))}
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
+  );
+}
 // #endregion
 
 export type {
+  FloatingPanelBodyProps,
   FloatingPanelCloseTriggerProps,
+  FloatingPanelContentProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
+  FloatingPanelPositionerProps,
   FloatingPanelResizeTriggerProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
 } from "@ark-ui/react";
 
-export const FloatingPanel = Object.assign(FloatingPanelRoot, {
-  Body: FloatingPanelBody,
-  CloseTrigger: FloatingPanelCloseTrigger,
-  Content: FloatingPanelContent,
-  Control: FloatingPanelControl,
-  DragTrigger: FloatingPanelDragTrigger,
-  Footer: FloatingPanelFooter,
-  Header: FloatingPanelHeader,
-  Maximize: FloatingPanelMaximize,
-  Minimize: FloatingPanelMinimize,
-  ResizeTrigger: FloatingPanelResizeTrigger,
-  Restore: FloatingPanelRestore,
-  StageTrigger: FloatingPanelStageTrigger,
-  Title: FloatingPanelTitle,
-  Trigger: FloatingPanelTrigger,
+export const FloatingPanel = Object.assign(FloatingPanelShorthand, {
+  Body,
+  CloseTrigger,
+  Content,
+  Control,
+  DragTrigger,
+  Footer,
+  Header,
+  Positioner,
+  ResizeTrigger,
+  Root,
+  StageTrigger,
+  Title,
+  Trigger,
 });

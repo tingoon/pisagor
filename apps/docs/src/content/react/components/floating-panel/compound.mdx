@@ -1,20 +1,31 @@
 ## Anatomy
 
 ```tsx
-<FloatingPanel>
+<FloatingPanel.Root>
   <FloatingPanel.Trigger />
-  <FloatingPanel.Content>
-    <FloatingPanel.Header>
-      <FloatingPanel.Title />
-      <FloatingPanel.Control>
-        <FloatingPanel.Minimize />
-        <FloatingPanel.Maximize />
-        <FloatingPanel.Restore />
-        <FloatingPanel.CloseTrigger />
-      </FloatingPanel.Control>
-    </FloatingPanel.Header>
-    <FloatingPanel.Body />
-    <FloatingPanel.Footer />
-  </FloatingPanel.Content>
-</FloatingPanel>
+  <FloatingPanel.Positioner>
+    <FloatingPanel.Content>
+      <FloatingPanel.DragTrigger>
+        <FloatingPanel.Header>
+          <FloatingPanel.Title />
+          <FloatingPanel.Control>
+            <FloatingPanel.StageTrigger />
+            <FloatingPanel.CloseTrigger />
+          </FloatingPanel.Control>
+        </FloatingPanel.Header>
+      </FloatingPanel.DragTrigger>
+      <FloatingPanel.Body />
+      <FloatingPanel.Footer />
+      <FloatingPanel.ResizeTrigger />
+    </FloatingPanel.Content>
+  </FloatingPanel.Positioner>
+</FloatingPanel.Root>
 ```
+
+## Examples
+
+### Compound
+
+Build the panel from parts. Wrap the positioner in `Portal`, wrap `Body` in `ScrollArea` when it should scroll, and pass your own icons to each `StageTrigger`.
+
+<Example name="Compound" />

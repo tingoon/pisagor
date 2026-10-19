@@ -44,24 +44,16 @@ export function Async() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start tour</Button>
-        </Tour.Trigger>
+      <Tour
+        steps={steps}
+        trigger={<Button variant="outline">Start tour</Button>}
+      >
         <div
           className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
           id="user-card"
         >
           User profile card
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

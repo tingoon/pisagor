@@ -2,6 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const floatingPanelRecipe = tv({
   slots: {
+    base: [],
     body: [
       "flex flex-col gap-4",
       "p-(--space)",
@@ -21,7 +22,9 @@ export const floatingPanelRecipe = tv({
       "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-98 data-[state=closed]:animate-out",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
     ],
+    closeTrigger: [],
     control: ["ms-auto flex items-center gap-2 rtl:me-auto"],
+    dragTrigger: [],
     footer: [
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
       "sm:rounded-b-2xl",
@@ -42,11 +45,14 @@ export const floatingPanelRecipe = tv({
     maximizedIcon: ["hidden group-data-maximized/floating-panel:block"],
     minimizedIcon: ["hidden group-data-minimized/floating-panel:block"],
     positioner: ["z-popover inset-s-(--x) top-(--y)"],
+    resizeTrigger: [],
+    stageTrigger: [],
     title: [
       "min-w-0 flex-1",
       "flex items-center gap-2",
       "truncate text-sm leading-none font-medium tracking-tight whitespace-nowrap",
     ],
+    trigger: [],
   },
 });
 

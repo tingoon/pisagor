@@ -1,14 +1,12 @@
-import {
-  Portal,
-  Tour as TourPrimitive,
-  ark,
-  useTour,
-  type HTMLArkProps,
-} from "@ark-ui/react";
+import { Portal, Tour as TourPrimitive, ark, useTour } from "@ark-ui/react";
 import type {
   TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
   TourCloseTriggerProps,
-  TourContentProps as TourContentPrimitiveProps,
+  TourContentProps,
+  TourControlProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
@@ -16,505 +14,298 @@ import type {
   TourSpotlightProps,
   TourStepDetails,
   TourTitleProps,
-  UseTourReturn,
+  UseTourProps,
 } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import type { TourRootContract } from "@pisagor/contracts";
-import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { MouseEvent } from "react";
-import { createContext, use, useCallback, useEffect, useMemo } from "react";
+import type { TourRecipeSlot } from "@pisagor/recipes";
+import { tourRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { useEffect } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import type {
-  DialogBackdropProps,
-  DialogBodyProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-} from "./dialog";
 import { useLocale } from "./provider/context";
-import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tour",
   recipe: tourRecipe,
 });
-
-interface TourStateValue {
-  handleStart: () => void;
-  tour: UseTourReturn;
-}
-
-const TourStateContext = createContext<TourStateValue | undefined>(undefined);
-TourStateContext.displayName = "TourStateContext";
-
-/** Returns the nearest tour styles + state context. */
-export function useTourContext() {
-  const styles = useStyles();
-  const state = use(TourStateContext);
-  if (state === undefined) {
-    throw new Error("useTourContext must be used within TourStateContext.");
-  }
-
-  return { ...styles, ...state };
-}
 // #endregion
 
 // #region Types
 export type TourStepType = TourStepDetails;
 
-export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
+export type TourRootProps = TourRootPrimitiveProps & TourRootContract;
 
-export interface TourProps extends TourRootProps, TourRootContract {
-  /** Whether to enable arrow key navigation between steps */
-  keyboardNavigation?: boolean;
+export type TourHeaderProps = ComponentPropsWithRef<"div">;
+
+export type TourBodyProps = ComponentPropsWithRef<"div">;
+
+export interface TourProps
+  extends
+    UseTourProps,
+    Omit<TourRootPrimitiveProps, "children" | "tour">,
+    TourRootContract {
+  /** Page content rendered next to the trigger (usually the step targets). */
+  children?: ReactNode;
+  /** Per-slot class name overrides. */
+  classNames?: Partial<Record<TourRecipeSlot, string>>;
   /**
-   * The steps to display in the tour
+   * Whether to render an arrow on tooltip steps.
    *
-   * @defaultValue [ ]
+   * @defaultValue false
    */
-  steps: TourStepDetails[];
-  /** Called when the tour status changes */
-  onStatusChange?: (details: { status: string }) => void;
-  /** Called when the current step changes */
-  onStepChange?: (details: { stepId: string | null }) => void;
-}
-
-export type TourTriggerProps = HTMLArkProps<"button">;
-
-export interface TourBackdropProps extends DialogBackdropProps {
+  showArrow?: boolean;
   /**
-   * Dialog style recipe. Defaults to `dialogRecipe` from
-   * `@pisagor/recipes/dialog`.
-   *
-   * @defaultValue dialogRecipe
-   */
-  dialogRecipe?: typeof dialogRecipe;
-}
-
-export interface TourContentProps extends TourContentPrimitiveProps {
-  /**
-   * Whether to show a close button at the top right corner.
+   * Whether to show a close button at the top end corner.
    *
    * @defaultValue true
    */
   showCloseButton?: boolean;
+  /** Element that starts the tour when clicked. */
+  trigger?: ReactNode;
 }
-
 // #endregion
 
 // #region Parts
-export function TourRoot({
-  steps = [],
-  keyboardNavigation,
-  onStatusChange,
-  onStepChange,
-  recipe = tourRecipe,
-  ...rest
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<TourRootProps>(TourPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
+
+const Backdrop = withContext<TourBackdropProps>(TourPrimitive.Backdrop, {
+  name: "Backdrop",
+});
+
+const Spotlight = withContext<TourSpotlightProps>(TourPrimitive.Spotlight, {
+  name: "Spotlight",
+});
+
+const Positioner = withContext<TourPositionerProps>(TourPrimitive.Positioner, {
+  name: "Positioner",
+});
+
+const Content = withContext<TourContentProps>(TourPrimitive.Content, {
+  name: "Content",
+});
+
+const ArrowTip = withContext<TourArrowTipProps>(TourPrimitive.ArrowTip, {
+  name: "ArrowTip",
+});
+
+const Arrow = withContext<TourArrowProps>(TourPrimitive.Arrow, {
+  defaultProps: {
+    children: <ArrowTip />,
+    style: {
+      "--arrow-background": "var(--background)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const Header = withContext<TourHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<TourTitleProps>(TourPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<TourDescriptionProps>(
+  TourPrimitive.Description,
+  { name: "Description" },
+);
+
+const ProgressText = withContext<TourProgressTextProps>(
+  TourPrimitive.ProgressText,
+  { name: "ProgressText" },
+);
+
+const Body = withContext<TourBodyProps>("div", { name: "Body" });
+
+const Control = withContext<TourControlProps>(TourPrimitive.Control, {
+  name: "Control",
+});
+
+const ActionTrigger = withContext<TourActionTriggerProps>(
+  TourPrimitive.ActionTrigger,
+  { name: "ActionTrigger" },
+);
+
+const CloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "close" },
+);
+// #endregion
+
+// #region Shorthand
+function CloseLabel() {
+  const { m } = useLocale();
+  const { slots } = useStyles();
+
+  return <span className={slots.closeLabel()}>{m("tour.close")}</span>;
+}
+
+export function TourShorthand({
+  children,
+  classNames,
+  immediate,
+  lazyMount,
+  onExitComplete,
+  present,
+  recipe,
+  showArrow = false,
+  showCloseButton = true,
+  skipAnimationOnMount,
+  trigger,
+  unmountOnExit,
+  ...tourProps
 }: TourProps) {
-  const tour = useTour({
-    keyboardNavigation,
-    onStatusChange,
-    onStepChange,
-    steps,
-  });
-  const isStarted = tour.open;
+  const tour = useTour(tourProps);
+  const isOpen = tour.open;
 
-  const slots = recipe();
-
+  // Spotlight offsets are measured against the body.
   useEffect(() => {
-    if (isStarted) {
-      document.body.classList.add("relative");
-    } else {
-      document.body.classList.remove("relative");
+    if (!isOpen) {
+      return;
     }
+
+    document.body.classList.add("relative");
 
     return () => {
       document.body.classList.remove("relative");
     };
-  }, [isStarted]);
-
-  const handleStart = useCallback(() => {
-    tour.start();
-  }, [tour]);
+  }, [isOpen]);
 
   return (
-    <TourStylesContext value={{ slots, variants: {} as never }}>
-      <TourStateContext value={{ handleStart, tour }}>
-        <TourPrimitive.Root {...rest} tour={tour} />
-      </TourStateContext>
-    </TourStylesContext>
-  );
-}
-
-export function TourTrigger({ onClick, ...rest }: TourTriggerProps) {
-  const { handleStart } = useTourContext();
-
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    onClick?.(e);
-    handleStart();
-  };
-
-  return (
-    <ark.button
-      {...rest}
-      data-part="trigger"
-      data-scope="tour"
-      onClick={handleClick}
-      type="button"
-    />
-  );
-}
-
-export function TourActionTrigger(props: TourActionTriggerProps) {
-  return <TourPrimitive.ActionTrigger {...props} />;
-}
-
-export function TourBackdrop({
-  className,
-  dialogRecipe: dialogRecipeProp = dialogRecipe,
-  ...rest
-}: TourBackdropProps) {
-  const { slots } = useTourContext();
-  const dialogSlots = dialogRecipeProp();
-
-  return (
-    <TourPrimitive.Backdrop
-      {...rest}
-      className={cn(dialogSlots.backdrop(), slots.backdrop(), className)}
-    />
-  );
-}
-
-export function TourPositioner(props: TourPositionerProps) {
-  const { slots } = useTourContext();
-
-  return <TourPrimitive.Positioner {...props} className={slots.positioner()} />;
-}
-
-export function TourContent({
-  showCloseButton = true,
-  children,
-  className,
-  ...rest
-}: TourContentProps) {
-  const { m } = useLocale();
-  const { slots } = useTourContext();
-
-  return (
-    <Portal>
-      <TourBackdrop />
-      <TourPositioner>
-        <TourPrimitive.Content
-          {...rest}
-          className={slots.content({ className })}
-        >
-          {children ?? (
-            <>
-              <TourHeader>
-                <TourTitle />
-                <TourProgressText />
-              </TourHeader>
-              <TourBody>
-                <TourDescription />
-              </TourBody>
-              <TourFooter>
-                <TourPreviousStep />
-                <TourNextStep />
-              </TourFooter>
-            </>
-          )}
-
-          {!!showCloseButton && (
-            <TourCloseTrigger asChild className={slots.close()}>
-              <Button
-                className={slots.closeButton()}
-                size="icon-md"
-                variant="ghost"
-              >
-                <XIcon />
-
-                <span className={slots.closeLabel()}>{m("tour.close")}</span>
-              </Button>
-            </TourCloseTrigger>
-          )}
-        </TourPrimitive.Content>
-      </TourPositioner>
-
-      <TourSpotlight />
-    </Portal>
-  );
-}
-
-export function TourBody({
-  scrollFade = false,
-  className,
-  ...rest
-}: DialogBodyProps & { scrollFade?: boolean }) {
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <ScrollArea scrollFade={scrollFade}>
-      <div
-        {...rest}
-        className={dialogSlots.body({ className })}
-        data-part="body"
-        data-scope="tour"
-      />
-    </ScrollArea>
-  );
-}
-
-export function TourSpotlight(props: TourSpotlightProps) {
-  const { slots } = useTourContext();
-
-  return <TourPrimitive.Spotlight {...props} className={slots.spotlight()} />;
-}
-
-export function TourHeader({
-  children,
-  className,
-  ...rest
-}: Omit<DialogHeaderProps, "description" | "title">) {
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <div
-      {...rest}
-      className={dialogSlots.header({ className })}
-      data-part="header"
-      data-scope="tour"
+    <Root
+      immediate={immediate}
+      lazyMount={lazyMount}
+      onExitComplete={onExitComplete}
+      present={present}
+      recipe={recipe}
+      skipAnimationOnMount={skipAnimationOnMount}
+      tour={tour}
+      unmountOnExit={unmountOnExit}
     >
-      {children}
-    </div>
-  );
-}
-
-export function TourTitle({ className, ...rest }: TourTitleProps) {
-  const { slots, tour } = useTourContext();
-
-  return (
-    <TourPrimitive.Title {...rest} className={slots.title({ className })}>
-      {tour.step?.title}
-    </TourPrimitive.Title>
-  );
-}
-
-export function TourDescription({ className, ...rest }: TourDescriptionProps) {
-  const { slots, tour } = useTourContext();
-
-  return (
-    <TourPrimitive.Description
-      {...rest}
-      className={slots.description({ className })}
-    >
-      {tour.step?.description}
-    </TourPrimitive.Description>
-  );
-}
-
-export function TourProgressText({
-  className,
-  ...rest
-}: TourProgressTextProps) {
-  const { slots, tour } = useTourContext();
-
-  return (
-    <TourPrimitive.ProgressText
-      {...rest}
-      className={slots.progressText({ className })}
-    >
-      {tour.getProgressText()}
-    </TourPrimitive.ProgressText>
-  );
-}
-
-export function TourCloseTrigger(props: TourCloseTriggerProps) {
-  return <TourPrimitive.CloseTrigger {...props} />;
-}
-
-/**
- * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
- * control.
- */
-const TourInsideControlContext = createContext(false);
-
-export function TourFooter({
-  children,
-  className,
-  ...rest
-}: DialogFooterProps) {
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <TourPrimitive.Control {...rest} asChild>
-      <div
-        className={dialogSlots.footer({ className })}
-        data-part="control"
-        data-scope="tour"
-      >
-        <TourInsideControlContext value={true}>
-          {children}
-        </TourInsideControlContext>
-      </div>
-    </TourPrimitive.Control>
-  );
-}
-
-export function TourActions({ className, ...rest }: DialogFooterProps) {
-  const { slots, tour } = useTourContext();
-  const dialogSlots = dialogRecipe();
-
-  const insideControl = use(TourInsideControlContext);
-
-  const actions = tour.step?.actions ?? [];
-
-  if (actions.length === 0) {
-    return null;
-  }
-
-  const content = (
-    <div
-      {...(insideControl ? rest : {})}
-      className={cn(
-        !insideControl && dialogSlots.footer(),
-        slots.actions({ className }),
+      {trigger !== undefined && (
+        <ark.button asChild onClick={() => tour.start()}>
+          {trigger}
+        </ark.button>
       )}
-      data-part="actions"
-      data-scope="tour"
-    >
-      {actions.map((action) => (
-        <TourActionTrigger action={action} asChild key={action.label}>
-          <Button
-            size="sm"
-            variant={
-              action.action === "dismiss" || action.action === "prev"
-                ? "outline"
-                : "default"
-            }
-          >
-            {action.action === "prev" && <CaretLeftIcon />}
-            {action.label}
-            {action.action === "next" && <CaretRightIcon />}
-          </Button>
-        </TourActionTrigger>
-      ))}
-    </div>
-  );
 
-  if (insideControl) {
-    return content;
-  }
+      {children}
 
-  return (
-    <TourPrimitive.Control {...rest} asChild>
-      {content}
-    </TourPrimitive.Control>
-  );
-}
+      <Portal>
+        <Backdrop className={classNames?.backdrop} />
+        <Spotlight className={classNames?.spotlight} />
 
-export function TourPreviousStep({
-  ...rest
-}: Omit<TourActionTriggerProps, "action">) {
-  const { tour } = useTourContext();
+        <Positioner className={classNames?.positioner}>
+          <Content className={classNames?.content}>
+            {showArrow && (
+              <Arrow className={classNames?.arrow}>
+                <ArrowTip className={classNames?.arrowTip} />
+              </Arrow>
+            )}
 
-  const prevAction = useMemo(
-    () => tour.step?.actions?.find((action) => action.action === "prev"),
-    [tour],
-  );
+            <Header className={classNames?.header}>
+              <ProgressText className={classNames?.progressText} />
+              <Title className={classNames?.title} />
+              <Description className={classNames?.description} />
+            </Header>
 
-  if (!prevAction) {
-    return null;
-  }
+            <TourPrimitive.Actions>
+              {(actions) =>
+                actions.length > 0 && (
+                  <Control className={classNames?.control}>
+                    {actions.map((action) => (
+                      <ActionTrigger
+                        action={action}
+                        asChild
+                        className={classNames?.actionTrigger}
+                        key={action.label}
+                      >
+                        <Button
+                          size="sm"
+                          variant={
+                            action.action === "dismiss" ||
+                            action.action === "prev"
+                              ? "outline"
+                              : "default"
+                          }
+                        >
+                          {action.action === "prev" && <CaretLeftIcon />}
+                          {action.label}
+                          {action.action === "next" && <CaretRightIcon />}
+                        </Button>
+                      </ActionTrigger>
+                    ))}
+                  </Control>
+                )
+              }
+            </TourPrimitive.Actions>
 
-  return (
-    <TourActionTrigger {...rest} action={prevAction} asChild>
-      <Button size="sm" variant="outline">
-        <CaretLeftIcon />
-        {prevAction.label}
-      </Button>
-    </TourActionTrigger>
-  );
-}
-
-export function TourNextStep({
-  ...rest
-}: Omit<TourActionTriggerProps, "action">) {
-  const { tour } = useTourContext();
-
-  const action = useMemo(
-    () =>
-      tour.step?.actions?.find(
-        (a) => a.action === "next" || a.action === "dismiss",
-      ),
-    [tour],
-  );
-
-  const actionType = useMemo(() => action?.action, [action]);
-
-  if (!action) {
-    return null;
-  }
-
-  return (
-    <TourActionTrigger {...rest} action={action} asChild>
-      <Button size="sm">
-        {action.label}
-
-        {actionType === "next" && <CaretRightIcon />}
-      </Button>
-    </TourActionTrigger>
+            {showCloseButton && (
+              <InlineCloseTrigger asChild className={classNames?.close}>
+                <Button
+                  className={classNames?.closeButton}
+                  size="icon-md"
+                  variant="ghost"
+                >
+                  <XIcon />
+                  <CloseLabel />
+                </Button>
+              </InlineCloseTrigger>
+            )}
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
 // #endregion
 
-// #region Display Names
-TourRoot.displayName = "Tour";
-TourTrigger.displayName = "Tour.Trigger";
-TourActionTrigger.displayName = "Tour.ActionTrigger";
-TourBackdrop.displayName = "Tour.Backdrop";
-TourPositioner.displayName = "Tour.Positioner";
-TourContent.displayName = "Tour.Content";
-TourBody.displayName = "Tour.Body";
-TourSpotlight.displayName = "Tour.Spotlight";
-TourHeader.displayName = "Tour.Header";
-TourTitle.displayName = "Tour.Title";
-TourDescription.displayName = "Tour.Description";
-TourProgressText.displayName = "Tour.ProgressText";
-TourCloseTrigger.displayName = "Tour.CloseTrigger";
-TourFooter.displayName = "Tour.Footer";
-TourActions.displayName = "Tour.Actions";
-TourPreviousStep.displayName = "Tour.PreviousStep";
-TourNextStep.displayName = "Tour.NextStep";
-
-// #endregion
+export { useTour, useTourContext } from "@ark-ui/react";
 
 export type {
   TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
   TourCloseTriggerProps,
+  TourContentProps,
+  TourControlProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
+  UseTourProps,
+  UseTourReturn,
 } from "@ark-ui/react";
 
-export const Tour = Object.assign(TourRoot, {
-  Actions: TourActions,
-  ActionTrigger: TourActionTrigger,
-  Backdrop: TourBackdrop,
-  Body: TourBody,
-  CloseTrigger: TourCloseTrigger,
-  Content: TourContent,
-  Description: TourDescription,
-  Footer: TourFooter,
-  Header: TourHeader,
-  NextStep: TourNextStep,
-  Positioner: TourPositioner,
-  PreviousStep: TourPreviousStep,
-  ProgressText: TourProgressText,
-  Spotlight: TourSpotlight,
-  Title: TourTitle,
-  Trigger: TourTrigger,
+export const Tour = Object.assign(TourShorthand, {
+  ActionTrigger,
+  Actions: TourPrimitive.Actions,
+  Arrow,
+  ArrowTip,
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  Control,
+  Description,
+  Header,
+  Positioner,
+  ProgressText,
+  Root,
+  Spotlight,
+  Title,
 });

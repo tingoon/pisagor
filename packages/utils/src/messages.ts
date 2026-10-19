@@ -42,6 +42,7 @@ export const defaultMessages = {
   "fileUpload.error.FILE_TOO_SMALL": "File is too small.",
   "fileUpload.error.TOO_MANY_FILES": "Too many files.",
   "fileUpload.removeFile": "Remove file",
+  "floatingPanel.close": "Close",
   "floatingPanel.maximize": "Maximize",
   "floatingPanel.minimize": "Minimize",
   "floatingPanel.restore": "Restore",

@@ -1,9 +1,10 @@
+import { Portal } from "@ark-ui/react";
 import type { TourStepType } from "@pisagor/react";
-import { Button, Tour, useTourContext } from "@pisagor/react";
+import { Button, Tour, useTour, useTourContext } from "@pisagor/react";
 
 export function Progress() {
   const TourProgressBar = () => {
-    const { tour } = useTourContext();
+    const tour = useTourContext();
 
     return (
       <div className="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl">
@@ -58,13 +59,14 @@ export function Progress() {
       type: "tooltip",
     },
   ];
+  const tour = useTour({ steps });
 
   return (
     <div className="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start tour</Button>
-        </Tour.Trigger>
+      <Tour.Root tour={tour}>
+        <Button onClick={() => tour.start()} variant="outline">
+          Start tour
+        </Button>
         <div className="flex flex-wrap gap-2">
           <div
             className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -91,17 +93,43 @@ export function Progress() {
             Step 4
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-
-          <TourProgressBar />
-        </Tour.Content>
-      </Tour>
+        <Portal>
+          <Tour.Backdrop />
+          <Tour.Spotlight />
+          <Tour.Positioner>
+            <Tour.Content>
+              <Tour.Header>
+                <Tour.ProgressText />
+                <Tour.Title />
+                <Tour.Description />
+              </Tour.Header>
+              <Tour.Actions>
+                {(actions) => (
+                  <Tour.Control>
+                    {actions.map((action) => (
+                      <Tour.ActionTrigger
+                        action={action}
+                        asChild
+                        key={action.label}
+                      >
+                        <Button
+                          size="sm"
+                          variant={
+                            action.action === "next" ? "default" : "outline"
+                          }
+                        >
+                          {action.label}
+                        </Button>
+                      </Tour.ActionTrigger>
+                    ))}
+                  </Tour.Control>
+                )}
+              </Tour.Actions>
+              <TourProgressBar />
+            </Tour.Content>
+          </Tour.Positioner>
+        </Portal>
+      </Tour.Root>
     </div>
   );
 }

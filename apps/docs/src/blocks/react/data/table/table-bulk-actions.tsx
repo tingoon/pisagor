@@ -56,7 +56,10 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
 
   return (
     <div className={cn(styles.root(), className)}>
-      <ActionBar onOpenChange={(open) => !open && handleClose()} open={isOpen}>
+      <ActionBar.Root
+        onOpenChange={(open) => !open && handleClose()}
+        open={isOpen}
+      >
         <Table>
           <Table.Caption className={styles.srOnly()}>
             Orders with checkbox selection and action bar.
@@ -110,75 +113,79 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
             })}
           </Table.Body>
         </Table>
-        <ActionBar.Content>
-          <ActionBar.Value count={selectedIds.length} />
-          <div className={styles.actions()}>
-            <Button size="sm" variant="secondary">
-              <PaperPlaneTiltIcon />
-              Send
-            </Button>
-            <Button size="sm" variant="secondary">
-              <PencilSimpleIcon />
-              Edit
-            </Button>
-            <DropdownMenu.Root positioning={{ placement: "top" }}>
-              <DropdownMenu.Trigger asChild>
+        <Portal>
+          <ActionBar.Positioner>
+            <ActionBar.Content>
+              <ActionBar.Value count={selectedIds.length} />
+              <div className={styles.actions()}>
                 <Button size="sm" variant="secondary">
-                  <DotsThreeIcon />
+                  <PaperPlaneTiltIcon />
+                  Send
                 </Button>
-              </DropdownMenu.Trigger>
-              <Portal>
-                <DropdownMenu.Positioner>
-                  <DropdownMenu.Content>
-                    <DropdownMenu.Item value="archive">
-                      <ArchiveIcon />
-                      Archive
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item value="duplicate">
-                      <CopyIcon />
-                      Duplicate
-                    </DropdownMenu.Item>
-                  </DropdownMenu.Content>
-                </DropdownMenu.Positioner>
-              </Portal>
-            </DropdownMenu.Root>
-            <AlertDialog
-              actions={
-                <>
-                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.Action variant="destructive">
-                    Delete
-                  </AlertDialog.Action>
-                </>
-              }
-              description="This action cannot be undone."
-              title="Delete selected orders?"
-              trigger={
-                <Button size="sm" variant="destructive">
-                  <TrashIcon />
-                  Delete
+                <Button size="sm" variant="secondary">
+                  <PencilSimpleIcon />
+                  Edit
                 </Button>
-              }
-            >
-              <ul>
-                {selectedIds.map((id) => {
-                  const order = orders.find((o) => o.id === id);
-
-                  if (!order) {
-                    return null;
+                <DropdownMenu.Root positioning={{ placement: "top" }}>
+                  <DropdownMenu.Trigger asChild>
+                    <Button size="sm" variant="secondary">
+                      <DotsThreeIcon />
+                    </Button>
+                  </DropdownMenu.Trigger>
+                  <Portal>
+                    <DropdownMenu.Positioner>
+                      <DropdownMenu.Content>
+                        <DropdownMenu.Item value="archive">
+                          <ArchiveIcon />
+                          Archive
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item value="duplicate">
+                          <CopyIcon />
+                          Duplicate
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Positioner>
+                  </Portal>
+                </DropdownMenu.Root>
+                <AlertDialog
+                  actions={
+                    <>
+                      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                      <AlertDialog.Action variant="destructive">
+                        Delete
+                      </AlertDialog.Action>
+                    </>
                   }
+                  description="This action cannot be undone."
+                  title="Delete selected orders?"
+                  trigger={
+                    <Button size="sm" variant="destructive">
+                      <TrashIcon />
+                      Delete
+                    </Button>
+                  }
+                >
+                  <ul>
+                    {selectedIds.map((id) => {
+                      const order = orders.find((o) => o.id === id);
 
-                  return (
-                    <li className={styles.deleteItem()} key={id}>
-                      {order.id} - {order.name}
-                    </li>
-                  );
-                })}
-              </ul>
-            </AlertDialog>
-          </div>
-        </ActionBar.Content>
-      </ActionBar>
+                      if (!order) {
+                        return null;
+                      }
+
+                      return (
+                        <li className={styles.deleteItem()} key={id}>
+                          {order.id} - {order.name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </AlertDialog>
+              </div>
+            </ActionBar.Content>
+          </ActionBar.Positioner>
+        </Portal>
+      </ActionBar.Root>
     </div>
   );
 }
