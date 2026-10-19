@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
-import { Button, Dialog, Popover } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
+import { Button, Dialog, Popover } from "@pisagor/solid";
 
 export function PopoverDialog() {
   return (
@@ -14,6 +14,7 @@ export function PopoverDialog() {
       />
       <Portal>
         <Dialog.Backdrop />
+
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
@@ -24,7 +25,7 @@ export function PopoverDialog() {
               </Dialog.Description>
             </Dialog.Header>
             <Dialog.Body>
-              <Popover>
+              <Popover.Root>
                 <Popover.Trigger
                   asChild={(props) => (
                     <Button {...props()} variant="outline">
@@ -32,13 +33,20 @@ export function PopoverDialog() {
                     </Button>
                   )}
                 />
-                <Popover.Content>
-                  <Popover.Header
-                    description="You're all caught up. Check back later for new notifications."
-                    title="Notifications"
-                  />
-                </Popover.Content>
-              </Popover>
+                <Portal>
+                  <Popover.Positioner>
+                    <Popover.Content>
+                      <Popover.Header>
+                        <Popover.Title>Notifications</Popover.Title>
+                        <Popover.Description>
+                          You're all caught up. Check back later for new
+                          notifications.
+                        </Popover.Description>
+                      </Popover.Header>
+                    </Popover.Content>
+                  </Popover.Positioner>
+                </Portal>
+              </Popover.Root>
             </Dialog.Body>
             <Dialog.Footer>
               <Dialog.CloseTrigger

@@ -1,123 +1,141 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid";
 import type {
   HoverCardArrowProps,
-  HoverCardContentProps as HoverCardContentPrimitiveProps,
+  HoverCardArrowTipProps,
+  HoverCardContentProps,
+  HoverCardPositionerProps,
   HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid";
-import type { HoverCardRootContract } from "@pisagor/contracts";
+import type {
+  HoverCardContract,
+  HoverCardRootContract,
+} from "@pisagor/contracts";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
+import { type DialogTriggerRender, renderTrigger } from "./dialog";
 
 // #region Context
-const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "HoverCard",
   recipe: hoverCardRecipe,
 });
 // #endregion
 
 // #region Types
-export type LocalHoverCardRootProps = HoverCardRootPrimitiveProps &
+export type HoverCardRootProps = HoverCardRootPrimitiveProps &
   HoverCardRootContract;
 
-export type HoverCardProps = LocalHoverCardRootProps;
-
-export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
+export interface HoverCardProps extends HoverCardRootProps, HoverCardContract {
+  /** Card content. */
+  children?: JSX.Element;
   /**
    * Whether to render the arrow pointing at the trigger.
    *
    * @defaultValue true
    */
   showArrow?: boolean;
+  /**
+   * Trigger element that opens the card on hover or focus (render fn
+   * preferred).
+   */
+  trigger?: DialogTriggerRender;
 }
 // #endregion
 
 // #region Parts
-export function HoverCardRoot(props: LocalHoverCardRootProps): JSX.Element {
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<HoverCardRootProps>(HoverCardPrimitive.Root, {
+  defaultProps: {
+    closeDelay: 300,
+    openDelay: 600,
+    positioning: { placement: "top" },
+  },
+  name: "Root",
+  slot: "base",
+});
+
+const Trigger = withContext<HoverCardTriggerProps>(HoverCardPrimitive.Trigger, {
+  name: "Trigger",
+});
+
+const Positioner = withContext<HoverCardPositionerProps>(
+  HoverCardPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const Content = withContext<HoverCardContentProps>(HoverCardPrimitive.Content, {
+  name: "Content",
+});
+
+const Arrow = withContext<HoverCardArrowProps>(HoverCardPrimitive.Arrow, {
+  defaultProps: {
+    style: {
+      "--arrow-background": "var(--popover)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const ArrowTip = withContext<HoverCardArrowTipProps>(
+  HoverCardPrimitive.ArrowTip,
+  { name: "ArrowTip" },
+);
+// #endregion
+
+// #region Shorthand
+export function HoverCardShorthand(props: HoverCardProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "recipe",
-    "closeDelay",
-    "openDelay",
-    "positioning",
+    "children",
+    "classNames",
+    "showArrow",
+    "trigger",
   ]);
-  const slots = createMemo(() => (local.recipe ?? hoverCardRecipe)());
 
   return (
-    <HoverCardStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <HoverCardPrimitive.Root
-        {...rest}
-        closeDelay={local.closeDelay ?? 300}
-        openDelay={local.openDelay ?? 600}
-        positioning={local.positioning ?? { placement: "top" }}
-      />
-    </HoverCardStylesContext>
-  );
-}
+    <Root {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <Trigger
+          asChild={renderTrigger(local.trigger)}
+          class={local.classNames?.trigger}
+        />
+      </Show>
 
-export function HoverCardTrigger(props: HoverCardTriggerProps): JSX.Element {
-  return <HoverCardPrimitive.Trigger {...props} />;
-}
+      <Portal>
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            {local.children}
 
-export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["style"]);
-  const styles = useStyles();
-
-  return (
-    <HoverCardPrimitive.Arrow
-      {...rest}
-      style={{
-        "--arrow-background": "var(--popover)",
-        "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...(typeof local.style === "object" && local.style !== null
-          ? local.style
-          : {}),
-      }}
-    >
-      <HoverCardPrimitive.ArrowTip class={styles.slots.arrowTip()} />
-    </HoverCardPrimitive.Arrow>
-  );
-}
-
-export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class", "showArrow"]);
-  const styles = useStyles();
-
-  return (
-    <Portal>
-      <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content
-          {...rest}
-          class={styles.slots.content({ class: local.class })}
-        >
-          {local.children}
-          <Show when={local.showArrow ?? true}>
-            <HoverCardArrow />
-          </Show>
-        </HoverCardPrimitive.Content>
-      </HoverCardPrimitive.Positioner>
-    </Portal>
+            <Show when={local.showArrow ?? true}>
+              <Arrow class={local.classNames?.arrow}>
+                <ArrowTip class={local.classNames?.arrowTip} />
+              </Arrow>
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
 // #endregion
 
 export type {
   HoverCardArrowProps,
-  HoverCardRootProps,
+  HoverCardArrowTipProps,
+  HoverCardContentProps,
+  HoverCardPositionerProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid";
 
-export const HoverCard = Object.assign(HoverCardRoot, {
-  Arrow: HoverCardArrow,
-  Content: HoverCardContent,
-  Trigger: HoverCardTrigger,
+export const HoverCard = Object.assign(HoverCardShorthand, {
+  Arrow,
+  ArrowTip,
+  Content,
+  Positioner,
+  Root,
+  Trigger,
 });

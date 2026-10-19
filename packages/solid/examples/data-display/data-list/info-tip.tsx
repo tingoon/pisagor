@@ -1,5 +1,6 @@
-import { Button, DataList, Popover } from "@pisagor/solid";
+import { Portal } from "solid-js/web";
 import { InfoIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, DataList, Popover } from "@pisagor/solid";
 
 export function InfoTip() {
   const data = [
@@ -24,7 +25,7 @@ export function InfoTip() {
           value={item.value}
         >
           {item.label}
-          <Popover modal={false} positioning={{ placement: "top" }}>
+          <Popover.Root modal={false} positioning={{ placement: "top" }}>
             <Popover.Trigger
               asChild={(props) => (
                 <Button
@@ -37,8 +38,14 @@ export function InfoTip() {
                 </Button>
               )}
             />
-            <Popover.Content class="w-max text-sm">{item.info}</Popover.Content>
-          </Popover>
+            <Portal>
+              <Popover.Positioner>
+                <Popover.Content class="w-max text-sm">
+                  {item.info}
+                </Popover.Content>
+              </Popover.Positioner>
+            </Portal>
+          </Popover.Root>
         </DataList.Item>
       ))}
     </DataList.Root>

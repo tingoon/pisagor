@@ -7,10 +7,7 @@ import { HoverCard } from "@pisagor/solid";
 ## Anatomy
 
 ```tsx
-<HoverCard>
-  <HoverCard.Trigger />
-  <HoverCard.Content />
-</HoverCard>
+<HoverCard trigger={(props) => <Button {...props} />}>{content}</HoverCard>
 ```
 
 ## Examples

@@ -1,6 +1,7 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/solid";
 import type {
   TooltipArrowProps,
+  TooltipArrowTipProps,
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipRootProps as TooltipRootPrimitiveProps,
@@ -9,18 +10,17 @@ import type {
 import type { TooltipContract, TooltipRootContract } from "@pisagor/contracts";
 import { tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, JSX } from "solid-js";
-import { createMemo, Show, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Tooltip",
   recipe: tooltipRecipe,
 });
 // #endregion
-
 // #region Types
 export type TooltipRootProps = TooltipRootPrimitiveProps & TooltipRootContract;
 
@@ -50,42 +50,39 @@ export interface TooltipProps
 // #endregion
 
 // #region Parts
-function TooltipRoot(props: TooltipRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "recipe",
-    "closeDelay",
-    "openDelay",
-    "positioning",
-  ]);
-  const slots = createMemo(() => (local.recipe ?? tooltipRecipe)());
+// The root renders no element; `base` is an empty slot.
+const TooltipRoot = withProvider<TooltipRootProps>(TooltipPrimitive.Root, {
+  defaultProps: {
+    closeDelay: 150,
+    openDelay: 400,
+    positioning: { placement: "top" },
+  },
+  name: "Root",
+  slot: "base",
+});
 
-  return (
-    <TooltipStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <TooltipPrimitive.Root
-        {...rest}
-        closeDelay={local.closeDelay ?? 150}
-        openDelay={local.openDelay ?? 400}
-        positioning={local.positioning ?? { placement: "top" }}
-      />
-    </TooltipStylesContext>
-  );
-}
+const TooltipTrigger = withContext<TooltipTriggerProps>(
+  TooltipPrimitive.Trigger,
+  { name: "Trigger" },
+);
 
-const TooltipContent: Component<TooltipContentProps> = withContext(
+const TooltipPositioner = withContext<TooltipPositionerProps>(
+  TooltipPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const TooltipContent = withContext<TooltipContentProps>(
   TooltipPrimitive.Content,
   { name: "Content" },
 );
 
-const TooltipArrow: Component<TooltipArrowProps> = withContext(
-  TooltipPrimitive.Arrow,
-  { name: "Arrow" },
+const TooltipArrow = withContext<TooltipArrowProps>(TooltipPrimitive.Arrow, {
+  name: "Arrow",
+});
+
+const TooltipArrowTip = withContext<TooltipArrowTipProps>(
+  TooltipPrimitive.ArrowTip,
+  { name: "ArrowTip" },
 );
 // #endregion
 
@@ -109,9 +106,12 @@ function TooltipShorthand(props: TooltipProps): JSX.Element {
     <TooltipRoot {...rest}>
       <Show
         fallback={
-          <TooltipPrimitive.Trigger {...local.triggerProps}>
+          <TooltipTrigger
+            {...local.triggerProps}
+            class={local.classNames?.trigger}
+          >
             {local.children as JSX.Element}
-          </TooltipPrimitive.Trigger>
+          </TooltipTrigger>
         }
         when={isHandle()}
       >
@@ -123,7 +123,10 @@ function TooltipShorthand(props: TooltipProps): JSX.Element {
       </Show>
 
       <Portal>
-        <TooltipPrimitive.Positioner {...local.positionerProps}>
+        <TooltipPositioner
+          {...local.positionerProps}
+          class={local.classNames?.positioner}
+        >
           <TooltipContent
             {...local.contentProps}
             class={cn(local.class, local.classNames?.content)}
@@ -133,12 +136,12 @@ function TooltipShorthand(props: TooltipProps): JSX.Element {
                 {...local.arrowProps}
                 class={local.classNames?.arrow}
               >
-                <TooltipPrimitive.ArrowTip />
+                <TooltipArrowTip class={local.classNames?.arrowTip} />
               </TooltipArrow>
             </Show>
             {local.content}
           </TooltipContent>
-        </TooltipPrimitive.Positioner>
+        </TooltipPositioner>
       </Portal>
     </TooltipRoot>
   );
@@ -147,15 +150,16 @@ function TooltipShorthand(props: TooltipProps): JSX.Element {
 
 export const Tooltip = Object.assign(TooltipShorthand, {
   Arrow: TooltipArrow,
-  ArrowTip: TooltipPrimitive.ArrowTip,
+  ArrowTip: TooltipArrowTip,
   Content: TooltipContent,
-  Positioner: TooltipPrimitive.Positioner,
+  Positioner: TooltipPositioner,
   Root: TooltipRoot,
-  Trigger: TooltipPrimitive.Trigger,
+  Trigger: TooltipTrigger,
 });
 
 export type {
   TooltipArrowProps,
+  TooltipArrowTipProps,
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,

@@ -1,9 +1,10 @@
+import { Portal } from "solid-js/web";
 import { Button, Input, Popover } from "@pisagor/solid";
 
 export function Anchor() {
   return (
     <div>
-      <Popover>
+      <Popover.Root>
         <div class="flex items-center gap-2">
           <Popover.Trigger
             asChild={(props) => (
@@ -21,14 +22,20 @@ export function Anchor() {
               />
             )}
           />
-          <Popover.Content class="w-56">
-            <Popover.Header
-              description="We'll send you a link to reset your password."
-              title="Enter your email"
-            />
-          </Popover.Content>
+          <Portal>
+            <Popover.Positioner>
+              <Popover.Content class="w-56">
+                <Popover.Header>
+                  <Popover.Title>Enter your email</Popover.Title>
+                  <Popover.Description>
+                    We'll send you a link to reset your password.
+                  </Popover.Description>
+                </Popover.Header>
+              </Popover.Content>
+            </Popover.Positioner>
+          </Portal>
         </div>
-      </Popover>
+      </Popover.Root>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
 import { Avatar, AvatarGroup, Button, Popover } from "@pisagor/solid";
 import { For } from "solid-js";
+import { Portal } from "solid-js/web";
 
 export function AvatarGroupOverflow() {
   return (
@@ -10,7 +11,7 @@ export function AvatarGroupOverflow() {
           <Avatar alt={user.name} fallback={user.fallback} src={user.src} />
         )}
       </For>
-      <Popover positioning={{ placement: "bottom-end" }}>
+      <Popover.Root positioning={{ placement: "bottom-end" }}>
         <Popover.Trigger
           asChild={(props) => (
             <Button
@@ -24,22 +25,26 @@ export function AvatarGroupOverflow() {
             </Button>
           )}
         />
-        <Popover.Content>
-          <Popover.Body>
-            <AvatarGroup.Root>
-              <For each={users}>
-                {(user) => (
-                  <Avatar
-                    alt={user.name}
-                    fallback={user.fallback}
-                    src={user.src}
-                  />
-                )}
-              </For>
-            </AvatarGroup.Root>
-          </Popover.Body>
-        </Popover.Content>
-      </Popover>
+        <Portal>
+          <Popover.Positioner>
+            <Popover.Content>
+              <Popover.Body>
+                <AvatarGroup.Root>
+                  <For each={users}>
+                    {(user) => (
+                      <Avatar
+                        alt={user.name}
+                        fallback={user.fallback}
+                        src={user.src}
+                      />
+                    )}
+                  </For>
+                </AvatarGroup.Root>
+              </Popover.Body>
+            </Popover.Content>
+          </Popover.Positioner>
+        </Portal>
+      </Popover.Root>
     </AvatarGroup.Root>
   );
 }

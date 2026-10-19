@@ -1,8 +1,9 @@
+import { Portal } from "solid-js/web";
 import { Button, Popover } from "@pisagor/solid";
 
 export function Modal() {
   return (
-    <Popover modal>
+    <Popover.Root modal>
       <Popover.Trigger
         asChild={(props) => (
           <Button {...props()} variant="outline">
@@ -10,12 +11,18 @@ export function Modal() {
           </Button>
         )}
       />
-      <Popover.Content>
-        <Popover.Header
-          description="You're all caught up. Check back later for new notifications."
-          title="Notifications"
-        />
-      </Popover.Content>
-    </Popover>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Header>
+              <Popover.Title>Notifications</Popover.Title>
+              <Popover.Description>
+                You're all caught up. Check back later for new notifications.
+              </Popover.Description>
+            </Popover.Header>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
+    </Popover.Root>
   );
 }
