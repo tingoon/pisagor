@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
@@ -16,7 +17,9 @@ export function Disabled() {
       {items.map((id) => (
         <Sortable.Item key={id} value={id}>
           <Sortable.ItemContent>
-            <Sortable.Handle />
+            <Sortable.Handle>
+              <DotsSixVerticalIcon />
+            </Sortable.Handle>
             <span className="text-sm font-medium">{labels[id]}</span>
           </Sortable.ItemContent>
         </Sortable.Item>

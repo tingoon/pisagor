@@ -1,4 +1,8 @@
-import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  DotsSixVerticalIcon,
+} from "@phosphor-icons/react";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/react";
 import type { ColumnDef } from "@pisagor/react/data-grid";
 import { DataGrid } from "@pisagor/react/data-grid";
@@ -264,7 +268,9 @@ export function WithSortableData() {
             {data.map((user) => (
               <Sortable.Item key={user.id} value={user.id}>
                 <Sortable.ItemContent>
-                  <Sortable.Handle />
+                  <Sortable.Handle>
+                    <DotsSixVerticalIcon />
+                  </Sortable.Handle>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium">{user.name}</p>
                     <p className="text-muted-foreground truncate text-xs">

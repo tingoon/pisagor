@@ -1,4 +1,3 @@
-import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   SortableItemRootContract,
   SortableRootContract,
@@ -499,7 +498,7 @@ export function SortableHandle({
       role="button"
       tabIndex={disabled ? -1 : 0}
     >
-      {children ?? <DotsSixVerticalIcon />}
+      {children}
     </div>
   );
 }
