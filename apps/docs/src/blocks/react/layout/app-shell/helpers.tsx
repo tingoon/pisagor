@@ -1,4 +1,4 @@
-import { useFilter, useHotkey, useListCollection } from "@ark-ui/react";
+import { useFilter, useHotkey, useListCollection, Portal } from "@ark-ui/react";
 import {
   BellIcon,
   CaretUpDownIcon,
@@ -294,31 +294,40 @@ export function SearchCommand() {
 /** Bell button with a notifications popover. */
 export function NotificationsPopover() {
   return (
-    <Popover positioning={{ placement: "bottom-end" }}>
+    <Popover.Root positioning={{ placement: "bottom-end" }}>
       <Popover.Trigger asChild>
         <Button aria-label="Notifications" size="icon-md" variant="ghost">
           <BellIcon />
         </Button>
       </Popover.Trigger>
-      <Popover.Content className={styles.popoverContent()}>
-        <Popover.Header title="Notifications" />
-        <Popover.Body>
-          <ul className={styles.notificationList()}>
-            {notifications.map((notification) => (
-              <li className={styles.notificationItem()} key={notification.id}>
-                <Avatar fallback={notification.initials} size="sm" />
-                <span className={styles.notificationText()}>
-                  {notification.text}
-                  <span className={styles.notificationTime()}>
-                    {notification.time}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Popover.Body>
-      </Popover.Content>
-    </Popover>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content className={styles.popoverContent()}>
+            <Popover.Header>
+              <Popover.Title>Notifications</Popover.Title>
+            </Popover.Header>
+            <Popover.Body>
+              <ul className={styles.notificationList()}>
+                {notifications.map((notification) => (
+                  <li
+                    className={styles.notificationItem()}
+                    key={notification.id}
+                  >
+                    <Avatar fallback={notification.initials} size="sm" />
+                    <span className={styles.notificationText()}>
+                      {notification.text}
+                      <span className={styles.notificationTime()}>
+                        {notification.time}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Popover.Body>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
+    </Popover.Root>
   );
 }
 

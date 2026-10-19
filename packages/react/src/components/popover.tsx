@@ -2,226 +2,233 @@ import { Popover as PopoverPrimitive, Portal } from "@ark-ui/react";
 import type {
   PopoverAnchorProps,
   PopoverArrowProps,
+  PopoverArrowTipProps,
   PopoverCloseTriggerProps,
-  PopoverContentProps as PopoverContentPrimitiveProps,
+  PopoverContentProps,
+  PopoverDescriptionProps,
   PopoverPositionerProps,
-  PopoverRootProps,
+  PopoverRootProps as PopoverRootPrimitiveProps,
+  PopoverTitleProps,
   PopoverTriggerProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
-import type {
-  PopoverContract,
-  PopoverHeaderContract,
-  PopoverRootContract,
-} from "@pisagor/contracts";
+import type { PopoverContract, PopoverRootContract } from "@pisagor/contracts";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import { cn } from "@pisagor/utils";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const {
-  Context: PopoverStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Popover",
   recipe: popoverRecipe,
 });
 // #endregion
 
 // #region Types
-export interface PopoverContentProps
-  extends PopoverContentPrimitiveProps, PopoverRootContract {
-  /**
-   * Whether to show a close button at the top right corner.
-   *
-   * @defaultValue false
-   */
-  showCloseButton?: boolean;
-}
+export type PopoverRootProps = PopoverRootPrimitiveProps & PopoverRootContract;
 
-export interface PopoverHeaderProps
-  extends Omit<ComponentPropsWithRef<"div">, "title">, PopoverHeaderContract {
-  description?: string;
-  title?: string;
-}
+export type PopoverHeaderProps = ComponentPropsWithRef<"div">;
 
 export type PopoverBodyProps = ComponentPropsWithRef<"div">;
 
 export type PopoverFooterProps = ComponentPropsWithRef<"div">;
 
-export type PopoverProps = PopoverRootProps & PopoverContract;
+export interface PopoverProps extends PopoverRootProps, PopoverContract {
+  /** Footer action area. */
+  actions?: ReactNode;
+  /** Supporting copy in the header. */
+  description?: ReactNode;
+  /**
+   * Whether to render an arrow pointing at the trigger.
+   *
+   * @defaultValue false
+   */
+  showArrow?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue false
+   */
+  showCloseButton?: boolean;
+  /** Popover title. */
+  title?: ReactNode;
+  /** Trigger content that opens the popover. */
+  trigger?: ReactNode;
+}
 // #endregion
 
 // #region Parts
-export function PopoverRoot({ modal = false, ...rest }: PopoverRootProps) {
-  return <PopoverPrimitive.Root {...rest} modal={modal} />;
-}
+// The root renders no element; `base` styles the content surface.
+const Root = withProvider<PopoverRootProps>(PopoverPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export function PopoverTrigger(props: PopoverTriggerProps) {
-  return <PopoverPrimitive.Trigger {...props} />;
-}
+const Trigger = withContext<PopoverTriggerProps>(PopoverPrimitive.Trigger, {
+  name: "Trigger",
+});
 
-export function PopoverAnchor(props: PopoverAnchorProps) {
-  return <PopoverPrimitive.Anchor {...props} />;
-}
+const Anchor = withContext<PopoverAnchorProps>(PopoverPrimitive.Anchor, {
+  name: "Anchor",
+});
 
-export function PopoverPositioner(props: PopoverPositionerProps) {
-  return <PopoverPrimitive.Positioner {...props} />;
-}
+const Positioner = withContext<PopoverPositionerProps>(
+  PopoverPrimitive.Positioner,
+  { name: "Positioner" },
+);
 
-export function PopoverContent({
-  showCloseButton = false,
+const Content = withContext<PopoverContentProps>(PopoverPrimitive.Content, {
+  name: "Content",
+  slot: "base",
+});
+
+const ArrowTip = withContext<PopoverArrowTipProps>(PopoverPrimitive.ArrowTip, {
+  name: "ArrowTip",
+});
+
+const Arrow = withContext<PopoverArrowProps>(PopoverPrimitive.Arrow, {
+  defaultProps: {
+    children: <ArrowTip />,
+    style: {
+      "--arrow-background": "var(--popover)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const Header = withContext<PopoverHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<PopoverTitleProps>(PopoverPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<PopoverDescriptionProps>(
+  PopoverPrimitive.Description,
+  { name: "Description" },
+);
+
+const Body = withContext<PopoverBodyProps>("div", { name: "Body" });
+
+const Footer = withContext<PopoverFooterProps>("div", { name: "Footer" });
+
+const CloseTrigger = withContext<PopoverCloseTriggerProps>(
+  PopoverPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<PopoverCloseTriggerProps>(
+  PopoverPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "close" },
+);
+// #endregion
+
+// #region Shorthand
+export function PopoverShorthand({
+  actions,
   children,
-  recipe = popoverRecipe,
-  className,
+  classNames,
+  description,
+  showArrow = false,
+  showCloseButton = false,
+  title,
+  trigger,
   ...rest
-}: PopoverContentProps) {
+}: PopoverProps) {
   const { m } = useLocale();
-  const slots = recipe();
+  const hasHeader = title !== undefined || description !== undefined;
 
   return (
-    <Portal>
-      <PopoverPositioner>
-        <PopoverStylesContext value={{ slots, variants: {} as never }}>
-          <PopoverPrimitive.Content
-            {...rest}
-            className={slots.base({ className })}
-          >
-            {children}
+    <Root {...rest}>
+      {trigger !== undefined && (
+        <Trigger asChild className={classNames?.trigger}>
+          {trigger}
+        </Trigger>
+      )}
 
-            {!!showCloseButton && (
-              <PopoverCloseTrigger asChild>
+      <Portal>
+        <Positioner className={classNames?.positioner}>
+          <Content className={classNames?.base}>
+            {showArrow && (
+              <Arrow className={classNames?.arrow}>
+                <ArrowTip className={classNames?.arrowTip} />
+              </Arrow>
+            )}
+
+            {hasHeader && (
+              <Header className={classNames?.header}>
+                {title !== undefined && (
+                  <Title className={classNames?.title}>{title}</Title>
+                )}
+
+                {description !== undefined && (
+                  <Description className={classNames?.description}>
+                    {description}
+                  </Description>
+                )}
+              </Header>
+            )}
+
+            {children !== undefined && (
+              <ScrollArea>
+                <Body className={cn("overflow-visible", classNames?.body)}>
+                  {children}
+                </Body>
+              </ScrollArea>
+            )}
+
+            {actions !== undefined && (
+              <Footer className={classNames?.footer}>{actions}</Footer>
+            )}
+
+            {showCloseButton && (
+              <InlineCloseTrigger asChild className={classNames?.close}>
                 <Button
                   aria-label={m("popover.close")}
-                  className={slots.close()}
                   size="icon-sm"
                   variant="ghost"
                 >
                   <XIcon />
                 </Button>
-              </PopoverCloseTrigger>
+              </InlineCloseTrigger>
             )}
-          </PopoverPrimitive.Content>
-        </PopoverStylesContext>
-      </PopoverPositioner>
-    </Portal>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
-
-export function PopoverHeader({
-  children,
-  description,
-  title,
-  className,
-  ...rest
-}: PopoverHeaderProps) {
-  const { slots } = useStyles();
-
-  return (
-    <div
-      {...rest}
-      className={slots.header({ className })}
-      data-part="header"
-      data-scope="popover"
-    >
-      {!!title && <PopoverTitle>{title}</PopoverTitle>}
-
-      {!!description && <PopoverDescription>{description}</PopoverDescription>}
-
-      {children}
-    </div>
-  );
-}
-
-export const PopoverTitle = withContext(PopoverPrimitive.Title, {
-  name: "Title",
-});
-
-export const PopoverDescription = withContext(PopoverPrimitive.Description, {
-  name: "Description",
-});
-
-export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
-  const { slots } = useStyles();
-
-  return (
-    <ScrollArea>
-      <div
-        {...rest}
-        className={slots.body({
-          className: ["overflow-visible", className].filter(Boolean).join(" "),
-        })}
-        data-part="body"
-        data-scope="popover"
-      />
-    </ScrollArea>
-  );
-}
-
-export const PopoverFooter = withContext<ComponentProps<"div">>("div", {
-  name: "Footer",
-});
-
-export function PopoverCloseTrigger(props: PopoverCloseTriggerProps) {
-  return <PopoverPrimitive.CloseTrigger {...props} />;
-}
-
-export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
-  const { slots } = useStyles();
-
-  return (
-    <PopoverPrimitive.Arrow
-      {...rest}
-      style={{
-        "--arrow-background": "var(--popover)",
-        "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...style,
-      }}
-    >
-      <PopoverPrimitive.ArrowTip className={slots.arrowTip()} />
-    </PopoverPrimitive.Arrow>
-  );
-}
-// #endregion
-
-// #region Display Names
-PopoverRoot.displayName = "Popover";
-PopoverTrigger.displayName = "Popover.Trigger";
-PopoverAnchor.displayName = "Popover.Anchor";
-PopoverPositioner.displayName = "Popover.Positioner";
-PopoverContent.displayName = "Popover.Content";
-PopoverHeader.displayName = "Popover.Header";
-PopoverBody.displayName = "Popover.Body";
-PopoverCloseTrigger.displayName = "Popover.CloseTrigger";
-PopoverArrow.displayName = "Popover.Arrow";
-
 // #endregion
 
 export type {
   PopoverAnchorProps,
   PopoverArrowProps,
+  PopoverArrowTipProps,
   PopoverCloseTriggerProps,
+  PopoverContentProps,
   PopoverDescriptionProps,
   PopoverPositionerProps,
-  PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
 } from "@ark-ui/react";
 
-export const Popover = Object.assign(PopoverRoot, {
-  Anchor: PopoverAnchor,
-  Arrow: PopoverArrow,
-  Body: PopoverBody,
-  CloseTrigger: PopoverCloseTrigger,
-  Content: PopoverContent,
-  Description: PopoverDescription,
-  Footer: PopoverFooter,
-  Header: PopoverHeader,
-  Positioner: PopoverPositioner,
-  Title: PopoverTitle,
-  Trigger: PopoverTrigger,
+export const Popover = Object.assign(PopoverShorthand, {
+  Anchor,
+  Arrow,
+  ArrowTip,
+  Body,
+  CloseTrigger,
+  Content,
+  Description,
+  Footer,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });

@@ -1,16 +1,30 @@
 ## Anatomy
 
 ```tsx
-<Popover>
+<Popover.Root>
   <Popover.Trigger />
   <Popover.Anchor />
-  <Popover.Content>
-    <Popover.Header /> {/* or Title + Description */}
-    <Popover.Body />
-    <Popover.Footer />
-    <Popover.CloseTrigger />
-  </Popover.Content>
-</Popover>
+  <Popover.Positioner>
+    <Popover.Content>
+      <Popover.Arrow>
+        <Popover.ArrowTip />
+      </Popover.Arrow>
+      <Popover.Header>
+        <Popover.Title />
+        <Popover.Description />
+      </Popover.Header>
+      <Popover.Body />
+      <Popover.Footer />
+      <Popover.CloseTrigger />
+    </Popover.Content>
+  </Popover.Positioner>
+</Popover.Root>
 ```
 
-`Positioner` and `Arrow` are available when you need custom positioning chrome.
+## Examples
+
+### Compound
+
+Build the popover from parts when the shorthand props are not enough. Wrap the positioner in `Portal`, and wrap `Popover.Body` in `ScrollArea` when the body should scroll.
+
+<Example name="Nested" />

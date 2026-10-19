@@ -2,16 +2,12 @@ import { Button, Popover } from "@pisagor/react";
 
 export function CloseButton() {
   return (
-    <Popover>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Open</Button>
-      </Popover.Trigger>
-      <Popover.Content className="w-72" showCloseButton>
-        <Popover.Header
-          description="You're all caught up. Check back later for new notifications."
-          title="Notifications"
-        />
-      </Popover.Content>
-    </Popover>
+    <Popover
+      classNames={{ base: "w-72" }}
+      description="You're all caught up. Check back later for new notifications."
+      showCloseButton
+      title="Notifications"
+      trigger={<Button variant="outline">Open</Button>}
+    />
   );
 }

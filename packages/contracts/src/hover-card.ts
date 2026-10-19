@@ -1,4 +1,5 @@
-import type { HoverCardRecipeFn } from "@pisagor/recipes";
+import type { HoverCardRecipeFn, HoverCardRecipeSlot } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared HoverCard root contract: recipe override. Used by compound roots;
@@ -11,4 +12,13 @@ export interface HoverCardRootContract {
    * @defaultValue hoverCardRecipe
    */
   recipe?: HoverCardRecipeFn;
+}
+
+/**
+ * HoverCard shorthand contract. Compose with `HoverCardRootContract` /
+ * framework `HoverCardRootProps`.
+ */
+export interface HoverCardContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<HoverCardRecipeSlot>;
 }

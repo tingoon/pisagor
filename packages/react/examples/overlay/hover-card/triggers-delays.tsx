@@ -3,31 +3,30 @@ import { Avatar, Button, HoverCard } from "@pisagor/react";
 
 export function TriggersDelays() {
   return (
-    <HoverCard closeDelay={300} openDelay={200}>
-      <HoverCard.Trigger asChild>
-        <Button variant="link">Hover here</Button>
-      </HoverCard.Trigger>
-      <HoverCard.Content>
-        <div className="flex gap-2">
-          <Avatar fallback="JD" />
-          <div className="flex flex-col gap-2">
-            <a
-              className="text-sm font-medium underline underline-offset-4"
-              href="https://example.com/profile/jane.doe"
-              rel="noopener"
-              target="_blank"
-            >
-              @jane.doe
-            </a>
-            <p className="text-muted-foreground text-sm">Frontend Developer</p>
+    <HoverCard
+      closeDelay={300}
+      openDelay={200}
+      trigger={<Button variant="link">Hover here</Button>}
+    >
+      <div className="flex gap-2">
+        <Avatar fallback="JD" />
+        <div className="flex flex-col gap-2">
+          <a
+            className="text-sm font-medium underline underline-offset-4"
+            href="https://example.com/profile/jane.doe"
+            rel="noopener"
+            target="_blank"
+          >
+            @jane.doe
+          </a>
+          <p className="text-muted-foreground text-sm">Frontend Developer</p>
 
-            <p className="text-muted-foreground flex items-center gap-1 text-xs">
-              <MapPinIcon className="size-4" />
-              Joined in 2016
-            </p>
-          </div>
+          <p className="text-muted-foreground flex items-center gap-1 text-xs">
+            <MapPinIcon className="size-4" />
+            Joined in 2016
+          </p>
         </div>
-      </HoverCard.Content>
+      </div>
     </HoverCard>
   );
 }
