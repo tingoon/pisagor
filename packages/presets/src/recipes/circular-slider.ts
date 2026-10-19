@@ -8,6 +8,7 @@ export const circularSliderRecipe = tv({
       "data-disabled:pointer-events-none data-disabled:opacity-64",
     ],
     control: ["group/circular-slider-control absolute inset-0"],
+    label: [],
     marker: [
       "absolute inset-s-[calc(50%-1px)] top-0 bottom-0 w-0.5",
       "before:absolute before:top-(--marker-offset) before:left-1/2 before:-translate-x-1/2",

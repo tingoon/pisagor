@@ -9,9 +9,9 @@ export function Sizes() {
           defaultValue={45}
           key={size}
           size={size}
-        >
-          <CircularSlider.ValueText suffix="°" />
-        </CircularSlider>
+          showValue
+          valueSuffix="°"
+        />
       ))}
     </div>
   );

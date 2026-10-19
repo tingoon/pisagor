@@ -3,11 +3,10 @@ import { CircularSlider } from "@pisagor/react";
 
 export function WithValue() {
   return (
-    <CircularSlider>
-      <CircularSlider.ValueText
-        prefix={<ThermometerIcon className="size-4" />}
-        suffix="°"
-      />
-    </CircularSlider>
+    <CircularSlider
+      showValue
+      valuePrefix={<ThermometerIcon className="size-4" />}
+      valueSuffix="°"
+    />
   );
 }

@@ -14,8 +14,10 @@ const brandCircularSliderRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <CircularSlider recipe={brandCircularSliderRecipe}>
-      <CircularSlider.ValueText suffix="°" />
-    </CircularSlider>
+    <CircularSlider
+      recipe={brandCircularSliderRecipe}
+      showValue
+      valueSuffix="°"
+    />
   );
 }
