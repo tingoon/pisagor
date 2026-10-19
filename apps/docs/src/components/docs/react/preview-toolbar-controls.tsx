@@ -1,5 +1,6 @@
 import { Select } from "@pisagor/react";
 import { useLayoutEffect, useRef, useState } from "react";
+import type { PreviewLayout } from "#/lib/preview-config";
 
 const SURFACE_STORAGE_KEY = "pisagor.docs.preview-surface";
 const SURFACE_EVENT = "pisagor:preview-surface";
@@ -18,15 +19,27 @@ function asValue(next: string | string[]): string | undefined {
   return Array.isArray(next) ? next[0] : next;
 }
 
-/** Surface + optional viewport selects for the component preview toolbar. */
+function isPreviewLayout(value: string): value is PreviewLayout {
+  return value === "centered" || value === "padded" || value === "fullscreen";
+}
+
+/**
+ * Surface + layout + optional viewport selects for the component preview
+ * toolbar.
+ */
 export function PreviewToolbarControls({
+  layouts,
+  defaultLayout = "centered",
   surfaces,
   viewports,
 }: {
+  layouts: Option[];
+  defaultLayout?: PreviewLayout;
   surfaces: Option[];
   viewports?: Option[];
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState(defaultLayout);
   const [surface, setSurface] = useState("page");
   const [viewport, setViewport] = useState("desktop");
 
@@ -55,6 +68,16 @@ export function PreviewToolbarControls({
       /* storage blocked */
     }
     document.dispatchEvent(new CustomEvent(SURFACE_EVENT, { detail: value }));
+  }
+
+  function applyLayout(value: string) {
+    if (!isPreviewLayout(value)) return;
+    const panel = previewRoot()?.querySelector<HTMLElement>(
+      '[data-panel="preview"]',
+    );
+    if (!panel) return;
+    panel.dataset.previewLayout = value;
+    setLayout(value);
   }
 
   function applyViewport(value: string) {
@@ -97,6 +120,16 @@ export function PreviewToolbarControls({
 
   return (
     <div className="flex flex-wrap items-center gap-1" ref={rootRef}>
+      <Select
+        aria-label="Layout"
+        items={layouts}
+        onValueChange={(next) => {
+          const value = asValue(next);
+          if (value) applyLayout(value);
+        }}
+        size="sm"
+        value={[layout]}
+      />
       <Select
         aria-label="Surface"
         items={surfaces}

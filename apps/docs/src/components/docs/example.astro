@@ -7,7 +7,10 @@
 import type { Framework } from "#/lib/nav";
 import { withDocsBase } from "#/lib/nav";
 import { getDocsExampleContext } from "#/lib/docs-example-context";
-import { isOpenInNewTabPreview } from "#/lib/preview-config";
+import {
+  isOpenInNewTabPreview,
+  type PreviewLayout,
+} from "#/lib/preview-config";
 import ComponentPreview from "./component-preview.astro";
 
 interface Props {
@@ -19,6 +22,8 @@ interface Props {
   kind?: "component" | "form" | "block";
   language?: string;
   title?: string;
+  /** Storybook-style canvas layout override (`centered` | `padded` | `fullscreen`). */
+  layout?: PreviewLayout;
 }
 
 const ctx = getDocsExampleContext(Astro.locals);
@@ -52,6 +57,7 @@ const title = Astro.props.title ?? name;
   framework={framework}
   kind={kind}
   language={language}
+  layout={Astro.props.layout}
   previewHref={isOpenInNewTabPreview(exampleId)
     ? withDocsBase(`/preview/${framework}/${exampleId}/${name}`)
     : undefined}
@@ -60,9 +66,6 @@ const title = Astro.props.title ?? name;
   {framework === "astro" ? (
     <slot />
   ) : (
-    <div
-      class="flex min-h-12 w-full items-center justify-center"
-      data-example-slot={name}
-    />
+    <div class="docs-preview-slot w-full" data-example-slot={name} />
   )}
 </ComponentPreview>

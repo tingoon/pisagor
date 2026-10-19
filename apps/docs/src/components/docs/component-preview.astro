@@ -3,9 +3,11 @@ import { ArrowSquareOutIcon, BugIcon } from "@phosphor-icons/react";
 import { Button, Separator, Surface } from "@pisagor/astro";
 import type { Framework } from "#/lib/nav";
 import {
+  defaultPreviewLayout,
   isFramedPreview,
   isOpenInNewTabPreview,
   isViewportControlsPreview,
+  type PreviewLayout,
 } from "#/lib/preview-config";
 import CodeBlock from "./code-block.astro";
 import { PreviewThemeToggle } from "./react/preview-theme-toggle";
@@ -43,6 +45,11 @@ interface Props {
    * Defaults to `isViewportControlsPreview(exampleId)` (false for most demos).
    */
   viewportControls?: boolean;
+  /**
+   * Storybook-style canvas layout (`centered` | `padded` | `fullscreen`).
+   * Defaults to `defaultPreviewLayout(exampleId)`.
+   */
+  layout?: PreviewLayout;
 }
 
 const title = Astro.props.title;
@@ -57,6 +64,7 @@ const openInNewTab =
   Astro.props.openInNewTab ?? isOpenInNewTabPreview(exampleId);
 const viewportControls =
   Astro.props.viewportControls ?? isViewportControlsPreview(exampleId);
+const layout = Astro.props.layout ?? defaultPreviewLayout(exampleId, framed);
 const reportUrl =
   Astro.props.reportUrl ??
   "https://github.com/tingoon/pisagor/issues/new?labels=docs&title=" +
@@ -69,6 +77,13 @@ const surfaces = [
   { label: "Secondary", value: "secondary" },
   { label: "Tertiary", value: "tertiary" },
   { label: "Glass", value: "glass" },
+] as const;
+
+/** Storybook canvas layouts — https://storybook.js.org/docs/configure/story-layout */
+const layouts = [
+  { label: "Centered", value: "centered" },
+  { label: "Padded", value: "padded" },
+  { label: "Fullscreen", value: "fullscreen" },
 ] as const;
 
 const viewports = [
@@ -123,6 +138,8 @@ const viewports = [
 
       <PreviewToolbarControls
         client:load
+        defaultLayout={layout}
+        layouts={[...layouts]}
         surfaces={[...surfaces]}
         viewports={viewportControls ? [...viewports] : undefined}
       />
@@ -132,11 +149,10 @@ const viewports = [
   <div
     data-panel="preview"
     data-preview-framed={framed ? "" : undefined}
+    data-preview-layout={layout}
     class:list={[
-      "bg-background bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_60%)] text-foreground",
-      framed
-        ? "docs-preview-frame"
-        : "flex min-h-48 items-center justify-center px-4 py-8 sm:px-6 sm:py-10",
+      "docs-preview-canvas bg-background bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_60%)] text-foreground",
+      framed ? "docs-preview-frame" : "min-h-48",
     ]}
   >
     <div

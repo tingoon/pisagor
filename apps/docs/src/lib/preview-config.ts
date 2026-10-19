@@ -17,6 +17,30 @@ const OPEN_IN_NEW_TAB_PREVIEW_IDS = new Set(["app-shell"]);
  */
 const VIEWPORT_CONTROLS_PREVIEW_IDS = new Set(["app-shell"]);
 
+/**
+ * Storybook-style canvas layouts for the docs preview chrome.
+ *
+ * @see https://storybook.js.org/docs/configure/story-layout
+ */
+export type PreviewLayout = "centered" | "padded" | "fullscreen";
+
+/**
+ * Full-width layout demos — default to Storybook `padded` so the component
+ * spans the canvas instead of sitting centered like a compact control.
+ */
+const PADDED_LAYOUT_PREVIEW_IDS = new Set([
+  "accordion",
+  "card",
+  "collapsible",
+  "navbar",
+  "resizable",
+  "scroll-area",
+  "separator",
+  "sidebar",
+  "surface",
+  "toolbar",
+]);
+
 export function isFramedPreview(id: string | undefined): boolean {
   return id != null && FRAMED_PREVIEW_IDS.has(id);
 }
@@ -27,4 +51,15 @@ export function isOpenInNewTabPreview(id: string | undefined): boolean {
 
 export function isViewportControlsPreview(id: string | undefined): boolean {
   return id != null && VIEWPORT_CONTROLS_PREVIEW_IDS.has(id);
+}
+
+/** Default canvas layout for a preview (Storybook `parameters.layout`). */
+export function defaultPreviewLayout(
+  id: string | undefined,
+  framed = isFramedPreview(id),
+): PreviewLayout {
+  if (framed) return "fullscreen";
+  if (id != null && PADDED_LAYOUT_PREVIEW_IDS.has(id)) return "padded";
+
+  return "centered";
 }
