@@ -2,7 +2,9 @@ import type {
   FormControlGroupShellVariantProps,
   TagsInputItemRecipeFn,
   TagsInputRecipeFn,
+  TagsInputRecipeSlot,
 } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared TagsInput root contract: visual variants and recipe override. Shell
@@ -30,4 +32,13 @@ export interface TagsInputItemRootContract extends FormControlGroupShellVariantP
    * @defaultValue tagsInputItemRecipe
    */
   recipe?: TagsInputItemRecipeFn;
+}
+
+/**
+ * TagsInput shorthand contract. Compose with `TagsInputRootContract` /
+ * framework `TagsInputRootProps`.
+ */
+export interface TagsInputContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<TagsInputRecipeSlot>;
 }

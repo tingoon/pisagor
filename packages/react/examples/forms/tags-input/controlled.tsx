@@ -8,17 +8,7 @@ export function Controlled() {
   return (
     <Field>
       <Field.Label>Frameworks</Field.Label>
-      <TagsInput className="w-full" onValueChange={setValue} value={value}>
-        <TagsInput.Context>
-          {({ value }) =>
-            value.map((tag, index) => (
-              <TagsInput.Item index={index} key={tag} value={tag}>
-                {tag}
-              </TagsInput.Item>
-            ))
-          }
-        </TagsInput.Context>
-      </TagsInput>
+      <TagsInput className="w-full" onValueChange={setValue} value={value} />
     </Field>
   );
 }
