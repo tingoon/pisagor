@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -40,12 +41,20 @@ export function MultiplePanels() {
         <Resizable.Panel className={panelClassName()} id="1">
           Left
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="1:2" withHandle />
+        <Resizable.ResizeTrigger id="1:2">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon className="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel className={panelClassName()} id="2">
           Center
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="2:3" withHandle />
+        <Resizable.ResizeTrigger id="2:3">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon className="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel className={panelClassName()} id="3">
           Right

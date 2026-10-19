@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -36,7 +37,11 @@ export function MinMax() {
         <Resizable.Panel className={panelClassName()} id="1">
           Sidebar
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="1:2" withHandle />
+        <Resizable.ResizeTrigger id="1:2">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon className="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel className={panelClassName()} id="2">
           Content
