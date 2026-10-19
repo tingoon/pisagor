@@ -1,5 +1,9 @@
 import { Portal } from "@ark-ui/react";
-import { CalendarIcon } from "@phosphor-icons/react";
+import {
+  CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 
 export function WithPresets() {
@@ -51,10 +55,18 @@ export function WithPresets() {
               </div>
               <div className="max-sm:pb-3 sm:ps-2">
                 <Calendar.ViewControl>
-                  <Calendar.PrevTrigger />
+                  <Calendar.PrevTrigger asChild>
+                    <Button size="icon-md" variant="ghost">
+                      <CaretLeftIcon aria-hidden className="rtl:rotate-180" />
+                    </Button>
+                  </Calendar.PrevTrigger>
                   <Calendar.MonthSelect />
                   <Calendar.YearSelect />
-                  <Calendar.NextTrigger />
+                  <Calendar.NextTrigger asChild>
+                    <Button size="icon-md" variant="ghost">
+                      <CaretRightIcon aria-hidden className="rtl:rotate-180" />
+                    </Button>
+                  </Calendar.NextTrigger>
                 </Calendar.ViewControl>
                 <Calendar.Table>
                   <Calendar.WeekDays />

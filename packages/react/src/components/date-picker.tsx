@@ -13,7 +13,13 @@ import type {
   DatePickerTriggerProps,
   DatePickerValueTextProps,
 } from "@ark-ui/react";
-import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
+import {
+  CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  ClockIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import type {
   DatePickerContract,
   DatePickerRootContract,
@@ -21,6 +27,7 @@ import type {
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { createContext, type ReactNode, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
@@ -218,10 +225,18 @@ function DefaultCalendar() {
   return (
     <>
       <Calendar.ViewControl>
-        <Calendar.PrevTrigger />
+        <Calendar.PrevTrigger asChild>
+          <Button size="icon-md" variant="ghost">
+            <CaretLeftIcon aria-hidden className="rtl:rotate-180" />
+          </Button>
+        </Calendar.PrevTrigger>
         <Calendar.MonthSelect />
         <Calendar.YearSelect />
-        <Calendar.NextTrigger />
+        <Calendar.NextTrigger asChild>
+          <Button size="icon-md" variant="ghost">
+            <CaretRightIcon aria-hidden className="rtl:rotate-180" />
+          </Button>
+        </Calendar.NextTrigger>
       </Calendar.ViewControl>
       <Calendar.Table>
         <Calendar.WeekDays />

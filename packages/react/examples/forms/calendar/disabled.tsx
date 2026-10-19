@@ -1,4 +1,5 @@
-import { Calendar, Card } from "@pisagor/react";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { Button, Calendar, Card } from "@pisagor/react";
 
 export function Disabled() {
   return (
@@ -6,9 +7,17 @@ export function Disabled() {
       <Card.Content>
         <Calendar disabled>
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger asChild>
+              <Button size="icon-md" variant="ghost">
+                <CaretLeftIcon aria-hidden className="rtl:rotate-180" />
+              </Button>
+            </Calendar.PrevTrigger>
             <Calendar.ViewDate />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger asChild>
+              <Button size="icon-md" variant="ghost">
+                <CaretRightIcon aria-hidden className="rtl:rotate-180" />
+              </Button>
+            </Calendar.NextTrigger>
           </Calendar.ViewControl>
           <Calendar.Table>
             <Calendar.WeekDays />

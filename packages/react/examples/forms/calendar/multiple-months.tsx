@@ -1,4 +1,5 @@
-import { Calendar, Card, parseDate } from "@pisagor/react";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { Button, Calendar, Card, parseDate } from "@pisagor/react";
 import { useState } from "react";
 
 export function MultipleMonths() {
@@ -14,9 +15,17 @@ export function MultipleMonths() {
           value={value}
         >
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger asChild>
+              <Button size="icon-md" variant="ghost">
+                <CaretLeftIcon aria-hidden className="rtl:rotate-180" />
+              </Button>
+            </Calendar.PrevTrigger>
             <Calendar.ViewDate />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger asChild>
+              <Button size="icon-md" variant="ghost">
+                <CaretRightIcon aria-hidden className="rtl:rotate-180" />
+              </Button>
+            </Calendar.NextTrigger>
           </Calendar.ViewControl>
           <div className="flex gap-2">
             <Calendar.Table>
