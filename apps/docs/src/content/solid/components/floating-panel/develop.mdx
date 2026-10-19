@@ -7,23 +7,17 @@ import { FloatingPanel } from "@pisagor/solid";
 ## Anatomy
 
 ```tsx
-<FloatingPanel>
-  <FloatingPanel.Trigger />
-  <FloatingPanel.Content>
-    <FloatingPanel.Header>
-      <FloatingPanel.Title />
-      <FloatingPanel.Control>
-        <FloatingPanel.Minimize />
-        <FloatingPanel.Maximize />
-        <FloatingPanel.Restore />
-        <FloatingPanel.CloseTrigger />
-      </FloatingPanel.Control>
-    </FloatingPanel.Header>
-    <FloatingPanel.Body />
-    <FloatingPanel.Footer />
-  </FloatingPanel.Content>
+<FloatingPanel
+  actions={<Button />}
+  icon={<Icon />}
+  title="…"
+  trigger={<Button />}
+>
+  {body}
 </FloatingPanel>
 ```
+
+The shorthand renders the drag header, stage controls (`showStageControls`), close button (`showCloseButton`), scrollable body (`scrollFade`), footer and resize handles (`resizable`).
 
 ## Examples
 

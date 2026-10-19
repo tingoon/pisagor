@@ -1,3 +1,4 @@
+export * from "./compound";
 export * from "./controlled-position";
 export * from "./controlled-size";
 export * from "./custom-recipe";

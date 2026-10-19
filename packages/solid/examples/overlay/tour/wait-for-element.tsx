@@ -1,7 +1,7 @@
 import { waitForElement, waitForEvent } from "@ark-ui/solid";
+import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
-import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 
 export function WaitForElement() {
@@ -62,14 +62,14 @@ export function WaitForElement() {
 
   return (
     <div class="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start tour
-            </Button>
-          )}
-        />
+      <Tour
+        steps={steps}
+        trigger={(props) => (
+          <Button {...props} variant="outline">
+            Start tour
+          </Button>
+        )}
+      >
         <div class="flex flex-col gap-2">
           <Button
             id="btn-add-item"
@@ -95,14 +95,6 @@ export function WaitForElement() {
             ))}
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

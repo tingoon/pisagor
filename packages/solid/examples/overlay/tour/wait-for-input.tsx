@@ -85,14 +85,14 @@ export function WaitForInput() {
 
   return (
     <div class="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start form tutorial
-            </Button>
-          )}
-        />
+      <Tour
+        steps={steps}
+        trigger={(props) => (
+          <Button {...props} variant="outline">
+            Start form tutorial
+          </Button>
+        )}
+      >
         <div class="border-border bg-muted/50 flex flex-col gap-2 rounded-lg border p-4">
           <Field>
             <Field.Label for="input-name">Name</Field.Label>
@@ -113,14 +113,6 @@ export function WaitForInput() {
             </Field.Label>
           </Field>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

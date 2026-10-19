@@ -51,14 +51,12 @@ export function Events() {
           addLog(`Step changed: ${details.stepId ?? "unknown"}`)
         }
         steps={steps}
+        trigger={(props) => (
+          <Button {...props} variant="outline">
+            Start tour
+          </Button>
+        )}
       >
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start tour
-            </Button>
-          )}
-        />
         <div class="flex flex-wrap gap-2">
           <div
             class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -81,22 +79,13 @@ export function Events() {
         </div>
         <div class="bg-muted text-muted-foreground flex h-32 flex-col gap-1 overflow-y-auto rounded-md border p-3 font-mono text-xs">
           <strong>Event Log:</strong>
-          {logs().length === 0 ? (
-            <span>Start the tour to see events</span>
-          ) : (
-            <For each={logs()}>{(log) => <span>{log.message}</span>}</For>
-          )}
+          <For
+            each={logs()}
+            fallback={<span>Start the tour to see events</span>}
+          >
+            {(log) => <span>{log.message}</span>}
+          </For>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Footer>
-            <Tour.Actions />
-          </Tour.Footer>
-        </Tour.Content>
       </Tour>
     </div>
   );

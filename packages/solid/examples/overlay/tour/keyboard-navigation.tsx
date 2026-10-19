@@ -1,6 +1,6 @@
+import { KeyboardIcon } from "@squidlab/phosphor-solid/icons";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
-import { KeyboardIcon } from "@squidlab/phosphor-solid/icons";
 
 export function KeyboardNavigation() {
   const steps: TourStepType[] = [
@@ -38,14 +38,15 @@ export function KeyboardNavigation() {
 
   return (
     <div class="flex flex-col gap-2">
-      <Tour keyboardNavigation steps={steps}>
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start tour
-            </Button>
-          )}
-        />
+      <Tour
+        keyboardNavigation
+        steps={steps}
+        trigger={(props) => (
+          <Button {...props} variant="outline">
+            Start tour
+          </Button>
+        )}
+      >
         <p class="text-muted-foreground flex items-center gap-2 text-sm">
           <KeyboardIcon class="size-4" />
           Use arrow keys to navigate, Escape to close
@@ -70,14 +71,6 @@ export function KeyboardNavigation() {
             Step 3
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

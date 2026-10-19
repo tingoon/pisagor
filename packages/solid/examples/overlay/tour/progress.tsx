@@ -1,9 +1,11 @@
+import { For } from "solid-js";
+import { Portal } from "solid-js/web";
 import type { TourStepType } from "@pisagor/solid";
-import { Button, Tour, useTourContext } from "@pisagor/solid";
+import { Button, Tour, useTour, useTourContext } from "@pisagor/solid";
 
 export function Progress() {
   const TourProgressBar = () => {
-    const { tour } = useTourContext();
+    const tour = useTourContext();
 
     return (
       <div class="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl">
@@ -58,17 +60,14 @@ export function Progress() {
       type: "tooltip",
     },
   ];
+  const tour = useTour({ steps });
 
   return (
     <div class="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start tour
-            </Button>
-          )}
-        />
+      <Tour.Root tour={tour}>
+        <Button onClick={() => tour().start()} variant="outline">
+          Start tour
+        </Button>
         <div class="flex flex-wrap gap-2">
           <div
             class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -95,17 +94,45 @@ export function Progress() {
             Step 4
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-
-          <TourProgressBar />
-        </Tour.Content>
-      </Tour>
+        <Portal>
+          <Tour.Backdrop />
+          <Tour.Spotlight />
+          <Tour.Positioner>
+            <Tour.Content>
+              <Tour.Header>
+                <Tour.ProgressText />
+                <Tour.Title />
+                <Tour.Description />
+              </Tour.Header>
+              <Tour.Actions>
+                {(actions) => (
+                  <Tour.Control>
+                    <For each={actions()}>
+                      {(action) => (
+                        <Tour.ActionTrigger
+                          action={action}
+                          asChild={(props) => (
+                            <Button
+                              {...props()}
+                              size="sm"
+                              variant={
+                                action.action === "next" ? "default" : "outline"
+                              }
+                            >
+                              {action.label}
+                            </Button>
+                          )}
+                        />
+                      )}
+                    </For>
+                  </Tour.Control>
+                )}
+              </Tour.Actions>
+              <TourProgressBar />
+            </Tour.Content>
+          </Tour.Positioner>
+        </Portal>
+      </Tour.Root>
     </div>
   );
 }
