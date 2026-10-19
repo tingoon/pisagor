@@ -4,10 +4,10 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationClick() {
   return (
     <Card>
-      <Card.Header
-        description="Click the text to start editing"
-        title="Edit with click"
-      />
+      <Card.Header>
+        <Card.Title>Edit with click</Card.Title>
+        <Card.Description>Click the text to start editing</Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>

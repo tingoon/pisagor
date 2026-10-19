@@ -12,10 +12,12 @@ export interface EditableUserCardProps {
 export function EditableUserCard({ className }: EditableUserCardProps) {
   return (
     <Card className={cn(styles.root(), className)}>
-      <Card.Header
-        description="Click in the field or edit button to start editing"
-        title="Edit user"
-      />
+      <Card.Header>
+        <Card.Title>Edit user</Card.Title>
+        <Card.Description>
+          Click in the field or edit button to start editing
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>

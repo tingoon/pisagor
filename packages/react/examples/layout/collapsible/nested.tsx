@@ -4,10 +4,10 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/react";
 export function Nested() {
   return (
     <Card className="w-80">
-      <Card.Header
-        description="We'll help you get started"
-        title="Getting started"
-      />
+      <Card.Header>
+        <Card.Title>Getting started</Card.Title>
+        <Card.Description>We'll help you get started</Card.Description>
+      </Card.Header>
 
       <Card.Content>
         <Collapsible.Root>

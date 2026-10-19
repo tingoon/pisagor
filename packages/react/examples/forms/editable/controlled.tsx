@@ -7,10 +7,11 @@ export function Controlled() {
 
   return (
     <Card>
-      <Card.Header
-        description="Click the edit button to start editing"
-        title="Edit user"
-      >
+      <Card.Header>
+        <Card.Title>Edit user</Card.Title>
+        <Card.Description>
+          Click the edit button to start editing
+        </Card.Description>
         <Card.Action>
           <Button
             onClick={() => setIsEditing((prev) => !prev)}

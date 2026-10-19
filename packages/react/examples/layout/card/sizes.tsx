@@ -7,7 +7,10 @@ export function Sizes() {
     <div className="flex flex-col gap-4">
       {sizes.map((size) => (
         <Card key={size} size={size}>
-          <Card.Header description={`Size ${size}`} title="Card header" />
+          <Card.Header>
+            <Card.Title>Card header</Card.Title>
+            <Card.Description>{`Size ${size}`}</Card.Description>
+          </Card.Header>
           <Card.Content>
             <p className="text-muted-foreground text-sm">Card content</p>
           </Card.Content>

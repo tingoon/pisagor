@@ -4,10 +4,12 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationFocus() {
   return (
     <Card>
-      <Card.Header
-        description="Focus the field to start editing (default activation mode)"
-        title="Edit with focus"
-      />
+      <Card.Header>
+        <Card.Title>Edit with focus</Card.Title>
+        <Card.Description>
+          Focus the field to start editing (default activation mode)
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>

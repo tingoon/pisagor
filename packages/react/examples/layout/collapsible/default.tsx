@@ -5,7 +5,8 @@ export function Default() {
   return (
     <Card className="w-96">
       <Collapsible.Root>
-        <Card.Header title="Total visits">
+        <Card.Header>
+          <Card.Title>Total visits</Card.Title>
           <Card.Description>
             <div className="flex items-center gap-1">
               <Badge variant="success">22.3%</Badge>

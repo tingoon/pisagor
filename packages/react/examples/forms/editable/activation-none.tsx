@@ -4,10 +4,12 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationNone() {
   return (
     <Card>
-      <Card.Header
-        description="Use the edit button to start editing (no automatic activation)"
-        title="Edit with manual trigger"
-      />
+      <Card.Header>
+        <Card.Title>Edit with manual trigger</Card.Title>
+        <Card.Description>
+          Use the edit button to start editing (no automatic activation)
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>

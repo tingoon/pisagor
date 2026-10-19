@@ -3,10 +3,12 @@ import { Card, Editable, Field, Input } from "@pisagor/react";
 export function WithoutControls() {
   return (
     <Card>
-      <Card.Header
-        description="Click the field to edit, press Enter to save, Escape to cancel"
-        title="Edit without controls"
-      />
+      <Card.Header>
+        <Card.Title>Edit without controls</Card.Title>
+        <Card.Description>
+          Click the field to edit, press Enter to save, Escape to cancel
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>

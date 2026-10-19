@@ -4,10 +4,12 @@ import { Button, Card, Editable, Field, Textarea } from "@pisagor/react";
 export function WithTextarea() {
   return (
     <Card>
-      <Card.Header
-        description="Double-click the text to start editing"
-        title="Edit description"
-      />
+      <Card.Header>
+        <Card.Title>Edit description</Card.Title>
+        <Card.Description>
+          Double-click the text to start editing
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
