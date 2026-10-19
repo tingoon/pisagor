@@ -4,6 +4,8 @@ export const ratingRecipe = tv({
   defaultVariants: {
     /** Size scale. */
     size: "md",
+    /** Visual emphasis. */
+    variant: "primary",
   },
   slots: {
     base: [
@@ -38,6 +40,12 @@ export const ratingRecipe = tv({
       md: {},
       sm: {
         base: "**:data-[scope=rating]:data-[part=item-indicator]:size-4",
+      },
+    },
+    variant: {
+      primary: {},
+      secondary: {
+        base: "opacity-90",
       },
     },
   },

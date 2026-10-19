@@ -1,4 +1,9 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlRadioToggleBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const radioGroupRecipe = tv({
   base: [
@@ -8,12 +13,29 @@ export const radioGroupRecipe = tv({
 });
 
 export const radioGroupItemRecipe = tv({
+  compoundVariants: formControlFillCompounds({
+    primary: "bg-input/30 shadow-xs/5",
+    slot: "control",
+  }),
+  defaultVariants: {
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: ["inline-flex items-center gap-2", "data-disabled:opacity-64"],
     control: [
+      ...formControlRadioToggleBase,
       "data-focus-visible:data-invalid:border-destructive/64 data-focus-visible:data-invalid:ring-destructive/48",
-      "data-invalid:data-[state=checked]:before:bg-destructive data-invalid:data-[state=checked]:bg-transparent",
     ],
+  },
+  variants: {
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
   },
 });
 
@@ -24,3 +46,4 @@ export type RadioGroupRecipeSlot = keyof RadioGroupRecipe;
 export type RadioGroupItemRecipeFn = typeof radioGroupItemRecipe;
 export type RadioGroupItemRecipe = ReturnType<RadioGroupItemRecipeFn>;
 export type RadioGroupItemRecipeSlot = keyof RadioGroupItemRecipe;
+export type RadioGroupItemVariantProps = VariantProps<RadioGroupItemRecipeFn>;

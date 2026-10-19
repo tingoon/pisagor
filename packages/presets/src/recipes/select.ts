@@ -1,6 +1,20 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlShellBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const selectRecipe = tv({
+  compoundVariants: formControlFillCompounds({ slot: "trigger" }),
+  defaultVariants: {
+    /** Control size. */
+    size: "md",
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     clearTrigger: [
       "absolute end-8 top-1/2 -translate-y-1/2",
@@ -59,6 +73,7 @@ export const selectRecipe = tv({
     itemText: ["flex w-full flex-1 items-center gap-2"],
     separator: ["bg-border pointer-events-none -mx-1 my-1 h-px"],
     trigger: [
+      ...formControlShellBase,
       "w-fit",
       "flex items-center gap-2",
       "text-sm",
@@ -70,8 +85,21 @@ export const selectRecipe = tv({
     triggerActions: ["ms-auto flex items-center gap-1"],
     valueText: ["min-w-0", "flex items-center gap-2", "truncate text-nowrap"],
   },
+  variants: {
+    size: {
+      lg: { trigger: "h-9" },
+      md: { trigger: "h-8" },
+      sm: { trigger: "h-7" },
+    },
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
+  },
 });
 
 export type SelectRecipeFn = typeof selectRecipe;
 export type SelectRecipe = ReturnType<SelectRecipeFn>;
 export type SelectRecipeSlot = keyof SelectRecipe;
+export type SelectVariantProps = VariantProps<SelectRecipeFn>;

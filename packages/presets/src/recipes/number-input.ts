@@ -1,6 +1,20 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlGroupShellBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const numberInputRecipe = tv({
+  compoundVariants: formControlFillCompounds({ slot: "control" }),
+  defaultVariants: {
+    /** Control size. */
+    size: "md",
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: [
       "group/number-field flex w-full flex-col items-start gap-2",
@@ -8,6 +22,7 @@ export const numberInputRecipe = tv({
     ],
     clearTrigger: ["relative order-last me-1 shrink-0"],
     control: [
+      ...formControlGroupShellBase,
       "relative",
       "flex w-full justify-between",
       "text-base",
@@ -52,8 +67,21 @@ export const numberInputRecipe = tv({
     ],
     scrubber: ["flex cursor-ew-resize"],
   },
+  variants: {
+    size: {
+      lg: { control: "h-9" },
+      md: { control: "h-8" },
+      sm: { control: "h-7" },
+    },
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
+  },
 });
 
 export type NumberInputRecipeFn = typeof numberInputRecipe;
 export type NumberInputRecipe = ReturnType<NumberInputRecipeFn>;
 export type NumberInputRecipeSlot = keyof NumberInputRecipe;
+export type NumberInputVariantProps = VariantProps<NumberInputRecipeFn>;

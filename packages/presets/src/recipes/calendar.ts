@@ -1,6 +1,20 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+import {
+  formControlFillCompounds,
+  formControlShellBase,
+  formControlSurfaceVariantOptions,
+} from "./form-control";
 
 export const calendarRecipe = tv({
+  compoundVariants: formControlFillCompounds({ slot: "select" }),
+  defaultVariants: {
+    /** Control size. */
+    size: "md",
+    /** Surface variant. */
+    surfaceVariant: undefined,
+    /** Visual emphasis. */
+    variant: "primary",
+  },
   slots: {
     base: ["[--cell-size:--spacing(9)]", "w-fit"],
     control: ["inline-flex items-center gap-2"],
@@ -11,6 +25,7 @@ export const calendarRecipe = tv({
     prevTrigger: "me-auto",
     rangeText: ["text-sm font-medium"],
     select: [
+      ...formControlShellBase,
       "appearance-none",
       "w-full min-w-0",
       "ps-2.5 pe-8",
@@ -40,6 +55,18 @@ export const calendarRecipe = tv({
     tableRow: ["mt-1 flex w-full"],
     view: ["flex flex-col gap-1"],
     viewControl: ["relative", "h-auto w-full", "flex items-center gap-1.5"],
+  },
+  variants: {
+    size: {
+      lg: { select: "h-9" },
+      md: { select: "h-8" },
+      sm: { select: "h-7" },
+    },
+    surfaceVariant: formControlSurfaceVariantOptions,
+    variant: {
+      primary: {},
+      secondary: {},
+    },
   },
 });
 
@@ -78,6 +105,7 @@ export const calendarTableCellRecipe = tv({
 export type CalendarRecipeFn = typeof calendarRecipe;
 export type CalendarRecipe = ReturnType<CalendarRecipeFn>;
 export type CalendarRecipeSlot = keyof CalendarRecipe;
+export type CalendarVariantProps = VariantProps<CalendarRecipeFn>;
 
 export type CalendarTableCellRecipeFn = typeof calendarTableCellRecipe;
 export type CalendarTableCellRecipe = ReturnType<CalendarTableCellRecipeFn>;

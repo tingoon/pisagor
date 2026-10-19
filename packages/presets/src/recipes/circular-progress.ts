@@ -19,7 +19,7 @@ export const circularProgressRecipe = tv({
       "**:data-[scope=circular-progress]:data-[part=track-bg]:fill-none",
       "**:data-[scope=circular-progress]:data-[part=track-bg]:stroke-input",
     ],
-    value: ["text-xs font-medium tabular-nums", "pointer-events-none"],
+    valueText: ["text-xs font-medium tabular-nums", "pointer-events-none"],
     valueWrapper: [
       "pointer-events-none absolute inset-0 flex items-center justify-center",
     ],
