@@ -4,5 +4,5 @@ export { default as Default } from "./default.svelte";
 export { default as Disabled } from "./disabled.svelte";
 export { default as Multiple } from "./multiple.svelte";
 export { default as NonCollapsible } from "./non-collapsible.svelte";
-export { default as Sizes } from "./sizes.svelte";
-export { default as WithCard } from "./with-card.svelte";
+export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
+export { default as OrientationVertical } from "./orientation-vertical.svelte";

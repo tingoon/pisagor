@@ -3,23 +3,12 @@
     Accordion as AccordionPrimitive,
     type AccordionItemContentProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./accordion.context";
+  import { withContext } from "./accordion.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: AccordionItemContentProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: AccordionItemContentProps = $props();
+  const part = withContext(() => rest, { name: "ItemContent" });
 </script>
 
-<AccordionPrimitive.ItemContent
-  {...rest}
-  class={slots.content({ class: cn(className) })}
->
-  <div class={slots.body()}>
-    {@render children?.()}
-  </div>
+<AccordionPrimitive.ItemContent {...part.props}>
+  {@render children?.()}
 </AccordionPrimitive.ItemContent>
