@@ -3,21 +3,15 @@
     FileUpload as FileUploadPrimitive,
     type FileUploadItemPreviewProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useFileUploadItem } from "./file-upload.context";
+  import { withFileUploadItemContext } from "./file-upload.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: FileUploadItemPreviewProps = $props();
-  const styles = useFileUploadItem();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: FileUploadItemPreviewProps = $props();
+  const part = withFileUploadItemContext(() => rest, {
+    name: "ItemPreview",
+    slot: "preview",
+  });
 </script>
 
-<FileUploadPrimitive.ItemPreview
-  {...rest}
-  class={slots.preview({ class: cn(className) })}
->
+<FileUploadPrimitive.ItemPreview {...part.props}>
   {@render children?.()}
 </FileUploadPrimitive.ItemPreview>

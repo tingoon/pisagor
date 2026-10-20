@@ -1,5 +1,5 @@
-import { segmentGroupRecipe } from "@pisagor/recipes";
 import { SegmentGroup } from "@pisagor/solid";
+import { segmentGroupRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandSegmentGroupRecipe = tv({

@@ -2,27 +2,13 @@
   import {
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerContentProps,
-    Portal,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./color-picker.context";
+  import { withContext } from "./color-picker.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: ColorPickerContentProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-<Portal>
-  <ColorPickerPrimitive.Positioner>
-    <ColorPickerPrimitive.Content
-      {...rest}
-      class={slots.content({ class: cn(className) })}
-    >
-      {@render children?.()}
-    </ColorPickerPrimitive.Content>
-  </ColorPickerPrimitive.Positioner>
-</Portal>
+<ColorPickerPrimitive.Content {...part.props}>
+  {@render children?.()}
+</ColorPickerPrimitive.Content>

@@ -4,15 +4,14 @@
   import DialogBody from "../dialog/dialog-body.svelte";
   import { useStyles } from "./sheet.context";
 
-  let { class: className, ...rest }: ComponentProps<typeof DialogBody> =
-    $props();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: ComponentProps<typeof DialogBody> = $props();
   const styles = useStyles();
-  const slots = $derived(styles.slots);
 </script>
 
-<DialogBody
-  {...rest}
-  class={slots.body({ class: cn(className) })}
-  data-part="body"
-  data-scope="sheet"
-/>
+<DialogBody {...rest} class={styles.slots.body({ class: cn(className) })}>
+  {@render children?.()}
+</DialogBody>

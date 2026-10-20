@@ -1,6 +1,5 @@
-import type { NodeProviderProps } from "@pisagor/solid";
-import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { PackageIcon } from "@squidlab/phosphor-solid/icons";
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 
 export function CustomIconsFolder() {
   const collection = createTreeCollection({
@@ -34,41 +33,9 @@ export function CustomIconsFolder() {
     },
   });
 
-  const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
-    return (
-      <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl
-              expandedIcon={node.expandedIcon}
-              icon={node.icon}
-            >
-              {node.name}
-            </TreeView.BranchControl>
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} node={child} />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
-
   return (
     <div>
-      <TreeView collection={collection}>
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} node={node} />
-          ))}
-        </TreeView.Tree>
-      </TreeView>
+      <TreeView collection={collection} />
     </div>
   );
 }

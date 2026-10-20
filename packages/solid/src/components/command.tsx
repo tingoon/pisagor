@@ -1,5 +1,6 @@
 import {
   type CollectionItem,
+  type HTMLArkProps,
   useFilter,
   useListCollection,
 } from "@ark-ui/solid";
@@ -10,351 +11,163 @@ import type {
   CommandRootContract,
 } from "@pisagor/contracts";
 import { commandRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, For, Show, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { MagnifyingGlassIcon, createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
+  ComboboxControlProps,
   ComboboxEmptyProps,
   ComboboxInputProps,
-  ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps,
-  ComboboxItemProps,
   ComboboxListProps,
   ComboboxRootProps,
 } from "./combobox";
 import { Combobox } from "./combobox";
-import {
-  Dialog,
-  type DialogContentProps,
-  type DialogTriggerProps,
-} from "./dialog";
-import type { InputProps } from "./input";
+import type { DialogRootProps, DialogTriggerRender } from "./dialog";
+import { Dialog, renderTrigger } from "./dialog";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
-const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Command",
   recipe: commandRecipe,
 });
 // #endregion
 
-export interface CommandDialogContentProps
-  extends DialogContentProps, CommandDialogContract {
-  description?: string;
-  title?: string;
-  recipe?: typeof commandRecipe;
-}
-
-export interface CommandInputProps extends Omit<ComboboxInputProps, "size"> {
-  size?: InputProps["size"];
-}
-
-export type CommandListProps = ComboboxListProps;
-export type CommandContentProps = ComboboxContentProps;
-
+// #region Types
 export interface CommandRootProps<T extends CollectionItem = CollectionItem>
   extends
     Omit<
       ComboboxRootProps<T>,
       "emptyText" | "items" | "placeholder" | "recipe"
     >,
-    CommandRootContract {
-  class?: string;
-}
+    CommandRootContract {}
 
-export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends
-    Omit<CommandRootProps<T>, "children">,
-    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
-  emptyText?: JSX.Element;
-  placeholder?: string;
-}
+export type CommandControlProps = ComboboxControlProps;
 
-export interface CommandShorthandItem extends Omit<
-  CommandPresetItem,
-  "label" | "icon"
-> {
+export type CommandInputProps = ComboboxInputProps;
+
+export type CommandContentProps = ComboboxContentProps;
+
+export type CommandListProps = ComboboxListProps;
+
+export type CommandEmptyProps = ComboboxEmptyProps;
+
+export type CommandSeparatorProps = HTMLArkProps<"div">;
+
+export type CommandShortcutProps = HTMLArkProps<"span">;
+
+export type CommandFooterProps = HTMLArkProps<"div">;
+
+export interface CommandItem extends Omit<CommandPresetItem, "label" | "icon"> {
   icon?: JSX.Element;
   label: string;
 }
 
-export interface CommandShorthandProps extends Omit<
-  CommandProps<CommandShorthandItem>,
-  "collection" | "children"
-> {
+export interface CommandProps
+  extends
+    Omit<CommandRootProps<CommandItem>, "children" | "collection">,
+    Omit<CommandContract, "emptyText" | "items" | "placeholder"> {
+  /** Text shown when no item matches. */
   emptyText?: JSX.Element;
-  items: CommandShorthandItem[];
+  /** Footer content, such as keyboard hints. */
+  footer?: JSX.Element;
+  /** Items; grouped by `group` and filtered as the user types. */
+  items: CommandItem[];
+  /** Search input placeholder. */
   placeholder?: string;
 }
 
-export type CommandSeparatorProps = ComponentProps<"div">;
-export type CommandShortcutProps = ComponentProps<"span">;
-export type CommandFooterProps = ComponentProps<"div">;
-
-export const CommandDialog = Dialog.Root;
-
-export function CommandDialogTrigger(props: DialogTriggerProps): JSX.Element {
-  return <Dialog.Trigger {...props} />;
+export interface CommandDialogProps
+  extends
+    Omit<DialogRootProps, "recipe">,
+    Omit<CommandDialogContract, "description" | "title"> {
+  /** The command palette. */
+  children?: JSX.Element;
+  /** Visually hidden dialog description. */
+  description?: string;
+  /** Command style recipe override (dialog content and header slots). */
+  recipe?: typeof commandRecipe;
+  /** Visually hidden dialog title. */
+  title?: string;
+  /** Element that opens the dialog (render fn preferred). */
+  trigger?: DialogTriggerRender;
 }
+// #endregion
 
-function CommandDialogFrame(
-  props: Omit<CommandDialogContentProps, "recipe">,
-): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, [
-    "size",
-    "children",
-    "description",
-    "title",
-    "class",
-  ]);
-  const styles = useStyles();
+// #region Parts
+const RootBase = withProvider<CommandRootProps>(Combobox.Root, {
+  defaultProps: {
+    closeOnSelect: false,
+    disableLayer: true,
+    inputBehavior: "autohighlight",
+    loopFocus: false,
+    open: true,
+    selectionBehavior: "clear",
+    showIndicator: false,
+  },
+  name: "Root",
+  slot: "base",
+});
 
-  return (
-    <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content
-          {...rest}
-          class={styles.slots.dialogContent({ class: local.class })}
-          showCloseButton={false}
-          size={local.size ?? "lg"}
-        >
-          <Dialog.Header class={styles.slots.dialogHeader()}>
-            <Dialog.Title>{m("command.title", local.title)}</Dialog.Title>
-            <Dialog.Description>
-              {local.description ?? "Search for a command to run..."}
-            </Dialog.Description>
-          </Dialog.Header>
-          {local.children}
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Portal>
-  );
-}
-
-export function CommandDialogContent(
-  props: CommandDialogContentProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe"]);
-
-  const slots = createMemo(() => (local.recipe ?? commandRecipe)());
-
-  return (
-    <CommandStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <CommandDialogFrame {...rest} />
-    </CommandStylesContext>
-  );
-}
-
-function CommandRootFrame(
-  props: Omit<CommandRootProps, "recipe">,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <Combobox.Root
-      {...rest}
-      class={styles.slots.base({ class: local.class })}
-      closeOnSelect={false}
-      disableLayer
-      inputBehavior="autohighlight"
-      loopFocus={false}
-      open
-      selectionBehavior="clear"
-      showIndicator={false}
-    />
-  );
-}
-
-export function CommandRoot<T extends CollectionItem = CollectionItem>(
+/** Always-open combobox tuned for command palettes. */
+const Root = RootBase as <T extends CollectionItem = CollectionItem>(
   props: CommandRootProps<T>,
-): JSX.Element {
-  const [local, rest] = splitProps(props as CommandRootProps, ["recipe"]);
+) => JSX.Element;
 
-  const slots = createMemo(() => (local.recipe ?? commandRecipe)());
+const Control = withContext<CommandControlProps>(Combobox.Control, {
+  name: "Control",
+});
 
-  return (
-    <CommandStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <CommandRootFrame {...rest} />
-    </CommandStylesContext>
-  );
-}
+const Input = Combobox.Input;
 
-export function CommandContent(props: CommandContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Content = withContext<CommandContentProps>(Combobox.Content, {
+  name: "Content",
+});
 
-  return (
-    <Combobox.Content
-      {...rest}
-      class={styles.slots.content({ class: local.class })}
-    />
-  );
-}
+const List = withContext<CommandListProps>(Combobox.List, { name: "List" });
 
-export function CommandInput(props: CommandInputProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "class"]);
-  const styles = useStyles();
+const Empty = withContext<CommandEmptyProps>(Combobox.Empty, {
+  name: "Empty",
+});
 
-  return (
-    <Combobox.Control class={styles.slots.control()}>
-      <InputGroup
-        class={styles.slots.input({ class: local.class })}
-        size={local.size}
-      >
-        <InputGroup.Addon>
-          <MagnifyingGlassIcon aria-hidden class={styles.slots.inputIcon()} />
-        </InputGroup.Addon>
-        <Combobox.Input
-          {...rest}
-          asChild={(inputProps) => (
-            <InputGroup.Input {...inputProps()} autofocus />
-          )}
-        />
-      </InputGroup>
-    </Combobox.Control>
-  );
-}
+const Separator_ = withContext<CommandSeparatorProps>(Separator, {
+  name: "Separator",
+});
 
-export function CommandList(props: CommandListProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Shortcut = withContext<CommandShortcutProps>("span", {
+  name: "Shortcut",
+});
 
-  return (
-    <div class={styles.slots.listWrapper()}>
-      <Combobox.List
-        {...rest}
-        class={styles.slots.list({ class: local.class })}
-      />
-    </div>
-  );
-}
+const Footer = withContext<CommandFooterProps>("div", { name: "Footer" });
+// #endregion
 
-export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <Combobox.Empty
-      {...rest}
-      class={styles.slots.empty({ class: local.class })}
-    >
-      {local.children || m("command.empty")}
-    </Combobox.Empty>
-  );
-}
-
-export function CommandItemGroup(
-  props: ComboboxItemGroupProps & { heading?: JSX.Element },
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["heading", "children"]);
-
-  return (
-    <Combobox.ItemGroup {...rest}>
-      <Show when={local.heading}>
-        {(heading) => (
-          <Combobox.ItemGroupLabel>{heading()}</Combobox.ItemGroupLabel>
-        )}
-      </Show>
-      {local.children}
-    </Combobox.ItemGroup>
-  );
-}
-
-export function CommandItemGroupLabel(
-  props: ComboboxItemGroupLabelProps,
-): JSX.Element {
-  return <Combobox.ItemGroupLabel {...props} />;
-}
-
-export function CommandItem(props: ComboboxItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-
-  return <Combobox.Item {...rest} class={local.class} />;
-}
-
-export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <Separator
-      {...rest}
-      class={styles.slots.separator({ class: local.class })}
-      data-part="separator"
-      data-scope="command"
-    />
-  );
-}
-
-export function CommandShortcut(props: CommandShortcutProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <span
-      {...rest}
-      class={styles.slots.shortcut({ class: local.class })}
-      data-part="shortcut"
-      data-scope="command"
-    />
-  );
-}
-
-export function CommandFooter(props: CommandFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <div
-      {...rest}
-      class={styles.slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="command"
-    />
-  );
-}
-
-export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
+// #region Shorthand
+export function CommandShorthand(props: CommandProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, [
+    "classNames",
     "emptyText",
+    "footer",
     "items",
-    "placeholder",
     "onInputValueChange",
+    "placeholder",
   ]);
   const filterFn = useFilter({ sensitivity: "base" });
-  const { collection, filter } = useListCollection<CommandShorthandItem>({
+  const { collection, filter } = useListCollection<CommandItem>({
     filter: (itemText, query) => filterFn().contains(itemText, query),
     groupBy: (item) => item.group ?? "",
     initialItems: local.items,
     itemToString: (item) => item.label,
     itemToValue: (item) => item.value,
   });
+  const groups = () => collection().group();
 
   return (
-    <CommandRoot
+    <Root
       {...rest}
       collection={collection()}
       onInputValueChange={(details) => {
@@ -362,57 +175,149 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
         local.onInputValueChange?.(details);
       }}
     >
-      <CommandInput placeholder={m("command.placeholder", local.placeholder)} />
-      <CommandContent>
-        <CommandEmpty>{local.emptyText}</CommandEmpty>
-        <CommandList>
-          <For each={collection().group()}>
-            {([group, groupItems], index) => {
-              const content = (
-                <For each={groupItems}>
-                  {(item) => (
-                    <CommandItem item={item}>
-                      {item.icon}
-                      {item.label}
-                      <Show when={item.shortcut}>
-                        <CommandShortcut>{item.shortcut}</CommandShortcut>
-                      </Show>
-                    </CommandItem>
-                  )}
-                </For>
-              );
+      <SearchInput
+        classNames={local.classNames}
+        placeholder={m("command.placeholder", local.placeholder)}
+      />
 
-              return (
-                <Show fallback={content} when={group}>
-                  <CommandItemGroup heading={group}>
-                    {content}
-                    <Show when={index() < collection().group().length - 1}>
-                      <CommandSeparator />
-                    </Show>
-                  </CommandItemGroup>
-                </Show>
-              );
-            }}
-          </For>
-        </CommandList>
-      </CommandContent>
-    </CommandRoot>
+      <Content class={local.classNames?.content}>
+        <Empty class={local.classNames?.empty}>
+          {local.emptyText ?? m("command.empty")}
+        </Empty>
+
+        <ListArea class={local.classNames?.listWrapper}>
+          <List class={local.classNames?.list}>
+            <For each={groups()}>
+              {([group, groupItems], index) => {
+                const content = (
+                  <For each={groupItems}>
+                    {(item) => (
+                      <Combobox.Item item={item}>
+                        {item.icon}
+                        {item.label}
+                        <Show when={item.shortcut}>
+                          <Shortcut class={local.classNames?.shortcut}>
+                            {item.shortcut}
+                          </Shortcut>
+                        </Show>
+                      </Combobox.Item>
+                    )}
+                  </For>
+                );
+
+                return (
+                  <Show fallback={content} when={group}>
+                    <Combobox.ItemGroup>
+                      <Combobox.ItemGroupLabel>{group}</Combobox.ItemGroupLabel>
+                      {content}
+                      <Show when={index() < groups().length - 1}>
+                        <Separator_ class={local.classNames?.separator} />
+                      </Show>
+                    </Combobox.ItemGroup>
+                  </Show>
+                );
+              }}
+            </For>
+          </List>
+        </ListArea>
+      </Content>
+
+      <Show when={local.footer !== undefined}>
+        <Footer class={local.classNames?.footer}>{local.footer}</Footer>
+      </Show>
+    </Root>
   );
 }
 
-export const Command = Object.assign(CommandRoot, {
-  Content: CommandContent,
+/** Search field with a leading icon, used by the shorthand. */
+function SearchInput(
+  props: Pick<CommandProps, "classNames" | "placeholder">,
+): JSX.Element {
+  const styles = useStyles();
+
+  return (
+    <Control class={props.classNames?.control}>
+      <InputGroup
+        class={styles.slots.input({ class: props.classNames?.input })}
+      >
+        <InputGroup.Addon>
+          <MagnifyingGlassIcon
+            aria-hidden
+            class={styles.slots.inputIcon({
+              class: props.classNames?.inputIcon,
+            })}
+          />
+        </InputGroup.Addon>
+        <Combobox.Input
+          asChild={(inputProps) => (
+            <InputGroup.Input
+              {...inputProps()}
+              autofocus
+              placeholder={props.placeholder}
+            />
+          )}
+        />
+      </InputGroup>
+    </Control>
+  );
+}
+
+/** Height-capped list region used by the shorthand. */
+const ListArea = withContext<HTMLArkProps<"div">>("div", {
+  name: "ListWrapper",
+});
+
+/** Command palette in a dialog. */
+export function CommandDialog(props: CommandDialogProps): JSX.Element {
+  const { m } = useLocale();
+  const [local, rest] = splitProps(props, [
+    "children",
+    "description",
+    "recipe",
+    "title",
+    "trigger",
+  ]);
+  const slots = () => (local.recipe ?? commandRecipe)();
+
+  return (
+    <Dialog.Root size="lg" {...rest}>
+      <Show when={local.trigger !== undefined}>
+        <Dialog.Trigger asChild={renderTrigger(local.trigger)} />
+      </Show>
+
+      <Portal>
+        <Dialog.Backdrop />
+
+        <Dialog.Positioner>
+          <Dialog.Content class={slots().dialogContent()}>
+            <Dialog.Header class={slots().dialogHeader()}>
+              <Dialog.Title>{m("command.title", local.title)}</Dialog.Title>
+              <Dialog.Description>
+                {m("command.description", local.description)}
+              </Dialog.Description>
+            </Dialog.Header>
+
+            {local.children}
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
+  );
+}
+// #endregion
+
+export const Command = Object.assign(CommandShorthand, {
+  Content,
+  Control,
   Dialog: CommandDialog,
-  DialogContent: CommandDialogContent,
-  DialogTrigger: CommandDialogTrigger,
-  Empty: CommandEmpty,
-  Footer: CommandFooter,
-  Input: CommandInput,
-  Item: CommandItem,
-  ItemGroup: CommandItemGroup,
-  ItemGroupLabel: CommandItemGroupLabel,
-  List: CommandList,
-  Separator: CommandSeparator,
-  Shortcut: CommandShortcut,
-  Shorthand: CommandShorthand,
+  Empty,
+  Footer,
+  Input,
+  Item: Combobox.Item,
+  ItemGroup: Combobox.ItemGroup,
+  ItemGroupLabel: Combobox.ItemGroupLabel,
+  List,
+  Root,
+  Separator: Separator_,
+  Shortcut,
 });

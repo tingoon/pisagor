@@ -4,7 +4,9 @@
     CarouselRootContract,
     CarouselContract,
   } from "@pisagor/contracts";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
   import type { ComponentProps, Snippet } from "svelte";
+  import Button from "../button.svelte";
   import CarouselControl from "./carousel-control.svelte";
   import CarouselIndicator from "./carousel-indicator.svelte";
   import CarouselIndicatorGroup from "./carousel-indicator-group.svelte";
@@ -31,8 +33,32 @@
 
 <CarouselRoot {...rest} slideCount={slides.length}>
   <CarouselControl>
-    <CarouselPrevTrigger />
-    <CarouselNextTrigger />
+    <CarouselPrevTrigger>
+      {#snippet asChild(props)}
+        <Button
+          {...props()}
+          clickEffect={false}
+          pill
+          size="icon-md"
+          variant="outline"
+        >
+          <CaretLeftIcon aria-hidden="true" />
+        </Button>
+      {/snippet}
+    </CarouselPrevTrigger>
+    <CarouselNextTrigger>
+      {#snippet asChild(props)}
+        <Button
+          {...props()}
+          clickEffect={false}
+          pill
+          size="icon-md"
+          variant="outline"
+        >
+          <CaretRightIcon aria-hidden="true" />
+        </Button>
+      {/snippet}
+    </CarouselNextTrigger>
   </CarouselControl>
   <CarouselItemGroup>
     {#each slides as slide, index (slide.key ?? index)}

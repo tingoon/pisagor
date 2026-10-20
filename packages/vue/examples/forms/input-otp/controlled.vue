@@ -12,12 +12,7 @@ const isCorrect = computed(() => value.value.join("") === "1234");
 <template>
   <div class="flex flex-col gap-2">
     <p class="text-muted-foreground text-center text-sm">Enter the code 1234</p>
-    <InputOTP :value="value" @value-change="onValueChange">
-      <InputOTP.Slot :index="0" />
-      <InputOTP.Slot :index="1" />
-      <InputOTP.Slot :index="2" />
-      <InputOTP.Slot :index="3" />
-    </InputOTP>
+    <InputOTP :value="value" @value-change="onValueChange" :length="4" />
     <p class="text-muted-foreground text-center text-sm">
       {{ isCorrect ? "✅" : "❌" }}
     </p>

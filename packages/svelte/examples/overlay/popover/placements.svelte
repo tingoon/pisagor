@@ -6,18 +6,17 @@
 
 <div class="flex flex-wrap justify-center gap-2">
   {#each placements as placement}
-    <Popover positioning={{ placement }}>
-      <Popover.Trigger>
-        <Button class="capitalize" variant="outline">
-          {placement}
-        </Button>
-      </Popover.Trigger>
-      <Popover.Content class="w-56">
-        <Popover.Header
-          description={`This popover appears on the ${placement} placement of the trigger.`}
-          title="Popover"
-        />
-      </Popover.Content>
+    <Popover
+      classNames={{ base: "w-56" }}
+      description={`This popover appears on the ${placement} placement of the trigger.`}
+      positioning={{ placement }}
+      title="Popover"
+    >
+      {#snippet trigger(props)}
+        <Button {...props()} class="capitalize" variant="outline"
+          >{placement}</Button
+        >
+      {/snippet}
     </Popover>
   {/each}
 </div>

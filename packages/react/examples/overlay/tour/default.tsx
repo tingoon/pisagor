@@ -44,21 +44,6 @@ export function Default() {
   ];
 
   return (
-    <Tour steps={steps}>
-      <Tour.Trigger asChild>
-        <Button variant="outline">Open</Button>
-      </Tour.Trigger>
-      <Tour.Content>
-        <Tour.Header>
-          <Tour.ProgressText />
-          <Tour.Title />
-          <Tour.Description />
-        </Tour.Header>
-        <Tour.Footer>
-          <Tour.PreviousStep />
-          <Tour.NextStep />
-        </Tour.Footer>
-      </Tour.Content>
-    </Tour>
+    <Tour steps={steps} trigger={<Button variant="outline">Open</Button>} />
   );
 }

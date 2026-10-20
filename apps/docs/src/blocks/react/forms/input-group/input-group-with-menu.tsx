@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   CopyIcon,
   DotsThreeIcon,
@@ -14,7 +15,7 @@ export function InputGroupWithMenu() {
     <InputGroup>
       <InputGroup.Input placeholder="Select file..." />
       <InputGroup.Addon align="inline-end">
-        <DropdownMenu>
+        <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>
             <InputGroup.Button
               aria-label="Open menu"
@@ -24,21 +25,25 @@ export function InputGroupWithMenu() {
               <DotsThreeIcon aria-hidden />
             </InputGroup.Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content className={styles.menu()}>
-            <DropdownMenu.Item value="file">
-              <FileIcon />
-              Select file
-            </DropdownMenu.Item>
-            <DropdownMenu.Item value="folder">
-              <FolderIcon />
-              Select folder
-            </DropdownMenu.Item>
-            <DropdownMenu.Item value="copy-path">
-              <CopyIcon />
-              Copy path
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content className={styles.menu()}>
+                <DropdownMenu.Item value="file">
+                  <FileIcon />
+                  Select file
+                </DropdownMenu.Item>
+                <DropdownMenu.Item value="folder">
+                  <FolderIcon />
+                  Select folder
+                </DropdownMenu.Item>
+                <DropdownMenu.Item value="copy-path">
+                  <CopyIcon />
+                  Copy path
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
       </InputGroup.Addon>
     </InputGroup>
   );

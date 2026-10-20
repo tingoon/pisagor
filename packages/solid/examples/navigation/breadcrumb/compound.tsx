@@ -1,3 +1,4 @@
+import { CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { Breadcrumb } from "@pisagor/solid";
 
 export function Compound() {
@@ -7,13 +8,17 @@ export function Compound() {
         <Breadcrumb.Item>
           <Breadcrumb.Link href="https://example.com/">Home</Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Link href="https://example.com/">
             Components
           </Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
+        <Breadcrumb.Separator>
+          <CaretRightIcon />
+        </Breadcrumb.Separator>
         <Breadcrumb.Item>
           <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
         </Breadcrumb.Item>

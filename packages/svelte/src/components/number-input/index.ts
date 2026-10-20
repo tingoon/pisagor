@@ -1,20 +1,32 @@
 import NumberInputShorthand from "./number-input.svelte";
-import NumberInputClearTrigger from "./number-input-clear-trigger.svelte";
-import NumberInputControl from "./number-input-control.svelte";
-import NumberInputDecrementTrigger from "./number-input-decrement-trigger.svelte";
-import NumberInputIncrementTrigger from "./number-input-increment-trigger.svelte";
-import NumberInputInput from "./number-input-input.svelte";
-import NumberInputRoot from "./number-input-root.svelte";
-import NumberInputScrubber from "./number-input-scrubber.svelte";
+import ClearTrigger from "./number-input-clear-trigger.svelte";
+import Control from "./number-input-control.svelte";
+import DecrementTrigger from "./number-input-decrement-trigger.svelte";
+import IncrementTrigger from "./number-input-increment-trigger.svelte";
+import Input from "./number-input-input.svelte";
+import Label from "./number-input-label.svelte";
+import Root from "./number-input-root.svelte";
+import Scrubber from "./number-input-scrubber.svelte";
+import ValueText from "./number-input-value-text.svelte";
 
-export type { NumberInputScrubberProps } from "@ark-ui/svelte";
+export type {
+  NumberInputControlProps,
+  NumberInputDecrementTriggerProps,
+  NumberInputIncrementTriggerProps,
+  NumberInputInputProps,
+  NumberInputLabelProps,
+  NumberInputScrubberProps,
+  NumberInputValueTextProps,
+} from "@ark-ui/svelte";
 
 export const NumberInput = Object.assign(NumberInputShorthand, {
-  ClearTrigger: NumberInputClearTrigger,
-  Control: NumberInputControl,
-  DecrementTrigger: NumberInputDecrementTrigger,
-  IncrementTrigger: NumberInputIncrementTrigger,
-  Input: NumberInputInput,
-  Root: NumberInputRoot,
-  Scrubber: NumberInputScrubber,
+  ClearTrigger,
+  Control,
+  DecrementTrigger,
+  IncrementTrigger,
+  Input,
+  Label,
+  Root,
+  Scrubber,
+  ValueText,
 });

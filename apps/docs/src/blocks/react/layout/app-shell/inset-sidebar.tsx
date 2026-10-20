@@ -1,4 +1,4 @@
-import { FolderIcon } from "@phosphor-icons/react";
+import { FolderIcon, SidebarSimpleIcon } from "@phosphor-icons/react";
 import {
   Breadcrumb,
   CircularProgress,
@@ -83,7 +83,9 @@ export function InsetSidebar() {
       </Sidebar>
       <Sidebar.Inset>
         <header className={styles.header()}>
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <Separator
             className={styles.headerDivider()}
             orientation="vertical"

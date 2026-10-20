@@ -1,623 +1,391 @@
-import {
-  Tour as TourPrimitive,
-  type TourStepDetails,
-  type UseTourReturn,
-  ark,
-  useTour,
+import { Tour as TourPrimitive, ark, useTour } from "@ark-ui/vue";
+import type {
+  HTMLArkProps,
+  TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
+  TourCloseTriggerProps,
+  TourContentProps,
+  TourControlProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourRootProps as TourRootPrimitiveProps,
+  TourSpotlightProps,
+  TourStepDetails,
+  TourTitleProps,
+  UseTourProps,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
 import type { TourRootContract } from "@pisagor/contracts";
-import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { type TourRecipeSlot, tourRecipe } from "@pisagor/recipes";
 import {
   computed,
   defineComponent,
   h,
-  inject,
-  provide,
-  reactive,
-  ref,
+  type PropType,
   Teleport,
-  toValue,
   watchEffect,
 } from "vue";
-import type { InjectionKey, PropType, UnwrapRef } from "vue";
-import { createContext, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
 import { useLocale } from "./provider/context";
 
-// #region Slot recipe context
-const { provideStyles: provideTourStyles } = createSlotRecipeContext({
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Tour",
   recipe: tourRecipe,
 });
 // #endregion
 
-type ArkPart = Parameters<typeof h>[0];
-type ClassValue = Parameters<typeof cn>[0];
-
 // #region Types
 export type TourStepType = TourStepDetails;
 
-interface TourContextProps {
-  /** The function to start the tour */
-  handleStart: () => void;
-  /** Slot class recipes from `tourRecipe`. */
-  slots: TourRecipe;
-  /** The tour instance */
-  tour: UnwrapRef<UseTourReturn>;
-}
+export type TourRootProps = TourRootPrimitiveProps & TourRootContract;
 
-export interface TourRootProps extends TourRootContract {
-  /** Whether to enable arrow key navigation between steps */
-  keyboardNavigation?: boolean;
+export type TourHeaderProps = HTMLArkProps<"div">;
+
+export type TourBodyProps = HTMLArkProps<"div">;
+
+export interface TourProps
+  extends UseTourProps, Omit<TourRootPrimitiveProps, "tour">, TourRootContract {
+  /** Per-slot class name overrides. */
+  classNames?: Partial<Record<TourRecipeSlot, string>>;
   /**
-   * Whether to lazily mount the content
+   * Whether to render an arrow on tooltip steps.
+   *
+   * @defaultValue false
+   */
+  showArrow?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
    *
    * @defaultValue true
    */
-  lazyMount?: boolean;
-  /** Called when the tour status changes */
-  onStatusChange?: (details: { status: string }) => void;
-  /** Called when the current step changes */
-  onStepChange?: (details: { stepId: string | null }) => void;
-  /**
-   * The steps to display in the tour
-   *
-   * @defaultValue [ ]
-   */
-  steps?: TourStepDetails[];
-  /**
-   * Whether to unmount the content when the tour is closed
-   *
-   * @defaultValue true
-   */
-  unmountOnExit?: boolean;
+  showCloseButton?: boolean;
 }
-
-export interface TourBackdropProps {
-  /**
-   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
-   *
-   * @defaultValue dialogRecipe
-   */
-  dialogRecipe?: typeof dialogRecipe;
-  class?: unknown;
-}
-// #endregion
-
-// #region Context
-const [provideTourContext, , useTourContextRef] =
-  createContext("Tour")<TourContextProps>();
-
-export { useTourContextRef as useTourContext };
 // #endregion
 
 // #region Parts
-export const TourRoot = defineComponent({
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<TourRootProps>(TourPrimitive.Root, {
+  name: "Root",
+  renderless: true,
+  slot: "base",
+});
+
+const Backdrop = withContext<TourBackdropProps>(TourPrimitive.Backdrop, {
+  name: "Backdrop",
+});
+
+const Spotlight = withContext<TourSpotlightProps>(TourPrimitive.Spotlight, {
+  name: "Spotlight",
+});
+
+const Positioner = withContext<TourPositionerProps>(TourPrimitive.Positioner, {
+  name: "Positioner",
+});
+
+const Content = withContext<TourContentProps>(TourPrimitive.Content, {
+  name: "Content",
+});
+
+const Arrow = withContext<TourArrowProps>(TourPrimitive.Arrow, {
+  defaultProps: {
+    style: {
+      "--arrow-background": "var(--background)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const ArrowTip = withContext<TourArrowTipProps>(TourPrimitive.ArrowTip, {
+  name: "ArrowTip",
+});
+
+const Header = withContext("div", { name: "Header" });
+
+const Title = withContext<TourTitleProps>(TourPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<TourDescriptionProps>(
+  TourPrimitive.Description,
+  { name: "Description" },
+);
+
+const ProgressText = withContext<TourProgressTextProps>(
+  TourPrimitive.ProgressText,
+  { name: "ProgressText" },
+);
+
+const Body = withContext("div", { name: "Body" });
+
+const Control = withContext<TourControlProps>(TourPrimitive.Control, {
+  name: "Control",
+});
+
+const ActionTrigger = withContext<TourActionTriggerProps>(
+  TourPrimitive.ActionTrigger,
+  { name: "ActionTrigger" },
+);
+
+const CloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "close" },
+);
+// #endregion
+
+// #region Shorthand
+const TOUR_EVENTS = {
+  focusOutside: "onFocusOutside",
+  interactOutside: "onInteractOutside",
+  pointerDownOutside: "onPointerDownOutside",
+  statusChange: "onStatusChange",
+  stepChange: "onStepChange",
+  stepsChange: "onStepsChange",
+} as const;
+
+const optionalBoolean = { default: undefined, type: Boolean };
+
+type TourEmit = NonNullable<Parameters<typeof useTour>[1]>;
+
+/**
+ * Builds the tour machine from props (`steps`, `keyboard-navigation`, …) and
+ * renders the default step UI. Slots: `trigger` (single element that starts the
+ * tour, rendered `as-child`) and `default` (page content next to the trigger,
+ * usually the step targets). Root events (`@status-change`, `@step-change`, …)
+ * are forwarded.
+ */
+export const TourShorthand = defineComponent({
   inheritAttrs: false,
-  name: "TourRoot",
+  name: "Tour",
   props: {
-    keyboardNavigation: { default: undefined, type: Boolean },
-    lazyMount: { default: true, type: Boolean },
-    onStatusChange: {
+    classNames: {
       default: undefined,
-      type: Function as PropType<TourRootProps["onStatusChange"]>,
+      type: Object as PropType<TourProps["classNames"]>,
     },
-    onStepChange: {
+    closeOnEscape: optionalBoolean,
+    closeOnInteractOutside: optionalBoolean,
+    id: { default: undefined, type: String },
+    ids: {
       default: undefined,
-      type: Function as PropType<TourRootProps["onStepChange"]>,
+      type: Object as PropType<UseTourProps["ids"]>,
     },
+    keyboardNavigation: optionalBoolean,
+    lazyMount: optionalBoolean,
+    preventInteraction: optionalBoolean,
     recipe: {
-      default: tourRecipe,
-      type: Function as PropType<typeof tourRecipe>,
-    },
-    steps: { default: () => [], type: Array as PropType<TourStepDetails[]> },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideTourStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    const isStarted = ref(false);
-
-    const tour = useTour(
-      computed(() => ({
-        keyboardNavigation: props.keyboardNavigation,
-        onStatusChange: props.onStatusChange,
-        onStepChange: props.onStepChange,
-        steps: props.steps,
-      })),
-    );
-
-    watchEffect((onCleanup) => {
-      // SSR: watchEffect runs once on the server where `document` is absent.
-      if (typeof document === "undefined") {
-        return;
-      }
-      document.body.classList.toggle("relative", isStarted.value);
-      onCleanup(() => document.body.classList.remove("relative"));
-    });
-
-    const handleStart = () => {
-      isStarted.value = true;
-      tour.value.start();
-    };
-
-    const context = reactive({
-      handleStart,
-      slots: recipeSlots.value,
-      tour,
-    });
-
-    provideTourContext(context);
-
-    return () =>
-      h(
-        TourPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          lazyMount: props.lazyMount,
-          tour: tour.value,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
-  },
-});
-
-export const TourTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Trigger",
-  setup(_, { attrs, slots }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { handleStart } = ctx;
-      const onClick = attrs.onClick as
-        ((event: MouseEvent) => void) | undefined;
-
-      const handleClick = (event: MouseEvent) => {
-        onClick?.(event);
-        handleStart();
-      };
-
-      return h(
-        ark.button as ArkPart,
-        {
-          ...attrs,
-          "data-part": "trigger",
-          "data-scope": "tour",
-          onClick: handleClick,
-          type: "button",
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const TourActionTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.ActionTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(TourPrimitive.ActionTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const TourBackdrop = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Backdrop",
-  props: {
-    class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Function as PropType<TourProps["recipe"]>,
     },
-    dialogRecipe: {
-      default: dialogRecipe,
-      type: Function as PropType<typeof dialogRecipe>,
-    },
-  },
-  setup(props, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-
-      return h(TourPrimitive.Backdrop as ArkPart, {
-        ...attrs,
-        class: cn(
-          props.dialogRecipe().backdrop(),
-          ctx.slots.backdrop(),
-          props.class,
-        ),
-      });
-    };
-  },
-});
-
-export const TourPositioner = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Positioner",
-  setup(_, { attrs, slots }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-
-      return h(
-        TourPrimitive.Positioner as ArkPart,
-        { class: ctx.slots.positioner(), ...attrs },
-        slots,
-      );
-    };
-  },
-});
-
-export const TourContent = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Content",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
+    showArrow: { default: false, type: Boolean },
     showCloseButton: { default: true, type: Boolean },
+    spotlightOffset: {
+      default: undefined,
+      type: Object as PropType<UseTourProps["spotlightOffset"]>,
+    },
+    spotlightRadius: { default: undefined, type: Number },
+    stepId: {
+      default: undefined,
+      type: [String, null] as PropType<UseTourProps["stepId"]>,
+    },
+    steps: {
+      default: undefined,
+      type: Array as PropType<UseTourProps["steps"]>,
+    },
+    translations: {
+      default: undefined,
+      type: Object as PropType<UseTourProps["translations"]>,
+    },
+    unmountOnExit: optionalBoolean,
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
+    const tour = useTour(
+      computed<UseTourProps>(() => ({
+        closeOnEscape: props.closeOnEscape,
+        closeOnInteractOutside: props.closeOnInteractOutside,
+        id: props.id,
+        ids: props.ids,
+        keyboardNavigation: props.keyboardNavigation,
+        preventInteraction: props.preventInteraction,
+        spotlightOffset: props.spotlightOffset,
+        spotlightRadius: props.spotlightRadius,
+        stepId: props.stepId,
+        steps: props.steps,
+        translations: props.translations,
+      })),
+      ((event: keyof typeof TOUR_EVENTS, details: unknown) => {
+        const handler = attrs[TOUR_EVENTS[event]];
+
+        if (typeof handler === "function") handler(details);
+      }) as TourEmit,
+    );
+
+    // Spotlight offsets are measured against the body.
+    watchEffect((onCleanup) => {
+      // SSR: watchEffect runs once on the server where `document` is absent.
+      if (typeof document === "undefined" || !tour.value.open) return;
+
+      document.body.classList.add("relative");
+      onCleanup(() => document.body.classList.remove("relative"));
+    });
 
     return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { slots: recipeSlots } = ctx;
+      const classNames = props.classNames;
+      const actions = tour.value.step?.actions ?? [];
 
-      const defaultChildren = () => [
-        h(TourHeader, null, () => [h(TourTitle), h(TourProgressText)]),
-        h(TourBody, null, () => h(TourDescription)),
-        h(TourFooter, null, () => [h(TourPreviousStep), h(TourNextStep)]),
-      ];
+      return h(
+        Root,
+        {
+          lazyMount: props.lazyMount,
+          onExitComplete: attrs.onExitComplete,
+          recipe: props.recipe,
+          tour: tour.value,
+          unmountOnExit: props.unmountOnExit,
+        },
+        () => [
+          slots.trigger
+            ? h(
+                ark.button,
+                { asChild: true, onClick: () => tour.value.start() },
+                { default: slots.trigger },
+              )
+            : null,
 
-      return h(Teleport, { to: "body" }, [
-        h(TourBackdrop),
-        h(TourPositioner, null, () =>
-          h(
-            TourPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: cn(recipeSlots.content(), props.class),
-            },
-            () => [
-              slots.default ? slots.default() : defaultChildren(),
-              props.showCloseButton
-                ? h(
-                    TourCloseTrigger,
-                    { asChild: true, class: recipeSlots.close() },
-                    () =>
-                      h(
-                        Button as ArkPart,
-                        {
-                          class: recipeSlots.closeButton(),
-                          size: "icon-md",
-                          variant: "ghost",
-                        },
-                        () => [
-                          h(PhX),
-                          h(
-                            "span",
-                            { class: recipeSlots.closeLabel() },
-                            m("tour.close"),
-                          ),
-                        ],
+          slots.default?.(),
+
+          h(Teleport, { to: "body" }, [
+            h(Backdrop, { class: classNames?.backdrop }),
+            h(Spotlight, { class: classNames?.spotlight }),
+
+            h(Positioner, { class: classNames?.positioner }, () =>
+              h(Content, { class: classNames?.content }, () => [
+                props.showArrow
+                  ? h(Arrow, { class: classNames?.arrow }, () =>
+                      h(ArrowTip, { class: classNames?.arrowTip }),
+                    )
+                  : null,
+
+                h(Header, { class: classNames?.header }, () => [
+                  h(ProgressText, { class: classNames?.progressText }),
+                  h(Title, { class: classNames?.title }),
+                  h(Description, { class: classNames?.description }),
+                ]),
+
+                actions.length > 0
+                  ? h(Control, { class: classNames?.control }, () =>
+                      actions.map((action) =>
+                        h(
+                          ActionTrigger,
+                          {
+                            action,
+                            asChild: true,
+                            class: classNames?.actionTrigger,
+                            key: action.label,
+                          },
+                          () =>
+                            h(
+                              Button,
+                              {
+                                size: "sm",
+                                variant:
+                                  action.action === "dismiss" ||
+                                  action.action === "prev"
+                                    ? "outline"
+                                    : "default",
+                              },
+                              () => [
+                                action.action === "prev"
+                                  ? h(PhCaretLeft)
+                                  : null,
+                                action.label,
+                                action.action === "next"
+                                  ? h(PhCaretRight)
+                                  : null,
+                              ],
+                            ),
+                        ),
                       ),
-                  )
-                : null,
-            ],
-          ),
-        ),
-        h(TourSpotlight),
-      ]);
-    };
-  },
-});
+                    )
+                  : null,
 
-export const TourBody = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Body",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        DialogBody as ArkPart,
-        { ...attrs, dataPart: "body", dataScope: "tour" },
-        slots,
-      );
-  },
-});
-
-export const TourSpotlight = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Spotlight",
-  setup(_, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-
-      return h(TourPrimitive.Spotlight as ArkPart, {
-        class: ctx.slots.spotlight(),
-        ...attrs,
-      });
-    };
-  },
-});
-
-export const TourHeader = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Header",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        DialogHeader as ArkPart,
-        { ...attrs, dataPart: "header", dataScope: "tour" },
-        slots,
-      );
-  },
-});
-
-export const TourTitle = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Title",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { slots: recipeSlots, tour } = ctx;
-
-      return h(
-        TourPrimitive.Title as ArkPart,
-        { ...attrs, class: cn(recipeSlots.title(), props.class) },
-        () => tour.step?.title,
-      );
-    };
-  },
-});
-
-export const TourDescription = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Description",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { slots: recipeSlots, tour } = ctx;
-
-      return h(
-        TourPrimitive.Description as ArkPart,
-        {
-          ...attrs,
-          class: cn(recipeSlots.description(), props.class),
-        },
-        () => tour.step?.description,
-      );
-    };
-  },
-});
-
-export const TourProgressText = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.ProgressText",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { slots: recipeSlots, tour } = ctx;
-
-      return h(
-        TourPrimitive.ProgressText as ArkPart,
-        {
-          ...attrs,
-          class: cn(recipeSlots.progressText(), props.class),
-        },
-        () => tour.getProgressText(),
-      );
-    };
-  },
-});
-
-export const TourCloseTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.CloseTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(TourPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
-
-/**
- * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
- * control.
- */
-const TourInsideControlKey: InjectionKey<boolean> = Symbol("TourInsideControl");
-
-export const TourFooter = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Footer",
-  setup(_, { attrs, slots }) {
-    provide(TourInsideControlKey, true);
-
-    return () =>
-      h(TourPrimitive.Control as ArkPart, { ...attrs, asChild: true }, () =>
-        h(DialogFooter, { dataPart: "control", dataScope: "tour" }, slots),
-      );
-  },
-});
-
-export const TourActions = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.Actions",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const insideControl = inject(TourInsideControlKey, false);
-
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { slots: recipeSlots, tour } = ctx;
-      const actions = tour.step?.actions ?? [];
-
-      if (actions.length === 0) {
-        return null;
-      }
-
-      const content = () =>
-        h(
-          (insideControl ? "div" : DialogFooter) as ArkPart,
-          insideControl
-            ? {
-                ...attrs,
-                class: cn(recipeSlots.actions(), props.class),
-                "data-part": "actions",
-                "data-scope": "tour",
-              }
-            : {
-                class: cn(recipeSlots.actions(), props.class),
-                dataPart: "actions",
-                dataScope: "tour",
-              },
-          () =>
-            actions.map((action) =>
-              h(
-                TourActionTrigger,
-                { action, asChild: true, key: action.label },
-                () =>
-                  h(
-                    Button,
-                    {
-                      size: "sm",
-                      variant:
-                        action.action === "dismiss" || action.action === "prev"
-                          ? "outline"
-                          : "default",
-                    },
-                    () => [
-                      action.action === "prev" ? h(PhCaretLeft) : null,
-                      action.label,
-                      action.action === "next" ? h(PhCaretRight) : null,
-                    ],
-                  ),
-              ),
+                props.showCloseButton
+                  ? h(
+                      InlineCloseTrigger,
+                      { asChild: true, class: classNames?.close },
+                      () =>
+                        h(
+                          Button,
+                          {
+                            class: classNames?.closeButton,
+                            size: "icon-md",
+                            variant: "ghost",
+                          },
+                          () => [
+                            h(PhX),
+                            h(
+                              "span",
+                              { class: tourRecipe().closeLabel() },
+                              m("tour.close"),
+                            ),
+                          ],
+                        ),
+                    )
+                  : null,
+              ]),
             ),
-        );
-
-      return insideControl
-        ? content()
-        : h(
-            TourPrimitive.Control as ArkPart,
-            { ...attrs, asChild: true },
-            content,
-          );
-    };
-  },
-});
-
-export const TourPreviousStep = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.PreviousStep",
-  setup(_, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { tour } = ctx;
-      const prevAction = tour.step?.actions?.find(
-        (action) => action.action === "prev",
-      );
-
-      if (!prevAction) {
-        return null;
-      }
-
-      return h(
-        TourActionTrigger,
-        { ...attrs, action: prevAction, asChild: true },
-        () =>
-          h(Button, { size: "sm", variant: "outline" }, () => [
-            h(PhCaretLeft),
-            prevAction.label,
           ]),
-      );
-    };
-  },
-});
-
-export const TourNextStep = defineComponent({
-  inheritAttrs: false,
-  name: "Tour.NextStep",
-  setup(_, { attrs }) {
-    return () => {
-      const ctx = toValue(useTourContextRef());
-      if (!ctx) return null;
-      const { tour } = ctx;
-      const action = tour.step?.actions?.find(
-        (candidate) =>
-          candidate.action === "next" || candidate.action === "dismiss",
-      );
-
-      if (!action) {
-        return null;
-      }
-
-      return h(TourActionTrigger, { ...attrs, action, asChild: true }, () =>
-        h(Button, { size: "sm" }, () => [
-          action.label,
-          action.action === "next" ? h(PhCaretRight) : null,
-        ]),
+        ],
       );
     };
   },
 });
 // #endregion
 
-export const Tour = Object.assign(TourRoot, {
-  Actions: TourActions,
-  ActionTrigger: TourActionTrigger,
-  Backdrop: TourBackdrop,
-  Body: TourBody,
-  CloseTrigger: TourCloseTrigger,
-  Content: TourContent,
-  Description: TourDescription,
-  Footer: TourFooter,
-  Header: TourHeader,
-  NextStep: TourNextStep,
-  Positioner: TourPositioner,
-  PreviousStep: TourPreviousStep,
-  ProgressText: TourProgressText,
-  Spotlight: TourSpotlight,
-  Title: TourTitle,
-  Trigger: TourTrigger,
+export { useTour, useTourContext } from "@ark-ui/vue";
+
+export type {
+  TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
+  TourCloseTriggerProps,
+  TourContentProps,
+  TourControlProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourSpotlightProps,
+  TourTitleProps,
+  UseTourProps,
+  UseTourReturn,
+} from "@ark-ui/vue";
+
+export const Tour = Object.assign(TourShorthand, {
+  ActionTrigger,
+  Actions: TourPrimitive.Actions,
+  Arrow,
+  ArrowTip,
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  Control,
+  Description,
+  Header,
+  Positioner,
+  ProgressText,
+  Root,
+  Spotlight,
+  Title,
 });

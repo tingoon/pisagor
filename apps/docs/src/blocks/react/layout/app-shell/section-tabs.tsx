@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   CaretDownIcon,
   ChartBarIcon,
@@ -103,8 +104,10 @@ export function SectionTabs() {
   return (
     <div className={styles.rootColumn()}>
       <header className={styles.topbarPlain()}>
-        <Sheet>
-          <Sheet.Trigger asChild>
+        <Sheet
+          placement="left"
+          title={section?.label}
+          trigger={
             <Button
               aria-label="Open navigation"
               className={styles.mobileOnly()}
@@ -113,13 +116,9 @@ export function SectionTabs() {
             >
               <ListIcon />
             </Button>
-          </Sheet.Trigger>
-          <Sheet.Content placement="left">
-            <Sheet.Header>
-              <Sheet.Title>{section?.label}</Sheet.Title>
-            </Sheet.Header>
-            <Sheet.Body>{sectionNav}</Sheet.Body>
-          </Sheet.Content>
+          }
+        >
+          {sectionNav}
         </Sheet>
         <span className={styles.brandMark()}>AC</span>
 
@@ -138,7 +137,7 @@ export function SectionTabs() {
           </Tabs.List>
         </Tabs.Root>
 
-        <DropdownMenu onSelect={({ value }) => setSectionId(value)}>
+        <DropdownMenu.Root onSelect={({ value }) => setSectionId(value)}>
           <DropdownMenu.Trigger asChild>
             <Button className={styles.tabsMobile()} variant="ghost">
               {section ? <section.icon /> : null}
@@ -146,15 +145,19 @@ export function SectionTabs() {
               <CaretDownIcon />
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            {sections.map((item) => (
-              <DropdownMenu.Item key={item.id} value={item.id}>
-                <item.icon />
-                {item.label}
-              </DropdownMenu.Item>
-            ))}
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content>
+                {sections.map((item) => (
+                  <DropdownMenu.Item key={item.id} value={item.id}>
+                    <item.icon />
+                    {item.label}
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
 
         <div className={styles.headerActions()}>
           <SearchCommand />

@@ -1,20 +1,15 @@
 <script lang="ts">
-  import { DotsThreeIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useBreadcrumb } from "./breadcrumb.context";
+  import { useLocale } from "../provider/context";
+  import { withBreadcrumbContext } from "./breadcrumb.context";
 
-  let { class: className, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
-  const styles = useBreadcrumb();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
+  const { m } = useLocale();
+  const part = withBreadcrumbContext(() => rest, { name: "Ellipsis" });
 </script>
 
-<span
-  {...rest}
-  aria-hidden="true"
-  class={className}
-  data-part="ellipsis"
-  data-scope="breadcrumb"
-  role="presentation"
->
-  <DotsThreeIcon class={slots.ellipsis()} />
+<!-- Collapsed-items marker; render your icon inside. Adds localized screen-reader text. -->
+<span {...part.props}>
+  {@render children?.()}
+  <span class="sr-only">{m("breadcrumb.more")}</span>
 </span>

@@ -2,7 +2,9 @@ import { tv } from "tailwind-variants";
 
 export const hoverCardRecipe = tv({
   slots: {
+    arrow: [],
     arrowTip: ["border-s border-t"],
+    base: [],
     content: [
       "z-popover",
       "w-64",
@@ -21,6 +23,8 @@ export const hoverCardRecipe = tv({
       "data-[placement=top]:slide-in-from-bottom-2 data-[state=closed]:data-[placement=top]:slide-out-to-bottom-2",
       "motion-reduce:animate-none!",
     ],
+    positioner: [],
+    trigger: [],
   },
 });
 

@@ -3,9 +3,8 @@
   import { FishIcon } from "phosphor-svelte";
 </script>
 
-<QrCode>
-  <QrCode.Frame />
-  <QrCode.Overlay>
+<QrCode value="https://example.com">
+  {#snippet overlay()}
     <FishIcon />
-  </QrCode.Overlay>
+  {/snippet}
 </QrCode>

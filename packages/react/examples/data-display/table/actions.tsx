@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   DotsThreeVerticalIcon,
   EyeIcon,
@@ -26,7 +27,7 @@ export function Actions() {
             <Table.Cell className="font-medium">{user.name}</Table.Cell>
             <Table.Cell>{user.email}</Table.Cell>
             <Table.Cell className="text-right">
-              <DropdownMenu positioning={{ placement: "left-end" }}>
+              <DropdownMenu.Root positioning={{ placement: "left-end" }}>
                 <DropdownMenu.Trigger asChild>
                   <Button
                     aria-label="More options"
@@ -36,24 +37,28 @@ export function Actions() {
                     <DotsThreeVerticalIcon />
                   </Button>
                 </DropdownMenu.Trigger>
-                <DropdownMenu.Content className="min-w-40">
-                  <DropdownMenu.Item value="view">
-                    <EyeIcon />
-                    View
-                    <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item value="edit">
-                    <PencilSimpleIcon />
-                    Edit
-                    <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item value="delete" variant="destructive">
-                    <TrashIcon />
-                    Delete
-                    <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                </DropdownMenu.Content>
-              </DropdownMenu>
+                <Portal>
+                  <DropdownMenu.Positioner>
+                    <DropdownMenu.Content className="min-w-40">
+                      <DropdownMenu.Item value="view">
+                        <EyeIcon />
+                        View
+                        <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item value="edit">
+                        <PencilSimpleIcon />
+                        Edit
+                        <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item value="delete" variant="destructive">
+                        <TrashIcon />
+                        Delete
+                        <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Positioner>
+                </Portal>
+              </DropdownMenu.Root>
             </Table.Cell>
           </Table.Row>
         ))}

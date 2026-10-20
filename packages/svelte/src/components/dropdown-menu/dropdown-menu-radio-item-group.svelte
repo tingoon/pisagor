@@ -3,19 +3,16 @@
     Menu as MenuPrimitive,
     type MenuRadioItemGroupProps,
   } from "@ark-ui/svelte";
-  import type { DropdownMenuItemGroupContract } from "@pisagor/contracts";
-  import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
+  import { withContext } from "./dropdown-menu.context";
 
-  type Props = MenuRadioItemGroupProps & {
-    heading?: string;
-  } & DropdownMenuItemGroupContract;
-
-  let { children, heading, ...rest }: Props = $props();
+  let { children, ...rest }: MenuRadioItemGroupProps = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "RadioItemGroup",
+    part: "item-group",
+  });
 </script>
 
-<MenuPrimitive.RadioItemGroup {...rest}>
-  {#if heading}
-    <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>
-  {/if}
+<MenuPrimitive.RadioItemGroup {...part.props}>
   {@render children?.()}
 </MenuPrimitive.RadioItemGroup>

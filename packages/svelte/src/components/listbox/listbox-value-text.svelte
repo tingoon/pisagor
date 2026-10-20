@@ -3,15 +3,10 @@
     Listbox as ListboxPrimitive,
     type ListboxValueTextProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./listbox.context";
+  import { withListboxContext } from "./listbox.context";
 
-  let { class: className, ...rest }: ListboxValueTextProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { ...rest }: ListboxValueTextProps = $props();
+  const part = withListboxContext(() => rest, { name: "ValueText" });
 </script>
 
-<ListboxPrimitive.ValueText
-  {...rest}
-  class={slots.valueText({ class: cn(className) })}
-/>
+<ListboxPrimitive.ValueText {...part.props} />

@@ -1,4 +1,5 @@
 export { default as Checkboxes } from "./checkboxes.vue";
+export { default as Compound } from "./compound.vue";
 export { default as Default } from "./default.vue";
 export { default as Destructive } from "./destructive.vue";
 export { default as GroupLabel } from "./group-label.vue";

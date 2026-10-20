@@ -1,6 +1,5 @@
 <script lang="ts">
   import { waitForElement, waitForEvent } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
   import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
   import { PlusIcon } from "phosphor-svelte";
 
@@ -63,9 +62,10 @@
 
 <div class="flex flex-col gap-2">
   <Tour {steps}>
-    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-      >Start tour</Tour.Trigger
-    >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">Start tour</Button>
+    {/snippet}
+
     <div class="flex flex-col gap-2">
       <Button id="btn-add-item" onclick={addItem} size="sm" variant="outline">
         <PlusIcon class="size-4" />
@@ -84,13 +84,5 @@
         {/each}
       </div>
     </div>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Actions />
-    </Tour.Content>
   </Tour>
 </div>

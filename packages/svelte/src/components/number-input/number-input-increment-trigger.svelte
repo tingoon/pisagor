@@ -3,32 +3,17 @@
     NumberInput as NumberInputPrimitive,
     type NumberInputIncrementTriggerProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { PlusIcon } from "phosphor-svelte";
-  import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
-  import { useStyles } from "./number-input.context";
+  import { withContext } from "./number-input.context";
 
+  let { children, ...rest }: NumberInputIncrementTriggerProps = $props();
   const { m } = useLocale();
-
-  let {
-    class: className,
-    ...rest
-  }: Omit<NumberInputIncrementTriggerProps, "asChild" | "children"> = $props();
-
-  const styles = useStyles();
+  const part = withContext(
+    () => ({ "aria-label": m("numberInput.increment"), ...rest }),
+    { name: "IncrementTrigger" },
+  );
 </script>
 
-<NumberInputPrimitive.IncrementTrigger {...rest}>
-  {#snippet asChild(props)}
-    <Button
-      {...props({
-        class: styles.slots.incrementTrigger({ class: cn(className) }),
-      })}
-      aria-label={m("numberInput.increment")}
-      variant="ghost"
-    >
-      <PlusIcon aria-hidden="true" />
-    </Button>
-  {/snippet}
+<NumberInputPrimitive.IncrementTrigger {...part.props}>
+  {@render children?.()}
 </NumberInputPrimitive.IncrementTrigger>

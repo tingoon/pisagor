@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { HoverCard } from "@pisagor/svelte";
+  import { Button, HoverCard } from "@pisagor/svelte";
 </script>
 
 <HoverCard>
-  <HoverCard.Trigger>@pisagor</HoverCard.Trigger>
-  <HoverCard.Content>
-    <p class="text-sm">Hover card content</p>
-  </HoverCard.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="link">@pisagor</Button>
+  {/snippet}
+
+  <p class="text-sm">Hover card content</p>
 </HoverCard>

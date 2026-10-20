@@ -1,6 +1,5 @@
 <script lang="ts">
   import { cn } from "@pisagor/utils";
-  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useLocale } from "../provider/context";
@@ -8,6 +7,7 @@
 
   const { m } = useLocale();
 
+  /** Drag handle; render your own icon inside. */
   let {
     children,
     class: className,
@@ -69,9 +69,5 @@
   onkeydown={handleKeyDown}
   type="button"
 >
-  {#if children}
-    {@render children()}
-  {:else}
-    <DotsSixVerticalIcon />
-  {/if}
+  {@render children?.()}
 </button>

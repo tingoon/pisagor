@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
+import { CaretRightIcon } from "@phosphor-icons/react";
 import type {
   BreadcrumbContract,
   BreadcrumbItemContract,
@@ -10,14 +10,14 @@ import type {
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
 import { Fragment } from "react";
+import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  Context: BreadcrumbStylesContext,
-  useStyles,
   withContext: withBreadcrumbContext,
+  withProvider: withBreadcrumbProvider,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
   recipe: breadcrumbRecipe,
@@ -56,31 +56,33 @@ export interface BreadcrumbRootProps
 export interface BreadcrumbProps
   extends Omit<BreadcrumbRootProps, "children">, BreadcrumbContract {
   items?: BreadcrumbPresetItem[];
+  /**
+   * Separator content between items.
+   *
+   * @defaultValue <CaretRightIcon />
+   */
+  separator?: ReactNode;
 }
 // #endregion
 
 // #region Parts
+const BreadcrumbRootBase = withBreadcrumbProvider<BreadcrumbRootProps>("nav", {
+  name: "Root",
+  slot: "base",
+});
+
+/** Navigation landmark with a localized default `aria-label`. */
 export function BreadcrumbRoot({
-  "aria-label": ariaLabelProp,
-  children,
-  recipe = breadcrumbRecipe,
+  "aria-label": ariaLabel,
   ...rest
 }: BreadcrumbRootProps) {
   const { m } = useLocale();
-  const ariaLabel = m("breadcrumb.label", ariaLabelProp);
-  const slots = recipe();
 
   return (
-    <BreadcrumbStylesContext value={{ slots, variants: {} as never }}>
-      <nav
-        {...rest}
-        aria-label={ariaLabel}
-        data-part="root"
-        data-scope="breadcrumb"
-      >
-        {children}
-      </nav>
-    </BreadcrumbStylesContext>
+    <BreadcrumbRootBase
+      {...rest}
+      aria-label={m("breadcrumb.label", ariaLabel)}
+    />
   );
 }
 
@@ -119,54 +121,48 @@ export const BreadcrumbPage = withBreadcrumbItemContext<BreadcrumbPageProps>(
   },
 );
 
-export function BreadcrumbSeparator({
-  children,
-  className,
-  ...rest
-}: BreadcrumbSeparatorProps) {
-  const { slots } = useStyles();
+export const BreadcrumbSeparator =
+  withBreadcrumbContext<BreadcrumbSeparatorProps>("li", {
+    defaultProps: { "aria-hidden": "true", role: "presentation" },
+    name: "Separator",
+  });
 
-  return (
-    <li
-      {...rest}
-      aria-hidden="true"
-      className={slots.separator({ className })}
-      data-part="separator"
-      data-scope="breadcrumb"
-      role="presentation"
-    >
-      {children ?? <CaretRightIcon />}
-    </li>
-  );
-}
+const BreadcrumbEllipsisBase = withBreadcrumbContext<BreadcrumbEllipsisProps>(
+  "span",
+  { name: "Ellipsis" },
+);
 
+/**
+ * Collapsed-items marker; render your icon inside. Adds localized screen-reader
+ * text.
+ */
 export function BreadcrumbEllipsis({
-  className,
+  children,
   ...rest
 }: BreadcrumbEllipsisProps) {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
   return (
-    <span
-      {...rest}
-      className={slots.ellipsis({ className })}
-      data-part="ellipsis"
-      data-scope="breadcrumb"
-    >
-      <DotsThreeIcon aria-hidden />
+    <BreadcrumbEllipsisBase {...rest}>
+      {children}
       <span className="sr-only">{m("breadcrumb.more")}</span>
-    </span>
+    </BreadcrumbEllipsisBase>
   );
 }
 // #endregion
 
 // #region Shorthand
-export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
+export function BreadcrumbShorthand({
+  classNames,
+  className,
+  items,
+  separator = <CaretRightIcon />,
+  ...rest
+}: BreadcrumbProps) {
   return (
-    <BreadcrumbRoot {...rest}>
+    <BreadcrumbRoot {...rest} className={cn(classNames?.base, className)}>
       {items && (
-        <BreadcrumbList>
+        <BreadcrumbList className={classNames?.list}>
           {items.map((item, index) => (
             <Fragment
               key={
@@ -174,7 +170,11 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
                 (typeof item.label === "string" ? item.label : `item-${index}`)
               }
             >
-              {index > 0 && <BreadcrumbSeparator />}
+              {index > 0 && (
+                <BreadcrumbSeparator className={classNames?.separator}>
+                  {separator}
+                </BreadcrumbSeparator>
+              )}
               <BreadcrumbItem>
                 {item.isCurrentPage ? (
                   <BreadcrumbPage>{item.label}</BreadcrumbPage>
@@ -195,7 +195,7 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
 
 // #region Display Names
 BreadcrumbRoot.displayName = "Breadcrumb.Root";
-BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
+BreadcrumbShorthand.displayName = "Breadcrumb";
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
 // #endregion
 

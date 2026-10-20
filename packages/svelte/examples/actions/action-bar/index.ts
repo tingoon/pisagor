@@ -1,4 +1,5 @@
 export { default as CloseTrigger } from "./close-trigger.svelte";
+export { default as Compound } from "./compound.svelte";
 export { default as Controlled } from "./controlled.svelte";
 export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as CustomSpacing } from "./custom-spacing.svelte";

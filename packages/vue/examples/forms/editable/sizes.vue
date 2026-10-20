@@ -5,7 +5,7 @@ import { Button, Editable, Input } from "@pisagor/vue";
 
 <template>
   <div class="flex flex-col gap-2">
-    <Editable default-value="Editable content">
+    <Editable.Root default-value="Editable content">
       <Editable.Area>
         <Editable.Input as-child>
           <Input size="sm" />
@@ -24,8 +24,8 @@ import { Button, Editable, Input } from "@pisagor/vue";
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
-    <Editable default-value="Editable content">
+    </Editable.Root>
+    <Editable.Root default-value="Editable content">
       <Editable.Area>
         <Editable.Input as-child>
           <Input size="md" />
@@ -44,8 +44,8 @@ import { Button, Editable, Input } from "@pisagor/vue";
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
-    <Editable default-value="Editable content">
+    </Editable.Root>
+    <Editable.Root default-value="Editable content">
       <Editable.Area>
         <Editable.Input as-child>
           <Input size="lg" />
@@ -64,6 +64,6 @@ import { Button, Editable, Input } from "@pisagor/vue";
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   </div>
 </template>

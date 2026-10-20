@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
-  import { Button, Command, Kbd } from "@pisagor/svelte";
-  import { ArrowBendDownLeftIcon } from "phosphor-svelte";
+  import { Button, Command, InputGroup, Kbd } from "@pisagor/svelte";
+  import { ArrowBendDownLeftIcon, MagnifyingGlassIcon } from "phosphor-svelte";
 
   const initialItems = [
     { group: "File", label: "New file", shortcut: "⌘N", value: "new" },
@@ -24,41 +24,52 @@
 </script>
 
 <Command.Dialog onOpenChange={({ open: next }) => (open = next)} {open}>
-  <Command.DialogTrigger>
-    {#snippet asChild(props)}
-      <Button {...props()} variant="outline">Open Command Palette</Button>
-    {/snippet}
-  </Command.DialogTrigger>
-  <Command.DialogContent>
-    <Command
-      {collection}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-      onValueChange={() => (open = false)}
-    >
-      <Command.Input placeholder="Search commands..." />
-      <Command.Content>
-        <Command.Empty>No results found. Try a different search.</Command.Empty>
-        <Command.List>
-          {#each collection().group() as [group, items]}
-            <Command.ItemGroup heading={group}>
-              {#each items as item}
-                <Command.Item {item}>
-                  {item.label}
-                  <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                </Command.Item>
-              {/each}
-            </Command.ItemGroup>
-          {/each}
-        </Command.List>
-      </Command.Content>
-      <Command.Footer>
-        <div class="flex items-center gap-2">
-          <Kbd variant="outline">
-            <ArrowBendDownLeftIcon class="size-3" />
-          </Kbd>
-          <span class="text-muted-foreground">To select</span>
-        </div>
-      </Command.Footer>
-    </Command>
-  </Command.DialogContent>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open Command Palette</Button>
+  {/snippet}
+
+  <Command.Root
+    {collection}
+    onInputValueChange={({ inputValue }) => filter(inputValue)}
+    onValueChange={() => (open = false)}
+  >
+    <Command.Control>
+      <InputGroup class="bg-input/32 rounded-lg">
+        <InputGroup.Addon>
+          <MagnifyingGlassIcon aria-hidden="true" class="opacity-64" />
+        </InputGroup.Addon>
+        <Command.Input>
+          {#snippet asChild(props)}
+            <InputGroup.Input
+              {...props({ autofocus: true, placeholder: "Search commands..." })}
+            />
+          {/snippet}
+        </Command.Input>
+      </InputGroup>
+    </Command.Control>
+    <Command.Content>
+      <Command.Empty>No results found. Try a different search.</Command.Empty>
+      <Command.List>
+        {#each collection().group() as [group, items] (group)}
+          <Command.ItemGroup>
+            <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
+            {#each items as item (item.value)}
+              <Command.Item {item}>
+                {item.label}
+                <Command.Shortcut>{item.shortcut}</Command.Shortcut>
+              </Command.Item>
+            {/each}
+          </Command.ItemGroup>
+        {/each}
+      </Command.List>
+    </Command.Content>
+    <Command.Footer>
+      <div class="flex items-center gap-2">
+        <Kbd variant="outline">
+          <ArrowBendDownLeftIcon class="size-3" />
+        </Kbd>
+        <span class="text-muted-foreground">To select</span>
+      </div>
+    </Command.Footer>
+  </Command.Root>
 </Command.Dialog>

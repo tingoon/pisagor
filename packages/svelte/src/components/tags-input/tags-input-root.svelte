@@ -4,62 +4,38 @@
     type TagsInputRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
   import type { TagsInputRootContract } from "@pisagor/contracts";
-  import { tagsInputRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { Context } from "./tags-input.context";
-  import TagsInputControl from "./tags-input-control.svelte";
-  import TagsInputInput from "./tags-input-input.svelte";
-  import TagsInputItem from "./tags-input-item.svelte";
+  import { withTagsInputProvider } from "./tags-input.context";
 
   type Props = Omit<ArkRootProps, "onValueChange"> &
-    TagsInputRootContract & {
-      clearable?: boolean;
+    Omit<TagsInputRootContract, "variant"> & {
+      /** Called with the tag list when it changes. */
       onValueChange?: (value: string[]) => void;
-      placeholder?: string;
     };
 
   let {
-    size = "md",
-    variant,
-    clearable,
     children,
     editable = false,
-    placeholder,
     onValueChange,
-    recipe = tagsInputRecipe,
-    class: className,
+    size = "md",
     ...rest
   }: Props = $props();
-
-  const slots = $derived(recipe());
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
 
   function handleValueChange(details: { value: string[] }) {
     onValueChange?.(details.value);
   }
+
+  const root = withTagsInputProvider(
+    () => ({
+      ...rest,
+      "data-size": size,
+      editable,
+      onValueChange: onValueChange ? handleValueChange : undefined,
+    }),
+    { name: "Root" },
+  );
 </script>
 
-<TagsInputPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-size={size}
-  {editable}
-  onValueChange={onValueChange ? handleValueChange : undefined}
->
-  <TagsInputControl {clearable} {size} {variant}>
-    <TagsInputPrimitive.Context>
-      {#snippet render(api)}
-        {#each api().value as value, index (value)}
-          <TagsInputItem {index} {value} />
-        {/each}
-      {/snippet}
-    </TagsInputPrimitive.Context>
-    {@render children?.()}
-    <TagsInputInput {placeholder} />
-  </TagsInputControl>
+<TagsInputPrimitive.Root {...root.props}>
+  {@render children?.()}
   <TagsInputPrimitive.HiddenInput />
 </TagsInputPrimitive.Root>

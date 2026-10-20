@@ -9,7 +9,7 @@
   ];
 </script>
 
-<Steps count={items.length}>
+<Steps.Root count={items.length}>
   <Steps.List>
     {#each items as item, index}
       <Steps.Item {index}>
@@ -22,4 +22,4 @@
       </Steps.Item>
     {/each}
   </Steps.List>
-</Steps>
+</Steps.Root>

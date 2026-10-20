@@ -1,4 +1,5 @@
-import { Carousel } from "@pisagor/solid";
+import { Button, Carousel } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { imageSources } from "./helpers";
 
 export function ThumbnailIndicatorVertical() {
@@ -12,8 +13,32 @@ export function ThumbnailIndicatorVertical() {
       slideCount={slides.length}
     >
       <Carousel.Control class="relative">
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.PrevTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretLeftIcon aria-hidden />
+            </Button>
+          )}
+        />
+        <Carousel.NextTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretRightIcon aria-hidden />
+            </Button>
+          )}
+        />
 
         <Carousel.ItemGroup>
           {slides.map((slide, index) => (

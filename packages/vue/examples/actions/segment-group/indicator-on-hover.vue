@@ -17,6 +17,7 @@ function onValueChange(next: string | null) {
     :value="hoverValue ?? value"
     @value-change="onValueChange"
   >
+    <SegmentGroup.Indicator />
     <SegmentGroup.Item
       class="px-2 py-1.5 text-sm"
       v-for="page in pages"
@@ -26,7 +27,9 @@ function onValueChange(next: string | null) {
       @mouseenter="hoverValue = page"
       @mouseleave="hoverValue = null"
     >
-      {{ page }}
+      <SegmentGroup.ItemText>{{ page }}</SegmentGroup.ItemText>
+      <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   </SegmentGroup.Root>
 </template>

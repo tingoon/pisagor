@@ -4,24 +4,17 @@
 
 <Drawer
   defaultSnapPoint={0.5}
+  description="Drag to 25%, 50%, or 100% height. Swipe down to close."
   snapPoints={[0.25, 0.5, 1]}
   snapToSequentialPoints
+  title="Snap points"
 >
-  <Drawer.Trigger>
-    <Button variant="outline">Open</Button>
-  </Drawer.Trigger>
-  <Drawer.Content>
-    <Drawer.ContentInner>
-      <Drawer.Header
-        description="Drag to 25%, 50%, or 100% height. Swipe down to close."
-        title="Snap points"
-      />
-      <Drawer.Body>
-        <p class="text-muted-foreground text-sm">
-          This drawer has multiple snap points. Try dragging the handle to
-          quarter, half, or full height.
-        </p>
-      </Drawer.Body>
-    </Drawer.ContentInner>
-  </Drawer.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+
+  <p class="text-muted-foreground text-sm">
+    This drawer has multiple snap points. Try dragging the handle to quarter,
+    half, or full height.
+  </p>
 </Drawer>

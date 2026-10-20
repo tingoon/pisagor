@@ -4,7 +4,12 @@ import type {
   ToggleGroupRootContract,
   ToggleGroupContract,
 } from "@pisagor/contracts";
-import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  type ToggleGroupRecipe,
+  toggleGroupRecipe,
+  toggleRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -18,7 +23,6 @@ import {
   createContext,
   createSlotRecipeContext,
 } from "../internal";
-import { Toggle } from "./toggle";
 
 // #region Slot recipe context
 const { provideStyles: provideToggleGroupStyles, useStyles } =
@@ -63,11 +67,7 @@ export interface ToggleGroupPresetItem extends Omit<
   content: VNodeChild;
 }
 
-export interface ToggleGroupItemProps {
-  class?: unknown;
-  disabled?: boolean;
-  value: string;
-}
+export type { ToggleGroupItemProps } from "@ark-ui/vue";
 
 export interface ToggleGroupProps
   extends
@@ -129,15 +129,23 @@ export const ToggleGroupRoot = defineComponent({
       variants: {},
     });
 
+    ToggleGroupContextProvider({
+      get size() {
+        return props.size;
+      },
+      get slots() {
+        return recipeSlots.value;
+      },
+      get spacing() {
+        return props.spacing;
+      },
+      get variant() {
+        return props.variant;
+      },
+    });
+
     return () => {
       const variantSlots = recipeSlots.value;
-
-      ToggleGroupContextProvider({
-        size: props.size,
-        slots: variantSlots,
-        spacing: props.spacing,
-        variant: props.variant,
-      });
 
       return h(
         ToggleGroupPrimitive.Root as ArkPart,
@@ -157,15 +165,7 @@ export const ToggleGroupRoot = defineComponent({
               }
             : undefined,
           orientation: props.orientation,
-          style: {
-            ...(attrs as object),
-            ...(typeof (props as unknown as { style?: unknown }).style ===
-            "object"
-              ? (((props as unknown as { style: Record<string, unknown> })
-                  .style ?? {}) as object)
-              : {}),
-            "--gap": props.spacing,
-          } as unknown as Record<string, unknown>,
+          style: [{ "--gap": props.spacing }, attrs.style],
         },
         slots,
       );
@@ -173,45 +173,36 @@ export const ToggleGroupRoot = defineComponent({
   },
 });
 
+/** Item; styled like `Toggle` from the group's `variant` / `size`. */
 export const ToggleGroupItem = defineComponent({
   inheritAttrs: false,
-  name: "ToggleGroupItem",
+  name: "ToggleGroup.Item",
   props: {
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    disabled: { default: undefined, type: Boolean },
-    value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
     const styles = useStyles();
+    const ctx = useToggleGroupContext();
 
     return () => {
-      const ctx = useToggleGroupContext();
+      const variant = ctx?.variant ?? "ghost";
 
       return h(
         ToggleGroupPrimitive.Item as ArkPart,
         {
           ...attrs,
-          asChild: true,
-          disabled: props.disabled,
-          value: props.value,
-        },
-        () =>
-          h(
-            Toggle as ArkPart,
-            {
-              ...attrs,
-              class: cn(ctx?.slots.item() ?? styles.slots.item(), props.class),
-              "data-spacing": ctx?.spacing ?? 0,
-              "data-variant": ctx?.variant ?? "ghost",
-              disabled: props.disabled,
-              size: ctx?.size ?? "md",
-              variant: ctx?.variant ?? "ghost",
-            },
-            () => slots.default?.(),
+          class: cn(
+            buttonRecipe({ clickEffect: false, variant }).base(),
+            toggleRecipe({ size: ctx?.size ?? "md" }),
+            (ctx?.slots ?? styles.slots).item({ class: cn(props.class) }),
           ),
+          "data-spacing": ctx?.spacing ?? 0,
+          "data-variant": variant,
+        },
+        slots,
       );
     };
   },
@@ -221,6 +212,10 @@ export const ToggleGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "ToggleGroup",
   props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToggleGroupProps["classNames"]>,
+    },
     defaultValue: {
       default: undefined,
       type: Array as PropType<string[] | undefined>,
@@ -253,6 +248,7 @@ export const ToggleGroupShorthand = defineComponent({
         ToggleGroupRoot as ArkPart,
         {
           ...(attrs as object),
+          class: cn(props.classNames?.base, attrs.class as ClassValue),
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           multiple: props.multiple,
@@ -267,7 +263,12 @@ export const ToggleGroupShorthand = defineComponent({
           props.items?.map((item) =>
             h(
               ToggleGroupItem as ArkPart,
-              { disabled: item.disabled, key: item.value, value: item.value },
+              {
+                class: props.classNames?.item,
+                disabled: item.disabled,
+                key: item.value,
+                value: item.value,
+              },
               () => item.content,
             ),
           ) ?? [],

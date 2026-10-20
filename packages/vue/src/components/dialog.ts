@@ -1,402 +1,234 @@
-import { Dialog as DialogPrimitive } from "@ark-ui/vue";
+import { Dialog as DialogPrimitive, type HTMLArkProps } from "@ark-ui/vue";
 import type {
-  DialogContract,
-  DialogHeaderContract,
-  DialogRootContract,
-} from "@pisagor/contracts";
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogPositionerProps,
+  DialogRootProps as DialogRootPrimitiveProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/vue";
+import { PhX } from "@phosphor-icons/vue";
+import type { DialogContract, DialogRootContract } from "@pisagor/contracts";
+import { dialogRecipe } from "@pisagor/recipes";
 import {
-  type DialogRecipe,
-  type DialogVariantProps,
-  dialogRecipe,
-} from "@pisagor/recipes";
-import {
-  computed,
   defineComponent,
   h,
   type PropType,
-  reactive,
   Teleport,
   type VNodeChild,
-  watchEffect,
 } from "vue";
-import {
-  type ClassValue,
-  createContext,
-  createSlotRecipeContext,
-  renderIconCloseButton,
-} from "../internal";
+import { contentProp, createSlotRecipeContext, slotOrProp } from "../internal";
+import { Button } from "./button";
 import { useLocale } from "./provider/context";
+import { ScrollArea } from "./scroll-area";
 
-// #region Slot recipe context
-const { provideStyles: provideDialogStyles, withContext } =
-  createSlotRecipeContext({
-    name: "Dialog",
-    recipe: dialogRecipe,
-  });
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Dialog",
+  recipe: dialogRecipe,
+});
 // #endregion
 
 // #region Types
-interface DialogContextValue {
-  modal?: boolean;
-  slots: DialogRecipe;
-}
+export type DialogRootProps = DialogRootPrimitiveProps & DialogRootContract;
 
-export interface DialogContentProps extends DialogVariantProps {
-  class?: unknown;
-  showCloseButton?: boolean;
-}
+export type DialogHeaderProps = HTMLArkProps<"div">;
 
-export interface DialogBodyProps {
-  class?: unknown;
-  dataPart?: string;
-  dataScope?: string;
-  scrollFade?: boolean;
-}
+export type DialogBodyProps = HTMLArkProps<"div">;
 
-export interface DialogHeaderProps extends DialogHeaderContract {
-  class?: unknown;
-  dataPart?: string;
-  dataScope?: string;
-  description?: string;
-  title?: string;
-}
+export type DialogFooterProps = HTMLArkProps<"div">;
 
-export interface DialogProps extends DialogRootContract, DialogContract {
+export interface DialogProps
+  extends
+    Omit<DialogRootProps, "title">,
+    Omit<DialogContract, "actions" | "description" | "title" | "trigger"> {
+  /** Footer action area. Also available as the `actions` slot. */
   actions?: VNodeChild;
-  collapsible?: boolean;
-  description?: string;
-  lazyMount?: boolean;
-  modal?: boolean;
-  title?: string;
-  trigger?: VNodeChild;
-  unmountOnExit?: boolean;
+  /** Supporting copy in the header. Also available as the `description` slot. */
+  description?: VNodeChild;
+  /**
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
+   */
+  scrollFade?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  /** Dialog title. Also available as the `title` slot. */
+  title?: VNodeChild;
 }
 // #endregion
-
-// #region Context
-const [provideDialogContext, useDialogLocal] =
-  createContext("DialogLocal")<DialogContextValue>();
-
-export { useDialogLocal as useDialog };
-
-// #endregion
-
-type ArkPart = Parameters<typeof h>[0];
-
-function dialogTeleport(content: VNodeChild) {
-  return h(Teleport, { to: "body" }, [content]);
-}
-
-function useDialogSlots() {
-  return useDialogLocal()?.slots ?? dialogRecipe();
-}
 
 // #region Parts
-export const DialogRoot = defineComponent({
+const Root = withProvider<DialogRootProps>(DialogPrimitive.Root, {
+  name: "Root",
+  renderless: true,
+  slot: "base",
+});
+
+const Trigger = withContext<DialogTriggerProps>(DialogPrimitive.Trigger, {
+  name: "Trigger",
+});
+
+const Backdrop = withContext<DialogBackdropProps>(DialogPrimitive.Backdrop, {
+  name: "Backdrop",
+});
+
+const Positioner = withContext<DialogPositionerProps>(
+  DialogPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const Content = withContext<DialogContentProps>(DialogPrimitive.Content, {
+  name: "Content",
+});
+
+const Header = withContext("div", { name: "Header" });
+
+const Title = withContext<DialogTitleProps>(DialogPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<DialogDescriptionProps>(
+  DialogPrimitive.Description,
+  { name: "Description" },
+);
+
+const Body = withContext("div", { name: "Body" });
+
+const Footer = withContext("div", { name: "Footer" });
+
+const CloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<DialogCloseTriggerProps>(
+  DialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "inline" },
+);
+// #endregion
+
+// #region Shorthand
+/**
+ * Slots: `trigger` (single element, rendered `as-child`), `title`,
+ * `description`, `default` (scrollable body) and `actions` (footer).
+ */
+export const DialogShorthand = defineComponent({
   inheritAttrs: false,
-  name: "DialogRoot",
+  name: "Dialog",
   props: {
-    lazyMount: { default: true, type: Boolean },
+    actions: contentProp,
+    classNames: {
+      default: undefined,
+      type: Object as PropType<DialogProps["classNames"]>,
+    },
+    description: contentProp,
     modal: { default: true, type: Boolean },
-    recipe: {
-      default: dialogRecipe,
-      type: Function as PropType<typeof dialogRecipe>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideDialogStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    const context = reactive<DialogContextValue>({
-      modal: props.modal,
-      slots: recipeSlots.value,
-    });
-
-    watchEffect(() => {
-      context.modal = props.modal;
-    });
-
-    provideDialogContext(context);
-
-    return () =>
-      h(
-        DialogPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          lazyMount: props.lazyMount,
-          modal: props.modal,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
-  },
-});
-
-export const DialogTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "DialogTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(DialogPrimitive.Trigger as ArkPart, attrs, slots);
-  },
-});
-
-export const DialogBackdrop = defineComponent({
-  inheritAttrs: false,
-  name: "DialogBackdrop",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const dialogContext = useDialogLocal();
-
-    return () => {
-      if (!dialogContext?.modal) {
-        return null;
-      }
-
-      return h(DialogPrimitive.Backdrop as ArkPart, {
-        ...attrs,
-        class: dialogContext.slots.backdrop({ class: props.class }),
-      });
-    };
-  },
-});
-
-export const DialogPositioner = defineComponent({
-  inheritAttrs: false,
-  name: "DialogPositioner",
-  props: {
-    bottomStickOnMobile: { default: undefined, type: Boolean },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const dialogSlots = useDialogSlots();
-
-      return h(
-        DialogPrimitive.Positioner as ArkPart,
-        {
-          ...attrs,
-          class: dialogSlots.positioner({
-            bottomStickOnMobile: props.bottomStickOnMobile || undefined,
-            class: props.class,
-          }),
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const DialogContent = defineComponent({
-  inheritAttrs: false,
-  name: "DialogContent",
-  props: {
-    bottomStickOnMobile: { default: true, type: Boolean },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
+    scrollFade: { default: false, type: Boolean },
     showCloseButton: { default: true, type: Boolean },
-    size: {
-      default: "md",
-      type: String as PropType<
-        | "2xl"
-        | "3xl"
-        | "4xl"
-        | "5xl"
-        | "6xl"
-        | "fullscreen"
-        | "lg"
-        | "md"
-        | "sm"
-        | "xl"
-      >,
-    },
+    title: contentProp,
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const dialogContext = useDialogLocal();
 
     return () => {
-      if (!dialogContext) {
-        return null;
-      }
+      const classNames = props.classNames;
+      const title = slotOrProp(slots.title, props.title);
+      const description = slotOrProp(slots.description, props.description);
+      const actions = slotOrProp(slots.actions, props.actions);
 
-      return dialogTeleport([
-        h(DialogBackdrop),
-        h(
-          DialogPositioner,
-          { bottomStickOnMobile: props.bottomStickOnMobile },
-          () =>
-            h(
-              DialogPrimitive.Content as ArkPart,
-              {
-                ...attrs,
-                class: dialogContext.slots.content({
-                  bottomStickOnMobile: props.bottomStickOnMobile,
-                  class: props.class,
-                  size: props.size,
-                }),
-              },
-              () => [
-                slots.default?.(),
-                props.showCloseButton
-                  ? h(DialogCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(
-                        m("dialog.close"),
-                        dialogContext.slots.inline(),
+      return h(Root, { ...attrs, modal: props.modal }, () => [
+        slots.trigger
+          ? h(
+              Trigger,
+              { asChild: true, class: classNames?.trigger },
+              { default: slots.trigger },
+            )
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          props.modal ? h(Backdrop, { class: classNames?.backdrop }) : null,
+
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { class: classNames?.content }, () => [
+              title || description
+                ? h(Header, { class: classNames?.header }, () => [
+                    title
+                      ? h(Title, { class: classNames?.title }, title)
+                      : null,
+                    description
+                      ? h(
+                          Description,
+                          { class: classNames?.description },
+                          description,
+                        )
+                      : null,
+                  ])
+                : null,
+
+              slots.default
+                ? h(ScrollArea, { scrollFade: props.scrollFade }, () =>
+                    h(Body, { class: classNames?.body }, slots.default),
+                  )
+                : null,
+
+              actions
+                ? h(Footer, { class: classNames?.footer }, actions)
+                : null,
+
+              props.showCloseButton
+                ? h(
+                    InlineCloseTrigger,
+                    { asChild: true, class: classNames?.inline },
+                    () =>
+                      h(
+                        Button,
+                        {
+                          "aria-label": m("dialog.close"),
+                          size: "icon-sm",
+                          variant: "ghost",
+                        },
+                        () => h(PhX),
                       ),
-                    )
-                  : null,
-              ],
-            ),
-        ),
+                  )
+                : null,
+            ]),
+          ),
+        ]),
       ]);
     };
   },
 });
-
-export const DialogBody = defineComponent({
-  inheritAttrs: false,
-  name: "DialogBody",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    dataPart: { default: "body", type: String },
-    dataScope: { default: "dialog", type: String },
-    scrollFade: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const { "data-part": _, "data-scope": __, ...rest } = attrs;
-      const dialogSlots = useDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...rest,
-          class: dialogSlots.body({ class: props.class }),
-          "data-part": props.dataPart,
-          "data-scope": props.dataScope,
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const DialogHeader = defineComponent({
-  inheritAttrs: false,
-  name: "DialogHeader",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    dataPart: { default: "header", type: String },
-    dataScope: { default: "dialog", type: String },
-    description: String,
-    title: String,
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const { "data-part": _, "data-scope": __, ...rest } = attrs;
-      const dialogSlots = useDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...rest,
-          class: dialogSlots.header({ class: props.class }),
-          "data-part": props.dataPart,
-          "data-scope": props.dataScope,
-        },
-        () => [
-          props.title ? h(DialogTitle, null, () => props.title) : null,
-          props.description
-            ? h(DialogDescription, null, () => props.description)
-            : null,
-          slots.default?.(),
-        ],
-      );
-    };
-  },
-});
-
-export const DialogTitle = withContext(DialogPrimitive.Title, {
-  name: "Title",
-});
-
-export const DialogDescription = withContext(DialogPrimitive.Description, {
-  name: "Description",
-});
-
-export const DialogCloseTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "DialogCloseTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
-
-export const DialogFooter = defineComponent({
-  inheritAttrs: false,
-  name: "DialogFooter",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    dataPart: { default: "footer", type: String },
-    dataScope: { default: "dialog", type: String },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const { "data-part": _, "data-scope": __, ...rest } = attrs;
-      const dialogSlots = useDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...rest,
-          class: dialogSlots.footer({ class: props.class }),
-          "data-part": props.dataPart,
-          "data-scope": props.dataScope,
-        },
-        slots,
-      );
-    };
-  },
-});
 // #endregion
 
-export const Dialog = Object.assign(DialogRoot, {
-  Backdrop: DialogBackdrop,
-  Body: DialogBody,
-  CloseTrigger: DialogCloseTrigger,
-  Content: DialogContent,
-  Description: DialogDescription,
-  Footer: DialogFooter,
-  Header: DialogHeader,
-  Positioner: DialogPositioner,
-  Root: DialogRoot,
-  Title: DialogTitle,
-  Trigger: DialogTrigger,
+export type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogPositionerProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/vue";
+
+export const Dialog = Object.assign(DialogShorthand, {
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  Description,
+  Footer,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });

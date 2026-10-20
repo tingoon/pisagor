@@ -12,6 +12,7 @@ export function IndicatorOnHover() {
       onValueChange={(value) => setValue(value ?? "Profile")}
       value={hoverValue ?? value}
     >
+      <SegmentGroup.Indicator />
       {pages.map((page) => (
         <SegmentGroup.Item
           className="px-2 py-1.5 text-sm"
@@ -21,7 +22,9 @@ export function IndicatorOnHover() {
           onMouseLeave={() => setHoverValue(null)}
           value={page}
         >
-          {page}
+          <SegmentGroup.ItemText>{page}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+          <SegmentGroup.ItemHiddenInput />
         </SegmentGroup.Item>
       ))}
     </SegmentGroup.Root>

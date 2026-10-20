@@ -1,33 +1,32 @@
-import DialogRoot from "../dialog/dialog-root.svelte";
+import ComboboxInput from "../combobox/combobox-input.svelte";
+import ComboboxItem from "../combobox/combobox-item.svelte";
+import ComboboxItemGroup from "../combobox/combobox-item-group.svelte";
+import ComboboxItemGroupLabel from "../combobox/combobox-item-group-label.svelte";
+import CommandShorthand from "./command.svelte";
 import CommandContent from "./command-content.svelte";
-import CommandDialogContent from "./command-dialog-content.svelte";
-import CommandDialogTrigger from "./command-dialog-trigger.svelte";
+import CommandControl from "./command-control.svelte";
+import CommandDialog from "./command-dialog.svelte";
 import CommandEmpty from "./command-empty.svelte";
 import CommandFooter from "./command-footer.svelte";
-import CommandInput from "./command-input.svelte";
-import CommandItem from "./command-item.svelte";
-import CommandItemGroup from "./command-item-group.svelte";
-import CommandItemGroupLabel from "./command-item-group-label.svelte";
 import CommandList from "./command-list.svelte";
 import CommandRoot from "./command-root.svelte";
 import CommandSeparator from "./command-separator.svelte";
 import CommandShortcut from "./command-shortcut.svelte";
-import CommandShorthand from "./command-shorthand.svelte";
 
-export const Command = Object.assign(CommandRoot, {
+export type { CommandItem } from "./command.types";
+
+export const Command = Object.assign(CommandShorthand, {
   Content: CommandContent,
-  Dialog: DialogRoot,
-  DialogContent: CommandDialogContent,
-  DialogTrigger: CommandDialogTrigger,
+  Control: CommandControl,
+  Dialog: CommandDialog,
   Empty: CommandEmpty,
   Footer: CommandFooter,
-  Input: CommandInput,
-  Item: CommandItem,
-  ItemGroup: CommandItemGroup,
-  ItemGroupLabel: CommandItemGroupLabel,
+  Input: ComboboxInput,
+  Item: ComboboxItem,
+  ItemGroup: ComboboxItemGroup,
+  ItemGroupLabel: ComboboxItemGroupLabel,
   List: CommandList,
   Root: CommandRoot,
   Separator: CommandSeparator,
   Shortcut: CommandShortcut,
-  Shorthand: CommandShorthand,
 });

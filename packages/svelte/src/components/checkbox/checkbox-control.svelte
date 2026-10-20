@@ -4,34 +4,24 @@
     type CheckboxControlProps,
   } from "@ark-ui/svelte";
   import type { CheckboxRootContract } from "@pisagor/contracts";
-  import { CheckIcon, MinusIcon } from "phosphor-svelte";
+  import { useStyles, withContext } from "./checkbox.context";
 
-  import { withContext } from "./checkbox.context";
-  import CheckboxIndicator from "./checkbox-indicator.svelte";
-
-  type Props = CheckboxControlProps &
-    Pick<CheckboxRootContract, "size" | "variant">;
-
-  let { children, ...rest }: Props = $props();
-
+  /**
+   * Control; mirrors the root `variant` as `data-variant`. Render your own
+   * indicators.
+   */
+  let { children, ...rest }: CheckboxControlProps = $props();
+  const styles = useStyles();
   const part = withContext(
     () => ({
       ...rest,
-      "data-variant": rest.variant ?? "primary",
+      "data-variant":
+        (styles.variants as CheckboxRootContract).variant ?? "primary",
     }),
     { name: "Control", slot: "base" },
   );
 </script>
 
 <CheckboxPrimitive.Control {...part.props}>
-  {#if children}
-    {@render children()}
-  {:else}
-    <CheckboxIndicator>
-      <CheckIcon />
-    </CheckboxIndicator>
-    <CheckboxIndicator indeterminate>
-      <MinusIcon />
-    </CheckboxIndicator>
-  {/if}
+  {@render children?.()}
 </CheckboxPrimitive.Control>

@@ -1,71 +1,40 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue";
-import type { ContextMenuRootContract } from "@pisagor/contracts";
-import { contextMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, type VNode } from "vue";
+import type { MenuContextTriggerProps } from "@ark-ui/vue";
+import type {
+  ContextMenuRootContract,
+  DropdownMenuContract,
+} from "@pisagor/contracts";
+import { contextMenuRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
+import { defineComponent, h, type PropType, Teleport } from "vue";
 import type { ClassValue } from "../internal";
 import type { DropdownMenuRootProps } from "./dropdown-menu";
-import {
-  DropdownMenuArrow,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuItemGroup,
-  DropdownMenuItemGroupLabel,
-  DropdownMenuItemIndicator,
-  DropdownMenuItemText,
-  DropdownMenuPositioner,
-  DropdownMenuRadioItem,
-  DropdownMenuRadioItemGroup,
-  DropdownMenuRoot,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuTriggerItem,
-} from "./dropdown-menu";
-
-type ArkPart = Parameters<typeof h>[0];
-
-function wrapDropdownMenuPart(
-  component: Parameters<typeof h>[0],
-  attrs: Record<string, unknown>,
-  slots: { default?: () => VNode | VNode[] | string | undefined },
-) {
-  return h(component, attrs as object, slots);
-}
+import { DropdownMenu } from "./dropdown-menu";
 
 // #region Types
-export interface ContextMenuContextTriggerProps extends ContextMenuRootContract {
-  class?: unknown;
-}
+export type ContextMenuRootProps = DropdownMenuRootProps;
+
+export type ContextMenuContextTriggerProps = MenuContextTriggerProps &
+  ContextMenuRootContract;
+
+/**
+ * Slots: `trigger` (area that opens the menu on right-click or long press) and
+ * `default` (menu items).
+ */
+export interface ContextMenuProps
+  extends ContextMenuRootProps, DropdownMenuContract {}
 // #endregion
 
-// #region Parts
-export const ContextMenuRoot = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuRoot",
-  props: {
-    lazyMount: { default: true, type: Boolean },
-    positioning: {
-      default: () => ({ placement: "bottom-end" }),
-      type: Object as PropType<Record<string, unknown>>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () => h(DropdownMenuRoot, { ...(attrs as object), ...props }, slots);
-  },
-});
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
 
-export const ContextMenuContextTrigger = defineComponent({
+// #region Parts
+const ContextTrigger = defineComponent({
   inheritAttrs: false,
-  name: "ContextMenuContextTrigger",
+  name: "ContextMenu.ContextTrigger",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
+    class: classProp,
     recipe: {
       default: contextMenuRecipe,
       type: Function as PropType<typeof contextMenuRecipe>,
@@ -74,108 +43,89 @@ export const ContextMenuContextTrigger = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        MenuPrimitive.ContextTrigger as ArkPart,
-        {
-          ...attrs,
-          class: cn(props.recipe(), props.class, attrs.class),
-        },
+        MenuPrimitive.ContextTrigger,
+        { ...attrs, class: props.recipe({ class: props.class }) },
         slots,
       );
   },
 });
 
-export const ContextMenuContent = defineComponent({
+const Shortcut = defineComponent({
   inheritAttrs: false,
-  name: "ContextMenuContent",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuContent, attrs, slots);
-  },
-});
-
-export const ContextMenuItemGroup = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuItemGroup",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuItemGroup, attrs, slots);
-  },
-});
-
-export const ContextMenuSeparator = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuSeparator",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuSeparator, attrs, slots);
-  },
-});
-
-export const ContextMenuItem = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuItem",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuItem, attrs, slots);
-  },
-});
-
-export const ContextMenuSub = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuSub",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuSub, attrs, slots);
-  },
-});
-
-export const ContextMenuSubContent = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuSubContent",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuSubContent, attrs, slots);
-  },
-});
-
-export const ContextMenuTriggerItem = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuTriggerItem",
-  setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuTriggerItem, attrs, slots);
-  },
-});
-
-export const ContextMenuShortcut = defineComponent({
-  inheritAttrs: false,
-  name: "ContextMenuShortcut",
-  setup(_, { attrs, slots }) {
+  name: "ContextMenu.Shortcut",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
     return () =>
-      wrapDropdownMenuPart(
-        DropdownMenuShortcut,
+      h(
+        "span",
         {
           ...attrs,
-          dataPart: "shortcut",
-          dataScope: "context-menu",
+          class: dropdownMenuRecipe().shortcut({ class: props.class }),
+          "data-part": "shortcut",
+          "data-scope": "context-menu",
         },
-        slots,
+        slots.default?.(),
       );
   },
 });
 // #endregion
 
-export type ContextMenuRootProps = DropdownMenuRootProps;
+// #region Shorthand
+export const ContextMenuShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "ContextMenu",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ContextMenuProps["classNames"]>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const classNames = props.classNames;
 
-export const ContextMenu = Object.assign(ContextMenuRoot, {
-  Arrow: DropdownMenuArrow,
-  CheckboxItem: DropdownMenuCheckboxItem,
-  Content: ContextMenuContent,
-  ContextTrigger: ContextMenuContextTrigger,
-  Item: ContextMenuItem,
-  ItemGroup: ContextMenuItemGroup,
-  ItemGroupLabel: DropdownMenuItemGroupLabel,
-  ItemIndicator: DropdownMenuItemIndicator,
-  ItemText: DropdownMenuItemText,
-  Positioner: DropdownMenuPositioner,
-  RadioItem: DropdownMenuRadioItem,
-  RadioItemGroup: DropdownMenuRadioItemGroup,
-  Separator: ContextMenuSeparator,
-  Shortcut: ContextMenuShortcut,
-  Sub: ContextMenuSub,
-  SubContent: ContextMenuSubContent,
-  TriggerItem: ContextMenuTriggerItem,
+      return h(DropdownMenu.Root, attrs, () => [
+        slots.trigger
+          ? h(
+              ContextTrigger,
+              { class: classNames?.trigger },
+              { default: slots.trigger },
+            )
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          h(DropdownMenu.Positioner, { class: classNames?.positioner }, () =>
+            h(
+              DropdownMenu.Content,
+              { class: classNames?.content },
+              slots.default,
+            ),
+          ),
+        ]),
+      ]);
+    };
+  },
+});
+// #endregion
+
+export const ContextMenu = Object.assign(ContextMenuShorthand, {
+  Arrow: DropdownMenu.Arrow,
+  ArrowTip: DropdownMenu.ArrowTip,
+  CheckboxItem: DropdownMenu.CheckboxItem,
+  Content: DropdownMenu.Content,
+  ContextTrigger,
+  Indicator: DropdownMenu.Indicator,
+  Item: DropdownMenu.Item,
+  ItemGroup: DropdownMenu.ItemGroup,
+  ItemGroupLabel: DropdownMenu.ItemGroupLabel,
+  ItemIndicator: DropdownMenu.ItemIndicator,
+  ItemText: DropdownMenu.ItemText,
+  Positioner: DropdownMenu.Positioner,
+  RadioItem: DropdownMenu.RadioItem,
+  RadioItemGroup: DropdownMenu.RadioItemGroup,
+  Root: DropdownMenu.Root,
+  Separator: DropdownMenu.Separator,
+  Shortcut,
+  Sub: DropdownMenu.Sub,
+  TriggerItem: DropdownMenu.TriggerItem,
 });

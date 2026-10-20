@@ -1,224 +1,76 @@
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/vue";
-import type {
-  ImageCropperCropChangeDetails,
-  ImageCropperFlipChangeDetails,
-  ImageCropperHandlePosition,
-  ImageCropperRotationChangeDetails,
-  ImageCropperZoomChangeDetails,
+import {
+  type ImageCropperHandleProps,
+  ImageCropper as ImageCropperPrimitive,
 } from "@ark-ui/vue";
-import type { ImageCropperRootContract } from "@pisagor/contracts";
+import type {
+  ImageCropperContract,
+  ImageCropperRootContract,
+} from "@pisagor/contracts";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType } from "vue";
+import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
-// #region Slot recipe context
-const {
-  provideStyles: provideImageCropperStyles,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+// #region Context
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ImageCropper",
   recipe: imageCropperRecipe,
 });
 // #endregion
 
+// #region Types
 type ArkPart = Parameters<typeof h>[0];
 
-interface CropRect {
-  height: number;
-  width: number;
-  x: number;
-  y: number;
-}
+type ImageCropperAxis = "horizontal" | "vertical" | "both" | "none";
 
-// #region Types
-export interface ImageCropperProps extends ImageCropperRootContract {
-  class?: unknown;
-  /** Shape of the crop selection area. */
-  cropShape?: "rectangle" | "circle";
-  /** Whether the crop area is fixed in size and position. */
-  fixedCropArea?: boolean;
-  /**
-   * The initial rectangle of the crop area. If not provided, a smart default
-   * will be computed based on viewport size and aspect ratio.
-   */
-  initialCrop?: CropRect;
-  /** The maximum height of the crop area. */
-  maxHeight?: number;
-  /** The maximum width of the crop area. */
-  maxWidth?: number;
-  /** The maximum zoom factor allowed. */
-  maxZoom?: number;
-  /** The minimum height of the crop area. */
-  minHeight?: number;
-  /** The minimum width of the crop area. */
-  minWidth?: number;
-  /** The minimum zoom factor allowed. */
-  minZoom?: number;
-  /** Callback fired when the crop area changes. */
-  onCropChange?: (details: ImageCropperCropChangeDetails) => void;
-  /** Callback fired when the flip state changes. */
-  onFlipChange?: (details: ImageCropperFlipChangeDetails) => void;
-  /** Callback fired when the rotation changes. */
-  onRotationChange?: (details: ImageCropperRotationChangeDetails) => void;
-  /** Callback fired when the zoom level changes. */
-  onZoomChange?: (details: ImageCropperZoomChangeDetails) => void;
-  /** The controlled rotation of the image in degrees (0 - 360). */
-  rotation?: number;
-  /**
-   * Image URL for the auto-rendered cropper layout.
-   *
-   * @remarks
-   *   When provided, renders `ImageCropperImage` and `ImageCropperSelection`
-   *   automatically and the default slot is ignored.
-   */
-  src?: string;
-  /** The controlled zoom level of the image. */
-  zoom?: number;
-}
+export type ImageCropperRootProps = ImageCropperRootContract;
 
-export interface ImageCropperSelectionProps {
+export interface ImageCropperProps
+  extends ImageCropperRootProps, ImageCropperContract {
+  /** Image alt text. */
+  alt?: string;
   /**
-   * The axis of the grid to show.
+   * Which grid lines to show inside the selection.
    *
    * @defaultValue "both"
    */
-  axis?: "horizontal" | "vertical" | "both";
-  class?: unknown;
+  axis?: ImageCropperAxis;
+  /** Image URL. */
+  src: string;
 }
+
+export type {
+  ImageCropperGridProps,
+  ImageCropperHandleProps,
+  ImageCropperImageProps,
+  ImageCropperSelectionProps,
+  ImageCropperViewportProps,
+} from "@ark-ui/vue";
+
+const handlePositions = ["n", "e", "s", "w", "ne", "se", "sw", "nw"] as const;
 // #endregion
 
 // #region Parts
-export const ImageCropperRoot = defineComponent({
-  inheritAttrs: false,
-  name: "ImageCropper",
-  props: {
-    alt: { default: undefined, type: String },
-    aspectRatio: { default: undefined, type: Number },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    cropShape: {
-      default: undefined,
-      type: String as PropType<ImageCropperProps["cropShape"]>,
-    },
-    fixedCropArea: { default: undefined, type: Boolean },
-    initialCrop: {
-      default: undefined,
-      type: Object as PropType<CropRect | undefined>,
-    },
-    maxHeight: { default: undefined, type: Number },
-    maxWidth: { default: undefined, type: Number },
-    maxZoom: { default: undefined, type: Number },
-    minHeight: { default: undefined, type: Number },
-    minWidth: { default: undefined, type: Number },
-    minZoom: { default: undefined, type: Number },
-    onCropChange: {
-      default: undefined,
-      type: Function as PropType<ImageCropperProps["onCropChange"]>,
-    },
-    onFlipChange: {
-      default: undefined,
-      type: Function as PropType<ImageCropperProps["onFlipChange"]>,
-    },
-    onRotationChange: {
-      default: undefined,
-      type: Function as PropType<ImageCropperProps["onRotationChange"]>,
-    },
-    onZoomChange: {
-      default: undefined,
-      type: Function as PropType<ImageCropperProps["onZoomChange"]>,
-    },
-    recipe: {
-      default: imageCropperRecipe,
-      type: Function as PropType<typeof imageCropperRecipe>,
-    },
-    rotation: { default: undefined, type: Number },
-    src: { default: undefined, type: String },
-    zoom: { default: undefined, type: Number },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
+export const ImageCropperRoot = withProvider<ImageCropperRootContract>(
+  ImageCropperPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
 
-    provideImageCropperStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    return () =>
-      h(
-        ImageCropperPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          aspectRatio: props.aspectRatio,
-          class: cn(recipeSlots.value.base(), props.class),
-          cropShape: props.cropShape,
-          fixedCropArea: props.fixedCropArea,
-          initialCrop: props.initialCrop,
-          maxHeight: props.maxHeight,
-          maxWidth: props.maxWidth,
-          maxZoom: props.maxZoom,
-          minHeight: props.minHeight,
-          minWidth: props.minWidth,
-          minZoom: props.minZoom,
-          onCropChange: props.onCropChange,
-          onFlipChange: props.onFlipChange,
-          onRotationChange: props.onRotationChange,
-          onZoomChange: props.onZoomChange,
-          rotation: props.rotation,
-          zoom: props.zoom,
-        },
-        () =>
-          h(
-            ImageCropperPrimitive.Viewport as ArkPart,
-            {
-              class: recipeSlots.value.viewport(),
-            },
-            () =>
-              props.src
-                ? [
-                    h(ImageCropperImage, { alt: props.alt, src: props.src }),
-                    h(ImageCropperSelection),
-                  ]
-                : slots.default?.(),
-          ),
-      );
-  },
-});
+export const ImageCropperViewport = withContext(
+  ImageCropperPrimitive.Viewport,
+  { name: "Viewport" },
+);
 
 export const ImageCropperImage = withContext(ImageCropperPrimitive.Image, {
   name: "Image",
 });
 
-export const ImageCropperGrid = defineComponent({
-  inheritAttrs: false,
-  name: "ImageCropper.Grid",
-  props: {
-    axis: {
-      required: true,
-      type: String as PropType<"horizontal" | "vertical">,
-    },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
+export const ImageCropperSelection = withContext(
+  ImageCropperPrimitive.Selection,
+  { name: "Selection" },
+);
 
-    return () =>
-      h(ImageCropperPrimitive.Grid as ArkPart, {
-        ...attrs,
-        axis: props.axis,
-        class: cn(styles.slots.grid(), props.class),
-      });
-  },
-});
-
+/** Resize handle with its visual grip (override via the default slot). */
 export const ImageCropperHandle = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper.Handle",
@@ -229,39 +81,7 @@ export const ImageCropperHandle = defineComponent({
     },
     position: {
       required: true,
-      type: String as PropType<ImageCropperHandlePosition>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
-
-    return () => {
-      const slots = styles.slots;
-
-      return h(
-        ImageCropperPrimitive.Handle as ArkPart,
-        {
-          ...attrs,
-          class: slots.handle({ class: props.class }),
-          position: props.position,
-        },
-        () => h("span", { "aria-hidden": true, class: slots.handleGrip() }),
-      );
-    };
-  },
-});
-
-export const ImageCropperSelection = defineComponent({
-  inheritAttrs: false,
-  name: "ImageCropper.Selection",
-  props: {
-    axis: {
-      default: "both",
-      type: String as PropType<ImageCropperSelectionProps["axis"]>,
-    },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: String as PropType<ImageCropperHandleProps["position"]>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -269,38 +89,85 @@ export const ImageCropperSelection = defineComponent({
 
     return () =>
       h(
-        ImageCropperPrimitive.Selection as ArkPart,
+        ImageCropperPrimitive.Handle as ArkPart,
         {
           ...attrs,
-          class: cn(styles.slots.selection(), props.class),
+          class: styles.slots.handle({ class: cn(props.class) }),
+          position: props.position,
         },
-        () => [
-          slots.default?.(),
-
-          props.axis === "horizontal" || props.axis === "both"
-            ? h(ImageCropperGrid, { axis: "horizontal" })
-            : null,
-          props.axis === "vertical" || props.axis === "both"
-            ? h(ImageCropperGrid, { axis: "vertical" })
-            : null,
-
-          h(ImageCropperHandle, { position: "n" }),
-          h(ImageCropperHandle, { position: "e" }),
-          h(ImageCropperHandle, { position: "s" }),
-          h(ImageCropperHandle, { position: "w" }),
-          h(ImageCropperHandle, { position: "ne" }),
-          h(ImageCropperHandle, { position: "se" }),
-          h(ImageCropperHandle, { position: "sw" }),
-          h(ImageCropperHandle, { position: "nw" }),
-        ],
+        () =>
+          slots.default?.() ??
+          h("span", { "aria-hidden": true, class: styles.slots.handleGrip() }),
       );
+  },
+});
+
+export const ImageCropperGrid = withContext(ImageCropperPrimitive.Grid, {
+  name: "Grid",
+});
+// #endregion
+
+// #region Shorthand
+export const ImageCropperShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "ImageCropper",
+  props: {
+    alt: { default: undefined, type: String },
+    axis: {
+      default: "both",
+      type: String as PropType<ImageCropperAxis>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ImageCropperProps["classNames"]>,
+    },
+    src: { required: true, type: String },
+  },
+  setup(props, { attrs }) {
+    return () => {
+      const classNames = props.classNames;
+      const axis = props.axis;
+
+      return h(ImageCropperRoot as ArkPart, attrs, () =>
+        h(ImageCropperViewport, { class: classNames?.viewport }, () => [
+          h(ImageCropperImage, {
+            alt: props.alt,
+            class: classNames?.image,
+            src: props.src,
+          }),
+          h(ImageCropperSelection, { class: classNames?.selection }, () => [
+            axis === "horizontal" || axis === "both"
+              ? h(ImageCropperGrid, {
+                  axis: "horizontal",
+                  class: classNames?.grid,
+                })
+              : null,
+            axis === "vertical" || axis === "both"
+              ? h(ImageCropperGrid, {
+                  axis: "vertical",
+                  class: classNames?.grid,
+                })
+              : null,
+            ...handlePositions.map((position) =>
+              h(ImageCropperHandle, {
+                class: classNames?.handle,
+                key: position,
+                position,
+              }),
+            ),
+          ]),
+        ]),
+      );
+    };
   },
 });
 // #endregion
 
-export const ImageCropper = Object.assign(ImageCropperRoot, {
+export const ImageCropper = Object.assign(ImageCropperShorthand, {
   Grid: ImageCropperGrid,
   Handle: ImageCropperHandle,
   Image: ImageCropperImage,
+  Root: ImageCropperRoot,
   Selection: ImageCropperSelection,
+  Viewport: ImageCropperViewport,
 });

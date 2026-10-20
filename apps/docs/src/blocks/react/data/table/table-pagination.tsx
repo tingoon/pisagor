@@ -1,4 +1,5 @@
-import { Pagination, Select, Table } from "@pisagor/react";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { Button, Pagination, Select, Table } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import { tablePaginationBlock } from "#/styles/recipes/table";
@@ -44,7 +45,7 @@ export function TablePagination({ className }: TablePaginationProps) {
             value={[String(pageSize)]}
           />
         </div>
-        <Pagination
+        <Pagination.Root
           className={styles.pagination()}
           count={users.length}
           onPageChange={({ page }) => setPage(page)}
@@ -52,9 +53,19 @@ export function TablePagination({ className }: TablePaginationProps) {
           page={page}
           pageSize={pageSize}
         >
-          <Pagination.PrevTrigger />
-          <Pagination.NextTrigger />
-        </Pagination>
+          <Pagination.PrevTrigger asChild>
+            <Button variant="ghost">
+              <CaretLeftIcon />
+              Previous
+            </Button>
+          </Pagination.PrevTrigger>
+          <Pagination.NextTrigger asChild>
+            <Button variant="ghost">
+              Next
+              <CaretRightIcon />
+            </Button>
+          </Pagination.NextTrigger>
+        </Pagination.Root>
       </div>
     </div>
   );

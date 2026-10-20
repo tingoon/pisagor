@@ -2,6 +2,8 @@ import { tv } from "tailwind-variants";
 
 export const popoverRecipe = tv({
   slots: {
+    anchor: [],
+    arrow: [],
     arrowTip: ["border-s border-t"],
     base: [
       "relative",
@@ -30,6 +32,7 @@ export const popoverRecipe = tv({
       "in-[[data-scope=popover][data-part=content]:has([data-scope=popover][data-part=header])]:pt-1",
       "in-[[data-scope=popover][data-part=content]:has([data-scope=popover][data-part=footer]:not(.border-t))]:pb-1",
     ],
+    closeTrigger: [],
     close: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
     description: ["text-muted-foreground text-sm leading-relaxed"],
     footer: [
@@ -42,7 +45,9 @@ export const popoverRecipe = tv({
       "flex flex-col gap-2 p-(--space)",
       "in-[[data-scope=popover][data-part=content]:has([data-scope=popover][data-part=body])]:pb-3",
     ],
+    positioner: [],
     title: ["text-base leading-tight font-semibold tracking-tight"],
+    trigger: [],
   },
 });
 

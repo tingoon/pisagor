@@ -13,6 +13,16 @@ import AlertDialogRoot from "./alert-dialog-root.svelte";
 import AlertDialogTitle from "./alert-dialog-title.svelte";
 import AlertDialogTrigger from "./alert-dialog-trigger.svelte";
 
+export type {
+  DialogBackdropProps as AlertDialogBackdropProps,
+  DialogCloseTriggerProps as AlertDialogCloseTriggerProps,
+  DialogContentProps as AlertDialogContentProps,
+  DialogDescriptionProps as AlertDialogDescriptionProps,
+  DialogPositionerProps as AlertDialogPositionerProps,
+  DialogTitleProps as AlertDialogTitleProps,
+  DialogTriggerProps as AlertDialogTriggerProps,
+} from "@ark-ui/svelte";
+
 export const AlertDialog = Object.assign(AlertDialogShorthand, {
   Action: AlertDialogAction,
   Backdrop: AlertDialogBackdrop,

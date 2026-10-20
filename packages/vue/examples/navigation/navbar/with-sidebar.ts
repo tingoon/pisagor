@@ -3,6 +3,7 @@ import {
   PhDatabase,
   PhHouse,
   PhMagnifyingGlass,
+  PhSidebarSimple,
   PhUser,
 } from "@phosphor-icons/vue";
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/vue";
@@ -69,7 +70,9 @@ export default defineComponent({
         h(Sidebar.Inset as ArkPart, null, () => [
           h(Navbar as ArkPart, null, () => [
             h(Navbar.Brand as ArkPart, { class: "gap-3" }, () => [
-              h(Sidebar.Trigger as ArkPart),
+              h(Sidebar.Trigger as ArkPart, null, () =>
+                h(PhSidebarSimple, { class: "rtl:rotate-180" }),
+              ),
               h("span", { class: "font-medium text-sm" }, "Dashboard"),
             ]),
             h(Navbar.Content as ArkPart, { class: "justify-end" }, () =>

@@ -3,7 +3,7 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/react";
 export function InputChannel() {
   return (
     <div className="flex flex-col gap-2">
-      <ColorPicker
+      <ColorPicker.Root
         className="w-full"
         defaultValue={parseColor("#0485F7").toString("rgba")}
         format="rgba"
@@ -23,8 +23,8 @@ export function InputChannel() {
             <ColorPicker.SwatchPreview className="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         className="w-full"
         defaultValue={parseColor("#EF4444").toString("hsba")}
         format="hsba"
@@ -44,8 +44,8 @@ export function InputChannel() {
             <ColorPicker.SwatchPreview className="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         className="w-full"
         defaultValue={parseColor("#F59E0B").toString("hsla")}
         format="hsla"
@@ -65,8 +65,8 @@ export function InputChannel() {
             <ColorPicker.SwatchPreview className="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         className="w-full items-center"
         defaultValue={parseColor("#10B981").toString("hex")}
       >
@@ -82,7 +82,7 @@ export function InputChannel() {
             <ColorPicker.SwatchPreview className="size-6" />
           </ColorPicker.Control>
         </Field>
-      </ColorPicker>
+      </ColorPicker.Root>
     </div>
   );
 }

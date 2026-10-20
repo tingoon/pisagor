@@ -4,29 +4,22 @@
     type HoverCardRootProps,
   } from "@ark-ui/svelte";
   import type { HoverCardRootContract } from "@pisagor/contracts";
-  import { hoverCardRecipe } from "@pisagor/recipes";
-  import { Context } from "./hover-card.context";
+  import { withProvider } from "./hover-card.context";
 
   type Props = HoverCardRootProps & HoverCardRootContract;
 
-  let {
-    closeDelay = 300,
-    openDelay = 600,
-    positioning = { placement: "top" },
-    children,
-    recipe = hoverCardRecipe,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-
-  Context.set({
-    get slots() {
-      return slots;
+  let { children, ...rest }: Props = $props();
+  // The root renders no element; `base` is an empty slot.
+  const root = withProvider(() => rest, {
+    defaultProps: {
+      closeDelay: 300,
+      openDelay: 600,
+      positioning: { placement: "top" },
     },
+    name: "Root",
   });
 </script>
 
-<HoverCardPrimitive.Root {...rest} {closeDelay} {openDelay} {positioning}>
+<HoverCardPrimitive.Root {...root.props}>
   {@render children?.()}
 </HoverCardPrimitive.Root>

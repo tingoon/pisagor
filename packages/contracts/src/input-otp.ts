@@ -1,8 +1,10 @@
 import type {
   FormControlShellVariantProps,
   InputOtpRecipeFn,
+  InputOtpRecipeSlot,
   InputOtpVariantProps,
 } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared InputOtp root contract: visual variants and recipe override. Used by
@@ -16,4 +18,13 @@ export interface InputOtpRootContract
    * @defaultValue inputOtpRecipe
    */
   recipe?: InputOtpRecipeFn;
+}
+
+/**
+ * InputOtp shorthand contract. Compose with `InputOtpRootContract` / framework
+ * `InputOTPRootProps`.
+ */
+export interface InputOtpContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<InputOtpRecipeSlot>;
 }

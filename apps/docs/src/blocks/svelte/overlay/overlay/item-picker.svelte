@@ -11,28 +11,27 @@
   ];
 </script>
 
-<DropdownMenu>
-  <DropdownMenu.Trigger>
-    <Button variant="outline">Choose person</Button>
-  </DropdownMenu.Trigger>
-  <DropdownMenu.Content class={styles.content()}>
-    {#each people as person}
-      <DropdownMenu.Item value={person.username}>
-        <Item class={styles.item()}>
-          <Item.Media>
-            <Avatar
-              alt=""
-              class={styles.avatar()}
-              fallback={person.username.charAt(0).toUpperCase()}
-              size="sm"
-            />
-          </Item.Media>
-          <Item.Content>
-            <Item.Title>{person.username}</Item.Title>
-            <Item.Description>{person.email}</Item.Description>
-          </Item.Content>
-        </Item>
-      </DropdownMenu.Item>
-    {/each}
-  </DropdownMenu.Content>
+<DropdownMenu classNames={{ content: styles.content() }}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Choose person</Button>
+  {/snippet}
+
+  {#each people as person}
+    <DropdownMenu.Item value={person.username}>
+      <Item class={styles.item()}>
+        <Item.Media>
+          <Avatar
+            alt=""
+            class={styles.avatar()}
+            fallback={person.username.charAt(0).toUpperCase()}
+            size="sm"
+          />
+        </Item.Media>
+        <Item.Content>
+          <Item.Title>{person.username}</Item.Title>
+          <Item.Description>{person.email}</Item.Description>
+        </Item.Content>
+      </Item>
+    </DropdownMenu.Item>
+  {/each}
 </DropdownMenu>

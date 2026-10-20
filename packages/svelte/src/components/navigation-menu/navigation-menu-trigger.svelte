@@ -1,6 +1,5 @@
 <script lang="ts">
   import { focusNavigationMenuContentLink } from "@pisagor/utils";
-  import { CaretDownIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import {
@@ -60,5 +59,4 @@
   type="button"
 >
   {@render children?.()}
-  <CaretDownIcon aria-hidden="true" class={styles.slots.indicator()} />
 </button>

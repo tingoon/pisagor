@@ -11,7 +11,7 @@ import { Button, Card, Timer } from "@pisagor/vue";
 <template>
   <Card class="rounded-3xl [--space:--spacing(6)]">
     <Card.Content>
-      <Timer
+      <Timer.Root
         class="items-center justify-center px-10"
         countdown
         :start-ms="25 * 60 * 1000"
@@ -47,7 +47,7 @@ import { Button, Card, Timer } from "@pisagor/vue";
             <PhGear />
           </Button>
         </Timer.Control>
-      </Timer>
+      </Timer.Root>
     </Card.Content>
   </Card>
 </template>

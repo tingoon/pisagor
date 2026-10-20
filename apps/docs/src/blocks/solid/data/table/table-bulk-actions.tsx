@@ -20,6 +20,7 @@ import {
 } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { createMemo, createSignal, For, Show } from "solid-js";
+import { Portal } from "solid-js/web";
 import { tableBulkActionsBlock } from "#/styles/recipes/table";
 
 const styles = tableBulkActionsBlock();
@@ -58,7 +59,7 @@ export function TableBulkActions(props: TableBulkActionsProps) {
 
   return (
     <div class={cn(styles.root(), props.class)}>
-      <ActionBar
+      <ActionBar.Root
         onOpenChange={(open) => !open && handleClose()}
         open={isOpen()}
       >
@@ -114,89 +115,102 @@ export function TableBulkActions(props: TableBulkActionsProps) {
             </For>
           </Table.Body>
         </Table>
-        <ActionBar.Content>
-          <ActionBar.Value count={selectedIds().length} />
-          <div class={styles.actions()}>
-            <Button size="sm" variant="secondary">
-              <PaperPlaneTiltIcon />
-              Send
-            </Button>
-            <Button size="sm" variant="secondary">
-              <PencilSimpleIcon />
-              Edit
-            </Button>
-            <DropdownMenu positioning={{ placement: "top" }}>
-              <DropdownMenu.Trigger
-                asChild={(triggerProps) => (
-                  <Button {...triggerProps()} size="sm" variant="secondary">
-                    <DotsThreeIcon />
-                  </Button>
-                )}
-              />
-              <DropdownMenu.Content>
-                <DropdownMenu.Item value="archive">
-                  <ArchiveIcon />
-                  Archive
-                </DropdownMenu.Item>
-                <DropdownMenu.Item value="duplicate">
-                  <CopyIcon />
-                  Duplicate
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu>
-            <AlertDialog.Root>
-              <AlertDialog.Trigger
-                asChild={(triggerProps) => (
-                  <Button {...triggerProps()} size="sm" variant="destructive">
-                    <TrashIcon />
-                    Delete
-                  </Button>
-                )}
-              />
-              <AlertDialog.Content>
-                <AlertDialog.Header>
-                  <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
-                  <AlertDialog.Description>
-                    This action cannot be undone.
-                  </AlertDialog.Description>
-                </AlertDialog.Header>
-                <AlertDialog.Body>
-                  <ul>
-                    <For each={selectedIds()}>
-                      {(id) => {
-                        const order = () => orders.find((o) => o.id === id);
-
-                        return (
-                          <Show when={order()}>
-                            {(o) => (
-                              <li class={styles.deleteItem()}>
-                                {o().id} - {o().name}
-                              </li>
-                            )}
-                          </Show>
-                        );
-                      }}
-                    </For>
-                  </ul>
-                </AlertDialog.Body>
-                <AlertDialog.Footer>
-                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.CloseTrigger
-                    asChild={(closeProps) => (
-                      <AlertDialog.Action
-                        {...closeProps()}
-                        variant="destructive"
-                      >
-                        Delete
-                      </AlertDialog.Action>
+        <Portal>
+          <ActionBar.Positioner>
+            <ActionBar.Content>
+              <ActionBar.Value count={selectedIds().length} />
+              <div class={styles.actions()}>
+                <Button size="sm" variant="secondary">
+                  <PaperPlaneTiltIcon />
+                  Send
+                </Button>
+                <Button size="sm" variant="secondary">
+                  <PencilSimpleIcon />
+                  Edit
+                </Button>
+                <DropdownMenu.Root positioning={{ placement: "top" }}>
+                  <DropdownMenu.Trigger
+                    asChild={(triggerProps) => (
+                      <Button {...triggerProps()} size="sm" variant="secondary">
+                        <DotsThreeIcon />
+                      </Button>
                     )}
                   />
-                </AlertDialog.Footer>
-              </AlertDialog.Content>
-            </AlertDialog.Root>
-          </div>
-        </ActionBar.Content>
-      </ActionBar>
+                  <Portal>
+                    <DropdownMenu.Positioner>
+                      <DropdownMenu.Content>
+                        <DropdownMenu.Item value="archive">
+                          <ArchiveIcon />
+                          Archive
+                        </DropdownMenu.Item>
+                        <DropdownMenu.Item value="duplicate">
+                          <CopyIcon />
+                          Duplicate
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu.Positioner>
+                  </Portal>
+                </DropdownMenu.Root>
+                <AlertDialog.Root>
+                  <AlertDialog.Trigger
+                    asChild={(triggerProps) => (
+                      <Button
+                        {...triggerProps()}
+                        size="sm"
+                        variant="destructive"
+                      >
+                        <TrashIcon />
+                        Delete
+                      </Button>
+                    )}
+                  />
+                  <Portal>
+                    <AlertDialog.Backdrop />
+                    <AlertDialog.Positioner>
+                      <AlertDialog.Content>
+                        <AlertDialog.Header>
+                          <AlertDialog.Title>
+                            Delete selected orders?
+                          </AlertDialog.Title>
+                          <AlertDialog.Description>
+                            This action cannot be undone.
+                          </AlertDialog.Description>
+                        </AlertDialog.Header>
+                        <AlertDialog.Body>
+                          <ul>
+                            <For each={selectedIds()}>
+                              {(id) => {
+                                const order = () =>
+                                  orders.find((o) => o.id === id);
+
+                                return (
+                                  <Show when={order()}>
+                                    {(o) => (
+                                      <li class={styles.deleteItem()}>
+                                        {o().id} - {o().name}
+                                      </li>
+                                    )}
+                                  </Show>
+                                );
+                              }}
+                            </For>
+                          </ul>
+                        </AlertDialog.Body>
+                        <AlertDialog.Footer>
+                          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                          <AlertDialog.Action variant="destructive">
+                            Delete
+                          </AlertDialog.Action>
+                        </AlertDialog.Footer>
+                      </AlertDialog.Content>
+                    </AlertDialog.Positioner>
+                  </Portal>
+                </AlertDialog.Root>
+              </div>
+            </ActionBar.Content>
+          </ActionBar.Positioner>
+        </Portal>
+      </ActionBar.Root>
     </div>
   );
 }

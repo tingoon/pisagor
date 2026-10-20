@@ -5,15 +5,17 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
 
 <template>
   <Card>
-    <Card.Header
-      description="Use the edit button to start editing (no automatic activation)"
-      title="Edit with manual trigger"
-    />
+    <Card.Header>
+      <Card.Title>Edit with manual trigger</Card.Title>
+      <Card.Description>
+        Use the edit button to start editing (no automatic activation)
+      </Card.Description>
+    </Card.Header>
     <Card.Content>
       <Field.Group>
         <Field>
           <Field.Label>Name</Field.Label>
-          <Editable activation-mode="none" default-value="Jane Doe">
+          <Editable.Root activation-mode="none" default-value="Jane Doe">
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />
@@ -37,11 +39,11 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
                 </Button>
               </Editable.SubmitTrigger>
             </Editable.Control>
-          </Editable>
+          </Editable.Root>
         </Field>
         <Field>
           <Field.Label>Username</Field.Label>
-          <Editable activation-mode="none" default-value="@jane.doe">
+          <Editable.Root activation-mode="none" default-value="@jane.doe">
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />
@@ -65,7 +67,7 @@ import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
                 </Button>
               </Editable.SubmitTrigger>
             </Editable.Control>
-          </Editable>
+          </Editable.Root>
         </Field>
       </Field.Group>
     </Card.Content>

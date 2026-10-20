@@ -2,6 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const timerRecipe = tv({
   slots: {
+    actionTrigger: [],
     area: [
       "flex items-center gap-2",
       "has-[[data-scope=timer][data-part=item-label]]:items-start",

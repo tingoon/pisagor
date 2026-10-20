@@ -1,6 +1,10 @@
 <script lang="ts">
   import { type TreeNodeType, TreeView } from "@pisagor/svelte";
-  import { ArrowSquareOutIcon, LinkIcon } from "phosphor-svelte";
+  import {
+    ArrowSquareOutIcon,
+    CaretRightIcon,
+    LinkIcon,
+  } from "phosphor-svelte";
   import TreeNodeLink from "./tree-node-link.svelte";
 
   type Node = TreeNodeType & { href?: string };
@@ -16,8 +20,14 @@
 <TreeView.NodeProvider {indexPath} {node}>
   {#if node.children}
     <TreeView.Branch>
-      <TreeView.BranchControl icon={null}>{node.name}</TreeView.BranchControl>
+      <TreeView.BranchControl>
+        <TreeView.BranchIndicator>
+          <CaretRightIcon />
+        </TreeView.BranchIndicator>
+        <TreeView.BranchText>{node.name}</TreeView.BranchText>
+      </TreeView.BranchControl>
       <TreeView.BranchContent>
+        <TreeView.BranchIndentGuide />
         {#each node.children as child, index}
           <TreeNodeLink
             indexPath={[...indexPath, index]}
@@ -37,7 +47,8 @@
             : undefined}
           target={node.href?.startsWith("http") ? "_blank" : undefined}
         >
-          <TreeView.ItemText icon={LinkIcon}>
+          <LinkIcon />
+          <TreeView.ItemText>
             {node.name}
             {#if node.href?.startsWith("http")}
               <ArrowSquareOutIcon />

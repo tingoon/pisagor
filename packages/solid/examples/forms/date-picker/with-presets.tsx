@@ -1,5 +1,10 @@
+import { Portal } from "solid-js/web";
+import {
+  CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
-import { CalendarIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithPresets() {
   const presets = [
@@ -10,7 +15,7 @@ export function WithPresets() {
   ] as const;
 
   return (
-    <DatePicker defaultValue={[parseDate(new Date())]}>
+    <DatePicker.Root defaultValue={[parseDate(new Date())]}>
       <DatePicker.Trigger
         asChild={(props) => (
           <Button {...props()} variant="outline">
@@ -19,47 +24,65 @@ export function WithPresets() {
           </Button>
         )}
       />
-      <DatePicker.Content>
-        <div class="flex max-sm:flex-col">
-          <div class="relative py-1 ps-1 max-sm:order-1 max-sm:border-t">
-            <div class="flex h-full flex-col sm:border-e sm:pe-3">
-              {presets.map((preset) => (
-                <DatePicker.PresetTrigger
-                  asChild={(props) => (
-                    <Button
-                      {...props()}
-                      class="w-full justify-start"
-                      size="sm"
-                      variant="ghost"
-                    >
-                      {preset.label}
-                    </Button>
-                  )}
-                  value={[
-                    parseDate(
-                      new Date(
-                        new Date().setDate(new Date().getDate() + preset.days),
-                      ),
-                    ),
-                  ]}
-                />
-              ))}
+      <Portal>
+        <DatePicker.Positioner>
+          <DatePicker.Content>
+            <div class="flex max-sm:flex-col">
+              <div class="relative py-1 ps-1 max-sm:order-1 max-sm:border-t">
+                <div class="flex h-full flex-col sm:border-e sm:pe-3">
+                  {presets.map((preset) => (
+                    <DatePicker.PresetTrigger
+                      value={[
+                        parseDate(
+                          new Date(
+                            new Date().setDate(
+                              new Date().getDate() + preset.days,
+                            ),
+                          ),
+                        ),
+                      ]}
+                      asChild={(props) => (
+                        <Button
+                          {...props()}
+                          class="w-full justify-start"
+                          size="sm"
+                          variant="ghost"
+                        >
+                          {preset.label}
+                        </Button>
+                      )}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div class="max-sm:pb-3 sm:ps-2">
+                <Calendar.ViewControl>
+                  <Calendar.PrevTrigger
+                    asChild={(props) => (
+                      <Button {...props()} size="icon-md" variant="ghost">
+                        <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                      </Button>
+                    )}
+                  />
+                  <Calendar.MonthSelect />
+                  <Calendar.YearSelect />
+                  <Calendar.NextTrigger
+                    asChild={(props) => (
+                      <Button {...props()} size="icon-md" variant="ghost">
+                        <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                      </Button>
+                    )}
+                  />
+                </Calendar.ViewControl>
+                <Calendar.Table>
+                  <Calendar.WeekDays />
+                  <Calendar.TableDays />
+                </Calendar.Table>
+              </div>
             </div>
-          </div>
-          <div class="max-sm:pb-3 sm:ps-2">
-            <Calendar.ViewControl>
-              <Calendar.PrevTrigger />
-              <Calendar.MonthSelect />
-              <Calendar.YearSelect />
-              <Calendar.NextTrigger />
-            </Calendar.ViewControl>
-            <Calendar.Table>
-              <Calendar.WeekDays />
-              <Calendar.TableDays />
-            </Calendar.Table>
-          </div>
-        </div>
-      </DatePicker.Content>
-    </DatePicker>
+          </DatePicker.Content>
+        </DatePicker.Positioner>
+      </Portal>
+    </DatePicker.Root>
   );
 }

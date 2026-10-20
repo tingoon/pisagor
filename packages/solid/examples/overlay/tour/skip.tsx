@@ -41,14 +41,14 @@ export function Skip() {
 
   return (
     <div class="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              Start tour
-            </Button>
-          )}
-        />
+      <Tour
+        steps={steps}
+        trigger={(props) => (
+          <Button {...props} variant="outline">
+            Start tour
+          </Button>
+        )}
+      >
         <div class="flex flex-wrap gap-2">
           <div
             class="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
@@ -69,14 +69,6 @@ export function Skip() {
             Item 3
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

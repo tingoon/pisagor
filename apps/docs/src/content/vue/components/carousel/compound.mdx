@@ -4,13 +4,21 @@
 <Carousel.Root>
   <Carousel.Control>
     <Carousel.PrevTrigger />
+    <Carousel.AutoplayTrigger>
+      <Carousel.AutoplayIndicator />
+    </Carousel.AutoplayTrigger>
     <Carousel.NextTrigger />
   </Carousel.Control>
   <Carousel.ItemGroup>
     <Carousel.Item />
   </Carousel.ItemGroup>
+  <Carousel.IndicatorGroup>
+    <Carousel.Indicator />
+  </Carousel.IndicatorGroup>
 </Carousel.Root>
 ```
+
+Parts map 1:1 to Ark and render no buttons or icons (triggers keep localized `aria-label`s); pass a `Button` with `as-child`. The `Carousel` shorthand renders caret buttons for you.
 
 ## Examples
 

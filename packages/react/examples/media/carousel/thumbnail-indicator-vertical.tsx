@@ -1,4 +1,5 @@
-import { Carousel } from "@pisagor/react";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { Button, Carousel } from "@pisagor/react";
 import { imageSources } from "./helpers";
 
 export function ThumbnailIndicatorVertical() {
@@ -12,8 +13,16 @@ export function ThumbnailIndicatorVertical() {
       slideCount={slides.length}
     >
       <Carousel.Control className="relative">
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.PrevTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretLeftIcon aria-hidden />
+          </Button>
+        </Carousel.PrevTrigger>
+        <Carousel.NextTrigger asChild>
+          <Button clickEffect={false} pill size="icon-md" variant="outline">
+            <CaretRightIcon aria-hidden />
+          </Button>
+        </Carousel.NextTrigger>
 
         <Carousel.ItemGroup>
           {slides.map((slide, index) => (

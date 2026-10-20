@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Command } from "@pisagor/svelte";
 
   const initialItems = [
@@ -30,31 +29,6 @@
     },
     { group: "Meta-frameworks", label: "Wasp", value: "wasp" },
   ];
-  const filters = useFilter({ sensitivity: "base" });
-  const { collection, filter } = useListCollection({
-    filter(itemString, filterText) {
-      return filters().contains(itemString, filterText);
-    },
-    groupBy: (item) => item.group,
-    initialItems,
-  });
 </script>
 
-<Command
-  {collection}
-  onInputValueChange={({ inputValue }) => filter(inputValue)}
->
-  <Command.Input placeholder="Search frameworks..." />
-  <Command.Content>
-    <Command.Empty />
-    <Command.List>
-      {#each collection().group() as [group, items]}
-        <Command.ItemGroup heading={group}>
-          {#each items as item}
-            <Command.Item {item}>{item.label}</Command.Item>
-          {/each}
-        </Command.ItemGroup>
-      {/each}
-    </Command.List>
-  </Command.Content>
-</Command>
+<Command items={initialItems} placeholder="Search frameworks..." />

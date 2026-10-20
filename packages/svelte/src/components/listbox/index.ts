@@ -10,6 +10,16 @@ import ListboxRoot from "./listbox-root.svelte";
 import ListboxShortcut from "./listbox-shortcut.svelte";
 import ListboxValueText from "./listbox-value-text.svelte";
 
+export type {
+  ListboxContentProps,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemGroupProps,
+  ListboxItemIndicatorProps,
+  ListboxItemTextProps,
+  ListboxValueTextProps,
+} from "@ark-ui/svelte";
+
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,
   Empty: ListboxEmpty,

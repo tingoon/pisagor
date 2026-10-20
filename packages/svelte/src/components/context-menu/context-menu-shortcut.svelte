@@ -1,12 +1,18 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DropdownMenuShortcut from "../dropdown-menu/dropdown-menu-shortcut.svelte";
+  import { dropdownMenuRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
 
-  let { ...rest }: ComponentProps<typeof DropdownMenuShortcut> = $props();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: HTMLAttributes<HTMLSpanElement> = $props();
 </script>
 
-<DropdownMenuShortcut
+<span
   {...rest}
+  class={dropdownMenuRecipe().shortcut({ class: cn(className) })}
   data-part="shortcut"
-  data-scope="context-menu"
-/>
+  data-scope="context-menu">{@render children?.()}</span
+>

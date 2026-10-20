@@ -1,9 +1,5 @@
-import { ark } from "@ark-ui/vue";
-import type {
-  CardHeaderContract,
-  CardRootContract,
-  CardContract,
-} from "@pisagor/contracts";
+import { ark, type HTMLArkProps } from "@ark-ui/vue";
+import type { CardRootContract, CardContract } from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
@@ -22,11 +18,7 @@ export interface CardRootProps extends CardRootContract {
   class?: unknown;
 }
 
-export interface CardHeaderProps extends CardHeaderContract {
-  class?: unknown;
-  description?: string;
-  title?: string;
-}
+export type CardHeaderProps = HTMLArkProps<"div">;
 
 export type CardProps = CardRootProps & CardContract;
 // #endregion
@@ -70,45 +62,7 @@ export const CardMedia = defineComponent({
   },
 });
 
-export const CardHeader = defineComponent({
-  inheritAttrs: false,
-  name: "Card.Header",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    description: { default: undefined, type: String },
-    title: { default: undefined, type: String },
-  },
-  setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useStyles();
-
-    return () =>
-      h(
-        "div",
-        {
-          ...attrs,
-          class: styleSlots.header({ class: props.class }),
-          "data-part": "header",
-          "data-scope": "card",
-        },
-        () => [
-          props.title != null || slots.title
-            ? h(CardTitle, null, () => slots.title?.() ?? props.title)
-            : null,
-          props.description != null || slots.description
-            ? h(
-                CardDescription,
-                null,
-                () => slots.description?.() ?? props.description,
-              )
-            : null,
-          slots.default?.(),
-        ],
-      );
-  },
-});
+export const CardHeader = withContext("div", { name: "Header" });
 
 export const CardTitle = withContext(ark.h3, { name: "Title" });
 

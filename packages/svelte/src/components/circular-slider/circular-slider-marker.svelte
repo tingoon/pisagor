@@ -7,18 +7,18 @@
   import { useCircularSlider } from "./circular-slider.context";
 
   let { class: className, style, ...rest }: AngleSliderMarkerProps = $props();
-  const { size, thickness, slots } = useCircularSlider();
+  const ctx = useCircularSlider();
 
-  const ringRadius = $derived(size / 2 - thickness / 2);
-  const markerHeight = $derived(Math.max(8, Math.min(thickness * 1.1, 16)));
-  const markerWidth = $derived(Math.max(4, Math.min(thickness * 0.4, 6)));
+  const markerHeight = $derived(Math.max(8, Math.min(ctx.thickness * 1.1, 16)));
+  const markerWidth = $derived(Math.max(4, Math.min(ctx.thickness * 0.4, 6)));
   const markerOffset = $derived(
-    size / 2 - ringRadius - markerHeight / 2 + (thickness + 4),
+    ctx.size / 2 - ctx.ringRadius - markerHeight / 2 + (ctx.thickness + 4),
   );
 </script>
 
+<!-- Marker sized and offset from the ring geometry. -->
 <AngleSliderPrimitive.Marker
   {...rest}
-  class={slots.marker({ class: cn(className) })}
-  style={`${style ?? ""}; --marker-height: ${markerHeight}px; --marker-offset: ${markerOffset}px; --marker-width: ${markerWidth}px;`}
+  class={ctx.slots.marker({ class: cn(className) })}
+  style={`--marker-height: ${markerHeight}px; --marker-offset: ${markerOffset}px; --marker-width: ${markerWidth}px; ${style ?? ""}`}
 />

@@ -5,18 +5,20 @@
   } from "@ark-ui/svelte";
   import type { MarqueeRootContract } from "@pisagor/contracts";
   import { withProvider } from "./marquee.context";
-  import MarqueeEdge from "./marquee-edge.svelte";
 
   type Props = Omit<ArkRootProps, "side"> & {
+    /** @defaultValue "horizontal" */
     orientation?: "horizontal" | "vertical";
-    showEdges?: boolean;
   } & Omit<MarqueeRootContract, "items">;
 
+  /**
+   * Root; maps `orientation` to the Ark `side` and sets spacing / speed
+   * defaults.
+   */
   let {
     orientation = "horizontal",
-    showEdges = true,
     children,
-    spacing = "16px",
+    spacing = "calc(var(--spacing) * 4)",
     speed = 50,
     ...rest
   }: Props = $props();
@@ -37,8 +39,4 @@
 
 <MarqueePrimitive.Root {...root.props}>
   {@render children?.()}
-  {#if showEdges}
-    <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />
-    <MarqueeEdge side={orientation === "horizontal" ? "end" : "bottom"} />
-  {/if}
 </MarqueePrimitive.Root>

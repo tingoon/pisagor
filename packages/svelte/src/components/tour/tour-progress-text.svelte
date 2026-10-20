@@ -3,20 +3,12 @@
     Tour as TourPrimitive,
     type TourProgressTextProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTourContext } from "./tour.context";
+  import { withContext } from "./tour.context";
 
-  let { class: className, children, ...rest }: TourProgressTextProps = $props();
-  const ctx = useTourContext();
+  let { children, ...rest }: TourProgressTextProps = $props();
+  const part = withContext(() => rest, { name: "ProgressText" });
 </script>
 
-<TourPrimitive.ProgressText
-  {...rest}
-  class={ctx.slots.progressText({ class: cn(className) })}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    {ctx.tour().getProgressText()}
-  {/if}
+<TourPrimitive.ProgressText {...part.props}>
+  {@render children?.()}
 </TourPrimitive.ProgressText>

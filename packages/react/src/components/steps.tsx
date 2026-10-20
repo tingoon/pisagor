@@ -1,26 +1,42 @@
 import { Steps as StepsPrimitive } from "@ark-ui/react";
 import type {
+  StepsCompletedContentProps,
+  StepsContentProps,
   StepsIndicatorProps,
   StepsItemProps as StepsItemPrimitiveProps,
+  StepsListProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
   StepsRootProps as StepsRootPrimitiveProps,
+  StepsSeparatorProps,
+  StepsTriggerProps,
 } from "@ark-ui/react";
-import { CheckIcon } from "@phosphor-icons/react";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  CheckIcon,
+} from "@phosphor-icons/react";
 import type {
+  StepsContract,
   StepsItemRootContract,
+  StepsPresetItem as BaseStepsPresetItem,
   StepsRootContract,
 } from "@pisagor/contracts";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
+import { Button } from "./button";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { withContext: withStepsContext, withProvider: withStepsProvider } =
-  createSlotRecipeContext({
-    name: "Steps",
-    recipe: stepsRecipe,
-  });
+const {
+  useStyles: useStepsStyles,
+  withContext: withStepsContext,
+  withProvider: withStepsProvider,
+} = createSlotRecipeContext({
+  name: "Steps",
+  recipe: stepsRecipe,
+});
 
 const {
   useStyles,
@@ -37,94 +53,186 @@ export type StepsRootProps = StepsRootPrimitiveProps & StepsRootContract;
 
 export type StepsItemProps = StepsItemPrimitiveProps & StepsItemRootContract;
 
-export type StepsTitleProps = ComponentProps<"span">;
+export type StepsTitleProps = ComponentPropsWithRef<"span">;
 
-export type StepsDescriptionProps = ComponentProps<"span">;
+export type StepsDescriptionProps = ComponentPropsWithRef<"span">;
+
+interface StepsPresetItem extends Omit<
+  BaseStepsPresetItem,
+  "content" | "description" | "title"
+> {
+  title?: ReactNode;
+  description?: ReactNode;
+  content?: ReactNode;
+  icon?: ReactNode;
+}
+
+export interface StepsProps
+  extends Omit<StepsRootProps, "children" | "count">, StepsContract {
+  /** Steps to render; `count` is derived from the list length. */
+  items: StepsPresetItem[];
+  /** Content shown once every step is complete. */
+  completedContent?: ReactNode;
+  /**
+   * Whether to render the back / next buttons.
+   *
+   * @defaultValue true
+   */
+  showControls?: boolean;
+}
 // #endregion
 
 // #region Parts
-export const StepsRoot = withStepsProvider<
-  ComponentProps<typeof StepsPrimitive.Root> & StepsRootContract
->(StepsPrimitive.Root, { name: "Root" }) as FunctionComponent<StepsRootProps>;
+const Root = withStepsProvider<StepsRootProps>(StepsPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export const StepsList = withStepsContext<
-  ComponentProps<typeof StepsPrimitive.List>
->(StepsPrimitive.List, {
+const List = withStepsContext<StepsListProps>(StepsPrimitive.List, {
   name: "List",
 });
 
-export const StepsItem = withStepsItemProvider<
-  ComponentProps<typeof StepsPrimitive.Item> & StepsItemRootContract
->(StepsPrimitive.Item, {
+const Item = withStepsItemProvider<StepsItemProps>(StepsPrimitive.Item, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<StepsItemProps>;
-
-export const StepsTrigger = withStepsItemContext<
-  ComponentProps<typeof StepsPrimitive.Trigger>
->(StepsPrimitive.Trigger, {
-  name: "Trigger",
 });
 
-export function StepsIndicator({
-  children,
-  className,
-  ...rest
-}: StepsIndicatorProps) {
+const Trigger = withStepsItemContext<StepsTriggerProps>(
+  StepsPrimitive.Trigger,
+  { name: "Trigger" },
+);
+
+const Indicator = withStepsItemContext<StepsIndicatorProps>(
+  StepsPrimitive.Indicator,
+  { name: "Indicator" },
+);
+
+/** Shorthand indicator: shows its children until complete, then a check. */
+function ShorthandIndicator({ children }: { children: ReactNode }) {
   const { slots } = useStyles();
 
   return (
-    <StepsPrimitive.Indicator
-      {...rest}
-      className={slots.indicator({ className })}
-    >
+    <Indicator>
       <span className={slots.label()}>{children}</span>
       <CheckIcon className={slots.check()} />
-    </StepsPrimitive.Indicator>
+    </Indicator>
   );
 }
 
-export const StepsSeparator = withStepsItemContext<
-  ComponentProps<typeof StepsPrimitive.Separator>
->(StepsPrimitive.Separator, {
-  name: "Separator",
-});
+const Separator = withStepsItemContext<StepsSeparatorProps>(
+  StepsPrimitive.Separator,
+  { name: "Separator" },
+);
 
-export const StepsTitle = withStepsItemContext<ComponentProps<"span">>("span", {
+const Title = withStepsItemContext<StepsTitleProps>("span", {
   name: "Title",
 });
 
-export const StepsDescription = withStepsItemContext<ComponentProps<"span">>(
-  "span",
-  {
-    name: "Description",
-  },
-);
+const Description = withStepsItemContext<StepsDescriptionProps>("span", {
+  name: "Description",
+});
 
-export const StepsContent = withStepsContext<
-  ComponentProps<typeof StepsPrimitive.Content>
->(StepsPrimitive.Content, {
+const Content = withStepsContext<StepsContentProps>(StepsPrimitive.Content, {
   name: "Content",
 });
 
-export const StepsCompletedContent = withStepsContext<
-  ComponentProps<typeof StepsPrimitive.CompletedContent>
->(StepsPrimitive.CompletedContent, { name: "CompletedContent" });
+const CompletedContent = withStepsContext<StepsCompletedContentProps>(
+  StepsPrimitive.CompletedContent,
+  { name: "CompletedContent" },
+);
 
-export function StepsPrevTrigger(props: StepsPrevTriggerProps) {
-  return <StepsPrimitive.PrevTrigger {...props} />;
-}
+const PrevTrigger = withStepsContext<StepsPrevTriggerProps>(
+  StepsPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
 
-export function StepsNextTrigger(props: StepsNextTriggerProps) {
-  return <StepsPrimitive.NextTrigger {...props} />;
-}
+const NextTrigger = withStepsContext<StepsNextTriggerProps>(
+  StepsPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
 // #endregion
 
-// #region Display Names
-StepsIndicator.displayName = "Steps.Indicator";
-StepsPrevTrigger.displayName = "Steps.PrevTrigger";
-StepsNextTrigger.displayName = "Steps.NextTrigger";
+// #region Shorthand
+/** Stacks the title and description inside the trigger. */
+function ShorthandText({ children }: { children: ReactNode }) {
+  const { slots } = useStyles();
 
+  return <div className={slots.text()}>{children}</div>;
+}
+
+function ShorthandControl({ classNames }: Pick<StepsProps, "classNames">) {
+  const { m } = useLocale();
+  const { slots } = useStepsStyles();
+
+  return (
+    <div className={slots.control({ className: classNames?.control })}>
+      <NextTrigger asChild className={classNames?.nextTrigger}>
+        <Button>
+          {m("steps.next")}
+          <CaretRightIcon />
+        </Button>
+      </NextTrigger>
+      <PrevTrigger asChild className={classNames?.prevTrigger}>
+        <Button variant="outline">
+          <CaretLeftIcon />
+          {m("steps.previous")}
+        </Button>
+      </PrevTrigger>
+    </div>
+  );
+}
+
+export function StepsShorthand({
+  classNames,
+  completedContent,
+  items,
+  showControls = true,
+  ...rest
+}: StepsProps) {
+  return (
+    <Root {...rest} count={items.length}>
+      <List className={classNames?.list}>
+        {items.map((item, index) => (
+          <Item index={index} key={item.value ?? index}>
+            <Trigger>
+              <ShorthandIndicator>{item.icon ?? index + 1}</ShorthandIndicator>
+
+              {(item.title !== undefined || item.description !== undefined) && (
+                <ShorthandText>
+                  {item.title !== undefined && <Title>{item.title}</Title>}
+                  {item.description !== undefined && (
+                    <Description>{item.description}</Description>
+                  )}
+                </ShorthandText>
+              )}
+            </Trigger>
+            <Separator />
+          </Item>
+        ))}
+      </List>
+
+      {items.map((item, index) =>
+        item.content === undefined ? null : (
+          <Content
+            className={classNames?.content}
+            index={index}
+            key={item.value ?? index}
+          >
+            {item.content}
+          </Content>
+        ),
+      )}
+
+      {completedContent !== undefined && (
+        <CompletedContent className={classNames?.completedContent}>
+          {completedContent}
+        </CompletedContent>
+      )}
+
+      {showControls && <ShorthandControl classNames={classNames} />}
+    </Root>
+  );
+}
 // #endregion
 
 export type {
@@ -138,16 +246,17 @@ export type {
   StepsTriggerProps,
 } from "@ark-ui/react";
 
-export const Steps = Object.assign(StepsRoot, {
-  CompletedContent: StepsCompletedContent,
-  Content: StepsContent,
-  Description: StepsDescription,
-  Indicator: StepsIndicator,
-  Item: StepsItem,
-  List: StepsList,
-  NextTrigger: StepsNextTrigger,
-  PrevTrigger: StepsPrevTrigger,
-  Separator: StepsSeparator,
-  Title: StepsTitle,
-  Trigger: StepsTrigger,
+export const Steps = Object.assign(StepsShorthand, {
+  CompletedContent,
+  Content,
+  Description,
+  Indicator,
+  Item,
+  List,
+  NextTrigger,
+  PrevTrigger,
+  Root,
+  Separator,
+  Title,
+  Trigger,
 });

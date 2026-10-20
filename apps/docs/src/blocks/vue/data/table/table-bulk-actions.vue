@@ -90,7 +90,7 @@ function onOpenChange(details: boolean | { open: boolean }) {
 
 <template>
   <div :class="cn(styles.root(), props.class)">
-    <ActionBar :open="isOpen" @open-change="onOpenChange">
+    <ActionBar.Root :open="isOpen" @open-change="onOpenChange">
       <Table>
         <Table.Caption :class="styles.srOnly()">
           Orders with checkbox selection and action bar.
@@ -141,52 +141,55 @@ function onOpenChange(details: boolean | { open: boolean }) {
           </Table.Row>
         </Table.Body>
       </Table>
-      <ActionBar.Content>
-        <ActionBar.Value :count="selectedIds.length" />
-        <div :class="styles.actions()">
-          <Button size="sm" type="button" variant="secondary">
-            <PhPaperPlaneTilt aria-hidden="true" />
-            Send
-          </Button>
-          <Button size="sm" type="button" variant="secondary">
-            <PhPencil aria-hidden="true" />
-            Edit
-          </Button>
-          <DropdownMenu :positioning="{ placement: 'top' }">
-            <DropdownMenu.Trigger as-child>
-              <Button
-                aria-label="More actions"
-                size="sm"
-                type="button"
-                variant="secondary"
-              >
-                <PhDotsThree aria-hidden="true" />
+      <Teleport to="body">
+        <ActionBar.Positioner>
+          <ActionBar.Content>
+            <ActionBar.Value :count="selectedIds.length" />
+            <div :class="styles.actions()">
+              <Button size="sm" type="button" variant="secondary">
+                <PhPaperPlaneTilt aria-hidden="true" />
+                Send
               </Button>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-              <DropdownMenu.Item value="archive">
-                <PhArchive aria-hidden="true" />
-                Archive
-              </DropdownMenu.Item>
-              <DropdownMenu.Item value="duplicate">
-                <PhCopy aria-hidden="true" />
-                Duplicate
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-          <AlertDialog>
-            <AlertDialog.Trigger as-child>
-              <Button size="sm" type="button" variant="destructive">
-                <PhTrash aria-hidden="true" />
-                Delete
+              <Button size="sm" type="button" variant="secondary">
+                <PhPencil aria-hidden="true" />
+                Edit
               </Button>
-            </AlertDialog.Trigger>
-            <AlertDialog.Content>
-              <AlertDialog.Header
+              <DropdownMenu.Root :positioning="{ placement: 'top' }">
+                <DropdownMenu.Trigger as-child>
+                  <Button
+                    aria-label="More actions"
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <PhDotsThree aria-hidden="true" />
+                  </Button>
+                </DropdownMenu.Trigger>
+                <Teleport to="body">
+                  <DropdownMenu.Positioner>
+                    <DropdownMenu.Content>
+                      <DropdownMenu.Item value="archive">
+                        <PhArchive aria-hidden="true" />
+                        Archive
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item value="duplicate">
+                        <PhCopy aria-hidden="true" />
+                        Duplicate
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Positioner>
+                </Teleport>
+              </DropdownMenu.Root>
+              <AlertDialog
                 description="This action cannot be undone."
                 title="Delete selected orders?"
-              />
-              <AlertDialog.Body>
+              >
+                <template #trigger>
+                  <Button size="sm" type="button" variant="destructive">
+                    <PhTrash aria-hidden="true" />
+                    Delete
+                  </Button>
+                </template>
                 <ul>
                   <li
                     v-for="order in selectedOrders"
@@ -196,19 +199,17 @@ function onOpenChange(details: boolean | { open: boolean }) {
                     {{ order.id }} - {{ order.name }}
                   </li>
                 </ul>
-              </AlertDialog.Body>
-              <AlertDialog.Footer>
-                <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                <AlertDialog.CloseTrigger as-child>
+                <template #actions>
+                  <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
                   <AlertDialog.Action variant="destructive">
                     Delete
                   </AlertDialog.Action>
-                </AlertDialog.CloseTrigger>
-              </AlertDialog.Footer>
-            </AlertDialog.Content>
-          </AlertDialog>
-        </div>
-      </ActionBar.Content>
-    </ActionBar>
+                </template>
+              </AlertDialog>
+            </div>
+          </ActionBar.Content>
+        </ActionBar.Positioner>
+      </Teleport>
+    </ActionBar.Root>
   </div>
 </template>

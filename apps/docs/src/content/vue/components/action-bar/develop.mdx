@@ -7,14 +7,11 @@ import { ActionBar } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<ActionBar>
-  <ActionBar.Trigger />
-  <ActionBar.Content>
-    <ActionBar.Value />
-    <ActionBar.Separator />
-    <ActionBar.Body />
-    <ActionBar.Close />
-  </ActionBar.Content>
+<ActionBar :actions="actions" :count="3">
+  <template #trigger>
+    <Button />
+  </template>
+  <!-- extra actions -->
 </ActionBar>
 ```
 

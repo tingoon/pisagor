@@ -3,8 +3,9 @@
 </script>
 
 <HoverCard disabled>
-  <HoverCard.Trigger>
-    <Button variant="link">Hover here</Button>
-  </HoverCard.Trigger>
-  <HoverCard.Content>IT WILL NOT OPEN</HoverCard.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="link">Hover here</Button>
+  {/snippet}
+
+  IT WILL NOT OPEN
 </HoverCard>

@@ -1,6 +1,4 @@
-import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Command } from "@pisagor/solid";
-import { For } from "solid-js";
 
 export function Scrollable() {
   const initialItems = [
@@ -31,36 +29,6 @@ export function Scrollable() {
     },
     { group: "Meta-frameworks", label: "Wasp", value: "wasp" },
   ];
-  const filterFn = useFilter({ sensitivity: "base" });
 
-  const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
-
-  return (
-    <Command
-      collection={collection()}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input placeholder="Search frameworks..." />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          <For each={collection().group()}>
-            {([group, items]) => (
-              <Command.ItemGroup heading={group}>
-                <For each={items}>
-                  {(item) => (
-                    <Command.Item item={item}>{item.label}</Command.Item>
-                  )}
-                </For>
-              </Command.ItemGroup>
-            )}
-          </For>
-        </Command.List>
-      </Command.Content>
-    </Command>
-  );
+  return <Command items={initialItems} placeholder="Search frameworks..." />;
 }

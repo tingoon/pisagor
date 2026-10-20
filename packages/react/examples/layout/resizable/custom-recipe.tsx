@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { Resizable } from "@pisagor/react";
 import { resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -51,7 +52,11 @@ export function CustomRecipe() {
         <Resizable.Panel className={panelClassName()} id="1">
           One
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="1:2" withHandle />
+        <Resizable.ResizeTrigger id="1:2">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon className="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel className="h-full min-h-0 min-w-0" id="2">
           <Resizable
@@ -66,7 +71,11 @@ export function CustomRecipe() {
             <Resizable.Panel className={panelClassName("vertical")} id="3">
               Two
             </Resizable.Panel>
-            <Resizable.ResizeTrigger id="3:4" withHandle />
+            <Resizable.ResizeTrigger id="3:4">
+              <Resizable.ResizeTriggerHandle>
+                <DotsSixVerticalIcon className="size-2.5" />
+              </Resizable.ResizeTriggerHandle>
+            </Resizable.ResizeTrigger>
 
             <Resizable.Panel className={panelClassName("vertical")} id="4">
               Three

@@ -24,11 +24,7 @@ import type {
   DatePickerViewProps,
   DatePickerYearSelectProps,
 } from "@ark-ui/react";
-import {
-  CaretDownIcon,
-  CaretLeftIcon,
-  CaretRightIcon,
-} from "@phosphor-icons/react";
+import { CaretDownIcon } from "@phosphor-icons/react";
 import type {
   CalendarRootContract,
   CalendarTableCellRootContract,
@@ -263,40 +259,33 @@ const ViewControl = withContext<CalendarViewControlProps>(
   { name: "ViewControl" },
 );
 
+const PrevTriggerBase = withContext<CalendarPrevTriggerProps>(
+  CalendarPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
+
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
 function PrevTrigger(props: CalendarPrevTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
   return (
-    <CalendarPrimitive.PrevTrigger {...props} asChild>
-      <Button
-        aria-label={m("calendar.previousMonth")}
-        className={slots.prevTrigger()}
-        size="icon-md"
-        variant="ghost"
-      >
-        <CaretLeftIcon aria-hidden className={slots.prevIcon()} />
-      </Button>
-    </CalendarPrimitive.PrevTrigger>
+    <PrevTriggerBase aria-label={m("calendar.previousMonth")} {...props} />
   );
 }
 
+const NextTriggerBase = withContext<CalendarNextTriggerProps>(
+  CalendarPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
+
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
 function NextTrigger(props: CalendarNextTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useStyles();
 
-  return (
-    <CalendarPrimitive.NextTrigger {...props} asChild>
-      <Button
-        aria-label={m("calendar.nextMonth")}
-        className={slots.nextTrigger()}
-        size="icon-md"
-        variant="ghost"
-      >
-        <CaretRightIcon aria-hidden className={slots.nextIcon()} />
-      </Button>
-    </CalendarPrimitive.NextTrigger>
-  );
+  return <NextTriggerBase aria-label={m("calendar.nextMonth")} {...props} />;
 }
 
 const Table = withContext<CalendarTableProps>(CalendarPrimitive.Table, {

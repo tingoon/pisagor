@@ -2,9 +2,16 @@
 
 ```tsx
 <RadioGroup.Root>
-  <RadioGroup.Item />
+  <RadioGroup.Label />
+  <RadioGroup.Item>
+    <RadioGroup.ItemControl />
+    <RadioGroup.ItemText />
+    <RadioGroup.ItemHiddenInput />
+  </RadioGroup.Item>
 </RadioGroup.Root>
 ```
+
+Parts map 1:1 to Ark. The `RadioGroup` shorthand renders each item's control, text, and hidden input from `items`.
 
 ## Examples
 

@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Avatar, AvatarGroup, Button, Popover } from "@pisagor/react";
 
 export function AvatarGroupOverflow() {
@@ -11,7 +12,7 @@ export function AvatarGroupOverflow() {
           src={user.src}
         />
       ))}
-      <Popover positioning={{ placement: "bottom-end" }}>
+      <Popover.Root positioning={{ placement: "bottom-end" }}>
         <AvatarGroup.Count asChild>
           <Popover.Trigger asChild>
             <Button
@@ -24,21 +25,25 @@ export function AvatarGroupOverflow() {
             </Button>
           </Popover.Trigger>
         </AvatarGroup.Count>
-        <Popover.Content>
-          <Popover.Body>
-            <AvatarGroup.Root>
-              {users.map((user) => (
-                <Avatar
-                  alt={user.name}
-                  fallback={user.fallback}
-                  key={user.fallback}
-                  src={user.src}
-                />
-              ))}
-            </AvatarGroup.Root>
-          </Popover.Body>
-        </Popover.Content>
-      </Popover>
+        <Portal>
+          <Popover.Positioner>
+            <Popover.Content>
+              <Popover.Body>
+                <AvatarGroup.Root>
+                  {users.map((user) => (
+                    <Avatar
+                      alt={user.name}
+                      fallback={user.fallback}
+                      key={user.fallback}
+                      src={user.src}
+                    />
+                  ))}
+                </AvatarGroup.Root>
+              </Popover.Body>
+            </Popover.Content>
+          </Popover.Positioner>
+        </Portal>
+      </Popover.Root>
     </AvatarGroup.Root>
   );
 }

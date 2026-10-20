@@ -3,12 +3,9 @@ import {
   treeViewItemRecipe,
   treeViewRecipe,
 } from "@pisagor/recipes";
-import type { Component } from "svelte";
 import { createSlotRecipeContext } from "../../internal";
-import { createContext } from "../../utils/create-context";
 
 export const {
-  Context,
   useStyles: useTreeViewStyles,
   withContext: withTreeViewContext,
   withProvider: withTreeViewProvider,
@@ -18,8 +15,6 @@ export const {
 });
 
 export const {
-  Context: TreeViewBranchStylesContext,
-  useStyles: useTreeViewBranch,
   withContext: withTreeViewBranchContext,
   withProvider: withTreeViewBranchProvider,
 } = createSlotRecipeContext({
@@ -29,78 +24,21 @@ export const {
 
 export const {
   Context: TreeViewItemStylesContext,
-  withContext: withTreeViewItemContext,
   withProvider: withTreeViewItemProvider,
 } = createSlotRecipeContext({
   name: "TreeView",
   recipe: treeViewItemRecipe,
 });
 
-export interface TreeViewIconsValue {
-  fileIcons?: Record<string, Component | null>;
-}
+const defaultItemSlots = treeViewItemRecipe();
 
-const iconsCtx = createContext("TreeViewIcons")<TreeViewIconsValue>({
-  defaultValue: {},
-  strict: false,
-});
-export const setTreeViewIconsContext = iconsCtx.setContext;
-export const useTreeViewIcons = iconsCtx.getContext;
-
-export function useTreeView() {
-  const styles = useTreeViewStyles();
-  const icons = useTreeViewIcons() ?? {};
+/** Item styles when inside `Item`, default item styles otherwise (branches). */
+export function useTreeViewItemSlots() {
+  const item = TreeViewItemStylesContext.get();
 
   return {
-    get fileIcons() {
-      return icons.fileIcons;
-    },
     get slots() {
-      return styles.slots;
-    },
-    get variants() {
-      return styles.variants;
+      return item?.slots ?? defaultItemSlots;
     },
   };
-}
-
-export function useTreeViewItem() {
-  return TreeViewItemStylesContext.get();
-}
-
-export function setTreeViewContext(
-  value: TreeViewIconsValue & {
-    slots: ReturnType<typeof treeViewRecipe>;
-  },
-) {
-  Context.set({
-    get slots() {
-      return value.slots;
-    },
-  });
-  setTreeViewIconsContext({
-    get fileIcons() {
-      return value.fileIcons;
-    },
-  });
-}
-
-export function setTreeViewBranchContext(value: {
-  slots: ReturnType<typeof treeViewBranchRecipe>;
-}) {
-  TreeViewBranchStylesContext.set({
-    get slots() {
-      return value.slots;
-    },
-  });
-}
-
-export function setTreeViewItemContext(value: {
-  slots: ReturnType<typeof treeViewItemRecipe>;
-}) {
-  TreeViewItemStylesContext.set({
-    get slots() {
-      return value.slots;
-    },
-  });
 }

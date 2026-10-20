@@ -1,3 +1,4 @@
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
 
@@ -23,7 +24,9 @@ export function DisabledItem() {
             {collection.items.map((item) => (
               <Listbox.Item item={item}>
                 <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             ))}
           </Listbox.Content>

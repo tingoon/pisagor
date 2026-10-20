@@ -3,7 +3,7 @@
   import type { ComponentProps, Snippet } from "svelte";
   import { FieldShell } from "../internal";
 
-  type InputOTPProps = ComponentProps<typeof InputOTP>;
+  type InputOTPProps = ComponentProps<typeof InputOTP.Root>;
 
   type Props = Omit<
     InputOTPProps,
@@ -70,7 +70,7 @@
   {labelProps}
   {orientation}
 >
-  <InputOTP
+  <InputOTP.Root
     {...inputOtpProps}
     {id}
     {invalid}
@@ -79,11 +79,13 @@
     onValueChange={handleValueChange}
     value={otpValue}
   >
-    {#each indices as index (index)}
-      {#if index === separatorAt}
-        <InputOTP.Separator />
-      {/if}
-      <InputOTP.Slot {index} />
-    {/each}
-  </InputOTP>
+    <InputOTP.Control>
+      {#each indices as index (index)}
+        {#if index === separatorAt}
+          <InputOTP.Separator />
+        {/if}
+        <InputOTP.Input {index} />
+      {/each}
+    </InputOTP.Control>
+  </InputOTP.Root>
 </FieldShell>

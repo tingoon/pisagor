@@ -1,13 +1,23 @@
 ## Anatomy
 
 ```tsx
-<ActionBar>
+<ActionBar.Root>
   <ActionBar.Trigger />
-  <ActionBar.Content>
-    <ActionBar.Value />
-    <ActionBar.Separator />
-    <ActionBar.Body />
-    <ActionBar.Close />
-  </ActionBar.Content>
-</ActionBar>
+  <ActionBar.Positioner>
+    <ActionBar.Content>
+      <ActionBar.Value />
+      <ActionBar.Separator />
+      <ActionBar.Body />
+      <ActionBar.Close />
+    </ActionBar.Content>
+  </ActionBar.Positioner>
+</ActionBar.Root>
 ```
+
+## Examples
+
+### Compound
+
+Build the bar from parts. Wrap the positioner in `Portal` and pass your own close icon to `ActionBar.Close`.
+
+<Example name="Compound" />

@@ -3,9 +3,8 @@
   import { ThermometerIcon } from "phosphor-svelte";
 </script>
 
-<CircularSlider>
-  <div class="flex items-center gap-1">
+<CircularSlider showValue valueSuffix="°">
+  {#snippet valuePrefix()}
     <ThermometerIcon class="size-4" />
-    <CircularSlider.ValueText suffix="°" />
-  </div>
+  {/snippet}
 </CircularSlider>

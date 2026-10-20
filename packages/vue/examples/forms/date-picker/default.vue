@@ -1,63 +1,39 @@
 <script lang="ts" setup>
-import { PhCalendar } from "@phosphor-icons/vue";
+import { PhCalendar, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { Button, Calendar, DatePicker } from "@pisagor/vue";
-import { defineComponent, h } from "vue";
-
-interface WeekDay {
-  narrow: string;
-  short: string;
-}
-
-const CalendarWeekDays = defineComponent({
-  name: "CalendarWeekDays",
-  setup() {
-    return () =>
-      h(Calendar.Context, null, {
-        default: (calendar: { weekDays: WeekDay[] }) =>
-          h(Calendar.TableHead, null, () =>
-            h(Calendar.TableRow, null, () =>
-              calendar.weekDays.map((weekDay) =>
-                h(
-                  Calendar.TableHeader,
-                  { key: weekDay.short },
-                  () => weekDay.narrow,
-                ),
-              ),
-            ),
-          ),
-      });
-  },
-});
-
-const CalendarBody = defineComponent({
-  name: "CalendarBody",
-  setup() {
-    return () => [
-      h(Calendar.ViewControl, null, () => [
-        h(Calendar.PrevTrigger),
-        h(Calendar.MonthSelect),
-        h(Calendar.YearSelect),
-        h(Calendar.NextTrigger),
-      ]),
-      h(Calendar.Table, null, () => [
-        h(CalendarWeekDays),
-        h(Calendar.TableDays),
-      ]),
-    ];
-  },
-});
 </script>
 
 <template>
-  <DatePicker>
-    <DatePicker.Trigger :as-child="true">
+  <DatePicker.Root>
+    <DatePicker.Trigger as-child>
       <Button variant="outline">
         <PhCalendar />
         <DatePicker.ValueText placeholder="Pick a date" />
       </Button>
     </DatePicker.Trigger>
-    <DatePicker.Content>
-      <CalendarBody />
-    </DatePicker.Content>
-  </DatePicker>
+    <Teleport to="body">
+      <DatePicker.Positioner>
+        <DatePicker.Content>
+          <Calendar.ViewControl>
+            <Calendar.PrevTrigger as-child>
+              <Button size="icon-md" variant="ghost">
+                <PhCaretLeft aria-hidden class="rtl:rotate-180" />
+              </Button>
+            </Calendar.PrevTrigger>
+            <Calendar.MonthSelect />
+            <Calendar.YearSelect />
+            <Calendar.NextTrigger as-child>
+              <Button size="icon-md" variant="ghost">
+                <PhCaretRight aria-hidden class="rtl:rotate-180" />
+              </Button>
+            </Calendar.NextTrigger>
+          </Calendar.ViewControl>
+          <Calendar.Table>
+            <Calendar.WeekDays />
+            <Calendar.TableDays />
+          </Calendar.Table>
+        </DatePicker.Content>
+      </DatePicker.Positioner>
+    </Teleport>
+  </DatePicker.Root>
 </template>

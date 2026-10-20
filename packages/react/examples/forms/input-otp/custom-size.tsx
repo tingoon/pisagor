@@ -2,11 +2,13 @@ import { InputOTP } from "@pisagor/react";
 
 export function CustomSize() {
   return (
-    <InputOTP>
-      <InputOTP.Slot className="size-12 text-lg" index={0} />
-      <InputOTP.Slot className="size-12 text-lg" index={1} />
-      <InputOTP.Slot className="size-12 text-lg" index={2} />
-      <InputOTP.Slot className="size-12 text-lg" index={3} />
-    </InputOTP>
+    <InputOTP.Root>
+      <InputOTP.Control>
+        <InputOTP.Input className="size-12 text-lg" index={0} />
+        <InputOTP.Input className="size-12 text-lg" index={1} />
+        <InputOTP.Input className="size-12 text-lg" index={2} />
+        <InputOTP.Input className="size-12 text-lg" index={3} />
+      </InputOTP.Control>
+    </InputOTP.Root>
   );
 }

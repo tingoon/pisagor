@@ -1,8 +1,9 @@
+import { Portal } from "@ark-ui/react";
 import { Button, ColorPicker, Input } from "@pisagor/react";
 
 export function PopoverWithChannelEditing() {
   return (
-    <ColorPicker format="rgba">
+    <ColorPicker.Root format="rgba">
       <ColorPicker.Control>
         <ColorPicker.Trigger asChild>
           <Button size="lg" variant="ghost">
@@ -11,23 +12,31 @@ export function PopoverWithChannelEditing() {
           </Button>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area>
-          <ColorPicker.AreaThumb />
-        </ColorPicker.Area>
-        <ColorPicker.ChannelSlider channel="hue" />
-        <div className="grid grid-cols-3 gap-2">
-          <ColorPicker.Input asChild channel="red">
-            <Input />
-          </ColorPicker.Input>
-          <ColorPicker.Input asChild channel="green">
-            <Input />
-          </ColorPicker.Input>
-          <ColorPicker.Input asChild channel="blue">
-            <Input />
-          </ColorPicker.Input>
-        </div>
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <div className="grid grid-cols-3 gap-2">
+              <ColorPicker.Input asChild channel="red">
+                <Input />
+              </ColorPicker.Input>
+              <ColorPicker.Input asChild channel="green">
+                <Input />
+              </ColorPicker.Input>
+              <ColorPicker.Input asChild channel="blue">
+                <Input />
+              </ColorPicker.Input>
+            </div>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

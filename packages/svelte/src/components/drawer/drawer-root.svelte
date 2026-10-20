@@ -4,19 +4,32 @@
     type DrawerRootProps,
   } from "@ark-ui/svelte";
   import type { DrawerRootContract } from "@pisagor/contracts";
-  import { drawerRecipe } from "@pisagor/recipes";
-  import { Context } from "./drawer.context";
+  import { withProvider } from "./drawer.context";
 
-  type Props = DrawerRootProps & DrawerRootContract;
+  /**
+   * `placement` is not a prop: it always follows `swipeDirection` so the slide
+   * animation and rounded edge match the dismiss gesture.
+   */
+  type Props = DrawerRootProps & Omit<DrawerRootContract, "placement">;
 
-  let { recipe = drawerRecipe, children, ...rest }: Props = $props();
-  const slots = $derived(recipe());
+  const SWIPE_DIRECTION_TO_PLACEMENT = {
+    down: "bottom",
+    end: "right",
+    start: "left",
+    up: "top",
+  } as const;
 
-  Context.set({
-    get slots() {
-      return slots;
-    },
-  });
+  let { swipeDirection = "down", children, ...rest }: Props = $props();
+  const root = withProvider(
+    () => ({
+      ...rest,
+      placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
+      swipeDirection,
+    }),
+    { name: "Root" },
+  );
 </script>
 
-<DrawerPrimitive.Root {...rest}>{@render children?.()}</DrawerPrimitive.Root>
+<DrawerPrimitive.Root {...root.props}>
+  {@render children?.()}
+</DrawerPrimitive.Root>

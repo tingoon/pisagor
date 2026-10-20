@@ -1,4 +1,5 @@
 export * from "./close-behavior";
+export * from "./compound";
 export * from "./custom-recipe";
 export * from "./custom-spacing";
 export * from "./default";

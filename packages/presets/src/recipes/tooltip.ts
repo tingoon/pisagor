@@ -6,6 +6,8 @@ export const tooltipRecipe = tv({
       "[--arrow-background:var(--foreground)]",
       "[--arrow-size:calc(1.5*var(--spacing))]",
     ],
+    arrowTip: [],
+    base: [],
     content: [
       "z-popover w-fit",
       "px-3 py-1.5",
@@ -22,6 +24,8 @@ export const tooltipRecipe = tv({
       "data-[placement=top]:slide-in-from-bottom-2 data-[state=closed]:data-[placement=top]:slide-out-to-bottom-2",
       "motion-reduce:animate-none!",
     ],
+    positioner: [],
+    trigger: [],
   },
 });
 

@@ -1,84 +1,92 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue";
-import type { QrCodeRootContract } from "@pisagor/contracts";
+import type { QrCodeContract, QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
+import { contentProp, slotOrProp } from "../internal/shorthand";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "QrCode",
   recipe: qrCodeRecipe,
 });
 // #endregion
 
 // #region Types
-export interface QrCodeRootProps extends QrCodeRootContract {
-  class?: unknown;
+export type QrCodeRootProps = QrCodeRootContract;
+
+export interface QrCodeProps extends QrCodeRootProps, QrCodeContract {
+  /** Content centered over the code (logo, icon); also the `overlay` slot. */
+  overlay?: unknown;
 }
+
+export type {
+  QrCodeDownloadTriggerProps,
+  QrCodeFrameProps,
+  QrCodeOverlayProps,
+  QrCodePatternProps,
+} from "@ark-ui/vue";
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
-const QrCodeRootBase = withProvider<QrCodeRootContract>(QrCodePrimitive.Root, {
-  name: "Root",
+export const QrCodeRoot = withProvider<QrCodeRootContract>(
+  QrCodePrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+export const QrCodeFrame = withContext(QrCodePrimitive.Frame, {
+  name: "Frame",
 });
 
-export const QrCodeRoot = defineComponent({
-  inheritAttrs: false,
-  name: "QrCode",
-  setup(_props, { attrs, slots }) {
-    return () =>
-      h(
-        QrCodeRootBase,
-        { ...attrs },
-        {
-          default: () => slots.default?.() ?? h(QrCodeFrame),
-        },
-      );
-  },
-});
-
-export const QrCodeFrame = defineComponent({
-  inheritAttrs: false,
-  name: "QrCode.Frame",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const styles = useStyles();
-
-    return () =>
-      h(
-        QrCodePrimitive.Frame as ArkPart,
-        { ...attrs, class: styles.slots.frame({ class: props.class }) },
-        () =>
-          h(QrCodePrimitive.Pattern as ArkPart, {
-            class: styles.slots.pattern(),
-          }),
-      );
-  },
+export const QrCodePattern = withContext(QrCodePrimitive.Pattern, {
+  name: "Pattern",
 });
 
 export const QrCodeOverlay = withContext(QrCodePrimitive.Overlay, {
   name: "Overlay",
 });
 
-export const QrCodeDownload = defineComponent({
+export const QrCodeDownloadTrigger = withContext(
+  QrCodePrimitive.DownloadTrigger,
+  { name: "DownloadTrigger" },
+);
+// #endregion
+
+// #region Shorthand
+export const QrCodeShorthand = defineComponent({
   inheritAttrs: false,
-  name: "QrCode.Download",
-  setup(_props, { attrs, slots }) {
-    return () =>
-      h(QrCodePrimitive.DownloadTrigger as ArkPart, { ...attrs }, slots);
+  name: "QrCode",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<QrCodeProps["classNames"]>,
+    },
+    overlay: contentProp,
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const classNames = props.classNames;
+      const overlay = slotOrProp(slots.overlay, props.overlay as never);
+
+      return h(QrCodeRoot as ArkPart, { ...attrs }, () => [
+        h(QrCodeFrame, { class: classNames?.frame }, () =>
+          h(QrCodePattern, { class: classNames?.pattern }),
+        ),
+        overlay
+          ? h(QrCodeOverlay, { class: classNames?.overlay }, overlay)
+          : null,
+      ]);
+    };
   },
 });
 // #endregion
 
-export const QrCode = Object.assign(QrCodeRoot, {
-  Download: QrCodeDownload,
+export const QrCode = Object.assign(QrCodeShorthand, {
+  DownloadTrigger: QrCodeDownloadTrigger,
   Frame: QrCodeFrame,
   Overlay: QrCodeOverlay,
+  Pattern: QrCodePattern,
+  Root: QrCodeRoot,
 });

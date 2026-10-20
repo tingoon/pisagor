@@ -1,11 +1,11 @@
-import { Button, Card, Timer } from "@pisagor/solid";
 import { PauseIcon, PlayIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Timer } from "@pisagor/solid";
 
 export function Interval() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer interval={100} targetMs={60 * 1000}>
+        <Timer.Root interval={100} targetMs={60 * 1000}>
           <Timer.Area>
             <Timer.ItemGroup>
               <Timer.Item type="seconds" />
@@ -43,7 +43,7 @@ export function Interval() {
               )}
             />
           </Timer.Control>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   );

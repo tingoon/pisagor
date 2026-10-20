@@ -1,16 +1,33 @@
 ## Anatomy
 
 ```tsx
-<Drawer>
+<Drawer.Root>
   <Drawer.Trigger />
-  <Drawer.Content>
-    <Drawer.ContentInner>
-      <Drawer.Header />
-      <Drawer.Body />
-    </Drawer.ContentInner>
-    <Drawer.Footer>
-      <Drawer.CloseTrigger />
-    </Drawer.Footer>
-  </Drawer.Content>
-</Drawer>
+  <Drawer.Backdrop />
+  <Drawer.Positioner>
+    <Drawer.Content>
+      <Drawer.Grabber>
+        <Drawer.GrabberIndicator />
+      </Drawer.Grabber>
+      <Drawer.ContentInner>
+        <Drawer.Header>
+          <Drawer.Title />
+          <Drawer.Description />
+        </Drawer.Header>
+        <Drawer.Body />
+      </Drawer.ContentInner>
+      <Drawer.Footer>
+        <Drawer.CloseTrigger />
+      </Drawer.Footer>
+    </Drawer.Content>
+  </Drawer.Positioner>
+</Drawer.Root>
 ```
+
+## Examples
+
+### Compound
+
+Build the drawer from parts when the shorthand props are not enough. Wrap the backdrop and positioner in `Portal`, add the grabber yourself, and wrap `Drawer.Body` in `ScrollArea` when the body should scroll. `Drawer.ContentInner` constrains width to `max-w-sm` and centers the header, body, and footer actions.
+
+<Example name="Compound" />

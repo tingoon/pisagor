@@ -2,41 +2,13 @@
   import {
     HoverCard as HoverCardPrimitive,
     type HoverCardContentProps,
-    Portal,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./hover-card.context";
-  import HoverCardArrow from "./hover-card-arrow.svelte";
+  import { withContext } from "./hover-card.context";
 
-  type Props = HoverCardContentProps & {
-    /**
-     * Whether to render the arrow pointing at the trigger.
-     *
-     * @defaultValue true
-     */
-    showArrow?: boolean;
-  };
-
-  let {
-    children,
-    class: className,
-    showArrow = true,
-    ...rest
-  }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: HoverCardContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-<Portal>
-  <HoverCardPrimitive.Positioner>
-    <HoverCardPrimitive.Content
-      {...rest}
-      class={slots.content({ class: cn(className) })}
-    >
-      {@render children?.()}
-      {#if showArrow}
-        <HoverCardArrow />
-      {/if}
-    </HoverCardPrimitive.Content>
-  </HoverCardPrimitive.Positioner>
-</Portal>
+<HoverCardPrimitive.Content {...part.props}>
+  {@render children?.()}
+</HoverCardPrimitive.Content>

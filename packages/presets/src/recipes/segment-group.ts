@@ -49,6 +49,7 @@ export const segmentGroupRecipe = tv({
       "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       "motion-reduce:transition-none!",
     ],
+    itemControl: [],
     itemText: ["relative z-1"],
   },
   variants: {

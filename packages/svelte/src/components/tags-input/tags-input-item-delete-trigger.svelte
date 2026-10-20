@@ -3,35 +3,20 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputItemDeleteTriggerProps,
   } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { XIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useTagsInputItem } from "./tags-input.context";
+  import { withTagsInputItemContext } from "./tags-input.context";
 
+  let { children, ...rest }: TagsInputItemDeleteTriggerProps = $props();
   const { m } = useLocale();
-
-  let {
-    class: className,
-    children,
-    ...rest
-  }: TagsInputItemDeleteTriggerProps = $props();
-  const styles = useTagsInputItem();
-  const slots = $derived(styles.slots);
+  const part = withTagsInputItemContext(
+    () => ({ "aria-label": m("tagsInput.removeTag"), ...rest }),
+    {
+      name: "ItemDeleteTrigger",
+      slot: "delete",
+    },
+  );
 </script>
 
-<TagsInputPrimitive.ItemDeleteTrigger
-  aria-label={m("tagsInput.removeTag")}
-  {...rest}
-  class={cn(
-    buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-    slots.delete({ class: cn(className) }),
-  )}
-  type="button"
->
-  {#if children}
-    {@render children()}
-  {:else}
-    <XIcon aria-hidden="true" />
-  {/if}
+<TagsInputPrimitive.ItemDeleteTrigger {...part.props}>
+  {@render children?.()}
 </TagsInputPrimitive.ItemDeleteTrigger>

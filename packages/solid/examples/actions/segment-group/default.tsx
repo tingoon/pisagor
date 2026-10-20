@@ -3,11 +3,13 @@ import { SegmentGroup } from "@pisagor/solid";
 export function Default() {
   return (
     <SegmentGroup
-      defaultValue="day"
+      class="rounded-lg"
+      defaultValue="Profile"
       items={[
-        { label: "Day", value: "day" },
-        { label: "Week", value: "week" },
-        { label: "Month", value: "month" },
+        { label: "Profile", value: "Profile" },
+        { label: "Account", value: "Account" },
+        { label: "Security", value: "Security" },
+        { label: "Notifications", value: "Notifications" },
       ]}
     />
   );

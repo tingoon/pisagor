@@ -3,7 +3,7 @@ import { Button, Editable, Input } from "@pisagor/react";
 
 export function Disabled() {
   return (
-    <Editable defaultValue="Click to edit" disabled>
+    <Editable.Root defaultValue="Click to edit" disabled>
       <Editable.Area>
         <Editable.Input asChild>
           <Input />
@@ -22,6 +22,6 @@ export function Disabled() {
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

@@ -3,7 +3,7 @@ import { Button, Editable, Textarea } from "@pisagor/react";
 
 export function OrientationVertical() {
   return (
-    <Editable>
+    <Editable.Root>
       <Editable.Area>
         <Editable.Input asChild>
           <Textarea className="min-h-24" />
@@ -22,6 +22,6 @@ export function OrientationVertical() {
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

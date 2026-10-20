@@ -3,16 +3,12 @@
     Tour as TourPrimitive,
     type TourPositionerProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTourContext } from "./tour.context";
+  import { withContext } from "./tour.context";
 
-  let { children, class: className, ...rest }: TourPositionerProps = $props();
-  const ctx = useTourContext();
+  let { children, ...rest }: TourPositionerProps = $props();
+  const part = withContext(() => rest, { name: "Positioner" });
 </script>
 
-<TourPrimitive.Positioner
-  {...rest}
-  class={ctx.slots.positioner({ class: cn(className) })}
->
+<TourPrimitive.Positioner {...part.props}>
   {@render children?.()}
 </TourPrimitive.Positioner>

@@ -1,9 +1,17 @@
-import { Tour as TourPrimitive, ark, useTour } from "@ark-ui/solid";
+import {
+  type HTMLArkProps,
+  Tour as TourPrimitive,
+  ark,
+  useTour,
+} from "@ark-ui/solid";
 import type {
-  HTMLArkProps,
   TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
   TourCloseTriggerProps,
-  TourContentProps as TourContentPrimitiveProps,
+  TourContentProps,
+  TourControlProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
@@ -11,23 +19,13 @@ import type {
   TourSpotlightProps,
   TourStepDetails,
   TourTitleProps,
-  UseTourReturn,
+  UseTourProps,
 } from "@ark-ui/solid";
 import type { TourRootContract } from "@pisagor/contracts";
-import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "solid-js";
-import {
-  createEffect,
-  createMemo,
-  createSignal,
-  createContext as createSolidContext,
-  For,
-  onCleanup,
-  Show,
-  splitProps,
-  useContext,
-} from "solid-js";
+import type { TourRecipeSlot } from "@pisagor/recipes";
+import { tourRecipe } from "@pisagor/recipes";
+import type { JSX } from "solid-js";
+import { createEffect, For, onCleanup, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
   CaretLeftIcon,
@@ -35,470 +33,286 @@ import {
   XIcon,
   createSlotRecipeContext,
 } from "../internal";
-import { createContext } from "../utils";
 import { Button } from "./button";
-import type {
-  DialogBodyProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-} from "./dialog";
-import { ScrollArea } from "./scroll-area";
+import { type DialogTriggerRender, renderTrigger } from "./dialog";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tour",
   recipe: tourRecipe,
 });
+// #endregion
 
-/** Non-style tour state (Ark tour machine + start handler). */
-interface TourState {
-  readonly handleStart: () => void;
-  readonly tour: UseTourReturn;
-}
+// #region Types
+export type TourStepType = TourStepDetails;
 
-const { TourStateContext, useTourState } =
-  createContext("TourState")<TourState>();
+export type TourRootProps = TourRootPrimitiveProps & TourRootContract;
 
-/** Returns the nearest tour styles + state (getters stay reactive). */
-export function useTourContext() {
-  const styles = useStyles();
-  const state = useTourState();
+export type TourHeaderProps = HTMLArkProps<"div">;
 
-  return {
-    handleStart: state.handleStart,
-    get slots() {
-      return styles.slots;
-    },
-    tour: state.tour,
-  };
+export type TourBodyProps = HTMLArkProps<"div">;
+
+export interface TourProps
+  extends
+    UseTourProps,
+    Omit<TourRootPrimitiveProps, "children" | "tour">,
+    TourRootContract {
+  /** Page content rendered next to the trigger (usually the step targets). */
+  children?: JSX.Element;
+  /** Per-slot class name overrides. */
+  classNames?: Partial<Record<TourRecipeSlot, string>>;
+  /**
+   * Whether to render an arrow on tooltip steps.
+   *
+   * @defaultValue false
+   */
+  showArrow?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  /** Element that starts the tour when clicked (render fn preferred). */
+  trigger?: DialogTriggerRender;
 }
 // #endregion
 
-export type TourStepType = TourStepDetails;
-export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
+// #region Parts
+// The root renders no element; `base` is an empty slot.
+const Root = withProvider<TourRootProps>(TourPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export interface TourProps extends TourRootProps, TourRootContract {
-  keyboardNavigation?: boolean;
-  steps: TourStepDetails[];
-  onStatusChange?: (details: { status: string }) => void;
-  onStepChange?: (details: { stepId: string | null }) => void;
+const Backdrop = withContext<TourBackdropProps>(TourPrimitive.Backdrop, {
+  name: "Backdrop",
+});
+
+const Spotlight = withContext<TourSpotlightProps>(TourPrimitive.Spotlight, {
+  name: "Spotlight",
+});
+
+const Positioner = withContext<TourPositionerProps>(TourPrimitive.Positioner, {
+  name: "Positioner",
+});
+
+const Content = withContext<TourContentProps>(TourPrimitive.Content, {
+  name: "Content",
+});
+
+const Arrow = withContext<TourArrowProps>(TourPrimitive.Arrow, {
+  defaultProps: {
+    style: {
+      "--arrow-background": "var(--background)",
+      "--arrow-size": "calc(1.5 * var(--spacing))",
+    },
+  },
+  name: "Arrow",
+});
+
+const ArrowTip = withContext<TourArrowTipProps>(TourPrimitive.ArrowTip, {
+  name: "ArrowTip",
+});
+
+const Header = withContext<TourHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<TourTitleProps>(TourPrimitive.Title, {
+  name: "Title",
+});
+
+const Description = withContext<TourDescriptionProps>(
+  TourPrimitive.Description,
+  { name: "Description" },
+);
+
+const ProgressText = withContext<TourProgressTextProps>(
+  TourPrimitive.ProgressText,
+  { name: "ProgressText" },
+);
+
+const Body = withContext<TourBodyProps>("div", { name: "Body" });
+
+const Control = withContext<TourControlProps>(TourPrimitive.Control, {
+  name: "Control",
+});
+
+const ActionTrigger = withContext<TourActionTriggerProps>(
+  TourPrimitive.ActionTrigger,
+  { name: "ActionTrigger" },
+);
+
+const CloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<TourCloseTriggerProps>(
+  TourPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "close" },
+);
+// #endregion
+
+// #region Shorthand
+function CloseLabel(): JSX.Element {
+  const { m } = useLocale();
+  const styles = useStyles();
+
+  return <span class={styles.slots.closeLabel()}>{m("tour.close")}</span>;
 }
 
-export type TourTriggerProps = HTMLArkProps<"button">;
+export function TourShorthand(props: TourProps): JSX.Element {
+  const [local, rootProps, tourProps] = splitProps(
+    props,
+    ["children", "classNames", "showArrow", "showCloseButton", "trigger"],
+    [
+      "immediate",
+      "lazyMount",
+      "onExitComplete",
+      "present",
+      "recipe",
+      "skipAnimationOnMount",
+      "unmountOnExit",
+    ],
+  );
+  const tour = useTour(tourProps);
 
-export interface TourBackdropProps extends ComponentProps<
-  typeof TourPrimitive.Backdrop
-> {
-  dialogRecipe?: typeof dialogRecipe;
-}
-
-export interface TourContentProps extends TourContentPrimitiveProps {
-  showCloseButton?: boolean;
-}
-
-export function TourRoot(props: TourProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["steps", "recipe", "children"]);
-  const [isStarted, setIsStarted] = createSignal(false);
-  const tour = useTour(() => ({ steps: local.steps ?? [] }));
-
+  // Spotlight offsets are measured against the body.
   createEffect(() => {
-    if (isStarted()) {
-      document.body.classList.add("relative");
-    } else {
-      document.body.classList.remove("relative");
+    if (!tour().open) {
+      return;
     }
+
+    document.body.classList.add("relative");
     onCleanup(() => document.body.classList.remove("relative"));
   });
 
-  const handleStart = () => {
-    setIsStarted(true);
-    tour().start();
-  };
-
-  const slots = createMemo(() => (local.recipe ?? tourRecipe)());
-
   return (
-    <TourStylesContext
-      value={{
-        get slots() {
-          return slots();
-        },
-        variants: {},
-      }}
-    >
-      <TourStateContext value={{ handleStart, tour }}>
-        <TourPrimitive.Root {...rest} tour={tour}>
-          {local.children}
-        </TourPrimitive.Root>
-      </TourStateContext>
-    </TourStylesContext>
-  );
-}
-
-export function TourTrigger(props: TourTriggerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["onClick"]);
-  const ctx = useTourContext();
-
-  return (
-    <ark.button
-      {...rest}
-      data-part="trigger"
-      data-scope="tour"
-      onClick={(e) => {
-        if (typeof local.onClick === "function") local.onClick(e);
-        ctx.handleStart();
-      }}
-      type="button"
-    />
-  );
-}
-
-export function TourActionTrigger(props: TourActionTriggerProps): JSX.Element {
-  return <TourPrimitive.ActionTrigger {...props} />;
-}
-
-export function TourBackdrop(props: TourBackdropProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "dialogRecipe"]);
-  const ctx = useTourContext();
-  const dialogSlots = () => (local.dialogRecipe ?? dialogRecipe)();
-
-  return (
-    <TourPrimitive.Backdrop
-      {...rest}
-      class={cn(dialogSlots().backdrop(), ctx.slots.backdrop(), local.class)}
-    />
-  );
-}
-
-export function TourPositioner(props: TourPositionerProps): JSX.Element {
-  const ctx = useTourContext();
-
-  return <TourPrimitive.Positioner {...props} class={ctx.slots.positioner()} />;
-}
-
-export function TourContent(props: TourContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "showCloseButton",
-    "children",
-    "class",
-  ]);
-  const ctx = useTourContext();
-  const showCloseButton = () => local.showCloseButton ?? true;
-
-  return (
-    <Portal>
-      <TourBackdrop />
-      <TourPositioner>
-        <TourPrimitive.Content
-          {...rest}
-          class={ctx.slots.content({ class: local.class })}
-        >
-          <Show
-            fallback={
-              <>
-                <TourHeader>
-                  <TourTitle />
-                  <TourProgressText />
-                </TourHeader>
-                <TourBody>
-                  <TourDescription />
-                </TourBody>
-                <TourFooter>
-                  <TourPreviousStep />
-                  <TourNextStep />
-                </TourFooter>
-              </>
-            }
-            when={local.children}
-          >
-            {local.children}
-          </Show>
-          <Show when={showCloseButton()}>
-            <TourCloseTrigger
-              asChild={(triggerProps) => (
-                <Button
-                  {...triggerProps({
-                    class: cn(ctx.slots.close(), ctx.slots.closeButton()),
-                  })}
-                  size="icon-md"
-                  variant="ghost"
-                >
-                  <XIcon />
-                  <span class={ctx.slots.closeLabel()}>Close</span>
-                </Button>
-              )}
-            />
-          </Show>
-        </TourPrimitive.Content>
-      </TourPositioner>
-      <TourSpotlight />
-    </Portal>
-  );
-}
-
-export function TourBody(props: DialogBodyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <div
-        {...rest}
-        class={dialogSlots.body({ class: local.class })}
-        data-part="body"
-        data-scope="tour"
-      />
-    </ScrollArea>
-  );
-}
-
-export function TourSpotlight(props: TourSpotlightProps): JSX.Element {
-  const ctx = useTourContext();
-
-  return <TourPrimitive.Spotlight {...props} class={ctx.slots.spotlight()} />;
-}
-
-export function TourHeader(props: DialogHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "class",
-    "description",
-    "title",
-  ]);
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <div
-      {...rest}
-      class={dialogSlots.header({ class: local.class })}
-      data-part="header"
-      data-scope="tour"
-    >
-      {local.children}
-    </div>
-  );
-}
-
-export function TourTitle(props: TourTitleProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const ctx = useTourContext();
-
-  return (
-    <TourPrimitive.Title
-      {...rest}
-      class={ctx.slots.title({ class: local.class })}
-    >
-      {ctx.tour().step?.title}
-    </TourPrimitive.Title>
-  );
-}
-
-export function TourDescription(props: TourDescriptionProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const ctx = useTourContext();
-
-  return (
-    <TourPrimitive.Description
-      {...rest}
-      class={ctx.slots.description({ class: local.class })}
-    >
-      {ctx.tour().step?.description}
-    </TourPrimitive.Description>
-  );
-}
-
-export function TourProgressText(props: TourProgressTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const ctx = useTourContext();
-
-  return (
-    <TourPrimitive.ProgressText
-      {...rest}
-      class={ctx.slots.progressText({ class: local.class })}
-    >
-      {ctx.tour().getProgressText()}
-    </TourPrimitive.ProgressText>
-  );
-}
-
-export function TourCloseTrigger(props: TourCloseTriggerProps): JSX.Element {
-  return <TourPrimitive.CloseTrigger {...props} />;
-}
-
-/**
- * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
- * control.
- */
-const TourInsideControlContext = createSolidContext(false);
-
-export function TourFooter(props: DialogFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const dialogSlots = dialogRecipe();
-
-  return (
-    <TourPrimitive.Control
-      {...rest}
-      asChild={(controlProps) => (
-        <div
-          {...controlProps({
-            class: dialogSlots.footer({ class: local.class }),
-          })}
-          data-part="control"
-          data-scope="tour"
-        >
-          <TourInsideControlContext.Provider value={true}>
-            {local.children}
-          </TourInsideControlContext.Provider>
-        </div>
-      )}
-    />
-  );
-}
-
-export function TourActions(props: DialogFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const ctx = useTourContext();
-  const dialogSlots = dialogRecipe();
-  const insideControl = useContext(TourInsideControlContext);
-  const actions = () => ctx.tour().step?.actions ?? [];
-
-  const content = (extra?: object) => (
-    <div
-      {...extra}
-      class={cn(
-        !insideControl && dialogSlots.footer(),
-        ctx.slots.actions({ class: local.class }),
-      )}
-      data-part="actions"
-      data-scope="tour"
-    >
-      <For each={actions()}>
-        {(action) => (
-          <TourActionTrigger
-            action={action}
-            asChild={(triggerProps) => (
-              <Button
-                {...triggerProps()}
-                size="sm"
-                variant={
-                  action.action === "dismiss" || action.action === "prev"
-                    ? "outline"
-                    : "default"
-                }
-              >
-                <Show when={action.action === "prev"}>
-                  <CaretLeftIcon />
-                </Show>
-                {action.label}
-                <Show when={action.action === "next"}>
-                  <CaretRightIcon />
-                </Show>
-              </Button>
-            )}
-          />
-        )}
-      </For>
-    </div>
-  );
-
-  return (
-    <Show when={actions().length > 0}>
-      <Show
-        fallback={
-          <TourPrimitive.Control
-            {...rest}
-            asChild={(controlProps) => content(controlProps())}
-          />
-        }
-        when={insideControl}
-      >
-        {content(rest)}
+    <Root {...rootProps} tour={tour}>
+      <Show when={local.trigger !== undefined}>
+        <ark.button
+          asChild={renderTrigger(local.trigger)}
+          onClick={() => tour().start()}
+        />
       </Show>
-    </Show>
+
+      {local.children}
+
+      <Portal>
+        <Backdrop class={local.classNames?.backdrop} />
+        <Spotlight class={local.classNames?.spotlight} />
+
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show when={local.showArrow ?? false}>
+              <Arrow class={local.classNames?.arrow}>
+                <ArrowTip class={local.classNames?.arrowTip} />
+              </Arrow>
+            </Show>
+
+            <Header class={local.classNames?.header}>
+              <ProgressText class={local.classNames?.progressText} />
+              <Title class={local.classNames?.title} />
+              <Description class={local.classNames?.description} />
+            </Header>
+
+            <TourPrimitive.Actions>
+              {(actions) => (
+                <Show when={actions().length > 0}>
+                  <Control class={local.classNames?.control}>
+                    <For each={actions()}>
+                      {(action) => (
+                        <ActionTrigger
+                          action={action}
+                          asChild={(triggerProps) => (
+                            <Button
+                              {...triggerProps()}
+                              size="sm"
+                              variant={
+                                action.action === "dismiss" ||
+                                action.action === "prev"
+                                  ? "outline"
+                                  : "default"
+                              }
+                            >
+                              <Show when={action.action === "prev"}>
+                                <CaretLeftIcon />
+                              </Show>
+                              {action.label}
+                              <Show when={action.action === "next"}>
+                                <CaretRightIcon />
+                              </Show>
+                            </Button>
+                          )}
+                          class={local.classNames?.actionTrigger}
+                        />
+                      )}
+                    </For>
+                  </Control>
+                </Show>
+              )}
+            </TourPrimitive.Actions>
+
+            <Show when={local.showCloseButton ?? true}>
+              <InlineCloseTrigger
+                asChild={(triggerProps) => (
+                  <Button
+                    {...triggerProps()}
+                    class={local.classNames?.closeButton}
+                    size="icon-md"
+                    variant="ghost"
+                  >
+                    <XIcon />
+                    <CloseLabel />
+                  </Button>
+                )}
+                class={local.classNames?.close}
+              />
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
+// #endregion
 
-export function TourPreviousStep(
-  props: Omit<TourActionTriggerProps, "action">,
-): JSX.Element {
-  const ctx = useTourContext();
-  const prevAction = () =>
-    ctx.tour().step?.actions?.find((action) => action.action === "prev");
-
-  return (
-    <Show when={prevAction()}>
-      {(action) => (
-        <TourActionTrigger
-          {...props}
-          action={action()}
-          asChild={(triggerProps) => (
-            <Button {...triggerProps()} size="sm" variant="outline">
-              <CaretLeftIcon />
-              {action().label}
-            </Button>
-          )}
-        />
-      )}
-    </Show>
-  );
-}
-
-export function TourNextStep(
-  props: Omit<TourActionTriggerProps, "action">,
-): JSX.Element {
-  const ctx = useTourContext();
-  const action = () =>
-    ctx
-      .tour()
-      .step?.actions?.find(
-        (a) => a.action === "next" || a.action === "dismiss",
-      );
-
-  return (
-    <Show when={action()}>
-      {(act) => (
-        <TourActionTrigger
-          {...props}
-          action={act()}
-          asChild={(triggerProps) => (
-            <Button {...triggerProps()} size="sm">
-              {act().label}
-              <Show when={act().action === "next"}>
-                <CaretRightIcon />
-              </Show>
-            </Button>
-          )}
-        />
-      )}
-    </Show>
-  );
-}
+export { useTour, useTourContext } from "@ark-ui/solid";
 
 export type {
   TourActionTriggerProps,
+  TourArrowProps,
+  TourArrowTipProps,
+  TourBackdropProps,
   TourCloseTriggerProps,
+  TourContentProps,
+  TourControlProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
+  UseTourProps,
+  UseTourReturn,
 } from "@ark-ui/solid";
 
-export const Tour = Object.assign(TourRoot, {
-  Actions: TourActions,
-  ActionTrigger: TourActionTrigger,
-  Backdrop: TourBackdrop,
-  Body: TourBody,
-  CloseTrigger: TourCloseTrigger,
-  Content: TourContent,
-  Description: TourDescription,
-  Footer: TourFooter,
-  Header: TourHeader,
-  NextStep: TourNextStep,
-  Positioner: TourPositioner,
-  PreviousStep: TourPreviousStep,
-  ProgressText: TourProgressText,
-  Spotlight: TourSpotlight,
-  Title: TourTitle,
-  Trigger: TourTrigger,
+export const Tour = Object.assign(TourShorthand, {
+  ActionTrigger,
+  Actions: TourPrimitive.Actions,
+  Arrow,
+  ArrowTip,
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  Control,
+  Description,
+  Header,
+  Positioner,
+  ProgressText,
+  Root,
+  Spotlight,
+  Title,
 });

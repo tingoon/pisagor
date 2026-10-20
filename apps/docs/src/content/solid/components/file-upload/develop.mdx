@@ -7,17 +7,15 @@ import { FileUpload } from "@pisagor/solid";
 ## Anatomy
 
 ```tsx
-<FileUpload>
-  <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title />
-    <FileUpload.Description />
-    <FileUpload.Trigger />
-    <FileUpload.Helper />
-  </FileUpload.Dropzone>
-  <FileUpload.List />
-</FileUpload>
+<FileUpload
+  description="or"
+  helper="Up to 2 files."
+  title="Drop files here"
+  trigger={<Button>Browse files</Button>}
+/>
 ```
+
+The shorthand renders the dropzone (`icon`, `title`, `description`, `trigger`, `helper`), an optional `label` and `clearTrigger`, and the accepted / rejected file list (`showList`). Set `dropzone={false}` for a trigger-only picker. Compose `FileUpload.Root` and its parts for custom layouts (see Compound).
 
 ## Examples
 
@@ -83,7 +81,7 @@ Clear selected files in one action.
 
 ### Rejected Files
 
-`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+The shorthand file list (`showList`) also shows rejected files with their validation errors, so users can see why a file was not accepted.
 
 <Example name="RejectedFiles" />
 

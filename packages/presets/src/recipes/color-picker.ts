@@ -16,6 +16,7 @@ export const colorPickerRecipe = tv({
       "data-disabled:pointer-events-none data-disabled:opacity-64",
     ],
     base: ["group/color-picker", "w-fit", "flex gap-2"],
+    channelInput: [],
     channelRow: ["flex items-center gap-3"],
     channelSlider: [
       "relative",
@@ -42,6 +43,7 @@ export const colorPickerRecipe = tv({
       "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2",
     ],
     channelStack: ["flex flex-1 flex-col gap-2.5"],
+    clearTrigger: [],
     content: [
       "[--space:--spacing(3)]",
       "z-popover",
@@ -58,11 +60,13 @@ export const colorPickerRecipe = tv({
       "motion-reduce:animate-none!",
     ],
     control: ["flex flex-row items-center gap-2"],
+    eyeDropperTrigger: [],
     formatSelect: [
       "border-input bg-background h-8 rounded-md border px-2",
       "text-sm",
       "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-hidden",
     ],
+    formatTrigger: [],
     inputSwatch: [
       "relative",
       "size-8",
@@ -81,6 +85,7 @@ export const colorPickerRecipe = tv({
     ],
     inputSwatchSwatch: ["z-1 size-full"],
     label: ["text-foreground text-sm font-medium"],
+    positioner: [],
     swatch: [
       "size-full",
       "shrink-0",
@@ -117,6 +122,7 @@ export const colorPickerRecipe = tv({
       "bg-[linear-gradient(45deg,var(--color-checkerboard)_25%,transparent_25%),linear-gradient(-45deg,var(--color-checkerboard)_25%,transparent_25%),linear-gradient(45deg,transparent_75%,var(--color-checkerboard)_75%),linear-gradient(-45deg,transparent_75%,var(--color-checkerboard)_75%)]",
       "bg-size-(--spacing(2)) bg-position-[0_0,0_4px,4px_-4px,-4px_0]",
     ],
+    trigger: [],
     valueSwatch: [
       "relative size-8 shrink-0",
       "overflow-hidden",

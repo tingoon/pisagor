@@ -3,71 +3,85 @@ import type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
+  QrCodePatternProps,
   QrCodeRootProps as QrCodeRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { QrCodeRootContract } from "@pisagor/contracts";
+import type { QrCodeContract, QrCodeRootContract } from "@pisagor/contracts";
 import { qrCodeRecipe } from "@pisagor/recipes";
-import type { Component, JSX, ComponentProps } from "solid-js";
-import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "QrCode",
   recipe: qrCodeRecipe,
 });
 // #endregion
 
-export type LocalQrCodeRootProps = QrCodeRootPrimitiveProps &
-  QrCodeRootContract;
+// #region Types
+export type QrCodeRootProps = QrCodeRootPrimitiveProps & QrCodeRootContract;
 
-export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
+export interface QrCodeProps
+  extends Omit<QrCodeRootProps, "children">, QrCodeContract {
+  /** Content centered over the code (e.g. a logo). */
+  overlay?: JSX.Element;
+}
+// #endregion
 
-const QrCodeRootProvider: Component<LocalQrCodeRootProps> = withProvider<
-  ComponentProps<typeof QrCodePrimitive.Root> & QrCodeRootContract
->(QrCodePrimitive.Root, { name: "Root" });
+// #region Parts
+const Root = withProvider<QrCodeRootProps>(QrCodePrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children"]);
+const Frame = withContext<QrCodeFrameProps>(QrCodePrimitive.Frame, {
+  name: "Frame",
+});
+
+const Pattern = withContext<QrCodePatternProps>(QrCodePrimitive.Pattern, {
+  name: "Pattern",
+});
+
+const Overlay = withContext<QrCodeOverlayProps>(QrCodePrimitive.Overlay, {
+  name: "Overlay",
+});
+
+const DownloadTrigger = withContext<QrCodeDownloadTriggerProps>(
+  QrCodePrimitive.DownloadTrigger,
+  { name: "DownloadTrigger" },
+);
+// #endregion
+
+// #region Shorthand
+export function QrCodeShorthand(props: QrCodeProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["classNames", "overlay"]);
 
   return (
-    <QrCodeRootProvider {...rest}>
-      {local.children ?? <QrCodeFrame />}
-    </QrCodeRootProvider>
+    <Root {...rest}>
+      <Frame class={local.classNames?.frame}>
+        <Pattern class={local.classNames?.pattern} />
+      </Frame>
+
+      <Show when={local.overlay !== undefined}>
+        <Overlay class={local.classNames?.overlay}>{local.overlay}</Overlay>
+      </Show>
+    </Root>
   );
 }
-
-export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <QrCodePrimitive.Frame
-      {...rest}
-      class={styles.slots.frame({ class: local.class })}
-    >
-      <QrCodePrimitive.Pattern class={styles.slots.pattern()} />
-    </QrCodePrimitive.Frame>
-  );
-}
-
-export const QrCodeOverlay: Component<QrCodeOverlayProps> = withContext<
-  ComponentProps<typeof QrCodePrimitive.Overlay>
->(QrCodePrimitive.Overlay, { name: "Overlay" });
-
-export function QrCodeDownload(props: QrCodeDownloadProps): JSX.Element {
-  return <QrCodePrimitive.DownloadTrigger {...props} />;
-}
+// #endregion
 
 export type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
-  QrCodeRootProps,
+  QrCodePatternProps,
 } from "@ark-ui/solid";
 
-export const QrCode = Object.assign(QrCodeRoot, {
-  Download: QrCodeDownload,
-  Frame: QrCodeFrame,
-  Overlay: QrCodeOverlay,
+export const QrCode = Object.assign(QrCodeShorthand, {
+  DownloadTrigger,
+  Frame,
+  Overlay,
+  Pattern,
+  Root,
 });

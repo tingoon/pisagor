@@ -1,16 +1,31 @@
 <script lang="ts">
+  import { CheckIcon } from "phosphor-svelte";
   import { Button, DropdownMenu } from "@pisagor/svelte";
 </script>
 
-<DropdownMenu>
-  <DropdownMenu.Trigger>
-    <Button variant="outline">Open</Button>
-  </DropdownMenu.Trigger>
-  <DropdownMenu.Content class="w-40">
-    <DropdownMenu.RadioItemGroup value="dark">
-      <DropdownMenu.RadioItem value="light">Light</DropdownMenu.RadioItem>
-      <DropdownMenu.RadioItem value="dark">Dark</DropdownMenu.RadioItem>
-      <DropdownMenu.RadioItem value="system">System</DropdownMenu.RadioItem>
-    </DropdownMenu.RadioItemGroup>
-  </DropdownMenu.Content>
+<DropdownMenu classNames={{ content: "w-40" }}>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+
+  <DropdownMenu.RadioItemGroup value="dark">
+    <DropdownMenu.RadioItem value="light">
+      <DropdownMenu.ItemIndicator>
+        <CheckIcon />
+      </DropdownMenu.ItemIndicator>
+      <DropdownMenu.ItemText>Light</DropdownMenu.ItemText>
+    </DropdownMenu.RadioItem>
+    <DropdownMenu.RadioItem value="dark">
+      <DropdownMenu.ItemIndicator>
+        <CheckIcon />
+      </DropdownMenu.ItemIndicator>
+      <DropdownMenu.ItemText>Dark</DropdownMenu.ItemText>
+    </DropdownMenu.RadioItem>
+    <DropdownMenu.RadioItem value="system">
+      <DropdownMenu.ItemIndicator>
+        <CheckIcon />
+      </DropdownMenu.ItemIndicator>
+      <DropdownMenu.ItemText>System</DropdownMenu.ItemText>
+    </DropdownMenu.RadioItem>
+  </DropdownMenu.RadioItemGroup>
 </DropdownMenu>

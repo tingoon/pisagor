@@ -7,7 +7,10 @@ const sizes = ["sm", "md", "lg"] as const;
 <template>
   <div class="flex flex-col gap-4">
     <Card v-for="size in sizes" :key="size" :size="size">
-      <Card.Header title="Card header" :description="`Size ${size}`" />
+      <Card.Header>
+        <Card.Title>Card header</Card.Title>
+        <Card.Description>Size {{ size }}</Card.Description>
+      </Card.Header>
       <Card.Content>
         <p class="text-muted-foreground text-sm">Card content</p>
       </Card.Content>

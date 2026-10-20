@@ -14,15 +14,17 @@ export interface EditableUserCardProps {
 export function EditableUserCard(props: EditableUserCardProps) {
   return (
     <Card class={cn(styles.root(), props.class)}>
-      <Card.Header
-        description="Click in the field or edit button to start editing"
-        title="Edit user"
-      />
+      <Card.Header>
+        <Card.Title>Edit user</Card.Title>
+        <Card.Description>
+          Click in the field or edit button to start editing
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable defaultValue="Jane Doe">
+            <Editable.Root defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input
                   asChild={(p) => <Input {...p()} class={styles.root()} />}
@@ -55,11 +57,11 @@ export function EditableUserCard(props: EditableUserCardProps) {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable defaultValue="@jane.doe">
+            <Editable.Root defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild={(p) => <Input {...p()} />} />
                 <Editable.Preview />
@@ -90,7 +92,7 @@ export function EditableUserCard(props: EditableUserCardProps) {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

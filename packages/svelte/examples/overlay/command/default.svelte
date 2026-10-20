@@ -1,23 +1,32 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte";
   import { Command } from "@pisagor/svelte";
 
-  const items = [
-    { label: "Calendar", value: "calendar" },
-    { label: "Search Emoji", value: "emoji" },
-    { label: "Calculator", value: "calculator" },
+  const initialItems = [
+    { group: "Suggestions", label: "Linear", shortcut: "⌘L", value: "linear" },
+    { group: "Suggestions", label: "Figma", shortcut: "⌘F", value: "figma" },
+    { group: "Suggestions", label: "Slack", shortcut: "⌘S", value: "slack" },
+    {
+      group: "Suggestions",
+      label: "YouTube",
+      shortcut: "⌘Y",
+      value: "youtube",
+    },
+    {
+      group: "Suggestions",
+      label: "Raycast",
+      shortcut: "⌘R",
+      value: "raycast",
+    },
+    { group: "Settings", label: "Settings", shortcut: "⌘,", value: "settings" },
+    { group: "Settings", label: "Help", shortcut: "⌘?", value: "help" },
+    { group: "Settings", label: "About", shortcut: "⌘I", value: "about" },
+    { group: "Settings", label: "Feedback", shortcut: "⌘F", value: "feedback" },
+    { group: "Settings", label: "Support", shortcut: "⌘S", value: "support" },
+    { group: "Settings", label: "Updates", shortcut: "⌘U", value: "updates" },
+    { group: "Settings", label: "Logout", shortcut: "⌘L", value: "logout" },
+    { group: "Settings", label: "Sign out", shortcut: "⌘O", value: "sign out" },
+    { group: "Settings", label: "Sign in", shortcut: "⌘I", value: "sign in" },
   ];
-  const collection = createListCollection({ items });
 </script>
 
-<Command {collection}>
-  <Command.Input placeholder="Type a command…" />
-  <Command.Content>
-    <Command.List>
-      <Command.Empty />
-      {#each items as item (item.value)}
-        <Command.Item {item}>{item.label}</Command.Item>
-      {/each}
-    </Command.List>
-  </Command.Content>
-</Command>
+<Command items={initialItems} />

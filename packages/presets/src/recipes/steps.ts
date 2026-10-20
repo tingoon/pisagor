@@ -8,12 +8,15 @@ export const stepsRecipe = tv({
     ],
     completedContent: "data-[orientation=vertical]:flex-1",
     content: "data-[orientation=vertical]:flex-1",
+    control: ["flex flex-row-reverse gap-2"],
     list: [
       "[--steps-gutter:--spacing(2)] [--steps-icon-size:--spacing(4)] [--steps-size:--spacing(8)]",
       "flex",
       "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start",
       "data-[orientation=horizontal]:items-center data-[orientation=horizontal]:justify-between",
     ],
+    nextTrigger: [],
+    prevTrigger: [],
   },
 });
 
@@ -52,6 +55,7 @@ export const stepsItemRecipe = tv({
       "data-[orientation=vertical]:absolute data-[orientation=vertical]:inset-s-[calc(var(--steps-size)/2-1px)] data-[orientation=vertical]:top-[calc(var(--steps-size)+var(--steps-gutter))] data-[orientation=vertical]:h-full data-[orientation=vertical]:max-h-[calc(100%-(var(--steps-size)+var(--steps-gutter)*2))] data-[orientation=vertical]:w-0.5",
       "motion-reduce:transition-none!",
     ],
+    text: ["flex flex-col items-start gap-1"],
     title: ["text-sm leading-none font-medium tracking-tight"],
     trigger: [
       "inline-flex items-center gap-3",

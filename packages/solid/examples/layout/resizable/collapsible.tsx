@@ -1,3 +1,4 @@
+import { DotsSixVerticalIcon } from "@squidlab/phosphor-solid/icons";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -37,7 +38,11 @@ export function Collapsible() {
         <Resizable.Panel class={panelClassName()} id="sidebar">
           Sidebar
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="sidebar:main" withHandle />
+        <Resizable.ResizeTrigger id="sidebar:main">
+          <Resizable.ResizeTriggerHandle>
+            <DotsSixVerticalIcon class="size-2.5" />
+          </Resizable.ResizeTriggerHandle>
+        </Resizable.ResizeTrigger>
 
         <Resizable.Panel class={panelClassName()} id="main">
           Main

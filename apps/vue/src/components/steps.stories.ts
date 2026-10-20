@@ -17,6 +17,7 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
+  render: exampleRender(Examples.Default),
   tags: ["autodocs"],
 });
 

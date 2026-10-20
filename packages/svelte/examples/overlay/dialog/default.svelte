@@ -1,10 +1,45 @@
 <script lang="ts">
-  import { Button, Dialog } from "@pisagor/svelte";
+  import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
 </script>
 
-<Dialog description="This is a dialog description." title="Dialog title">
-  {#snippet trigger()}
-    <Button>Open</Button>
+<Dialog
+  description="Make changes to your project settings."
+  title="Edit project"
+>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
   {/snippet}
-  <p class="text-sm">Dialog body</p>
+  {#snippet actions()}
+    <Dialog.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()} variant="outline">Cancel</Button>
+      {/snippet}
+    </Dialog.CloseTrigger>
+    <Dialog.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()}>Save</Button>
+      {/snippet}
+    </Dialog.CloseTrigger>
+  {/snippet}
+
+  <Field.Set>
+    <Field.Group>
+      <Field>
+        <Field.Label>Name</Field.Label>
+        <Input placeholder="Your project" />
+      </Field>
+      <Field>
+        <Field.Label>Main branch</Field.Label>
+        <Select
+          items={[
+            { label: "main", value: "main" },
+            { label: "develop", value: "develop" },
+            { label: "feature/123", value: "feature/123" },
+            { label: "release/1.0.0", value: "release/1.0.0" },
+          ]}
+          placeholder="Select branch"
+        />
+      </Field>
+    </Field.Group>
+  </Field.Set>
 </Dialog>

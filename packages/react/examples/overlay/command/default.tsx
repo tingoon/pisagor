@@ -1,4 +1,3 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
 export function Default() {
@@ -28,37 +27,6 @@ export function Default() {
     { group: "Settings", label: "Sign out", shortcut: "⌘O", value: "sign out" },
     { group: "Settings", label: "Sign in", shortcut: "⌘I", value: "sign in" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
 
-  const { collection, filter } = useListCollection({
-    filter: contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
-
-  return (
-    <Command
-      collection={collection}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          {collection.group().map(([group, items], index) => (
-            <Command.ItemGroup key={group}>
-              <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
-              {items.map((item) => (
-                <Command.Item item={item} key={item.value}>
-                  {item.label}
-                  <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                </Command.Item>
-              ))}
-              {index < collection.group().length - 1 && <Command.Separator />}
-            </Command.ItemGroup>
-          ))}
-        </Command.List>
-      </Command.Content>
-    </Command>
-  );
+  return <Command items={initialItems} />;
 }

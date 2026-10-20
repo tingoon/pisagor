@@ -3,17 +3,15 @@
     TreeView as TreeViewPrimitive,
     type TreeViewBranchIndicatorProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { CaretRightIcon } from "phosphor-svelte";
-  import { useTreeViewBranch } from "./tree-view.context";
+  import { withTreeViewBranchContext } from "./tree-view.context";
 
-  let { class: className, ...rest }: TreeViewBranchIndicatorProps = $props();
-  const { slots } = useTreeViewBranch();
+  let { children, ...rest }: TreeViewBranchIndicatorProps = $props();
+  const part = withTreeViewBranchContext(() => rest, {
+    name: "BranchIndicator",
+    slot: "indicator",
+  });
 </script>
 
-<TreeViewPrimitive.BranchIndicator
-  {...rest}
-  class={slots.indicator({ class: cn(className) })}
->
-  <CaretRightIcon />
+<TreeViewPrimitive.BranchIndicator {...part.props}>
+  {@render children?.()}
 </TreeViewPrimitive.BranchIndicator>

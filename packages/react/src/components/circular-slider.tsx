@@ -5,24 +5,27 @@ import {
 import type {
   AngleSliderControlProps,
   AngleSliderHiddenInputProps,
+  AngleSliderLabelProps,
   AngleSliderMarkerGroupProps,
   AngleSliderMarkerProps,
   AngleSliderRootProps,
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
 } from "@ark-ui/react";
-import type { CircularSliderRootContract } from "@pisagor/contracts";
+import type {
+  CircularSliderContract,
+  CircularSliderRootContract,
+} from "@pisagor/contracts";
 import { circularSliderRecipe } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: CircularSliderStylesContext, useStyles } =
-  createSlotRecipeContext({
-    name: "CircularSlider",
-    recipe: circularSliderRecipe,
-  });
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
+  name: "CircularSlider",
+  recipe: circularSliderRecipe,
+});
 
 export interface CircularSliderGeometry {
   ringCircumference: number;
@@ -37,81 +40,103 @@ const CircularSliderGeometryContext = createContext<
 >(undefined);
 CircularSliderGeometryContext.displayName = "CircularSliderGeometryContext";
 
-function useCircularSlider() {
-  const { slots } = useStyles();
+function useCircularSliderGeometry() {
   const geometry = use(CircularSliderGeometryContext);
   if (geometry === undefined) {
     throw new Error(
-      "useCircularSlider must be used within CircularSliderGeometryContext.",
+      "useCircularSliderGeometry must be used within CircularSlider.Root.",
     );
   }
 
-  return { slots, ...geometry };
+  return geometry;
 }
-
-/** @deprecated Prefer shape from useCircularSlider; kept for prop typing. */
-export type CircularSliderContextValue = CircularSliderGeometry & {
-  slots: ReturnType<typeof circularSliderRecipe>;
-};
 // #endregion
 
 // #region Types
-export type CircularSliderHiddenInputProps = AngleSliderHiddenInputProps;
+type CircularSliderRootBaseProps = AngleSliderRootProps &
+  CircularSliderRootContract;
 
 export type CircularSliderRootProps = Omit<
-  AngleSliderRootProps,
+  CircularSliderRootBaseProps,
   "onValueChange"
->;
+> & {
+  /** Called with the angle in degrees when the value changes. */
+  onValueChange?: (value: number) => void;
+  /**
+   * Diameter in pixels.
+   *
+   * @defaultValue 100
+   */
+  size?: number;
+  /**
+   * Ring thickness in pixels.
+   *
+   * @defaultValue 6
+   */
+  thickness?: number;
+};
 
 export interface CircularSliderProps
-  extends
-    CircularSliderRootProps,
-    Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
-    CircularSliderRootContract {
-  markers?: boolean | number[];
-  markersAtSteps?: boolean;
-  onValueChange?: (value: number) => void;
-  /** Extra props forwarded to the hidden input element */
+  extends Omit<CircularSliderRootProps, "children">, CircularSliderContract {
+  /** Props forwarded to the hidden input element. */
   hiddenInputProps?: Omit<CircularSliderHiddenInputProps, "className">;
-}
-
-export interface CircularSliderControlProps extends AngleSliderControlProps {
+  /** Visible label rendered inside the slider. */
+  label?: ReactNode;
+  /** Render markers: `true` for defaults, or explicit angles. */
   markers?: boolean | number[];
+  /**
+   * With `markers`, place one marker per `step` instead of the clock defaults.
+   *
+   * @defaultValue false
+   */
   markersAtSteps?: boolean;
-  step?: number;
+  /**
+   * Whether to render the current value in the center.
+   *
+   * @defaultValue false
+   */
+  showValue?: boolean;
+  /** Content rendered before the value (e.g. an icon). */
+  valuePrefix?: ReactNode;
+  /** Content rendered after the value (e.g. `°`). */
+  valueSuffix?: ReactNode;
 }
 
-export interface CircularSliderValueTextProps extends Omit<
-  AngleSliderValueTextProps,
-  "prefix"
-> {
-  prefix?: ReactNode | string;
-  suffix?: ReactNode | string;
-}
+export type CircularSliderControlProps = AngleSliderControlProps;
 
-export type CircularSliderThumbProps = AngleSliderThumbProps;
+export type CircularSliderHiddenInputProps = AngleSliderHiddenInputProps;
+
+export type CircularSliderLabelProps = AngleSliderLabelProps;
 
 export type CircularSliderMarkerGroupProps = AngleSliderMarkerGroupProps;
 
 export type CircularSliderMarkerProps = AngleSliderMarkerProps;
+
+export type CircularSliderRingProps = Omit<
+  ComponentPropsWithRef<"svg">,
+  "children"
+>;
+
+export type CircularSliderThumbProps = AngleSliderThumbProps;
+
+export type CircularSliderValueTextProps = AngleSliderValueTextProps;
 // #endregion
 
 // #region Parts
-export function CircularSliderRoot({
+const RootBase = withProvider<CircularSliderRootBaseProps>(
+  AngleSliderPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+/** Root; provides ring geometry and passes the numeric angle to `onValueChange`. */
+function Root({
+  onValueChange,
   size = 100,
   step = 1,
-  children,
-  hiddenInputProps,
-  markers,
-  markersAtSteps = false,
+  style,
   thickness = 6,
-  onValueChange,
-  recipe = circularSliderRecipe,
-  className,
   ...rest
-}: CircularSliderProps) {
-  const slots = recipe();
-
+}: CircularSliderRootProps) {
   const geometry = useMemo(
     () => ({
       ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
@@ -124,95 +149,72 @@ export function CircularSliderRoot({
   );
 
   return (
-    <CircularSliderStylesContext value={{ slots, variants: {} as never }}>
-      <CircularSliderGeometryContext value={geometry}>
-        <AngleSliderPrimitive.Root
-          {...rest}
-          className={slots.base({ className })}
-          onValueChange={
-            onValueChange
-              ? (details) => onValueChange(details.value)
-              : undefined
-          }
-          step={step}
-          style={{
-            "--thickness": `${thickness}px`,
-            height: size,
-            width: size,
-          }}
-        >
-          <CircularSliderControl
-            markers={markers}
-            markersAtSteps={markersAtSteps}
-            step={step}
-          />
-
-          {children}
-
-          <AngleSliderPrimitive.HiddenInput {...hiddenInputProps} />
-        </AngleSliderPrimitive.Root>
-      </CircularSliderGeometryContext>
-    </CircularSliderStylesContext>
+    <CircularSliderGeometryContext value={geometry}>
+      <RootBase
+        {...rest}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
+        step={step}
+        style={{
+          "--thickness": `${thickness}px`,
+          height: size,
+          width: size,
+          ...style,
+        }}
+      />
+    </CircularSliderGeometryContext>
   );
 }
 
-export function CircularSliderControl({
-  step = 1,
-  markers,
-  markersAtSteps = false,
-  className,
-  ...rest
-}: CircularSliderControlProps) {
-  const { slots } = useCircularSlider();
+const Label = withContext<CircularSliderLabelProps>(
+  AngleSliderPrimitive.Label,
+  { name: "Label" },
+);
 
-  const markerValues = useMemo(() => {
-    if (Array.isArray(markers) && markers.length > 0) {
-      return markers;
-    }
-    if (markers === true) {
-      return markersAtSteps
-        ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
-        : CLOCK_MARKER_ANGLES;
-    }
+const Control = withContext<CircularSliderControlProps>(
+  AngleSliderPrimitive.Control,
+  { name: "Control" },
+);
 
-    return null;
-  }, [markers, markersAtSteps, step]);
+const MarkerGroup = withContext<CircularSliderMarkerGroupProps>(
+  AngleSliderPrimitive.MarkerGroup,
+  { name: "MarkerGroup" },
+);
 
-  return (
-    <AngleSliderPrimitive.Control
-      {...rest}
-      className={slots.control({ className })}
-    >
-      <CircularSliderProgressRing />
-      {markerValues ? (
-        <CircularSliderMarkerGroup>
-          {markerValues.map((value) => (
-            <CircularSliderMarker key={value} value={value} />
-          ))}
-        </CircularSliderMarkerGroup>
-      ) : null}
-      <CircularSliderThumb />
-    </AngleSliderPrimitive.Control>
-  );
+const HiddenInput = AngleSliderPrimitive.HiddenInput;
+
+const ValueTextBase = withContext<CircularSliderValueTextProps>(
+  AngleSliderPrimitive.ValueText,
+  { name: "ValueText", slot: "value" },
+);
+
+/** Value text; renders the numeric angle when no children are given. */
+function ValueText({ children, ...props }: CircularSliderValueTextProps) {
+  const { value } = useAngleSliderContext();
+
+  return <ValueTextBase {...props}>{children ?? value}</ValueTextBase>;
 }
 
-function CircularSliderProgressRing() {
+/** SVG progress ring (track + range) sized from the root geometry. */
+function Ring({ className, ...props }: CircularSliderRingProps) {
   const api = useAngleSliderContext();
-  const { size, thickness, ringRadius, ringCircumference, slots } =
-    useCircularSlider();
+  const { slots } = useStyles();
+  const { size, thickness, ringRadius, ringCircumference } =
+    useCircularSliderGeometry();
 
-  const percent = api.value / 360;
-  const dashLength = percent * ringCircumference;
+  const dashLength = (api.value / 360) * ringCircumference;
   const gapLength = ringCircumference - dashLength;
   const center = size / 2;
 
   return (
     <svg
       aria-hidden="true"
-      className={slots.ring()}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
       width={size}
+      {...props}
+      className={slots.ring({ className })}
     >
       <circle
         className={slots.ringTrack()}
@@ -235,76 +237,36 @@ function CircularSliderProgressRing() {
   );
 }
 
-export function CircularSliderThumb({
-  className,
-  ...rest
-}: CircularSliderThumbProps) {
-  const { thumbSize, ringRadius, slots } = useCircularSlider();
-
+/** Thumb positioned on the ring; renders its handle by default. */
+function Thumb({ children, className, ...props }: CircularSliderThumbProps) {
+  const { slots } = useStyles();
+  const { thumbSize, ringRadius } = useCircularSliderGeometry();
   const halfThumb = thumbSize / 2;
 
   return (
     <AngleSliderPrimitive.Thumb
-      {...rest}
+      {...props}
       className={slots.thumb({ className })}
-      style={{
-        "--size": `${thumbSize}px`,
-      }}
+      style={{ "--size": `${thumbSize}px`, ...props.style }}
     >
-      <span
-        className={slots.thumbHandle()}
-        style={{
-          insetBlockStart: `calc(50% - ${ringRadius}px - ${halfThumb}px)`,
-          insetInlineStart: `calc(50% - ${halfThumb}px)`,
-        }}
-      />
+      {children ?? (
+        <span
+          className={slots.thumbHandle()}
+          style={{
+            insetBlockStart: `calc(50% - ${ringRadius}px - ${halfThumb}px)`,
+            insetInlineStart: `calc(50% - ${halfThumb}px)`,
+          }}
+        />
+      )}
     </AngleSliderPrimitive.Thumb>
   );
 }
 
-export function CircularSliderValueText({
-  prefix = "",
-  suffix = "",
-  className,
-  ...rest
-}: CircularSliderValueTextProps) {
-  const { value } = useAngleSliderContext();
-  const { slots } = useCircularSlider();
+/** Marker sized and offset from the ring geometry. */
+function Marker({ className, style, ...props }: CircularSliderMarkerProps) {
+  const { slots } = useStyles();
+  const { size, thickness, ringRadius } = useCircularSliderGeometry();
 
-  return (
-    <AngleSliderPrimitive.ValueText
-      {...rest}
-      className={slots.value({ className })}
-    >
-      {prefix}
-      {value}
-      {suffix}
-    </AngleSliderPrimitive.ValueText>
-  );
-}
-
-export function CircularSliderMarkerGroup({
-  className,
-  ...rest
-}: CircularSliderMarkerGroupProps) {
-  const { slots } = useCircularSlider();
-
-  return (
-    <AngleSliderPrimitive.MarkerGroup
-      {...rest}
-      className={slots.markerGroup({ className })}
-    />
-  );
-}
-
-export function CircularSliderMarker({
-  className,
-  style,
-  ...rest
-}: CircularSliderMarkerProps) {
-  const { size, thickness, slots } = useCircularSlider();
-
-  const ringRadius = size / 2 - thickness / 2;
   const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));
   const markerWidth = Math.max(4, Math.min(thickness * 0.4, 6));
   const markerOffset =
@@ -312,35 +274,102 @@ export function CircularSliderMarker({
 
   return (
     <AngleSliderPrimitive.Marker
-      {...rest}
+      {...props}
       className={slots.marker({ className })}
       style={{
-        ...style,
         "--marker-height": `${markerHeight}px`,
         "--marker-offset": `${markerOffset}px`,
         "--marker-width": `${markerWidth}px`,
+        ...style,
       }}
     />
   );
 }
+// #endregion
 
+// #region Shorthand
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
 
+export function CircularSliderShorthand({
+  classNames,
+  hiddenInputProps,
+  label,
+  markers,
+  markersAtSteps = false,
+  showValue = false,
+  step = 1,
+  valuePrefix,
+  valueSuffix,
+  ...rest
+}: CircularSliderProps) {
+  const markerValues = useMemo(() => {
+    if (Array.isArray(markers) && markers.length > 0) {
+      return markers;
+    }
+    if (markers === true) {
+      return markersAtSteps
+        ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
+        : CLOCK_MARKER_ANGLES;
+    }
+
+    return null;
+  }, [markers, markersAtSteps, step]);
+
+  return (
+    <Root {...rest} step={step}>
+      <Control className={classNames?.control}>
+        <Ring className={classNames?.ring} />
+        {markerValues ? (
+          <MarkerGroup className={classNames?.markerGroup}>
+            {markerValues.map((value) => (
+              <Marker
+                className={classNames?.marker}
+                key={value}
+                value={value}
+              />
+            ))}
+          </MarkerGroup>
+        ) : null}
+        <Thumb className={classNames?.thumb} />
+      </Control>
+      {label ? <Label className={classNames?.label}>{label}</Label> : null}
+      {showValue ? (
+        <ValueText className={classNames?.value}>
+          {valuePrefix}
+          <ValueNumber />
+          {valueSuffix}
+        </ValueText>
+      ) : null}
+      <HiddenInput {...hiddenInputProps} />
+    </Root>
+  );
+}
+
+function ValueNumber() {
+  const { value } = useAngleSliderContext();
+
+  return value;
+}
 // #endregion
 
 // #region Display Names
-CircularSliderRoot.displayName = "CircularSlider";
-CircularSliderControl.displayName = "CircularSlider.Control";
-CircularSliderThumb.displayName = "CircularSlider.Thumb";
-CircularSliderValueText.displayName = "CircularSlider.ValueText";
-CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
-CircularSliderMarker.displayName = "CircularSlider.Marker";
+Root.displayName = "CircularSlider.Root";
+ValueText.displayName = "CircularSlider.ValueText";
+Ring.displayName = "CircularSlider.Ring";
+Thumb.displayName = "CircularSlider.Thumb";
+Marker.displayName = "CircularSlider.Marker";
+CircularSliderShorthand.displayName = "CircularSlider";
 // #endregion
 
-export const CircularSlider = Object.assign(CircularSliderRoot, {
-  Control: CircularSliderControl,
-  Marker: CircularSliderMarker,
-  MarkerGroup: CircularSliderMarkerGroup,
-  Thumb: CircularSliderThumb,
-  ValueText: CircularSliderValueText,
+export const CircularSlider = Object.assign(CircularSliderShorthand, {
+  Context: AngleSliderPrimitive.Context,
+  Control,
+  HiddenInput,
+  Label,
+  Marker,
+  MarkerGroup,
+  Ring,
+  Root,
+  Thumb,
+  ValueText,
 });

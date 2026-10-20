@@ -3,17 +3,17 @@ import { Button, FileUpload } from "@pisagor/react";
 
 export function ClearTrigger() {
   return (
-    <FileUpload>
-      <FileUpload.ClearTrigger asChild className="absolute top-2 right-2">
-        <Button aria-label="Clear files" size="icon-sm" variant="ghost">
+    <FileUpload
+      classNames={{
+        clearTrigger: "absolute top-2 right-2",
+        dropzone: "w-full",
+      }}
+      clearTrigger={
+        <Button size="icon-sm" variant="ghost">
           <TrashIcon />
         </Button>
-      </FileUpload.ClearTrigger>
-      <FileUpload.Dropzone className="w-full">
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop files here</FileUpload.Title>
-      </FileUpload.Dropzone>
-      <FileUpload.List />
-    </FileUpload>
+      }
+      title="Drop files here"
+    />
   );
 }

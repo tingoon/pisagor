@@ -2,12 +2,12 @@ import { ColorPicker, Input } from "@pisagor/react";
 
 export function Disabled() {
   return (
-    <ColorPicker defaultValue="#eb5e41" disabled>
+    <ColorPicker.Root defaultValue="#eb5e41" disabled>
       <ColorPicker.Control>
         <ColorPicker.Input asChild>
           <Input placeholder="#EB5E41" />
         </ColorPicker.Input>
       </ColorPicker.Control>
-    </ColorPicker>
+    </ColorPicker.Root>
   );
 }

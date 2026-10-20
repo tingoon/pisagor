@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Portal, Tooltip as TooltipPrimitive } from "@ark-ui/svelte";
+  import { Portal } from "@ark-ui/svelte";
   import type {
     TooltipArrowProps,
     TooltipContentProps,
@@ -15,8 +15,11 @@
   import type { Snippet } from "svelte";
   import type { ClassValue } from "svelte/elements";
   import TooltipArrow from "./tooltip-arrow.svelte";
+  import TooltipArrowTip from "./tooltip-arrow-tip.svelte";
   import TooltipContent from "./tooltip-content.svelte";
+  import TooltipPositioner from "./tooltip-positioner.svelte";
   import TooltipRoot from "./tooltip-root.svelte";
+  import TooltipTrigger from "./tooltip-trigger.svelte";
 
   type Props = Omit<TooltipRootProps, "children"> &
     TooltipRootContract & {
@@ -55,21 +58,21 @@
 </script>
 
 <TooltipRoot {...rest}>
-  <TooltipPrimitive.Trigger {...triggerProps}>
+  <TooltipTrigger {...triggerProps} class={classNames?.trigger}>
     {#snippet asChild(props)}
       <span {...props({ class: "inline-flex" })}>{@render children?.()}</span>
     {/snippet}
-  </TooltipPrimitive.Trigger>
+  </TooltipTrigger>
 
   <Portal>
-    <TooltipPrimitive.Positioner {...positionerProps}>
+    <TooltipPositioner {...positionerProps} class={classNames?.positioner}>
       <TooltipContent
         {...contentProps}
         class={cn(className, classNames?.content)}
       >
         {#if showArrow}
           <TooltipArrow {...arrowProps} class={classNames?.arrow}>
-            <TooltipPrimitive.ArrowTip />
+            <TooltipArrowTip class={classNames?.arrowTip} />
           </TooltipArrow>
         {/if}
         {#if typeof content === "string"}
@@ -78,6 +81,6 @@
           {@render content()}
         {/if}
       </TooltipContent>
-    </TooltipPrimitive.Positioner>
+    </TooltipPositioner>
   </Portal>
 </TooltipRoot>

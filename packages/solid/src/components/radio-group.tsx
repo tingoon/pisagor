@@ -1,7 +1,6 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/solid";
 import type {
   RadioGroupItemControlProps,
-  RadioGroupItemHiddenInputProps,
   RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
@@ -75,7 +74,7 @@ function Root(props: RadioGroupRootProps): JSX.Element {
   );
 }
 
-const ItemRoot = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
+const Item = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
   name: "Item",
   slot: "base",
 });
@@ -87,20 +86,6 @@ const ItemControl = withContext<RadioGroupItemControlProps>(
     slot: "control",
   },
 );
-
-function Item(props: RadioGroupItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["tabIndex", "children"]);
-
-  return (
-    <ItemRoot {...rest}>
-      <ItemControl />
-
-      <ItemText>{local.children}</ItemText>
-
-      <ItemHiddenInput tabIndex={local.tabIndex} />
-    </ItemRoot>
-  );
-}
 
 function ItemText(props: RadioGroupItemTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
@@ -115,9 +100,7 @@ function ItemText(props: RadioGroupItemTextProps): JSX.Element {
   );
 }
 
-function ItemHiddenInput(props: RadioGroupItemHiddenInputProps): JSX.Element {
-  return <RadioGroupPrimitive.ItemHiddenInput {...props} />;
-}
+const ItemHiddenInput = RadioGroupPrimitive.ItemHiddenInput;
 
 function Label(props: RadioGroupLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
@@ -134,7 +117,7 @@ function Label(props: RadioGroupLabelProps): JSX.Element {
 // #endregion
 
 // #region Shorthand
-function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
+export function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);
 
   return (
@@ -142,7 +125,9 @@ function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
       <For each={local.items ?? []}>
         {(item) => (
           <Item disabled={item.disabled} value={item.value}>
-            {item.label}
+            <ItemControl />
+            <ItemText>{item.label}</ItemText>
+            <ItemHiddenInput />
           </Item>
         )}
       </For>
@@ -152,9 +137,12 @@ function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
 // #endregion
 
 export type {
+  RadioGroupItemControlProps,
+  RadioGroupItemHiddenInputProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
 } from "@ark-ui/solid";
+export type { RadioGroupItemProps };
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item,

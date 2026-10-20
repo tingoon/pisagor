@@ -3,7 +3,7 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/solid";
 export function InputChannel() {
   return (
     <div class="flex flex-col gap-2">
-      <ColorPicker
+      <ColorPicker.Root
         class="w-full"
         defaultValue={parseColor("#0485F7").toString("rgba")}
         format="rgba"
@@ -12,25 +12,25 @@ export function InputChannel() {
           <Field orientation="horizontal">
             <Field.Label>RGB</Field.Label>
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="red"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="green"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="blue"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.SwatchPreview class="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         class="w-full"
         defaultValue={parseColor("#EF4444").toString("hsba")}
         format="hsba"
@@ -39,25 +39,25 @@ export function InputChannel() {
           <Field orientation="horizontal">
             <Field.Label>HSB</Field.Label>
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="hue"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="saturation"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="brightness"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.SwatchPreview class="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         class="w-full"
         defaultValue={parseColor("#F59E0B").toString("hsla")}
         format="hsla"
@@ -66,25 +66,25 @@ export function InputChannel() {
           <Field orientation="horizontal">
             <Field.Label>HSL</Field.Label>
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="hue"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="saturation"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="lightness"
               class="w-full"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.SwatchPreview class="size-6" />
           </Field>
         </ColorPicker.View>
-      </ColorPicker>
-      <ColorPicker
+      </ColorPicker.Root>
+      <ColorPicker.Root
         class="w-full items-center"
         defaultValue={parseColor("#10B981").toString("hex")}
       >
@@ -92,17 +92,17 @@ export function InputChannel() {
         <Field orientation="horizontal">
           <ColorPicker.Control class="min-w-0 flex-1">
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="hex"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.Input
-              asChild={(props) => <Input {...props()} />}
               channel="alpha"
+              asChild={(props) => <Input {...props()} />}
             />
             <ColorPicker.SwatchPreview class="size-6" />
           </ColorPicker.Control>
         </Field>
-      </ColorPicker>
+      </ColorPicker.Root>
     </div>
   );
 }

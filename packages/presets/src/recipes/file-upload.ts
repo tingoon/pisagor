@@ -24,6 +24,7 @@ export const fileUploadRecipe = tv({
       "relative",
       "flex flex-col justify-center gap-4",
     ],
+    clearTrigger: [],
     description: ["text-muted-foreground text-sm font-medium"],
     dropzone: [
       ...formControlZoneBase,
@@ -46,7 +47,9 @@ export const fileUploadRecipe = tv({
     ],
     helper: ["text-muted-foreground text-xs"],
     itemGroup: ["flex flex-col gap-2"],
+    label: [],
     title: ["text-foreground text-sm font-medium"],
+    trigger: [],
   },
   variants: {
     surfaceVariant: formControlSurfaceVariantOptions,

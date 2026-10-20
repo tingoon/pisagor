@@ -5,8 +5,10 @@
   } from "@ark-ui/svelte";
   import { withContext } from "./segment-group.context";
 
-  let { ...rest }: SegmentGroupIndicatorProps = $props();
+  let { children, ...rest }: SegmentGroupIndicatorProps = $props();
   const part = withContext(() => rest, { name: "Indicator" });
 </script>
 
-<SegmentGroupPrimitive.Indicator {...part.props} />
+<SegmentGroupPrimitive.Indicator {...part.props}>
+  {@render children?.()}
+</SegmentGroupPrimitive.Indicator>

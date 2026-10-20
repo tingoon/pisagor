@@ -1,3 +1,4 @@
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { Button, Calendar, Card } from "@pisagor/solid";
 
 export function Presets() {
@@ -13,10 +14,22 @@ export function Presets() {
       <Card class="[--space:--spacing(2)]">
         <Card.Content>
           <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
+            <Calendar.PrevTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
             <Calendar.MonthSelect />
             <Calendar.YearSelect />
-            <Calendar.NextTrigger />
+            <Calendar.NextTrigger
+              asChild={(props) => (
+                <Button {...props()} size="icon-md" variant="ghost">
+                  <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+                </Button>
+              )}
+            />
           </Calendar.ViewControl>
           <Calendar.Table>
             <Calendar.WeekDays />
@@ -26,12 +39,12 @@ export function Presets() {
         <Card.Footer class="flex flex-wrap">
           {presets.map((preset) => (
             <Calendar.PresetTrigger
+              value={preset.value}
               asChild={(props) => (
                 <Button {...props()} class="flex-1" size="sm" variant="outline">
                   {preset.label}
                 </Button>
               )}
-              value={preset.value}
             />
           ))}
         </Card.Footer>

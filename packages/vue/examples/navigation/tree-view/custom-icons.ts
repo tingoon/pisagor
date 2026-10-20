@@ -1,7 +1,5 @@
 import { PhFileCode, PhFileJs, PhFileText } from "@phosphor-icons/vue";
-import type { TreeNodeType } from "@pisagor/vue";
 import { createFileIcons, createTreeCollection, TreeView } from "@pisagor/vue";
-import type { VNode } from "vue";
 import { defineComponent, h } from "vue";
 import { sampleFileTree } from "./data";
 
@@ -17,34 +15,7 @@ export default defineComponent({
     });
     const collection = createTreeCollection({ rootNode: sampleFileTree });
 
-    const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-      h(
-        TreeView.NodeProvider as ArkPart,
-        { indexPath, key: node.id, node },
-        () =>
-          node.children
-            ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchControl as ArkPart, null, () => node.name),
-                h(TreeView.BranchContent as ArkPart, null, () =>
-                  node.children?.map((child, index) =>
-                    renderNode(child, [...indexPath, index]),
-                  ),
-                ),
-              ])
-            : h(TreeView.Item as ArkPart, null, () =>
-                h(TreeView.ItemText as ArkPart, null, () => node.name),
-              ),
-      );
-
     return () =>
-      h("div", null, [
-        h(TreeView as ArkPart, { collection, fileIcons }, () =>
-          h(TreeView.Tree as ArkPart, null, () =>
-            collection.rootNode.children?.map((node, index) =>
-              renderNode(node, [index]),
-            ),
-          ),
-        ),
-      ]);
+      h("div", null, [h(TreeView as ArkPart, { collection, fileIcons })]);
   },
 });

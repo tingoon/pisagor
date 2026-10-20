@@ -1,3 +1,4 @@
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { createListCollection } from "@ark-ui/solid";
 import { Field, Listbox } from "@pisagor/solid";
 
@@ -25,7 +26,9 @@ export function Horizontal() {
                 <Listbox.ItemText>{item.title}</Listbox.ItemText>
                 <p class="text-muted-foreground text-xs">{item.artist}</p>
               </div>
-              <Listbox.ItemIndicator class="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs" />
+              <Listbox.ItemIndicator class="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs">
+                <CheckIcon />
+              </Listbox.ItemIndicator>
             </Listbox.Item>
           ))}
         </Listbox.Content>

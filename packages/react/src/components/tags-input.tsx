@@ -1,37 +1,35 @@
-import {
-  TagsInput as TagsInputPrimitive,
-  useTagsInputContext,
-} from "@ark-ui/react";
+import { TagsInput as TagsInputPrimitive } from "@ark-ui/react";
 import type {
   TagsInputClearTriggerProps,
-  TagsInputControlProps as TagsInputControlPrimitiveProps,
+  TagsInputControlProps,
   TagsInputInputProps,
+  TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
   TagsInputItemProps as TagsInputItemPrimitiveProps,
   TagsInputItemTextProps,
+  TagsInputLabelProps,
   TagsInputRootProps as TagsInputRootPrimitiveProps,
   TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type {
+  TagsInputContract,
   TagsInputItemRootContract,
   TagsInputRootContract,
 } from "@pisagor/contracts";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
-  createSlotRecipeContext({
-    name: "TagsInput",
-    recipe: tagsInputRecipe,
-  });
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "TagsInput",
+  recipe: tagsInputRecipe,
+});
 
-const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
+const { withContext: withItemContext, withProvider: withItemProvider } =
   createSlotRecipeContext({
     name: "TagsInput",
     recipe: tagsInputItemRecipe,
@@ -39,288 +37,226 @@ const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
 // #endregion
 
 // #region Types
+type TagsInputRootBaseContract = Omit<TagsInputRootContract, "variant">;
+
 export type TagsInputRootProps = Omit<
   TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  TagsInputRootContract;
+  TagsInputRootBaseContract & {
+    /** Called with the tag list when it changes. */
+    onValueChange?: (value: string[]) => void;
+  };
 
-export interface TagsInputProps extends TagsInputRootProps {
+export type TagsInputRootProviderProps = TagsInputRootProviderPrimitiveProps &
+  TagsInputRootBaseContract;
+
+export type TagsInputItemProps = Omit<TagsInputItemPrimitiveProps, "size"> &
+  Omit<TagsInputItemRootContract, "size" | "variant">;
+
+export interface TagsInputProps
+  extends
+    Omit<TagsInputRootProps, "children">,
+    Pick<TagsInputRootContract, "variant">,
+    TagsInputContract {
   /**
-   * Whether to show the clear button.
+   * Whether to show the clear-all button when there are tags.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-  /** Placeholder for the shorthand input. Defaults to empty. */
+  /** Input placeholder. */
   placeholder?: string;
-  onValueChange?: (value: string[]) => void;
 }
-
-export type TagsInputControlProps = TagsInputControlPrimitiveProps &
-  TagsInputRootContract;
-
-export type TagsInputItemProps = TagsInputItemPrimitiveProps &
-  TagsInputItemRootContract;
-
-export type TagsInputRootProviderProps = TagsInputRootProviderPrimitiveProps &
-  TagsInputRootContract;
-
-export type TagsInputItemDeleteTriggerProps = ComponentProps<
-  typeof TagsInputPrimitive.ItemDeleteTrigger
->;
-
 // #endregion
 
 // #region Parts
 export const TagsInputContext = TagsInputPrimitive.Context;
 
-export function TagsInputRoot({
-  size = "md",
-  variant,
-  clearable,
-  tabIndex,
+const RootBase = withProvider<
+  Omit<TagsInputRootPrimitiveProps, "size"> & TagsInputRootBaseContract
+>(TagsInputPrimitive.Root, { name: "Root", slot: "base" });
+
+/** Root; renders the hidden form input and exposes `data-size`. */
+function Root({
   children,
   editable = false,
-  placeholder,
   onValueChange,
-  recipe = tagsInputRecipe,
-  className,
-  ...rest
-}: TagsInputProps) {
-  const slots = recipe();
-
-  return (
-    <TagsInputStylesContext value={{ slots, variants: {} as never }}>
-      <TagsInputPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        data-size={size}
-        editable={editable}
-        onValueChange={
-          onValueChange ? (details) => onValueChange(details.value) : undefined
-        }
-      >
-        <TagsInputControl size={size} variant={variant}>
-          <TagsInputPrimitive.Context>
-            {(api) =>
-              api.value.map((value, index) => (
-                <TagsInputItem index={index} key={value} value={value} />
-              ))
-            }
-          </TagsInputPrimitive.Context>
-          {children}
-          <TagsInputInput placeholder={placeholder} />
-          {clearable ? <TagsInputClearAll /> : null}
-        </TagsInputControl>
-
-        <TagsInputPrimitive.HiddenInput tabIndex={tabIndex} />
-      </TagsInputPrimitive.Root>
-    </TagsInputStylesContext>
-  );
-}
-
-function TagsInputClearAll() {
-  const api = useTagsInputContext();
-
-  if (api.value.length === 0) {
-    return null;
-  }
-
-  return <TagsInputClearTrigger />;
-}
-
-export function TagsInputControl({
-  size,
-  variant,
-  children,
-  className,
-  ...rest
-}: TagsInputControlProps) {
-  const { slots } = useTagsInput();
-
-  return (
-    <TagsInputPrimitive.Control asChild>
-      <InputGroup
-        {...rest}
-        className={slots.control({ className })}
-        size={size}
-        variant={variant}
-      >
-        {children}
-      </InputGroup>
-    </TagsInputPrimitive.Control>
-  );
-}
-
-export function TagsInputItem({
-  children,
-  recipe = tagsInputItemRecipe,
-  className,
-  ...rest
-}: TagsInputItemProps) {
-  const slots = recipe();
-
-  return (
-    <TagsInputItemStylesContext value={{ slots, variants: {} as never }}>
-      <TagsInputPrimitive.Item {...rest} className={slots.base({ className })}>
-        <TagsInputItemPreview>
-          <TagsInputItemText>{children}</TagsInputItemText>
-          <TagsInputItemDeleteTrigger />
-        </TagsInputItemPreview>
-        <TagsInputItemInput />
-      </TagsInputPrimitive.Item>
-    </TagsInputItemStylesContext>
-  );
-}
-
-export function TagsInputItemPreview({
-  className,
-  ...rest
-}: TagsInputItemPreviewProps) {
-  const { slots } = useTagsInputItem();
-
-  return (
-    <TagsInputPrimitive.ItemPreview
-      {...rest}
-      className={slots.preview({ className })}
-    />
-  );
-}
-
-export function TagsInputItemText({
-  className,
-  ...rest
-}: TagsInputItemTextProps) {
-  const { slots } = useTagsInputItem();
-
-  return (
-    <TagsInputPrimitive.ItemText
-      {...rest}
-      className={slots.text({ className })}
-    />
-  );
-}
-
-export function TagsInputItemDeleteTrigger({
-  children,
-  className,
-  ...rest
-}: TagsInputItemDeleteTriggerProps) {
-  const { m } = useLocale();
-  const { slots } = useTagsInputItem();
-
-  return (
-    <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
-      <InputGroup.Button
-        aria-label={m("tagsInput.removeTag")}
-        className={slots.delete({ className })}
-        size="icon-xs"
-        variant="ghost"
-      >
-        {children ?? <XIcon aria-hidden />}
-      </InputGroup.Button>
-    </TagsInputPrimitive.ItemDeleteTrigger>
-  );
-}
-
-export function TagsInputItemInput(props: TagsInputItemInputProps) {
-  const { slots } = useTagsInputItem();
-
-  return (
-    <TagsInputPrimitive.ItemInput {...props} asChild>
-      <InputGroup.Input className={slots.input()} />
-    </TagsInputPrimitive.ItemInput>
-  );
-}
-
-export function TagsInputInput(props: TagsInputInputProps) {
-  const { slots } = useTagsInput();
-
-  return (
-    <TagsInputPrimitive.Input {...props} asChild>
-      <InputGroup.Input className={slots.input()} />
-    </TagsInputPrimitive.Input>
-  );
-}
-
-export function TagsInputClearTrigger({
-  children,
-  className,
-  ...rest
-}: TagsInputClearTriggerProps) {
-  const { m } = useLocale();
-  const { slots } = useTagsInput();
-
-  return (
-    <TagsInputPrimitive.ClearTrigger {...rest} asChild>
-      <InputGroup.Button
-        aria-label={m("tagsInput.clear")}
-        className={slots.clearTrigger({ className })}
-        size="icon-xs"
-        variant="ghost"
-      >
-        {children ?? <XIcon aria-hidden />}
-      </InputGroup.Button>
-    </TagsInputPrimitive.ClearTrigger>
-  );
-}
-
-export function TagsInputRootProvider({
   size = "md",
+  tabIndex,
+  ...rest
+}: TagsInputRootProps) {
+  return (
+    <RootBase
+      {...rest}
+      data-size={size}
+      editable={editable}
+      onValueChange={
+        onValueChange ? (details) => onValueChange(details.value) : undefined
+      }
+    >
+      {children}
+
+      <TagsInputPrimitive.HiddenInput tabIndex={tabIndex} />
+    </RootBase>
+  );
+}
+
+const RootProviderBase = withProvider<
+  Omit<TagsInputRootProviderPrimitiveProps, "size"> & TagsInputRootBaseContract
+>(TagsInputPrimitive.RootProvider, { name: "RootProvider", slot: "base" });
+
+/** Root for an external `useTagsInput` instance. */
+function RootProvider({
   children,
-  recipe = tagsInputRecipe,
-  className,
+  size = "md",
   ...rest
 }: TagsInputRootProviderProps) {
-  const slots = recipe();
-
   return (
-    <TagsInputStylesContext value={{ slots, variants: {} as never }}>
-      <TagsInputPrimitive.RootProvider
-        {...rest}
-        className={slots.base({ className })}
-        data-size={size}
-      >
-        <TagsInputControl>{children}</TagsInputControl>
-        <TagsInputPrimitive.HiddenInput />
-      </TagsInputPrimitive.RootProvider>
-    </TagsInputStylesContext>
+    <RootProviderBase {...rest} data-size={size}>
+      {children}
+
+      <TagsInputPrimitive.HiddenInput />
+    </RootProviderBase>
   );
 }
+
+const Label = withContext<TagsInputLabelProps>(TagsInputPrimitive.Label, {
+  name: "Label",
+});
+
+const Control = withContext<TagsInputControlProps>(TagsInputPrimitive.Control, {
+  name: "Control",
+});
+
+const Input = withContext<TagsInputInputProps>(TagsInputPrimitive.Input, {
+  name: "Input",
+});
+
+const ClearTriggerBase = withContext<TagsInputClearTriggerProps>(
+  TagsInputPrimitive.ClearTrigger,
+  { name: "ClearTrigger" },
+);
+
+/** Clear-all trigger with a localized default `aria-label`. */
+function ClearTrigger(props: TagsInputClearTriggerProps) {
+  const { m } = useLocale();
+
+  return (
+    <ClearTriggerBase aria-label={m("tagsInput.clearAllTags")} {...props} />
+  );
+}
+
+const Item = withItemProvider<TagsInputItemProps>(TagsInputPrimitive.Item, {
+  name: "Item",
+  slot: "base",
+});
+
+const ItemPreview = withItemContext<TagsInputItemPreviewProps>(
+  TagsInputPrimitive.ItemPreview,
+  { name: "ItemPreview", slot: "preview" },
+);
+
+const ItemText = withItemContext<TagsInputItemTextProps>(
+  TagsInputPrimitive.ItemText,
+  { name: "ItemText", slot: "text" },
+);
+
+const ItemDeleteTriggerBase = withItemContext<TagsInputItemDeleteTriggerProps>(
+  TagsInputPrimitive.ItemDeleteTrigger,
+  { name: "ItemDeleteTrigger", slot: "delete" },
+);
+
+/** Delete trigger with a localized default `aria-label`. */
+function ItemDeleteTrigger(props: TagsInputItemDeleteTriggerProps) {
+  const { m } = useLocale();
+
+  return (
+    <ItemDeleteTriggerBase aria-label={m("tagsInput.removeTag")} {...props} />
+  );
+}
+
+const ItemInput = withItemContext<TagsInputItemInputProps>(
+  TagsInputPrimitive.ItemInput,
+  { name: "ItemInput", slot: "input" },
+);
 // #endregion
 
-// #region Display Names
-TagsInputRoot.displayName = "TagsInput";
-TagsInputControl.displayName = "TagsInput.Control";
-TagsInputItem.displayName = "TagsInput.Item";
-TagsInputItemPreview.displayName = "TagsInput.ItemPreview";
-TagsInputItemText.displayName = "TagsInput.ItemText";
-TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
-TagsInputItemInput.displayName = "TagsInput.ItemInput";
-TagsInputInput.displayName = "TagsInput.Input";
-TagsInputClearTrigger.displayName = "TagsInput.ClearTrigger";
-TagsInputRootProvider.displayName = "TagsInput.RootProvider";
+// #region Shorthand
+export function TagsInputShorthand({
+  classNames,
+  clearable = false,
+  placeholder,
+  size = "md",
+  variant,
+  ...rest
+}: TagsInputProps) {
+  return (
+    <Root {...rest} size={size}>
+      <Control asChild className={classNames?.control}>
+        <InputGroup size={size} variant={variant}>
+          <TagsInputPrimitive.Context>
+            {(api) => (
+              <>
+                {api.value.map((value, index) => (
+                  <Item index={index} key={value} value={value}>
+                    <ItemPreview>
+                      <ItemText>{value}</ItemText>
+                      <ItemDeleteTrigger asChild>
+                        <InputGroup.Button size="icon-xs" variant="ghost">
+                          <XIcon aria-hidden />
+                        </InputGroup.Button>
+                      </ItemDeleteTrigger>
+                    </ItemPreview>
+                    <ItemInput asChild>
+                      <InputGroup.Input />
+                    </ItemInput>
+                  </Item>
+                ))}
 
+                <Input asChild className={classNames?.input}>
+                  <InputGroup.Input placeholder={placeholder} />
+                </Input>
+
+                {clearable && api.value.length > 0 && (
+                  <ClearTrigger asChild className={classNames?.clearTrigger}>
+                    <InputGroup.Button size="icon-xs" variant="ghost">
+                      <XIcon aria-hidden />
+                    </InputGroup.Button>
+                  </ClearTrigger>
+                )}
+              </>
+            )}
+          </TagsInputPrimitive.Context>
+        </InputGroup>
+      </Control>
+    </Root>
+  );
+}
 // #endregion
 
 export type {
   TagsInputClearTriggerProps,
+  TagsInputControlProps,
   TagsInputInputProps,
+  TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
   TagsInputItemTextProps,
+  TagsInputLabelProps,
 } from "@ark-ui/react";
 
-export const TagsInput = Object.assign(TagsInputRoot, {
-  ClearTrigger: TagsInputClearTrigger,
+export const TagsInput = Object.assign(TagsInputShorthand, {
+  ClearTrigger,
   Context: TagsInputContext,
-  Control: TagsInputControl,
-  Input: TagsInputInput,
-  Item: TagsInputItem,
-  ItemDeleteTrigger: TagsInputItemDeleteTrigger,
-  ItemInput: TagsInputItemInput,
-  ItemPreview: TagsInputItemPreview,
-  ItemText: TagsInputItemText,
-  RootProvider: TagsInputRootProvider,
+  Control,
+  Input,
+  Item,
+  ItemDeleteTrigger,
+  ItemInput,
+  ItemPreview,
+  ItemText,
+  Label,
+  Root,
+  RootProvider,
 });

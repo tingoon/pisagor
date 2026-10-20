@@ -76,7 +76,9 @@ export function RadioGroupField({
             return (
               <Field key={option.value}>
                 <RadioGroup.Item id={optionId} value={option.value}>
-                  {option.label}
+                  <RadioGroup.ItemControl />
+                  <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+                  <RadioGroup.ItemHiddenInput />
                 </RadioGroup.Item>
                 <Field.Description>{option.description}</Field.Description>
               </Field>
@@ -89,7 +91,9 @@ export function RadioGroupField({
               key={option.value}
               value={option.value}
             >
-              {option.label}
+              <RadioGroup.ItemControl />
+              <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+              <RadioGroup.ItemHiddenInput />
             </RadioGroup.Item>
           );
         })}

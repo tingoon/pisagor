@@ -1,17 +1,14 @@
-import {
-  Menu as MenuPrimitive,
-  type MenuContextTriggerProps,
-} from "@ark-ui/react";
-import type { ContextMenuRootContract } from "@pisagor/contracts";
-import { contextMenuRecipe } from "@pisagor/recipes";
+import { Menu as MenuPrimitive, Portal } from "@ark-ui/react";
+import type { MenuContextTriggerProps } from "@ark-ui/react";
 import type {
-  DropdownMenuContentProps,
-  DropdownMenuItemGroupProps,
-  DropdownMenuItemProps,
+  ContextMenuRootContract,
+  DropdownMenuContract,
+} from "@pisagor/contracts";
+import { contextMenuRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
+import type { ReactNode } from "react";
+import type {
   DropdownMenuRootProps,
-  DropdownMenuSeparatorProps,
   DropdownMenuShortcutProps,
-  DropdownMenuTriggerItemProps,
 } from "./dropdown-menu";
 import { DropdownMenu } from "./dropdown-menu";
 
@@ -20,14 +17,18 @@ export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export type ContextMenuContextTriggerProps = MenuContextTriggerProps &
   ContextMenuRootContract;
+
+export interface ContextMenuProps
+  extends ContextMenuRootProps, DropdownMenuContract {
+  /** Menu items. */
+  children?: ReactNode;
+  /** Area that opens the menu on right-click or long press. */
+  trigger?: ReactNode;
+}
 // #endregion
 
 // #region Parts
-export function ContextMenuRoot({ ...rest }: ContextMenuRootProps) {
-  return <DropdownMenu {...rest} />;
-}
-
-export function ContextMenuContextTrigger({
+function ContextTrigger({
   recipe = contextMenuRecipe,
   className,
   ...rest
@@ -37,82 +38,66 @@ export function ContextMenuContextTrigger({
   );
 }
 
-export function ContextMenuContent(props: DropdownMenuContentProps) {
-  return <DropdownMenu.Content {...props} />;
-}
-
-export function ContextMenuItemGroup(props: DropdownMenuItemGroupProps) {
-  return <DropdownMenu.ItemGroup {...props} />;
-}
-
-export function ContextMenuSeparator(props: DropdownMenuSeparatorProps) {
-  return <DropdownMenu.Separator {...props} />;
-}
-
-export function ContextMenuItem(props: DropdownMenuItemProps) {
-  return <DropdownMenu.Item {...props} />;
-}
-
-export function ContextMenuSub(props: DropdownMenuRootProps) {
-  return <DropdownMenu.Sub {...props} />;
-}
-
-export function ContextMenuSubContent(props: DropdownMenuContentProps) {
-  return <DropdownMenu.SubContent {...props} />;
-}
-
-export function ContextMenuTriggerItem(props: DropdownMenuTriggerItemProps) {
-  return <DropdownMenu.TriggerItem {...props} />;
-}
-
-export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
+function Shortcut({ className, ...rest }: DropdownMenuShortcutProps) {
   return (
-    <DropdownMenu.Shortcut
-      {...props}
+    <span
+      {...rest}
+      className={dropdownMenuRecipe().shortcut({ className })}
       data-part="shortcut"
       data-scope="context-menu"
     />
   );
 }
-export const ContextMenuArrow = DropdownMenu.Arrow;
-export const ContextMenuCheckboxItem = DropdownMenu.CheckboxItem;
-export const ContextMenuItemGroupLabel = DropdownMenu.ItemGroupLabel;
-export const ContextMenuItemIndicator = DropdownMenu.ItemIndicator;
-export const ContextMenuItemText = DropdownMenu.ItemText;
-export const ContextMenuPositioner = DropdownMenu.Positioner;
-export const ContextMenuRadioItem = DropdownMenu.RadioItem;
-export const ContextMenuRadioItemGroup = DropdownMenu.RadioItemGroup;
+
+ContextTrigger.displayName = "ContextMenu.ContextTrigger";
+Shortcut.displayName = "ContextMenu.Shortcut";
 // #endregion
 
-// #region Display Names
-ContextMenuRoot.displayName = "ContextMenu";
-ContextMenuContextTrigger.displayName = "ContextMenu.ContextTrigger";
-ContextMenuContent.displayName = "ContextMenu.Content";
-ContextMenuItemGroup.displayName = "ContextMenu.ItemGroup";
-ContextMenuSeparator.displayName = "ContextMenu.Separator";
-ContextMenuItem.displayName = "ContextMenu.Item";
-ContextMenuSub.displayName = "ContextMenu.Sub";
-ContextMenuSubContent.displayName = "ContextMenu.SubContent";
-ContextMenuTriggerItem.displayName = "ContextMenu.TriggerItem";
-ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
+// #region Shorthand
+export function ContextMenuShorthand({
+  children,
+  classNames,
+  trigger,
+  ...rest
+}: ContextMenuProps) {
+  return (
+    <DropdownMenu.Root {...rest}>
+      {trigger !== undefined && (
+        <ContextTrigger className={classNames?.trigger}>
+          {trigger}
+        </ContextTrigger>
+      )}
+
+      <Portal>
+        <DropdownMenu.Positioner className={classNames?.positioner}>
+          <DropdownMenu.Content className={classNames?.content}>
+            {children}
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Portal>
+    </DropdownMenu.Root>
+  );
+}
 // #endregion
 
-export const ContextMenu = Object.assign(ContextMenuRoot, {
-  Arrow: ContextMenuArrow,
-  CheckboxItem: ContextMenuCheckboxItem,
-  Content: ContextMenuContent,
-  ContextTrigger: ContextMenuContextTrigger,
-  Item: ContextMenuItem,
-  ItemGroup: ContextMenuItemGroup,
-  ItemGroupLabel: ContextMenuItemGroupLabel,
-  ItemIndicator: ContextMenuItemIndicator,
-  ItemText: ContextMenuItemText,
-  Positioner: ContextMenuPositioner,
-  RadioItem: ContextMenuRadioItem,
-  RadioItemGroup: ContextMenuRadioItemGroup,
-  Separator: ContextMenuSeparator,
-  Shortcut: ContextMenuShortcut,
-  Sub: ContextMenuSub,
-  SubContent: ContextMenuSubContent,
-  TriggerItem: ContextMenuTriggerItem,
+export const ContextMenu = Object.assign(ContextMenuShorthand, {
+  Arrow: DropdownMenu.Arrow,
+  ArrowTip: DropdownMenu.ArrowTip,
+  CheckboxItem: DropdownMenu.CheckboxItem,
+  Content: DropdownMenu.Content,
+  ContextTrigger,
+  Indicator: DropdownMenu.Indicator,
+  Item: DropdownMenu.Item,
+  ItemGroup: DropdownMenu.ItemGroup,
+  ItemGroupLabel: DropdownMenu.ItemGroupLabel,
+  ItemIndicator: DropdownMenu.ItemIndicator,
+  ItemText: DropdownMenu.ItemText,
+  Positioner: DropdownMenu.Positioner,
+  RadioItem: DropdownMenu.RadioItem,
+  RadioItemGroup: DropdownMenu.RadioItemGroup,
+  Root: DropdownMenu.Root,
+  Separator: DropdownMenu.Separator,
+  Shortcut,
+  Sub: DropdownMenu.Sub,
+  TriggerItem: DropdownMenu.TriggerItem,
 });

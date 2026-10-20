@@ -1,13 +1,12 @@
-import { CircularSlider } from "@pisagor/solid";
 import { ThermometerIcon } from "@squidlab/phosphor-solid/icons";
+import { CircularSlider } from "@pisagor/solid";
 
 export function WithValue() {
   return (
-    <CircularSlider>
-      <CircularSlider.ValueText
-        prefix={<ThermometerIcon class="size-4" />}
-        suffix="°"
-      />
-    </CircularSlider>
+    <CircularSlider
+      showValue
+      valuePrefix={<ThermometerIcon class="size-4" />}
+      valueSuffix="°"
+    />
   );
 }

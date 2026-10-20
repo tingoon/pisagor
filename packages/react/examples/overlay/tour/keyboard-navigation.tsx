@@ -38,10 +38,11 @@ export function KeyboardNavigation() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Tour keyboardNavigation steps={steps}>
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start tour</Button>
-        </Tour.Trigger>
+      <Tour
+        keyboardNavigation
+        steps={steps}
+        trigger={<Button variant="outline">Start tour</Button>}
+      >
         <p className="text-muted-foreground flex items-center gap-2 text-sm">
           <KeyboardIcon className="size-4" />
           Use arrow keys to navigate, Escape to close
@@ -66,14 +67,6 @@ export function KeyboardNavigation() {
             Step 3
           </div>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

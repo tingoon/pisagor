@@ -1,10 +1,10 @@
 /** @jsxImportSource solid-js */
 
-import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
+import type { TreeNodeType } from "@pisagor/solid";
 import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/solid";
 import { XIcon } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { ideLayoutBlock } from "#/styles/recipes/editors";
 
 const styles = ideLayoutBlock();
@@ -34,13 +34,7 @@ export function IdeLayout(props: IdeLayoutProps) {
           onSelectionChange={({ selectedNodes }) =>
             handleSelectNode(selectedNodes)
           }
-        >
-          <TreeView.Tree>
-            <For each={collection.rootNode.children ?? []}>
-              {(node, index) => <TreeNode indexPath={[index()]} node={node} />}
-            </For>
-          </TreeView.Tree>
-        </TreeView>
+        />
       </div>
       <div class={styles.pane()}>
         <Show when={activeItem()}>
@@ -68,37 +62,6 @@ export function IdeLayout(props: IdeLayoutProps) {
         </Show>
       </div>
     </div>
-  );
-}
-
-function TreeNode(props: NodeProviderProps) {
-  return (
-    <TreeView.NodeProvider indexPath={props.indexPath} node={props.node}>
-      <Show
-        fallback={
-          <TreeView.Item>
-            <TreeView.ItemText>{props.node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        }
-        when={props.node.children}
-      >
-        {(children) => (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{props.node.name}</TreeView.BranchControl>
-            <TreeView.BranchContent>
-              <For each={children()}>
-                {(child, index) => (
-                  <TreeNode
-                    indexPath={[...props.indexPath, index()]}
-                    node={child}
-                  />
-                )}
-              </For>
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        )}
-      </Show>
-    </TreeView.NodeProvider>
   );
 }
 

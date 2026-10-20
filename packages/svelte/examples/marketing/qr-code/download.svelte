@@ -23,7 +23,7 @@
   );
 </script>
 
-<QrCode encoding={{ ecc: qualityLabel }} {value}>
+<QrCode.Root encoding={{ ecc: qualityLabel }} {value}>
   <Card class="[--space:--spacing(6)]">
     <Card.Content class="flex flex-col justify-center gap-2">
       <Input
@@ -33,10 +33,12 @@
       />
       <div class="flex flex-col items-center gap-2">
         <p class="text-muted-foreground text-sm font-medium">Live preview</p>
-        <QrCode.Frame />
+        <QrCode.Frame>
+          <QrCode.Pattern />
+        </QrCode.Frame>
       </div>
       <div class="flex items-center gap-2">
-        <QrCode.Download fileName="qr-code" mimeType="image/png">
+        <QrCode.DownloadTrigger fileName="qr-code" mimeType="image/png">
           {#snippet asChild(props)}
             <Button
               {...props()}
@@ -49,8 +51,8 @@
               PNG
             </Button>
           {/snippet}
-        </QrCode.Download>
-        <QrCode.Download fileName="qr-code" mimeType="image/svg+xml">
+        </QrCode.DownloadTrigger>
+        <QrCode.DownloadTrigger fileName="qr-code" mimeType="image/svg+xml">
           {#snippet asChild(props)}
             <Button
               {...props()}
@@ -62,8 +64,8 @@
               SVG
             </Button>
           {/snippet}
-        </QrCode.Download>
+        </QrCode.DownloadTrigger>
       </div>
     </Card.Content>
   </Card>
-</QrCode>
+</QrCode.Root>

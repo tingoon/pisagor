@@ -4,31 +4,23 @@
     type TreeViewItemProps,
   } from "@ark-ui/svelte";
   import type { TreeViewItemRootContract } from "@pisagor/contracts";
-  import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
+  import {
+    useTreeViewStyles,
+    withTreeViewItemProvider,
+  } from "./tree-view.context";
 
   type Props = TreeViewItemProps & TreeViewItemRootContract;
 
-  let {
-    children,
-    recipe = treeViewItemRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const { slots } = useTreeView();
-  const itemSlots = $derived(recipe());
-  setTreeViewItemContext({
-    get slots() {
-      return itemSlots;
-    },
-  });
+  /** Item; shares the row (`control`) styles with `BranchControl`. */
+  let { children, class: className, ...rest }: Props = $props();
+  const styles = useTreeViewStyles();
+  const item = withTreeViewItemProvider(
+    () => ({ ...rest, class: cn(styles.slots.control(), className) }),
+    { name: "Item", slot: "base" },
+  );
 </script>
 
-<TreeViewPrimitive.Item
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
+<TreeViewPrimitive.Item {...item.props}>
   {@render children?.()}
 </TreeViewPrimitive.Item>

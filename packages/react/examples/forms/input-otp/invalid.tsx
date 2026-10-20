@@ -7,11 +7,11 @@ export function Invalid() {
   const isCorrect = value.join("") === "1234";
 
   return (
-    <InputOTP invalid={!isCorrect} onValueChange={setValue} value={value}>
-      <InputOTP.Slot index={0} />
-      <InputOTP.Slot index={1} />
-      <InputOTP.Slot index={2} />
-      <InputOTP.Slot index={3} />
-    </InputOTP>
+    <InputOTP
+      invalid={!isCorrect}
+      onValueChange={setValue}
+      value={value}
+      length={4}
+    />
   );
 }

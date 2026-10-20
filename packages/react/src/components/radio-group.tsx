@@ -1,7 +1,6 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react";
 import type {
   RadioGroupItemControlProps,
-  RadioGroupItemHiddenInputProps,
   RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
@@ -71,7 +70,7 @@ function Root({
   );
 }
 
-const ItemRoot = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
+const Item = withProvider<RadioGroupItemProps>(RadioGroupPrimitive.Item, {
   name: "Item",
   slot: "base",
 });
@@ -84,18 +83,6 @@ const ItemControl = withContext<RadioGroupItemControlProps>(
   },
 );
 
-function Item({ tabIndex, children, ...rest }: RadioGroupItemProps) {
-  return (
-    <ItemRoot {...rest}>
-      <ItemControl />
-
-      <ItemText>{children}</ItemText>
-
-      <ItemHiddenInput tabIndex={tabIndex} />
-    </ItemRoot>
-  );
-}
-
 function ItemText({ children, className, ...rest }: RadioGroupItemTextProps) {
   return (
     <RadioGroupPrimitive.ItemText
@@ -107,9 +94,7 @@ function ItemText({ children, className, ...rest }: RadioGroupItemTextProps) {
   );
 }
 
-function ItemHiddenInput(props: RadioGroupItemHiddenInputProps) {
-  return <RadioGroupPrimitive.ItemHiddenInput {...props} />;
-}
+const ItemHiddenInput = RadioGroupPrimitive.ItemHiddenInput;
 
 function Label({ children, className, ...rest }: RadioGroupLabelProps) {
   return (
@@ -124,23 +109,30 @@ function Label({ children, className, ...rest }: RadioGroupLabelProps) {
 // #endregion
 
 // #region Shorthand
-function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
+export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
   return (
     <Root {...rest}>
       {items.map((item) => (
         <Item disabled={item.disabled} key={item.value} value={item.value}>
-          {item.label}
+          <ItemControl />
+          <ItemText>{item.label}</ItemText>
+          <ItemHiddenInput />
         </Item>
       ))}
     </Root>
   );
 }
+
+RadioGroupShorthand.displayName = "RadioGroup";
 // #endregion
 
 export type {
+  RadioGroupItemControlProps,
+  RadioGroupItemHiddenInputProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
 } from "@ark-ui/react";
+export type { RadioGroupItemProps };
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item,

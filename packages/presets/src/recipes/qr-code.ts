@@ -12,6 +12,7 @@ export const qrCodeRecipe = tv({
       "w-fit",
       "flex shrink-0 flex-col gap-4",
     ],
+    downloadTrigger: [],
     frame: [
       "size-(--qr-code-size)",
       "bg-background",

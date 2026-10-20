@@ -37,6 +37,7 @@ export const actionBarRecipe = tv({
       "motion-reduce:data-[state=open]:fade-in-0 motion-reduce:data-[state=closed]:fade-out-0 motion-reduce:animate-none!",
     ],
     separator: ["mx-1 h-1/2"],
+    trigger: [],
     value: ["shrink-0 text-sm font-medium tabular-nums"],
   },
   variants: {

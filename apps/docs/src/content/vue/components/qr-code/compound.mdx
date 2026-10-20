@@ -1,10 +1,16 @@
 ## Anatomy
 
 ```vue
-<QrCode>
-  <QrCode.Frame />
-</QrCode>
+<QrCode.Root>
+  <QrCode.Frame>
+    <QrCode.Pattern />
+  </QrCode.Frame>
+  <QrCode.Overlay />
+  <QrCode.DownloadTrigger />
+</QrCode.Root>
 ```
+
+Parts map 1:1 to Ark. The `QrCode` shorthand renders the frame, pattern, and optional `overlay` for you.
 
 ## Examples
 

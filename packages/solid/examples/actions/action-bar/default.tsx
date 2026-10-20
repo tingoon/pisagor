@@ -1,25 +1,38 @@
+import {
+  ArchiveIcon,
+  DownloadIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { ActionBar, Button } from "@pisagor/solid";
 
 export function Default() {
   return (
-    <ActionBar>
-      <ActionBar.Trigger
-        asChild={(props) => (
-          <Button {...props()} variant="outline">
-            Open
-          </Button>
-        )}
-      />
-      <ActionBar.Content aria-label="Bulk actions">
-        <ActionBar.Value count={3} />
-        <ActionBar.Separator />
-        <ActionBar.Body>
-          <Button variant="ghost">Edit</Button>
-          <Button variant="ghost">Export</Button>
-        </ActionBar.Body>
-        <ActionBar.Separator />
-        <ActionBar.Close>×</ActionBar.Close>
-      </ActionBar.Content>
+    <ActionBar
+      count={3}
+      trigger={(props) => (
+        <Button {...props} variant="outline">
+          Open
+        </Button>
+      )}
+    >
+      <Button variant="ghost">
+        <PencilSimpleIcon />
+        <span class="max-sm:sr-only">Edit</span>
+      </Button>
+      <Button variant="ghost">
+        <DownloadIcon />
+        <span class="max-sm:sr-only">Export</span>
+      </Button>
+      <Button variant="ghost">
+        <ArchiveIcon />
+        <span class="max-sm:sr-only">Archive</span>
+      </Button>
+      <ActionBar.Separator />
+      <Button variant="destructive">
+        <TrashIcon />
+        <span class="max-sm:sr-only">Delete</span>
+      </Button>
     </ActionBar>
   );
 }

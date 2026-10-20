@@ -3,6 +3,8 @@ import {
   useCarouselContext,
 } from "@ark-ui/solid";
 import type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
@@ -19,19 +21,17 @@ import type {
 } from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
-import { For, Show, splitProps } from "solid-js";
+import { For, splitProps } from "solid-js";
 import {
   CaretLeftIcon,
   CaretRightIcon,
-  PauseIcon,
-  PlayIcon,
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -73,90 +73,65 @@ export const CarouselControl: Component<CarouselControlProps> = withContext(
   { name: "Control" },
 );
 
+const CarouselPrevTriggerBase = withContext<CarouselPrevTriggerProps>(
+  CarouselPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
+
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
 export function CarouselPrevTrigger(
   props: CarouselPrevTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
 
   return (
-    <CarouselPrimitive.PrevTrigger
-      {...rest}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps({
-            class: styles.slots.prevTrigger({ class: local.class }),
-          })}
-          aria-label={m("carousel.previous")}
-          clickEffect={false}
-          pill
-          size="icon-md"
-          variant="outline"
-        >
-          <CaretLeftIcon aria-hidden />
-        </Button>
-      )}
-    />
+    <CarouselPrevTriggerBase aria-label={m("carousel.previous")} {...props} />
   );
 }
 
+const CarouselNextTriggerBase = withContext<CarouselNextTriggerProps>(
+  CarouselPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
+
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
 export function CarouselNextTrigger(
   props: CarouselNextTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
 
-  return (
-    <CarouselPrimitive.NextTrigger
-      {...rest}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps({
-            class: styles.slots.nextTrigger({ class: local.class }),
-          })}
-          aria-label={m("carousel.next")}
-          clickEffect={false}
-          pill
-          size="icon-md"
-          variant="outline"
-        >
-          <CaretRightIcon aria-hidden />
-        </Button>
-      )}
-    />
-  );
+  return <CarouselNextTriggerBase aria-label={m("carousel.next")} {...props} />;
 }
 
+const CarouselAutoplayTriggerBase = withContext<CarouselAutoplayTriggerProps>(
+  CarouselPrimitive.AutoplayTrigger,
+  { name: "AutoplayTrigger" },
+);
+
+/** Autoplay trigger with a localized play / pause `aria-label`. */
 export function CarouselAutoplayTrigger(
-  props: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>,
+  props: CarouselAutoplayTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
   const carousel = useCarouselContext();
 
   return (
-    <CarouselPrimitive.AutoplayTrigger
+    <CarouselAutoplayTriggerBase
+      aria-label={m(carousel().isPlaying ? "carousel.pause" : "carousel.play")}
       {...props}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps()}
-          aria-label={
-            carousel().isPlaying ? m("carousel.pause") : m("carousel.play")
-          }
-          clickEffect={false}
-          pill
-          size="icon-md"
-          variant="outline"
-        >
-          <Show fallback={<PlayIcon aria-hidden />} when={carousel().isPlaying}>
-            <PauseIcon aria-hidden />
-          </Show>
-        </Button>
-      )}
     />
   );
 }
+
+/** Shows `children` while playing and `fallback` while paused. */
+export const CarouselAutoplayIndicator =
+  withContext<CarouselAutoplayIndicatorProps>(
+    CarouselPrimitive.AutoplayIndicator,
+    { name: "AutoplayIndicator" },
+  );
 
 export const CarouselProgressText: Component<
   ComponentProps<typeof CarouselPrimitive.ProgressText>
@@ -187,8 +162,32 @@ export function CarouselShorthand(props: CarouselProps): JSX.Element {
   return (
     <CarouselRoot {...rest} slideCount={slides().length}>
       <CarouselControl>
-        <CarouselPrevTrigger />
-        <CarouselNextTrigger />
+        <CarouselPrevTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretLeftIcon aria-hidden />
+            </Button>
+          )}
+        />
+        <CarouselNextTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps()}
+              clickEffect={false}
+              pill
+              size="icon-md"
+              variant="outline"
+            >
+              <CaretRightIcon aria-hidden />
+            </Button>
+          )}
+        />
       </CarouselControl>
       <CarouselItemGroup>
         <For each={slides()}>
@@ -207,6 +206,8 @@ export function CarouselShorthand(props: CarouselProps): JSX.Element {
 }
 
 export type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
@@ -217,6 +218,7 @@ export type {
 } from "@ark-ui/solid";
 
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayIndicator: CarouselAutoplayIndicator,
   AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,

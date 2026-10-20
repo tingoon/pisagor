@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex flex-col items-center gap-2">
-  <ColorPicker inline onValueChange={(v) => (value = v)} {value}>
+  <ColorPicker.Root inline onValueChange={(v) => (value = v)} {value}>
     <ColorPicker.SwatchGroup>
       {#each swatches as color}
         <ColorPicker.SwatchTrigger value={color}>
@@ -17,7 +17,7 @@
         </ColorPicker.SwatchTrigger>
       {/each}
     </ColorPicker.SwatchGroup>
-  </ColorPicker>
+  </ColorPicker.Root>
   <p class="text-muted-foreground text-center text-sm">
     {parseColor(value).toString("hex")}
   </p>

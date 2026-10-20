@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue";
-import { Combobox, Field, TagsInput } from "@pisagor/vue";
+import { PhX } from "@phosphor-icons/vue";
+import { Combobox, Field, InputGroup, TagsInput } from "@pisagor/vue";
 import { computed, ref } from "vue";
 
 const frameworks = ["React", "Solid", "Vue", "Svelte", "Angular", "Qwik"];
@@ -30,21 +31,37 @@ function onComboboxChange(details: { value: string[] }) {
       :value="[]"
       @value-change="onComboboxChange"
     >
-      <TagsInput class="w-full" :value="tags" @value-change="onTagsChange">
-        <TagsInput.Context v-slot="{ value }">
-          <TagsInput.Item
-            v-for="(tag, index) in value"
-            :key="tag"
-            :index="index"
-            :value="tag"
-          >
-            {{ tag }}
-          </TagsInput.Item>
-          <Combobox.Input as-child>
-            <TagsInput.Input placeholder="Add framework" />
-          </Combobox.Input>
-        </TagsInput.Context>
-      </TagsInput>
+      <TagsInput.Root class="w-full" :value="tags" @value-change="onTagsChange">
+        <TagsInput.Control as-child>
+          <InputGroup>
+            <TagsInput.Context v-slot="{ value }">
+              <TagsInput.Item
+                v-for="(tag, index) in value"
+                :key="tag"
+                :index="index"
+                :value="tag"
+              >
+                <TagsInput.ItemPreview>
+                  <TagsInput.ItemText>{{ tag }}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger as-child>
+                    <InputGroup.Button size="icon-xs" variant="ghost">
+                      <PhX aria-hidden />
+                    </InputGroup.Button>
+                  </TagsInput.ItemDeleteTrigger>
+                </TagsInput.ItemPreview>
+                <TagsInput.ItemInput as-child>
+                  <InputGroup.Input />
+                </TagsInput.ItemInput>
+              </TagsInput.Item>
+              <Combobox.Input as-child>
+                <TagsInput.Input as-child>
+                  <InputGroup.Input placeholder="Add framework" />
+                </TagsInput.Input>
+              </Combobox.Input>
+            </TagsInput.Context>
+          </InputGroup>
+        </TagsInput.Control>
+      </TagsInput.Root>
       <Teleport to="body">
         <Combobox.Positioner>
           <Combobox.Content>

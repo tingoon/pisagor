@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue";
+import { ark, type HTMLArkProps, Presence } from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
 import type {
   ActionBarActionItem as BaseActionBarActionItem,
@@ -15,6 +15,7 @@ import {
   onMounted,
   type PropType,
   reactive,
+  ref,
   Teleport,
   type VNodeChild,
   watchEffect,
@@ -44,7 +45,17 @@ const {
 type ActionBarPlacement = "bottom" | "bottom-start" | "bottom-end";
 
 interface ActionBarPositioning {
+  /**
+   * The gutter from the edge in pixels.
+   *
+   * @defaultValue "16px"
+   */
   gutter?: string;
+  /**
+   * The placement of the action bar.
+   *
+   * @defaultValue "bottom"
+   */
   placement?: ActionBarPlacement;
 }
 
@@ -92,35 +103,52 @@ interface ActionBarActionItem extends Omit<
   disabled?: boolean;
 }
 
-export interface ActionBarProps
+export interface ActionBarRootProps
   extends
     Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
-    ActionBarRootContract,
-    ActionBarContract {
+    ActionBarRootContract {
+  /**
+   * Whether to close the action bar when the Escape key is pressed.
+   *
+   * @defaultValue true
+   */
   closeOnEscape?: boolean;
+  /** The default open state of the action bar. Ignored when `open` is set. */
   defaultOpen?: boolean;
+  /** The function to call when the open state of the action bar changes. */
   onOpenChange?: (open: boolean) => void;
+  /** The controlled open state of the action bar. */
   open?: boolean;
+  /** Placement and gutter of the action bar. */
   positioning?: ActionBarPositioning;
-  count?: number;
+}
+
+/**
+ * Slots: `trigger` (single element, rendered `as-child`) and `default` (extra
+ * toolbar content, rendered in the body after `actions`).
+ */
+export interface ActionBarProps extends ActionBarRootProps, ActionBarContract {
+  /** Action buttons built from data, rendered in the body. */
   actions?: ActionBarActionItem[];
+  /** Selected item count shown at the start of the bar. */
+  count?: number;
+  /**
+   * Whether to show the close button.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
 }
 
-export interface ActionBarTriggerProps {
-  onClick?: (event: MouseEvent) => void;
-}
+export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export interface ActionBarContentProps extends ActionBarRootContract {
-  class?: unknown;
-  "aria-labelledby"?: string;
-}
+export type ActionBarPositionerProps = HTMLArkProps<"div">;
+
+export type ActionBarContentProps = HTMLArkProps<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
-export interface ActionBarCloseProps {
-  onClick?: (event: MouseEvent) => void;
-  class?: unknown;
-}
+export type ActionBarCloseProps = HTMLArkProps<"button">;
 
 export interface ActionBarValueProps
   extends
@@ -128,8 +156,9 @@ export interface ActionBarValueProps
     ActionBarValueContract {
   count: number;
   label?: string;
-  children?: VNodeChild;
 }
+
+export type ActionBarBodyProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Constants
@@ -138,69 +167,57 @@ const defaultPositioning: Required<ActionBarPositioning> = {
   placement: "bottom",
 };
 
-function actionBarTeleport(
-  content: ReturnType<typeof h> | ReturnType<typeof h>[],
-) {
-  return h(Teleport, { to: "body" }, [content]);
-}
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
 // #endregion
 
 // #region Parts
-export const ActionBarRoot = defineComponent({
-  inheritAttrs: false,
-  name: "ActionBar",
-  props: {
-    actions: {
-      default: undefined,
-      type: Array as PropType<ActionBarActionItem[]>,
-    },
-    closeOnEscape: { default: true, type: Boolean },
-    count: { default: undefined, type: Number },
-    defaultOpen: { default: false, type: Boolean },
-    lazyMount: { default: true, type: Boolean },
-    onOpenChange: {
-      default: undefined,
-      type: Function as PropType<(open: boolean) => void>,
-    },
-    open: { default: undefined, type: Boolean },
-    positioning: {
-      default: undefined,
-      type: Object as PropType<ActionBarPositioning>,
-    },
-    recipe: {
-      default: actionBarRecipe,
-      type: Function as PropType<typeof actionBarRecipe>,
-    },
-    unmountOnExit: { default: true, type: Boolean },
+const rootProps = {
+  closeOnEscape: { default: true, type: Boolean },
+  defaultOpen: { default: false, type: Boolean },
+  lazyMount: { default: undefined, type: Boolean },
+  onOpenChange: {
+    default: undefined,
+    type: Function as PropType<(open: boolean) => void>,
   },
-  setup(props, { attrs, slots }) {
-    const internalOpen = reactive<{ value: boolean }>({
-      value: props.defaultOpen,
-    });
+  open: { default: undefined, type: Boolean },
+  positioning: {
+    default: undefined,
+    type: Object as PropType<ActionBarPositioning>,
+  },
+  recipe: {
+    default: actionBarRecipe,
+    type: Function as PropType<typeof actionBarRecipe>,
+  },
+  unmountOnExit: { default: undefined, type: Boolean },
+};
+
+const Root = defineComponent({
+  name: "ActionBar.Root",
+  props: rootProps,
+  setup(props, { slots }) {
+    const internalOpen = ref(props.defaultOpen);
 
     const isControlled = () => props.open !== undefined;
     const isOpen = () =>
       (isControlled() ? props.open : internalOpen.value) ?? false;
 
-    const handleClose = () => {
-      if (!isControlled()) internalOpen.value = false;
-      props.onOpenChange?.(false);
-    };
-
-    const handleOpen = () => {
-      if (!isControlled()) internalOpen.value = true;
-      props.onOpenChange?.(true);
+    const setOpen = (next: boolean) => {
+      if (!isControlled()) internalOpen.value = next;
+      props.onOpenChange?.(next);
     };
 
     let onKeyDown: ((event: KeyboardEvent) => void) | undefined;
 
     onMounted(() => {
       onKeyDown = (event) => {
-        if (event.defaultPrevented) return;
-        if (event.key !== "Escape") return;
+        if (event.defaultPrevented || event.key !== "Escape") return;
+
         if (isOpen() && props.closeOnEscape) {
           event.preventDefault();
-          handleClose();
+          setOpen(false);
         }
       };
 
@@ -213,20 +230,18 @@ export const ActionBarRoot = defineComponent({
 
     const positioning = computed(() => ({
       ...defaultPositioning,
-      ...(props.positioning ?? {}),
+      ...props.positioning,
     }));
 
     const slotsValue = computed(() =>
-      props.recipe({
-        placement: positioning.value.placement,
-      }),
+      props.recipe({ placement: positioning.value.placement }),
     );
 
     const state = reactive<ActionBarStateValue>({
       isOpen: isOpen(),
       lazyMount: props.lazyMount,
-      onClose: handleClose,
-      onOpen: handleOpen,
+      onClose: () => setOpen(false),
+      onOpen: () => setOpen(true),
       positioning: positioning.value,
       unmountOnExit: props.unmountOnExit,
     });
@@ -240,12 +255,8 @@ export const ActionBarRoot = defineComponent({
 
     provideActionBarState(state);
 
-    return () => {
-      const hasPreset =
-        props.count !== undefined ||
-        (props.actions !== undefined && props.actions.length > 0);
-
-      return h(
+    return () =>
+      h(
         ActionBarStylesContext,
         {
           value: {
@@ -253,150 +264,94 @@ export const ActionBarRoot = defineComponent({
               return slotsValue.value;
             },
             get variants() {
-              return {
-                placement: positioning.value.placement,
-              } as never;
+              return { placement: positioning.value.placement } as never;
             },
           },
         },
-        () =>
-          h("div", { ...attrs }, [
-            slots.default?.(),
-            hasPreset
-              ? h(ActionBarContent, null, () => [
-                  props.count !== undefined
-                    ? h(ActionBarValue, { count: props.count })
-                    : null,
-                  props.count !== undefined && props.actions
-                    ? h(ActionBarSeparator)
-                    : null,
-                  props.actions?.length
-                    ? h(ActionBarBody, null, () =>
-                        props.actions?.map((action) =>
-                          h(
-                            Button,
-                            {
-                              disabled: action.disabled,
-                              key: action.id ?? action.label,
-                              onClick: action.onClick,
-                              size: "sm",
-                              variant: "ghost",
-                            },
-                            () => [action.icon, action.label],
-                          ),
-                        ),
-                      )
-                    : null,
-                  props.actions?.length ? h(ActionBarSeparator) : null,
-                  h(ActionBarClose, null, () =>
-                    h(PhX, { "aria-hidden": true }),
-                  ),
-                ])
-              : null,
-          ]),
+        () => slots.default?.(),
       );
-    };
   },
 });
 
-export const ActionBarTrigger = defineComponent({
+const Trigger = defineComponent({
   inheritAttrs: false,
   name: "ActionBar.Trigger",
   props: {
+    class: classProp,
     onClick: {
       default: undefined,
       type: Function as PropType<(event: MouseEvent) => void>,
     },
   },
   setup(props, { attrs, slots }) {
-    const state = useActionBarState();
+    const actionBar = useActionBar();
 
     return () =>
       h(
         ark.button as ArkPart,
         {
           ...attrs,
-          "aria-expanded": state.isOpen ? "true" : "false",
+          "aria-expanded": actionBar.isOpen ? "true" : "false",
+          class: actionBar.slots.trigger({ class: props.class }),
           "data-part": "trigger",
           "data-scope": "action-bar",
-          "data-state": state.isOpen ? "open" : "closed",
+          "data-state": actionBar.isOpen ? "open" : "closed",
           onClick: (event: MouseEvent) => {
-            state.onOpen?.();
+            actionBar.onOpen?.();
             props.onClick?.(event);
           },
           type: "button",
         },
-        slots.default?.(),
+        slots,
       );
   },
 });
 
-export const ActionBarContent = defineComponent({
+const Positioner = defineComponent({
   inheritAttrs: false,
-  name: "ActionBar.Content",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
+  name: "ActionBar.Positioner",
+  props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const {
-      isOpen,
-      lazyMount,
-      unmountOnExit,
-      positioning,
-      slots: styleSlots,
-    } = useActionBar();
+    const actionBar = useActionBar();
 
-    return () => {
-      if (!isOpen && unmountOnExit) {
-        return null;
-      }
-
-      if (!isOpen && lazyMount) {
-        return null;
-      }
-
-      const placement = positioning.placement;
-      const gutter = positioning.gutter;
-
-      return actionBarTeleport(
-        h(
-          "div",
-          {
-            class: styleSlots.positioner({ placement }),
-            "data-part": "positioner",
-            "data-placement": placement,
-            "data-scope": "action-bar",
-            style: { "--gutter": gutter } as Record<string, unknown>,
-          },
+    return () =>
+      h(
+        Presence,
+        {
+          asChild: true,
+          lazyMount: actionBar.lazyMount,
+          present: actionBar.isOpen,
+          unmountOnExit: actionBar.unmountOnExit,
+        },
+        () =>
           h(
             "div",
             {
               ...attrs,
-              class: styleSlots.content({ class: props.class }),
-              "data-part": "content",
+              class: actionBar.slots.positioner({ class: props.class }),
+              "data-part": "positioner",
+              "data-placement": actionBar.positioning.placement,
               "data-scope": "action-bar",
-              role: "toolbar",
+              style: [
+                { "--gutter": actionBar.positioning.gutter },
+                attrs.style,
+              ],
             },
             slots.default?.(),
           ),
-        ),
       );
-    };
   },
 });
 
-export const ActionBarSeparator = defineComponent({
+const Content = withContext("div", {
+  defaultProps: { role: "toolbar" },
+  name: "Content",
+});
+
+const Separator_ = defineComponent({
   inheritAttrs: false,
   name: "ActionBar.Separator",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
+  props: { class: classProp },
   setup(props, { attrs }) {
     const { slots } = useStyles();
 
@@ -404,21 +359,18 @@ export const ActionBarSeparator = defineComponent({
       h(Separator as ArkPart, {
         ...attrs,
         class: slots.separator({ class: props.class }),
-        dataPart: "separator",
-        dataScope: "action-bar",
+        "data-part": "separator",
+        "data-scope": "action-bar",
         orientation: "vertical",
       });
   },
 });
 
-export const ActionBarClose = defineComponent({
+const Close = defineComponent({
   inheritAttrs: false,
   name: "ActionBar.Close",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
+    class: classProp,
     onClick: {
       default: undefined,
       type: Function as PropType<(event: MouseEvent) => void>,
@@ -426,7 +378,7 @@ export const ActionBarClose = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const { onClose, isOpen, slots: styleSlots } = useActionBar();
+    const actionBar = useActionBar();
 
     return () =>
       h(
@@ -434,30 +386,27 @@ export const ActionBarClose = defineComponent({
         {
           "aria-label": m("actionBar.close"),
           ...attrs,
-          class: styleSlots.close({ class: props.class }),
+          class: actionBar.slots.close({ class: props.class }),
           "data-part": "close",
           "data-scope": "action-bar",
-          "data-state": isOpen ? "open" : "closed",
+          "data-state": actionBar.isOpen ? "open" : "closed",
           onClick: (event: MouseEvent) => {
-            onClose?.();
+            actionBar.onClose?.();
             props.onClick?.(event);
           },
           type: "button",
         },
-        slots.default?.(),
+        slots,
       );
   },
 });
 
-export const ActionBarValue = defineComponent({
+const Value = defineComponent({
   inheritAttrs: false,
   name: "ActionBar.Value",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    count: { required: true, type: Number },
+    class: classProp,
+    count: { default: 0, type: Number },
     label: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -478,16 +427,97 @@ export const ActionBarValue = defineComponent({
   },
 });
 
-export const ActionBarBody = withContext("div", {
-  name: "Body",
+const Body = withContext("div", { name: "Body" });
+// #endregion
+
+// #region Shorthand
+export const ActionBarShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "ActionBar",
+  props: {
+    ...rootProps,
+    actions: {
+      default: undefined,
+      type: Array as PropType<ActionBarActionItem[]>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ActionBarProps["classNames"]>,
+    },
+    count: { default: undefined, type: Number },
+    showCloseButton: { default: true, type: Boolean },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const { actions, classNames, count, showCloseButton, ...rootPropsValue } =
+        props;
+      const hasActions = actions !== undefined && actions.length > 0;
+      const hasBody = hasActions || slots.default !== undefined;
+
+      return h(Root, rootPropsValue, () => [
+        slots.trigger
+          ? h(
+              Trigger,
+              { asChild: true, class: classNames?.trigger },
+              { default: slots.trigger },
+            )
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { ...attrs, class: classNames?.content }, () => [
+              count !== undefined
+                ? h(Value, { class: classNames?.value, count })
+                : null,
+
+              count !== undefined && hasBody
+                ? h(Separator_, { class: classNames?.separator })
+                : null,
+
+              hasBody
+                ? h(Body, { class: classNames?.body }, () => [
+                    actions?.map((action) =>
+                      h(
+                        Button,
+                        {
+                          disabled: action.disabled,
+                          key: action.id ?? action.label,
+                          onClick: action.onClick,
+                          size: "sm",
+                          variant: "ghost",
+                        },
+                        () => [action.icon, action.label],
+                      ),
+                    ),
+                    slots.default?.(),
+                  ])
+                : null,
+
+              showCloseButton && hasBody
+                ? h(Separator_, { class: classNames?.separator })
+                : null,
+
+              showCloseButton
+                ? h(Close, { class: classNames?.close }, () =>
+                    h(PhX, { "aria-hidden": true }),
+                  )
+                : null,
+            ]),
+          ),
+        ]),
+      ]);
+    };
+  },
 });
 // #endregion
 
-export const ActionBar = Object.assign(ActionBarRoot, {
-  Body: ActionBarBody,
-  Close: ActionBarClose,
-  Content: ActionBarContent,
-  Separator: ActionBarSeparator,
-  Trigger: ActionBarTrigger,
-  Value: ActionBarValue,
+export const ActionBar = Object.assign(ActionBarShorthand, {
+  Body,
+  Close,
+  Content,
+  Positioner,
+  Root,
+  Separator: Separator_,
+  Trigger,
+  Value,
 });

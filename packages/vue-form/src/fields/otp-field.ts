@@ -87,7 +87,7 @@ export const OtpField = defineComponent({
           );
         }
         slots.push(
-          h(InputOTP.Slot as ArkPart, { index, key: `otp-slot-${index}` }),
+          h(InputOTP.Input as ArkPart, { index, key: `otp-slot-${index}` }),
         );
       }
 
@@ -106,7 +106,7 @@ export const OtpField = defineComponent({
         },
         () =>
           h(
-            InputOTP as ArkPart,
+            InputOTP.Root as ArkPart,
             {
               ...attrs,
               disabled: props.disabled,
@@ -121,7 +121,7 @@ export const OtpField = defineComponent({
                 ? { value: props.value ? props.value.split("") : [] }
                 : {}),
             },
-            () => slots,
+            () => h(InputOTP.Control, null, () => slots),
           ),
       );
     };

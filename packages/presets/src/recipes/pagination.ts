@@ -16,6 +16,8 @@ export const paginationRecipe = tv({
       "data-selected:not-[hover]:text-foreground",
       "data-selected:not-[hover]:border-input",
     ],
+    nextTrigger: [],
+    prevTrigger: [],
   },
 });
 

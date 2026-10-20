@@ -85,10 +85,10 @@ export function WaitForInput() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start form tutorial</Button>
-        </Tour.Trigger>
+      <Tour
+        steps={steps}
+        trigger={<Button variant="outline">Start form tutorial</Button>}
+      >
         <div className="border-border bg-muted/50 flex flex-col gap-2 rounded-lg border p-4">
           <Field>
             <Field.Label htmlFor="input-name">Name</Field.Label>
@@ -109,14 +109,6 @@ export function WaitForInput() {
             </Field.Label>
           </Field>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

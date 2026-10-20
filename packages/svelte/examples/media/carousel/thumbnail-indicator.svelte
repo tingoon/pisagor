@@ -1,14 +1,39 @@
 <script lang="ts">
-  import { Carousel } from "@pisagor/svelte";
+  import { Button, Carousel } from "@pisagor/svelte";
   import { imageSources } from "./helpers";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
 
   const slides = imageSources();
 </script>
 
 <Carousel.Root loop slideCount={slides.length}>
   <Carousel.Control class="relative">
-    <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-    <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+    <Carousel.PrevTrigger>
+      {#snippet asChild(props)}
+        <Button
+          {...props()}
+          clickEffect={false}
+          pill
+          size="icon-md"
+          variant="outline"
+        >
+          <CaretLeftIcon aria-hidden="true" />
+        </Button>
+      {/snippet}
+    </Carousel.PrevTrigger>
+    <Carousel.NextTrigger>
+      {#snippet asChild(props)}
+        <Button
+          {...props()}
+          clickEffect={false}
+          pill
+          size="icon-md"
+          variant="outline"
+        >
+          <CaretRightIcon aria-hidden="true" />
+        </Button>
+      {/snippet}
+    </Carousel.NextTrigger>
 
     <Carousel.ItemGroup>
       {#each slides as slide, index}

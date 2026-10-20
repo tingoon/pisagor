@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useTourContext } from "@pisagor/svelte";
 
-  const { tour } = useTourContext();
+  const tour = useTourContext();
 </script>
 
 <div

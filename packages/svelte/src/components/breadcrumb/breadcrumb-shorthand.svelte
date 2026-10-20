@@ -1,10 +1,11 @@
 <script lang="ts">
   import type {
-    BreadcrumbPresetItem,
-    BreadcrumbRootContract,
     BreadcrumbContract,
+    BreadcrumbPresetItem,
   } from "@pisagor/contracts";
-  import type { ComponentProps } from "svelte";
+  import { cn } from "@pisagor/utils";
+  import { CaretRightIcon } from "phosphor-svelte";
+  import type { ComponentProps, Snippet } from "svelte";
   import BreadcrumbItem from "./breadcrumb-item.svelte";
   import BreadcrumbLink from "./breadcrumb-link.svelte";
   import BreadcrumbList from "./breadcrumb-list.svelte";
@@ -16,20 +17,34 @@
     label: string;
   };
 
-  type Props = Omit<ComponentProps<typeof BreadcrumbRoot>, "children"> & {
-    items?: PresetItem[];
-  } & BreadcrumbRootContract &
-    BreadcrumbContract;
+  type Props = Omit<ComponentProps<typeof BreadcrumbRoot>, "children"> &
+    Omit<BreadcrumbContract, "items"> & {
+      items?: PresetItem[];
+      /** Separator content between items. Defaults to a caret icon. */
+      separator?: Snippet;
+    };
 
-  let { items, ...rest }: Props = $props();
+  let {
+    class: className,
+    classNames,
+    items,
+    separator,
+    ...rest
+  }: Props = $props();
 </script>
 
-<BreadcrumbRoot {...rest}>
+<BreadcrumbRoot {...rest} class={cn(classNames?.base, className)}>
   {#if items}
-    <BreadcrumbList>
+    <BreadcrumbList class={classNames?.list}>
       {#each items as item, index (`${index}:${item.href ?? item.label}`)}
         {#if index > 0}
-          <BreadcrumbSeparator />
+          <BreadcrumbSeparator class={classNames?.separator}>
+            {#if separator}
+              {@render separator()}
+            {:else}
+              <CaretRightIcon />
+            {/if}
+          </BreadcrumbSeparator>
         {/if}
         <BreadcrumbItem>
           {#if item.isCurrentPage}
@@ -37,7 +52,7 @@
           {:else if item.href}
             <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
           {:else}
-            <BreadcrumbPage>{item.label}</BreadcrumbPage>
+            {item.label}
           {/if}
         </BreadcrumbItem>
       {/each}

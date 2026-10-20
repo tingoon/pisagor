@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import type { BadgeVariantProps } from "@pisagor/recipes";
   import {
     ActionBar,
@@ -78,7 +79,7 @@
 </script>
 
 <div class={cn(styles.root(), className)}>
-  <ActionBar
+  <ActionBar.Root
     onOpenChange={(open: boolean) => {
       if (!open) selectedIds = [];
     }}
@@ -138,49 +139,52 @@
         {/each}
       </Table.Body>
     </Table>
-    <ActionBar.Content>
-      <ActionBar.Value count={selectedIds.length} />
-      <div class={styles.actions()}>
-        <Button size="sm" variant="secondary">
-          <PaperPlaneTiltIcon />
-          Send
-        </Button>
-        <Button size="sm" variant="secondary">
-          <PencilSimpleIcon />
-          Edit
-        </Button>
-        <DropdownMenu positioning={{ placement: "top" }}>
-          <DropdownMenu.Trigger>
+    <Portal>
+      <ActionBar.Positioner>
+        <ActionBar.Content>
+          <ActionBar.Value count={selectedIds.length} />
+          <div class={styles.actions()}>
             <Button size="sm" variant="secondary">
-              <DotsThreeIcon />
+              <PaperPlaneTiltIcon />
+              Send
             </Button>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item value="archive">
-              <ArchiveIcon />
-              Archive
-            </DropdownMenu.Item>
-            <DropdownMenu.Item value="duplicate">
-              <CopyIcon />
-              Duplicate
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
-        <AlertDialog.Root>
-          <AlertDialog.Trigger>
-            <Button size="sm" variant="destructive">
-              <TrashIcon />
-              Delete
+            <Button size="sm" variant="secondary">
+              <PencilSimpleIcon />
+              Edit
             </Button>
-          </AlertDialog.Trigger>
-          <AlertDialog.Content>
-            <AlertDialog.Header>
-              <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
-              <AlertDialog.Description>
-                This action cannot be undone.
-              </AlertDialog.Description>
-            </AlertDialog.Header>
-            <AlertDialog.Body>
+            <DropdownMenu positioning={{ placement: "top" }}>
+              {#snippet trigger(props)}
+                <Button {...props()} size="sm" variant="secondary">
+                  <DotsThreeIcon />
+                </Button>
+              {/snippet}
+
+              <DropdownMenu.Item value="archive">
+                <ArchiveIcon />
+                Archive
+              </DropdownMenu.Item>
+              <DropdownMenu.Item value="duplicate">
+                <CopyIcon />
+                Duplicate
+              </DropdownMenu.Item>
+            </DropdownMenu>
+            <AlertDialog
+              description="This action cannot be undone."
+              title="Delete selected orders?"
+            >
+              {#snippet trigger(props)}
+                <Button {...props()} size="sm" variant="destructive">
+                  <TrashIcon />
+                  Delete
+                </Button>
+              {/snippet}
+              {#snippet actions()}
+                <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+                <AlertDialog.Action variant="destructive"
+                  >Delete</AlertDialog.Action
+                >
+              {/snippet}
+
               <ul>
                 {#each selectedIds as id}
                   {#each orders.filter((o) => o.id === id) as order}
@@ -191,18 +195,10 @@
                   {/each}
                 {/each}
               </ul>
-            </AlertDialog.Body>
-            <AlertDialog.Footer>
-              <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-              <AlertDialog.CloseTrigger>
-                <AlertDialog.Action variant="destructive"
-                  >Delete</AlertDialog.Action
-                >
-              </AlertDialog.CloseTrigger>
-            </AlertDialog.Footer>
-          </AlertDialog.Content>
-        </AlertDialog.Root>
-      </div>
-    </ActionBar.Content>
-  </ActionBar>
+            </AlertDialog>
+          </div>
+        </ActionBar.Content>
+      </ActionBar.Positioner>
+    </Portal>
+  </ActionBar.Root>
 </div>

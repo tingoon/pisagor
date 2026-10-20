@@ -2,6 +2,9 @@
 
 ```tsx
 <NumberInput.Root>
+  <NumberInput.Scrubber>
+    <NumberInput.Label />
+  </NumberInput.Scrubber>
   <NumberInput.Control>
     <NumberInput.DecrementTrigger />
     <NumberInput.Input />
@@ -10,6 +13,8 @@
   </NumberInput.Control>
 </NumberInput.Root>
 ```
+
+Parts map 1:1 to Ark (`ClearTrigger` is a Pisagor helper). Pass your own button and icon to the triggers with `asChild`; the `NumberInput` shorthand does this for you.
 
 ## Examples
 

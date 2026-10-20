@@ -1,10 +1,14 @@
 ## Anatomy
 
 ```vue
-<Collapsible>
+<Collapsible.Root>
   <Collapsible.Trigger>
     <Collapsible.Indicator />
   </Collapsible.Trigger>
-  <Collapsible.Content />
-</Collapsible>
+  <Collapsible.Content>
+    <Collapsible.Body />
+  </Collapsible.Content>
+</Collapsible.Root>
 ```
+
+Parts map 1:1 to Ark, plus `Body` for the padded region inside `Content`. Parts render no icons; put your caret inside `Indicator`. The `Collapsible` shorthand renders the trigger label, indicator, and body for you.

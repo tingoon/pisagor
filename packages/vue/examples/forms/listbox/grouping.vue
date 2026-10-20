@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { createListCollection } from "@ark-ui/vue";
 import { Item, Listbox } from "@pisagor/vue";
 
@@ -21,11 +22,13 @@ const collection = createListCollection({
           <Listbox.ItemGroup
             v-for="[region, items] in collection.group()"
             :key="region"
-            :heading="region"
           >
+            <Listbox.ItemGroupLabel>{{ region }}</Listbox.ItemGroupLabel>
             <Listbox.Item v-for="item in items" :key="item.value" :item="item">
               <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
+              <Listbox.ItemIndicator>
+                <PhCheck />
+              </Listbox.ItemIndicator>
             </Listbox.Item>
           </Listbox.ItemGroup>
         </Listbox.Content>

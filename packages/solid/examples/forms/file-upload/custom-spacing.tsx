@@ -2,12 +2,11 @@ import { FileUpload } from "@pisagor/solid";
 
 export function CustomSpacing() {
   return (
-    <FileUpload>
-      <FileUpload.Dropzone class="[--space:--spacing(4)] md:[--space:--spacing(6)]">
-        <FileUpload.DropzoneIcon />
-        <FileUpload.Title>Drop your files here</FileUpload.Title>
-      </FileUpload.Dropzone>
-      <FileUpload.List />
-    </FileUpload>
+    <FileUpload
+      classNames={{
+        dropzone: "[--space:--spacing(4)] md:[--space:--spacing(6)]",
+      }}
+      title="Drop your files here"
+    />
   );
 }

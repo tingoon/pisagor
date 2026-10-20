@@ -6,7 +6,7 @@ const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 </script>
 
 <template>
-  <ColorPicker inline>
+  <ColorPicker.Root inline>
     <ColorPicker.SwatchGroup>
       <ColorPicker.SwatchTrigger
         v-for="color in swatches"
@@ -20,5 +20,5 @@ const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
         </ColorPicker.Swatch>
       </ColorPicker.SwatchTrigger>
     </ColorPicker.SwatchGroup>
-  </ColorPicker>
+  </ColorPicker.Root>
 </template>

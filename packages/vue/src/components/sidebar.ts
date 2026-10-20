@@ -1,6 +1,6 @@
-import { PhSidebarSimple } from "@phosphor-icons/vue";
+import { PhX } from "@phosphor-icons/vue";
 import type { SidebarRootContract } from "@pisagor/contracts";
-import { sidebarRecipe } from "@pisagor/recipes";
+import { sheetRecipe, sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -14,11 +14,13 @@ import {
   type PropType,
   reactive,
   ref,
+  Teleport,
   watchEffect,
 } from "vue";
 import { useIsMobile } from "../hooks/use-is-mobile";
 import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
+import { useLocale } from "./provider/context";
 import { Sheet } from "./sheet";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
@@ -26,6 +28,7 @@ import { Tooltip, type TooltipProps } from "./tooltip";
 const {
   provideStyles: provideSidebarStyles,
   useOptionalStyles: useOptionalSidebarStyles,
+  withContext,
 } = createSlotRecipeContext({
   name: "Sidebar",
   recipe: sidebarRecipe,
@@ -263,6 +266,7 @@ export const SidebarRoot = defineComponent({
     variant: { default: "sidebar", type: String as PropType<SidebarVariant> },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const ctx = useSidebarContext();
 
     return () => {
@@ -291,27 +295,58 @@ export const SidebarRoot = defineComponent({
 
       if (ctx.isMobile) {
         return h(
-          Sheet,
+          Sheet.Root,
           {
             onOpenChange: ({ open }: { open: boolean }) =>
               ctx.setOpenMobile(open),
             open: ctx.openMobile,
+            placement: props.placement === "left" ? "left" : "right",
           },
-          {
-            default: () =>
-              h(
-                Sheet.Content as ArkPart,
-                {
-                  ...(attrs as object),
-                  class: variantSlots.mobile(),
-                  "data-mobile": "true",
-                  "data-sidebar": "sidebar",
-                  placement: props.placement === "left" ? "left" : "right",
-                  style: { "--sidebar-width": "18rem" },
-                },
-                () => slots.default?.(),
+          () =>
+            h(Teleport, { to: "body" }, [
+              h(Sheet.Backdrop),
+              h(Sheet.Positioner, null, () =>
+                h(
+                  Sheet.Content,
+                  {
+                    ...attrs,
+                    class: variantSlots.mobile(),
+                    "data-mobile": "true",
+                    "data-sidebar": "sidebar",
+                    style: { "--sidebar-width": "18rem" },
+                  },
+                  () => [
+                    h(
+                      Sheet.Header,
+                      { class: variantSlots.mobileHeader() },
+                      () => [
+                        h(Sheet.Title, null, () => m("sidebar.title")),
+                        h(Sheet.Description, null, () =>
+                          m("sidebar.description"),
+                        ),
+                      ],
+                    ),
+                    h(
+                      "div",
+                      { class: variantSlots.mobileBody() },
+                      slots.default?.(),
+                    ),
+                    h(Sheet.CloseTrigger, { asChild: true }, () =>
+                      h(
+                        Button,
+                        {
+                          "aria-label": m("sheet.close"),
+                          class: sheetRecipe().inline(),
+                          size: "icon-sm",
+                          variant: "ghost",
+                        },
+                        () => h(PhX),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-          },
+            ]),
         );
       }
 
@@ -399,64 +434,14 @@ export const SidebarContent = defineComponent({
   },
 });
 
-export const SidebarHeader = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarHeader",
-  props: {
-    className: { default: undefined, type: String },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.header(),
-            props.className,
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "header",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarHeader = withContext("div", {
+  defaultProps: { "data-sidebar": "header" },
+  name: "Header",
 });
 
-export const SidebarFooter = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarFooter",
-  props: {
-    className: { default: undefined, type: String },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.footer(),
-            props.className,
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "footer",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarFooter = withContext("div", {
+  defaultProps: { "data-sidebar": "footer" },
+  name: "Footer",
 });
 
 export const SidebarGap = defineComponent({
@@ -547,6 +532,10 @@ export const SidebarRail = defineComponent({
   },
 });
 
+/**
+ * Toggles the sidebar; localized default `aria-label`. Pass your own icon in
+ * the default slot.
+ */
 export const SidebarTrigger = defineComponent({
   inheritAttrs: false,
   name: "SidebarTrigger",
@@ -556,17 +545,22 @@ export const SidebarTrigger = defineComponent({
       type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useSidebarSlots();
-
     const ctx = useSidebarContext();
 
     return () => {
       const variantSlots = getSlots();
+      const onClick = attrs.onClick as
+        ((event: MouseEvent) => void) | undefined;
 
       return h(
         Button as ArkPart,
         {
+          "aria-label": m("sidebar.toggle"),
+          size: "icon-md",
+          variant: "ghost",
           ...attrs,
           class: cn(
             variantSlots.trigger(),
@@ -577,41 +571,18 @@ export const SidebarTrigger = defineComponent({
           clickEffect: false,
           "data-part": "trigger",
           "data-scope": "sidebar",
-          onClick: () => ctx?.toggleSidebar(),
-          size: "icon-md",
-          variant: "ghost",
+          onClick: (event: MouseEvent) => {
+            onClick?.(event);
+            ctx?.toggleSidebar();
+          },
         },
-        () => h(PhSidebarSimple, { class: variantSlots.triggerIcon() }),
+        slots,
       );
     };
   },
 });
 
-export const SidebarInset = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarInset",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.inset(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "inset",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
-});
+export const SidebarInset = withContext("main", { name: "Inset" });
 
 export const SidebarInput = defineComponent({
   inheritAttrs: false,
@@ -642,63 +613,14 @@ export const SidebarInput = defineComponent({
   },
 });
 
-export const SidebarGroup = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarGroup",
-  props: {
-    className: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.group(),
-            props.className,
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "group",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarGroup = withContext("div", {
+  defaultProps: { "data-sidebar": "group" },
+  name: "Group",
 });
 
-export const SidebarGroupLabel = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarGroupLabel",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.groupLabel(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "group-label",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarGroupLabel = withContext("div", {
+  defaultProps: { "data-sidebar": "group-label" },
+  name: "GroupLabel",
 });
 
 export const SidebarGroupAction = defineComponent({
@@ -727,56 +649,14 @@ export const SidebarGroupAction = defineComponent({
   },
 });
 
-export const SidebarGroupContent = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarGroupContent",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.groupContent(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "group-content",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarGroupContent = withContext("div", {
+  defaultProps: { "data-sidebar": "group-content" },
+  name: "GroupContent",
 });
 
-export const SidebarMenu = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarMenu",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.menu(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "menu",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarMenu = withContext("ul", {
+  defaultProps: { "data-sidebar": "menu" },
+  name: "Menu",
 });
 
 export const SidebarMenuButton = defineComponent({
@@ -844,31 +724,9 @@ export const SidebarMenuButton = defineComponent({
   },
 });
 
-export const SidebarMenuItem = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarMenuItem",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.menuItem(),
-            "min-w-0",
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "menu-item",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarMenuItem = withContext("li", {
+  defaultProps: { "data-sidebar": "menu-item" },
+  name: "MenuItem",
 });
 
 export const SidebarMenuSkeleton = defineComponent({
@@ -904,30 +762,14 @@ export const SidebarMenuSkeleton = defineComponent({
   },
 });
 
-export const SidebarMenuSub = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarMenuSub",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
+export const SidebarMenuSubItem = withContext("li", {
+  defaultProps: { "data-sidebar": "menu-sub-item" },
+  name: "MenuSubItem",
+});
 
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.menuSub(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "menu-sub",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarMenuSub = withContext("ul", {
+  defaultProps: { "data-sidebar": "menu-sub" },
+  name: "MenuSub",
 });
 
 export const SidebarMenuAction = defineComponent({
@@ -956,30 +798,9 @@ export const SidebarMenuAction = defineComponent({
   },
 });
 
-export const SidebarMenuBadge = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarMenuBadge",
-  setup(_, { attrs, slots }) {
-    const getSlots = useSidebarSlots();
-
-    return () => {
-      const variantSlots = getSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: cn(
-            variantSlots.menuBadge(),
-            (attrs as { class?: ClassValue }).class,
-          ),
-          "data-part": "menu-badge",
-          "data-scope": "sidebar",
-        },
-        slots.default?.(),
-      );
-    };
-  },
+export const SidebarMenuBadge = withContext("div", {
+  defaultProps: { "data-sidebar": "menu-badge" },
+  name: "MenuBadge",
 });
 
 // #endregion
@@ -1003,7 +824,7 @@ export const Sidebar = Object.assign(SidebarRoot, {
   MenuSkeleton: SidebarMenuSkeleton,
   MenuSub: SidebarMenuSub,
   MenuSubButton: SidebarMenuButton,
-  MenuSubItem: SidebarMenuItem,
+  MenuSubItem: SidebarMenuSubItem,
   Provider: SidebarProvider,
   Rail: SidebarRail,
   Separator: SidebarSeparator,

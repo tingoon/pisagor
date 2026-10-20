@@ -1,21 +1,20 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
-  import type { ClassValue } from "svelte/elements";
+  import {
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerEyeDropperTriggerProps,
+  } from "@ark-ui/svelte";
   import { useLocale } from "../provider/context";
+  import { withContext } from "./color-picker.context";
 
-  type Props = {
-    class?: ClassValue;
-    children?: import("svelte").Snippet;
-    [key: string]: unknown;
-  };
-  let { children, class: className, ...rest }: Props = $props();
+  let { children, ...rest }: ColorPickerEyeDropperTriggerProps = $props();
   const { m } = useLocale();
+  // Localized default label; pass your own button / icon via `asChild`.
+  const part = withContext(
+    () => ({ "aria-label": m("colorPicker.eyeDropper"), ...rest }),
+    { name: "EyeDropperTrigger" },
+  );
 </script>
 
-<ColorPickerPrimitive.EyeDropperTrigger
-  aria-label={m("colorPicker.eyeDropper")}
-  {...rest}
-  class={className}
->
+<ColorPickerPrimitive.EyeDropperTrigger {...part.props}>
   {@render children?.()}
 </ColorPickerPrimitive.EyeDropperTrigger>

@@ -1,9 +1,9 @@
-import { Button, Editable, Textarea } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Editable, Textarea } from "@pisagor/solid";
 
 export function OrientationVertical() {
   return (
-    <Editable>
+    <Editable.Root>
       <Editable.Area>
         <Editable.Input
           asChild={(props) => <Textarea {...props()} class="min-h-24" />}
@@ -36,6 +36,6 @@ export function OrientationVertical() {
           )}
         />
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

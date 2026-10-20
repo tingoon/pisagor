@@ -3,19 +3,12 @@
     Collapsible as CollapsiblePrimitive,
     type CollapsibleContentProps,
   } from "@ark-ui/svelte";
-  import { useStyles } from "./collapsible.context";
+  import { withContext } from "./collapsible.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: CollapsibleContentProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: CollapsibleContentProps = $props();
+  const part = withContext(() => rest, { name: "Content" });
 </script>
 
-<CollapsiblePrimitive.Content {...rest} class={slots.content()}>
-  <div class={className}>
-    {@render children?.()}
-  </div>
+<CollapsiblePrimitive.Content {...part.props}>
+  {@render children?.()}
 </CollapsiblePrimitive.Content>

@@ -1,9 +1,9 @@
-import { Steps } from "@pisagor/solid";
 import {
   CreditCardIcon,
   HardDriveIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Steps } from "@pisagor/solid";
 
 export function Icon() {
   const items = [
@@ -13,7 +13,7 @@ export function Icon() {
   ];
 
   return (
-    <Steps count={items.length}>
+    <Steps.Root count={items.length}>
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index}>
@@ -26,6 +26,6 @@ export function Icon() {
           </Steps.Item>
         ))}
       </Steps.List>
-    </Steps>
+    </Steps.Root>
   );
 }

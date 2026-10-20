@@ -2,11 +2,15 @@
 
 ```vue
 <Checkbox.Root>
-  <Checkbox.Control />
+  <Checkbox.Control>
+    <Checkbox.Indicator />
+  </Checkbox.Control>
   <Checkbox.Label />
   <Checkbox.HiddenInput />
 </Checkbox.Root>
 ```
+
+Parts map 1:1 to Ark and render no icons; put your check / minus icons in `Indicator`. The `Checkbox` shorthand renders them (plus an optional `label`) for you.
 
 ## Examples
 

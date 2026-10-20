@@ -3,15 +3,23 @@
     Popover as PopoverPrimitive,
     type PopoverArrowProps,
   } from "@ark-ui/svelte";
-  import { useStyles } from "./popover.context";
+  import { withContext } from "./popover.context";
+  import PopoverArrowTip from "./popover-arrow-tip.svelte";
 
-  let { style, ...rest }: PopoverArrowProps = $props();
-  const styles = useStyles();
+  const ARROW_STYLE =
+    "--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing));";
+
+  let { children, style, ...rest }: PopoverArrowProps = $props();
+  const part = withContext(
+    () => ({ ...rest, style: style ? `${ARROW_STYLE} ${style}` : ARROW_STYLE }),
+    { name: "Arrow" },
+  );
 </script>
 
-<PopoverPrimitive.Arrow
-  {...rest}
-  style={`--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing));${style ? ` ${style}` : ""}`}
->
-  <PopoverPrimitive.ArrowTip class={styles.slots.arrowTip()} />
+<PopoverPrimitive.Arrow {...part.props}>
+  {#if children}
+    {@render children()}
+  {:else}
+    <PopoverArrowTip />
+  {/if}
 </PopoverPrimitive.Arrow>

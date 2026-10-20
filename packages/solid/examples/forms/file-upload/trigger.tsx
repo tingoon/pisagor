@@ -1,20 +1,17 @@
-import { Button, FileUpload } from "@pisagor/solid";
 import { PaperclipIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, FileUpload } from "@pisagor/solid";
 
 export function Trigger() {
   return (
-    <FileUpload>
-      <div class="flex justify-center">
-        <FileUpload.Trigger
-          asChild={(props) => (
-            <Button {...props()} variant="outline">
-              <PaperclipIcon />
-              Browse files
-            </Button>
-          )}
-        />
-      </div>
-      <FileUpload.List />
-    </FileUpload>
+    <FileUpload
+      class="items-center"
+      dropzone={false}
+      trigger={(props) => (
+        <Button {...props} variant="outline">
+          <PaperclipIcon />
+          Browse files
+        </Button>
+      )}
+    />
   );
 }

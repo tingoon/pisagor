@@ -65,10 +65,10 @@ export function WaitForClick() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Tour steps={steps}>
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start interactive tour</Button>
-        </Tour.Trigger>
+      <Tour
+        steps={steps}
+        trigger={<Button variant="outline">Start interactive tour</Button>}
+      >
         <div className="flex flex-wrap gap-2">
           <Button id="btn-add" size="sm" variant="outline">
             Add Item
@@ -80,14 +80,6 @@ export function WaitForClick() {
             Delete
           </Button>
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Actions />
-        </Tour.Content>
       </Tour>
     </div>
   );

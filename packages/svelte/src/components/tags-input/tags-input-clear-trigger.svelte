@@ -3,35 +3,19 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputClearTriggerProps,
   } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { XIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useTagsInput } from "./tags-input.context";
+  import { withTagsInputContext } from "./tags-input.context";
 
+  let { children, ...rest }: TagsInputClearTriggerProps = $props();
   const { m } = useLocale();
-
-  let {
-    class: className,
-    children,
-    ...rest
-  }: TagsInputClearTriggerProps = $props();
-  const styles = useTagsInput();
-  const slots = $derived(styles.slots);
+  const part = withTagsInputContext(
+    () => ({ "aria-label": m("tagsInput.clearAllTags"), ...rest }),
+    {
+      name: "ClearTrigger",
+    },
+  );
 </script>
 
-<TagsInputPrimitive.ClearTrigger
-  aria-label={m("tagsInput.clear")}
-  {...rest}
-  class={cn(
-    buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-    slots.clearTrigger({ class: cn(className) }),
-  )}
-  type="button"
->
-  {#if children}
-    {@render children()}
-  {:else}
-    <XIcon aria-hidden="true" />
-  {/if}
+<TagsInputPrimitive.ClearTrigger {...part.props}>
+  {@render children?.()}
 </TagsInputPrimitive.ClearTrigger>

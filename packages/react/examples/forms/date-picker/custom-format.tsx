@@ -1,4 +1,9 @@
-import { CalendarIcon } from "@phosphor-icons/react";
+import { Portal } from "@ark-ui/react";
+import {
+  CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 import { useState } from "react";
 
@@ -10,25 +15,40 @@ export function CustomFormat() {
   }).format(new Date((value[0] ?? parseDate("2025-01-15")).toString()));
 
   return (
-    <DatePicker onValueChange={(value) => setValue(value ?? [])} value={value}>
+    <DatePicker.Root
+      onValueChange={(value) => setValue(value ?? [])}
+      value={value}
+    >
       <DatePicker.Trigger asChild>
         <Button variant="outline">
           <CalendarIcon />
           {formattedDate}
         </Button>
       </DatePicker.Trigger>
-      <DatePicker.Content>
-        <Calendar.ViewControl>
-          <Calendar.PrevTrigger />
-          <Calendar.MonthSelect />
-          <Calendar.YearSelect />
-          <Calendar.NextTrigger />
-        </Calendar.ViewControl>
-        <Calendar.Table>
-          <Calendar.WeekDays />
-          <Calendar.TableDays />
-        </Calendar.Table>
-      </DatePicker.Content>
-    </DatePicker>
+      <Portal>
+        <DatePicker.Positioner>
+          <DatePicker.Content>
+            <Calendar.ViewControl>
+              <Calendar.PrevTrigger asChild>
+                <Button size="icon-md" variant="ghost">
+                  <CaretLeftIcon aria-hidden className="rtl:rotate-180" />
+                </Button>
+              </Calendar.PrevTrigger>
+              <Calendar.MonthSelect />
+              <Calendar.YearSelect />
+              <Calendar.NextTrigger asChild>
+                <Button size="icon-md" variant="ghost">
+                  <CaretRightIcon aria-hidden className="rtl:rotate-180" />
+                </Button>
+              </Calendar.NextTrigger>
+            </Calendar.ViewControl>
+            <Calendar.Table>
+              <Calendar.WeekDays />
+              <Calendar.TableDays />
+            </Calendar.Table>
+          </DatePicker.Content>
+        </DatePicker.Positioner>
+      </Portal>
+    </DatePicker.Root>
   );
 }

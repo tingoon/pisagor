@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import type { HTMLAttributes } from "svelte/elements";
+  import {
+    Drawer as DrawerPrimitive,
+    type DrawerDescriptionProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./drawer.context";
 
-  type Props = HTMLAttributes<HTMLDivElement> & {
-    children?: Snippet;
-  };
-
-  let { children, ...rest }: Props = $props();
+  let { children, ...rest }: DrawerDescriptionProps = $props();
   const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<div {...part.props}>{@render children?.()}</div>
+<DrawerPrimitive.Description {...part.props}>
+  {@render children?.()}
+</DrawerPrimitive.Description>

@@ -2,112 +2,63 @@ import { Drawer as DrawerPrimitive, Portal } from "@ark-ui/react";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
-  DrawerContentProps as DrawerContentPrimitiveProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerGrabberIndicatorProps,
   DrawerGrabberProps,
-  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerPositionerProps,
   DrawerRootProps as DrawerRootPrimitiveProps,
+  DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/react";
-import type {
-  DrawerContract,
-  DrawerHeaderContract,
-  DrawerRootContract,
-} from "@pisagor/contracts";
-import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { DrawerContract, DrawerRootContract } from "@pisagor/contracts";
+import { drawerRecipe } from "@pisagor/recipes";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const {
-  Context: DrawerStylesContext,
-  useStyles,
-  withContext,
-} = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Drawer",
   recipe: drawerRecipe,
 });
 // #endregion
 
 // #region Types
-export type DrawerRootProps = DrawerRootPrimitiveProps & DrawerRootContract;
+/**
+ * `placement` is not a prop: it always follows `swipeDirection` so the slide
+ * animation and rounded edge match the dismiss gesture.
+ */
+export type DrawerRootProps = DrawerRootPrimitiveProps &
+  Omit<DrawerRootContract, "placement">;
 
-export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
-  DrawerVariantProps;
+export type DrawerContentInnerProps = ComponentPropsWithRef<"div">;
 
-export type DrawerContentProps = DrawerContentPrimitiveProps &
-  DrawerVariantProps;
+export type DrawerHeaderProps = ComponentPropsWithRef<"div">;
 
-export interface DrawerHeaderProps
-  extends Omit<ComponentPropsWithRef<"div">, "title">, DrawerHeaderContract {
-  description?: string;
-  title?: string;
-}
+export type DrawerBodyProps = ComponentPropsWithRef<"div">;
 
-export interface DrawerBodyProps extends ComponentPropsWithRef<"div"> {
+export type DrawerFooterProps = ComponentPropsWithRef<"div">;
+
+export interface DrawerProps extends DrawerRootProps, DrawerContract {
+  /** Footer action area. */
+  actions?: ReactNode;
+  /** Supporting copy in the header. */
+  description?: ReactNode;
   /**
-   * Whether to add a fade effect to the scroll area.
+   * Whether to add a fade effect to the body scroll area.
    *
    * @defaultValue false
    */
   scrollFade?: boolean;
+  /** Drawer title. */
+  title?: ReactNode;
+  /** Trigger content that opens the drawer. */
+  trigger?: ReactNode;
 }
-
-export type DrawerContentInnerProps = ComponentPropsWithRef<"div">;
-
-export type DrawerDescriptionProps = ComponentProps<
-  typeof DrawerPrimitive.Description
->;
-
-export type DrawerFooterProps = ComponentPropsWithRef<"div">;
-
-export type DrawerProps = DrawerRootProps & DrawerContract;
 // #endregion
 
 // #region Parts
-export function DrawerRoot({
-  recipe = drawerRecipe,
-  ...rest
-}: DrawerRootProps) {
-  const slots = recipe();
-
-  return (
-    <DrawerStylesContext value={{ slots, variants: {} as never }}>
-      <DrawerPrimitive.Root {...rest} />
-    </DrawerStylesContext>
-  );
-}
-
-export function DrawerTrigger(props: DrawerTriggerProps) {
-  return <DrawerPrimitive.Trigger {...props} />;
-}
-
-export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
-  const { slots } = useStyles();
-
-  return (
-    <DrawerPrimitive.Backdrop
-      {...rest}
-      className={slots.backdrop({ className })}
-    />
-  );
-}
-
-export function DrawerPositioner({
-  variant = "default",
-  className,
-  ...rest
-}: DrawerPositionerProps) {
-  const { slots } = useStyles();
-
-  return (
-    <DrawerPrimitive.Positioner
-      {...rest}
-      className={slots.positioner({ className, variant })}
-    />
-  );
-}
-
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "bottom",
   end: "right",
@@ -115,187 +66,171 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
   up: "top",
 } as const;
 
-export function DrawerContent({
-  variant = "default",
-  children,
-  className,
-  ...rest
-}: DrawerContentProps) {
-  const { slots } = useStyles();
+const RootBase = withProvider<
+  DrawerRootProps & Pick<DrawerRootContract, "placement">
+>(DrawerPrimitive.Root, { name: "Root", slot: "base" });
 
+function Root({ swipeDirection = "down", ...rest }: DrawerRootProps) {
   return (
-    <Portal>
-      <DrawerBackdrop />
-      <DrawerPrimitive.Context>
-        {({ swipeDirection }) => (
-          <DrawerPositioner variant={variant}>
-            <DrawerPrimitive.Content
-              {...rest}
-              className={slots.content({
-                className,
-                placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
-                variant,
-              })}
-            >
-              <DrawerGrabber />
-
-              {children}
-            </DrawerPrimitive.Content>
-          </DrawerPositioner>
-        )}
-      </DrawerPrimitive.Context>
-    </Portal>
-  );
-}
-
-export function DrawerContentInner({
-  className,
-  ...rest
-}: DrawerContentInnerProps) {
-  const { slots } = useStyles();
-
-  return (
-    <div
+    <RootBase
       {...rest}
-      className={slots.contentInner({ className })}
-      data-part="content-inner"
-      data-scope="drawer"
+      placement={SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection]}
+      swipeDirection={swipeDirection}
     />
   );
 }
 
-export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
-  const { slots } = useStyles();
+const Trigger = withContext<DrawerTriggerProps>(DrawerPrimitive.Trigger, {
+  name: "Trigger",
+});
 
-  return (
-    <div className={slots.grabberWrapper()}>
-      <DrawerPrimitive.Grabber
-        {...rest}
-        className={slots.grabber({ className })}
-      >
-        <DrawerPrimitive.GrabberIndicator className={slots.grabberIcon()} />
-      </DrawerPrimitive.Grabber>
-    </div>
-  );
-}
+const Backdrop = withContext<DrawerBackdropProps>(DrawerPrimitive.Backdrop, {
+  name: "Backdrop",
+});
 
-export function DrawerHeader({
-  children,
-  description,
-  title,
-  className,
-  ...rest
-}: DrawerHeaderProps) {
-  const { slots } = useStyles();
+const Positioner = withContext<DrawerPositionerProps>(
+  DrawerPrimitive.Positioner,
+  { name: "Positioner" },
+);
 
-  return (
-    <div
-      {...rest}
-      className={slots.header({ className })}
-      data-part="header"
-      data-scope="drawer"
-    >
-      {!!title && <DrawerTitle>{title}</DrawerTitle>}
+const Content = withContext<DrawerContentProps>(DrawerPrimitive.Content, {
+  name: "Content",
+});
 
-      {!!description && <DrawerDescription>{description}</DrawerDescription>}
+// Ark semantics: `Grabber` is the padded drag hit area (`grabberWrapper` slot),
+// `GrabberIndicator` is the visible bar (`grabber` slot).
+const GrabberIndicator = withContext<DrawerGrabberIndicatorProps>(
+  DrawerPrimitive.GrabberIndicator,
+  { name: "GrabberIndicator", slot: "grabber" },
+);
 
-      {children}
-    </div>
-  );
-}
+const Grabber = withContext<DrawerGrabberProps>(DrawerPrimitive.Grabber, {
+  defaultProps: { children: <GrabberIndicator /> },
+  name: "Grabber",
+  slot: "grabberWrapper",
+});
 
-export const DrawerTitle = withContext(DrawerPrimitive.Title, {
+const ContentInner = withContext<DrawerContentInnerProps>("div", {
+  name: "ContentInner",
+});
+
+const Header = withContext<DrawerHeaderProps>("div", { name: "Header" });
+
+const Title = withContext<DrawerTitleProps>(DrawerPrimitive.Title, {
   name: "Title",
 });
 
-export function DrawerDescription({
-  className,
-  ...rest
-}: DrawerDescriptionProps) {
-  const { slots } = useStyles();
+const Description = withContext<DrawerDescriptionProps>(
+  DrawerPrimitive.Description,
+  { name: "Description" },
+);
 
-  return (
-    <DrawerPrimitive.Description
-      {...rest}
-      className={slots.description({ className })}
-      data-part="description"
-      data-scope="drawer"
-    />
-  );
-}
+const Body = withContext<DrawerBodyProps>("div", { name: "Body" });
 
-export function DrawerBody({
+const Footer = withContext<DrawerFooterProps>("div", { name: "Footer" });
+
+const CloseTrigger = withContext<DrawerCloseTriggerProps>(
+  DrawerPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+// #endregion
+
+// #region Shorthand
+export function DrawerShorthand({
+  actions,
+  children,
+  classNames,
+  description,
   scrollFade = false,
-  className,
+  title,
+  trigger,
   ...rest
-}: DrawerBodyProps) {
-  const { slots } = useStyles();
+}: DrawerProps) {
+  const hasHeader = title !== undefined || description !== undefined;
 
   return (
-    <ScrollArea scrollFade={scrollFade}>
-      <div
-        {...rest}
-        className={slots.body({ className })}
-        data-part="body"
-        data-scope="drawer"
-      />
-    </ScrollArea>
-  );
-}
+    <Root {...rest}>
+      {trigger !== undefined && (
+        <Trigger asChild className={classNames?.trigger}>
+          {trigger}
+        </Trigger>
+      )}
 
-export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
-  return <DrawerPrimitive.CloseTrigger {...props} />;
-}
+      <Portal>
+        <Backdrop className={classNames?.backdrop} />
 
-export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
-  const { slots } = useStyles();
+        <Positioner className={classNames?.positioner}>
+          <Content className={classNames?.content}>
+            <Grabber className={classNames?.grabberWrapper}>
+              <GrabberIndicator className={classNames?.grabber} />
+            </Grabber>
 
-  return (
-    <div
-      {...rest}
-      className={slots.footer({ className })}
-      data-part="footer"
-      data-scope="drawer"
-    />
+            <ContentInner className={classNames?.contentInner}>
+              {hasHeader && (
+                <Header className={classNames?.header}>
+                  {title !== undefined && (
+                    <Title className={classNames?.title}>{title}</Title>
+                  )}
+
+                  {description !== undefined && (
+                    <Description className={classNames?.description}>
+                      {description}
+                    </Description>
+                  )}
+                </Header>
+              )}
+
+              {children !== undefined && (
+                <ScrollArea scrollFade={scrollFade}>
+                  <Body className={classNames?.body}>{children}</Body>
+                </ScrollArea>
+              )}
+            </ContentInner>
+
+            {actions !== undefined && (
+              <Footer className={classNames?.footer}>
+                <ContentInner className={classNames?.contentInner}>
+                  {actions}
+                </ContentInner>
+              </Footer>
+            )}
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
 // #endregion
 
 // #region Display Names
-DrawerRoot.displayName = "Drawer";
-DrawerTrigger.displayName = "Drawer.Trigger";
-DrawerBackdrop.displayName = "Drawer.Backdrop";
-DrawerPositioner.displayName = "Drawer.Positioner";
-DrawerContent.displayName = "Drawer.Content";
-DrawerContentInner.displayName = "Drawer.ContentInner";
-DrawerGrabber.displayName = "Drawer.Grabber";
-DrawerHeader.displayName = "Drawer.Header";
-DrawerDescription.displayName = "Drawer.Description";
-DrawerBody.displayName = "Drawer.Body";
-DrawerCloseTrigger.displayName = "Drawer.CloseTrigger";
-DrawerFooter.displayName = "Drawer.Footer";
-
+Root.displayName = "Drawer.Root";
 // #endregion
 
 export type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
+  DrawerContentProps,
+  DrawerDescriptionProps,
+  DrawerGrabberIndicatorProps,
   DrawerGrabberProps,
+  DrawerPositionerProps,
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/react";
 
-export const Drawer = Object.assign(DrawerRoot, {
-  Backdrop: DrawerBackdrop,
-  Body: DrawerBody,
-  CloseTrigger: DrawerCloseTrigger,
-  Content: DrawerContent,
-  ContentInner: DrawerContentInner,
-  Description: DrawerDescription,
-  Footer: DrawerFooter,
-  Grabber: DrawerGrabber,
-  Header: DrawerHeader,
-  Positioner: DrawerPositioner,
-  Title: DrawerTitle,
-  Trigger: DrawerTrigger,
+export const Drawer = Object.assign(DrawerShorthand, {
+  Backdrop,
+  Body,
+  CloseTrigger,
+  Content,
+  ContentInner,
+  Description,
+  Footer,
+  Grabber,
+  GrabberIndicator,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });

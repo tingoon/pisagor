@@ -1,6 +1,7 @@
-import { useFilter, useHotkey, useListCollection } from "@ark-ui/react";
+import { useFilter, useHotkey, useListCollection, Portal } from "@ark-ui/react";
 import {
   BellIcon,
+  CaretDownIcon,
   CaretUpDownIcon,
   CreditCardIcon,
   GearIcon,
@@ -18,6 +19,7 @@ import {
   Kbd,
   Popover,
   Sidebar,
+  InputGroup,
 } from "@pisagor/react";
 import { useState } from "react";
 import { tv } from "tailwind-variants";
@@ -59,7 +61,7 @@ export function WorkspaceSwitcher() {
   return (
     <Sidebar.Menu>
       <Sidebar.MenuItem>
-        <DropdownMenu
+        <DropdownMenu.Root
           onSelect={({ value }) => {
             if (value !== "add") setActiveId(value);
           }}
@@ -75,25 +77,29 @@ export function WorkspaceSwitcher() {
               <CaretUpDownIcon className={styles.menuCaret()} />
             </Sidebar.MenuButton>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content className={styles.dropdownContent()}>
-            <DropdownMenu.ItemGroup>
-              <DropdownMenu.ItemGroupLabel>
-                Workspaces
-              </DropdownMenu.ItemGroupLabel>
-              {workspaces.map((workspace) => (
-                <DropdownMenu.Item key={workspace.id} value={workspace.id}>
-                  <Avatar fallback={workspace.initials} size="sm" />
-                  {workspace.name}
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content className={styles.dropdownContent()}>
+                <DropdownMenu.ItemGroup>
+                  <DropdownMenu.ItemGroupLabel>
+                    Workspaces
+                  </DropdownMenu.ItemGroupLabel>
+                  {workspaces.map((workspace) => (
+                    <DropdownMenu.Item key={workspace.id} value={workspace.id}>
+                      <Avatar fallback={workspace.initials} size="sm" />
+                      {workspace.name}
+                    </DropdownMenu.Item>
+                  ))}
+                </DropdownMenu.ItemGroup>
+                <DropdownMenu.Separator />
+                <DropdownMenu.Item value="add">
+                  <PlusIcon />
+                  Add workspace
                 </DropdownMenu.Item>
-              ))}
-            </DropdownMenu.ItemGroup>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item value="add">
-              <PlusIcon />
-              Add workspace
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu>
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
       </Sidebar.MenuItem>
     </Sidebar.Menu>
   );
@@ -113,7 +119,11 @@ export function NavMain({
       <Sidebar.Menu>
         {items.map((item) =>
           item.items ? (
-            <Collapsible asChild defaultOpen={item.isActive} key={item.title}>
+            <Collapsible.Root
+              asChild
+              defaultOpen={item.isActive}
+              key={item.title}
+            >
               <Sidebar.MenuItem>
                 <Collapsible.Trigger asChild>
                   <Sidebar.MenuButton isActive={item.isActive}>
@@ -121,22 +131,26 @@ export function NavMain({
                     <span>{item.title}</span>
                     <Collapsible.Indicator
                       className={styles.collapsibleIndicator()}
-                    />
+                    >
+                      <CaretDownIcon />
+                    </Collapsible.Indicator>
                   </Sidebar.MenuButton>
                 </Collapsible.Trigger>
                 <Collapsible.Content>
-                  <Sidebar.MenuSub>
-                    {item.items.map((subItem) => (
-                      <Sidebar.MenuSubItem key={subItem.title}>
-                        <Sidebar.MenuSubButton href={subItem.href}>
-                          <span>{subItem.title}</span>
-                        </Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                    ))}
-                  </Sidebar.MenuSub>
+                  <Collapsible.Body>
+                    <Sidebar.MenuSub>
+                      {item.items.map((subItem) => (
+                        <Sidebar.MenuSubItem key={subItem.title}>
+                          <Sidebar.MenuSubButton href={subItem.href}>
+                            <span>{subItem.title}</span>
+                          </Sidebar.MenuSubButton>
+                        </Sidebar.MenuSubItem>
+                      ))}
+                    </Sidebar.MenuSub>
+                  </Collapsible.Body>
                 </Collapsible.Content>
               </Sidebar.MenuItem>
-            </Collapsible>
+            </Collapsible.Root>
           ) : (
             <Sidebar.MenuItem key={item.title}>
               <Sidebar.MenuButton isActive={item.isActive} tooltip={item.title}>
@@ -159,7 +173,7 @@ export function NavUser() {
   return (
     <Sidebar.Menu>
       <Sidebar.MenuItem>
-        <DropdownMenu positioning={{ placement: "right-end" }}>
+        <DropdownMenu.Root positioning={{ placement: "right-end" }}>
           <DropdownMenu.Trigger asChild>
             <Sidebar.MenuButton size="lg">
               <Avatar fallback={user.initials} name={user.name} />
@@ -171,7 +185,7 @@ export function NavUser() {
             </Sidebar.MenuButton>
           </DropdownMenu.Trigger>
           <UserMenuContent />
-        </DropdownMenu>
+        </DropdownMenu.Root>
       </Sidebar.MenuItem>
     </Sidebar.Menu>
   );
@@ -180,50 +194,54 @@ export function NavUser() {
 /** Avatar button + account menu for top bars. */
 export function UserMenu() {
   return (
-    <DropdownMenu positioning={{ placement: "bottom-end" }}>
+    <DropdownMenu.Root positioning={{ placement: "bottom-end" }}>
       <DropdownMenu.Trigger asChild>
         <Button aria-label="Account" size="icon-md" variant="ghost">
           <Avatar fallback={user.initials} name={user.name} size="sm" />
         </Button>
       </DropdownMenu.Trigger>
       <UserMenuContent />
-    </DropdownMenu>
+    </DropdownMenu.Root>
   );
 }
 
 function UserMenuContent() {
   return (
-    <DropdownMenu.Content className={styles.dropdownContent()}>
-      <DropdownMenu.ItemGroup>
-        <DropdownMenu.ItemGroupLabel className={styles.dropdownLabel()}>
-          <Avatar fallback={user.initials} name={user.name} size="sm" />
-          <span className={styles.brandText()}>
-            <span className={styles.brandName()}>{user.name}</span>
-            <span className={styles.brandMeta()}>{user.email}</span>
-          </span>
-        </DropdownMenu.ItemGroupLabel>
-      </DropdownMenu.ItemGroup>
-      <DropdownMenu.Separator />
-      <DropdownMenu.ItemGroup>
-        <DropdownMenu.Item value="account">
-          <UserIcon />
-          Account
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="billing">
-          <CreditCardIcon />
-          Billing
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="settings">
-          <GearIcon />
-          Settings
-        </DropdownMenu.Item>
-      </DropdownMenu.ItemGroup>
-      <DropdownMenu.Separator />
-      <DropdownMenu.Item value="sign-out">
-        <SignOutIcon />
-        Sign out
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
+    <Portal>
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content className={styles.dropdownContent()}>
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.ItemGroupLabel className={styles.dropdownLabel()}>
+              <Avatar fallback={user.initials} name={user.name} size="sm" />
+              <span className={styles.brandText()}>
+                <span className={styles.brandName()}>{user.name}</span>
+                <span className={styles.brandMeta()}>{user.email}</span>
+              </span>
+            </DropdownMenu.ItemGroupLabel>
+          </DropdownMenu.ItemGroup>
+          <DropdownMenu.Separator />
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.Item value="account">
+              <UserIcon />
+              Account
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="billing">
+              <CreditCardIcon />
+              Billing
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="settings">
+              <GearIcon />
+              Settings
+            </DropdownMenu.Item>
+          </DropdownMenu.ItemGroup>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item value="sign-out">
+            <SignOutIcon />
+            Sign out
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Portal>
   );
 }
 
@@ -252,8 +270,7 @@ export function SearchCommand() {
     <Command.Dialog
       onOpenChange={(details) => setOpen(details.open)}
       open={open}
-    >
-      <Command.DialogTrigger asChild>
+      trigger={
         <Button className={styles.searchTrigger()} variant="outline">
           <MagnifyingGlassIcon />
           Search…
@@ -262,31 +279,39 @@ export function SearchCommand() {
             <Kbd>K</Kbd>
           </Kbd.Group>
         </Button>
-      </Command.DialogTrigger>
-      <Command.DialogContent>
-        <Command
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          onValueChange={() => setOpen(false)}
-        >
-          <Command.Input placeholder="Search pages…" />
-          <Command.Content>
-            <Command.Empty>No pages found.</Command.Empty>
-            <Command.List>
-              {collection.group().map(([group, items]) => (
-                <Command.ItemGroup key={group}>
-                  <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
-                  {items.map((item) => (
-                    <Command.Item item={item} key={item.value}>
-                      {item.label}
-                    </Command.Item>
-                  ))}
-                </Command.ItemGroup>
-              ))}
-            </Command.List>
-          </Command.Content>
-        </Command>
-      </Command.DialogContent>
+      }
+    >
+      <Command.Root
+        collection={collection}
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+        onValueChange={() => setOpen(false)}
+      >
+        <Command.Control>
+          <InputGroup className="bg-input/32 rounded-lg">
+            <InputGroup.Addon>
+              <MagnifyingGlassIcon aria-hidden className="opacity-64" />
+            </InputGroup.Addon>
+            <Command.Input asChild>
+              <InputGroup.Input autoFocus placeholder="Search pages…" />
+            </Command.Input>
+          </InputGroup>
+        </Command.Control>
+        <Command.Content>
+          <Command.Empty>No pages found.</Command.Empty>
+          <Command.List>
+            {collection.group().map(([group, items]) => (
+              <Command.ItemGroup key={group}>
+                <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
+                {items.map((item) => (
+                  <Command.Item item={item} key={item.value}>
+                    {item.label}
+                  </Command.Item>
+                ))}
+              </Command.ItemGroup>
+            ))}
+          </Command.List>
+        </Command.Content>
+      </Command.Root>
     </Command.Dialog>
   );
 }
@@ -294,31 +319,40 @@ export function SearchCommand() {
 /** Bell button with a notifications popover. */
 export function NotificationsPopover() {
   return (
-    <Popover positioning={{ placement: "bottom-end" }}>
+    <Popover.Root positioning={{ placement: "bottom-end" }}>
       <Popover.Trigger asChild>
         <Button aria-label="Notifications" size="icon-md" variant="ghost">
           <BellIcon />
         </Button>
       </Popover.Trigger>
-      <Popover.Content className={styles.popoverContent()}>
-        <Popover.Header title="Notifications" />
-        <Popover.Body>
-          <ul className={styles.notificationList()}>
-            {notifications.map((notification) => (
-              <li className={styles.notificationItem()} key={notification.id}>
-                <Avatar fallback={notification.initials} size="sm" />
-                <span className={styles.notificationText()}>
-                  {notification.text}
-                  <span className={styles.notificationTime()}>
-                    {notification.time}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Popover.Body>
-      </Popover.Content>
-    </Popover>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content className={styles.popoverContent()}>
+            <Popover.Header>
+              <Popover.Title>Notifications</Popover.Title>
+            </Popover.Header>
+            <Popover.Body>
+              <ul className={styles.notificationList()}>
+                {notifications.map((notification) => (
+                  <li
+                    className={styles.notificationItem()}
+                    key={notification.id}
+                  >
+                    <Avatar fallback={notification.initials} size="sm" />
+                    <span className={styles.notificationText()}>
+                      {notification.text}
+                      <span className={styles.notificationTime()}>
+                        {notification.time}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Popover.Body>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
+    </Popover.Root>
   );
 }
 

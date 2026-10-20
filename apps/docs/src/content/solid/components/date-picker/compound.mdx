@@ -1,10 +1,21 @@
 ## Anatomy
 
 ```tsx
-<DatePicker>
-  <DatePicker.Trigger>
-    <DatePicker.ValueText />
-  </DatePicker.Trigger>
-  <DatePicker.Content />
-</DatePicker>
+<DatePicker.Root>
+  <DatePicker.Control>
+    <DatePicker.Input />
+    <DatePicker.ClearTrigger />
+    <DatePicker.Trigger />
+  </DatePicker.Control>
+  <Portal>
+    <DatePicker.Positioner>
+      <DatePicker.Content>
+        <Calendar.ViewControl />
+        <Calendar.Table />
+      </DatePicker.Content>
+    </DatePicker.Positioner>
+  </Portal>
+</DatePicker.Root>
 ```
+
+Parts map 1:1 to Ark. Render `Portal` and `Positioner` yourself; the `DatePicker` shorthand does this for you.

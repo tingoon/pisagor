@@ -1,20 +1,14 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import type { ClassValue } from "svelte/elements";
-  import { useStyles } from "./color-picker.context";
+  import {
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerTransparencyGridProps,
+  } from "@ark-ui/svelte";
+  import { withContext } from "./color-picker.context";
 
-  type Props = {
-    class?: ClassValue;
-    children?: import("svelte").Snippet;
-    [key: string]: unknown;
-  };
-  let { class: className, ...rest }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerTransparencyGridProps = $props();
+  const part = withContext(() => rest, { name: "TransparencyGrid" });
 </script>
 
-<ColorPickerPrimitive.TransparencyGrid
-  {...rest}
-  class={slots.transparencyGrid({ class: cn(className) })}
-></ColorPickerPrimitive.TransparencyGrid>
+<ColorPickerPrimitive.TransparencyGrid {...part.props}>
+  {@render children?.()}
+</ColorPickerPrimitive.TransparencyGrid>

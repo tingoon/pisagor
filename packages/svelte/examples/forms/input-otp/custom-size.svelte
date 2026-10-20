@@ -2,9 +2,10 @@
   import { InputOTP } from "@pisagor/svelte";
 </script>
 
-<InputOTP>
-  <InputOTP.Slot index={0} />
-  <InputOTP.Slot index={1} />
-  <InputOTP.Slot index={2} />
-  <InputOTP.Slot index={3} />
-</InputOTP>
+<InputOTP.Root>
+  <InputOTP.Control>
+    {#each [0, 1, 2, 3] as index (index)}
+      <InputOTP.Input class="size-12 text-lg" {index} />
+    {/each}
+  </InputOTP.Control>
+</InputOTP.Root>

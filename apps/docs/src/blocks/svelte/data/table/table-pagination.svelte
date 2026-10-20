@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Pagination, Select, Table } from "@pisagor/svelte";
+  import { Button, Pagination, Select, Table } from "@pisagor/svelte";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
   import { cn } from "@pisagor/utils";
   import { tablePaginationBlock } from "#/styles/recipes/table";
 
@@ -61,7 +62,7 @@
         value={[String(pageSize)]}
       />
     </div>
-    <Pagination
+    <Pagination.Root
       class={styles.pagination()}
       count={users.length}
       onPageChange={({ page: next }: { page: number }) => (page = next)}
@@ -70,8 +71,22 @@
       {page}
       {pageSize}
     >
-      <Pagination.PrevTrigger />
-      <Pagination.NextTrigger />
-    </Pagination>
+      <Pagination.PrevTrigger>
+        {#snippet asChild(triggerProps)}
+          <Button {...triggerProps()} variant="ghost">
+            <CaretLeftIcon />
+            Previous
+          </Button>
+        {/snippet}
+      </Pagination.PrevTrigger>
+      <Pagination.NextTrigger>
+        {#snippet asChild(triggerProps)}
+          <Button {...triggerProps()} variant="ghost">
+            Next
+            <CaretRightIcon />
+          </Button>
+        {/snippet}
+      </Pagination.NextTrigger>
+    </Pagination.Root>
   </div>
 </div>

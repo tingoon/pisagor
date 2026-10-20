@@ -1,11 +1,7 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type {
-  CardContract,
-  CardHeaderContract,
-  CardRootContract,
-} from "@pisagor/contracts";
+import type { CardContract, CardRootContract } from "@pisagor/contracts";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -23,11 +19,7 @@ export type CardActionProps = ComponentProps<"div">;
 export type CardContentProps = ComponentProps<"div">;
 export type CardFooterProps = ComponentProps<"div">;
 export type CardMediaProps = ComponentPropsWithRef<"div"> & CardVariantProps;
-export interface CardHeaderProps
-  extends Omit<ComponentPropsWithRef<"div">, "title">, CardHeaderContract {
-  description?: ReactNode;
-  title?: ReactNode;
-}
+export type CardHeaderProps = ComponentPropsWithRef<"div">;
 export type CardProps = CardRootProps & CardContract;
 // #endregion
 
@@ -52,30 +44,9 @@ export function CardMedia({
   );
 }
 
-export function CardHeader({
-  children,
-  description,
-  title,
-  className,
-  ...rest
-}: CardHeaderProps) {
-  const { slots } = useStyles();
-
-  return (
-    <div
-      {...rest}
-      className={slots.header({ className })}
-      data-part="header"
-      data-scope="card"
-    >
-      {title != null && <CardTitle>{title}</CardTitle>}
-
-      {description != null && <CardDescription>{description}</CardDescription>}
-
-      {children}
-    </div>
-  );
-}
+export const CardHeader = withContext<CardHeaderProps>("div", {
+  name: "Header",
+});
 
 export const CardTitle = withContext<CardTitleProps>(ark.h3, { name: "Title" });
 

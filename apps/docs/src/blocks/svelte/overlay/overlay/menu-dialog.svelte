@@ -10,51 +10,47 @@
 
 <div>
   <DropdownMenu>
-    <DropdownMenu.Trigger>
-      <Button variant="outline">Open menu</Button>
-    </DropdownMenu.Trigger>
-    <DropdownMenu.Content>
-      <DropdownMenu.Item onSelect={() => (isOpen = true)} value="settings">
-        <GearIcon />
-        Open settings
-      </DropdownMenu.Item>
-      <DropdownMenu.Item disabled value="profile">
-        <UserIcon />
-        View profile
-      </DropdownMenu.Item>
-      <DropdownMenu.Item disabled value="help">
-        <InfoIcon />
-        Help
-      </DropdownMenu.Item>
-    </DropdownMenu.Content>
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">Open menu</Button>
+    {/snippet}
+
+    <DropdownMenu.Item onSelect={() => (isOpen = true)} value="settings">
+      <GearIcon />
+      Open settings
+    </DropdownMenu.Item>
+    <DropdownMenu.Item disabled value="profile">
+      <UserIcon />
+      View profile
+    </DropdownMenu.Item>
+    <DropdownMenu.Item disabled value="help">
+      <InfoIcon />
+      Help
+    </DropdownMenu.Item>
   </DropdownMenu>
-  <Dialog.Root
+  <Dialog
+    description="Adjust preferences without leaving your current context."
     onOpenChange={(details: { open: boolean }) => {
       isOpen = details.open;
     }}
     open={isOpen}
+    title="Settings"
   >
-    <Dialog.Content>
-      <Dialog.Header>
-        <Dialog.Title>Settings</Dialog.Title>
-        <Dialog.Description>
-          Adjust preferences without leaving your current context.
-        </Dialog.Description>
-      </Dialog.Header>
-      <Dialog.Body>
-        <p class={styles.description()}>
-          You can open dialogs from menu items using the onSelect handler — the
-          menu closes, then the dialog opens above the page.
-        </p>
-      </Dialog.Body>
-      <Dialog.Footer>
-        <Dialog.CloseTrigger>
-          <Button variant="outline">Cancel</Button>
-        </Dialog.CloseTrigger>
-        <Dialog.CloseTrigger>
-          <Button>Save</Button>
-        </Dialog.CloseTrigger>
-      </Dialog.Footer>
-    </Dialog.Content>
-  </Dialog.Root>
+    {#snippet actions()}
+      <Dialog.CloseTrigger>
+        {#snippet asChild(props)}
+          <Button {...props()} variant="outline">Cancel</Button>
+        {/snippet}
+      </Dialog.CloseTrigger>
+      <Dialog.CloseTrigger>
+        {#snippet asChild(props)}
+          <Button {...props()}>Save</Button>
+        {/snippet}
+      </Dialog.CloseTrigger>
+    {/snippet}
+
+    <p class={styles.description()}>
+      You can open dialogs from menu items using the onSelect handler — the menu
+      closes, then the dialog opens above the page.
+    </p>
+  </Dialog>
 </div>

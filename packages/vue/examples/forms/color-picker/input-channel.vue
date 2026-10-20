@@ -9,7 +9,7 @@ const hexValue = parseColor("#10B981").toString("hex");
 
 <template>
   <div class="flex flex-col gap-2">
-    <ColorPicker class="w-full" format="rgba" :default-value="rgbaValue">
+    <ColorPicker.Root class="w-full" format="rgba" :default-value="rgbaValue">
       <ColorPicker.View format="rgba">
         <Field orientation="horizontal">
           <Field.Label>RGB</Field.Label>
@@ -25,8 +25,8 @@ const hexValue = parseColor("#10B981").toString("hex");
           <ColorPicker.SwatchPreview class="size-6" />
         </Field>
       </ColorPicker.View>
-    </ColorPicker>
-    <ColorPicker class="w-full" format="hsba" :default-value="hsbaValue">
+    </ColorPicker.Root>
+    <ColorPicker.Root class="w-full" format="hsba" :default-value="hsbaValue">
       <ColorPicker.View format="hsba">
         <Field orientation="horizontal">
           <Field.Label>HSB</Field.Label>
@@ -42,8 +42,8 @@ const hexValue = parseColor("#10B981").toString("hex");
           <ColorPicker.SwatchPreview class="size-6" />
         </Field>
       </ColorPicker.View>
-    </ColorPicker>
-    <ColorPicker class="w-full" format="hsla" :default-value="hslaValue">
+    </ColorPicker.Root>
+    <ColorPicker.Root class="w-full" format="hsla" :default-value="hslaValue">
       <ColorPicker.View format="hsla">
         <Field orientation="horizontal">
           <Field.Label>HSL</Field.Label>
@@ -59,8 +59,8 @@ const hexValue = parseColor("#10B981").toString("hex");
           <ColorPicker.SwatchPreview class="size-6" />
         </Field>
       </ColorPicker.View>
-    </ColorPicker>
-    <ColorPicker class="w-full items-center" :default-value="hexValue">
+    </ColorPicker.Root>
+    <ColorPicker.Root class="w-full items-center" :default-value="hexValue">
       <Field.Label>Hex</Field.Label>
       <Field orientation="horizontal">
         <ColorPicker.Control class="min-w-0 flex-1">
@@ -73,6 +73,6 @@ const hexValue = parseColor("#10B981").toString("hex");
           <ColorPicker.SwatchPreview class="size-6" />
         </ColorPicker.Control>
       </Field>
-    </ColorPicker>
+    </ColorPicker.Root>
   </div>
 </template>

@@ -1,40 +1,22 @@
 <script lang="ts">
-  import { Portal, Presence } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useActionBar } from "./action-bar.context";
 
   let {
-    "aria-labelledby": ariaLabelledby,
     class: className,
     children,
     ...rest
   }: HTMLAttributes<HTMLDivElement> = $props();
   const ctx = useActionBar();
-  const placement = $derived(ctx.positioning.placement);
-  const gutter = $derived(ctx.positioning.gutter);
 </script>
 
-<Portal>
-  <Presence
-    class={ctx.slots.positioner({ placement })}
-    data-part="positioner"
-    data-placement={placement}
-    data-scope="action-bar"
-    lazyMount={ctx.lazyMount}
-    present={ctx.isOpen}
-    style={gutter ? `--gutter: ${gutter}` : undefined}
-    unmountOnExit={ctx.unmountOnExit}
-  >
-    <div
-      {...rest}
-      aria-labelledby={ariaLabelledby}
-      class={ctx.slots.content({ class: cn(className) })}
-      data-part="content"
-      data-scope="action-bar"
-      role="toolbar"
-    >
-      {@render children?.()}
-    </div>
-  </Presence>
-</Portal>
+<div
+  role="toolbar"
+  {...rest}
+  class={ctx.slots.content({ class: cn(className) })}
+  data-part="content"
+  data-scope="action-bar"
+>
+  {@render children?.()}
+</div>

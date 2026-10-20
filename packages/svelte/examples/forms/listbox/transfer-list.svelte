@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
   import { Button, Item, Listbox } from "@pisagor/svelte";
-  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
+  import { CaretLeftIcon, CaretRightIcon, CheckIcon } from "phosphor-svelte";
 
   let available = $state(["Brazil", "Ireland"]);
   let selected = $state<string[]>(["Mexico"]);
@@ -46,11 +46,14 @@
         value={availableValue}
       >
         <Listbox.Content>
-          <Listbox.ItemGroup heading="Available">
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>Available</Listbox.ItemGroupLabel>
             {#each availableCollection.items as item}
               <Listbox.Item {item}>
                 <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             {/each}
           </Listbox.ItemGroup>
@@ -91,11 +94,14 @@
         value={selectedValue}
       >
         <Listbox.Content>
-          <Listbox.ItemGroup heading="Selected">
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>Selected</Listbox.ItemGroupLabel>
             {#each selectedCollection.items as item}
               <Listbox.Item {item}>
                 <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
+                <Listbox.ItemIndicator>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
               </Listbox.Item>
             {/each}
           </Listbox.ItemGroup>

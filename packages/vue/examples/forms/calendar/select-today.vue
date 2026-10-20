@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Calendar, Card } from "@pisagor/vue";
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import { Button, Calendar, Card } from "@pisagor/vue";
 </script>
 
 <template>
@@ -7,10 +8,18 @@ import { Calendar, Card } from "@pisagor/vue";
     <Card class="[--space:--spacing(2)]">
       <Card.Content>
         <Calendar.ViewControl>
-          <Calendar.PrevTrigger />
+          <Calendar.PrevTrigger as-child>
+            <Button size="icon-md" variant="ghost">
+              <PhCaretLeft aria-hidden class="rtl:rotate-180" />
+            </Button>
+          </Calendar.PrevTrigger>
           <Calendar.MonthSelect />
           <Calendar.YearSelect />
-          <Calendar.NextTrigger />
+          <Calendar.NextTrigger as-child>
+            <Button size="icon-md" variant="ghost">
+              <PhCaretRight aria-hidden class="rtl:rotate-180" />
+            </Button>
+          </Calendar.NextTrigger>
         </Calendar.ViewControl>
         <Calendar.Table>
           <Calendar.WeekDays />

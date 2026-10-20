@@ -4,7 +4,7 @@ import { Button, Editable, Input } from "@pisagor/react";
 export function Sizes() {
   return (
     <div className="flex flex-col gap-2">
-      <Editable defaultValue="Editable content">
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input asChild>
             <Input size="sm" />
@@ -23,8 +23,8 @@ export function Sizes() {
             </Button>
           </Editable.SubmitTrigger>
         </Editable.Control>
-      </Editable>
-      <Editable defaultValue="Editable content">
+      </Editable.Root>
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input asChild>
             <Input size="md" />
@@ -43,8 +43,8 @@ export function Sizes() {
             </Button>
           </Editable.SubmitTrigger>
         </Editable.Control>
-      </Editable>
-      <Editable defaultValue="Editable content">
+      </Editable.Root>
+      <Editable.Root defaultValue="Editable content">
         <Editable.Area>
           <Editable.Input asChild>
             <Input size="lg" />
@@ -63,7 +63,7 @@ export function Sizes() {
             </Button>
           </Editable.SubmitTrigger>
         </Editable.Control>
-      </Editable>
+      </Editable.Root>
     </div>
   );
 }

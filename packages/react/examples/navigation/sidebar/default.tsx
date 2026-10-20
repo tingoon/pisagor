@@ -1,6 +1,7 @@
 import {
   HouseIcon,
   MagnifyingGlassIcon,
+  SidebarSimpleIcon,
   UserIcon,
 } from "@phosphor-icons/react";
 import { Button, Sidebar } from "@pisagor/react";
@@ -56,7 +57,9 @@ export function Default() {
       </Sidebar>
       <Sidebar.Inset>
         <header className="flex h-12 items-center gap-2 border-b px-4">
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <span className="text-sm font-medium">Dashboard</span>
         </header>
         <div className="flex flex-1 flex-col gap-2 p-4">

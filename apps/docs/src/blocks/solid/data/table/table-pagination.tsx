@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Pagination, Select, Table } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Pagination, Select, Table } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createMemo, createSignal, For } from "solid-js";
 import { tablePaginationBlock } from "#/styles/recipes/table";
@@ -50,7 +51,7 @@ export function TablePagination(props: TablePaginationProps) {
             value={[String(pageSize())]}
           />
         </div>
-        <Pagination
+        <Pagination.Root
           class={styles.pagination()}
           count={users.length}
           onPageChange={({ page: next }) => setPage(next)}
@@ -58,9 +59,23 @@ export function TablePagination(props: TablePaginationProps) {
           page={page()}
           pageSize={pageSize()}
         >
-          <Pagination.PrevTrigger />
-          <Pagination.NextTrigger />
-        </Pagination>
+          <Pagination.PrevTrigger
+            asChild={(triggerProps) => (
+              <Button {...triggerProps()} variant="ghost">
+                <CaretLeftIcon />
+                Previous
+              </Button>
+            )}
+          />
+          <Pagination.NextTrigger
+            asChild={(triggerProps) => (
+              <Button {...triggerProps()} variant="ghost">
+                Next
+                <CaretRightIcon />
+              </Button>
+            )}
+          />
+        </Pagination.Root>
       </div>
     </div>
   );

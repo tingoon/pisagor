@@ -26,4 +26,4 @@
   ];
 </script>
 
-<Command.Shorthand {items} placeholder="Search…" />
+<Command {items} placeholder="Search…" />

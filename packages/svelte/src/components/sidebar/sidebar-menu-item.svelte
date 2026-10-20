@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { cn } from "@pisagor/utils";
-  import type { HTMLAttributes } from "svelte/elements";
-  import { useSidebar } from "./sidebar.context";
+  import type { HTMLLiAttributes } from "svelte/elements";
+  import { withContext } from "./sidebar.context";
 
-  type Props = HTMLAttributes<HTMLLIElement> & {
-    children?: import("svelte").Snippet;
-  };
-
-  let { class: className, children, ...rest }: Props = $props();
-  const ctx = useSidebar();
+  let { children, ...rest }: HTMLLiAttributes = $props();
+  const part = withContext(() => rest, {
+    defaultProps: { "data-sidebar": "menu-item" },
+    name: "MenuItem",
+  });
 </script>
 
-<li
-  {...rest}
-  class={ctx.slots.menuItem({ class: cn(className) })}
-  data-part="menu-item"
-  data-scope="sidebar"
-  data-sidebar="menu-item"
->
+<li {...part.props}>
   {@render children?.()}
 </li>

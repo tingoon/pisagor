@@ -1,6 +1,4 @@
-import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Command } from "@pisagor/solid";
-import { For } from "solid-js";
 
 export function Shortcuts() {
   const initialItems = [
@@ -11,32 +9,6 @@ export function Shortcuts() {
     { label: "Undo", shortcut: "⌘Z", value: "undo" },
     { label: "Find", shortcut: "⌘F", value: "find" },
   ];
-  const filterFn = useFilter({ sensitivity: "base" });
 
-  const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
-    initialItems,
-  });
-
-  return (
-    <Command
-      collection={collection()}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input placeholder="Search..." />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          <For each={collection().items}>
-            {(item) => (
-              <Command.Item item={item}>
-                {item.label}
-                <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-              </Command.Item>
-            )}
-          </For>
-        </Command.List>
-      </Command.Content>
-    </Command>
-  );
+  return <Command items={initialItems} placeholder="Search..." />;
 }

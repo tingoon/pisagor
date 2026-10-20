@@ -1,35 +1,5 @@
-import { Button, Editable } from "@pisagor/solid";
+import { Editable } from "@pisagor/solid";
 
 export function Default() {
-  return (
-    <Editable defaultValue="Click to edit">
-      <Editable.Area>
-        <Editable.Preview />
-        <Editable.Input />
-      </Editable.Area>
-      <Editable.Control>
-        <Editable.EditTrigger
-          asChild={(props) => (
-            <Button {...props()} size="sm" variant="ghost">
-              Edit
-            </Button>
-          )}
-        />
-        <Editable.CancelTrigger
-          asChild={(props) => (
-            <Button {...props()} size="sm" variant="ghost">
-              Cancel
-            </Button>
-          )}
-        />
-        <Editable.SubmitTrigger
-          asChild={(props) => (
-            <Button {...props()} size="sm">
-              Save
-            </Button>
-          )}
-        />
-      </Editable.Control>
-    </Editable>
-  );
+  return <Editable placeholder="Click to edit" />;
 }

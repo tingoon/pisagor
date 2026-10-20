@@ -5,7 +5,6 @@
   } from "@ark-ui/svelte";
   import type { QrCodeRootContract } from "@pisagor/contracts";
   import { withProvider } from "./qr-code.context";
-  import QrCodeFrame from "./qr-code-frame.svelte";
 
   type Props = ArkRootProps & QrCodeRootContract;
 
@@ -14,9 +13,5 @@
 </script>
 
 <QrCodePrimitive.Root {...root.props}>
-  {#if children}
-    {@render children()}
-  {:else}
-    <QrCodeFrame />
-  {/if}
+  {@render children?.()}
 </QrCodePrimitive.Root>

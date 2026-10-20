@@ -1,3 +1,4 @@
+import CarouselAutoplayIndicator from "./carousel-autoplay-indicator.svelte";
 import CarouselAutoplayTrigger from "./carousel-autoplay-trigger.svelte";
 import CarouselControl from "./carousel-control.svelte";
 import CarouselIndicator from "./carousel-indicator.svelte";
@@ -10,7 +11,15 @@ import CarouselProgressText from "./carousel-progress-text.svelte";
 import CarouselRoot from "./carousel-root.svelte";
 import CarouselShorthand from "./carousel-shorthand.svelte";
 
+export type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+} from "@ark-ui/svelte";
+
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayIndicator: CarouselAutoplayIndicator,
   AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,

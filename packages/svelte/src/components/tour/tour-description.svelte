@@ -3,20 +3,12 @@
     Tour as TourPrimitive,
     type TourDescriptionProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTourContext } from "./tour.context";
+  import { withContext } from "./tour.context";
 
-  let { class: className, children, ...rest }: TourDescriptionProps = $props();
-  const ctx = useTourContext();
+  let { children, ...rest }: TourDescriptionProps = $props();
+  const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<TourPrimitive.Description
-  {...rest}
-  class={ctx.slots.description({ class: cn(className) })}
->
-  {#if children}
-    {@render children()}
-  {:else}
-    {ctx.tour().step?.description}
-  {/if}
+<TourPrimitive.Description {...part.props}>
+  {@render children?.()}
 </TourPrimitive.Description>

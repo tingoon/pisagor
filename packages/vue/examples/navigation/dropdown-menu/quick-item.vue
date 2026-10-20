@@ -11,40 +11,45 @@ import { Button, DropdownMenu } from "@pisagor/vue";
 </script>
 
 <template>
-  <DropdownMenu>
+  <DropdownMenu.Root>
     <DropdownMenu.Trigger as-child>
       <Button variant="outline">Open</Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content class="w-44">
-      <DropdownMenu.ItemGroup heading="Actions">
-        <DropdownMenu.Item value="edit">
-          <PhPencil />
-          Edit
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="add-action">
-          <PhArrowClockwise />
-          Add Action
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="key-point">
-          <PhHand />
-          Key Point
-        </DropdownMenu.Item>
-        <DropdownMenu.Item value="comment">
-          <PhChatCircle />
-          Comment
-        </DropdownMenu.Item>
-      </DropdownMenu.ItemGroup>
-      <DropdownMenu.Separator />
-      <div class="flex w-full gap-1">
-        <DropdownMenu.QuickItem class="min-w-0 flex-1" value="copy">
-          <PhCopy />
-          Copy
-        </DropdownMenu.QuickItem>
-        <DropdownMenu.QuickItem class="min-w-0 flex-1" value="share">
-          <PhShare />
-          Share
-        </DropdownMenu.QuickItem>
-      </div>
-    </DropdownMenu.Content>
-  </DropdownMenu>
+    <Teleport to="body">
+      <DropdownMenu.Positioner>
+        <DropdownMenu.Content class="w-44">
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.ItemGroupLabel>Actions</DropdownMenu.ItemGroupLabel>
+            <DropdownMenu.Item value="edit">
+              <PhPencil />
+              Edit
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="add-action">
+              <PhArrowClockwise />
+              Add Action
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="key-point">
+              <PhHand />
+              Key Point
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="comment">
+              <PhChatCircle />
+              Comment
+            </DropdownMenu.Item>
+          </DropdownMenu.ItemGroup>
+          <DropdownMenu.Separator />
+          <div class="flex w-full gap-1">
+            <DropdownMenu.QuickItem class="min-w-0 flex-1" value="copy">
+              <PhCopy />
+              Copy
+            </DropdownMenu.QuickItem>
+            <DropdownMenu.QuickItem class="min-w-0 flex-1" value="share">
+              <PhShare />
+              Share
+            </DropdownMenu.QuickItem>
+          </div>
+        </DropdownMenu.Content>
+      </DropdownMenu.Positioner>
+    </Teleport>
+  </DropdownMenu.Root>
 </template>

@@ -7,21 +7,10 @@ import { Steps } from "@pisagor/solid";
 ## Anatomy
 
 ```tsx
-<Steps>
-  <Steps.List>
-    <Steps.Item>
-      <Steps.Trigger>
-        <Steps.Indicator />
-      </Steps.Trigger>
-      <Steps.Separator />
-    </Steps.Item>
-  </Steps.List>
-  <Steps.Content />
-  <Steps.CompletedContent />
-  <Steps.PrevTrigger />
-  <Steps.NextTrigger />
-</Steps>
+<Steps items={[{ title: "Account", content: "…" }]} completedContent="Done" />
 ```
+
+The shorthand derives `count` from `items` and renders the list, each step's content, the completed content, and localized back/next buttons (`showControls={false}` hides them). Compose `Steps.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

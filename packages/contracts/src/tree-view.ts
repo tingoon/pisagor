@@ -1,8 +1,12 @@
 import type {
   TreeViewBranchRecipeFn,
+  TreeViewBranchRecipeSlot,
   TreeViewItemRecipeFn,
+  TreeViewItemRecipeSlot,
   TreeViewRecipeFn,
+  TreeViewRecipeSlot,
 } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared TreeView root contract: recipe override. Used by compound roots;
@@ -41,4 +45,17 @@ export interface TreeViewItemRootContract {
    * @defaultValue treeViewItemRecipe
    */
   recipe?: TreeViewItemRecipeFn;
+}
+
+/**
+ * TreeView shorthand contract. Compose with `TreeViewRootContract` / framework
+ * `TreeViewRootProps`.
+ */
+export interface TreeViewContract {
+  /** Per-slot class name overrides for each branch. */
+  branchClassNames?: SlotClassNames<TreeViewBranchRecipeSlot>;
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<TreeViewRecipeSlot>;
+  /** Per-slot class name overrides for item parts (icons, text, checkbox). */
+  itemClassNames?: SlotClassNames<TreeViewItemRecipeSlot>;
 }

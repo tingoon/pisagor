@@ -1,8 +1,8 @@
 <script lang="ts">
   import { cn } from "@pisagor/utils";
-  import { SidebarSimpleIcon } from "phosphor-svelte";
   import type { ComponentProps } from "svelte";
   import Button from "../button.svelte";
+  import { useLocale } from "../provider/context";
   import { useSidebar } from "./sidebar.context";
 
   type Props = Omit<ComponentProps<typeof Button>, "size" | "variant"> & {
@@ -10,7 +10,12 @@
     variant?: ComponentProps<typeof Button>["variant"];
   };
 
+  /**
+   * Toggles the sidebar; localized default `aria-label`. Pass your own icon as
+   * children.
+   */
   let {
+    "aria-label": ariaLabel,
     class: className,
     onclick,
     children,
@@ -19,6 +24,7 @@
     ...rest
   }: Props = $props();
 
+  const { m } = useLocale();
   const ctx = useSidebar();
 
   function handleClick(
@@ -30,6 +36,7 @@
 </script>
 
 <Button
+  aria-label={ariaLabel ?? m("sidebar.toggle")}
   {...rest}
   class={ctx.slots.trigger({ class: cn(className) })}
   data-part="trigger"
@@ -39,10 +46,5 @@
   {size}
   {variant}
 >
-  {#if children}
-    {@render children()}
-  {:else}
-    <SidebarSimpleIcon class={ctx.slots.triggerIcon()} />
-    <span class={ctx.slots.triggerLabel()}>Toggle sidebar</span>
-  {/if}
+  {@render children?.()}
 </Button>

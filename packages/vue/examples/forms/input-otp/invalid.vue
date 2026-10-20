@@ -10,10 +10,10 @@ const isCorrect = computed(() => value.value.join("") === "1234");
 </script>
 
 <template>
-  <InputOTP :invalid="!isCorrect" :value="value" @value-change="onValueChange">
-    <InputOTP.Slot :index="0" />
-    <InputOTP.Slot :index="1" />
-    <InputOTP.Slot :index="2" />
-    <InputOTP.Slot :index="3" />
-  </InputOTP>
+  <InputOTP
+    :invalid="!isCorrect"
+    :value="value"
+    @value-change="onValueChange"
+    :length="4"
+  />
 </template>

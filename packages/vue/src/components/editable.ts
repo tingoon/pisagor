@@ -3,12 +3,19 @@ import {
   type EditableRootProps as EditableRootPrimitiveProps,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue";
-import type { EditableRootContract } from "@pisagor/contracts";
+import { PhCheck, PhX } from "@phosphor-icons/vue";
+import type {
+  EditableContract,
+  EditableRootContract,
+} from "@pisagor/contracts";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType } from "vue";
+import { type Component, defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
-import type { ButtonProps } from "./button";
+import { Button, type ButtonProps } from "./button";
+import { Input as TextInput, type InputProps } from "./input";
+import { useLocale } from "./provider/context";
+import { Textarea } from "./textarea";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -84,6 +91,19 @@ export interface EditablePreviewProps {
    * @defaultValue buttonRecipe
    */
   buttonRecipe?: typeof buttonRecipe;
+}
+export interface EditableShorthandProps
+  extends EditableProps, EditableContract {
+  /** Render a `Textarea` instead of a single-line `Input`. */
+  multiline?: boolean;
+  /**
+   * Whether to render cancel and submit buttons.
+   *
+   * @defaultValue true
+   */
+  showControls?: boolean;
+  /** Input and preview size. */
+  size?: InputProps["size"];
 }
 // #endregion
 
@@ -170,12 +190,9 @@ const Area = withContext(EditablePrimitive.Area, {
   name: "Area",
 });
 
-const Input = defineComponent({
-  inheritAttrs: false,
-  name: "Editable.Input",
-  setup(_, { attrs, slots }) {
-    return () => h(EditablePrimitive.Input as ArkPart, { ...attrs }, slots);
-  },
+// Cast: the Ark input props union is too complex for `withContext` to infer.
+const Input = withContext(EditablePrimitive.Input as Component, {
+  name: "Input",
 });
 
 const Preview = defineComponent({
@@ -241,40 +258,99 @@ const Control = withContext(EditablePrimitive.Control, {
   name: "Control",
 });
 
-const EditTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "Editable.EditTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(EditablePrimitive.EditTrigger as ArkPart, { ...attrs }, slots);
-  },
+const EditTrigger = withContext(EditablePrimitive.EditTrigger, {
+  name: "EditTrigger",
 });
 
-const CancelTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "Editable.CancelTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(EditablePrimitive.CancelTrigger as ArkPart, { ...attrs }, slots);
-  },
+const CancelTrigger = withContext(EditablePrimitive.CancelTrigger, {
+  name: "CancelTrigger",
 });
 
-const SubmitTrigger = defineComponent({
+const SubmitTrigger = withContext(EditablePrimitive.SubmitTrigger, {
+  name: "SubmitTrigger",
+});
+// #endregion
+
+// #region Shorthand
+const iconSize = { lg: "icon-lg", md: "icon-md", sm: "icon-sm" } as const;
+
+export const EditableShorthand = defineComponent({
   inheritAttrs: false,
-  name: "Editable.SubmitTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(EditablePrimitive.SubmitTrigger as ArkPart, { ...attrs }, slots);
+  name: "Editable",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<EditableShorthandProps["classNames"]>,
+    },
+    multiline: { default: false, type: Boolean },
+    showControls: { default: true, type: Boolean },
+    size: {
+      default: "md",
+      type: String as PropType<EditableShorthandProps["size"]>,
+    },
+  },
+  setup(props, { attrs }) {
+    const { m } = useLocale();
+
+    return () => {
+      const classNames = props.classNames;
+      const size = props.size ?? "md";
+      const buttonSize = iconSize[size as keyof typeof iconSize] ?? "icon-md";
+
+      return h(Root as ArkPart, { ...attrs }, () => [
+        h(Area, { class: classNames?.area }, () => [
+          h(Input, { asChild: true, class: classNames?.input }, () =>
+            props.multiline
+              ? h(Textarea as ArkPart)
+              : h(TextInput as ArkPart, { size }),
+          ),
+          h(Preview, { class: classNames?.preview, size }),
+        ]),
+        props.showControls
+          ? h(Control, { class: classNames?.control }, () => [
+              h(
+                CancelTrigger,
+                { asChild: true, class: classNames?.cancelTrigger },
+                () =>
+                  h(
+                    Button,
+                    {
+                      "aria-label": m("editable.cancel"),
+                      size: buttonSize,
+                      variant: "outline",
+                    },
+                    () => h(PhX),
+                  ),
+              ),
+              h(
+                SubmitTrigger,
+                { asChild: true, class: classNames?.submitTrigger },
+                () =>
+                  h(
+                    Button,
+                    {
+                      "aria-label": m("editable.submit"),
+                      size: buttonSize,
+                      variant: "outline",
+                    },
+                    () => h(PhCheck),
+                  ),
+              ),
+            ])
+          : null,
+      ]);
+    };
   },
 });
 // #endregion
 
-export const Editable = Object.assign(Root, {
+export const Editable = Object.assign(EditableShorthand, {
   Area,
   CancelTrigger,
   Control,
   EditTrigger,
   Input,
   Preview,
+  Root,
   SubmitTrigger,
 });

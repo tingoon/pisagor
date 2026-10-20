@@ -10,7 +10,7 @@
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
   <Card.Content>
-    <Timer
+    <Timer.Root
       class="items-center justify-center px-10"
       countdown
       startMs={25 * 60 * 1000}
@@ -67,6 +67,6 @@
           <GearIcon />
         </Button>
       </Timer.Control>
-    </Timer>
+    </Timer.Root>
   </Card.Content>
 </Card>

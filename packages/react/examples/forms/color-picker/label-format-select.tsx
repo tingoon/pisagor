@@ -2,7 +2,7 @@ import { ColorPicker, Input, parseColor } from "@pisagor/react";
 
 export function LabelFormatSelect() {
   return (
-    <ColorPicker
+    <ColorPicker.Root
       className="w-full"
       defaultValue={parseColor("#0485F7").toString("rgba")}
     >
@@ -14,6 +14,6 @@ export function LabelFormatSelect() {
         </ColorPicker.ChannelInput>
         <ColorPicker.SwatchPreview className="size-6" />
       </ColorPicker.Control>
-    </ColorPicker>
+    </ColorPicker.Root>
   );
 }

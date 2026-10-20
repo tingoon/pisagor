@@ -1,9 +1,26 @@
 ## Anatomy
 
 ```tsx
-<TagsInput>
-  <TagsInput.Context>
-    {({ value }) => value.map((tag, index) => <TagsInput.Item />)}
-  </TagsInput.Context>
-</TagsInput>
+<TagsInput.Root>
+  <TagsInput.Label />
+  <TagsInput.Control>
+    <TagsInput.Context>
+      {({ value }) =>
+        value.map((tag, index) => (
+          <TagsInput.Item>
+            <TagsInput.ItemPreview>
+              <TagsInput.ItemText />
+              <TagsInput.ItemDeleteTrigger />
+            </TagsInput.ItemPreview>
+            <TagsInput.ItemInput />
+          </TagsInput.Item>
+        ))
+      }
+    </TagsInput.Context>
+    <TagsInput.Input />
+    <TagsInput.ClearTrigger />
+  </TagsInput.Control>
+</TagsInput.Root>
 ```
+
+Parts map 1:1 to Ark. Use `asChild` to render `Control` as an `InputGroup` and pass your own delete/clear icons; the `TagsInput` shorthand does this for you.

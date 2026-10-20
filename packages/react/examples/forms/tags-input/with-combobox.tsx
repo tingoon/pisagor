@@ -4,7 +4,8 @@ import {
   useListCollection,
   useTagsInput,
 } from "@ark-ui/react";
-import { Combobox, Field, TagsInput } from "@pisagor/react";
+import { XIcon } from "@phosphor-icons/react";
+import { Combobox, Field, InputGroup, TagsInput } from "@pisagor/react";
 import { useId } from "react";
 
 export function WithCombobox() {
@@ -52,20 +53,36 @@ export function WithCombobox() {
         value={[]}
       >
         <TagsInput.RootProvider className="w-full" value={tagsInput}>
-          <TagsInput.Context>
-            {({ value }) => (
-              <>
-                {value.map((tag, index) => (
-                  <TagsInput.Item index={index} key={tag} value={tag}>
-                    {tag}
-                  </TagsInput.Item>
-                ))}
-                <Combobox.Input asChild>
-                  <TagsInput.Input placeholder="Search framework" />
-                </Combobox.Input>
-              </>
-            )}
-          </TagsInput.Context>
+          <TagsInput.Control asChild>
+            <InputGroup>
+              <TagsInput.Context>
+                {({ value }) => (
+                  <>
+                    {value.map((tag, index) => (
+                      <TagsInput.Item index={index} key={tag} value={tag}>
+                        <TagsInput.ItemPreview>
+                          <TagsInput.ItemText>{tag}</TagsInput.ItemText>
+                          <TagsInput.ItemDeleteTrigger asChild>
+                            <InputGroup.Button size="icon-xs" variant="ghost">
+                              <XIcon aria-hidden />
+                            </InputGroup.Button>
+                          </TagsInput.ItemDeleteTrigger>
+                        </TagsInput.ItemPreview>
+                        <TagsInput.ItemInput asChild>
+                          <InputGroup.Input />
+                        </TagsInput.ItemInput>
+                      </TagsInput.Item>
+                    ))}
+                    <Combobox.Input asChild>
+                      <TagsInput.Input asChild>
+                        <InputGroup.Input placeholder="Search framework" />
+                      </TagsInput.Input>
+                    </Combobox.Input>
+                  </>
+                )}
+              </TagsInput.Context>
+            </InputGroup>
+          </TagsInput.Control>
         </TagsInput.RootProvider>
         <Portal>
           <Combobox.Positioner>

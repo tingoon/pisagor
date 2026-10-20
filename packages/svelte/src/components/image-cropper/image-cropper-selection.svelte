@@ -1,39 +1,14 @@
 <script lang="ts">
   import {
     ImageCropper as ImageCropperPrimitive,
-    type ImageCropperSelectionProps as ArkSelectionProps,
+    type ImageCropperSelectionProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./image-cropper.context";
-  import ImageCropperGrid from "./image-cropper-grid.svelte";
-  import ImageCropperHandle from "./image-cropper-handle.svelte";
+  import { withContext } from "./image-cropper.context";
 
-  type Props = ArkSelectionProps & {
-    axis?: "horizontal" | "vertical" | "both";
-  };
-
-  let { axis = "both", children, class: className, ...rest }: Props = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ImageCropperSelectionProps = $props();
+  const part = withContext(() => rest, { name: "Selection" });
 </script>
 
-<ImageCropperPrimitive.Selection
-  {...rest}
-  class={slots.selection({ class: cn(className) })}
->
+<ImageCropperPrimitive.Selection {...part.props}>
   {@render children?.()}
-  {#if axis === "horizontal" || axis === "both"}
-    <ImageCropperGrid axis="horizontal" />
-  {/if}
-  {#if axis === "vertical" || axis === "both"}
-    <ImageCropperGrid axis="vertical" />
-  {/if}
-  <ImageCropperHandle position="n" />
-  <ImageCropperHandle position="e" />
-  <ImageCropperHandle position="s" />
-  <ImageCropperHandle position="w" />
-  <ImageCropperHandle position="ne" />
-  <ImageCropperHandle position="se" />
-  <ImageCropperHandle position="sw" />
-  <ImageCropperHandle position="nw" />
 </ImageCropperPrimitive.Selection>

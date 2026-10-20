@@ -10,6 +10,10 @@ export const passwordInputRecipe = tv({
       "in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
     ],
+    indicator: [],
+    input: [],
+    label: [],
+    visibilityTrigger: [],
   },
 });
 

@@ -1,14 +1,17 @@
 ## Anatomy
 
 ```tsx
-<Editable>
+<Editable.Root>
   <Editable.Area>
     <Editable.Input />
     <Editable.Preview />
   </Editable.Area>
   <Editable.Control>
+    <Editable.EditTrigger />
     <Editable.CancelTrigger />
     <Editable.SubmitTrigger />
   </Editable.Control>
-</Editable>
+</Editable.Root>
 ```
+
+Parts map 1:1 to Ark. The `Editable` shorthand renders the input, preview, and cancel/submit buttons for you.

@@ -12,7 +12,7 @@ import {
   onMount,
   splitProps,
 } from "solid-js";
-import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { useLocale } from "./provider/context";
 
@@ -382,7 +382,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       role="button"
       tabIndex={disabled() ? -1 : 0}
     >
-      {local.children ?? <DotsSixVerticalIcon />}
+      {local.children}
     </div>
   );
 }

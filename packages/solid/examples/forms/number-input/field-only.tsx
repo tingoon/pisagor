@@ -1,11 +1,11 @@
-import { NumberInput } from "@pisagor/solid";
+import { Input, NumberInput } from "@pisagor/solid";
 
 export function FieldOnly() {
   return (
-    <NumberInput>
+    <NumberInput.Root>
       <NumberInput.Control>
-        <NumberInput.Input />
+        <NumberInput.Input asChild={(props) => <Input {...props()} />} />
       </NumberInput.Control>
-    </NumberInput>
+    </NumberInput.Root>
   );
 }

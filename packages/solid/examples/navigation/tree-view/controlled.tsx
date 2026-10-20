@@ -1,4 +1,3 @@
-import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
@@ -21,27 +20,6 @@ export function Controlled() {
     },
   });
 
-  const TreeNode = ({ indexPath, node }: NodeProviderProps) => {
-    return (
-      <TreeView.NodeProvider indexPath={indexPath} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} node={child} />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
   const [selected, setSelected] = createSignal<string[]>([]);
 
   const isCorrectSelection = selected()[0] === "components/input.tsx";
@@ -55,13 +33,7 @@ export function Controlled() {
         collection={collection}
         onSelectionChange={({ selectedValue }) => setSelected(selectedValue)}
         selectedValue={selected()}
-      >
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} node={node} />
-          ))}
-        </TreeView.Tree>
-      </TreeView>
+      />
       <p class="text-muted-foreground text-sm">
         {isCorrectSelection ? "✅" : "❌"}
       </p>

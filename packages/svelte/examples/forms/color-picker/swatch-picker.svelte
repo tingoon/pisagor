@@ -4,7 +4,7 @@
   const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 </script>
 
-<ColorPicker inline>
+<ColorPicker.Root inline>
   <ColorPicker.SwatchGroup>
     {#each swatches as color}
       <ColorPicker.SwatchTrigger value={color}>
@@ -14,4 +14,4 @@
       </ColorPicker.SwatchTrigger>
     {/each}
   </ColorPicker.SwatchGroup>
-</ColorPicker>
+</ColorPicker.Root>

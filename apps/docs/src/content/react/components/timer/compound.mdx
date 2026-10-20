@@ -1,7 +1,7 @@
 ## Anatomy
 
 ```tsx
-<Timer>
+<Timer.Root>
   <Timer.Area>
     <Timer.ItemGroup>
       <Timer.Item />
@@ -9,5 +9,10 @@
     </Timer.ItemGroup>
     <Timer.Separator />
   </Timer.Area>
-</Timer>
+  <Timer.Control>
+    <Timer.ActionTrigger />
+  </Timer.Control>
+</Timer.Root>
 ```
+
+Parts map 1:1 to Ark, plus `ItemGroup` / `ItemLabel` regions and the `Start` / `Pause` / `Resume` / `Reset` / `Restart` / `Play` action presets. The `Timer` shorthand renders `units` with localized labels and optional controls for you.

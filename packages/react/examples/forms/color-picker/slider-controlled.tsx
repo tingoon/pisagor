@@ -6,7 +6,7 @@ export function SliderControlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <ColorPicker
+      <ColorPicker.Root
         className="w-full"
         format="hsla"
         inline
@@ -14,9 +14,12 @@ export function SliderControlled() {
         value={color}
       >
         <ColorPicker.View format="hsla">
-          <ColorPicker.ChannelSlider channel="hue" />
+          <ColorPicker.ChannelSlider channel="hue">
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
         </ColorPicker.View>
-      </ColorPicker>
+      </ColorPicker.Root>
       <p className="text-muted-foreground text-center text-sm">{color}</p>
     </div>
   );

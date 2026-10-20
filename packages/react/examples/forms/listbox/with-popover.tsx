@@ -1,5 +1,5 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { CaretUpDownIcon } from "@phosphor-icons/react";
+import { useFilter, useListCollection, Portal } from "@ark-ui/react";
+import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import { Button, Input, Listbox, Popover } from "@pisagor/react";
 import { useState } from "react";
 
@@ -28,39 +28,45 @@ export function WithPopover() {
         setIsOpen(false);
       }}
     >
-      <Popover onOpenChange={({ open }) => setIsOpen(open)} open={isOpen}>
+      <Popover.Root onOpenChange={({ open }) => setIsOpen(open)} open={isOpen}>
         <Popover.Trigger asChild>
           <Button className="justify-between" variant="outline">
             <Listbox.ValueText placeholder="Select framework" />
             <CaretUpDownIcon className="opacity-64" />
           </Button>
         </Popover.Trigger>
-        <Popover.Content className="min-w-64 gap-2 p-1">
-          <Input
-            onChange={(e) => {
-              const value = e.target.value;
-              setSearch(value);
-              filter(value);
-            }}
-            placeholder="Search..."
-            value={search}
-          />
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
+        <Portal>
+          <Popover.Positioner>
+            <Popover.Content className="min-w-64 gap-2 p-1">
+              <Input
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setSearch(value);
+                  filter(value);
+                }}
+                placeholder="Search..."
+                value={search}
+              />
+              <Listbox.Content>
+                {collection.items.map((item) => (
+                  <Listbox.Item item={item} key={item.value}>
+                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                    <Listbox.ItemIndicator>
+                      <CheckIcon />
+                    </Listbox.ItemIndicator>
+                  </Listbox.Item>
+                ))}
 
-            {isEmpty && (
-              <Listbox.Empty>
-                No results found. Try a different search.
-              </Listbox.Empty>
-            )}
-          </Listbox.Content>
-        </Popover.Content>
-      </Popover>
+                {isEmpty && (
+                  <Listbox.Empty>
+                    No results found. Try a different search.
+                  </Listbox.Empty>
+                )}
+              </Listbox.Content>
+            </Popover.Content>
+          </Popover.Positioner>
+        </Portal>
+      </Popover.Root>
     </Listbox.Root>
   );
 }

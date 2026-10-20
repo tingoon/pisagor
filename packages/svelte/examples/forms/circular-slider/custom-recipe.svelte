@@ -14,6 +14,4 @@
   });
 </script>
 
-<CircularSlider recipe={brandCircularSliderRecipe}>
-  <CircularSlider.ValueText suffix="°" />
-</CircularSlider>
+<CircularSlider recipe={brandCircularSliderRecipe} showValue valueSuffix="°" />

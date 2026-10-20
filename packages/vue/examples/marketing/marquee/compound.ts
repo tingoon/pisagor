@@ -26,22 +26,26 @@ export default defineComponent({
   name: "CompoundExample",
   setup() {
     return () =>
-      h(Marquee.Root, null, () =>
-        h(Marquee.Content, null, () =>
-          marqueeIcons.map((IconComponent, index) =>
-            h(Marquee.Item, { key: index }, () =>
-              h(
-                "div",
-                { class: "[--space:--spacing(8)]" },
-                h(Card, null, () =>
-                  h(Card.Content, null, () =>
-                    h(IconComponent, { class: "size-10" }),
+      h(Marquee.Root, null, () => [
+        h(Marquee.Viewport, null, () =>
+          h(Marquee.Content, null, () =>
+            marqueeIcons.map((IconComponent, index) =>
+              h(Marquee.Item, { key: index }, () =>
+                h(
+                  "div",
+                  { class: "[--space:--spacing(8)]" },
+                  h(Card, null, () =>
+                    h(Card.Content, null, () =>
+                      h(IconComponent, { class: "size-10" }),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
         ),
-      );
+        h(Marquee.Edge, { side: "start" }),
+        h(Marquee.Edge, { side: "end" }),
+      ]);
   },
 });

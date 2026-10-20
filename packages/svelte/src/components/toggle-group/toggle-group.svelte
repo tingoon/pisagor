@@ -4,6 +4,7 @@
     ToggleGroupRootContract,
     ToggleGroupContract,
   } from "@pisagor/contracts";
+  import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import ToggleGroupItem from "./toggle-group-item.svelte";
   import ToggleGroupRoot from "./toggle-group-root.svelte";
@@ -17,15 +18,25 @@
       items?: ToggleGroupPresetItem[];
     } & ToggleGroupContract;
 
-  let { items, children, ...rest }: Props = $props();
+  let {
+    class: className,
+    classNames,
+    items,
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
-<ToggleGroupRoot {...rest}>
+<ToggleGroupRoot {...rest} class={cn(classNames?.base, className)}>
   {#if children}
     {@render children()}
   {:else}
     {#each items ?? [] as item (item.value)}
-      <ToggleGroupItem disabled={item.disabled} value={item.value}>
+      <ToggleGroupItem
+        class={classNames?.item}
+        disabled={item.disabled}
+        value={item.value}
+      >
         {item.content}
       </ToggleGroupItem>
     {/each}

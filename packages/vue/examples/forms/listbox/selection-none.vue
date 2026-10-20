@@ -26,7 +26,8 @@ const collection = createListCollection({
         :collection="collection"
       >
         <Listbox.Content>
-          <Listbox.ItemGroup heading="Actions">
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>Actions</Listbox.ItemGroupLabel>
             <Listbox.Item :item="collection.items[0]">
               <div class="flex h-8 items-start justify-start">
                 <PhPlusSquare />
@@ -51,7 +52,8 @@ const collection = createListCollection({
             </Listbox.Item>
           </Listbox.ItemGroup>
           <Separator />
-          <Listbox.ItemGroup heading="Danger zone">
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>Danger zone</Listbox.ItemGroupLabel>
             <Listbox.Item variant="destructive" :item="collection.items[2]">
               <div class="flex h-8 items-start justify-start">
                 <PhTrash />

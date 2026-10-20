@@ -1,72 +1,17 @@
 <script lang="ts">
   import {
     TreeView as TreeViewPrimitive,
-    type TreeViewBranchControlProps as ArkProps,
+    type TreeViewBranchControlProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { FolderIcon, FolderOpenIcon } from "phosphor-svelte";
-  import type { Component } from "svelte";
-  import { useTreeView, useTreeViewBranch } from "./tree-view.context";
-  import TreeViewBranchIndicator from "./tree-view-branch-indicator.svelte";
-  import TreeViewNodeInput from "./tree-view-node-input.svelte";
+  import { withTreeViewContext } from "./tree-view.context";
 
-  type Props = ArkProps & {
-    expandedIcon?: Component | null;
-    icon?: Component | null;
-  };
-
-  let {
-    children,
-    expandedIcon: ExpandedIcon,
-    icon: Icon,
-    class: className,
-    ...rest
-  }: Props = $props();
-  const { slots } = useTreeView();
-  const branch = useTreeViewBranch();
+  let { children, ...rest }: TreeViewBranchControlProps = $props();
+  const part = withTreeViewContext(() => rest, {
+    name: "BranchControl",
+    slot: "control",
+  });
 </script>
 
-<TreeViewPrimitive.BranchControl
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
-  <TreeViewBranchIndicator />
-  <TreeViewPrimitive.NodeContext>
-    {#snippet render(nodeState)}
-      {const state = nodeState()}
-      {#if state.renaming}
-        <TreeViewNodeInput />
-      {:else}
-        <TreeViewPrimitive.BranchText class={branch.slots.title()}>
-          {#if Icon !== null && !state.expanded}
-            <span
-              class="inline-flex"
-              data-part="item-icon"
-              data-scope="tree-view"
-            >
-              {#if Icon}
-                <Icon />
-              {:else}
-                <FolderIcon />
-              {/if}
-            </span>
-          {/if}
-          {#if ExpandedIcon !== null && state.expanded}
-            <span
-              class="inline-flex"
-              data-part="item-icon"
-              data-scope="tree-view"
-            >
-              {#if ExpandedIcon}
-                <ExpandedIcon />
-              {:else}
-                <FolderOpenIcon />
-              {/if}
-            </span>
-          {/if}
-          {@render children?.()}
-        </TreeViewPrimitive.BranchText>
-      {/if}
-    {/snippet}
-  </TreeViewPrimitive.NodeContext>
+<TreeViewPrimitive.BranchControl {...part.props}>
+  {@render children?.()}
 </TreeViewPrimitive.BranchControl>

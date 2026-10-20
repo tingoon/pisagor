@@ -3,15 +3,10 @@
     ImageCropper as ImageCropperPrimitive,
     type ImageCropperGridProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./image-cropper.context";
+  import { withContext } from "./image-cropper.context";
 
-  let { class: className, ...rest }: ImageCropperGridProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let props: ImageCropperGridProps = $props();
+  const part = withContext(() => props, { name: "Grid" });
 </script>
 
-<ImageCropperPrimitive.Grid
-  {...rest}
-  class={slots.grid({ class: cn(className) })}
-/>
+<ImageCropperPrimitive.Grid {...part.props} />

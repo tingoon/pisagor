@@ -7,34 +7,17 @@
     type TreeViewRootProps,
   } from "@ark-ui/svelte";
   import type { TreeViewRootContract } from "@pisagor/contracts";
-  import { treeViewRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import type { Component } from "svelte";
-  import { setTreeViewContext } from "./tree-view.context";
+  import { withTreeViewProvider } from "./tree-view.context";
 
-  type Props = TreeViewRootProps<T> & {
-    fileIcons?: Record<string, Component | null>;
-  } & TreeViewRootContract;
+  type Props = TreeViewRootProps<T> & TreeViewRootContract;
 
-  let {
-    children,
-    fileIcons,
-    recipe = treeViewRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-  setTreeViewContext({
-    get fileIcons() {
-      return fileIcons;
-    },
-    get slots() {
-      return slots;
-    },
+  let { children, ...rest }: Props = $props();
+  const root = withTreeViewProvider(() => rest, {
+    name: "Root",
+    slot: "base",
   });
 </script>
 
-<TreeViewPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<TreeViewPrimitive.Root {...root.props as TreeViewRootProps<T>}>
   {@render children?.()}
 </TreeViewPrimitive.Root>

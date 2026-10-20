@@ -3,175 +3,78 @@ import {
   usePaginationContext,
 } from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import type { PaginationRootContract } from "@pisagor/contracts";
+import type {
+  PaginationContract,
+  PaginationRootContract,
+} from "@pisagor/contracts";
 import { buttonRecipe, paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { useStyles, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
 // #endregion
 
-const PaginationRootBase = withProvider<PaginationRootContract>(
-  PaginationPrimitive.Root,
-  { name: "Root" },
-);
-
 type ArkPart = Parameters<typeof h>[0];
+type PageEntry = { type: "page"; value: number } | { type: "ellipsis" };
 
 // #region Types
+export type PaginationRootProps = PaginationRootContract;
+
+export interface PaginationProps
+  extends PaginationRootProps, PaginationContract {}
+
 export interface PaginationItemLinkProps extends ButtonProps {
+  /** The page number to link to. */
   page?: "previous" | "next" | number;
+  /**
+   * Builds the link URL for a page.
+   *
+   * @defaultValue (page) => `?page=${page}`
+   */
+  getHref?: (page: number) => string;
 }
 
-export interface PaginationRootProps extends PaginationRootContract {
-  class?: unknown;
-}
+export type {
+  PaginationContextProps,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationNextTriggerProps,
+  PaginationPrevTriggerProps,
+} from "@ark-ui/vue";
 // #endregion
 
 // #region Parts
-export const PaginationRoot = defineComponent({
-  inheritAttrs: false,
-  name: "Pagination.Root",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      return h(
-        PaginationRootBase,
-        {
-          ...attrs,
-          class: props.class,
-        },
-        slots.default ??
-          (() => [
-            h(PaginationPrevTrigger),
-            h(PaginationItems),
-            h(PaginationNextTrigger),
-          ]),
-      );
-    };
-  },
+export const PaginationRoot = withProvider<PaginationRootContract>(
+  PaginationPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
+
+export const PaginationPrevTrigger = withContext(
+  PaginationPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
+
+export const PaginationNextTrigger = withContext(
+  PaginationPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
+
+export const PaginationItem = withContext(PaginationPrimitive.Item, {
+  name: "Item",
 });
 
-export const PaginationPrevTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "PaginationPrevTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        PaginationPrimitive.PrevTrigger as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(Button as ArkPart, { variant: "ghost" }, () => [
-            h(PhCaretLeft),
-            slots.default?.() ?? "Previous",
-          ]),
-      );
-  },
+export const PaginationEllipsis = withContext(PaginationPrimitive.Ellipsis, {
+  name: "Ellipsis",
 });
 
-export const PaginationNextTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "PaginationNextTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
-        PaginationPrimitive.NextTrigger as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(Button as ArkPart, { variant: "ghost" }, () => [
-            slots.default?.() ?? "Next",
-            h(PhCaretRight),
-          ]),
-      );
-  },
-});
-
-export const PaginationItem = defineComponent({
-  inheritAttrs: false,
-  name: "Pagination.Item",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      return h(
-        PaginationPrimitive.Item as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(
-            Button as ArkPart,
-            {
-              class: styles.slots.item({ class: cn(props.class) }),
-              size: "icon-md",
-              variant: "ghost",
-            },
-            slots,
-          ),
-      );
-    };
-  },
-});
-
-export const PaginationItems = defineComponent({
-  inheritAttrs: false,
-  name: "PaginationItems",
-  setup(_, { attrs }) {
-    return () =>
-      h(
-        PaginationPrimitive.Context as ArkPart,
-        { ...attrs },
-        {
-          default: ({
-            pages,
-          }: {
-            pages: Array<{ type: string; value?: number }>;
-          }) =>
-            pages.map((page, index) => {
-              if (page.type === "page") {
-                return h(
-                  PaginationItem,
-                  { key: page.value, type: "page", value: page.value },
-                  () => page.value,
-                );
-              }
-
-              const previousPage = [...pages.slice(0, index)]
-                .reverse()
-                .find(
-                  (item: { type: string; value?: number }) =>
-                    item.type === "page",
-                );
-              const nextPage = pages
-                .slice(index + 1)
-                .find(
-                  (item: { type: string; value?: number }) =>
-                    item.type === "page",
-                );
-              const ellipsisKey = `ellipsis-${previousPage?.value ?? "start"}-${nextPage?.value ?? "end"}`;
-
-              return h(PaginationEllipsis, { index, key: ellipsisKey });
-            }),
-        },
-      );
-  },
-});
-
+/** Link styled as a page button; for URL-driven pagination. Not an Ark part. */
 export const PaginationItemLink = defineComponent({
   inheritAttrs: false,
   name: "PaginationItemLink",
@@ -237,37 +140,90 @@ export const PaginationItemLink = defineComponent({
   },
 });
 
-export const PaginationEllipsis = defineComponent({
+// #endregion
+
+// #region Shorthand
+export const PaginationShorthand = defineComponent({
   inheritAttrs: false,
-  name: "Pagination.Ellipsis",
+  name: "Pagination",
   props: {
-    class: {
+    classNames: {
       default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
+      type: Object as PropType<PaginationProps["classNames"]>,
     },
   },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
+  setup(props, { attrs }) {
+    const { m } = useLocale();
 
     return () => {
-      return h(
-        PaginationPrimitive.Ellipsis as ArkPart,
-        {
-          ...attrs,
-          class: styles.slots.ellipsis({ class: cn(props.class) }),
-        },
-        slots.default ?? (() => h(PhDotsThree)),
-      );
+      const classNames = props.classNames;
+
+      return h(PaginationRoot as ArkPart, { ...attrs }, () => [
+        h(
+          PaginationPrevTrigger,
+          { asChild: true, class: classNames?.prevTrigger },
+          () =>
+            h(Button, { variant: "ghost" }, () => [
+              h(PhCaretLeft),
+              m("pagination.previous"),
+            ]),
+        ),
+        h(PaginationPrimitive.Context as ArkPart, null, {
+          default: ({ pages }: { pages: PageEntry[] }) =>
+            pages.map((page, index) => {
+              if (page.type === "page") {
+                return h(
+                  PaginationItem as ArkPart,
+                  {
+                    asChild: true,
+                    class: classNames?.item,
+                    key: page.value,
+                    type: "page",
+                    value: page.value,
+                  },
+                  () =>
+                    h(Button, { size: "icon-md", variant: "ghost" }, () =>
+                      String(page.value),
+                    ),
+                );
+              }
+
+              const previousPage = pages
+                .slice(0, index)
+                .findLast((item) => item.type === "page");
+              const nextPage = pages
+                .slice(index + 1)
+                .find((item) => item.type === "page");
+              const ellipsisKey = `ellipsis-${previousPage?.type === "page" ? previousPage.value : "start"}-${nextPage?.type === "page" ? nextPage.value : "end"}`;
+
+              return h(
+                PaginationEllipsis as ArkPart,
+                { class: classNames?.ellipsis, index, key: ellipsisKey },
+                () => h(PhDotsThree),
+              );
+            }),
+        }),
+        h(
+          PaginationNextTrigger,
+          { asChild: true, class: classNames?.nextTrigger },
+          () =>
+            h(Button, { variant: "ghost" }, () => [
+              m("pagination.next"),
+              h(PhCaretRight),
+            ]),
+        ),
+      ]);
     };
   },
 });
 // #endregion
 
-export const Pagination = Object.assign(PaginationRoot, {
+export const Pagination = Object.assign(PaginationShorthand, {
+  Context: PaginationPrimitive.Context,
   Ellipsis: PaginationEllipsis,
   Item: PaginationItem,
   ItemLink: PaginationItemLink,
-  Items: PaginationItems,
   NextTrigger: PaginationNextTrigger,
   PrevTrigger: PaginationPrevTrigger,
+  Root: PaginationRoot,
 });

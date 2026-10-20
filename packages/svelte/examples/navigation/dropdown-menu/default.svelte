@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { DropdownMenu } from "@pisagor/svelte";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
 </script>
 
 <DropdownMenu>
-  <DropdownMenu.Trigger>Open</DropdownMenu.Trigger>
-  <DropdownMenu.Content>
-    <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
-    <DropdownMenu.Item value="settings">Settings</DropdownMenu.Item>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Item value="logout" variant="destructive"
-      >Log out</DropdownMenu.Item
-    >
-  </DropdownMenu.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+
+  <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
+  <DropdownMenu.Item value="settings">Settings</DropdownMenu.Item>
+  <DropdownMenu.Separator />
+  <DropdownMenu.Item value="logout" variant="destructive"
+    >Log out</DropdownMenu.Item
+  >
 </DropdownMenu>

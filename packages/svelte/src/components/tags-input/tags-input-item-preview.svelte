@@ -3,21 +3,15 @@
     TagsInput as TagsInputPrimitive,
     type TagsInputItemPreviewProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTagsInputItem } from "./tags-input.context";
+  import { withTagsInputItemContext } from "./tags-input.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: TagsInputItemPreviewProps = $props();
-  const styles = useTagsInputItem();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: TagsInputItemPreviewProps = $props();
+  const part = withTagsInputItemContext(() => rest, {
+    name: "ItemPreview",
+    slot: "preview",
+  });
 </script>
 
-<TagsInputPrimitive.ItemPreview
-  {...rest}
-  class={slots.preview({ class: cn(className) })}
->
+<TagsInputPrimitive.ItemPreview {...part.props}>
   {@render children?.()}
 </TagsInputPrimitive.ItemPreview>

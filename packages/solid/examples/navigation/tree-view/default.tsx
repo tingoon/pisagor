@@ -1,70 +1,36 @@
-import {
-  createTreeCollection,
-  type NodeProviderProps,
-  type TreeNodeType,
-  TreeView,
-} from "@pisagor/solid";
-import { For, Show } from "solid-js";
-
-const collection = createTreeCollection<TreeNodeType>({
-  rootNode: {
-    children: [
-      {
-        children: [
-          { id: "app/page.tsx", name: "page.tsx" },
-          { id: "app/layout.tsx", name: "layout.tsx" },
-        ],
-        id: "app",
-        name: "app",
-      },
-      { id: "package.json", name: "package.json" },
-    ],
-    id: "ROOT",
-    name: "",
-  },
-});
-
-function TreeNode(props: NodeProviderProps<TreeNodeType>) {
-  return (
-    <TreeView.NodeProvider {...props}>
-      <Show
-        fallback={
-          <TreeView.Item>
-            <TreeView.ItemText>{props.node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        }
-        when={props.node.children}
-      >
-        {(children) => (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{props.node.name}</TreeView.BranchControl>
-            <TreeView.BranchContent>
-              <For each={children()}>
-                {(child, index) => (
-                  <TreeNode
-                    indexPath={[...props.indexPath, index()]}
-                    node={child}
-                  />
-                )}
-              </For>
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        )}
-      </Show>
-    </TreeView.NodeProvider>
-  );
-}
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 
 export function Default() {
+  const collection = createTreeCollection({
+    rootNode: {
+      children: [
+        {
+          children: [
+            { id: "app/page.tsx", name: "page.tsx" },
+            { id: "app/layout.tsx", name: "layout.tsx" },
+          ],
+          id: "app",
+          name: "app",
+        },
+        {
+          children: [
+            { id: "components/button.tsx", name: "button.tsx" },
+            { id: "components/input.tsx", name: "input.tsx" },
+          ],
+          id: "components",
+          name: "components",
+        },
+        { id: "package.json", name: "package.json" },
+        { id: "readme.md", name: "README.md" },
+      ],
+      id: "ROOT",
+      name: "",
+    },
+  });
+
   return (
     <div>
-      <TreeView collection={collection}>
-        <TreeView.Tree>
-          <For each={collection.rootNode.children}>
-            {(node, index) => <TreeNode indexPath={[index()]} node={node} />}
-          </For>
-        </TreeView.Tree>
-      </TreeView>
+      <TreeView collection={collection} />
     </div>
   );
 }

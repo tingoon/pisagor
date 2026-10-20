@@ -22,20 +22,9 @@ const steps: TourStepType[] = [
 </script>
 
 <template>
-  <Tour :steps="steps">
-    <Tour.Trigger as-child>
+  <Tour :class-names="{ content: '[--space:--spacing(2)]' }" :steps="steps">
+    <template #trigger>
       <Button variant="outline">Open</Button>
-    </Tour.Trigger>
-    <Tour.Content class="[--space:--spacing(2)]">
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Footer>
-        <Tour.PreviousStep />
-        <Tour.NextStep />
-      </Tour.Footer>
-    </Tour.Content>
+    </template>
   </Tour>
 </template>

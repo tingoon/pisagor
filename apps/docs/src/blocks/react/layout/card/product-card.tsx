@@ -10,7 +10,7 @@ export function ProductCard() {
         <Card.Media className={styles.media()} variant="image">
           {/* Image goes here */}
         </Card.Media>
-        <Card.Header description="Soft lines and easy depth for modern living spaces.">
+        <Card.Header>
           <LinkBox.Overlay asChild>
             <Card.Title asChild>
               <a href="https://example.com/products/living-room-sofa">
@@ -18,6 +18,9 @@ export function ProductCard() {
               </a>
             </Card.Title>
           </LinkBox.Overlay>
+          <Card.Description>
+            Soft lines and easy depth for modern living spaces.
+          </Card.Description>
         </Card.Header>
         <Card.Footer className={styles.footer()}>
           <Button className={styles.action()} variant="outline">

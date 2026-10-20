@@ -2,36 +2,35 @@
   import { Button, Field, Input, Sheet } from "@pisagor/svelte";
 </script>
 
-<Sheet>
-  <Sheet.Trigger>
-    <Button variant="outline">Open</Button>
-  </Sheet.Trigger>
-  <Sheet.Content class="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
-    <Sheet.Header>
-      <Sheet.Title>Edit user</Sheet.Title>
-      <Sheet.Description
-        >Make changes to your account here. Click save when you're done.</Sheet.Description
-      >
-    </Sheet.Header>
-    <Sheet.Body>
-      <Field.Group>
-        <Field>
-          <Field.Label>Name</Field.Label>
-          <Input value="Jane Doe" />
-        </Field>
-        <Field>
-          <Field.Label>Username</Field.Label>
-          <Input value="@jane.doe" />
-        </Field>
-      </Field.Group>
-    </Sheet.Body>
-    <Sheet.Footer>
-      <Sheet.CloseTrigger>
-        <Button variant="outline">Cancel</Button>
-      </Sheet.CloseTrigger>
-      <Sheet.CloseTrigger>
-        <Button>Save changes</Button>
-      </Sheet.CloseTrigger>
-    </Sheet.Footer>
-  </Sheet.Content>
+<Sheet
+  classNames={{ content: "[--space:--spacing(4)] sm:[--space:--spacing(8)]" }}
+  description="Make changes to your account here. Click save when you're done."
+  title="Edit user"
+>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+  {#snippet actions()}
+    <Sheet.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()} variant="outline">Cancel</Button>
+      {/snippet}
+    </Sheet.CloseTrigger>
+    <Sheet.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()}>Save changes</Button>
+      {/snippet}
+    </Sheet.CloseTrigger>
+  {/snippet}
+
+  <Field.Group>
+    <Field>
+      <Field.Label>Name</Field.Label>
+      <Input value="Jane Doe" />
+    </Field>
+    <Field>
+      <Field.Label>Username</Field.Label>
+      <Input value="@jane.doe" />
+    </Field>
+  </Field.Group>
 </Sheet>

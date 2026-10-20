@@ -4,32 +4,32 @@ import {
 } from "@ark-ui/react";
 import type {
   FileUploadClearTriggerProps,
-  FileUploadDropzoneProps as FileUploadDropzonePrimitiveProps,
+  FileUploadDropzoneProps,
+  FileUploadItemDeleteTriggerProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
+  FileUploadItemPreviewImageProps,
   FileUploadItemPreviewProps,
-  FileUploadItemProps,
+  FileUploadItemProps as FileUploadItemPrimitiveProps,
   FileUploadItemSizeTextProps,
+  FileUploadLabelProps,
   FileUploadRootProps as FileUploadRootPrimitiveProps,
   FileUploadTriggerProps,
 } from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
+  FileUploadContract,
   FileUploadItemRootContract,
   FileUploadRootContract,
 } from "@pisagor/contracts";
 import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
-const {
-  withContext,
-  withProvider,
-  useStyles: useFileUpload,
-} = createSlotRecipeContext({
+const { withContext, withProvider, useStyles } = createSlotRecipeContext({
   name: "FileUpload",
   recipe: fileUploadRecipe,
 });
@@ -42,39 +42,71 @@ const { withContext: withItemContext, withProvider: withItemProvider } =
 // #endregion
 
 // #region Types
-type FileUploadItemRootProps = FileUploadItemProps & FileUploadItemRootContract;
-
-type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
-
-type FileUploadRootProps = FileUploadRootPrimitiveProps &
+export type FileUploadRootProps = FileUploadRootPrimitiveProps &
   FileUploadRootContract & {
+    /** Called with the accepted files whenever the selection changes. */
     onValueChange?: (value: File[]) => void;
   };
 
-type FileUploadDropzoneProps = FileUploadDropzonePrimitiveProps;
+export type FileUploadItemProps = FileUploadItemPrimitiveProps &
+  FileUploadItemRootContract;
 
-type FileUploadItemPreviewImageProps = ComponentProps<
-  typeof FileUploadPrimitive.ItemPreviewImage
->;
+export interface FileUploadProps
+  extends Omit<FileUploadRootProps, "children" | "title">, FileUploadContract {
+  /** Content rendered as a clear-all trigger (via `asChild`). */
+  clearTrigger?: ReactNode;
+  /** Secondary text in the dropzone. */
+  description?: ReactNode;
+  /**
+   * Whether to render the dropzone. When `false`, only `trigger` and the file
+   * list render.
+   *
+   * @defaultValue true
+   */
+  dropzone?: boolean;
+  /** Helper text at the bottom of the dropzone. */
+  helper?: ReactNode;
+  /**
+   * Dropzone icon. Pass `null` to hide it.
+   *
+   * @defaultValue <UploadIcon />
+   */
+  icon?: ReactNode;
+  /** Visible label rendered above the dropzone. */
+  label?: ReactNode;
+  /**
+   * Whether to render the accepted and rejected file list.
+   *
+   * @defaultValue true
+   */
+  showList?: boolean;
+  /** Primary text in the dropzone. */
+  title?: ReactNode;
+  /** Content rendered as the file picker trigger (via `asChild`). */
+  trigger?: ReactNode;
+}
 
-type FileUploadItemDeleteTriggerProps = ComponentProps<
-  typeof FileUploadPrimitive.ItemDeleteTrigger
->;
-
-type FileUploadDropzoneIconProps = ComponentPropsWithRef<"div">;
-
-type FileUploadTitleProps = ComponentPropsWithRef<"div">;
-
-type FileUploadDescriptionProps = ComponentPropsWithRef<"div">;
-
-type FileUploadHelperProps = ComponentPropsWithRef<"div">;
+export type {
+  FileUploadClearTriggerProps,
+  FileUploadDropzoneProps,
+  FileUploadItemDeleteTriggerProps,
+  FileUploadItemGroupProps,
+  FileUploadItemNameProps,
+  FileUploadItemPreviewImageProps,
+  FileUploadItemPreviewProps,
+  FileUploadItemSizeTextProps,
+  FileUploadLabelProps,
+  FileUploadTriggerProps,
+};
 // #endregion
 
 // #region Parts
-const RootBase = withProvider<FileUploadRootProps>(FileUploadPrimitive.Root, {
-  name: "Root",
-});
+const RootBase = withProvider<FileUploadRootPrimitiveProps>(
+  FileUploadPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
 
+/** Root; renders the hidden input and passes accepted files to `onValueChange`. */
 function Root({
   children,
   onFileChange,
@@ -90,103 +122,139 @@ function Root({
       }}
     >
       {children}
-
       <FileUploadPrimitive.HiddenInput />
     </RootBase>
   );
 }
 
-function Trigger(props: FileUploadTriggerProps) {
-  return <FileUploadPrimitive.Trigger {...props} />;
-}
+const Label = withContext<FileUploadLabelProps>(FileUploadPrimitive.Label, {
+  name: "Label",
+});
 
 const Dropzone = withContext<FileUploadDropzoneProps>(
   FileUploadPrimitive.Dropzone,
-  {
-    name: "Dropzone",
-  },
+  { name: "Dropzone" },
 );
 
-const DropzoneIconBase = withContext<FileUploadDropzoneIconProps>("div", {
-  name: "DropzoneIcon",
-});
+const Trigger = withContext<FileUploadTriggerProps>(
+  FileUploadPrimitive.Trigger,
+  { name: "Trigger" },
+);
 
-function DropzoneIcon({ children, ...rest }: FileUploadDropzoneIconProps) {
+const ClearTriggerBase = withContext<FileUploadClearTriggerProps>(
+  FileUploadPrimitive.ClearTrigger,
+  { name: "ClearTrigger" },
+);
+
+/** Clear trigger with a localized default `aria-label`. */
+function ClearTrigger(props: FileUploadClearTriggerProps) {
+  const { m } = useLocale();
+
   return (
-    <DropzoneIconBase {...rest}>{children || <UploadIcon />}</DropzoneIconBase>
+    <ClearTriggerBase aria-label={m("fileUpload.clearFiles")} {...props} />
   );
 }
 
-const Title = withContext<FileUploadTitleProps>("div", {
-  name: "Title",
+const ItemGroup = withContext<FileUploadItemGroupProps>(
+  FileUploadPrimitive.ItemGroup,
+  { name: "ItemGroup" },
+);
+
+const Item = withItemProvider<FileUploadItemProps>(FileUploadPrimitive.Item, {
+  name: "Item",
+  slot: "base",
 });
 
-const Description = withContext<FileUploadDescriptionProps>("div", {
-  name: "Description",
-});
+const ItemPreview = withItemContext<FileUploadItemPreviewProps>(
+  FileUploadPrimitive.ItemPreview,
+  { name: "ItemPreview", slot: "preview" },
+);
 
-const Helper = withContext<FileUploadHelperProps>("div", {
-  name: "Helper",
-  part: "dropzone-helper",
-});
+const ItemPreviewImage = withItemContext<FileUploadItemPreviewImageProps>(
+  FileUploadPrimitive.ItemPreviewImage,
+  { name: "ItemPreviewImage", slot: "previewImage" },
+);
 
-function ItemGroup(props: FileUploadItemGroupProps) {
-  return <FileUploadPrimitive.ItemGroup {...props} />;
-}
+const ItemName = withItemContext<FileUploadItemNameProps>(
+  FileUploadPrimitive.ItemName,
+  { name: "ItemName", slot: "name" },
+);
 
-function List({
-  className,
-  recipe = fileUploadItemRecipe,
-  ...rest
-}: FileUploadListProps) {
+const ItemSizeText = withItemContext<FileUploadItemSizeTextProps>(
+  FileUploadPrimitive.ItemSizeText,
+  { name: "ItemSizeText", slot: "sizeText" },
+);
+
+const ItemDeleteTriggerBase = withItemContext<FileUploadItemDeleteTriggerProps>(
+  FileUploadPrimitive.ItemDeleteTrigger,
+  { name: "ItemDeleteTrigger", slot: "deleteTrigger" },
+);
+
+/** Item delete trigger with a localized default `aria-label`. */
+function ItemDeleteTrigger(props: FileUploadItemDeleteTriggerProps) {
   const { m } = useLocale();
-  const fileUpload = useFileUploadContext();
-  const { slots } = useFileUpload();
-  const itemSlots = recipe();
 
-  const { acceptedFiles, rejectedFiles } = fileUpload;
+  return (
+    <ItemDeleteTriggerBase aria-label={m("fileUpload.removeFile")} {...props} />
+  );
+}
+// #endregion
 
-  if (acceptedFiles.length === 0 && rejectedFiles.length === 0) {
-    return null;
-  }
+// #region Shorthand
+function FileList({
+  classNames,
+  itemClassNames,
+}: Pick<FileUploadProps, "classNames" | "itemClassNames">) {
+  const { m } = useLocale();
+  const { acceptedFiles, rejectedFiles } = useFileUploadContext();
+  const itemSlots = fileUploadItemRecipe();
 
   const renderItem = (file: File, key: string, errors?: string[]) => {
     const isImage = file.type.startsWith("image/");
-    const extension = file.name.split(".").pop();
 
     return (
       <Item
-        {...rest}
-        className={itemSlots.listItem({ className })}
+        className={itemSlots.listItem({ className: itemClassNames?.listItem })}
         file={file}
         key={key}
-        recipe={recipe}
       >
         <ItemPreview
-          {...(isImage ? { type: "image/*" } : { type: ".*" })}
-          className={itemSlots.listPreview()}
+          className={itemSlots.listPreview({
+            className: itemClassNames?.listPreview,
+          })}
+          type={isImage ? "image/*" : ".*"}
         >
           {isImage ? (
-            <ItemPreviewImage />
+            <ItemPreviewImage className={itemClassNames?.previewImage} />
           ) : (
-            <span className={itemSlots.extension()}>{extension}</span>
+            <span
+              className={itemSlots.extension({
+                className: itemClassNames?.extension,
+              })}
+            >
+              {file.name.split(".").pop()}
+            </span>
           )}
         </ItemPreview>
-
-        <div className={itemSlots.content()}>
-          <ItemName />
-          <ItemSizeText />
+        <div
+          className={itemSlots.content({ className: itemClassNames?.content })}
+        >
+          <ItemName className={itemClassNames?.name} />
+          <ItemSizeText className={itemClassNames?.sizeText} />
           {errors?.map((code) => (
-            <div className={itemSlots.error()} key={code}>
+            <div
+              className={itemSlots.error({ className: itemClassNames?.error })}
+              key={code}
+            >
               {m(`fileUpload.error.${code}` as MessageKey) ?? code}
             </div>
           ))}
         </div>
-
-        <ItemDeleteTrigger asChild>
+        <ItemDeleteTrigger asChild className={itemClassNames?.deleteTrigger}>
           <Button
-            aria-label={m("fileUpload.removeFile")}
-            className={itemSlots.deleteButton()}
+            className={itemSlots.deleteButton({
+              className: itemClassNames?.deleteButton,
+            })}
             size="icon-xs"
             variant="ghost"
           >
@@ -199,98 +267,118 @@ function List({
 
   return (
     <>
-      {acceptedFiles.length > 0 && (
-        <ItemGroup className={slots.itemGroup()}>
+      {acceptedFiles.length > 0 ? (
+        <ItemGroup className={classNames?.itemGroup}>
           {acceptedFiles.map((file, index) =>
             renderItem(file, `${file.name}-${index}`),
           )}
         </ItemGroup>
-      )}
-
-      {rejectedFiles.length > 0 && (
-        <ItemGroup className={slots.itemGroup()} type="rejected">
-          {rejectedFiles.map(({ file, errors }, index) =>
+      ) : null}
+      {rejectedFiles.length > 0 ? (
+        <ItemGroup className={classNames?.itemGroup} type="rejected">
+          {rejectedFiles.map(({ errors, file }, index) =>
             renderItem(file, `${file.name}-${index}`, errors),
           )}
         </ItemGroup>
-      )}
+      ) : null}
     </>
   );
 }
 
-const Item = withItemProvider<FileUploadItemRootProps>(
-  FileUploadPrimitive.Item,
-  {
-    name: "Item",
-    slot: "base",
-  },
-);
+function DropzoneText({
+  className,
+  children,
+  slot,
+}: {
+  children: ReactNode;
+  className?: string;
+  slot: "description" | "dropzoneIcon" | "helper" | "title";
+}) {
+  const { slots } = useStyles();
 
-const ItemPreview = withItemContext<FileUploadItemPreviewProps>(
-  FileUploadPrimitive.ItemPreview,
-  {
-    name: "ItemPreview",
-    part: "preview",
-    slot: "preview",
-  },
-);
+  return <div className={slots[slot]({ className })}>{children}</div>;
+}
 
-const ItemPreviewImage = withItemContext<FileUploadItemPreviewImageProps>(
-  FileUploadPrimitive.ItemPreviewImage,
-  {
-    name: "ItemPreviewImage",
-    part: "preview-image",
-    slot: "previewImage",
-  },
-);
+export function FileUploadShorthand({
+  classNames,
+  clearTrigger,
+  description,
+  dropzone = true,
+  helper,
+  icon = <UploadIcon />,
+  itemClassNames,
+  label,
+  showList = true,
+  title,
+  trigger,
+  ...rest
+}: FileUploadProps) {
+  const triggerNode = trigger ? (
+    <Trigger asChild className={classNames?.trigger}>
+      {trigger}
+    </Trigger>
+  ) : null;
 
-const ItemName = withItemContext<FileUploadItemNameProps>(
-  FileUploadPrimitive.ItemName,
-  {
-    name: "ItemName",
-    part: "name",
-    slot: "name",
-  },
-);
-
-const ItemSizeText = withItemContext<FileUploadItemSizeTextProps>(
-  FileUploadPrimitive.ItemSizeText,
-  {
-    name: "ItemSizeText",
-    slot: "sizeText",
-  },
-);
-
-const ItemDeleteTrigger = withItemContext<FileUploadItemDeleteTriggerProps>(
-  FileUploadPrimitive.ItemDeleteTrigger,
-  {
-    name: "ItemDeleteTrigger",
-    part: "delete-trigger",
-    slot: "deleteTrigger",
-  },
-);
-
-function ClearTrigger(props: FileUploadClearTriggerProps) {
-  return <FileUploadPrimitive.ClearTrigger {...props} />;
+  return (
+    <Root {...rest}>
+      {label ? <Label className={classNames?.label}>{label}</Label> : null}
+      {clearTrigger ? (
+        <ClearTrigger asChild className={classNames?.clearTrigger}>
+          {clearTrigger}
+        </ClearTrigger>
+      ) : null}
+      {dropzone ? (
+        <Dropzone className={classNames?.dropzone}>
+          {icon ? (
+            <DropzoneText
+              className={classNames?.dropzoneIcon}
+              slot="dropzoneIcon"
+            >
+              {icon}
+            </DropzoneText>
+          ) : null}
+          {title ? (
+            <DropzoneText className={classNames?.title} slot="title">
+              {title}
+            </DropzoneText>
+          ) : null}
+          {description ? (
+            <DropzoneText
+              className={classNames?.description}
+              slot="description"
+            >
+              {description}
+            </DropzoneText>
+          ) : null}
+          {triggerNode}
+          {helper ? (
+            <DropzoneText className={classNames?.helper} slot="helper">
+              {helper}
+            </DropzoneText>
+          ) : null}
+        </Dropzone>
+      ) : (
+        triggerNode
+      )}
+      {showList ? (
+        <FileList classNames={classNames} itemClassNames={itemClassNames} />
+      ) : null}
+    </Root>
+  );
 }
 // #endregion
 
-export type {
-  FileUploadClearTriggerProps,
-  FileUploadItemGroupProps,
-  FileUploadItemNameProps,
-  FileUploadItemPreviewProps,
-  FileUploadItemProps,
-  FileUploadItemSizeTextProps,
-  FileUploadTriggerProps,
-} from "@ark-ui/react";
+// #region Display Names
+Root.displayName = "FileUpload.Root";
+ClearTrigger.displayName = "FileUpload.ClearTrigger";
+ItemDeleteTrigger.displayName = "FileUpload.ItemDeleteTrigger";
+FileUploadShorthand.displayName = "FileUpload";
+// #endregion
 
-export const FileUpload = Object.assign(Root, {
+export const FileUpload = Object.assign(FileUploadShorthand, {
   ClearTrigger,
-  Description,
+  Context: FileUploadPrimitive.Context,
   Dropzone,
-  DropzoneIcon,
-  Helper,
   Item,
   ItemDeleteTrigger,
   ItemGroup,
@@ -298,7 +386,7 @@ export const FileUpload = Object.assign(Root, {
   ItemPreview,
   ItemPreviewImage,
   ItemSizeText,
-  List,
-  Title,
+  Label,
+  Root,
   Trigger,
 });

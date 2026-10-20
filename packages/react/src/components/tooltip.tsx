@@ -1,6 +1,7 @@
 import { Portal, Tooltip as TooltipPrimitive } from "@ark-ui/react";
 import type {
   TooltipArrowProps,
+  TooltipArrowTipProps,
   TooltipContentProps,
   TooltipContextProps,
   TooltipPositionerProps,
@@ -14,7 +15,7 @@ import type { ReactElement, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Tooltip",
   recipe: tooltipRecipe,
 });
@@ -64,49 +65,26 @@ export interface TooltipProps
 // #endregion
 
 // #region Parts
-function TooltipRoot({
-  closeDelay = 150,
-  openDelay = 400,
-  positioning = { placement: "top" },
-  children,
-  recipe = tooltipRecipe,
-  ...rest
-}: TooltipRootProps) {
-  const slots = recipe();
+// The root renders no element; `base` is an empty slot.
+const TooltipRoot = withProvider<TooltipRootProps>(TooltipPrimitive.Root, {
+  defaultProps: {
+    closeDelay: 150,
+    openDelay: 400,
+    positioning: { placement: "top" },
+  },
+  name: "Root",
+  slot: "base",
+});
 
-  return (
-    <TooltipStylesContext value={{ slots, variants: {} as never }}>
-      <TooltipPrimitive.Root
-        {...rest}
-        closeDelay={closeDelay}
-        openDelay={openDelay}
-        positioning={positioning}
-      >
-        {children}
-      </TooltipPrimitive.Root>
-    </TooltipStylesContext>
-  );
-}
+const TooltipTrigger = withContext<TooltipTriggerProps>(
+  TooltipPrimitive.Trigger,
+  { defaultProps: { asChild: true }, name: "Trigger" },
+);
 
-function TooltipTrigger({
-  asChild = true,
-  children,
-  ...rest
-}: TooltipTriggerProps) {
-  return (
-    <TooltipPrimitive.Trigger {...rest} asChild={asChild}>
-      {children}
-    </TooltipPrimitive.Trigger>
-  );
-}
-
-function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
-  return (
-    <TooltipPrimitive.Positioner {...rest}>
-      {children}
-    </TooltipPrimitive.Positioner>
-  );
-}
+const TooltipPositioner = withContext<TooltipPositionerProps>(
+  TooltipPrimitive.Positioner,
+  { name: "Positioner" },
+);
 
 const TooltipContent = withContext<TooltipContentProps>(
   TooltipPrimitive.Content,
@@ -118,9 +96,14 @@ const TooltipContent = withContext<TooltipContentProps>(
 const TooltipArrow = withContext<TooltipArrowProps>(TooltipPrimitive.Arrow, {
   name: "Arrow",
 });
+
+const TooltipArrowTip = withContext<TooltipArrowTipProps>(
+  TooltipPrimitive.ArrowTip,
+  { name: "ArrowTip" },
+);
 // #endregion
 
-// #region Closed
+// #region Shorthand
 function TooltipShorthand({
   arrowProps,
   showArrow = true,
@@ -154,7 +137,7 @@ function TooltipShorthand({
           >
             {showArrow && (
               <TooltipArrow {...arrowProps} className={classNames?.arrow}>
-                <TooltipPrimitive.ArrowTip />
+                <TooltipArrowTip className={classNames?.arrowTip} />
               </TooltipArrow>
             )}
 
@@ -167,17 +150,9 @@ function TooltipShorthand({
 }
 // #endregion
 
-// #region Display Names
-TooltipRoot.displayName = "Tooltip.Root";
-TooltipTrigger.displayName = "Tooltip.Trigger";
-TooltipPositioner.displayName = "Tooltip.Positioner";
-TooltipContent.displayName = "Tooltip.Content";
-TooltipArrow.displayName = "Tooltip.Arrow";
-
-// #endregion
-
 export type {
   TooltipArrowProps,
+  TooltipArrowTipProps,
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,
@@ -185,7 +160,7 @@ export type {
 
 export const Tooltip = Object.assign(TooltipShorthand, {
   Arrow: TooltipArrow,
-  ArrowTip: TooltipPrimitive.ArrowTip,
+  ArrowTip: TooltipArrowTip,
   Content: TooltipContent,
   Positioner: TooltipPositioner,
   Root: TooltipRoot,

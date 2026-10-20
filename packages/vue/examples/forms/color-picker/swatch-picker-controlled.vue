@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { ColorPicker, parseColor } from "@pisagor/vue";
 import { computed, ref } from "vue";
 
@@ -12,7 +13,7 @@ const hexValue = computed(() => parseColor(value.value).toString("hex"));
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <ColorPicker inline :value="value" @value-change="onValueChange">
+    <ColorPicker.Root inline :value="value" @value-change="onValueChange">
       <ColorPicker.SwatchGroup>
         <ColorPicker.SwatchTrigger
           v-for="color in swatches"
@@ -20,11 +21,13 @@ const hexValue = computed(() => parseColor(value.value).toString("hex"));
           :value="color"
         >
           <ColorPicker.Swatch :value="color">
-            <ColorPicker.SwatchIndicator />
+            <ColorPicker.SwatchIndicator>
+              <PhCheck />
+            </ColorPicker.SwatchIndicator>
           </ColorPicker.Swatch>
         </ColorPicker.SwatchTrigger>
       </ColorPicker.SwatchGroup>
-    </ColorPicker>
+    </ColorPicker.Root>
     <p class="text-muted-foreground text-center text-sm">{{ hexValue }}</p>
   </div>
 </template>

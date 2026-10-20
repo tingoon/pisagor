@@ -3,6 +3,7 @@ import { tv } from "tailwind-variants";
 export const collapsibleRecipe = tv({
   slots: {
     base: "group/collapsible",
+    body: [],
     content: [
       "h-(--collapsed-height)",
       "group-data-partial-collapse/collapsible:h-full",
@@ -15,7 +16,10 @@ export const collapsibleRecipe = tv({
     icon: [
       "duration-normal transition-transform ease-out motion-reduce:transition-none!",
     ],
-    indicator: "data-[state=open]:[&_svg]:rotate-180",
+    indicator: [
+      "[&_svg]:duration-normal [&_svg]:transition-transform [&_svg]:ease-out motion-reduce:[&_svg]:transition-none!",
+      "data-[state=open]:[&_svg]:rotate-180",
+    ],
     trigger: [
       "cursor-pointer",
       "data-disabled:pointer-events-none data-disabled:opacity-64",

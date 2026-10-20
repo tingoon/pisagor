@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Button, Popover } from "@pisagor/react";
 
 export function Placements() {
@@ -6,19 +7,23 @@ export function Placements() {
   return (
     <div className="flex flex-wrap justify-center gap-2">
       {placements.map((placement) => (
-        <Popover key={placement} positioning={{ placement }}>
+        <Popover.Root key={placement} positioning={{ placement }}>
           <Popover.Trigger asChild>
             <Button className="capitalize" variant="outline">
               {placement}
             </Button>
           </Popover.Trigger>
-          <Popover.Content className="w-56">
-            <Popover.Header
-              description={`This popover appears on the ${placement} placement of the trigger.`}
-              title="Popover"
-            />
-          </Popover.Content>
-        </Popover>
+          <Portal>
+            <Popover.Positioner>
+              <Popover.Content className="w-56">
+                <Popover.Header>
+                  <Popover.Title>Popover</Popover.Title>
+                  <Popover.Description>{`This popover appears on the ${placement} placement of the trigger.`}</Popover.Description>
+                </Popover.Header>
+              </Popover.Content>
+            </Popover.Positioner>
+          </Portal>
+        </Popover.Root>
       ))}
     </div>
   );

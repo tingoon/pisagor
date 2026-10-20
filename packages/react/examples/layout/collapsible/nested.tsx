@@ -1,53 +1,62 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button, Card, Clipboard, Collapsible } from "@pisagor/react";
 
 export function Nested() {
   return (
     <Card className="w-80">
-      <Card.Header
-        description="We'll help you get started"
-        title="Getting started"
-      />
+      <Card.Header>
+        <Card.Title>Getting started</Card.Title>
+        <Card.Description>We'll help you get started</Card.Description>
+      </Card.Header>
 
       <Card.Content>
-        <Collapsible>
+        <Collapsible.Root>
           <Collapsible.Trigger asChild>
             <Button className="w-full" variant="outline">
               View details
-              <Collapsible.Indicator />
+              <Collapsible.Indicator>
+                <CaretDownIcon />
+              </Collapsible.Indicator>
             </Button>
           </Collapsible.Trigger>
-          <Collapsible.Content className="flex flex-col gap-2 p-2">
-            <p className="text-muted-foreground text-sm">
-              Here you can find the documentation for all the components and how
-              to use them.
-            </p>
-            <Collapsible>
-              <Collapsible.Trigger asChild>
-                <Button className="w-full" size="sm" variant="outline">
-                  Install dependencies
-                  <Collapsible.Indicator />
-                </Button>
-              </Collapsible.Trigger>
-              <Collapsible.Content className="flex flex-col gap-2 p-2">
-                <p className="text-muted-foreground text-sm">
-                  Copy the following code:
-                </p>
+          <Collapsible.Content>
+            <Collapsible.Body className="flex flex-col gap-2 p-2">
+              <p className="text-muted-foreground text-sm">
+                Here you can find the documentation for all the components and
+                how to use them.
+              </p>
+              <Collapsible.Root>
+                <Collapsible.Trigger asChild>
+                  <Button className="w-full" size="sm" variant="outline">
+                    Install dependencies
+                    <Collapsible.Indicator>
+                      <CaretDownIcon />
+                    </Collapsible.Indicator>
+                  </Button>
+                </Collapsible.Trigger>
+                <Collapsible.Content>
+                  <Collapsible.Body className="flex flex-col gap-2 p-2">
+                    <p className="text-muted-foreground text-sm">
+                      Copy the following code:
+                    </p>
 
-                <pre className="bg-muted text-muted-foreground relative rounded-md p-2 text-xs">
-                  <code>bun add ui</code>
+                    <pre className="bg-muted text-muted-foreground relative rounded-md p-2 text-xs">
+                      <code>bun add ui</code>
 
-                  <Clipboard
-                    buttonSize="icon-sm"
-                    buttonVariant="ghost"
-                    className="absolute inset-e-1.5 top-0.5"
-                    value="bun add ui"
-                    variant="button"
-                  />
-                </pre>
-              </Collapsible.Content>
-            </Collapsible>
+                      <Clipboard
+                        buttonSize="icon-sm"
+                        buttonVariant="ghost"
+                        className="absolute inset-e-1.5 top-0.5"
+                        value="bun add ui"
+                        variant="button"
+                      />
+                    </pre>
+                  </Collapsible.Body>
+                </Collapsible.Content>
+              </Collapsible.Root>
+            </Collapsible.Body>
           </Collapsible.Content>
-        </Collapsible>
+        </Collapsible.Root>
       </Card.Content>
     </Card>
   );

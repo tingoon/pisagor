@@ -2,7 +2,7 @@
   import { ColorPicker, Input, parseColor } from "@pisagor/svelte";
 </script>
 
-<ColorPicker
+<ColorPicker.Root
   class="w-full"
   defaultValue={parseColor("#0485F7").toString("rgba")}
 >
@@ -16,4 +16,4 @@
     </ColorPicker.ChannelInput>
     <ColorPicker.SwatchPreview class="size-6" />
   </ColorPicker.Control>
-</ColorPicker>
+</ColorPicker.Root>

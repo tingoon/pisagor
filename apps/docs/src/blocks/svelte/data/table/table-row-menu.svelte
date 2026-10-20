@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { ContextMenu, Table } from "@pisagor/svelte";
   import { EyeIcon, PencilSimpleIcon, TrashIcon } from "phosphor-svelte";
   import { tableRowMenuBlock } from "#/styles/recipes/table";
@@ -30,31 +31,35 @@
   </Table.Header>
   <Table.Body>
     {#each workspaceUsers.slice(0, 3) as user}
-      <ContextMenu>
+      <ContextMenu.Root>
         <ContextMenu.ContextTrigger>
           <Table.Row>
             <Table.Cell class={styles.name()}>{user.name}</Table.Cell>
             <Table.Cell>{user.email}</Table.Cell>
           </Table.Row>
         </ContextMenu.ContextTrigger>
-        <ContextMenu.Content class={styles.menu()}>
-          <ContextMenu.Item value="view">
-            <EyeIcon />
-            View
-            <ContextMenu.Shortcut>⌘ V</ContextMenu.Shortcut>
-          </ContextMenu.Item>
-          <ContextMenu.Item value="edit">
-            <PencilSimpleIcon />
-            Edit
-            <ContextMenu.Shortcut>⌘ E</ContextMenu.Shortcut>
-          </ContextMenu.Item>
-          <ContextMenu.Item value="delete" variant="destructive">
-            <TrashIcon />
-            Delete
-            <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
-          </ContextMenu.Item>
-        </ContextMenu.Content>
-      </ContextMenu>
+        <Portal>
+          <ContextMenu.Positioner>
+            <ContextMenu.Content class={styles.menu()}>
+              <ContextMenu.Item value="view">
+                <EyeIcon />
+                View
+                <ContextMenu.Shortcut>⌘ V</ContextMenu.Shortcut>
+              </ContextMenu.Item>
+              <ContextMenu.Item value="edit">
+                <PencilSimpleIcon />
+                Edit
+                <ContextMenu.Shortcut>⌘ E</ContextMenu.Shortcut>
+              </ContextMenu.Item>
+              <ContextMenu.Item value="delete" variant="destructive">
+                <TrashIcon />
+                Delete
+                <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
+              </ContextMenu.Item>
+            </ContextMenu.Content>
+          </ContextMenu.Positioner>
+        </Portal>
+      </ContextMenu.Root>
     {/each}
   </Table.Body>
 </Table>

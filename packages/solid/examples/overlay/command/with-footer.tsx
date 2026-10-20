@@ -1,11 +1,9 @@
-import { useFilter, useListCollection } from "@ark-ui/solid";
-import { Command, Kbd } from "@pisagor/solid";
 import {
   ArrowBendDownLeftIcon,
   ArrowDownIcon,
   ArrowUpIcon,
 } from "@squidlab/phosphor-solid/icons";
-import { For } from "solid-js";
+import { Command, Kbd } from "@pisagor/solid";
 
 export function WithFooter() {
   const initialItems = [
@@ -18,56 +16,30 @@ export function WithFooter() {
     },
     { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
   ];
-  const filterFn = useFilter({ sensitivity: "base" });
-
-  const { collection, filter } = useListCollection({
-    filter: filterFn().contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
 
   return (
     <Command
-      collection={collection()}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input placeholder="Search..." />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          <For each={collection().group()}>
-            {([group, items]) => (
-              <Command.ItemGroup heading={group}>
-                <For each={items}>
-                  {(item) => (
-                    <Command.Item item={item}>
-                      {item.label}
-                      <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                    </Command.Item>
-                  )}
-                </For>
-              </Command.ItemGroup>
-            )}
-          </For>
-        </Command.List>
-      </Command.Content>
-      <Command.Footer>
-        <div class="flex items-center gap-2">
-          <Kbd variant="outline">
-            <ArrowBendDownLeftIcon class="size-3" />
-          </Kbd>
-          <span>Select</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <Kbd variant="outline">
-            <ArrowUpIcon class="size-3" />
-          </Kbd>
-          <Kbd variant="outline">
-            <ArrowDownIcon class="size-3" />
-          </Kbd>
-          <span>Navigate</span>
-        </div>
-      </Command.Footer>
-    </Command>
+      footer={
+        <>
+          <div class="flex items-center gap-2">
+            <Kbd variant="outline">
+              <ArrowBendDownLeftIcon class="size-3" />
+            </Kbd>
+            <span>Select</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Kbd variant="outline">
+              <ArrowUpIcon class="size-3" />
+            </Kbd>
+            <Kbd variant="outline">
+              <ArrowDownIcon class="size-3" />
+            </Kbd>
+            <span>Navigate</span>
+          </div>
+        </>
+      }
+      items={initialItems}
+      placeholder="Search..."
+    />
   );
 }

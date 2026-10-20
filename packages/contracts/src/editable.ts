@@ -1,4 +1,9 @@
-import type { EditableRecipeFn, EditableVariantProps } from "@pisagor/recipes";
+import type {
+  EditableRecipeFn,
+  EditableRecipeSlot,
+  EditableVariantProps,
+} from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared Editable root contract: visual variants and recipe override. Used by
@@ -11,4 +16,13 @@ export interface EditableRootContract extends EditableVariantProps {
    * @defaultValue editableRecipe
    */
   recipe?: EditableRecipeFn;
+}
+
+/**
+ * Editable shorthand contract. Compose with `EditableRootContract` / framework
+ * `EditableRootProps`.
+ */
+export interface EditableContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<EditableRecipeSlot>;
 }

@@ -51,10 +51,8 @@ export function Events() {
           addLog(`Step changed: ${details.stepId ?? "unknown"}`)
         }
         steps={steps}
+        trigger={<Button variant="outline">Start tour</Button>}
       >
-        <Tour.Trigger asChild>
-          <Button variant="outline">Start tour</Button>
-        </Tour.Trigger>
         <div className="flex flex-wrap gap-2">
           <div
             className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
@@ -83,16 +81,6 @@ export function Events() {
             logs.map((log) => <span key={log.id}>{log.message}</span>)
           )}
         </div>
-        <Tour.Content>
-          <Tour.Header>
-            <Tour.ProgressText />
-            <Tour.Title />
-            <Tour.Description />
-          </Tour.Header>
-          <Tour.Footer>
-            <Tour.Actions />
-          </Tour.Footer>
-        </Tour.Content>
       </Tour>
     </div>
   );

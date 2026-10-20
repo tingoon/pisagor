@@ -1,8 +1,9 @@
+import { Portal } from "solid-js/web";
 import { Button, ColorPicker, Input } from "@pisagor/solid";
 
 export function PopoverWithChannelEditing() {
   return (
-    <ColorPicker format="rgba">
+    <ColorPicker.Root format="rgba">
       <ColorPicker.Control>
         <ColorPicker.Trigger
           asChild={(props) => (
@@ -13,26 +14,34 @@ export function PopoverWithChannelEditing() {
           )}
         />
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area>
-          <ColorPicker.AreaThumb />
-        </ColorPicker.Area>
-        <ColorPicker.ChannelSlider channel="hue" />
-        <div class="grid grid-cols-3 gap-2">
-          <ColorPicker.Input
-            asChild={(props) => <Input {...props()} />}
-            channel="red"
-          />
-          <ColorPicker.Input
-            asChild={(props) => <Input {...props()} />}
-            channel="green"
-          />
-          <ColorPicker.Input
-            asChild={(props) => <Input {...props()} />}
-            channel="blue"
-          />
-        </div>
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <div class="grid grid-cols-3 gap-2">
+              <ColorPicker.Input
+                channel="red"
+                asChild={(props) => <Input {...props()} />}
+              />
+              <ColorPicker.Input
+                channel="green"
+                asChild={(props) => <Input {...props()} />}
+              />
+              <ColorPicker.Input
+                channel="blue"
+                asChild={(props) => <Input {...props()} />}
+              />
+            </div>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

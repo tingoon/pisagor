@@ -11,7 +11,7 @@ const brandEditableRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <Editable recipe={brandEditableRecipe}>
+    <Editable.Root recipe={brandEditableRecipe}>
       <Editable.Area>
         <Editable.Input asChild>
           <Input />
@@ -30,6 +30,6 @@ export function CustomRecipe() {
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

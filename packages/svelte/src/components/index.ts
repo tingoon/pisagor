@@ -58,7 +58,7 @@ export * from "./navbar";
 export * from "./navigation-menu";
 export * from "./number-input";
 export * from "./pagination";
-export { PasswordInput } from "./password-input";
+export * from "./password-input";
 export * from "./popover";
 export type {
   PresenceBaseProps,

@@ -75,3 +75,7 @@ export const Link = meta.story({
 export const Placements = meta.story({
   render: Examples.Placements,
 });
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});

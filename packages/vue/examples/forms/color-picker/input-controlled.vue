@@ -11,13 +11,13 @@ const hexValue = computed(() => parseColor(value.value).toString("hex"));
 
 <template>
   <div class="flex flex-col gap-2">
-    <ColorPicker :value="value" @value-change="onValueChange">
+    <ColorPicker.Root :value="value" @value-change="onValueChange">
       <ColorPicker.Control>
         <ColorPicker.Input as-child>
           <Input />
         </ColorPicker.Input>
       </ColorPicker.Control>
-    </ColorPicker>
+    </ColorPicker.Root>
     <p class="text-muted-foreground text-center text-sm">{{ hexValue }}</p>
   </div>
 </template>

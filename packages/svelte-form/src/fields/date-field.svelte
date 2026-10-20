@@ -71,9 +71,8 @@
     {name}
     onOpenChange={handleOpenChange}
     onValueChange={handleValueChange}
+    inputProps={{ id }}
+    {placeholder}
     value={value !== undefined ? (value ?? []) : undefined}
-  >
-    <DatePicker.Input {id} {placeholder} />
-    <DatePicker.Content />
-  </DatePicker>
+  />
 </FieldShell>

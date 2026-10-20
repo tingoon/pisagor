@@ -3,18 +3,12 @@
     Pagination as PaginationPrimitive,
     type PaginationEllipsisProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { DotsThreeIcon } from "phosphor-svelte";
-  import { useStyles } from "./pagination.context";
+  import { withContext } from "./pagination.context";
 
-  let { class: className, ...rest }: PaginationEllipsisProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: PaginationEllipsisProps = $props();
+  const part = withContext(() => rest, { name: "Ellipsis" });
 </script>
 
-<PaginationPrimitive.Ellipsis
-  {...rest}
-  class={slots.ellipsis({ class: cn(className) })}
->
-  <DotsThreeIcon />
+<PaginationPrimitive.Ellipsis {...part.props}>
+  {@render children?.()}
 </PaginationPrimitive.Ellipsis>

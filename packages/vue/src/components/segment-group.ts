@@ -1,6 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue";
 import type {
-  SegmentGroupItemContract,
   SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
   SegmentGroupRootContract,
   SegmentGroupContract,
@@ -11,7 +10,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -50,12 +49,13 @@ export interface SegmentGroupProps
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupItemContract {
-  class?: unknown;
-  disabled?: boolean;
-  text?: VNodeChild;
-  value: string;
-}
+export type {
+  SegmentGroupIndicatorProps,
+  SegmentGroupItemControlProps,
+  SegmentGroupItemHiddenInputProps,
+  SegmentGroupItemProps,
+  SegmentGroupItemTextProps,
+} from "@ark-ui/vue";
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -124,52 +124,23 @@ export const SegmentGroupRoot = defineComponent({
             : undefined,
           orientation: props.orientation,
         },
-        () => [h(SegmentGroupIndicator), slots.default?.()],
+        slots,
       );
     };
   },
 });
 
-export const SegmentGroupItem = defineComponent({
-  inheritAttrs: false,
-  name: "SegmentGroup.Item",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    disabled: { default: undefined, type: Boolean },
-    text: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<VNodeChild>,
-    },
-    value: { required: true, type: String },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-
-    return () => {
-      const content = slots.default?.() ?? props.text;
-
-      return h(
-        SegmentGroupPrimitive.Item as ArkPart,
-        {
-          ...attrs,
-          class: styles.slots.item({ class: cn(props.class) }),
-          disabled: props.disabled,
-          value: props.value,
-        },
-        () => [
-          content != null
-            ? h(SegmentGroupItemText, null, () => content as VNodeChild)
-            : null,
-          h(SegmentGroupPrimitive.ItemControl as ArkPart, {}),
-          h(SegmentGroupPrimitive.ItemHiddenInput as ArkPart, {}),
-        ],
-      );
-    };
-  },
+export const SegmentGroupItem = withContext(SegmentGroupPrimitive.Item, {
+  name: "Item",
 });
+
+export const SegmentGroupItemControl = withContext(
+  SegmentGroupPrimitive.ItemControl,
+  { name: "ItemControl" },
+);
+
+export const SegmentGroupItemHiddenInput =
+  SegmentGroupPrimitive.ItemHiddenInput;
 // #endregion
 
 // #region Shorthand
@@ -177,6 +148,10 @@ export const SegmentGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroup",
   props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<SegmentGroupProps["classNames"]>,
+    },
     items: {
       default: undefined,
       type: Array as PropType<SegmentGroupPresetItem[] | undefined>,
@@ -215,7 +190,7 @@ export const SegmentGroupShorthand = defineComponent({
         SegmentGroupRoot as ArkPart,
         {
           ...(attrs as object),
-          class: props.class,
+          class: cn(props.classNames?.base, props.class),
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           onValueChange: props.onValueChange,
@@ -224,11 +199,27 @@ export const SegmentGroupShorthand = defineComponent({
           variant: props.variant,
         },
         () => [
+          h(SegmentGroupIndicator, { class: props.classNames?.indicator }),
           props.items?.map((item) =>
             h(
               SegmentGroupItem as ArkPart,
-              { disabled: item.disabled, key: item.value, value: item.value },
-              () => item.label,
+              {
+                class: props.classNames?.item,
+                disabled: item.disabled,
+                key: item.value,
+                value: item.value,
+              },
+              () => [
+                h(
+                  SegmentGroupItemText,
+                  { class: props.classNames?.itemText },
+                  () => item.label,
+                ),
+                h(SegmentGroupItemControl, {
+                  class: props.classNames?.itemControl,
+                }),
+                h(SegmentGroupItemHiddenInput as ArkPart),
+              ],
             ),
           ),
           slots.default?.(),
@@ -241,6 +232,8 @@ export const SegmentGroupShorthand = defineComponent({
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,
   Item: SegmentGroupItem,
+  ItemControl: SegmentGroupItemControl,
+  ItemHiddenInput: SegmentGroupItemHiddenInput,
   ItemText: SegmentGroupItemText,
   Root: SegmentGroupRoot,
 });

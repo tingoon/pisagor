@@ -15,6 +15,7 @@ export const tagsInputRecipe = tv({
       "flex-wrap content-start items-center gap-1",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
     ],
+    label: [],
     input: [
       "w-auto max-w-full min-w-18 flex-auto shrink basis-auto",
       "h-7 in-data-[size=lg]:h-8 in-data-[size=sm]:h-6",

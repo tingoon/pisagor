@@ -3,21 +3,12 @@
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerSwatchProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./color-picker.context";
+  import { withContext } from "./color-picker.context";
 
-  let {
-    class: className,
-    children,
-    ...rest
-  }: ColorPickerSwatchProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerSwatchProps = $props();
+  const part = withContext(() => rest, { name: "Swatch" });
 </script>
 
-<ColorPickerPrimitive.Swatch
-  {...rest}
-  class={slots.swatch({ class: cn(className) })}
->
+<ColorPickerPrimitive.Swatch {...part.props}>
   {@render children?.()}
 </ColorPickerPrimitive.Swatch>

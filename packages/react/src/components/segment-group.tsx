@@ -4,17 +4,17 @@ import {
   type SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
 } from "@ark-ui/react";
 import type {
-  SegmentGroupItemContract,
   SegmentGroupPresetItem as BaseSegmentGroupPresetItem,
   SegmentGroupRootContract,
   SegmentGroupContract,
 } from "@pisagor/contracts";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode, ComponentProps } from "react";
+import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -51,10 +51,7 @@ export interface SegmentGroupProps
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps
-  extends SegmentGroupItemPrimitiveProps, SegmentGroupItemContract {
-  text?: ReactNode;
-}
+export type SegmentGroupItemProps = SegmentGroupItemPrimitiveProps;
 // #endregion
 
 // #region Parts
@@ -80,38 +77,27 @@ export function SegmentGroupRoot({
       }
       orientation={orientation}
     >
-      <SegmentGroupIndicator />
       {children}
     </SegmentGroupRootBase>
   );
 }
 
-export function SegmentGroupItem({
-  children,
-  text,
-  className,
-  ...rest
-}: SegmentGroupItemProps) {
-  const { slots } = useStyles();
-  const content = children ?? text;
+const SegmentGroupItem = withContext<SegmentGroupItemProps>(
+  SegmentGroupPrimitive.Item,
+  { name: "Item" },
+);
 
-  return (
-    <SegmentGroupPrimitive.Item {...rest} className={slots.item({ className })}>
-      {content != null && (
-        <SegmentGroupItemText>{content}</SegmentGroupItemText>
-      )}
+const SegmentGroupItemControl = withContext<
+  ComponentProps<typeof SegmentGroupPrimitive.ItemControl>
+>(SegmentGroupPrimitive.ItemControl, { name: "ItemControl" });
 
-      <SegmentGroupPrimitive.ItemControl />
-      <SegmentGroupPrimitive.ItemHiddenInput />
-    </SegmentGroupPrimitive.Item>
-  );
-}
+const SegmentGroupItemHiddenInput = SegmentGroupPrimitive.ItemHiddenInput;
 
 const SegmentGroupItemText = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.ItemText>
 >(SegmentGroupPrimitive.ItemText, { name: "ItemText" });
 
-export const SegmentGroupIndicator = withContext<
+const SegmentGroupIndicator = withContext<
   ComponentProps<typeof SegmentGroupPrimitive.Indicator>
 >(SegmentGroupPrimitive.Indicator, {
   name: "Indicator",
@@ -119,35 +105,53 @@ export const SegmentGroupIndicator = withContext<
 // #endregion
 
 // #region Shorthand
-export function SegmentGroupShorthand({ items, ...rest }: SegmentGroupProps) {
+export function SegmentGroupShorthand({
+  classNames,
+  className,
+  items,
+  ...rest
+}: SegmentGroupProps) {
   return (
-    <SegmentGroupRoot {...rest}>
+    <SegmentGroupRoot {...rest} className={cn(classNames?.base, className)}>
+      <SegmentGroupIndicator className={classNames?.indicator} />
       {items?.map((item) => (
         <SegmentGroupItem
+          className={classNames?.item}
           disabled={item.disabled}
           key={item.value}
-          text={item.label}
           value={item.value}
-        />
+        >
+          <SegmentGroupItemText className={classNames?.itemText}>
+            {item.label}
+          </SegmentGroupItemText>
+          <SegmentGroupItemControl className={classNames?.itemControl} />
+          <SegmentGroupItemHiddenInput />
+        </SegmentGroupItem>
       ))}
     </SegmentGroupRoot>
   );
 }
+
+SegmentGroupShorthand.displayName = "SegmentGroup";
 // #endregion
 
 // #region Display Names
 SegmentGroupRoot.displayName = "SegmentGroup.Root";
-SegmentGroupItem.displayName = "SegmentGroup.Item";
 
 // #endregion
 
 export type {
   SegmentGroupIndicatorProps,
+  SegmentGroupItemControlProps,
+  SegmentGroupItemHiddenInputProps,
   SegmentGroupItemTextProps,
 } from "@ark-ui/react";
 
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,
   Item: SegmentGroupItem,
+  ItemControl: SegmentGroupItemControl,
+  ItemHiddenInput: SegmentGroupItemHiddenInput,
+  ItemText: SegmentGroupItemText,
   Root: SegmentGroupRoot,
 });

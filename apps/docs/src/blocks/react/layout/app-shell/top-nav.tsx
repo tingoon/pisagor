@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import {
   CaretDownIcon,
   ChartBarIcon,
@@ -92,22 +93,26 @@ export function TopNav() {
           </NavigationMenu>
         </Navbar.Nav>
 
-        <DropdownMenu>
+        <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>
             <Button className={styles.tabsMobile()} variant="ghost">
               Sections
               <CaretDownIcon />
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            {sections.map((item) => (
-              <DropdownMenu.Item key={item.label} value={item.href}>
-                <item.icon />
-                {item.label}
-              </DropdownMenu.Item>
-            ))}
-          </DropdownMenu.Content>
-        </DropdownMenu>
+          <Portal>
+            <DropdownMenu.Positioner>
+              <DropdownMenu.Content>
+                {sections.map((item) => (
+                  <DropdownMenu.Item key={item.label} value={item.href}>
+                    <item.icon />
+                    {item.label}
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Positioner>
+          </Portal>
+        </DropdownMenu.Root>
 
         <Navbar.Actions>
           <SearchCommand />
@@ -147,21 +152,25 @@ export function TopNav() {
             </Tabs.List>
           </Tabs.Root>
 
-          <DropdownMenu onSelect={(details) => setView(details.value)}>
+          <DropdownMenu.Root onSelect={(details) => setView(details.value)}>
             <DropdownMenu.Trigger asChild>
               <Button className={styles.viewMenu()} variant="outline">
                 {view}
                 <CaretDownIcon />
               </Button>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-              {views.map((item) => (
-                <DropdownMenu.Item key={item} value={item}>
-                  {item}
-                </DropdownMenu.Item>
-              ))}
-            </DropdownMenu.Content>
-          </DropdownMenu>
+            <Portal>
+              <DropdownMenu.Positioner>
+                <DropdownMenu.Content>
+                  {views.map((item) => (
+                    <DropdownMenu.Item key={item} value={item}>
+                      {item}
+                    </DropdownMenu.Item>
+                  ))}
+                </DropdownMenu.Content>
+              </DropdownMenu.Positioner>
+            </Portal>
+          </DropdownMenu.Root>
         </div>
         <PagePlaceholder />
       </div>

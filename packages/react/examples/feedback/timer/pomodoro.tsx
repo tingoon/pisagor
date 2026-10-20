@@ -10,7 +10,7 @@ export function Pomodoro() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer
+        <Timer.Root
           className="items-center justify-center px-10"
           countdown
           startMs={25 * 60 * 1000}
@@ -44,7 +44,7 @@ export function Pomodoro() {
               <GearIcon />
             </Button>
           </Timer.Control>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   );

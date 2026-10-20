@@ -3,7 +3,7 @@ import { Button, Editable, Input } from "@pisagor/react";
 
 export function Invalid() {
   return (
-    <Editable defaultValue="Click to edit" invalid>
+    <Editable.Root defaultValue="Click to edit" invalid>
       <Editable.Area>
         <Editable.Input asChild>
           <Input />
@@ -22,6 +22,6 @@ export function Invalid() {
           </Button>
         </Editable.SubmitTrigger>
       </Editable.Control>
-    </Editable>
+    </Editable.Root>
   );
 }

@@ -3,10 +3,9 @@ import { InputOTP } from "@pisagor/vue";
 </script>
 
 <template>
-  <InputOTP :default-value="['1', '2', '3', '4']" :disabled="true">
-    <InputOTP.Slot :index="0" />
-    <InputOTP.Slot :index="1" />
-    <InputOTP.Slot :index="2" />
-    <InputOTP.Slot :index="3" />
-  </InputOTP>
+  <InputOTP
+    :default-value="['1', '2', '3', '4']"
+    :disabled="true"
+    :length="4"
+  />
 </template>

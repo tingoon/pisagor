@@ -15,7 +15,9 @@ const brandCircularSliderRecipe = tv({
 </script>
 
 <template>
-  <CircularSlider :recipe="brandCircularSliderRecipe">
-    <CircularSlider.ValueText suffix="°" />
-  </CircularSlider>
+  <CircularSlider
+    :recipe="brandCircularSliderRecipe"
+    show-value
+    value-suffix="°"
+  />
 </template>

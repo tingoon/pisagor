@@ -9,7 +9,7 @@ export function Icon() {
   ];
 
   return (
-    <Steps count={items.length}>
+    <Steps.Root count={items.length}>
       <Steps.List>
         {items.map((item, index) => (
           <Steps.Item index={index} key={item.id}>
@@ -22,6 +22,6 @@ export function Icon() {
           </Steps.Item>
         ))}
       </Steps.List>
-    </Steps>
+    </Steps.Root>
   );
 }

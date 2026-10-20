@@ -1,12 +1,18 @@
 <script lang="ts" setup>
-import { NumberInput } from "@pisagor/vue";
+import { Field, Input, NumberInput } from "@pisagor/vue";
 </script>
 
 <template>
-  <NumberInput default-value="10">
-    <NumberInput.Scrubber>Opacity</NumberInput.Scrubber>
+  <NumberInput.Root default-value="10">
+    <NumberInput.Scrubber as-child>
+      <NumberInput.Label as-child>
+        <Field.Label>Opacity</Field.Label>
+      </NumberInput.Label>
+    </NumberInput.Scrubber>
     <NumberInput.Control>
-      <NumberInput.Input />
+      <NumberInput.Input as-child>
+        <Input />
+      </NumberInput.Input>
     </NumberInput.Control>
-  </NumberInput>
+  </NumberInput.Root>
 </template>

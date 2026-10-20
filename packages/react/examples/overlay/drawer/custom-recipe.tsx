@@ -6,7 +6,7 @@ const brandDrawerRecipe = tv({
   extend: drawerRecipe,
   slots: {
     backdrop: "bg-emerald-950/30",
-    grabberIcon: "bg-emerald-500/50",
+    grabber: "bg-emerald-500/50",
     title: "text-emerald-900 dark:text-emerald-100",
   },
   variants: {},
@@ -14,40 +14,32 @@ const brandDrawerRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <Drawer recipe={brandDrawerRecipe}>
-      <Drawer.Trigger asChild>
-        <Button variant="outline">Open</Button>
-      </Drawer.Trigger>
-      <Drawer.Content>
-        <Drawer.ContentInner>
-          <Drawer.Header
-            description="Make changes to your account here. Swipe down to close."
-            title="Edit profile"
-          />
-          <Drawer.Body>
-            <Field.Group>
-              <Field>
-                <Field.Label>Name</Field.Label>
-                <Input defaultValue="Jane Doe" />
-              </Field>
-              <Field>
-                <Field.Label>Username</Field.Label>
-                <Input defaultValue="@jane.doe" />
-              </Field>
-            </Field.Group>
-          </Drawer.Body>
-        </Drawer.ContentInner>
-        <Drawer.Footer>
-          <Drawer.ContentInner>
-            <Drawer.CloseTrigger asChild>
-              <Button variant="outline">Cancel</Button>
-            </Drawer.CloseTrigger>
-            <Drawer.CloseTrigger asChild>
-              <Button>Save changes</Button>
-            </Drawer.CloseTrigger>
-          </Drawer.ContentInner>
-        </Drawer.Footer>
-      </Drawer.Content>
+    <Drawer
+      actions={
+        <>
+          <Drawer.CloseTrigger asChild>
+            <Button variant="outline">Cancel</Button>
+          </Drawer.CloseTrigger>
+          <Drawer.CloseTrigger asChild>
+            <Button>Save changes</Button>
+          </Drawer.CloseTrigger>
+        </>
+      }
+      description="Make changes to your account here. Swipe down to close."
+      recipe={brandDrawerRecipe}
+      title="Edit profile"
+      trigger={<Button variant="outline">Open</Button>}
+    >
+      <Field.Group>
+        <Field>
+          <Field.Label>Name</Field.Label>
+          <Input defaultValue="Jane Doe" />
+        </Field>
+        <Field>
+          <Field.Label>Username</Field.Label>
+          <Input defaultValue="@jane.doe" />
+        </Field>
+      </Field.Group>
     </Drawer>
   );
 }

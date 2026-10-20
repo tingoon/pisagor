@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Command, Kbd } from "@pisagor/svelte";
   import {
     ArrowBendDownLeftIcon,
@@ -17,37 +16,10 @@
     },
     { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
   ];
-  const filters = useFilter({ sensitivity: "base" });
-  const { collection, filter } = useListCollection({
-    filter(itemString, filterText) {
-      return filters().contains(itemString, filterText);
-    },
-    groupBy: (item) => item.group,
-    initialItems,
-  });
 </script>
 
-<Command
-  {collection}
-  onInputValueChange={({ inputValue }) => filter(inputValue)}
->
-  <Command.Input placeholder="Search..." />
-  <Command.Content>
-    <Command.Empty />
-    <Command.List>
-      {#each collection().group() as [group, items]}
-        <Command.ItemGroup heading={group}>
-          {#each items as item}
-            <Command.Item {item}>
-              {item.label}
-              <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-            </Command.Item>
-          {/each}
-        </Command.ItemGroup>
-      {/each}
-    </Command.List>
-  </Command.Content>
-  <Command.Footer>
+<Command items={initialItems} placeholder="Search...">
+  {#snippet footer()}
     <div class="flex items-center gap-2">
       <Kbd variant="outline">
         <ArrowBendDownLeftIcon class="size-3" />
@@ -63,5 +35,5 @@
       </Kbd>
       <span>Navigate</span>
     </div>
-  </Command.Footer>
+  {/snippet}
 </Command>

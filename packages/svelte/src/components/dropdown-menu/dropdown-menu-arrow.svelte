@@ -1,27 +1,22 @@
 <script lang="ts">
   import { Menu as MenuPrimitive, type MenuArrowProps } from "@ark-ui/svelte";
-  import { dropdownMenuRecipe } from "@pisagor/recipes";
-  import { useStyles } from "./dropdown-menu.context";
+  import { withContext } from "./dropdown-menu.context";
+  import DropdownMenuArrowTip from "./dropdown-menu-arrow-tip.svelte";
 
-  type Props = Omit<MenuArrowProps, "style"> & {
-    style?: string | undefined;
-  };
+  const ARROW_STYLE =
+    "--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing));";
 
-  let { style, ...rest }: Props = $props();
-  const context = useStyles();
-  const slots = $derived(context?.slots ?? dropdownMenuRecipe());
-
-  const arrowStyle = $derived(
-    [
-      "--arrow-background: var(--popover)",
-      "--arrow-size: calc(1.5 * var(--spacing))",
-      style,
-    ]
-      .filter(Boolean)
-      .join("; "),
+  let { children, style, ...rest }: MenuArrowProps = $props();
+  const part = withContext(
+    () => ({ ...rest, style: style ? `${ARROW_STYLE} ${style}` : ARROW_STYLE }),
+    { defaultProps: { "data-scope": "menu" }, name: "Arrow" },
   );
 </script>
 
-<MenuPrimitive.Arrow {...rest} style={arrowStyle}>
-  <MenuPrimitive.ArrowTip class={slots.arrowTip()} />
+<MenuPrimitive.Arrow {...part.props}>
+  {#if children}
+    {@render children()}
+  {:else}
+    <DropdownMenuArrowTip />
+  {/if}
 </MenuPrimitive.Arrow>

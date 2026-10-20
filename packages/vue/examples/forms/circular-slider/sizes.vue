@@ -12,8 +12,8 @@ const sizes = [120, 160, 200] as const;
       :key="size"
       :default-value="45"
       :size="size"
-    >
-      <CircularSlider.ValueText suffix="°" />
-    </CircularSlider>
+      show-value
+      value-suffix="°"
+    />
   </div>
 </template>

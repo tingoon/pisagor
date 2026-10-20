@@ -7,23 +7,21 @@ import { FloatingPanel } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<FloatingPanel>
-  <FloatingPanel.Trigger />
-  <FloatingPanel.Content>
-    <FloatingPanel.Header>
-      <FloatingPanel.Title />
-      <FloatingPanel.Control>
-        <FloatingPanel.Minimize />
-        <FloatingPanel.Maximize />
-        <FloatingPanel.Restore />
-        <FloatingPanel.CloseTrigger />
-      </FloatingPanel.Control>
-    </FloatingPanel.Header>
-    <FloatingPanel.Body />
-    <FloatingPanel.Footer />
-  </FloatingPanel.Content>
+<FloatingPanel title="…">
+  <template #trigger>
+    <Button />
+  </template>
+  <template #icon>
+    <Icon />
+  </template>
+  <!-- body -->
+  <template #actions>
+    <Button />
+  </template>
 </FloatingPanel>
 ```
+
+The shorthand renders the drag header, stage controls (`showStageControls`), close button (`showCloseButton`), scrollable body (`scrollFade`), footer and resize handles (`resizable`).
 
 ## Examples
 

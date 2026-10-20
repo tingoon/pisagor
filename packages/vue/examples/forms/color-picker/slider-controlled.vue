@@ -10,7 +10,7 @@ function onValueChange(next: typeof color.value) {
 
 <template>
   <div class="flex flex-col gap-2">
-    <ColorPicker
+    <ColorPicker.Root
       class="w-full"
       format="hsla"
       inline
@@ -18,9 +18,12 @@ function onValueChange(next: typeof color.value) {
       @value-change="onValueChange"
     >
       <ColorPicker.View format="hsla">
-        <ColorPicker.ChannelSlider channel="hue" />
+        <ColorPicker.ChannelSlider channel="hue">
+          <ColorPicker.ChannelSliderTrack />
+          <ColorPicker.ChannelSliderThumb />
+        </ColorPicker.ChannelSlider>
       </ColorPicker.View>
-    </ColorPicker>
+    </ColorPicker.Root>
     <p class="text-muted-foreground text-center text-sm">{{ color }}</p>
   </div>
 </template>

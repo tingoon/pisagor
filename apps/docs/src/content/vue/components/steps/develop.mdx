@@ -7,21 +7,10 @@ import { Steps } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<Steps>
-  <Steps.List>
-    <Steps.Item>
-      <Steps.Trigger>
-        <Steps.Indicator />
-      </Steps.Trigger>
-      <Steps.Separator />
-    </Steps.Item>
-  </Steps.List>
-  <Steps.Content />
-  <Steps.CompletedContent />
-  <Steps.PrevTrigger />
-  <Steps.NextTrigger />
-</Steps>
+<Steps :items="[{ title: 'Account', content: '…' }]" completed-content="Done" />
 ```
+
+The shorthand derives `count` from `items` and renders the list, each step's content, the completed content, and localized back/next buttons (`:show-controls="false"` hides them). Item fields accept text or a render function; use the `completed` slot for rich completed content. Compose `Steps.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, DataList, Popover } from "@pisagor/react";
 
@@ -25,7 +26,7 @@ export function InfoTip() {
           value={item.value}
         >
           {item.label}
-          <Popover modal={false} positioning={{ placement: "top" }}>
+          <Popover.Root modal={false} positioning={{ placement: "top" }}>
             <Popover.Trigger asChild>
               <Button
                 aria-label={`Info about ${item.label}`}
@@ -35,10 +36,14 @@ export function InfoTip() {
                 <InfoIcon />
               </Button>
             </Popover.Trigger>
-            <Popover.Content className="w-max text-sm">
-              {item.info}
-            </Popover.Content>
-          </Popover>
+            <Portal>
+              <Popover.Positioner>
+                <Popover.Content className="w-max text-sm">
+                  {item.info}
+                </Popover.Content>
+              </Popover.Positioner>
+            </Portal>
+          </Popover.Root>
         </DataList.Item>
       ))}
     </DataList.Root>

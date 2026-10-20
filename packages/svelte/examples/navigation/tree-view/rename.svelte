@@ -1,7 +1,6 @@
 <script lang="ts">
   import { TreeView } from "@pisagor/svelte";
   import { createDemoCollection } from "./helpers";
-  import TreeNode from "./tree-node.svelte";
 
   let collection = $state(createDemoCollection());
 
@@ -16,11 +15,5 @@
 </script>
 
 <div>
-  <TreeView canRename={() => true} {collection} {onRenameComplete}>
-    <TreeView.Tree>
-      {#each collection.rootNode.children ?? [] as node, index}
-        <TreeNode indexPath={[index]} {node} />
-      {/each}
-    </TreeView.Tree>
-  </TreeView>
+  <TreeView canRename={() => true} {collection} {onRenameComplete} />
 </div>

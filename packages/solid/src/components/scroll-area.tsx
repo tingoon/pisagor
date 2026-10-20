@@ -1,5 +1,7 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid";
 import type {
+  ScrollAreaContentProps,
+  ScrollAreaCornerProps,
   ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
@@ -18,12 +20,13 @@ import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
 // #endregion
 
+// #region Types
 type ScrollAreaRootProps = ScrollAreaRootPrimitiveProps &
   ScrollAreaVariantProps &
   ScrollAreaRootContract;
@@ -38,26 +41,27 @@ export interface ScrollAreaProps
   thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
   viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
 }
+// #endregion
 
+// #region Parts
 const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider<
   ComponentProps<typeof ScrollAreaPrimitive.Root> & ScrollAreaRootContract
 >(ScrollAreaPrimitive.Root, { name: "Root" });
 
-function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
+const ScrollAreaViewport = withContext<ScrollAreaViewportProps>(
+  ScrollAreaPrimitive.Viewport,
+  { name: "Viewport" },
+);
 
-  return (
-    <ScrollAreaPrimitive.Viewport
-      {...rest}
-      class={styles.slots.viewport({ class: local.class })}
-    >
-      <ScrollAreaPrimitive.Content>
-        {local.children}
-      </ScrollAreaPrimitive.Content>
-    </ScrollAreaPrimitive.Viewport>
-  );
-}
+const ScrollAreaContent = withContext<ScrollAreaContentProps>(
+  ScrollAreaPrimitive.Content,
+  { name: "Content" },
+);
+
+const ScrollAreaCorner = withContext<ScrollAreaCornerProps>(
+  ScrollAreaPrimitive.Corner,
+  { name: "Corner" },
+);
 
 const ScrollAreaScrollbar: Component<ScrollAreaScrollbarProps> = withContext<
   ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>
@@ -67,6 +71,9 @@ const ScrollAreaThumb: Component<ScrollAreaThumbProps> = withContext<
   ComponentProps<typeof ScrollAreaPrimitive.Thumb>
 >(ScrollAreaPrimitive.Thumb, { name: "Thumb" });
 
+// #endregion
+
+// #region Shorthand
 function ScrollAreaShorthand(props: ScrollAreaProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "scrollFade",
@@ -84,7 +91,9 @@ function ScrollAreaShorthand(props: ScrollAreaProps): JSX.Element {
         {...local.viewportProps}
         class={local.classNames?.viewport}
       >
-        {local.children}
+        <ScrollAreaContent class={local.classNames?.content}>
+          {local.children}
+        </ScrollAreaContent>
       </ScrollAreaViewport>
       <ScrollAreaScrollbar
         {...local.scrollbarProps}
@@ -106,19 +115,23 @@ function ScrollAreaShorthand(props: ScrollAreaProps): JSX.Element {
           class={local.classNames?.thumb}
         />
       </ScrollAreaScrollbar>
-      <ScrollAreaPrimitive.Corner />
+      <ScrollAreaCorner class={local.classNames?.corner} />
     </ScrollAreaRoot>
   );
 }
+// #endregion
 
 export type {
+  ScrollAreaContentProps,
+  ScrollAreaCornerProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/solid";
 
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
-  Corner: ScrollAreaPrimitive.Corner,
+  Content: ScrollAreaContent,
+  Corner: ScrollAreaCorner,
   Root: ScrollAreaRoot,
   Scrollbar: ScrollAreaScrollbar,
   Thumb: ScrollAreaThumb,

@@ -4,9 +4,7 @@
     type SegmentGroupRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
   import type { SegmentGroupRootContract } from "@pisagor/contracts";
-
   import { withProvider } from "./segment-group.context";
-  import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
   type SegmentGroupVariant = "default" | "underline";
 
@@ -41,6 +39,5 @@
 </script>
 
 <SegmentGroupPrimitive.Root {...root.props}>
-  <SegmentGroupIndicator />
   {@render children?.()}
 </SegmentGroupPrimitive.Root>

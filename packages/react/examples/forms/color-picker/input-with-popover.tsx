@@ -1,8 +1,9 @@
+import { Portal } from "@ark-ui/react";
 import { ColorPicker, InputGroup } from "@pisagor/react";
 
 export function InputWithPopover() {
   return (
-    <ColorPicker defaultValue="#eb5e41" format="hsla">
+    <ColorPicker.Root defaultValue="#eb5e41" format="hsla">
       <ColorPicker.Control>
         <InputGroup>
           <ColorPicker.Trigger asChild>
@@ -15,14 +16,22 @@ export function InputWithPopover() {
           </ColorPicker.Input>
         </InputGroup>
       </ColorPicker.Control>
-      <ColorPicker.Content>
-        <ColorPicker.Area>
-          <ColorPicker.AreaThumb />
-        </ColorPicker.Area>
-        <ColorPicker.View format="hsla">
-          <ColorPicker.ChannelSlider channel="hue" />
-        </ColorPicker.View>
-      </ColorPicker.Content>
-    </ColorPicker>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.View format="hsla">
+              <ColorPicker.ChannelSlider channel="hue">
+                <ColorPicker.ChannelSliderTrack />
+                <ColorPicker.ChannelSliderThumb />
+              </ColorPicker.ChannelSlider>
+            </ColorPicker.View>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
   );
 }

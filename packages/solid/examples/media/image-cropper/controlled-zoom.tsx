@@ -1,8 +1,8 @@
-import { Button, ImageCropper } from "@pisagor/solid";
 import {
   MagnifyingGlassMinusIcon,
   MagnifyingGlassPlusIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Button, ImageCropper } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
 export function ControlledZoom() {
@@ -10,13 +10,12 @@ export function ControlledZoom() {
 
   return (
     <div class="flex flex-col items-end gap-2">
-      <ImageCropper onZoomChange={(e) => setZoom(e.zoom)} zoom={zoom()}>
-        <ImageCropper.Image
-          alt="Crop me"
-          src="https://images.unsplash.com/photo-1662692735672-544412d65934?w=600&auto=format"
-        />
-        <ImageCropper.Selection />
-      </ImageCropper>
+      <ImageCropper
+        onZoomChange={(e) => setZoom(e.zoom)}
+        zoom={zoom()}
+        alt="Crop me"
+        src="https://images.unsplash.com/photo-1662692735672-544412d65934?w=600&auto=format"
+      />
       <div class="flex gap-1">
         <Button
           aria-label="Zoom out"

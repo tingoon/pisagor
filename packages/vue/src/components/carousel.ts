@@ -1,24 +1,18 @@
 import { Carousel as CarouselPrimitive, useCarouselContext } from "@ark-ui/vue";
-import {
-  PhCaretLeft,
-  PhCaretRight,
-  PhPause,
-  PhPlay,
-} from "@phosphor-icons/vue";
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import type {
   CarouselPresetItem as BaseCarouselPresetItem,
   CarouselRootContract,
   CarouselContract,
 } from "@pisagor/contracts";
 import { carouselRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -78,97 +72,81 @@ export const CarouselControl = withContext(CarouselPrimitive.Control, {
   name: "Control",
 });
 
-function createNavTrigger(
-  direction: "prev" | "next",
-  primitive: Parameters<typeof h>[0],
-) {
-  const isPrev = direction === "prev";
+const CarouselPrevTriggerBase = withContext(CarouselPrimitive.PrevTrigger, {
+  name: "PrevTrigger",
+});
 
-  return defineComponent({
-    inheritAttrs: false,
-    name: isPrev ? "Carousel.PrevTrigger" : "Carousel.NextTrigger",
-    props: {
-      class: {
-        default: undefined,
-        type: [String, Object, Array] as PropType<ClassValue>,
-      },
-    },
-    setup(props, { attrs }) {
-      const { m } = useLocale();
-      const styles = useStyles();
+/**
+ * Previous trigger with a localized default `aria-label`; pass your button /
+ * icon.
+ */
+export const CarouselPrevTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "Carousel.PrevTrigger",
+  setup(_, { attrs, slots }) {
+    const { m } = useLocale();
 
-      return () =>
-        h(
-          primitive,
-          {
-            ...attrs,
-            asChild: true,
-            class: (isPrev
-              ? styles.slots.prevTrigger
-              : styles.slots.nextTrigger)({ class: cn(props.class) }),
-          },
-          () =>
-            h(
-              Button as ArkPart,
-              {
-                "aria-label": isPrev
-                  ? m("carousel.previous")
-                  : m("carousel.next"),
-                clickEffect: false,
-                pill: true,
-                size: "icon-md",
-                variant: "outline",
-              },
-              () => [
-                h(isPrev ? PhCaretLeft : PhCaretRight, { "aria-hidden": true }),
-              ],
-            ),
-        );
-    },
-  });
-}
+    return () =>
+      h(
+        CarouselPrevTriggerBase,
+        { "aria-label": m("carousel.previous"), ...attrs },
+        slots,
+      );
+  },
+});
 
-export const CarouselPrevTrigger = createNavTrigger(
-  "prev",
-  CarouselPrimitive.PrevTrigger as ArkPart,
+const CarouselNextTriggerBase = withContext(CarouselPrimitive.NextTrigger, {
+  name: "NextTrigger",
+});
+
+/** Next trigger with a localized default `aria-label`; pass your button / icon. */
+export const CarouselNextTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "Carousel.NextTrigger",
+  setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
+    return () =>
+      h(
+        CarouselNextTriggerBase,
+        { "aria-label": m("carousel.next"), ...attrs },
+        slots,
+      );
+  },
+});
+
+const CarouselAutoplayTriggerBase = withContext(
+  CarouselPrimitive.AutoplayTrigger,
+  { name: "AutoplayTrigger" },
 );
 
-export const CarouselNextTrigger = createNavTrigger(
-  "next",
-  CarouselPrimitive.NextTrigger as ArkPart,
-);
-
+/** Autoplay trigger with a localized play / pause `aria-label`. */
 export const CarouselAutoplayTrigger = defineComponent({
   inheritAttrs: false,
   name: "Carousel.AutoplayTrigger",
-  setup(_, { attrs }) {
+  setup(_, { attrs, slots }) {
     const { m } = useLocale();
     const carousel = useCarouselContext();
 
-    return () => {
-      const isPlaying = carousel.value.isPlaying;
-
-      return h(
-        CarouselPrimitive.AutoplayTrigger as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(
-            Button as ArkPart,
-            {
-              "aria-label": isPlaying
-                ? m("carousel.pause")
-                : m("carousel.play"),
-              clickEffect: false,
-              pill: true,
-              size: "icon-md",
-              variant: "outline",
-            },
-            () => [h(isPlaying ? PhPause : PhPlay, { "aria-hidden": true })],
+    return () =>
+      h(
+        CarouselAutoplayTriggerBase,
+        {
+          "aria-label": m(
+            carousel.value.isPlaying ? "carousel.pause" : "carousel.play",
           ),
+          ...attrs,
+        },
+        slots,
       );
-    };
   },
 });
+
+/** Shows the default slot while playing and `#fallback` while paused. */
+export const CarouselAutoplayIndicator = withContext(
+  CarouselPrimitive.AutoplayIndicator,
+  { name: "AutoplayIndicator" },
+);
 
 export const CarouselProgressText = withContext(
   CarouselPrimitive.ProgressText,
@@ -194,6 +172,13 @@ export const CarouselItem = withContext(CarouselPrimitive.Item, {
 // #endregion
 
 // #region Shorthand
+const navButtonProps = {
+  clickEffect: false,
+  pill: true,
+  size: "icon-md",
+  variant: "outline",
+} as const;
+
 export const CarouselShorthand = defineComponent({
   inheritAttrs: false,
   name: "Carousel",
@@ -220,8 +205,16 @@ export const CarouselShorthand = defineComponent({
         },
         () => [
           h(CarouselControl, null, () => [
-            h(CarouselPrevTrigger),
-            h(CarouselNextTrigger),
+            h(CarouselPrevTrigger, { asChild: true }, () =>
+              h(Button as ArkPart, navButtonProps, () =>
+                h(PhCaretLeft, { "aria-hidden": true }),
+              ),
+            ),
+            h(CarouselNextTrigger, { asChild: true }, () =>
+              h(Button as ArkPart, navButtonProps, () =>
+                h(PhCaretRight, { "aria-hidden": true }),
+              ),
+            ),
           ]),
           h(CarouselItemGroup, null, () =>
             props.slides?.map((slide, index) =>
@@ -243,7 +236,21 @@ export const CarouselShorthand = defineComponent({
 });
 // #endregion
 
+export type {
+  CarouselAutoplayIndicatorProps,
+  CarouselAutoplayTriggerProps,
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselItemGroupProps,
+  CarouselItemProps,
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+  CarouselProgressTextProps,
+} from "@ark-ui/vue";
+
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayIndicator: CarouselAutoplayIndicator,
   AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,

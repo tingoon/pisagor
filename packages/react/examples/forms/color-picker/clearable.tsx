@@ -1,3 +1,5 @@
+import { Portal } from "@ark-ui/react";
+import { XIcon } from "@phosphor-icons/react";
 import { ColorPicker, Field, InputGroup } from "@pisagor/react";
 import { useState } from "react";
 
@@ -8,11 +10,11 @@ export function Clearable() {
     <div className="flex flex-col gap-2">
       <Field>
         <Field.Label>Compact field</Field.Label>
-        <ColorPicker.Field onValueChange={setValue} value={value} />
+        <ColorPicker clearable onValueChange={setValue} value={value} />
       </Field>
       <Field>
         <Field.Label>Input group</Field.Label>
-        <ColorPicker onValueChange={setValue} value={value}>
+        <ColorPicker.Root onValueChange={setValue} value={value}>
           <ColorPicker.Control>
             <InputGroup>
               <ColorPicker.Trigger asChild>
@@ -23,15 +25,26 @@ export function Clearable() {
               <ColorPicker.Input asChild>
                 <InputGroup.Input />
               </ColorPicker.Input>
-              <ColorPicker.ClearTrigger />
+              <InputGroup.Addon align="inline-end">
+                <ColorPicker.ClearTrigger asChild>
+                  <InputGroup.Button size="icon-xs" variant="ghost">
+                    <XIcon />
+                  </InputGroup.Button>
+                </ColorPicker.ClearTrigger>
+              </InputGroup.Addon>
             </InputGroup>
           </ColorPicker.Control>
-          <ColorPicker.Content>
-            <ColorPicker.Area>
-              <ColorPicker.AreaThumb />
-            </ColorPicker.Area>
-          </ColorPicker.Content>
-        </ColorPicker>
+          <Portal>
+            <ColorPicker.Positioner>
+              <ColorPicker.Content>
+                <ColorPicker.Area>
+                  <ColorPicker.AreaBackground />
+                  <ColorPicker.AreaThumb />
+                </ColorPicker.Area>
+              </ColorPicker.Content>
+            </ColorPicker.Positioner>
+          </Portal>
+        </ColorPicker.Root>
       </Field>
     </div>
   );

@@ -3,7 +3,7 @@ import { ColorPicker, InputGroup } from "@pisagor/vue";
 </script>
 
 <template>
-  <ColorPicker default-value="#eb5e41" format="hsla">
+  <ColorPicker.Root default-value="#eb5e41" format="hsla">
     <ColorPicker.Control>
       <InputGroup>
         <ColorPicker.Trigger as-child>
@@ -16,13 +16,21 @@ import { ColorPicker, InputGroup } from "@pisagor/vue";
         </ColorPicker.Input>
       </InputGroup>
     </ColorPicker.Control>
-    <ColorPicker.Content>
-      <ColorPicker.Area>
-        <ColorPicker.AreaThumb />
-      </ColorPicker.Area>
-      <ColorPicker.View format="hsla">
-        <ColorPicker.ChannelSlider channel="hue" />
-      </ColorPicker.View>
-    </ColorPicker.Content>
-  </ColorPicker>
+    <Teleport to="body">
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area>
+            <ColorPicker.AreaBackground />
+            <ColorPicker.AreaThumb />
+          </ColorPicker.Area>
+          <ColorPicker.View format="hsla">
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+          </ColorPicker.View>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </Teleport>
+  </ColorPicker.Root>
 </template>

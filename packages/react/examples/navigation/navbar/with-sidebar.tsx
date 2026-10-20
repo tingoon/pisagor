@@ -3,6 +3,7 @@ import {
   DatabaseIcon,
   HouseIcon,
   MagnifyingGlassIcon,
+  SidebarSimpleIcon,
   UserIcon,
 } from "@phosphor-icons/react";
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/react";
@@ -60,7 +61,9 @@ export function WithSidebar() {
       <Sidebar.Inset>
         <Navbar>
           <Navbar.Brand className="gap-3">
-            <Sidebar.Trigger />
+            <Sidebar.Trigger>
+              <SidebarSimpleIcon className="rtl:rotate-180" />
+            </Sidebar.Trigger>
             <span className="text-sm font-medium">Dashboard</span>
           </Navbar.Brand>
 

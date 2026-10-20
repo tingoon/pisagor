@@ -48,7 +48,7 @@ export function OtpField({
     if (index === separatorAt) {
       slots.push(<InputOTP.Separator key={`otp-separator-${index}`} />);
     }
-    slots.push(<InputOTP.Slot index={index} key={`otp-slot-${index}`} />);
+    slots.push(<InputOTP.Input index={index} key={`otp-slot-${index}`} />);
   }
 
   return (
@@ -63,7 +63,7 @@ export function OtpField({
       labelProps={labelProps}
       orientation={orientation}
     >
-      <InputOTP
+      <InputOTP.Root
         {...inputOtpProps}
         {...(value !== undefined
           ? { value: value ? value.split("") : [] }
@@ -74,8 +74,8 @@ export function OtpField({
         onBlur={onBlur}
         onValueChange={(nextValue) => onValueChange?.(nextValue.join(""))}
       >
-        {slots}
-      </InputOTP>
+        <InputOTP.Control>{slots}</InputOTP.Control>
+      </InputOTP.Root>
     </FieldShell>
   );
 }

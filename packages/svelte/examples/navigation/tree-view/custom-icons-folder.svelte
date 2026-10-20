@@ -1,7 +1,6 @@
 <script lang="ts">
   import { createTreeCollection, TreeView } from "@pisagor/svelte";
   import { PackageIcon } from "phosphor-svelte";
-  import TreeNodeFolder from "./tree-node-folder.svelte";
 
   const collection = createTreeCollection({
     rootNode: {
@@ -36,11 +35,5 @@
 </script>
 
 <div>
-  <TreeView {collection}>
-    <TreeView.Tree>
-      {#each collection.rootNode.children ?? [] as node, index}
-        <TreeNodeFolder indexPath={[index]} {node} />
-      {/each}
-    </TreeView.Tree>
-  </TreeView>
+  <TreeView {collection} />
 </div>

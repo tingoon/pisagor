@@ -8,12 +8,17 @@ import type {
   ToggleGroupRootContract,
   ToggleGroupContract,
 } from "@pisagor/contracts";
-import { toggleGroupRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  toggleGroupRecipe,
+  toggleRecipe,
+} from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
-import { Toggle, type ToggleProps } from "./toggle";
+import type { ToggleProps } from "./toggle";
 
 // #region Context
 const { Context: ToggleGroupStylesContext, useStyles } =
@@ -58,6 +63,7 @@ function useToggleGroup() {
 }
 // #endregion
 
+// #region Types
 interface ToggleGroupPresetItem extends Omit<
   BaseToggleGroupPresetItem,
   "content"
@@ -80,7 +86,9 @@ export interface ToggleGroupProps
     ToggleGroupContract {
   items?: ToggleGroupPresetItem[];
 }
+// #endregion
 
+// #region Parts
 export function ToggleGroupRoot(props: ToggleGroupRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "size",
@@ -145,37 +153,39 @@ export function ToggleGroupRoot(props: ToggleGroupRootProps): JSX.Element {
   );
 }
 
+/** Item; styled like `Toggle` from the group's `variant` / `size`. */
 export function ToggleGroupItem(props: ToggleGroupItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["value", "class"]);
+  const [local, rest] = splitProps(props, ["class"]);
   const ctx = useToggleGroup();
 
   return (
     <ToggleGroupPrimitive.Item
-      asChild={(itemProps) => (
-        <Toggle
-          {...itemProps({
-            class: ctx.slots.item({ class: local.class }),
-          })}
-          {...rest}
-          data-spacing={ctx.spacing}
-          data-variant={ctx.variant}
-          size={ctx.size}
-          variant={ctx.variant}
-        />
+      {...rest}
+      class={cn(
+        buttonRecipe({ clickEffect: false, variant: ctx.variant }).base(),
+        toggleRecipe({ size: ctx.size }),
+        ctx.slots.item({ class: local.class }),
       )}
-      value={local.value}
+      data-spacing={ctx.spacing}
+      data-variant={ctx.variant}
     />
   );
 }
+// #endregion
 
+// #region Shorthand
 export function ToggleGroupShorthand(props: ToggleGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["items"]);
+  const [local, rest] = splitProps(props, ["class", "classNames", "items"]);
 
   return (
-    <ToggleGroupRoot {...rest}>
+    <ToggleGroupRoot {...rest} class={cn(local.classNames?.base, local.class)}>
       <For each={local.items}>
         {(item) => (
-          <ToggleGroupItem disabled={item.disabled} value={item.value}>
+          <ToggleGroupItem
+            class={local.classNames?.item}
+            disabled={item.disabled}
+            value={item.value}
+          >
             {item.content}
           </ToggleGroupItem>
         )}
@@ -183,6 +193,7 @@ export function ToggleGroupShorthand(props: ToggleGroupProps): JSX.Element {
     </ToggleGroupRoot>
   );
 }
+// #endregion
 
 export type { ToggleGroupItemProps } from "@ark-ui/solid";
 

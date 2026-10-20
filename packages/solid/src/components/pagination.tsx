@@ -3,16 +3,18 @@ import {
   usePaginationContext,
 } from "@ark-ui/solid";
 import type {
-  PaginationContextProps,
   PaginationEllipsisProps,
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
   PaginationRootProps as PaginationRootPrimitiveProps,
 } from "@ark-ui/solid";
-import type { PaginationRootContract } from "@pisagor/contracts";
+import type {
+  PaginationContract,
+  PaginationRootContract,
+} from "@pisagor/contracts";
 import { paginationRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import {
   CaretLeftIcon,
@@ -21,144 +23,77 @@ import {
   createSlotRecipeContext,
 } from "../internal";
 import { Button, type ButtonProps } from "./button";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { useStyles, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
 // #endregion
 
-export type LocalPaginationRootProps = PaginationRootPrimitiveProps &
+// #region Types
+export type PaginationRootProps = PaginationRootPrimitiveProps &
   PaginationRootContract;
 
-export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
+export interface PaginationProps
+  extends Omit<PaginationRootProps, "children">, PaginationContract {}
 
 export interface PaginationItemLinkProps extends ButtonProps {
+  /** The page number to link to. */
   page?: "previous" | "next" | number;
   /**
-   * Builds the link href for a page.
+   * Builds the link URL for a page.
    *
    * @defaultValue (page) => `?page=${page}`
    */
   getHref?: (page: number) => string;
 }
+// #endregion
 
-const PaginationRootProvider: Component<LocalPaginationRootProps> =
-  withProvider<PaginationRootContract>(PaginationPrimitive.Root, {
-    name: "Root",
-  });
+// #region Parts
+const Root = withProvider<PaginationRootProps>(PaginationPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+});
 
-export function PaginationRoot(props: LocalPaginationRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children"]);
+const PrevTrigger = withContext<PaginationPrevTriggerProps>(
+  PaginationPrimitive.PrevTrigger,
+  { name: "PrevTrigger" },
+);
 
-  return (
-    <PaginationRootProvider {...rest}>
-      <Show
-        fallback={
-          <>
-            <PaginationPrevTrigger />
-            <PaginationItems />
-            <PaginationNextTrigger />
-          </>
-        }
-        when={local.children}
-      >
-        {local.children}
-      </Show>
-    </PaginationRootProvider>
-  );
-}
+const NextTrigger = withContext<PaginationNextTriggerProps>(
+  PaginationPrimitive.NextTrigger,
+  { name: "NextTrigger" },
+);
 
-export function PaginationPrevTrigger(
-  props: PaginationPrevTriggerProps,
-): JSX.Element {
-  return (
-    <PaginationPrimitive.PrevTrigger
-      {...props}
-      asChild={(triggerProps) => (
-        <Button {...triggerProps()} variant="ghost">
-          <CaretLeftIcon />
-          Previous
-        </Button>
-      )}
-    />
-  );
-}
+const Item = withContext<PaginationItemProps>(PaginationPrimitive.Item, {
+  name: "Item",
+});
 
-export function PaginationNextTrigger(
-  props: PaginationNextTriggerProps,
-): JSX.Element {
-  return (
-    <PaginationPrimitive.NextTrigger
-      {...props}
-      asChild={(triggerProps) => (
-        <Button {...triggerProps()} variant="ghost">
-          Next
-          <CaretRightIcon />
-        </Button>
-      )}
-    />
-  );
-}
+const Ellipsis = withContext<PaginationEllipsisProps>(
+  PaginationPrimitive.Ellipsis,
+  { name: "Ellipsis" },
+);
 
-export function PaginationItem(props: PaginationItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <PaginationPrimitive.Item
-      {...rest}
-      asChild={(itemProps) => (
-        <Button
-          {...itemProps({ class: styles.slots.item({ class: local.class }) })}
-          size="icon-md"
-          variant="ghost"
-        >
-          {local.children}
-        </Button>
-      )}
-    />
-  );
-}
-
-export function PaginationItems(props: PaginationItemsProps): JSX.Element {
-  return (
-    <PaginationPrimitive.Context {...props}>
-      {(api) => (
-        <For each={api().pages}>
-          {(page, index) => (
-            <Show
-              fallback={<PaginationEllipsis index={index()} />}
-              when={page.type === "page" ? page : undefined}
-            >
-              {(pageItem) => (
-                <PaginationItem type="page" value={pageItem().value}>
-                  {pageItem().value}
-                </PaginationItem>
-              )}
-            </Show>
-          )}
-        </For>
-      )}
-    </PaginationPrimitive.Context>
-  );
-}
-
-export function PaginationItemLink(
-  props: PaginationItemLinkProps,
-): JSX.Element {
+/** Link styled as a page button; for URL-driven pagination. Not an Ark part. */
+function ItemLink(props: PaginationItemLinkProps): JSX.Element {
   const [local, rest] = splitProps(props, ["page", "children", "getHref"]);
   const pagination = usePaginationContext();
 
   const pageValue = () => {
-    if (local.page === "previous") return pagination().previousPage;
-    if (local.page === "next") return pagination().nextPage;
+    if (local.page === "previous") {
+      return pagination().previousPage;
+    }
+
+    if (local.page === "next") {
+      return pagination().nextPage;
+    }
 
     return local.page;
   };
 
-  const variant = () => (typeof local.page === "number" ? "outline" : "ghost");
+  const isPage = () => typeof local.page === "number";
 
   return (
     <Button
@@ -166,7 +101,9 @@ export function PaginationItemLink(
       asChild={(buttonProps) => (
         <a
           {...buttonProps()}
-          aria-current={local.page === pagination().page ? "page" : undefined}
+          aria-current={
+            isPage() && local.page === pagination().page ? "page" : undefined
+          }
           href={(local.getHref ?? ((value) => `?page=${value}`))(
             pageValue() ?? 1,
           )}
@@ -174,26 +111,72 @@ export function PaginationItemLink(
           {local.children}
         </a>
       )}
-      variant={variant()}
+      variant={isPage() ? "outline" : "ghost"}
     />
   );
 }
+// #endregion
 
-export function PaginationEllipsis(
-  props: PaginationEllipsisProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+// #region Shorthand
+export function PaginationShorthand(props: PaginationProps): JSX.Element {
+  const { m } = useLocale();
+  const [local, rest] = splitProps(props, ["classNames"]);
 
   return (
-    <PaginationPrimitive.Ellipsis
-      {...rest}
-      class={styles.slots.ellipsis({ class: local.class })}
-    >
-      <DotsThreeIcon />
-    </PaginationPrimitive.Ellipsis>
+    <Root {...rest}>
+      <PrevTrigger
+        asChild={(triggerProps) => (
+          <Button {...triggerProps()} variant="ghost">
+            <CaretLeftIcon />
+            {m("pagination.previous")}
+          </Button>
+        )}
+        class={local.classNames?.prevTrigger}
+      />
+
+      <PaginationPrimitive.Context>
+        {(api) => (
+          <For each={api().pages}>
+            {(page, index) => (
+              <Show
+                fallback={
+                  <Ellipsis class={local.classNames?.ellipsis} index={index()}>
+                    <DotsThreeIcon />
+                  </Ellipsis>
+                }
+                when={page.type === "page" ? page : undefined}
+              >
+                {(pageItem) => (
+                  <Item
+                    asChild={(itemProps) => (
+                      <Button {...itemProps()} size="icon-md" variant="ghost">
+                        {pageItem().value}
+                      </Button>
+                    )}
+                    class={local.classNames?.item}
+                    type="page"
+                    value={pageItem().value}
+                  />
+                )}
+              </Show>
+            )}
+          </For>
+        )}
+      </PaginationPrimitive.Context>
+
+      <NextTrigger
+        asChild={(triggerProps) => (
+          <Button {...triggerProps()} variant="ghost">
+            {m("pagination.next")}
+            <CaretRightIcon />
+          </Button>
+        )}
+        class={local.classNames?.nextTrigger}
+      />
+    </Root>
   );
 }
+// #endregion
 
 export type {
   PaginationContextProps,
@@ -201,14 +184,14 @@ export type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps,
 } from "@ark-ui/solid";
 
-export const Pagination = Object.assign(PaginationRoot, {
-  Ellipsis: PaginationEllipsis,
-  Item: PaginationItem,
-  ItemLink: PaginationItemLink,
-  Items: PaginationItems,
-  NextTrigger: PaginationNextTrigger,
-  PrevTrigger: PaginationPrevTrigger,
+export const Pagination = Object.assign(PaginationShorthand, {
+  Context: PaginationPrimitive.Context,
+  Ellipsis,
+  Item,
+  ItemLink,
+  NextTrigger,
+  PrevTrigger,
+  Root,
 });

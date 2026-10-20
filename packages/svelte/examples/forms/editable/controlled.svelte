@@ -6,10 +6,9 @@
 </script>
 
 <Card>
-  <Card.Header
-    description="Click the edit button to start editing"
-    title="Edit user"
-  >
+  <Card.Header>
+    <Card.Title>Edit user</Card.Title>
+    <Card.Description>Click the edit button to start editing</Card.Description>
     <Card.Action>
       <Button
         onclick={() => (isEditing = !isEditing)}
@@ -29,7 +28,7 @@
     <Field.Group>
       <Field>
         <Field.Label>Name</Field.Label>
-        <Editable
+        <Editable.Root
           activationMode="none"
           defaultValue="Jane Doe"
           edit={isEditing}
@@ -38,11 +37,11 @@
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
-        </Editable>
+        </Editable.Root>
       </Field>
       <Field>
         <Field.Label>Username</Field.Label>
-        <Editable
+        <Editable.Root
           activationMode="none"
           defaultValue="@jane.doe"
           edit={isEditing}
@@ -51,7 +50,7 @@
             <Editable.Input />
             <Editable.Preview />
           </Editable.Area>
-        </Editable>
+        </Editable.Root>
       </Field>
     </Field.Group>
   </Card.Content>

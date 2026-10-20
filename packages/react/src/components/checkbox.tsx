@@ -8,10 +8,12 @@ import type {
 } from "@ark-ui/react";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
+  CheckboxContract,
   CheckboxGroupRootContract,
   CheckboxRootContract,
 } from "@pisagor/contracts";
 import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes";
+import type { ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -31,7 +33,11 @@ export interface CheckboxGroupProps
 
 type CheckboxRootProps = CheckboxRootPrimitiveProps & CheckboxRootContract;
 
-export type CheckboxProps = CheckboxRootProps;
+export interface CheckboxProps
+  extends Omit<CheckboxRootProps, "children">, CheckboxContract {
+  /** Visible label rendered next to the control. */
+  label?: ReactNode;
+}
 // #endregion
 
 // #region Parts
@@ -63,25 +69,16 @@ const ControlBase = withContext<CheckboxControlProps>(
   },
 );
 
-function Control({ children, ...rest }: CheckboxControlProps) {
+/**
+ * Control; mirrors the root `variant` as `data-variant`. Render your own
+ * indicators.
+ */
+function Control(props: CheckboxControlProps) {
   const { variants } = useStyles();
   const variant =
     (variants as CheckboxRootContract).variant ?? ("primary" as const);
 
-  return (
-    <ControlBase {...rest} data-variant={variant}>
-      {children ?? (
-        <>
-          <Indicator>
-            <CheckIcon />
-          </Indicator>
-          <Indicator indeterminate>
-            <MinusIcon />
-          </Indicator>
-        </>
-      )}
-    </ControlBase>
-  );
+  return <ControlBase {...props} data-variant={variant} />;
 }
 
 const Indicator = withContext<CheckboxIndicatorProps>(
@@ -96,18 +93,34 @@ const Label = withContext<CheckboxLabelProps>(CheckboxPrimitive.Label, {
 });
 // #endregion
 
-// #region Closed
-function CheckboxShorthand({ tabIndex, className, ...rest }: CheckboxProps) {
+// #region Shorthand
+export function CheckboxShorthand({
+  classNames,
+  label,
+  tabIndex,
+  ...rest
+}: CheckboxProps) {
   return (
-    <Root {...rest} className={className}>
-      <Control />
+    <Root {...rest}>
+      <Control className={classNames?.base}>
+        <Indicator className={classNames?.indicator}>
+          <CheckIcon />
+        </Indicator>
+        <Indicator className={classNames?.indicator} indeterminate>
+          <MinusIcon />
+        </Indicator>
+      </Control>
+      {label ? <Label className={classNames?.label}>{label}</Label> : null}
       <CheckboxPrimitive.HiddenInput tabIndex={tabIndex} />
     </Root>
   );
 }
+
+CheckboxShorthand.displayName = "Checkbox";
 // #endregion
 
-export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/react";
+export type { CheckboxCheckedState } from "@ark-ui/react";
+export type { CheckboxRootProps };
 
 export const Checkbox = Object.assign(CheckboxShorthand, {
   Control,

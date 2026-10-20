@@ -13,7 +13,7 @@
     <p class="text-muted-foreground text-center text-xs">
       Until {formatDate(targetDate)}
     </p>
-    <Timer
+    <Timer.Root
       autoStart
       class="items-center gap-2"
       countdown
@@ -40,6 +40,6 @@
           <Timer.ItemLabel>seconds</Timer.ItemLabel>
         </Timer.ItemGroup>
       </Timer.Area>
-    </Timer>
+    </Timer.Root>
   </Card.Content>
 </Card>

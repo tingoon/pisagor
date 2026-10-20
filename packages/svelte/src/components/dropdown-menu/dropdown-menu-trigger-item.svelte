@@ -3,33 +3,19 @@
     Menu as MenuPrimitive,
     type MenuTriggerItemProps,
   } from "@ark-ui/svelte";
-  import type {
-    DropdownMenuItemRootContract,
-    DropdownMenuItemContract,
-  } from "@pisagor/contracts";
-  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CaretRightIcon } from "phosphor-svelte";
-  import DropdownMenuShortcut from "./dropdown-menu-shortcut.svelte";
+  import type { DropdownMenuItemRootContract } from "@pisagor/contracts";
+  import { withItemProvider } from "./dropdown-menu.context";
 
-  type Props = MenuTriggerItemProps &
-    DropdownMenuItemRootContract &
-    DropdownMenuItemContract;
+  type Props = MenuTriggerItemProps & DropdownMenuItemRootContract;
 
-  let {
-    recipe = dropdownMenuItemRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
+  let { children, ...rest }: Props = $props();
+  const part = withItemProvider(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "TriggerItem",
+    slot: "base",
+  });
 </script>
 
-<MenuPrimitive.TriggerItem
-  {...rest}
-  class={recipe({ variant: "default" }).base({ class: cn(className) })}
->
+<MenuPrimitive.TriggerItem {...part.props}>
   {@render children?.()}
-  <DropdownMenuShortcut>
-    <CaretRightIcon />
-  </DropdownMenuShortcut>
 </MenuPrimitive.TriggerItem>

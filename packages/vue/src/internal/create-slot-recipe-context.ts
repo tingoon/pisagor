@@ -66,6 +66,12 @@ export interface WithSlotRecipeOptions<Slot extends string = string> {
    */
   part?: string;
   defaultProps?: Record<string, unknown>;
+  /**
+   * Renderless host (Ark `Dialog.Root`, `Popover.Root`, …): provide styles but
+   * forward only consumer attrs, without the slot class or `data-*`, so Vue
+   * does not warn about attrs it cannot inherit on a fragment.
+   */
+  renderless?: boolean;
 }
 
 /** Native tag (`"div"`) or component (Ark part, `ark.div`, …) to render. */
@@ -294,6 +300,14 @@ export function createSlotRecipeContext<
         });
 
         return () => {
+          if (options.renderless) {
+            return renderSlotHost(
+              component,
+              { ...options.defaultProps, ...attrs },
+              children,
+            );
+          }
+
           const dataAttrs: Record<string, unknown> = {};
 
           for (const [variantKey, value] of Object.entries(

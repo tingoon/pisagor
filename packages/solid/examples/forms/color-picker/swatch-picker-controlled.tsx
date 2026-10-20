@@ -1,3 +1,4 @@
+import { CheckIcon } from "@squidlab/phosphor-solid/icons";
 import { ColorPicker, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
@@ -7,17 +8,19 @@ export function SwatchPickerControlled() {
 
   return (
     <div class="flex flex-col items-center gap-2">
-      <ColorPicker inline onValueChange={setValue} value={value()}>
+      <ColorPicker.Root inline onValueChange={setValue} value={value()}>
         <ColorPicker.SwatchGroup>
           {swatches.map((color) => (
             <ColorPicker.SwatchTrigger value={color}>
               <ColorPicker.Swatch value={color}>
-                <ColorPicker.SwatchIndicator />
+                <ColorPicker.SwatchIndicator>
+                  <CheckIcon />
+                </ColorPicker.SwatchIndicator>
               </ColorPicker.Swatch>
             </ColorPicker.SwatchTrigger>
           ))}
         </ColorPicker.SwatchGroup>
-      </ColorPicker>
+      </ColorPicker.Root>
       <p class="text-muted-foreground text-center text-sm">
         {parseColor(value()).toString("hex")}
       </p>

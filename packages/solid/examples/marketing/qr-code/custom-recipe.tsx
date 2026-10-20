@@ -1,5 +1,5 @@
-import { qrCodeRecipe } from "@pisagor/recipes";
 import { QrCode } from "@pisagor/solid";
+import { qrCodeRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandQrCodeRecipe = tv({

@@ -14,7 +14,7 @@ const completed = ref(false);
     </output>
     <Card class="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer
+        <Timer.Root
           class="items-center gap-2"
           :target-ms="5 * 1000"
           @complete="completed = true"
@@ -43,7 +43,7 @@ const completed = ref(false);
               </Button>
             </Timer.Reset>
           </Timer.Control>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   </div>

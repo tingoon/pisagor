@@ -1,4 +1,3 @@
-import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 
@@ -21,31 +20,6 @@ export function Controlled() {
     },
   });
 
-  const TreeNode = ({ indexPath, node }: NodeProviderProps) => {
-    return (
-      <TreeView.NodeProvider indexPath={indexPath} key={node.id} node={node}>
-        {node.children ? (
-          <TreeView.Branch>
-            <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
-
-            <TreeView.BranchContent>
-              {node.children.map((child, index) => (
-                <TreeNode
-                  indexPath={[...indexPath, index]}
-                  key={child.id}
-                  node={child}
-                />
-              ))}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
-        ) : (
-          <TreeView.Item>
-            <TreeView.ItemText>{node.name}</TreeView.ItemText>
-          </TreeView.Item>
-        )}
-      </TreeView.NodeProvider>
-    );
-  };
   const [selected, setSelected] = useState<string[]>([]);
 
   const isCorrectSelection = selected[0] === "components/input.tsx";
@@ -59,13 +33,7 @@ export function Controlled() {
         collection={collection}
         onSelectionChange={({ selectedValue }) => setSelected(selectedValue)}
         selectedValue={selected}
-      >
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} key={node.id} node={node} />
-          ))}
-        </TreeView.Tree>
-      </TreeView>
+      />
       <p className="text-muted-foreground text-sm">
         {isCorrectSelection ? "✅" : "❌"}
       </p>

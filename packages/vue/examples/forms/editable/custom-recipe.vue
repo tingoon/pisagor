@@ -12,7 +12,7 @@ const brandEditableRecipe = tv({
 </script>
 
 <template>
-  <Editable :recipe="brandEditableRecipe">
+  <Editable.Root :recipe="brandEditableRecipe">
     <Editable.Area>
       <Editable.Input as-child>
         <Input />
@@ -31,5 +31,5 @@ const brandEditableRecipe = tv({
         </Button>
       </Editable.SubmitTrigger>
     </Editable.Control>
-  </Editable>
+  </Editable.Root>
 </template>

@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte";
+  import { Ark, type DialogTriggerProps } from "@ark-ui/svelte";
+  import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import { useActionBar } from "./action-bar.context";
 
-  let {
-    onclick,
-    class: className,
-    children,
-    ...rest
-  }: HTMLButtonAttributes = $props();
+  type Props = HTMLButtonAttributes & {
+    /** Render your own element; spread `props()` onto it. */
+    asChild?: DialogTriggerProps["asChild"];
+  };
+
+  let { onclick, class: className, children, ...rest }: Props = $props();
   const ctx = useActionBar();
 
   function handleClick(
@@ -23,7 +24,7 @@
   as="button"
   {...rest}
   aria-expanded={ctx.isOpen}
-  class={className}
+  class={ctx.slots.trigger({ class: cn(className) })}
   data-part="trigger"
   data-scope="action-bar"
   data-state={ctx.isOpen ? "open" : "closed"}

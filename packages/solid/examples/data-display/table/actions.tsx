@@ -1,10 +1,11 @@
-import { Button, DropdownMenu, Table } from "@pisagor/solid";
+import { Portal } from "solid-js/web";
 import {
   DotsThreeVerticalIcon,
   EyeIcon,
   PencilSimpleIcon,
   TrashIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Button, DropdownMenu, Table } from "@pisagor/solid";
 import { workspaceUsers } from "./helpers";
 
 export function Actions() {
@@ -26,7 +27,7 @@ export function Actions() {
             <Table.Cell class="font-medium">{user.name}</Table.Cell>
             <Table.Cell>{user.email}</Table.Cell>
             <Table.Cell class="text-right">
-              <DropdownMenu positioning={{ placement: "left-end" }}>
+              <DropdownMenu.Root positioning={{ placement: "left-end" }}>
                 <DropdownMenu.Trigger
                   asChild={(props) => (
                     <Button
@@ -39,24 +40,28 @@ export function Actions() {
                     </Button>
                   )}
                 />
-                <DropdownMenu.Content class="min-w-40">
-                  <DropdownMenu.Item value="view">
-                    <EyeIcon />
-                    View
-                    <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item value="edit">
-                    <PencilSimpleIcon />
-                    Edit
-                    <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                  <DropdownMenu.Item value="delete" variant="destructive">
-                    <TrashIcon />
-                    Delete
-                    <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
-                  </DropdownMenu.Item>
-                </DropdownMenu.Content>
-              </DropdownMenu>
+                <Portal>
+                  <DropdownMenu.Positioner>
+                    <DropdownMenu.Content class="min-w-40">
+                      <DropdownMenu.Item value="view">
+                        <EyeIcon />
+                        View
+                        <DropdownMenu.Shortcut>⌘ V</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item value="edit">
+                        <PencilSimpleIcon />
+                        Edit
+                        <DropdownMenu.Shortcut>⌘ E</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item value="delete" variant="destructive">
+                        <TrashIcon />
+                        Delete
+                        <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Content>
+                  </DropdownMenu.Positioner>
+                </Portal>
+              </DropdownMenu.Root>
             </Table.Cell>
           </Table.Row>
         ))}

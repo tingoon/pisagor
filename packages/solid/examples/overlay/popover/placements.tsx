@@ -1,3 +1,4 @@
+import { Portal } from "solid-js/web";
 import { Button, Popover } from "@pisagor/solid";
 
 export function Placements() {
@@ -6,7 +7,7 @@ export function Placements() {
   return (
     <div class="flex flex-wrap justify-center gap-2">
       {placements.map((placement) => (
-        <Popover positioning={{ placement }}>
+        <Popover.Root positioning={{ placement }}>
           <Popover.Trigger
             asChild={(props) => (
               <Button {...props()} class="capitalize" variant="outline">
@@ -14,13 +15,17 @@ export function Placements() {
               </Button>
             )}
           />
-          <Popover.Content class="w-56">
-            <Popover.Header
-              description={`This popover appears on the ${placement} placement of the trigger.`}
-              title="Popover"
-            />
-          </Popover.Content>
-        </Popover>
+          <Portal>
+            <Popover.Positioner>
+              <Popover.Content class="w-56">
+                <Popover.Header>
+                  <Popover.Title>Popover</Popover.Title>
+                  <Popover.Description>{`This popover appears on the ${placement} placement of the trigger.`}</Popover.Description>
+                </Popover.Header>
+              </Popover.Content>
+            </Popover.Positioner>
+          </Portal>
+        </Popover.Root>
       ))}
     </div>
   );

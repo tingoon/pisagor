@@ -1,16 +1,16 @@
-import { Button, Card, Timer } from "@pisagor/solid";
 import {
   ArrowCounterClockwiseIcon,
   GearIcon,
   PauseIcon,
   PlayIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Timer } from "@pisagor/solid";
 
 export function Pomodoro() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer
+        <Timer.Root
           class="items-center justify-center px-10"
           countdown
           startMs={25 * 60 * 1000}
@@ -26,6 +26,7 @@ export function Pomodoro() {
           </span>
           <Timer.Control class="w-full justify-center">
             <Timer.Reset
+              hidden={false}
               asChild={(props) => (
                 <Button
                   {...props()}
@@ -36,7 +37,6 @@ export function Pomodoro() {
                   <ArrowCounterClockwiseIcon />
                 </Button>
               )}
-              hidden={false}
             />
             <Timer.Pause
               asChild={(props) => (
@@ -66,7 +66,7 @@ export function Pomodoro() {
               <GearIcon />
             </Button>
           </Timer.Control>
-        </Timer>
+        </Timer.Root>
       </Card.Content>
     </Card>
   );

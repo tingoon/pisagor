@@ -3,28 +3,28 @@ import {
   type DatePickerValueChangeDetails,
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue";
-import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import type { DatePickerRootContract } from "@pisagor/contracts";
+import {
+  PhCalendar,
+  PhCaretLeft,
+  PhCaretRight,
+  PhClock,
+  PhX,
+} from "@phosphor-icons/vue";
+import type {
+  DatePickerContract,
+  DatePickerRootContract,
+} from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  computed,
-  defineComponent,
-  h,
-  inject,
-  provide,
-  ref,
-  Teleport,
-  unref,
-} from "vue";
-import type { InjectionKey, PropType, VNodeChild } from "vue";
+import { computed, defineComponent, h, ref, Teleport, unref } from "vue";
+import type { Component, PropType } from "vue";
 import {
   type LoosePropValue,
   createContext,
   createSlotRecipeContext,
 } from "../internal";
 import { Button } from "./button";
-import { provideCalendarStyles } from "./calendar";
+import { Calendar, provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { InputGroupRoot } from "./input-group/input-group-core";
@@ -60,21 +60,24 @@ export interface DatePickerRootProps extends DatePickerRootContract {
   defaultValue?: unknown;
 }
 
-export interface DatePickerTriggerProps extends DatePickerRootContract {
+export interface DatePickerTimeInputProps extends InputProps {
   clearable?: boolean;
 }
 
-export interface DatePickerInputProps extends Omit<InputProps, "size"> {
+export interface DatePickerProps
+  extends DatePickerRootProps, DatePickerContract {
+  /**
+   * Whether to show a clear button when a date is selected.
+   *
+   * @defaultValue false
+   */
   clearable?: boolean;
-  variant?: FormControlVariant;
-}
-
-export interface DatePickerTimerProps extends InputProps {
-  clearable?: boolean;
-}
-
-export interface DatePickerContentProps {
-  showCalendar?: boolean;
+  /** Props forwarded to the text input. */
+  inputProps?: Record<string, unknown>;
+  /** Input placeholder. */
+  placeholder?: string;
+  /** Input size. */
+  size?: InputProps["size"];
 }
 // #endregion
 
@@ -83,7 +86,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Parts
 const Root = defineComponent({
   inheritAttrs: false,
-  name: "DatePicker",
+  name: "DatePicker.Root",
   props: {
     calendarRecipe: {
       default: calendarRecipe,
@@ -136,6 +139,7 @@ const Root = defineComponent({
             {
               ...attrs,
               defaultValue: props.defaultValue,
+              inline: false,
               modelValue: props.value,
               onValueChange: props.onValueChange
                 ? (details: DatePickerValueChangeDetails) =>
@@ -151,167 +155,38 @@ const Root = defineComponent({
   },
 });
 
-/**
- * True inside a date picker control, so nested parts do not render a second
- * one.
- */
-const DatePickerInsideControlKey: InjectionKey<boolean> = Symbol(
-  "DatePickerInsideControl",
-);
-
-const ControlBase = withContext(DatePickerPrimitive.Control, {
+const Control = withContext(DatePickerPrimitive.Control, {
   name: "Control",
 });
 
-const TriggerBase = withContext(DatePickerPrimitive.Trigger, {
+const Trigger = withContext(DatePickerPrimitive.Trigger, {
   name: "Trigger",
 });
 
-function maybeControl(
-  insideControl: boolean,
-  props: Record<string, unknown>,
-  children: () => VNodeChild,
-): VNodeChild {
-  return insideControl
-    ? children()
-    : h(ControlBase as ArkPart, props, children);
-}
-
-const Control = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.Control",
-  setup(_, { attrs, slots }) {
-    provide(DatePickerInsideControlKey, true);
-
-    return () =>
-      h(ControlBase as ArkPart, { ...attrs }, () => slots.default?.());
-  },
+// Cast: the Ark input props union is too complex for `withContext` to infer.
+const Input = withContext(DatePickerPrimitive.Input as Component, {
+  name: "Input",
 });
 
-const Trigger = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.Trigger",
-  props: {
-    clearable: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const styles = useStyles();
-    const insideControl = inject(DatePickerInsideControlKey, false);
-    if (!insideControl) provide(DatePickerInsideControlKey, true);
-
-    return () =>
-      maybeControl(
-        insideControl,
-        {
-          class: styles.slots.control(),
-        },
-        () => [
-          h(TriggerBase as ArkPart, { ...attrs }, () => slots.default?.()),
-          props.clearable ? h(ClearTrigger) : null,
-        ],
-      );
-  },
+const ClearTrigger = withContext(DatePickerPrimitive.ClearTrigger, {
+  name: "ClearTrigger",
 });
 
-const Input = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.Input",
-  props: {
-    clearable: { default: false, type: Boolean },
-    size: { default: undefined, type: String as PropType<InputProps["size"]> },
-    variant: {
-      default: undefined,
-      type: String as PropType<FormControlVariant | undefined>,
-    },
-  },
-  setup(props, { attrs }) {
-    const { m } = useLocale();
-    const variantRef = useDatePickerVariantRef();
-    const insideControl = inject(DatePickerInsideControlKey, false);
-    if (!insideControl) provide(DatePickerInsideControlKey, true);
-
-    return () => {
-      const contextVariant = unref(variantRef);
-
-      return maybeControl(insideControl, { ...attrs }, () =>
-        h(
-          InputGroupRoot as ArkPart,
-          {
-            size: props.size,
-            variant: props.variant ?? contextVariant,
-          },
-          () => [
-            h(DatePickerPrimitive.Input as ArkPart, { asChild: true }, () =>
-              h(InputGroup.Input as ArkPart, {
-                clearable: false,
-                ...attrs,
-                type: "text",
-              }),
-            ),
-            h(InputGroup.Addon, { align: "inline-end" }, () => [
-              props.clearable ? h(ClearTrigger) : null,
-              h(DatePickerPrimitive.Trigger as ArkPart, { asChild: true }, () =>
-                h(
-                  Button as ArkPart,
-                  {
-                    "aria-label": m("datePicker.openCalendar"),
-                    size: "icon-md",
-                    variant: "ghost",
-                  },
-                  () => h(PhCalendar),
-                ),
-              ),
-            ]),
-          ],
-        ),
-      );
-    };
-  },
+const Positioner = withContext(DatePickerPrimitive.Positioner, {
+  name: "Positioner",
 });
 
-const ClearTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.ClearTrigger",
-  setup(_, { attrs }) {
-    return () => {
-      const api = useDatePicker();
-
-      const apiTyped = api as {
-        disabled?: boolean;
-        readOnly?: boolean;
-        value?: unknown;
-      };
-
-      const disabled = apiTyped.disabled;
-      const readOnly = apiTyped.readOnly;
-      const value = apiTyped.value as unknown[];
-
-      if (disabled || readOnly || !Array.isArray(value) || value.length === 0) {
-        return null;
-      }
-
-      return h(
-        DatePickerPrimitive.ClearTrigger as ArkPart,
-        { asChild: true } as unknown as Parameters<typeof h>[1],
-        () =>
-          h(
-            InputGroup.Button as ArkPart,
-            {
-              ...attrs,
-              "aria-label": "Clear date",
-              "data-part": "button",
-              "data-scope": "input-group",
-              size: "icon-xs",
-              type: "button",
-              variant: "ghost",
-            },
-            () => h(PhX),
-          ),
-      );
-    };
-  },
+const Content = withContext(DatePickerPrimitive.Content, {
+  name: "Content",
 });
 
+const ValueText = withContext(DatePickerPrimitive.ValueText, {
+  name: "ValueText",
+});
+
+const PresetTrigger = Calendar.PresetTrigger;
+
+/** Native time field styled to match the picker. Not an Ark part. */
 const TimeInput = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.TimeInput",
@@ -341,7 +216,7 @@ const TimeInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    // Standalone `DatePicker.Timer` (React parity): default recipe outside a picker.
+    // Standalone `DatePicker.TimeInput`: default recipe outside a picker.
     const optionalStyles = useOptionalDatePickerStyles();
     const styles = {
       get slots() {
@@ -411,62 +286,6 @@ const TimeInput = defineComponent({
   },
 });
 
-const ContentBase = withContext(DatePickerPrimitive.Content, {
-  name: "Content",
-});
-
-const Content = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.Content",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    showCalendar: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const content = h(
-        ContentBase as ArkPart,
-        { ...attrs, class: props.class },
-        () =>
-          props.showCalendar && !slots.default
-            ? [
-                h(DatePickerPrimitive.ViewControl as ArkPart, () => [
-                  h(DatePickerPrimitive.PrevTrigger as ArkPart),
-                  h(DatePickerPrimitive.MonthSelect as ArkPart),
-                  h(DatePickerPrimitive.YearSelect as ArkPart),
-                  h(DatePickerPrimitive.NextTrigger as ArkPart),
-                ]),
-                h(DatePickerPrimitive.Table as ArkPart),
-              ]
-            : slots.default?.(),
-      );
-
-      return h(Teleport, { to: "body" }, [
-        h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
-      ]);
-    };
-  },
-});
-
-const ValueText = withContext(DatePickerPrimitive.ValueText, {
-  name: "ValueText",
-});
-
-const PresetTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "DatePicker.PresetTrigger",
-  props: {},
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(DatePickerPrimitive.PresetTrigger as ArkPart, { ...attrs }, () =>
-        slots.default?.(),
-      );
-  },
-});
-
 // Small helper for the timer clear button.
 const InputClearButton = defineComponent({
   inheritAttrs: false,
@@ -490,17 +309,183 @@ const InputClearButton = defineComponent({
   },
 });
 
-export const DatePicker = Object.assign(Root, {
+// #region Shorthand
+/** Month/year navigation and day grid used by the shorthand. */
+const DefaultCalendar = defineComponent({
+  name: "DatePicker.DefaultCalendar",
+  setup() {
+    return () => [
+      h(Calendar.ViewControl, null, () => [
+        h(Calendar.PrevTrigger, { asChild: true }, () =>
+          h(Button, { size: "icon-md", variant: "ghost" }, () =>
+            h(PhCaretLeft, { "aria-hidden": true, class: "rtl:rotate-180" }),
+          ),
+        ),
+        h(Calendar.MonthSelect),
+        h(Calendar.YearSelect),
+        h(Calendar.NextTrigger, { asChild: true }, () =>
+          h(Button, { size: "icon-md", variant: "ghost" }, () =>
+            h(PhCaretRight, { "aria-hidden": true, class: "rtl:rotate-180" }),
+          ),
+        ),
+      ]),
+      h(Calendar.Table, null, () => [
+        h(Calendar.WeekDays),
+        h(Calendar.TableDays),
+      ]),
+    ];
+  },
+});
+
+/** Clear button; hidden when there is nothing to clear. */
+const ShorthandClearTrigger = defineComponent({
+  name: "DatePicker.ShorthandClearTrigger",
+  setup() {
+    const { m } = useLocale();
+    const api = useDatePicker();
+
+    return () => {
+      const { disabled, readOnly, value } = api.value;
+
+      if (disabled || readOnly || value.length === 0) {
+        return null;
+      }
+
+      return h(ClearTrigger as ArkPart, { asChild: true }, () =>
+        h(
+          InputGroup.Button as ArkPart,
+          {
+            "aria-label": m("datePicker.clear"),
+            size: "icon-xs",
+            type: "button",
+            variant: "ghost",
+          },
+          () => h(PhX),
+        ),
+      );
+    };
+  },
+});
+
+const ShorthandField = defineComponent({
+  name: "DatePicker.ShorthandField",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<DatePickerProps["classNames"]>,
+    },
+    clearable: { default: false, type: Boolean },
+    inputProps: {
+      default: undefined,
+      type: Object as PropType<DatePickerProps["inputProps"]>,
+    },
+    placeholder: { default: undefined, type: String },
+    size: { default: undefined, type: String as PropType<InputProps["size"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props) {
+    const { m } = useLocale();
+    const styles = useStyles();
+
+    return () =>
+      h(Control as ArkPart, { class: props.classNames?.control }, () =>
+        h(
+          InputGroupRoot as ArkPart,
+          { size: props.size, variant: props.variant },
+          () => [
+            h(Input as ArkPart, { asChild: true }, () =>
+              h(InputGroup.Input as ArkPart, {
+                clearable: false,
+                ...props.inputProps,
+                placeholder: props.placeholder,
+                type: "text",
+              }),
+            ),
+            h(InputGroup.Addon, { align: "inline-end" }, () => [
+              props.clearable ? h(ShorthandClearTrigger) : null,
+              h(Trigger as ArkPart, { asChild: true }, () =>
+                h(
+                  InputGroup.Button as ArkPart,
+                  {
+                    "aria-label": m("datePicker.openCalendar"),
+                    size: "icon-xs",
+                    type: "button",
+                    variant: "ghost",
+                  },
+                  () =>
+                    h(PhCalendar, {
+                      "aria-hidden": true,
+                      class: styles.slots.icon({
+                        class: props.classNames?.icon,
+                      }),
+                    }),
+                ),
+              ),
+            ]),
+          ],
+        ),
+      );
+  },
+});
+
+export const DatePickerShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "DatePicker",
+  props: {
+    classNames: {
+      default: undefined,
+      type: Object as PropType<DatePickerProps["classNames"]>,
+    },
+    clearable: { default: false, type: Boolean },
+    inputProps: {
+      default: undefined,
+      type: Object as PropType<DatePickerProps["inputProps"]>,
+    },
+    placeholder: { default: undefined, type: String },
+    size: { default: undefined, type: String as PropType<InputProps["size"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(Root as ArkPart, { ...attrs, variant: props.variant }, () => [
+        h(ShorthandField, {
+          classNames: props.classNames,
+          clearable: props.clearable,
+          inputProps: props.inputProps,
+          placeholder: props.placeholder,
+          size: props.size,
+          variant: props.variant,
+        }),
+        h(Teleport, { to: "body" }, [
+          h(
+            Positioner as ArkPart,
+            { class: props.classNames?.positioner },
+            () =>
+              h(Content as ArkPart, { class: props.classNames?.content }, () =>
+                slots.default ? slots.default() : h(DefaultCalendar),
+              ),
+          ),
+        ]),
+      ]);
+  },
+});
+// #endregion
+
+export const DatePicker = Object.assign(DatePickerShorthand, {
   ClearTrigger,
   Content,
   Control,
   Input,
+  Positioner,
   PresetTrigger,
+  Root,
   TimeInput,
-  /** @deprecated Use `TimeInput`. */
-  Timer: TimeInput,
   Trigger,
   ValueText,
 });
-
-export type { DatePickerRootProps as DatePickerProps };

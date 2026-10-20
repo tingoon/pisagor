@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
+  import { sheetRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
+  import { XIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
+  import Button from "../button.svelte";
+  import { useLocale } from "../provider/context";
   import { Sheet } from "../sheet";
   import { SIDEBAR_WIDTH_MOBILE } from "./constants";
   import { useSidebar } from "./sidebar.context";
@@ -24,6 +29,7 @@
   }: Props = $props();
 
   const ctx = useSidebar();
+  const { m } = useLocale();
   const padded = $derived(variant === "floating" || variant === "inset");
 </script>
 
@@ -37,27 +43,45 @@
   >
     {@render children?.()}
   </div>{:else if ctx.isMobile}
-  <Sheet
+  <Sheet.Root
     onOpenChange={(details) => ctx.setOpenMobile(details.open)}
     open={ctx.openMobile}
+    placement={placement === "left" ? "left" : "right"}
   >
-    <Sheet.Content
-      {...rest}
-      class={ctx.slots.mobile()}
-      data-mobile="true"
-      data-sidebar="sidebar"
-      placement={placement === "left" ? "left" : "right"}
-      style={`--sidebar-width: ${SIDEBAR_WIDTH_MOBILE}; ${style ?? ""}`}
-    >
-      <Sheet.Header class={ctx.slots.mobileHeader()}>
-        <Sheet.Title>Sidebar</Sheet.Title>
-        <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
-      </Sheet.Header>
-      <div class={ctx.slots.mobileBody()}>
-        {@render children?.()}
-      </div>
-    </Sheet.Content>
-  </Sheet>
+    <Portal>
+      <Sheet.Backdrop />
+      <Sheet.Positioner>
+        <Sheet.Content
+          {...rest}
+          class={ctx.slots.mobile()}
+          data-mobile="true"
+          data-sidebar="sidebar"
+          style={`--sidebar-width: ${SIDEBAR_WIDTH_MOBILE}; ${style ?? ""}`}
+        >
+          <Sheet.Header class={ctx.slots.mobileHeader()}>
+            <Sheet.Title>Sidebar</Sheet.Title>
+            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
+          </Sheet.Header>
+          <div class={ctx.slots.mobileBody()}>
+            {@render children?.()}
+          </div>
+          <Sheet.CloseTrigger>
+            {#snippet asChild(props)}
+              <Button
+                {...props()}
+                aria-label={m("sheet.close")}
+                class={sheetRecipe().inline()}
+                size="icon-sm"
+                variant="ghost"
+              >
+                <XIcon />
+              </Button>
+            {/snippet}
+          </Sheet.CloseTrigger>
+        </Sheet.Content>
+      </Sheet.Positioner>
+    </Portal>
+  </Sheet.Root>
 {:else}
   <div
     {...rest}

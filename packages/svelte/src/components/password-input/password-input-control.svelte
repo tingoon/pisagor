@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte";
-  import { passwordInputRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import type { ComponentProps } from "svelte";
-  import InputGroupRoot from "../input-group/input-group-root.svelte";
+  import {
+    PasswordInput as PasswordInputPrimitive,
+    type PasswordInputControlProps,
+  } from "@ark-ui/svelte";
+  import { withContext } from "./password-input.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: ComponentProps<typeof InputGroupRoot> = $props();
+  let { children, ...rest }: PasswordInputControlProps = $props();
+  const part = withContext(() => rest, { name: "Control" });
 </script>
 
-<PasswordInputPrimitive.Control class="contents">
-  <InputGroupRoot
-    {...rest}
-    class={passwordInputRecipe().control({ class: cn(className) })}
-  >
-    {@render children?.()}
-  </InputGroupRoot>
+<PasswordInputPrimitive.Control {...part.props}>
+  {@render children?.()}
 </PasswordInputPrimitive.Control>

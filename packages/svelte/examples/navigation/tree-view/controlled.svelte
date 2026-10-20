@@ -1,7 +1,6 @@
 <script lang="ts">
   import { TreeView } from "@pisagor/svelte";
   import { createDemoCollection } from "./helpers";
-  import TreeNode from "./tree-node.svelte";
 
   const collection = createDemoCollection();
   let selected = $state<string[]>([]);
@@ -15,13 +14,7 @@
     {collection}
     onSelectionChange={({ selectedValue }) => (selected = selectedValue)}
     selectedValue={selected}
-  >
-    <TreeView.Tree>
-      {#each collection.rootNode.children ?? [] as node, index}
-        <TreeNode indexPath={[index]} {node} />
-      {/each}
-    </TreeView.Tree>
-  </TreeView>
+  />
   <p class="text-muted-foreground text-sm">
     {isCorrectSelection ? "✅" : "❌"}
   </p>

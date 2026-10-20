@@ -2,17 +2,22 @@
 
 ```vue
 <PasswordInput.Root>
+  <PasswordInput.Label />
   <PasswordInput.Control>
     <PasswordInput.Input />
-    <PasswordInput.VisibilityTrigger />
+    <PasswordInput.VisibilityTrigger>
+      <PasswordInput.Indicator />
+    </PasswordInput.VisibilityTrigger>
   </PasswordInput.Control>
 </PasswordInput.Root>
 ```
+
+Parts map 1:1 to Ark and render no icons; use `as-child` to put them on `InputGroup` elements. The `PasswordInput` shorthand wires the input group, clear button, and eye icons for you.
 
 ## Examples
 
 ### Compound
 
-Compose `PasswordInput.Root`, `Control`, `Input` and `VisibilityTrigger` for custom layouts.
+Compose `PasswordInput.Root`, `Control`, `Input`, `VisibilityTrigger`, and `Indicator` (with your own icons) for custom layouts.
 
 <Example name="Compound" />

@@ -39,7 +39,7 @@ export default defineComponent({
               ),
           ),
         ),
-        spacing: 32,
+        spacing: "2rem",
       });
   },
 });

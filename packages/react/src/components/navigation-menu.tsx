@@ -1,12 +1,16 @@
 import { ark, type HTMLArkProps } from "@ark-ui/react";
-import { CaretDownIcon } from "@phosphor-icons/react";
 import type {
   NavigationMenuRootContract,
   NavigationMenuContract,
 } from "@pisagor/contracts";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
-import type { ComponentProps, FunctionComponent, KeyboardEvent } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+  KeyboardEvent,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -48,6 +52,8 @@ export type NavigationMenuPartProps = ComponentProps<"ul">;
 export type NavigationMenuItemProps = ComponentProps<"li">;
 
 export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
+
+export type NavigationMenuIndicatorProps = ComponentPropsWithRef<"span">;
 
 export type NavigationMenuContentProps = ComponentProps<"ul">;
 
@@ -233,10 +239,16 @@ export function NavigationMenuTrigger({
       type="button"
     >
       {children}
-      <CaretDownIcon aria-hidden className={slots.indicator()} />
     </ark.button>
   );
 }
+
+/** Open-state indicator for a trigger; pass your own icon (e.g. a caret). */
+export const NavigationMenuIndicator =
+  withContext<NavigationMenuIndicatorProps>("span", {
+    defaultProps: { "aria-hidden": true },
+    name: "Indicator",
+  });
 
 export function NavigationMenuContent({
   className,
@@ -312,6 +324,7 @@ NavigationMenuLink.displayName = "NavigationMenu.Link";
 
 export const NavigationMenu = Object.assign(NavigationMenuRoot, {
   Content: NavigationMenuContent,
+  Indicator: NavigationMenuIndicator,
   Item: NavigationMenuItem,
   Link: NavigationMenuLink,
   List: NavigationMenuList,

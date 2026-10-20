@@ -1,18 +1,20 @@
-import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 
 export function ActivationFocus() {
   return (
     <Card>
-      <Card.Header
-        description="Focus the field to start editing (default activation mode)"
-        title="Edit with focus"
-      />
+      <Card.Header>
+        <Card.Title>Edit with focus</Card.Title>
+        <Card.Description>
+          Focus the field to start editing (default activation mode)
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="focus" defaultValue="Jane Doe">
+            <Editable.Root activationMode="focus" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -43,11 +45,11 @@ export function ActivationFocus() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="focus" defaultValue="@jane.doe">
+            <Editable.Root activationMode="focus" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -78,7 +80,7 @@ export function ActivationFocus() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

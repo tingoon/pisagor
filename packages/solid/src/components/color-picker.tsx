@@ -1,37 +1,51 @@
 import {
   ColorPicker as ColorPickerPrimitive,
+  ark,
   parseColor as parseColorArk,
   useColorPickerContext,
 } from "@ark-ui/solid";
 import type {
   ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
+  ColorPickerAreaBackgroundProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
+  ColorPickerChannelSliderLabelProps,
+  ColorPickerChannelSliderProps,
+  ColorPickerChannelSliderThumbProps,
+  ColorPickerChannelSliderTrackProps,
+  ColorPickerChannelSliderValueTextProps,
   ColorPickerContentProps,
-  ColorPickerControlProps as ColorPickerControlPrimitiveProps,
+  ColorPickerControlProps,
+  ColorPickerEyeDropperTriggerProps,
+  ColorPickerFormatSelectProps,
+  ColorPickerFormatTriggerProps,
+  ColorPickerLabelProps,
+  ColorPickerPositionerProps,
   ColorPickerRootProps as ColorPickerRootPrimitiveProps,
   ColorPickerSwatchGroupProps,
+  ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchProps,
+  ColorPickerSwatchTriggerProps,
+  ColorPickerTransparencyGridProps,
   ColorPickerTriggerProps,
   ColorPickerValueChangeDetails,
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
-import type { ColorPickerRootContract } from "@pisagor/contracts";
+import type {
+  ColorPickerContract,
+  ColorPickerRootContract,
+} from "@pisagor/contracts";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, createSignal, Show, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import { createMemo, createSignal, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import {
-  CheckIcon,
-  EyedropperIcon,
-  XIcon,
-  createSlotRecipeContext,
-} from "../internal";
-import { Button, type ButtonProps } from "./button";
-import { InputGroup, type InputGroupButtonProps } from "./input-group";
+import { EyedropperIcon, XIcon, createSlotRecipeContext } from "../internal";
+import { Button } from "./button";
+import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
@@ -44,24 +58,13 @@ const { withContext, withProvider, useStyles } = createSlotRecipeContext({
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type ColorPickerRootProps = Omit<
-  ColorPickerRootPrimitiveProps,
-  "defaultValue" | "value" | "onValueChange"
->;
-
-export interface ColorPickerProps
-  extends ColorPickerRootProps, ColorPickerRootContract {
-  /**
-   * Visual shell variant for preset field input. When omitted, resolves from
-   * `Surface`.
-   */
-  variant?: FormControlVariant;
-  /**
-   * Whether to show a clear button when a color is selected.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
+export interface ColorPickerRootProps
+  extends
+    Omit<
+      ColorPickerRootPrimitiveProps,
+      "defaultValue" | "value" | "onValueChange"
+    >,
+    ColorPickerRootContract {
   /**
    * The default value of the color picker when uncontrolled.
    *
@@ -77,56 +80,37 @@ export interface ColorPickerProps
    *   updates.
    */
   value?: string;
-  /** Called with the hex color string when the value changes. */
+  /** Called with the color string when the value changes. */
   onValueChange?: (value: string) => void;
 }
 
-export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
-  /**
-   * Whether to show the clear button.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
-}
-
-export interface ColorPickerControlProps extends ColorPickerControlPrimitiveProps {
+export interface ColorPickerProps
+  extends ColorPickerRootProps, ColorPickerContract {
+  /** Popover content; defaults to the area, eye dropper, hue and alpha sliders. */
+  children?: JSX.Element;
   /**
    * Whether to show a clear button when a color is selected.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  /**
+   * Visual shell variant for the field input. When omitted, resolves from
+   * `Surface`.
+   */
+  variant?: FormControlVariant;
 }
 
-export type ColorPickerEyeDropperTriggerProps = ComponentProps<
-  typeof ColorPickerPrimitive.EyeDropperTrigger
-> &
-  ButtonProps;
+export type ColorPickerClearTriggerProps = HTMLArkProps<"button">;
 
 export interface ColorPickerAreaProps extends ColorPickerAreaPrimitiveProps {
+  /** Overlay a dot grid on the area. */
   showDots?: boolean;
 }
 
-export type ColorPickerTransparencyGridProps = ComponentProps<
-  typeof ColorPickerPrimitive.TransparencyGrid
->;
-
-export type ColorPickerChannelSliderProps = ComponentProps<
-  typeof ColorPickerPrimitive.ChannelSlider
->;
-
-export type ColorPickerSwatchTriggerProps = ComponentProps<
-  typeof ColorPickerPrimitive.SwatchTrigger
->;
-
-export type ColorPickerSwatchIndicatorProps = ComponentProps<
-  typeof ColorPickerPrimitive.SwatchIndicator
->;
-
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = ComponentProps<"div">;
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -141,18 +125,15 @@ const RootBase = withProvider<
   ColorPickerRootPrimitiveProps & ColorPickerRootContract
 >(ColorPickerPrimitive.Root, { name: "Root" });
 
-function Root(props: ColorPickerProps): JSX.Element {
+/** Root with string `value` / `defaultValue` / `onValueChange`. */
+function Root(props: ColorPickerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "variant",
-    "clearable",
     "defaultValue",
     "positioning",
     "value",
     "children",
     "onValueChange",
-    "class",
   ]);
-
   const isControlled = () => local.value !== undefined;
   const [uncontrolled, setUncontrolled] = createSignal(local.defaultValue);
   const color = createMemo(() =>
@@ -165,329 +146,221 @@ function Root(props: ColorPickerProps): JSX.Element {
   });
 
   const handleValueChange = (e: ColorPickerValueChangeDetails) => {
-    if (!isControlled()) setUncontrolled(e.valueAsString);
+    if (!isControlled()) {
+      setUncontrolled(e.valueAsString);
+    }
     local.onValueChange?.(e.valueAsString);
   };
 
   return (
     <RootBase
       {...rest}
-      class={local.class}
       defaultValue={!isControlled() ? parsedColor() : undefined}
       onValueChange={handleValueChange}
       positioning={local.positioning ?? { placement: "top-start" }}
       value={isControlled() ? parsedColor() : undefined}
     >
       {local.children}
+
       <ColorPickerPrimitive.HiddenInput />
     </RootBase>
   );
 }
 
-function ClearTrigger(props: ColorPickerClearTriggerProps): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["clearable", "onClick", "class"]);
-  const api = useColorPickerContext();
-  const clearable = () => local.clearable ?? false;
+const Label = withContext<ColorPickerLabelProps>(ColorPickerPrimitive.Label, {
+  name: "Label",
+});
 
-  const visible = createMemo(() => {
-    if (!clearable()) return false;
-    const controlProps = api().getControlProps() as {
-      disabled?: boolean;
-      readOnly?: boolean;
-    };
-    if (controlProps.disabled || controlProps.readOnly) return false;
-
-    return api().value.getChannelValue("alpha") !== 0;
-  });
-
-  return (
-    <Show when={visible()}>
-      <InputGroup.Addon align="inline-end">
-        <InputGroup.Button
-          aria-label={m("colorPicker.clearColor")}
-          {...rest}
-          class={local.class}
-          data-part="clear-trigger"
-          data-scope="color-picker"
-          onClick={(event) => {
-            api().setValue(parseColor("rgba(0, 0, 0, 0)"));
-            if (typeof local.onClick === "function") local.onClick(event);
-          }}
-          size="icon-xs"
-          type="button"
-          variant="ghost"
-        >
-          <XIcon />
-        </InputGroup.Button>
-      </InputGroup.Addon>
-    </Show>
-  );
-}
-
-const ControlBase = withContext<ColorPickerControlProps>(
+const Control = withContext<ColorPickerControlProps>(
   ColorPickerPrimitive.Control,
-  {
-    name: "Control",
-  },
+  { name: "Control" },
 );
 
-function Control(props: ColorPickerControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
+const Trigger = withContext<ColorPickerTriggerProps>(
+  ColorPickerPrimitive.Trigger,
+  { name: "Trigger" },
+);
+
+const Positioner = withContext<ColorPickerPositionerProps>(
+  ColorPickerPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const Content = withContext<ColorPickerContentProps>(
+  ColorPickerPrimitive.Content,
+  { name: "Content" },
+);
+
+const View = withContext<ColorPickerViewProps>(ColorPickerPrimitive.View, {
+  name: "View",
+});
+
+const AreaBase = withContext<ColorPickerAreaPrimitiveProps>(
+  ColorPickerPrimitive.Area,
+  { name: "Area" },
+);
+
+function Area(props: ColorPickerAreaProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["showDots", "class"]);
 
   return (
-    <ControlBase {...rest} class={local.class}>
-      {local.children}
-      <Show when={local.clearable}>
-        <ClearTrigger clearable />
-      </Show>
-    </ControlBase>
-  );
-}
-
-function Trigger(props: ColorPickerTriggerProps): JSX.Element {
-  return <ColorPickerPrimitive.Trigger {...props} />;
-}
-
-function TransparencyGrid(
-  props: ColorPickerTransparencyGridProps,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.TransparencyGrid
+    <AreaBase
       {...rest}
-      class={styles.slots.transparencyGrid({ class: local.class })}
-    />
-  );
-}
-
-function Content(props: ColorPickerContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <Portal>
-      <ColorPickerPrimitive.Positioner>
-        <ColorPickerPrimitive.Content
-          {...rest}
-          class={styles.slots.content({ class: local.class })}
-        />
-      </ColorPickerPrimitive.Positioner>
-    </Portal>
-  );
-}
-
-function View(props: ColorPickerViewProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.View
-      {...rest}
-      class={styles.slots.view({ class: local.class })}
-    />
-  );
-}
-
-function ChannelSlider(props: ColorPickerChannelSliderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.ChannelSlider
-      {...rest}
-      class={styles.slots.channelSlider({ class: local.class })}
-    >
-      {local.children}
-      <ColorPickerPrimitive.ChannelSliderTrack
-        class={styles.slots.channelSliderTrack()}
-      />
-      <ColorPickerPrimitive.ChannelSliderThumb
-        class={styles.slots.channelSliderThumb()}
-      />
-    </ColorPickerPrimitive.ChannelSlider>
-  );
-}
-
-function EyeDropperTrigger(
-  props: ColorPickerEyeDropperTriggerProps,
-): JSX.Element {
-  const { m } = useLocale();
-  const [local, rest] = splitProps(props, ["size", "variant", "children"]);
-
-  return (
-    <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={m("colorPicker.eyeDropper")}
-      {...rest}
-      asChild={(triggerProps) => (
-        <Button
-          {...triggerProps()}
-          size={local.size ?? "icon-md"}
-          variant={local.variant ?? "outline"}
-        >
-          {local.children ?? <EyedropperIcon />}
-        </Button>
+      class={cn(
+        {
+          "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
+            local.showDots ?? false,
+        },
+        local.class,
       )}
     />
   );
 }
 
-function SwatchGroup(props: ColorPickerSwatchGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const AreaBackground = withContext<ColorPickerAreaBackgroundProps>(
+  ColorPickerPrimitive.AreaBackground,
+  { name: "AreaBackground" },
+);
 
-  return (
-    <ColorPickerPrimitive.SwatchGroup
-      {...rest}
-      class={styles.slots.swatchGroup({ class: local.class })}
-    />
+const AreaThumb = withContext<ColorPickerAreaThumbProps>(
+  ColorPickerPrimitive.AreaThumb,
+  { name: "AreaThumb" },
+);
+
+const ChannelSlider = withContext<ColorPickerChannelSliderProps>(
+  ColorPickerPrimitive.ChannelSlider,
+  { name: "ChannelSlider" },
+);
+
+const ChannelSliderLabel = withContext<ColorPickerChannelSliderLabelProps>(
+  ColorPickerPrimitive.ChannelSliderLabel,
+  { name: "ChannelSliderLabel", slot: "label" },
+);
+
+const ChannelSliderTrack = withContext<ColorPickerChannelSliderTrackProps>(
+  ColorPickerPrimitive.ChannelSliderTrack,
+  { name: "ChannelSliderTrack" },
+);
+
+const ChannelSliderThumb = withContext<ColorPickerChannelSliderThumbProps>(
+  ColorPickerPrimitive.ChannelSliderThumb,
+  { name: "ChannelSliderThumb" },
+);
+
+const ChannelSliderValueText =
+  withContext<ColorPickerChannelSliderValueTextProps>(
+    ColorPickerPrimitive.ChannelSliderValueText,
+    { name: "ChannelSliderValueText", slot: "valueText" },
   );
-}
 
-function SwatchTrigger(props: ColorPickerSwatchTriggerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const Input = withContext<ColorPickerInputProps>(
+  ColorPickerPrimitive.ChannelInput,
+  {
+    defaultProps: { channel: "hex" },
+    name: "ChannelInput",
+    slot: "channelInput",
+  },
+);
 
-  return (
-    <ColorPickerPrimitive.SwatchTrigger
-      {...rest}
-      class={styles.slots.swatchTrigger({ class: local.class })}
-    />
-  );
-}
+const TransparencyGrid = withContext<ColorPickerTransparencyGridProps>(
+  ColorPickerPrimitive.TransparencyGrid,
+  { name: "TransparencyGrid" },
+);
 
-function Swatch(props: ColorPickerSwatchProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+const EyeDropperTriggerBase = withContext<ColorPickerEyeDropperTriggerProps>(
+  ColorPickerPrimitive.EyeDropperTrigger,
+  { name: "EyeDropperTrigger" },
+);
 
-  return (
-    <ColorPickerPrimitive.Swatch
-      {...rest}
-      class={styles.slots.swatch({ class: local.class })}
-    />
-  );
-}
-
-function SwatchIndicator(props: ColorPickerSwatchIndicatorProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.SwatchIndicator
-      {...rest}
-      class={styles.slots.swatchIndicator({ class: local.class })}
-    >
-      {local.children ?? <CheckIcon />}
-    </ColorPickerPrimitive.SwatchIndicator>
-  );
-}
-
-function ValueText(props: ColorPickerValueTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.ValueText
-      {...rest}
-      class={styles.slots.valueText({ class: local.class })}
-    />
-  );
-}
-
-function ValueSwatch(props: ColorPickerValueSwatchProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.ValueSwatch
-      {...rest}
-      class={styles.slots.valueSwatch({ class: local.class })}
-    />
-  );
-}
-
-function Area(props: ColorPickerAreaProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showDots", "children", "class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.Area
-      {...rest}
-      class={styles.slots.area({
-        class: cn(
-          local.showDots &&
-            "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))",
-          local.class,
-        ),
-      })}
-    >
-      <ColorPickerPrimitive.AreaBackground
-        class={styles.slots.areaBackground()}
-      />
-      {local.children}
-    </ColorPickerPrimitive.Area>
-  );
-}
-
-function AreaThumb(props: ColorPickerAreaThumbProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
-
-  return (
-    <ColorPickerPrimitive.AreaThumb
-      {...rest}
-      class={styles.slots.areaThumb({ class: local.class })}
-    />
-  );
-}
-
-function Input(props: ColorPickerInputProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["channel"]);
-
-  return (
-    <ColorPickerPrimitive.ChannelInput
-      {...rest}
-      channel={local.channel ?? "hex"}
-    />
-  );
-}
-
-function Label(
-  props: ComponentProps<typeof ColorPickerPrimitive.Label>,
+/** Eye dropper trigger with a localized default `aria-label`. */
+function EyeDropperTrigger(
+  props: ColorPickerEyeDropperTriggerProps,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useStyles();
+  const { m } = useLocale();
 
   return (
-    <ColorPickerPrimitive.Label
-      {...rest}
-      class={styles.slots.label({ class: local.class })}
+    <EyeDropperTriggerBase
+      aria-label={m("colorPicker.eyeDropper")}
+      {...props}
     />
   );
 }
 
-function FormatSelect(
-  props: ComponentProps<typeof ColorPickerPrimitive.FormatSelect>,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
+const FormatSelect = withContext<ColorPickerFormatSelectProps>(
+  ColorPickerPrimitive.FormatSelect,
+  { name: "FormatSelect" },
+);
+
+const FormatTrigger = withContext<ColorPickerFormatTriggerProps>(
+  ColorPickerPrimitive.FormatTrigger,
+  { name: "FormatTrigger" },
+);
+
+const SwatchGroup = withContext<ColorPickerSwatchGroupProps>(
+  ColorPickerPrimitive.SwatchGroup,
+  { name: "SwatchGroup" },
+);
+
+const SwatchTrigger = withContext<ColorPickerSwatchTriggerProps>(
+  ColorPickerPrimitive.SwatchTrigger,
+  { name: "SwatchTrigger" },
+);
+
+const Swatch = withContext<ColorPickerSwatchProps>(
+  ColorPickerPrimitive.Swatch,
+  { name: "Swatch" },
+);
+
+const SwatchIndicator = withContext<ColorPickerSwatchIndicatorProps>(
+  ColorPickerPrimitive.SwatchIndicator,
+  { name: "SwatchIndicator" },
+);
+
+const ValueText = withContext<ColorPickerValueTextProps>(
+  ColorPickerPrimitive.ValueText,
+  { name: "ValueText" },
+);
+
+const ValueSwatch = withContext<ColorPickerValueSwatchProps>(
+  ColorPickerPrimitive.ValueSwatch,
+  { name: "ValueSwatch" },
+);
+
+/**
+ * Clears the color (sets it fully transparent). Not an Ark part; renders a
+ * button with a localized default `aria-label`.
+ */
+function ClearTrigger(props: ColorPickerClearTriggerProps): JSX.Element {
+  const { m } = useLocale();
+  const [local, rest] = splitProps(props, ["class", "onClick"]);
   const styles = useStyles();
+  const api = useColorPickerContext();
 
   return (
-    <ColorPickerPrimitive.FormatSelect
+    <ark.button
+      aria-label={m("colorPicker.clearColor")}
+      type="button"
       {...rest}
-      class={styles.slots.formatSelect({ class: local.class })}
+      class={styles.slots.clearTrigger({ class: local.class })}
+      data-part="clear-trigger"
+      data-scope="color-picker"
+      onClick={(event) => {
+        api().setValue(parseColor("rgba(0, 0, 0, 0)"));
+        if (typeof local.onClick === "function") {
+          local.onClick(event);
+        }
+      }}
     />
   );
 }
 
+/** Transparency grid with the current color on top, sized for input addons. */
 function SwatchPreview(props: ColorPickerSwatchPreviewProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useStyles();
 
   return (
-    <div
+    <ark.div
       {...rest}
       class={styles.slots.inputSwatch({ class: local.class })}
       data-part="input-swatch"
@@ -499,93 +372,206 @@ function SwatchPreview(props: ColorPickerSwatchPreviewProps): JSX.Element {
       <ColorPickerPrimitive.ValueSwatch
         class={styles.slots.inputSwatchSwatch()}
       />
-    </div>
+    </ark.div>
+  );
+}
+// #endregion
+
+// #region Shorthand
+/** Clear button addon; hidden when disabled, read-only, or already cleared. */
+function ShorthandClearTrigger(props: { class?: string }): JSX.Element {
+  const { m } = useLocale();
+  const api = useColorPickerContext();
+  const visible = createMemo(() => {
+    const controlProps = api().getControlProps() as {
+      disabled?: boolean;
+      readOnly?: boolean;
+    };
+
+    return (
+      !controlProps.disabled &&
+      !controlProps.readOnly &&
+      api().value.getChannelValue("alpha") !== 0
+    );
+  });
+
+  return (
+    <Show when={visible()}>
+      <InputGroup.Addon align="inline-end">
+        <ClearTrigger
+          asChild={(triggerProps) => (
+            <InputGroup.Button
+              {...triggerProps()}
+              aria-label={m("colorPicker.clearColor")}
+              size="icon-xs"
+              variant="ghost"
+            >
+              <XIcon />
+            </InputGroup.Button>
+          )}
+          class={props.class}
+        />
+      </InputGroup.Addon>
+    </Show>
   );
 }
 
-/**
- * Compact preset that renders a swatch trigger, hex input, and standard color
- * picker popover in one component.
- */
-function Field(props: ColorPickerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "variant"]);
-  const clearable = () => local.clearable ?? false;
+/** Area plus eye dropper, hue and alpha sliders. */
+function DefaultContent(
+  props: Pick<ColorPickerProps, "classNames">,
+): JSX.Element {
+  const styles = useStyles();
 
   return (
-    <Root {...rest} clearable={clearable()}>
-      <Control clearable={false}>
+    <>
+      <Area class={props.classNames?.area}>
+        <AreaBackground class={props.classNames?.areaBackground} />
+        <AreaThumb class={props.classNames?.areaThumb} />
+      </Area>
+
+      <View class={props.classNames?.view} format="hsla">
+        <div
+          class={styles.slots.channelRow({
+            class: props.classNames?.channelRow,
+          })}
+        >
+          <EyeDropperTrigger
+            asChild={(triggerProps) => (
+              <Button {...triggerProps()} size="icon-md" variant="outline">
+                <EyedropperIcon />
+              </Button>
+            )}
+            class={props.classNames?.eyeDropperTrigger}
+          />
+
+          <div
+            class={styles.slots.channelStack({
+              class: props.classNames?.channelStack,
+            })}
+          >
+            <For each={["hue", "alpha"] as const}>
+              {(channel) => (
+                <ChannelSlider
+                  channel={channel}
+                  class={props.classNames?.channelSlider}
+                >
+                  <Show when={channel === "alpha"}>
+                    <TransparencyGrid
+                      class={props.classNames?.transparencyGrid}
+                    />
+                  </Show>
+                  <ChannelSliderTrack
+                    class={props.classNames?.channelSliderTrack}
+                  />
+                  <ChannelSliderThumb
+                    class={props.classNames?.channelSliderThumb}
+                  />
+                </ChannelSlider>
+              )}
+            </For>
+          </div>
+        </div>
+      </View>
+    </>
+  );
+}
+
+export function ColorPickerShorthand(props: ColorPickerProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "children",
+    "classNames",
+    "clearable",
+    "variant",
+  ]);
+
+  return (
+    <Root {...rest}>
+      <Control class={local.classNames?.control}>
         <InputGroup variant={local.variant}>
           <Trigger
             asChild={(triggerProps) => (
               <InputGroup.Addon {...triggerProps()}>
-                <SwatchPreview />
+                <SwatchPreview class={local.classNames?.inputSwatch} />
               </InputGroup.Addon>
             )}
+            class={local.classNames?.trigger}
           />
+
           <Input
-            asChild={(inputProps) => (
-              <InputGroup.Input {...inputProps()} clearable={false} />
-            )}
+            asChild={(inputProps) => <InputGroup.Input {...inputProps()} />}
+            class={local.classNames?.channelInput}
           />
-          <Show when={clearable()}>
-            <ClearTrigger clearable />
+
+          <Show when={local.clearable ?? false}>
+            <ShorthandClearTrigger class={local.classNames?.clearTrigger} />
           </Show>
         </InputGroup>
       </Control>
-      <Content>
-        <Area>
-          <AreaThumb />
-        </Area>
-        <FieldView />
-      </Content>
+
+      <Portal>
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show
+              fallback={<DefaultContent classNames={local.classNames} />}
+              when={local.children}
+            >
+              {local.children}
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
     </Root>
-  );
-}
-
-function FieldView(): JSX.Element {
-  const styles = useStyles();
-
-  return (
-    <View format="hsla">
-      <div class={styles.slots.channelRow()}>
-        <EyeDropperTrigger />
-        <div class={styles.slots.channelStack()}>
-          <ChannelSlider channel="hue" />
-          <ChannelSlider channel="alpha">
-            <TransparencyGrid />
-          </ChannelSlider>
-        </div>
-      </div>
-    </View>
   );
 }
 // #endregion
 
 export type {
+  ColorPickerAreaBackgroundProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
+  ColorPickerChannelSliderLabelProps,
+  ColorPickerChannelSliderProps,
+  ColorPickerChannelSliderThumbProps,
+  ColorPickerChannelSliderTrackProps,
+  ColorPickerChannelSliderValueTextProps,
   ColorPickerContentProps,
+  ColorPickerControlProps,
+  ColorPickerEyeDropperTriggerProps,
+  ColorPickerFormatSelectProps,
+  ColorPickerFormatTriggerProps,
+  ColorPickerLabelProps,
+  ColorPickerPositionerProps,
   ColorPickerSwatchGroupProps,
+  ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchProps,
+  ColorPickerSwatchTriggerProps,
+  ColorPickerTransparencyGridProps,
   ColorPickerTriggerProps,
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
 } from "@ark-ui/solid";
 
-export const ColorPicker = Object.assign(Root, {
+export const ColorPicker = Object.assign(ColorPickerShorthand, {
   Area,
+  AreaBackground,
   AreaThumb,
   ChannelInput: Input,
   ChannelSlider,
+  ChannelSliderLabel,
+  ChannelSliderThumb,
+  ChannelSliderTrack,
+  ChannelSliderValueText,
   ClearTrigger,
   Content,
   Control,
   EyeDropperTrigger,
-  Field,
   FormatSelect,
+  FormatTrigger,
   Input,
   Label,
+  Positioner,
+  Root,
   Swatch,
   SwatchGroup,
   SwatchIndicator,

@@ -3,7 +3,5 @@ import { QrCode } from "@pisagor/vue";
 </script>
 
 <template>
-  <QrCode value="https://example.com/docs">
-    <QrCode.Frame />
-  </QrCode>
+  <QrCode value="https://example.com" />
 </template>

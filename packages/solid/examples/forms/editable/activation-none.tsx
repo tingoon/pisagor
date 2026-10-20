@@ -1,22 +1,24 @@
-import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import {
   CheckIcon,
   PencilSimpleIcon,
   XIcon,
 } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 
 export function ActivationNone() {
   return (
     <Card>
-      <Card.Header
-        description="Use the edit button to start editing (no automatic activation)"
-        title="Edit with manual trigger"
-      />
+      <Card.Header>
+        <Card.Title>Edit with manual trigger</Card.Title>
+        <Card.Description>
+          Use the edit button to start editing (no automatic activation)
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="none" defaultValue="Jane Doe">
+            <Editable.Root activationMode="none" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -59,11 +61,11 @@ export function ActivationNone() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="none" defaultValue="@jane.doe">
+            <Editable.Root activationMode="none" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -106,7 +108,7 @@ export function ActivationNone() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

@@ -15,6 +15,7 @@ import ResizableContext from "./resizable-context.svelte";
 import ResizableEdgeHandle from "./resizable-edge-handle.svelte";
 import ResizablePanel from "./resizable-panel.svelte";
 import ResizableResizeTrigger from "./resizable-resize-trigger.svelte";
+import ResizableResizeTriggerHandle from "./resizable-resize-trigger-handle.svelte";
 import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 import ResizableRoot from "./resizable-root.svelte";
 import ResizableRootProvider from "./resizable-root-provider.svelte";
@@ -32,6 +33,7 @@ export const Resizable = Object.assign(ResizableRoot, {
   EdgeHandle: ResizableEdgeHandle,
   Panel: ResizablePanel,
   ResizeTrigger: ResizableResizeTrigger,
+  ResizeTriggerHandle: ResizableResizeTriggerHandle,
   ResizeTriggerIndicator: ResizableResizeTriggerIndicator,
   Root: ResizableRoot,
   RootProvider: ResizableRootProvider,

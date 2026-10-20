@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useFilter, useListCollection, useTagsInput } from "@ark-ui/solid";
-import { Combobox, Field, TagsInput } from "@pisagor/solid";
+import { XIcon } from "@squidlab/phosphor-solid/icons";
+import { Combobox, Field, InputGroup, TagsInput } from "@pisagor/solid";
 import { createMemo, createUniqueId, For } from "solid-js";
 import { Portal } from "solid-js/web";
 import { tagsWithComboboxBlock } from "#/styles/recipes/tags-input";
@@ -53,27 +54,56 @@ export function TagsWithCombobox() {
         value={[]}
       >
         <TagsInput.RootProvider class={styles.root()} value={tagsInput}>
-          <TagsInput.Context>
-            {(api) => (
-              <>
-                <For each={api().value}>
-                  {(tag, index) => (
-                    <TagsInput.Item index={index()} value={tag}>
-                      {tag}
-                    </TagsInput.Item>
+          <TagsInput.Control
+            asChild={(controlProps) => (
+              <InputGroup {...controlProps()}>
+                <TagsInput.Context>
+                  {(api) => (
+                    <>
+                      <For each={api().value}>
+                        {(tag, index) => (
+                          <TagsInput.Item index={index()} value={tag}>
+                            <TagsInput.ItemPreview>
+                              <TagsInput.ItemText>{tag}</TagsInput.ItemText>
+                              <TagsInput.ItemDeleteTrigger
+                                asChild={(triggerProps) => (
+                                  <InputGroup.Button
+                                    {...triggerProps()}
+                                    size="icon-xs"
+                                    variant="ghost"
+                                  >
+                                    <XIcon aria-hidden />
+                                  </InputGroup.Button>
+                                )}
+                              />
+                            </TagsInput.ItemPreview>
+                            <TagsInput.ItemInput
+                              asChild={(inputProps) => (
+                                <InputGroup.Input {...inputProps()} />
+                              )}
+                            />
+                          </TagsInput.Item>
+                        )}
+                      </For>
+                      <Combobox.Input
+                        asChild={(props) => (
+                          <TagsInput.Input
+                            {...props()}
+                            asChild={(inputProps) => (
+                              <InputGroup.Input
+                                {...inputProps()}
+                                placeholder="Search framework"
+                              />
+                            )}
+                          />
+                        )}
+                      />
+                    </>
                   )}
-                </For>
-                <Combobox.Input
-                  asChild={(props) => (
-                    <TagsInput.Input
-                      {...props()}
-                      placeholder="Search framework"
-                    />
-                  )}
-                />
-              </>
+                </TagsInput.Context>
+              </InputGroup>
             )}
-          </TagsInput.Context>
+          />
         </TagsInput.RootProvider>
         <Portal>
           <Combobox.Positioner>

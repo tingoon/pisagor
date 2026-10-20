@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { Avatar, Button, DropdownMenu, Item } from "@pisagor/react";
 import { itemPickerBlock } from "#/styles/recipes/overlay";
 
@@ -5,31 +6,35 @@ const styles = itemPickerBlock();
 
 export function ItemPicker() {
   return (
-    <DropdownMenu>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <Button variant="outline">Choose person</Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content className={styles.content()}>
-        {people.map((person) => (
-          <DropdownMenu.Item key={person.id} value={person.username}>
-            <Item className={styles.item()}>
-              <Item.Media>
-                <Avatar
-                  alt=""
-                  className={styles.avatar()}
-                  fallback={person.username.charAt(0).toUpperCase()}
-                  size="sm"
-                />
-              </Item.Media>
-              <Item.Content>
-                <Item.Title>{person.username}</Item.Title>
-                <Item.Description>{person.email}</Item.Description>
-              </Item.Content>
-            </Item>
-          </DropdownMenu.Item>
-        ))}
-      </DropdownMenu.Content>
-    </DropdownMenu>
+      <Portal>
+        <DropdownMenu.Positioner>
+          <DropdownMenu.Content className={styles.content()}>
+            {people.map((person) => (
+              <DropdownMenu.Item key={person.id} value={person.username}>
+                <Item className={styles.item()}>
+                  <Item.Media>
+                    <Avatar
+                      alt=""
+                      className={styles.avatar()}
+                      fallback={person.username.charAt(0).toUpperCase()}
+                      size="sm"
+                    />
+                  </Item.Media>
+                  <Item.Content>
+                    <Item.Title>{person.username}</Item.Title>
+                    <Item.Description>{person.email}</Item.Description>
+                  </Item.Content>
+                </Item>
+              </DropdownMenu.Item>
+            ))}
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Portal>
+    </DropdownMenu.Root>
   );
 }
 

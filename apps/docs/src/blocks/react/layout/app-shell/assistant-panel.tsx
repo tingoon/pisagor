@@ -2,6 +2,7 @@ import {
   ArrowUpIcon,
   CalendarIcon,
   CheckSquareIcon,
+  SidebarSimpleIcon,
   SparkleIcon,
   StarIcon,
   SunIcon,
@@ -101,7 +102,9 @@ export function AssistantPanel() {
         <div className={styles.splitRow()}>
           <div className={styles.splitMain()}>
             <header className={styles.header()}>
-              <Sidebar.Trigger />
+              <Sidebar.Trigger>
+                <SidebarSimpleIcon className="rtl:rotate-180" />
+              </Sidebar.Trigger>
               <Separator
                 className={styles.headerDivider()}
                 orientation="vertical"
@@ -126,13 +129,10 @@ export function AssistantPanel() {
             <Sheet
               onOpenChange={(details) => setAssistantOpen(details.open)}
               open={assistantOpen}
+              placement="right"
+              title="Assistant"
             >
-              <Sheet.Content placement="right">
-                <Sheet.Header>
-                  <Sheet.Title>Assistant</Sheet.Title>
-                </Sheet.Header>
-                <AssistantConversation />
-              </Sheet.Content>
+              <AssistantConversation />
             </Sheet>
           ) : assistantOpen ? (
             <aside aria-label="Assistant" className={styles.assistant()}>

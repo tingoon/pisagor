@@ -8,8 +8,10 @@ import { HoverCard } from "@pisagor/vue";
 
 ```vue
 <HoverCard>
-  <HoverCard.Trigger />
-  <HoverCard.Content />
+  <template #trigger>
+    <Button />
+  </template>
+  <!-- content -->
 </HoverCard>
 ```
 
@@ -45,13 +47,13 @@ Choose placement so the hover card stays near its trigger without covering criti
 
 <Example name="Placements" />
 
-## Customization
-
 ### Without Arrow
 
 Hide the arrow when the card should sit flush with the layout.
 
 <Example name="WithoutArrow" />
+
+## Customization
 
 ### Custom recipe
 

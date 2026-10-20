@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { buttonRecipe, tourRecipe } from "@pisagor/recipes";
-  import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { tourRecipe } from "@pisagor/recipes";
+  import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
   import { tv } from "tailwind-variants";
 
   const brandTourRecipe = tv({
@@ -56,18 +56,7 @@
 </script>
 
 <Tour recipe={brandTourRecipe} {steps}>
-  <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}>
-    Open
-  </Tour.Trigger>
-  <Tour.Content>
-    <Tour.Header>
-      <Tour.ProgressText />
-      <Tour.Title />
-      <Tour.Description />
-    </Tour.Header>
-    <Tour.Footer>
-      <Tour.PreviousStep />
-      <Tour.NextStep />
-    </Tour.Footer>
-  </Tour.Content>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
 </Tour>

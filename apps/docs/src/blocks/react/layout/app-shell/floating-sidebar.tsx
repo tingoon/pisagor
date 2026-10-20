@@ -1,3 +1,4 @@
+import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { Breadcrumb, Separator, Sidebar } from "@pisagor/react";
 import { tv } from "tailwind-variants";
 import { secondaryNav } from "./data";
@@ -53,7 +54,9 @@ export function FloatingSidebar() {
       </Sidebar>
       <Sidebar.Inset>
         <header className={styles.header()}>
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <Separator
             className={styles.headerDivider()}
             orientation="vertical"

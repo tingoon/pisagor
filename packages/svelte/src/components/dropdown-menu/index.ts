@@ -1,6 +1,9 @@
+import DropdownMenuShorthand from "./dropdown-menu.svelte";
 import DropdownMenuArrow from "./dropdown-menu-arrow.svelte";
+import DropdownMenuArrowTip from "./dropdown-menu-arrow-tip.svelte";
 import DropdownMenuCheckboxItem from "./dropdown-menu-checkbox-item.svelte";
 import DropdownMenuContent from "./dropdown-menu-content.svelte";
+import DropdownMenuIndicator from "./dropdown-menu-indicator.svelte";
 import DropdownMenuItem from "./dropdown-menu-item.svelte";
 import DropdownMenuItemGroup from "./dropdown-menu-item-group.svelte";
 import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
@@ -14,14 +17,15 @@ import DropdownMenuRoot from "./dropdown-menu-root.svelte";
 import DropdownMenuSeparator from "./dropdown-menu-separator.svelte";
 import DropdownMenuShortcut from "./dropdown-menu-shortcut.svelte";
 import DropdownMenuSub from "./dropdown-menu-sub.svelte";
-import DropdownMenuSubContent from "./dropdown-menu-sub-content.svelte";
 import DropdownMenuTrigger from "./dropdown-menu-trigger.svelte";
 import DropdownMenuTriggerItem from "./dropdown-menu-trigger-item.svelte";
 
-export const DropdownMenu = Object.assign(DropdownMenuRoot, {
+export const DropdownMenu = Object.assign(DropdownMenuShorthand, {
   Arrow: DropdownMenuArrow,
+  ArrowTip: DropdownMenuArrowTip,
   CheckboxItem: DropdownMenuCheckboxItem,
   Content: DropdownMenuContent,
+  Indicator: DropdownMenuIndicator,
   Item: DropdownMenuItem,
   ItemGroup: DropdownMenuItemGroup,
   ItemGroupLabel: DropdownMenuItemGroupLabel,
@@ -35,7 +39,6 @@ export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Separator: DropdownMenuSeparator,
   Shortcut: DropdownMenuShortcut,
   Sub: DropdownMenuSub,
-  SubContent: DropdownMenuSubContent,
   Trigger: DropdownMenuTrigger,
   TriggerItem: DropdownMenuTriggerItem,
 });

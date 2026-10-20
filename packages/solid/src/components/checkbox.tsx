@@ -7,16 +7,17 @@ import type {
   CheckboxRootProps as CheckboxRootPrimitiveProps,
 } from "@ark-ui/solid";
 import type {
+  CheckboxContract,
   CheckboxGroupRootContract,
   CheckboxRootContract,
 } from "@pisagor/contracts";
 import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
-import { splitProps } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { CheckIcon, MinusIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { withContext, withProvider } = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Checkbox",
   recipe: checkboxRecipe,
 });
@@ -32,7 +33,11 @@ export interface CheckboxGroupProps
 
 type CheckboxRootProps = CheckboxRootPrimitiveProps & CheckboxRootContract;
 
-export type CheckboxProps = CheckboxRootProps;
+export interface CheckboxProps
+  extends Omit<CheckboxRootProps, "children">, CheckboxContract {
+  /** Visible label rendered next to the control. */
+  label?: JSX.Element;
+}
 // #endregion
 
 // #region Parts
@@ -61,25 +66,16 @@ const ControlBase = withContext<CheckboxControlProps>(
   },
 );
 
-function Control(
-  props: CheckboxControlProps & Pick<CheckboxRootContract, "size" | "variant">,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "variant"]);
+/**
+ * Control; mirrors the root `variant` as `data-variant`. Render your own
+ * indicators.
+ */
+function Control(props: CheckboxControlProps): JSX.Element {
+  const styles = useStyles();
+  const variant = () =>
+    (styles.variants as CheckboxRootContract).variant ?? ("primary" as const);
 
-  return (
-    <ControlBase {...rest} data-variant={local.variant ?? "primary"}>
-      {local.children ?? (
-        <>
-          <Indicator>
-            <CheckIcon />
-          </Indicator>
-          <Indicator indeterminate>
-            <MinusIcon />
-          </Indicator>
-        </>
-      )}
-    </ControlBase>
-  );
+  return <ControlBase {...props} data-variant={variant()} />;
 }
 
 const Indicator = withContext<CheckboxIndicatorProps>(
@@ -94,20 +90,31 @@ const Label = withContext<CheckboxLabelProps>(CheckboxPrimitive.Label, {
 });
 // #endregion
 
-// #region Closed
-function CheckboxShorthand(props: CheckboxProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["tabIndex", "class"]);
+// #region Shorthand
+export function CheckboxShorthand(props: CheckboxProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["classNames", "label", "tabIndex"]);
 
   return (
-    <Root {...rest} class={local.class}>
-      <Control />
+    <Root {...rest}>
+      <Control class={local.classNames?.base}>
+        <Indicator class={local.classNames?.indicator}>
+          <CheckIcon />
+        </Indicator>
+        <Indicator class={local.classNames?.indicator} indeterminate>
+          <MinusIcon />
+        </Indicator>
+      </Control>
+      <Show when={local.label}>
+        <Label class={local.classNames?.label}>{local.label}</Label>
+      </Show>
       <CheckboxPrimitive.HiddenInput tabIndex={local.tabIndex} />
     </Root>
   );
 }
 // #endregion
 
-export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/solid";
+export type { CheckboxCheckedState } from "@ark-ui/solid";
+export type { CheckboxRootProps };
 
 export const Checkbox = Object.assign(CheckboxShorthand, {
   Control,

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PhGearSix, PhX } from "@phosphor-icons/vue";
+import { PhGearSix } from "@phosphor-icons/vue";
 import { Button, FloatingPanel } from "@pisagor/vue";
 import { ref } from "vue";
 
@@ -19,35 +19,19 @@ function shrink() {
 </script>
 
 <template>
-  <FloatingPanel :size="size" @size-change="onSizeChange">
-    <FloatingPanel.Trigger as-child>
-      <Button variant="outline">Open</Button>
-    </FloatingPanel.Trigger>
-    <FloatingPanel.Content>
-      <FloatingPanel.Header>
-        <PhGearSix />
-        <FloatingPanel.Title>Settings</FloatingPanel.Title>
-        <FloatingPanel.Control>
-          <FloatingPanel.Minimize />
-          <FloatingPanel.Maximize />
-          <FloatingPanel.Restore />
-          <FloatingPanel.CloseTrigger as-child>
-            <Button aria-label="Close" size="icon-sm">
-              <PhX aria-hidden="true" />
-            </Button>
-          </FloatingPanel.CloseTrigger>
-        </FloatingPanel.Control>
-      </FloatingPanel.Header>
-      <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
-        <p>Size: {{ size.width }} × {{ size.height }}.</p>
-        <p>Use the buttons above or drag the edges to resize.</p>
-        <div class="flex gap-2">
-          <Button class="flex-1" variant="outline" @click="shrink">
-            Shrink
-          </Button>
-          <Button class="flex-1" variant="outline" @click="grow">Grow</Button>
-        </div>
-      </FloatingPanel.Body>
-    </FloatingPanel.Content>
+  <FloatingPanel
+    :size="size"
+    :class-names="{ body: 'text-muted-foreground text-center text-sm' }"
+    title="Settings"
+    @size-change="onSizeChange"
+  >
+    <template #trigger><Button variant="outline">Open</Button></template>
+    <template #icon><PhGearSix /></template>
+    <p>Size: {{ size.width }} × {{ size.height }}.</p>
+    <p>Use the buttons above or drag the edges to resize.</p>
+    <div class="flex gap-2">
+      <Button class="flex-1" variant="outline" @click="shrink">Shrink</Button>
+      <Button class="flex-1" variant="outline" @click="grow">Grow</Button>
+    </div>
   </FloatingPanel>
 </template>

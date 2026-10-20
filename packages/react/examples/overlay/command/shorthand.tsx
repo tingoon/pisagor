@@ -25,5 +25,5 @@ const items = [
 ];
 
 export function Shorthand() {
-  return <Command.Shorthand items={items} placeholder="Search…" />;
+  return <Command items={items} placeholder="Search…" />;
 }

@@ -9,7 +9,7 @@
   ];
 </script>
 
-<Steps class="h-64" count={items.length} orientation="vertical">
+<Steps.Root class="h-64" count={items.length} orientation="vertical">
   <Steps.List>
     {#each items as item, index}
       <Steps.Item {index}>
@@ -57,4 +57,4 @@
       </Steps.PrevTrigger>
     </div>
   </div>
-</Steps>
+</Steps.Root>

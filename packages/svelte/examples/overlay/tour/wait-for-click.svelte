@@ -1,6 +1,5 @@
 <script lang="ts">
   import { waitForEvent } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
   import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
   const steps: TourStepDetails[] = [
@@ -66,21 +65,14 @@
 
 <div class="flex flex-col gap-2">
   <Tour {steps}>
-    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
-      >Start interactive tour</Tour.Trigger
-    >
+    {#snippet trigger(props)}
+      <Button {...props()} variant="outline">Start interactive tour</Button>
+    {/snippet}
+
     <div class="flex flex-wrap gap-2">
       <Button id="btn-add" size="sm" variant="outline">Add Item</Button>
       <Button id="btn-edit" size="sm" variant="outline">Edit</Button>
       <Button id="btn-delete" size="sm" variant="outline">Delete</Button>
     </div>
-    <Tour.Content>
-      <Tour.Header>
-        <Tour.ProgressText />
-        <Tour.Title />
-        <Tour.Description />
-      </Tour.Header>
-      <Tour.Actions />
-    </Tour.Content>
   </Tour>
 </div>

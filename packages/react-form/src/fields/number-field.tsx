@@ -58,14 +58,8 @@ export function NumberField({
         name={name}
         onBlur={onBlur}
         onValueChange={onValueChange}
-      >
-        <NumberInput.Control data-clearable={clearable || undefined}>
-          <NumberInput.DecrementTrigger />
-          <NumberInput.Input placeholder={placeholder} />
-          {clearable ? <NumberInput.ClearTrigger /> : null}
-          <NumberInput.IncrementTrigger />
-        </NumberInput.Control>
-      </NumberInput>
+        placeholder={placeholder}
+      />
     </FieldShell>
   );
 }

@@ -18,7 +18,9 @@ export function Default() {
             A
           </div>
         </Resizable.Panel>
-        <Resizable.ResizeTrigger id="a:b" />
+        <Resizable.ResizeTrigger id="a:b">
+          <Resizable.ResizeTriggerIndicator />
+        </Resizable.ResizeTrigger>
         <Resizable.Panel id="b">
           <div
             class={cn(

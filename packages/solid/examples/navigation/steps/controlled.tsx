@@ -17,7 +17,7 @@ export function Controlled() {
 
   return (
     <div class="flex flex-col gap-2">
-      <Steps
+      <Steps.Root
         class="w-full"
         count={items.length}
         onStepChange={(details) => setStep(details.step)}
@@ -44,7 +44,7 @@ export function Controlled() {
         <Steps.CompletedContent>
           <p class="text-muted-foreground">All steps completed.</p>
         </Steps.CompletedContent>
-      </Steps>
+      </Steps.Root>
       <div class="flex gap-2">
         <Button
           onClick={() => setStep((s) => Math.max(0, s - 1))}

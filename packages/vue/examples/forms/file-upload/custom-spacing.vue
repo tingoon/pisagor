@@ -3,13 +3,10 @@ import { FileUpload } from "@pisagor/vue";
 </script>
 
 <template>
-  <FileUpload>
-    <FileUpload.Dropzone
-      class="[--space:--spacing(4)] md:[--space:--spacing(6)]"
-    >
-      <FileUpload.DropzoneIcon />
-      <FileUpload.Title>Drop your files here</FileUpload.Title>
-    </FileUpload.Dropzone>
-    <FileUpload.List />
-  </FileUpload>
+  <FileUpload
+    :class-names="{
+      dropzone: '[--space:--spacing(4)] md:[--space:--spacing(6)]',
+    }"
+    title="Drop your files here"
+  />
 </template>

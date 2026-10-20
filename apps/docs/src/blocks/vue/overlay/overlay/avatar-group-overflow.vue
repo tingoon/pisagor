@@ -39,23 +39,27 @@ const users = [
         :src="user.src"
       />
     </div>
-    <Popover :positioning="{ placement: 'bottom-end' }">
+    <Popover.Root :positioning="{ placement: 'bottom-end' }">
       <Popover.Trigger as-child>
         <Button pill size="icon-md" type="button" variant="ghost">+5</Button>
       </Popover.Trigger>
-      <Popover.Content>
-        <Popover.Body>
-          <div :class="styles.row()">
-            <Avatar
-              v-for="user in users"
-              :key="user.src"
-              :alt="user.name"
-              :fallback="user.fallback"
-              :src="user.src"
-            />
-          </div>
-        </Popover.Body>
-      </Popover.Content>
-    </Popover>
+      <Teleport to="body">
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Body>
+              <div :class="styles.row()">
+                <Avatar
+                  v-for="user in users"
+                  :key="user.src"
+                  :alt="user.name"
+                  :fallback="user.fallback"
+                  :src="user.src"
+                />
+              </div>
+            </Popover.Body>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Teleport>
+    </Popover.Root>
   </div>
 </template>

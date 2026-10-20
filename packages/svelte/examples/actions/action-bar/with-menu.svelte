@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Portal } from "@ark-ui/svelte";
   import { ActionBar, Button, DropdownMenu } from "@pisagor/svelte";
   import {
     ArchiveIcon,
@@ -9,42 +10,54 @@
   } from "phosphor-svelte";
 </script>
 
-<ActionBar>
+<ActionBar.Root>
   <ActionBar.Trigger>
-    <Button variant="outline">Open</Button>
+    {#snippet asChild(props)}
+      <Button {...props()} variant="outline">Open</Button>
+    {/snippet}
   </ActionBar.Trigger>
-  <ActionBar.Content aria-label="Bulk actions">
-    <ActionBar.Value count={3} />
-    <ActionBar.Separator />
-    <ActionBar.Body>
-      <DropdownMenu positioning={{ placement: "top" }}>
-        <DropdownMenu.Trigger>
-          <Button variant="ghost">
-            <DotsThreeIcon />
-            <span class="max-sm:sr-only">More</span>
-          </Button>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content>
-          <DropdownMenu.Item value="archive">
-            <ArchiveIcon />
-            Archive
-          </DropdownMenu.Item>
-          <DropdownMenu.Item value="duplicate">
-            <CopyIcon />
-            Duplicate
-          </DropdownMenu.Item>
-          <DropdownMenu.Item value="delete" variant="destructive">
-            <TrashIcon />
-            Delete
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu>
-    </ActionBar.Body>
-    <ActionBar.Separator />
-    <ActionBar.Close>
-      <Button aria-label="Close" size="icon-md" variant="ghost">
-        <XIcon />
-      </Button>
-    </ActionBar.Close>
-  </ActionBar.Content>
-</ActionBar>
+  <Portal>
+    <ActionBar.Positioner>
+      <ActionBar.Content aria-label="Bulk actions">
+        <ActionBar.Value count={3} />
+        <ActionBar.Separator />
+        <ActionBar.Body>
+          <DropdownMenu positioning={{ placement: "top" }}>
+            {#snippet trigger(props)}
+              <Button {...props()} variant="ghost">
+                <DotsThreeIcon />
+                <span class="max-sm:sr-only">More</span>
+              </Button>
+            {/snippet}
+
+            <DropdownMenu.Item value="archive">
+              <ArchiveIcon />
+              Archive
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="duplicate">
+              <CopyIcon />
+              Duplicate
+            </DropdownMenu.Item>
+            <DropdownMenu.Item value="delete" variant="destructive">
+              <TrashIcon />
+              Delete
+            </DropdownMenu.Item>
+          </DropdownMenu>
+        </ActionBar.Body>
+        <ActionBar.Separator />
+        <ActionBar.Close>
+          {#snippet asChild(props)}
+            <Button
+              {...props()}
+              aria-label="Close"
+              size="icon-md"
+              variant="ghost"
+            >
+              <XIcon />
+            </Button>
+          {/snippet}
+        </ActionBar.Close>
+      </ActionBar.Content>
+    </ActionBar.Positioner>
+  </Portal>
+</ActionBar.Root>

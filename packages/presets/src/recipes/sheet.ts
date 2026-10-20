@@ -8,6 +8,7 @@ export const sheetRecipe = tv({
     variant: "default",
   },
   slots: {
+    base: [],
     body: "in-[[data-scope=dialog][data-part=content]:has([data-scope=sheet][data-part=header])]:pt-0",
     content: [
       "[--space:--spacing(6)]",

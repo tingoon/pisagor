@@ -14,12 +14,7 @@ import type {
   ActionBarValueContract,
 } from "@pisagor/contracts";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  MouseEvent,
-  PropsWithChildren,
-  ReactNode,
-} from "react";
+import type { ComponentProps, MouseEvent, ReactNode } from "react";
 import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
@@ -95,11 +90,11 @@ interface ActionBarActionItem extends Omit<
   onClick: () => void;
 }
 
-export interface ActionBarProps
+export interface ActionBarRootProps
   extends
     Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
-    ActionBarRootContract,
-    ActionBarContract {
+    ActionBarRootContract {
+  children?: ReactNode;
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *
@@ -123,13 +118,31 @@ export interface ActionBarProps
   open?: boolean;
   /** Placement and gutter of the action bar. */
   positioning?: ActionBarStateValue["positioning"];
-  actions?: ActionBarActionItem[];
-  count?: number;
   /** The function to call when the open state of the action bar changes. */
   onOpenChange?: (open: boolean) => void;
 }
 
+export interface ActionBarProps
+  extends Omit<ActionBarRootProps, "children">, ActionBarContract {
+  /** Action buttons built from data, rendered in the body. */
+  actions?: ActionBarActionItem[];
+  /** Extra toolbar content, rendered in the body after `actions`. */
+  children?: ReactNode;
+  /** Selected item count shown at the start of the bar. */
+  count?: number;
+  /**
+   * Whether to show the close button.
+   *
+   * @defaultValue true
+   */
+  showCloseButton?: boolean;
+  /** Element that opens the bar. */
+  trigger?: ReactNode;
+}
+
 export type ActionBarTriggerProps = HTMLArkProps<"button">;
+
+export type ActionBarPositionerProps = ComponentProps<"div">;
 
 export type ActionBarContentProps = ComponentProps<"div">;
 
@@ -153,17 +166,15 @@ const defaultPositioning = { gutter: "16px", placement: "bottom" } as const;
 // #region Parts
 export function ActionBarRoot({
   closeOnEscape = true,
-  count,
   defaultOpen = false,
   lazyMount,
   open,
   positioning: positioningProp,
   unmountOnExit,
-  actions,
   children,
   onOpenChange,
   recipe = actionBarRecipe,
-}: PropsWithChildren<ActionBarProps>) {
+}: ActionBarRootProps) {
   const [isOpen, setOpen] = useUncontrolled({
     defaultValue: defaultOpen,
     finalValue: false,
@@ -219,8 +230,6 @@ export function ActionBarRoot({
     [handleClose, handleOpen, isOpen, lazyMount, positioning, unmountOnExit],
   );
 
-  const hasPreset = count !== undefined || (actions && actions.length > 0);
-
   return (
     <ActionBarStylesContext
       value={{
@@ -228,41 +237,17 @@ export function ActionBarRoot({
         variants: { placement: positioning.placement } as never,
       }}
     >
-      <ActionBarStateContext value={state}>
-        {children}
-        {hasPreset && (
-          <ActionBarContent>
-            {count !== undefined && <ActionBarValue count={count} />}
-            {count !== undefined && actions && <ActionBarSeparator />}
-            {actions && (
-              <ActionBarBody>
-                {actions.map((action) => (
-                  <Button
-                    disabled={action.disabled}
-                    key={action.id ?? action.label}
-                    onClick={action.onClick}
-                    size="sm"
-                    variant="ghost"
-                  >
-                    {action.icon}
-                    {action.label}
-                  </Button>
-                ))}
-              </ActionBarBody>
-            )}
-            {actions && <ActionBarSeparator />}
-            <ActionBarClose>
-              <XIcon aria-hidden />
-            </ActionBarClose>
-          </ActionBarContent>
-        )}
-      </ActionBarStateContext>
+      <ActionBarStateContext value={state}>{children}</ActionBarStateContext>
     </ActionBarStylesContext>
   );
 }
 
-export function ActionBarTrigger({ onClick, ...rest }: ActionBarTriggerProps) {
-  const { onOpen, isOpen } = useActionBarState();
+export function ActionBarTrigger({
+  className,
+  onClick,
+  ...rest
+}: ActionBarTriggerProps) {
+  const { onOpen, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     onOpen?.();
@@ -273,6 +258,7 @@ export function ActionBarTrigger({ onClick, ...rest }: ActionBarTriggerProps) {
     <ark.button
       {...rest}
       aria-expanded={isOpen}
+      className={slots.trigger({ className })}
       data-part="trigger"
       data-scope="action-bar"
       data-state={isOpen ? "open" : "closed"}
@@ -282,43 +268,47 @@ export function ActionBarTrigger({ onClick, ...rest }: ActionBarTriggerProps) {
   );
 }
 
-export function ActionBarContent({
-  "aria-labelledby": ariaLabelledby,
+export function ActionBarPositioner({
   className,
+  style,
   ...rest
-}: ActionBarContentProps) {
+}: ActionBarPositionerProps) {
   const { isOpen, lazyMount, unmountOnExit, positioning, slots } =
     useActionBar();
 
-  const placement = positioning.placement;
-  const gutter = positioning.gutter;
+  return (
+    <Presence
+      asChild
+      lazyMount={lazyMount}
+      present={isOpen}
+      unmountOnExit={unmountOnExit}
+    >
+      <div
+        {...rest}
+        className={slots.positioner({ className })}
+        data-part="positioner"
+        data-placement={positioning.placement}
+        data-scope="action-bar"
+        style={{ "--gutter": positioning.gutter, ...style }}
+      />
+    </Presence>
+  );
+}
+
+export function ActionBarContent({
+  className,
+  ...rest
+}: ActionBarContentProps) {
+  const { slots } = useStyles();
 
   return (
-    <Portal>
-      <Presence
-        asChild
-        lazyMount={lazyMount}
-        present={isOpen}
-        unmountOnExit={unmountOnExit}
-      >
-        <div
-          className={slots.positioner({ placement })}
-          data-part="positioner"
-          data-placement={placement}
-          data-scope="action-bar"
-          style={{ "--gutter": gutter }}
-        >
-          <div
-            {...rest}
-            aria-labelledby={ariaLabelledby}
-            className={slots.content({ className })}
-            data-part="content"
-            data-scope="action-bar"
-            role="toolbar"
-          />
-        </div>
-      </Presence>
-    </Portal>
+    <div
+      role="toolbar"
+      {...rest}
+      className={slots.content({ className })}
+      data-part="content"
+      data-scope="action-bar"
+    />
   );
 }
 
@@ -393,19 +383,90 @@ export const ActionBarBody = withContext<ComponentProps<"div">>("div", {
 });
 // #endregion
 
+// #region Shorthand
+export function ActionBarShorthand({
+  actions,
+  children,
+  classNames,
+  count,
+  showCloseButton = true,
+  trigger,
+  ...rest
+}: ActionBarProps) {
+  const hasActions = actions !== undefined && actions.length > 0;
+  const hasBody = hasActions || children !== undefined;
+
+  return (
+    <ActionBarRoot {...rest}>
+      {trigger !== undefined && (
+        <ActionBarTrigger asChild className={classNames?.trigger}>
+          {trigger}
+        </ActionBarTrigger>
+      )}
+
+      <Portal>
+        <ActionBarPositioner className={classNames?.positioner}>
+          <ActionBarContent className={classNames?.content}>
+            {count !== undefined && (
+              <ActionBarValue className={classNames?.value} count={count} />
+            )}
+
+            {count !== undefined && hasBody && (
+              <ActionBarSeparator className={classNames?.separator} />
+            )}
+
+            {hasBody && (
+              <ActionBarBody className={classNames?.body}>
+                {actions?.map((action) => (
+                  <Button
+                    disabled={action.disabled}
+                    key={action.id ?? action.label}
+                    onClick={action.onClick}
+                    size="sm"
+                    variant="ghost"
+                  >
+                    {action.icon}
+                    {action.label}
+                  </Button>
+                ))}
+
+                {children}
+              </ActionBarBody>
+            )}
+
+            {showCloseButton && hasBody && (
+              <ActionBarSeparator className={classNames?.separator} />
+            )}
+
+            {showCloseButton && (
+              <ActionBarClose className={classNames?.close}>
+                <XIcon aria-hidden />
+              </ActionBarClose>
+            )}
+          </ActionBarContent>
+        </ActionBarPositioner>
+      </Portal>
+    </ActionBarRoot>
+  );
+}
+// #endregion
+
 // #region Display Names
-ActionBarRoot.displayName = "ActionBar";
+ActionBarRoot.displayName = "ActionBar.Root";
 ActionBarTrigger.displayName = "ActionBar.Trigger";
+ActionBarPositioner.displayName = "ActionBar.Positioner";
 ActionBarContent.displayName = "ActionBar.Content";
 ActionBarSeparator.displayName = "ActionBar.Separator";
 ActionBarClose.displayName = "ActionBar.Close";
 ActionBarValue.displayName = "ActionBar.Value";
 // #endregion
 
-export const ActionBar = Object.assign(ActionBarRoot, {
+export const ActionBar = Object.assign(ActionBarShorthand, {
   Body: ActionBarBody,
   Close: ActionBarClose,
   Content: ActionBarContent,
+  Positioner: ActionBarPositioner,
+  Root: ActionBarRoot,
   Separator: ActionBarSeparator,
   Trigger: ActionBarTrigger,
   Value: ActionBarValue,

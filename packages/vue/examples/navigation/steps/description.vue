@@ -9,7 +9,7 @@ const items = [
 </script>
 
 <template>
-  <Steps :count="items.length">
+  <Steps.Root :count="items.length">
     <Steps.List>
       <Steps.Item
         v-for="(item, index) in items"
@@ -26,5 +26,5 @@ const items = [
         <Steps.Separator />
       </Steps.Item>
     </Steps.List>
-  </Steps>
+  </Steps.Root>
 </template>

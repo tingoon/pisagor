@@ -1,4 +1,9 @@
-import { DotsThreeIcon, FolderIcon } from "@phosphor-icons/react";
+import { Portal } from "@ark-ui/react";
+import {
+  DotsThreeIcon,
+  FolderIcon,
+  SidebarSimpleIcon,
+} from "@phosphor-icons/react";
 import { Breadcrumb, DropdownMenu, Separator, Sidebar } from "@pisagor/react";
 import { tv } from "tailwind-variants";
 import { projects, secondaryNav } from "./data";
@@ -43,21 +48,32 @@ export function FlatSidebar() {
                     <FolderIcon />
                     <span>{project.name}</span>
                   </Sidebar.MenuButton>
-                  <DropdownMenu positioning={{ placement: "right-start" }}>
+                  <DropdownMenu.Root positioning={{ placement: "right-start" }}>
                     <DropdownMenu.Trigger asChild>
                       <Sidebar.MenuAction aria-label="More" showOnHover>
                         <DotsThreeIcon />
                       </Sidebar.MenuAction>
                     </DropdownMenu.Trigger>
-                    <DropdownMenu.Content>
-                      <DropdownMenu.Item value="open">Open</DropdownMenu.Item>
-                      <DropdownMenu.Item value="unpin">Unpin</DropdownMenu.Item>
-                      <DropdownMenu.Separator />
-                      <DropdownMenu.Item value="delete" variant="destructive">
-                        Delete
-                      </DropdownMenu.Item>
-                    </DropdownMenu.Content>
-                  </DropdownMenu>
+                    <Portal>
+                      <DropdownMenu.Positioner>
+                        <DropdownMenu.Content>
+                          <DropdownMenu.Item value="open">
+                            Open
+                          </DropdownMenu.Item>
+                          <DropdownMenu.Item value="unpin">
+                            Unpin
+                          </DropdownMenu.Item>
+                          <DropdownMenu.Separator />
+                          <DropdownMenu.Item
+                            value="delete"
+                            variant="destructive"
+                          >
+                            Delete
+                          </DropdownMenu.Item>
+                        </DropdownMenu.Content>
+                      </DropdownMenu.Positioner>
+                    </Portal>
+                  </DropdownMenu.Root>
                 </Sidebar.MenuItem>
               ))}
             </Sidebar.Menu>
@@ -82,7 +98,9 @@ export function FlatSidebar() {
       </Sidebar>
       <Sidebar.Inset>
         <header className={styles.header()}>
-          <Sidebar.Trigger />
+          <Sidebar.Trigger>
+            <SidebarSimpleIcon className="rtl:rotate-180" />
+          </Sidebar.Trigger>
           <Separator
             className={styles.headerDivider()}
             orientation="vertical"

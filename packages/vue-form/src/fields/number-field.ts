@@ -10,7 +10,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 type NumberInputControlProps = SetRequired<
-  Omit<NumberInputProps, "class" | "invalid" | "name" | "value">,
+  Omit<NumberInputProps, "class" | "invalid" | "label" | "name" | "value">,
   "onValueChange"
 >;
 

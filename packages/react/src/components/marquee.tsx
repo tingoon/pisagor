@@ -2,6 +2,7 @@ import {
   Marquee as MarqueePrimitive,
   type MarqueeContentProps,
   type MarqueeRootProps as MarqueeRootPrimitiveProps,
+  type MarqueeViewportProps,
 } from "@ark-ui/react";
 import type { MarqueeRootContract, MarqueeContract } from "@pisagor/contracts";
 import { marqueeRecipe } from "@pisagor/recipes";
@@ -10,7 +11,7 @@ import { Children, isValidElement } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Marquee",
   recipe: marqueeRecipe,
 });
@@ -23,12 +24,6 @@ export interface MarqueeRootProps
     Omit<MarqueeRootContract, "items"> {
   /** @defaultValue "horizontal" */
   orientation?: "horizontal" | "vertical";
-  /**
-   * Whether to show the edges of the marquee
-   *
-   * @defaultValue true
-   */
-  showEdges?: boolean;
 }
 
 export interface MarqueeProps
@@ -37,6 +32,12 @@ export interface MarqueeProps
     MarqueeRootContract,
     MarqueeContract {
   items?: ReactNode[];
+  /**
+   * Whether to show the fading edges.
+   *
+   * @defaultValue true
+   */
+  showEdges?: boolean;
 }
 // #endregion
 
@@ -47,9 +48,9 @@ const MarqueeRootBase = withProvider<
   MarqueeRootPrimitiveProps & Omit<MarqueeRootContract, "items">
 >;
 
+/** Root; maps `orientation` to the Ark `side` and sets spacing / speed defaults. */
 export function MarqueeRoot({
   orientation = "horizontal",
-  showEdges = true,
   children,
   spacing = "calc(var(--spacing) * 4)",
   speed = 50,
@@ -66,57 +67,74 @@ export function MarqueeRoot({
       speed={speed}
     >
       {children}
-      {showEdges && (
-        <>
-          <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />
-          <MarqueeEdge side={orientation === "horizontal" ? "end" : "bottom"} />
-        </>
-      )}
     </MarqueeRootBase>
   );
 }
 
-export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
-  const { slots } = useStyles();
+const MarqueeViewport = withContext<MarqueeViewportProps>(
+  MarqueePrimitive.Viewport,
+  { name: "Viewport" },
+);
 
-  return (
-    <MarqueePrimitive.Viewport className={slots.viewport()}>
-      <MarqueePrimitive.Content
-        {...rest}
-        className={slots.content({ className })}
-      />
-    </MarqueePrimitive.Viewport>
-  );
-}
+const MarqueeContent = withContext<MarqueeContentProps>(
+  MarqueePrimitive.Content,
+  { name: "Content" },
+);
 
-export const MarqueeItem = withContext<
-  ComponentProps<typeof MarqueePrimitive.Item>
->(MarqueePrimitive.Item, {
-  name: "Item",
-});
+const MarqueeItem = withContext<ComponentProps<typeof MarqueePrimitive.Item>>(
+  MarqueePrimitive.Item,
+  {
+    name: "Item",
+  },
+);
 
-export const MarqueeEdge = withContext<
-  ComponentProps<typeof MarqueePrimitive.Edge>
->(MarqueePrimitive.Edge, {
-  name: "Edge",
-});
+const MarqueeEdge = withContext<ComponentProps<typeof MarqueePrimitive.Edge>>(
+  MarqueePrimitive.Edge,
+  {
+    name: "Edge",
+  },
+);
 // #endregion
 
 // #region Shorthand
-export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
+export function MarqueeShorthand({
+  classNames,
+  items,
+  orientation = "horizontal",
+  showEdges = true,
+  ...rest
+}: MarqueeProps) {
+  const horizontal = orientation === "horizontal";
+
   return (
-    <MarqueeRoot {...rest}>
-      {items && (
-        <MarqueeContent>
+    <MarqueeRoot {...rest} orientation={orientation}>
+      <MarqueeViewport className={classNames?.viewport}>
+        <MarqueeContent className={classNames?.content}>
           {Children.toArray(items).map((item) =>
             isValidElement(item) ? (
-              <MarqueeItem key={item.key}>{item}</MarqueeItem>
+              <MarqueeItem className={classNames?.item} key={item.key}>
+                {item}
+              </MarqueeItem>
             ) : (
-              <MarqueeItem key={String(item)}>{item}</MarqueeItem>
+              <MarqueeItem className={classNames?.item} key={String(item)}>
+                {item}
+              </MarqueeItem>
             ),
           )}
         </MarqueeContent>
-      )}
+      </MarqueeViewport>
+      {showEdges ? (
+        <>
+          <MarqueeEdge
+            className={classNames?.edge}
+            side={horizontal ? "start" : "top"}
+          />
+          <MarqueeEdge
+            className={classNames?.edge}
+            side={horizontal ? "end" : "bottom"}
+          />
+        </>
+      ) : null}
     </MarqueeRoot>
   );
 }
@@ -124,7 +142,7 @@ export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
 
 // #region Display Names
 MarqueeRoot.displayName = "Marquee.Root";
-MarqueeContent.displayName = "Marquee.Content";
+MarqueeShorthand.displayName = "Marquee";
 
 // #endregion
 
@@ -132,6 +150,7 @@ export type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
+  MarqueeViewportProps,
 } from "@ark-ui/react";
 
 export const Marquee = Object.assign(MarqueeShorthand, {
@@ -139,4 +158,5 @@ export const Marquee = Object.assign(MarqueeShorthand, {
   Edge: MarqueeEdge,
   Item: MarqueeItem,
   Root: MarqueeRoot,
+  Viewport: MarqueeViewport,
 });

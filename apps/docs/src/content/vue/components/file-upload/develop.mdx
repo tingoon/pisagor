@@ -7,17 +7,14 @@ import { FileUpload } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<FileUpload>
-  <FileUpload.Dropzone>
-    <FileUpload.DropzoneIcon />
-    <FileUpload.Title />
-    <FileUpload.Description />
-    <FileUpload.Trigger />
-    <FileUpload.Helper />
-  </FileUpload.Dropzone>
-  <FileUpload.List />
+<FileUpload description="or" helper="Up to 2 files." title="Drop files here">
+  <template #trigger>
+    <Button>Browse files</Button>
+  </template>
 </FileUpload>
 ```
+
+The shorthand renders the dropzone (`icon`, `title`, `description`, `trigger`, `helper`), an optional `label` and `clearTrigger`, and the accepted / rejected file list (`show-list`). Each content prop is also a named slot (`#trigger`, `#clearTrigger`, …). Set `:dropzone="false"` for a trigger-only picker. Compose `FileUpload.Root` and its parts for custom layouts (see Compound).
 
 ## Examples
 
@@ -83,7 +80,7 @@ Clear selected files in one action.
 
 ### Rejected Files
 
-`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+The shorthand file list (`showList`) also shows rejected files with their validation errors, so users can see why a file was not accepted.
 
 <Example name="RejectedFiles" />
 

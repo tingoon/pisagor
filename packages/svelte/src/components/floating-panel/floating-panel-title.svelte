@@ -3,22 +3,12 @@
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelTitleProps,
   } from "@ark-ui/svelte";
-  import { floatingPanelRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./floating-panel.context";
+  import { withContext } from "./floating-panel.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: FloatingPanelTitleProps = $props();
-  const ctx = useStyles();
-  const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
+  let { children, ...rest }: FloatingPanelTitleProps = $props();
+  const part = withContext(() => rest, { name: "Title" });
 </script>
 
-<FloatingPanelPrimitive.Title
-  {...rest}
-  class={slots.title({ class: cn(className) })}
->
+<FloatingPanelPrimitive.Title {...part.props}>
   {@render children?.()}
 </FloatingPanelPrimitive.Title>

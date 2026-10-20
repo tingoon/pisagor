@@ -7,14 +7,8 @@ import { ActionBar } from "@pisagor/solid";
 ## Anatomy
 
 ```tsx
-<ActionBar>
-  <ActionBar.Trigger />
-  <ActionBar.Content>
-    <ActionBar.Value />
-    <ActionBar.Separator />
-    <ActionBar.Body />
-    <ActionBar.Close />
-  </ActionBar.Content>
+<ActionBar actions={actions} count={3} trigger={<Button />}>
+  {extraActions}
 </ActionBar>
 ```
 

@@ -1,4 +1,5 @@
 export { default as Checkboxes } from "./checkboxes.svelte";
+export { default as Compound } from "./compound.svelte";
 export { default as Default } from "./default.svelte";
 export { default as Destructive } from "./destructive.svelte";
 export { default as GroupLabel } from "./group-label.svelte";

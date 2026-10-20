@@ -2,6 +2,8 @@
   import { QrCode } from "@pisagor/svelte";
 </script>
 
-<QrCode value="https://example.com">
-  <QrCode.Frame />
-</QrCode>
+<QrCode.Root value="https://example.com">
+  <QrCode.Frame>
+    <QrCode.Pattern />
+  </QrCode.Frame>
+</QrCode.Root>

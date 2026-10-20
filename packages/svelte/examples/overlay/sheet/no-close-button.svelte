@@ -2,31 +2,29 @@
   import { Button, Sheet } from "@pisagor/svelte";
 </script>
 
-<Sheet>
-  <Sheet.Trigger>
-    <Button variant="outline">Open</Button>
-  </Sheet.Trigger>
-  <Sheet.Content showCloseButton={false}>
-    <Sheet.Header>
-      <Sheet.Title>No close button</Sheet.Title>
-      <Sheet.Description>
-        You can only close this sheet using the buttons in the footer, by
-        pressing Escape or by clicking the backdrop.
-      </Sheet.Description>
-    </Sheet.Header>
-    <Sheet.Body>
-      <p class="text-muted-foreground text-sm">
-        The close button in the top right corner is hidden. Use the footer
-        buttons or press Escape to close.
-      </p>
-    </Sheet.Body>
-    <Sheet.Footer>
-      <Sheet.CloseTrigger>
-        <Button variant="outline">Cancel</Button>
-      </Sheet.CloseTrigger>
-      <Sheet.CloseTrigger>
-        <Button>Confirm</Button>
-      </Sheet.CloseTrigger>
-    </Sheet.Footer>
-  </Sheet.Content>
+<Sheet
+  description="You can only close this sheet using the buttons in the footer, by pressing Escape or by clicking the backdrop."
+  showCloseButton={false}
+  title="No close button"
+>
+  {#snippet trigger(props)}
+    <Button {...props()} variant="outline">Open</Button>
+  {/snippet}
+  {#snippet actions()}
+    <Sheet.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()} variant="outline">Cancel</Button>
+      {/snippet}
+    </Sheet.CloseTrigger>
+    <Sheet.CloseTrigger>
+      {#snippet asChild(props)}
+        <Button {...props()}>Confirm</Button>
+      {/snippet}
+    </Sheet.CloseTrigger>
+  {/snippet}
+
+  <p class="text-muted-foreground text-sm">
+    The close button in the top right corner is hidden. Use the footer buttons
+    or press Escape to close.
+  </p>
 </Sheet>

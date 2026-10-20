@@ -4,29 +4,14 @@
     type DialogRootProps,
   } from "@ark-ui/svelte";
   import type { DialogRootContract } from "@pisagor/contracts";
-  import { dialogRecipe } from "@pisagor/recipes";
-  import { setDialogContext } from "./dialog.context";
+  import { withProvider } from "./dialog.context";
 
   type Props = DialogRootProps & DialogRootContract;
 
-  let {
-    modal = true,
-    recipe = dialogRecipe,
-    children,
-    ...rest
-  }: Props = $props();
-  const slots = $derived(recipe());
-
-  setDialogContext({
-    get modal() {
-      return modal;
-    },
-    get slots() {
-      return slots;
-    },
-  });
+  let { children, ...rest }: Props = $props();
+  const root = withProvider(() => rest, { name: "Root" });
 </script>
 
-<DialogPrimitive.Root {...rest} {modal}>
+<DialogPrimitive.Root {...root.props}>
   {@render children?.()}
 </DialogPrimitive.Root>

@@ -4,29 +4,22 @@
     type TooltipRootProps,
   } from "@ark-ui/svelte";
   import type { TooltipRootContract } from "@pisagor/contracts";
-  import { tooltipRecipe } from "@pisagor/recipes";
-  import { Context } from "./tooltip.context";
+  import { withProvider } from "./tooltip.context";
 
   type Props = TooltipRootProps & TooltipRootContract;
 
-  let {
-    closeDelay = 150,
-    openDelay = 400,
-    positioning = { placement: "top" },
-    children,
-    recipe = tooltipRecipe,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-
-  Context.set({
-    get slots() {
-      return slots;
+  let { children, ...rest }: Props = $props();
+  // The root renders no element; `base` is an empty slot.
+  const root = withProvider(() => rest, {
+    defaultProps: {
+      closeDelay: 150,
+      openDelay: 400,
+      positioning: { placement: "top" },
     },
+    name: "Root",
   });
 </script>
 
-<TooltipPrimitive.Root {...rest} {closeDelay} {openDelay} {positioning}>
+<TooltipPrimitive.Root {...root.props}>
   {@render children?.()}
 </TooltipPrimitive.Root>

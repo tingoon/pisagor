@@ -1,4 +1,3 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   ArrowBendDownLeftIcon,
   ArrowDownIcon,
@@ -17,53 +16,30 @@ export function WithFooter() {
     },
     { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
-
-  const { collection, filter } = useListCollection({
-    filter: contains,
-    groupBy: (item) => item.group,
-    initialItems,
-  });
 
   return (
     <Command
-      collection={collection}
-      onInputValueChange={({ inputValue }) => filter(inputValue)}
-    >
-      <Command.Input placeholder="Search..." />
-      <Command.Content>
-        <Command.Empty />
-        <Command.List>
-          {collection.group().map(([group, items]) => (
-            <Command.ItemGroup key={group}>
-              <Command.ItemGroupLabel>{group}</Command.ItemGroupLabel>
-              {items.map((item) => (
-                <Command.Item item={item} key={item.value}>
-                  {item.label}
-                  <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                </Command.Item>
-              ))}
-            </Command.ItemGroup>
-          ))}
-        </Command.List>
-      </Command.Content>
-      <Command.Footer>
-        <div className="flex items-center gap-2">
-          <Kbd variant="outline">
-            <ArrowBendDownLeftIcon className="size-3" />
-          </Kbd>
-          <span>Select</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Kbd variant="outline">
-            <ArrowUpIcon className="size-3" />
-          </Kbd>
-          <Kbd variant="outline">
-            <ArrowDownIcon className="size-3" />
-          </Kbd>
-          <span>Navigate</span>
-        </div>
-      </Command.Footer>
-    </Command>
+      footer={
+        <>
+          <div className="flex items-center gap-2">
+            <Kbd variant="outline">
+              <ArrowBendDownLeftIcon className="size-3" />
+            </Kbd>
+            <span>Select</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Kbd variant="outline">
+              <ArrowUpIcon className="size-3" />
+            </Kbd>
+            <Kbd variant="outline">
+              <ArrowDownIcon className="size-3" />
+            </Kbd>
+            <span>Navigate</span>
+          </div>
+        </>
+      }
+      items={initialItems}
+      placeholder="Search..."
+    />
   );
 }

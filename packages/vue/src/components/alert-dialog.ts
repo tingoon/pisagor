@@ -1,451 +1,293 @@
-import { Dialog as AlertDialogPrimitive } from "@ark-ui/vue";
+import { Dialog as AlertDialogPrimitive, type HTMLArkProps } from "@ark-ui/vue";
+import type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogPositionerProps,
+  DialogRootProps as DialogRootPrimitiveProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/vue";
+import { PhX } from "@phosphor-icons/vue";
 import type {
   AlertDialogContract,
-  AlertDialogHeaderContract,
   AlertDialogRootContract,
 } from "@pisagor/contracts";
+import { alertDialogRecipe } from "@pisagor/recipes";
 import {
-  type AlertDialogRecipe,
-  type AlertDialogVariantProps,
-  alertDialogRecipe,
-  buttonRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import {
-  computed,
   defineComponent,
   h,
   type PropType,
-  reactive,
   Teleport,
   type VNodeChild,
-  watchEffect,
 } from "vue";
-import {
-  type ClassValue,
-  createContext,
-  createSlotRecipeContext,
-  renderIconCloseButton,
-} from "../internal";
+import { contentProp, createSlotRecipeContext, slotOrProp } from "../internal";
+import { Button, type ButtonProps } from "./button";
 import { useLocale } from "./provider/context";
+import { ScrollArea } from "./scroll-area";
 
-// #region Slot recipe context
-const { provideStyles: provideAlertDialogStyles, withContext } =
-  createSlotRecipeContext({
-    name: "AlertDialog",
-    recipe: alertDialogRecipe,
-  });
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "AlertDialog",
+  recipe: alertDialogRecipe,
+});
 // #endregion
 
 // #region Types
-interface AlertDialogContextValue {
-  modal?: boolean;
-  slots: AlertDialogRecipe;
+export type AlertDialogRootProps = DialogRootPrimitiveProps &
+  AlertDialogRootContract;
+
+export type AlertDialogHeaderProps = HTMLArkProps<"div">;
+
+export type AlertDialogBodyProps = HTMLArkProps<"div">;
+
+export type AlertDialogFooterProps = HTMLArkProps<"div">;
+
+export interface AlertDialogActionProps extends Omit<ButtonProps, "variant"> {
+  /**
+   * The variant of the action button
+   *
+   * @defaultValue "default"
+   */
+  variant?: "default" | "destructive";
 }
 
-export interface AlertDialogContentProps extends AlertDialogVariantProps {
-  class?: unknown;
-  showCloseButton?: boolean;
-}
-
-export interface AlertDialogBodyProps {
-  class?: unknown;
-  scrollFade?: boolean;
-}
-
-export interface AlertDialogHeaderProps extends AlertDialogHeaderContract {
-  class?: unknown;
-  description?: string;
-  title?: string;
-}
+export type AlertDialogCancelProps = Omit<ButtonProps, "variant">;
 
 export interface AlertDialogProps
-  extends AlertDialogRootContract, AlertDialogContract {
+  extends
+    Omit<AlertDialogRootProps, "title">,
+    Omit<AlertDialogContract, "actions" | "description" | "title" | "trigger"> {
+  /** Footer action area. Also available as the `actions` slot. */
   actions?: VNodeChild;
-  collapsible?: boolean;
-  description?: string;
-  lazyMount?: boolean;
-  modal?: boolean;
-  title?: string;
-  trigger?: VNodeChild;
-  unmountOnExit?: boolean;
+  /** Supporting copy in the header. Also available as the `description` slot. */
+  description?: VNodeChild;
+  /**
+   * Whether to add a fade effect to the body scroll area.
+   *
+   * @defaultValue false
+   */
+  scrollFade?: boolean;
+  /**
+   * Whether to show a close button at the top end corner.
+   *
+   * @defaultValue false
+   */
+  showCloseButton?: boolean;
+  /** Alert dialog title. Also available as the `title` slot. */
+  title?: VNodeChild;
 }
 // #endregion
-
-// #region Context
-const [provideAlertDialogContext, useAlertDialogLocal] =
-  createContext("AlertDialogLocal")<AlertDialogContextValue>();
-
-function useAlertDialogSlots() {
-  return useAlertDialogLocal()?.slots ?? alertDialogRecipe();
-}
-// #endregion
-
-type ArkPart = Parameters<typeof h>[0];
-
-function alertDialogTeleport(content: VNodeChild) {
-  return h(Teleport, { to: "body" }, [content]);
-}
 
 // #region Parts
-export const AlertDialogRoot = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogRoot",
-  props: {
-    lazyMount: { default: true, type: Boolean },
-    modal: { default: true, type: Boolean },
-    recipe: {
-      default: alertDialogRecipe,
-      type: Function as PropType<typeof alertDialogRecipe>,
-    },
-    role: { default: "alertdialog", type: String },
-    unmountOnExit: { default: true, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
-
-    provideAlertDialogStyles({
-      get slots() {
-        return recipeSlots.value;
-      },
-      variants: {},
-    });
-
-    const context = reactive<AlertDialogContextValue>({
-      modal: props.modal,
-      slots: recipeSlots.value,
-    });
-
-    watchEffect(() => {
-      context.modal = props.modal;
-    });
-
-    provideAlertDialogContext(context);
-
-    return () =>
-      h(
-        AlertDialogPrimitive.Root as ArkPart,
-        {
-          ...attrs,
-          lazyMount: props.lazyMount,
-          modal: props.modal,
-          role: props.role,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
-  },
+const Root = withProvider<AlertDialogRootProps>(AlertDialogPrimitive.Root, {
+  defaultProps: { role: "alertdialog" },
+  name: "Root",
+  renderless: true,
+  slot: "base",
 });
 
-export const AlertDialogTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(AlertDialogPrimitive.Trigger as ArkPart, attrs, slots);
-  },
+// Zag looks triggers up by `[data-scope="dialog"]`, so keep the Ark scope.
+const Trigger = withContext<DialogTriggerProps>(AlertDialogPrimitive.Trigger, {
+  defaultProps: { "data-scope": "dialog" },
+  name: "Trigger",
 });
 
-export const AlertDialogBackdrop = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogBackdrop",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs }) {
-    const alertDialogContext = useAlertDialogLocal();
+const Backdrop = withContext<DialogBackdropProps>(
+  AlertDialogPrimitive.Backdrop,
+  { name: "Backdrop" },
+);
 
-    return () => {
-      if (!alertDialogContext?.modal) {
-        return null;
-      }
+const Positioner = withContext<DialogPositionerProps>(
+  AlertDialogPrimitive.Positioner,
+  { name: "Positioner" },
+);
 
-      return h(AlertDialogPrimitive.Backdrop as ArkPart, {
-        ...attrs,
-        class: alertDialogContext.slots.backdrop({ class: props.class }),
-      });
-    };
-  },
+const Content = withContext<DialogContentProps>(AlertDialogPrimitive.Content, {
+  name: "Content",
 });
 
-export const AlertDialogPositioner = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogPositioner",
-  props: {
-    bottomStickOnMobile: { default: undefined, type: Boolean },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const alertDialogSlots = useAlertDialogSlots();
+const Header = withContext("div", { name: "Header" });
 
-      return h(
-        AlertDialogPrimitive.Positioner as ArkPart,
-        {
-          ...attrs,
-          class: alertDialogSlots.positioner({
-            bottomStickOnMobile: props.bottomStickOnMobile || undefined,
-            class: props.class,
-          }),
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const AlertDialogContent = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogContent",
-  props: {
-    bottomStickOnMobile: { default: true, type: Boolean },
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    showCloseButton: { default: false, type: Boolean },
-    size: {
-      default: "md",
-      type: String as PropType<
-        | "2xl"
-        | "3xl"
-        | "4xl"
-        | "5xl"
-        | "6xl"
-        | "fullscreen"
-        | "lg"
-        | "md"
-        | "sm"
-        | "xl"
-      >,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const { m } = useLocale();
-    const alertDialogContext = useAlertDialogLocal();
-
-    return () => {
-      if (!alertDialogContext) {
-        return null;
-      }
-
-      return alertDialogTeleport([
-        h(AlertDialogBackdrop),
-        h(
-          AlertDialogPositioner,
-          { bottomStickOnMobile: props.bottomStickOnMobile },
-          () =>
-            h(
-              AlertDialogPrimitive.Content as ArkPart,
-              {
-                ...attrs,
-                class: alertDialogContext.slots.content({
-                  bottomStickOnMobile: props.bottomStickOnMobile,
-                  class: props.class,
-                  size: props.size,
-                }),
-              },
-              () => [
-                slots.default?.(),
-                props.showCloseButton
-                  ? h(AlertDialogCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(
-                        m("dialog.close"),
-                        alertDialogContext.slots.inline(),
-                      ),
-                    )
-                  : null,
-              ],
-            ),
-        ),
-      ]);
-    };
-  },
-});
-
-export const AlertDialogBody = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogBody",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    scrollFade: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const alertDialogSlots = useAlertDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: alertDialogSlots.body({ class: props.class }),
-          "data-part": "body",
-          "data-scope": "alert-dialog",
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const AlertDialogHeader = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogHeader",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    description: String,
-    title: String,
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const alertDialogSlots = useAlertDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: alertDialogSlots.header({ class: props.class }),
-          "data-part": "header",
-          "data-scope": "alert-dialog",
-        },
-        () => [
-          props.title ? h(AlertDialogTitle, null, () => props.title) : null,
-          props.description
-            ? h(AlertDialogDescription, null, () => props.description)
-            : null,
-          slots.default?.(),
-        ],
-      );
-    };
-  },
-});
-
-export const AlertDialogTitle = withContext(AlertDialogPrimitive.Title, {
+const Title = withContext<DialogTitleProps>(AlertDialogPrimitive.Title, {
   name: "Title",
 });
 
-export const AlertDialogDescription = withContext(
+const Description = withContext<DialogDescriptionProps>(
   AlertDialogPrimitive.Description,
   { name: "Description" },
 );
 
-export const AlertDialogCloseTrigger = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogCloseTrigger",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(AlertDialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
-  },
-});
+const Body = withContext("div", { name: "Body" });
 
-export const AlertDialogFooter = defineComponent({
+const Footer = withContext("div", { name: "Footer" });
+
+const CloseTrigger = withContext<DialogCloseTriggerProps>(
+  AlertDialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger" },
+);
+
+/** Corner close button placement used by the shorthand. */
+const InlineCloseTrigger = withContext<DialogCloseTriggerProps>(
+  AlertDialogPrimitive.CloseTrigger,
+  { name: "CloseTrigger", slot: "inline" },
+);
+
+/** Confirming action: a close trigger rendered as a `Button`. */
+const Action = defineComponent({
   inheritAttrs: false,
-  name: "AlertDialogFooter",
+  name: "AlertDialog.Action",
   props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const alertDialogSlots = useAlertDialogSlots();
-
-      return h(
-        "div",
-        {
-          ...attrs,
-          class: alertDialogSlots.footer({ class: props.class }),
-          "data-part": "footer",
-          "data-scope": "alert-dialog",
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const AlertDialogAction = defineComponent({
-  inheritAttrs: false,
-  name: "AlertDialogAction",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
     variant: {
       default: "default",
-      type: String as PropType<"default" | "destructive">,
+      type: String as PropType<AlertDialogActionProps["variant"]>,
     },
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(AlertDialogCloseTrigger, { asChild: true }, () =>
+      h(CloseTrigger, { asChild: true }, () =>
         h(
-          "button",
-          {
-            ...attrs,
-            class: cn(
-              buttonRecipe({ variant: props.variant }).base(),
-              props.class,
-            ),
-            type: "button",
-          },
-          slots,
+          Button,
+          { ...(attrs as Omit<ButtonProps, "class">), variant: props.variant },
+          () => slots.default?.(),
         ),
       );
   },
 });
 
-export const AlertDialogCancel = defineComponent({
+/** Dismissing action: a close trigger rendered as an outline `Button`. */
+const Cancel = defineComponent({
   inheritAttrs: false,
-  name: "AlertDialogCancel",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-  },
-  setup(props, { attrs, slots }) {
+  name: "AlertDialog.Cancel",
+  setup(_, { attrs, slots }) {
     return () =>
-      h(AlertDialogCloseTrigger, { asChild: true }, () =>
+      h(CloseTrigger, { asChild: true }, () =>
         h(
-          "button",
-          {
-            ...attrs,
-            class: cn(buttonRecipe({ variant: "outline" }).base(), props.class),
-            type: "button",
-          },
-          slots,
+          Button,
+          { ...(attrs as Omit<ButtonProps, "class">), variant: "outline" },
+          () => slots.default?.(),
         ),
       );
   },
 });
 // #endregion
 
-export const AlertDialog = Object.assign(AlertDialogRoot, {
-  Action: AlertDialogAction,
-  Backdrop: AlertDialogBackdrop,
-  Body: AlertDialogBody,
-  Cancel: AlertDialogCancel,
-  CloseTrigger: AlertDialogCloseTrigger,
-  Content: AlertDialogContent,
-  Description: AlertDialogDescription,
-  Footer: AlertDialogFooter,
-  Header: AlertDialogHeader,
-  Positioner: AlertDialogPositioner,
-  Root: AlertDialogRoot,
-  Title: AlertDialogTitle,
-  Trigger: AlertDialogTrigger,
+// #region Shorthand
+/**
+ * Slots: `trigger` (single element, rendered `as-child`), `title`,
+ * `description`, `default` (scrollable body) and `actions` (footer).
+ */
+export const AlertDialogShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "AlertDialog",
+  props: {
+    actions: contentProp,
+    classNames: {
+      default: undefined,
+      type: Object as PropType<AlertDialogProps["classNames"]>,
+    },
+    description: contentProp,
+    modal: { default: true, type: Boolean },
+    scrollFade: { default: false, type: Boolean },
+    showCloseButton: { default: false, type: Boolean },
+    title: contentProp,
+  },
+  setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+
+    return () => {
+      const classNames = props.classNames;
+      const title = slotOrProp(slots.title, props.title);
+      const description = slotOrProp(slots.description, props.description);
+      const actions = slotOrProp(slots.actions, props.actions);
+
+      return h(Root, { ...attrs, modal: props.modal }, () => [
+        slots.trigger
+          ? h(
+              Trigger,
+              { asChild: true, class: classNames?.trigger },
+              { default: slots.trigger },
+            )
+          : null,
+
+        h(Teleport, { to: "body" }, [
+          props.modal ? h(Backdrop, { class: classNames?.backdrop }) : null,
+
+          h(Positioner, { class: classNames?.positioner }, () =>
+            h(Content, { class: classNames?.content }, () => [
+              title || description
+                ? h(Header, { class: classNames?.header }, () => [
+                    title
+                      ? h(Title, { class: classNames?.title }, title)
+                      : null,
+                    description
+                      ? h(
+                          Description,
+                          { class: classNames?.description },
+                          description,
+                        )
+                      : null,
+                  ])
+                : null,
+
+              slots.default
+                ? h(ScrollArea, { scrollFade: props.scrollFade }, () =>
+                    h(Body, { class: classNames?.body }, slots.default),
+                  )
+                : null,
+
+              actions
+                ? h(Footer, { class: classNames?.footer }, actions)
+                : null,
+
+              props.showCloseButton
+                ? h(
+                    InlineCloseTrigger,
+                    { asChild: true, class: classNames?.inline },
+                    () =>
+                      h(
+                        Button,
+                        {
+                          "aria-label": m("dialog.close"),
+                          size: "icon-sm",
+                          variant: "ghost",
+                        },
+                        () => h(PhX),
+                      ),
+                  )
+                : null,
+            ]),
+          ),
+        ]),
+      ]);
+    };
+  },
+});
+// #endregion
+
+export type {
+  DialogBackdropProps as AlertDialogBackdropProps,
+  DialogCloseTriggerProps as AlertDialogCloseTriggerProps,
+  DialogContentProps as AlertDialogContentProps,
+  DialogDescriptionProps as AlertDialogDescriptionProps,
+  DialogPositionerProps as AlertDialogPositionerProps,
+  DialogTitleProps as AlertDialogTitleProps,
+  DialogTriggerProps as AlertDialogTriggerProps,
+} from "@ark-ui/vue";
+
+export const AlertDialog = Object.assign(AlertDialogShorthand, {
+  Action,
+  Backdrop,
+  Body,
+  Cancel,
+  CloseTrigger,
+  Content,
+  Description,
+  Footer,
+  Header,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 });

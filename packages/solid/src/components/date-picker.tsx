@@ -3,34 +3,35 @@ import {
   useDatePickerContext,
 } from "@ark-ui/solid";
 import type {
-  DatePickerContentProps as DatePickerContentPrimitiveProps,
+  DatePickerClearTriggerProps,
+  DatePickerContentProps,
+  DatePickerControlProps,
   DatePickerInputProps as DatePickerInputPrimitiveProps,
-  DatePickerPresetTriggerProps,
+  DatePickerPositionerProps,
   DatePickerRootProps as DatePickerRootPrimitiveProps,
-  DatePickerTriggerProps as DatePickerTriggerPrimitiveProps,
+  DatePickerTriggerProps,
   DatePickerValueTextProps,
 } from "@ark-ui/solid";
-import type { DatePickerRootContract } from "@pisagor/contracts";
+import type {
+  DatePickerContract,
+  DatePickerRootContract,
+} from "@pisagor/contracts";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
-import {
-  createMemo,
-  createContext as createSolidContext,
-  Show,
-  splitProps,
-  useContext,
-} from "solid-js";
+import type { JSX } from "solid-js";
+import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { Portal } from "solid-js/web";
-import { useClearableInput } from "../hooks";
 import {
   CalendarIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
   ClockIcon,
   XIcon,
   createSlotRecipeContext,
 } from "../internal";
 import { createContext } from "../utils";
+import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
-import { Input, type InputProps } from "./input";
+import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -50,50 +51,56 @@ type FormControlVariant = "primary" | "secondary";
 const { DatePickerVariantContext, useDatePickerVariant } = createContext(
   "DatePickerVariant",
 )<{ readonly variant?: FormControlVariant }>({ strict: false });
-
-/** Recipe styles plus the optional shell `variant` (getters stay reactive). */
-function useDatePicker() {
-  const styles = useStyles();
-  const options = useDatePickerVariant();
-
-  return {
-    get slots() {
-      return styles.slots;
-    },
-    get variant() {
-      return options?.variant;
-    },
-  };
-}
 // #endregion
 
-export interface DatePickerTriggerProps extends DatePickerTriggerPrimitiveProps {
-  clearable?: boolean;
-}
+// #region Types
+export type DatePickerInputProps = DatePickerInputPrimitiveProps;
 
-export interface DatePickerInputProps
-  extends Omit<DatePickerInputPrimitiveProps, "size">, InputProps {
-  clearable?: boolean;
-}
-
-export interface DatePickerTimerProps
-  extends Omit<InputProps, "recipe">, DatePickerRootContract {
-  clearable?: boolean;
-}
-
-export interface DatePickerContentProps extends DatePickerContentPrimitiveProps {
-  showCalendar?: boolean;
-}
+export type DatePickerTimeInputProps = Omit<
+  InputProps,
+  "clearable" | "recipe"
+> &
+  DatePickerRootContract;
 
 export interface DatePickerRootProps
   extends
     Omit<DatePickerRootPrimitiveProps, "onValueChange">,
     DatePickerRootContract {
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
+  /**
+   * Calendar style recipe. Defaults to `calendarRecipe` from
+   * `@pisagor/recipes/calendar`.
+   *
+   * @defaultValue calendarRecipe
+   */
   calendarRecipe?: typeof calendarRecipe;
 }
 
+export interface DatePickerProps
+  extends DatePickerRootProps, DatePickerContract {
+  /** Calendar content; defaults to month/year navigation and the day grid. */
+  children?: JSX.Element;
+  /**
+   * Whether to show a clear button when a date is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /** Props forwarded to the text input. */
+  inputProps?: Omit<
+    InputProps,
+    "clearable" | "placeholder" | "size" | "variant"
+  >;
+  /** Input placeholder. */
+  placeholder?: string;
+  /** Input size. */
+  size?: InputProps["size"];
+}
+// #endregion
+
+// #region Parts
 function Root(props: DatePickerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
@@ -157,122 +164,130 @@ function Root(props: DatePickerRootProps): JSX.Element {
   );
 }
 
-/**
- * True inside a date picker control, so nested parts do not render a second
- * one.
- */
-const DatePickerInsideControlContext = createSolidContext(false);
-
-const ControlBase = withContext<
-  ComponentProps<typeof DatePickerPrimitive.Control>
->(DatePickerPrimitive.Control, {
-  name: "Control",
-});
-
-function Control(
-  props: ComponentProps<typeof DatePickerPrimitive.Control>,
-): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-
-  return (
-    <DatePickerInsideControlContext.Provider value={true}>
-      <ControlBase {...rest} class={local.class} />
-    </DatePickerInsideControlContext.Provider>
-  );
-}
-
-function MaybeDatePickerControl(props: {
-  children: JSX.Element;
-  class?: string;
-}): JSX.Element {
-  const insideControl = useContext(DatePickerInsideControlContext);
-
-  if (insideControl) {
-    return props.children;
-  }
-
-  return (
-    <DatePickerInsideControlContext.Provider value={true}>
-      <ControlBase class={props.class}>{props.children}</ControlBase>
-    </DatePickerInsideControlContext.Provider>
-  );
-}
-
-const TriggerBase = withContext<DatePickerTriggerProps>(
-  DatePickerPrimitive.Trigger,
-  {
-    name: "Trigger",
-  },
+const Control = withContext<DatePickerControlProps>(
+  DatePickerPrimitive.Control,
+  { name: "Control" },
 );
 
-function Trigger(props: DatePickerTriggerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
-  const styles = useDatePicker();
+const Trigger = withContext<DatePickerTriggerProps>(
+  DatePickerPrimitive.Trigger,
+  { name: "Trigger" },
+);
+
+const Input = withContext<DatePickerInputPrimitiveProps>(
+  DatePickerPrimitive.Input,
+  { name: "Input" },
+);
+
+const ClearTrigger = withContext<DatePickerClearTriggerProps>(
+  DatePickerPrimitive.ClearTrigger,
+  { name: "ClearTrigger" },
+);
+
+const Positioner = withContext<DatePickerPositionerProps>(
+  DatePickerPrimitive.Positioner,
+  { name: "Positioner" },
+);
+
+const Content = withContext<DatePickerContentProps>(
+  DatePickerPrimitive.Content,
+  { name: "Content" },
+);
+
+const ValueText = withContext<DatePickerValueTextProps>(
+  DatePickerPrimitive.ValueText,
+  { name: "ValueText" },
+);
+
+const PresetTrigger = Calendar.PresetTrigger;
+
+/** Native time field styled to match the picker. Not an Ark part. */
+function TimeInput(props: DatePickerTimeInputProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "defaultValue",
+    "disabled",
+    "readOnly",
+    "value",
+    "id",
+    "ref",
+    "onChange",
+    "class",
+    "classNames",
+    "recipe",
+    "variant",
+  ]);
+  // TimeInput may render outside Root, so both contexts are optional here.
+  const pickerStyles = useContext(DatePickerSlotsContext);
+  const options = useDatePickerVariant();
+  const slots = () =>
+    pickerStyles?.slots ?? (local.recipe ?? datePickerRecipe)();
 
   return (
-    <MaybeDatePickerControl class={styles.slots.control()}>
-      <TriggerBase {...rest} class={local.class}>
-        {local.children}
-      </TriggerBase>
-      <Show when={local.clearable ?? false}>
-        <ClearTrigger />
-      </Show>
-    </MaybeDatePickerControl>
+    <InputGroup
+      {...(rest as JSX.HTMLAttributes<HTMLDivElement>)}
+      variant={local.variant ?? options?.variant}
+    >
+      <InputGroup.Addon>
+        <ClockIcon />
+      </InputGroup.Addon>
+      <InputGroup.Input
+        class={slots().timer({ class: local.class })}
+        classNames={local.classNames}
+        clearable={false}
+        defaultValue={local.defaultValue}
+        disabled={local.disabled}
+        id={local.id}
+        onChange={local.onChange}
+        readOnly={local.readOnly}
+        ref={local.ref}
+        step="1"
+        type="time"
+        value={local.value}
+      />
+    </InputGroup>
   );
 }
+// #endregion
 
-function InputPart(props: DatePickerInputProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "size",
-    "variant",
-    "clearable",
-    "class",
-  ]);
-  const styles = useDatePicker();
-
+// #region Shorthand
+/** Month/year navigation and day grid used by the shorthand. */
+function DefaultCalendar(): JSX.Element {
   return (
-    <MaybeDatePickerControl>
-      <InputGroup
-        class={local.class}
-        size={local.size}
-        variant={local.variant ?? styles.variant}
-      >
-        <DatePickerPrimitive.Input
-          {...rest}
-          asChild={(inputProps) => (
-            <InputGroup.Input {...inputProps()} clearable={false} />
+    <>
+      <Calendar.ViewControl>
+        <Calendar.PrevTrigger
+          asChild={(triggerProps) => (
+            <Button {...triggerProps()} size="icon-md" variant="ghost">
+              <CaretLeftIcon aria-hidden class="rtl:rotate-180" />
+            </Button>
           )}
         />
-        <InputGroup.Addon align="inline-end">
-          <Show when={local.clearable ?? false}>
-            <ClearTrigger />
-          </Show>
-          <DatePickerPrimitive.Trigger
-            asChild={(triggerProps) => (
-              <InputGroup.Button
-                {...triggerProps()}
-                data-part="button"
-                data-scope="input-group"
-                size="icon-xs"
-                variant="ghost"
-              >
-                <CalendarIcon aria-hidden class={styles.slots.icon()} />
-              </InputGroup.Button>
-            )}
-          />
-        </InputGroup.Addon>
-      </InputGroup>
-    </MaybeDatePickerControl>
+        <Calendar.MonthSelect />
+        <Calendar.YearSelect />
+        <Calendar.NextTrigger
+          asChild={(triggerProps) => (
+            <Button {...triggerProps()} size="icon-md" variant="ghost">
+              <CaretRightIcon aria-hidden class="rtl:rotate-180" />
+            </Button>
+          )}
+        />
+      </Calendar.ViewControl>
+      <Calendar.Table>
+        <Calendar.WeekDays />
+        <Calendar.TableDays />
+      </Calendar.Table>
+    </>
   );
 }
 
-function ClearTrigger(): JSX.Element {
+/** Clear button; hidden when there is nothing to clear. */
+function ShorthandClearTrigger(): JSX.Element {
   const { m } = useLocale();
   const api = useDatePickerContext();
 
   return (
     <Show when={!api().disabled && !api().readOnly && api().value.length > 0}>
-      <DatePickerPrimitive.ClearTrigger
+      <ClearTrigger
         asChild={(triggerProps) => (
           <InputGroup.Button
             {...triggerProps()}
@@ -289,158 +304,114 @@ function ClearTrigger(): JSX.Element {
   );
 }
 
-function TimeInput(props: DatePickerTimerProps): JSX.Element {
-  const [local] = splitProps(props, [
-    "clearable",
-    "defaultValue",
-    "disabled",
-    "readOnly",
-    "value",
-    "id",
-    "ref",
-    "onChange",
-    "class",
-    "classNames",
-    "recipe",
-    "size",
-    "variant",
-  ]);
-  // Timer may render outside Root, so both contexts are optional here.
-  const pickerStyles = useContext(DatePickerSlotsContext);
-  const options = useDatePickerVariant();
-  const slots = () =>
-    pickerStyles?.slots ?? (local.recipe ?? datePickerRecipe)();
-
-  const { canClear, handleChange, handleClear, mergedRef } =
-    useClearableInput<HTMLInputElement>({
-      get clearable() {
-        return local.clearable ?? false;
-      },
-      get defaultValue() {
-        return local.defaultValue;
-      },
-      get disabled() {
-        return local.disabled;
-      },
-      get onChange() {
-        return local.onChange
-          ? (
-              event: Event & {
-                currentTarget: HTMLInputElement;
-                target: HTMLInputElement;
-              },
-            ) => {
-              const handler = local.onChange;
-              if (typeof handler === "function") {
-                (handler as (e: typeof event) => void)(event);
-              }
-            }
-          : undefined;
-      },
-      get readOnly() {
-        return local.readOnly;
-      },
-      get ref() {
-        return typeof local.ref === "function" ? local.ref : undefined;
-      },
-      get value() {
-        return local.value;
-      },
-    });
-
-  return (
-    <InputGroup size={local.size} variant={local.variant ?? options?.variant}>
-      <InputGroup.Addon>
-        <ClockIcon />
-      </InputGroup.Addon>
-      <InputGroup.Input
-        class={slots().timer({ class: local.class })}
-        classNames={local.classNames}
-        clearable={false}
-        defaultValue={local.defaultValue}
-        disabled={local.disabled}
-        id={local.id}
-        onChange={handleChange}
-        readOnly={local.readOnly}
-        ref={mergedRef}
-        step="1"
-        type="time"
-        value={local.value}
-      />
-      <Show when={canClear()}>
-        <InputGroup.Addon align="inline-end">
-          <Input.ClearButton onClear={handleClear} />
-        </InputGroup.Addon>
-      </Show>
-    </InputGroup>
-  );
-}
-
-const ContentBase = withContext<DatePickerContentProps>(
-  DatePickerPrimitive.Content,
-  {
-    name: "Content",
-  },
-);
-
-function Content(props: DatePickerContentProps): JSX.Element {
+export function DatePickerShorthand(props: DatePickerProps): JSX.Element {
   const [local, rest] = splitProps(props, [
-    "showCalendar",
     "children",
-    "class",
+    "classNames",
+    "clearable",
+    "inputProps",
+    "placeholder",
+    "size",
   ]);
-  const showCalendar = () => local.showCalendar ?? true;
 
   return (
-    <Portal>
-      <DatePickerPrimitive.Positioner>
-        <ContentBase {...rest} class={local.class}>
-          <Show
-            fallback={local.children}
-            when={showCalendar() && local.children === undefined}
-          >
-            <Calendar.ViewControl>
-              <Calendar.PrevTrigger />
-              <Calendar.MonthSelect />
-              <Calendar.YearSelect />
-              <Calendar.NextTrigger />
-            </Calendar.ViewControl>
-            <Calendar.Table>
-              <Calendar.WeekDays />
-              <Calendar.TableDays />
-            </Calendar.Table>
-          </Show>
-        </ContentBase>
-      </DatePickerPrimitive.Positioner>
-    </Portal>
+    <Root {...rest}>
+      <ShorthandField
+        classNames={local.classNames}
+        clearable={local.clearable ?? false}
+        inputProps={local.inputProps}
+        placeholder={local.placeholder}
+        size={local.size}
+        variant={rest.variant}
+      />
+
+      <Portal>
+        <Positioner class={local.classNames?.positioner}>
+          <Content class={local.classNames?.content}>
+            <Show fallback={<DefaultCalendar />} when={local.children}>
+              {local.children}
+            </Show>
+          </Content>
+        </Positioner>
+      </Portal>
+    </Root>
   );
 }
 
-const ValueText = withContext<DatePickerValueTextProps>(
-  DatePickerPrimitive.ValueText,
-  { name: "ValueText" },
-);
+function ShorthandField(
+  props: Pick<
+    DatePickerProps,
+    | "classNames"
+    | "clearable"
+    | "inputProps"
+    | "placeholder"
+    | "size"
+    | "variant"
+  >,
+): JSX.Element {
+  const { m } = useLocale();
+  const styles = useStyles();
 
-function PresetTrigger(props: DatePickerPresetTriggerProps): JSX.Element {
-  return <Calendar.PresetTrigger {...props} />;
+  return (
+    <Control class={props.classNames?.control}>
+      <InputGroup size={props.size} variant={props.variant}>
+        <Input
+          asChild={(inputProps) => (
+            <InputGroup.Input
+              {...inputProps(props.inputProps)}
+              clearable={false}
+              placeholder={props.placeholder}
+            />
+          )}
+        />
+
+        <InputGroup.Addon align="inline-end">
+          <Show when={props.clearable}>
+            <ShorthandClearTrigger />
+          </Show>
+
+          <Trigger
+            asChild={(triggerProps) => (
+              <InputGroup.Button
+                {...triggerProps()}
+                aria-label={m("datePicker.openCalendar")}
+                size="icon-xs"
+                type="button"
+                variant="ghost"
+              >
+                <CalendarIcon
+                  aria-hidden
+                  class={styles.slots.icon({ class: props.classNames?.icon })}
+                />
+              </InputGroup.Button>
+            )}
+          />
+        </InputGroup.Addon>
+      </InputGroup>
+    </Control>
+  );
 }
+// #endregion
 
 export type {
+  DatePickerClearTriggerProps,
+  DatePickerContentProps,
+  DatePickerControlProps,
+  DatePickerPositionerProps,
   DatePickerPresetTriggerProps,
+  DatePickerTriggerProps,
   DatePickerValueTextProps,
 } from "@ark-ui/solid";
 
-export type { DatePickerRootProps as DatePickerProps };
-
-export const DatePicker = Object.assign(Root, {
+export const DatePicker = Object.assign(DatePickerShorthand, {
   ClearTrigger,
   Content,
   Control,
-  Input: InputPart,
+  Input,
+  Positioner,
   PresetTrigger,
+  Root,
   TimeInput,
-  /** @deprecated Use `DatePicker.TimeInput`. */
-  Timer: TimeInput,
   Trigger,
   ValueText,
 });

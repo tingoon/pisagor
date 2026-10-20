@@ -3,14 +3,12 @@
     Tour as TourPrimitive,
     type TourSpotlightProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useTourContext } from "./tour.context";
+  import { withContext } from "./tour.context";
 
-  let { class: className, ...rest }: TourSpotlightProps = $props();
-  const ctx = useTourContext();
+  let { children, ...rest }: TourSpotlightProps = $props();
+  const part = withContext(() => rest, { name: "Spotlight" });
 </script>
 
-<TourPrimitive.Spotlight
-  {...rest}
-  class={ctx.slots.spotlight({ class: cn(className) })}
-/>
+<TourPrimitive.Spotlight {...part.props}>
+  {@render children?.()}
+</TourPrimitive.Spotlight>

@@ -47,3 +47,7 @@ export const WithoutArrow = meta.story({
 export const CustomRecipe = meta.story({
   render: Examples.CustomRecipe,
 });
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});

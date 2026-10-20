@@ -2,7 +2,4 @@
   import { DatePicker } from "@pisagor/svelte";
 </script>
 
-<DatePicker>
-  <DatePicker.Input clearable placeholder="Pick a date" />
-  <DatePicker.Content />
-</DatePicker>
+<DatePicker clearable placeholder="Pick a date" />

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte";
   import { Item, Listbox } from "@pisagor/svelte";
+  import { CheckIcon } from "phosphor-svelte";
 
   const collection = createListCollection({
     items: [
@@ -35,7 +36,9 @@
                 {item.description}
               </span>
             </div>
-            <Listbox.ItemIndicator />
+            <Listbox.ItemIndicator>
+              <CheckIcon />
+            </Listbox.ItemIndicator>
           </Listbox.Item>
         {/each}
       </Listbox.Content>

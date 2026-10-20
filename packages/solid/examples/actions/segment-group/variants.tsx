@@ -1,39 +1,28 @@
 import { SegmentGroup } from "@pisagor/solid";
 
-export function Variants() {
-  const items = ["Profile", "Account", "Security", "Notifications"];
+const items = [
+  { label: "Profile", value: "Profile" },
+  { label: "Account", value: "Account" },
+  { label: "Security", value: "Security" },
+  { label: "Notifications", value: "Notifications" },
+];
 
+export function Variants() {
   return (
     <div class="flex flex-col gap-2">
-      <SegmentGroup.Root
+      <SegmentGroup
         class="rounded-lg"
         defaultValue="Profile"
+        items={items}
         variant="default"
-      >
-        {items.map((item) => (
-          <SegmentGroup.Item class="px-2 py-1.5 text-sm" value={item}>
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
-      <SegmentGroup.Root defaultValue="Profile" variant="underline">
-        {items.map((item) => (
-          <SegmentGroup.Item class="px-2 py-1.5 text-sm" value={item}>
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
-      <SegmentGroup.Root
+      />
+      <SegmentGroup defaultValue="Profile" items={items} variant="underline" />
+      <SegmentGroup
         defaultValue="Profile"
+        items={items}
         orientation="vertical"
         variant="underline"
-      >
-        {items.map((item) => (
-          <SegmentGroup.Item class="px-2 py-1.5 text-sm" value={item}>
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
+      />
     </div>
   );
 }

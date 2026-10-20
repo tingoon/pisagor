@@ -1,65 +1,15 @@
 <script lang="ts">
-  import { Tour as TourPrimitive, useTour } from "@ark-ui/svelte";
-  import type {
-    TourRootProps as ArkRootProps,
-    TourStepDetails,
-    UseTourProps,
-  } from "@ark-ui/svelte";
+  import { Tour as TourPrimitive, type TourRootProps } from "@ark-ui/svelte";
   import type { TourRootContract } from "@pisagor/contracts";
-  import { tourRecipe } from "@pisagor/recipes";
-  import { onDestroy } from "svelte";
-  import { setTourContext } from "./tour.context";
+  import { withProvider } from "./tour.context";
 
-  type Props = Omit<ArkRootProps, "tour"> &
-    Pick<
-      UseTourProps,
-      "keyboardNavigation" | "onStatusChange" | "onStepChange"
-    > & {
-      steps?: TourStepDetails[];
-    } & TourRootContract;
+  type Props = TourRootProps & TourRootContract;
 
-  let {
-    steps = [],
-    keyboardNavigation,
-    onStatusChange,
-    onStepChange,
-    recipe = tourRecipe,
-    children,
-    ...rest
-  }: Props = $props();
-
-  const tour = useTour(() => ({
-    keyboardNavigation,
-    onStatusChange,
-    onStepChange,
-    steps,
-  }));
-  const slots = $derived(recipe());
-  let isStarted = $state(false);
-
-  function handleStart() {
-    isStarted = true;
-    tour().start();
-  }
-
-  $effect(() => {
-    if (isStarted) document.body.classList.add("relative");
-    else document.body.classList.remove("relative");
-  });
-
-  onDestroy(() => document.body.classList.remove("relative"));
-
-  setTourContext({
-    handleStart,
-    get slots() {
-      return slots;
-    },
-    get tour() {
-      return tour;
-    },
-  });
+  let { children, ...rest }: Props = $props();
+  // The root renders no element; `base` is an empty slot.
+  const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<TourPrimitive.Root {...rest} {tour}>
+<TourPrimitive.Root {...root.props}>
   {@render children?.()}
 </TourPrimitive.Root>

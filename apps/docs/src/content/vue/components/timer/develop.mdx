@@ -7,16 +7,10 @@ import { Timer } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<Timer>
-  <Timer.Area>
-    <Timer.ItemGroup>
-      <Timer.Item />
-      <Timer.ItemLabel />
-    </Timer.ItemGroup>
-    <Timer.Separator />
-  </Timer.Area>
-</Timer>
+<Timer auto-start :units="['minutes', 'seconds']" show-controls />
 ```
+
+The shorthand renders each unit with a localized label and separators, plus play/pause and reset buttons with `show-controls`. Compose `Timer.Root` and its parts directly for custom layouts (see Compound).
 
 ## Examples
 

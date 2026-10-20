@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Sidebar } from "@pisagor/svelte";
-  import { HouseIcon, UserIcon } from "phosphor-svelte";
+  import { HouseIcon, SidebarSimpleIcon, UserIcon } from "phosphor-svelte";
 </script>
 
 <Sidebar.Provider disableHotkey>
@@ -27,6 +27,8 @@
     </Sidebar.Content>
   </Sidebar>
   <Sidebar.Inset class="p-4">
-    <Sidebar.Trigger />
+    <Sidebar.Trigger>
+      <SidebarSimpleIcon class="rtl:rotate-180" />
+    </Sidebar.Trigger>
   </Sidebar.Inset>
 </Sidebar.Provider>

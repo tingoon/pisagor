@@ -3,27 +3,21 @@
     Carousel as CarouselPrimitive,
     type CarouselNextTriggerProps,
   } from "@ark-ui/svelte";
-  import { buttonRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { CaretRightIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useStyles } from "./carousel.context";
+  import { withContext } from "./carousel.context";
 
+  /**
+   * Next trigger with a localized default `aria-label`; pass your button /
+   * icon.
+   */
+  let { children, ...rest }: CarouselNextTriggerProps = $props();
   const { m } = useLocale();
-
-  let { class: className, ...rest }: CarouselNextTriggerProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  const part = withContext(
+    () => ({ "aria-label": m("carousel.next"), ...rest }),
+    { name: "NextTrigger" },
+  );
 </script>
 
-<CarouselPrimitive.NextTrigger
-  aria-label={m("carousel.next")}
-  {...rest}
-  class={cn(
-    buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
-    slots.nextTrigger({ class: cn(className) }),
-  )}
-  type="button"
->
-  <CaretRightIcon aria-hidden="true" />
+<CarouselPrimitive.NextTrigger {...part.props}>
+  {@render children?.()}
 </CarouselPrimitive.NextTrigger>

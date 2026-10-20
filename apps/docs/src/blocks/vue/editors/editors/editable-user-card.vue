@@ -18,10 +18,12 @@ const username = ref("@jane.doe");
 
 <template>
   <Card :class="cn(styles.narrow(), props.class)">
-    <Card.Header
-      description="Click in the field or edit button to start editing"
-      title="Edit user"
-    />
+    <Card.Header>
+      <Card.Title>Edit user</Card.Title>
+      <Card.Description>
+        Click in the field or edit button to start editing
+      </Card.Description>
+    </Card.Header>
     <Card.Content>
       <Field.Group>
         <Field>

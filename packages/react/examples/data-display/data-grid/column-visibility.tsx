@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react";
 import { CaretDownIcon, CaretUpIcon, EyeIcon } from "@phosphor-icons/react";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/react";
 import type { ColumnDef, VisibilityState } from "@pisagor/react/data-grid";
@@ -129,30 +130,36 @@ function ColumnVisibilityMenu<TData extends RowData>() {
   const table = useDataGrid<TData>();
 
   return (
-    <DropdownMenu positioning={{ placement: "bottom-end" }}>
+    <DropdownMenu.Root positioning={{ placement: "bottom-end" }}>
       <DropdownMenu.Trigger asChild>
         <Button size="sm" variant="outline">
           <EyeIcon />
           Columns
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content className="min-w-44">
-        {table
-          .getAllColumns()
-          .filter((column) => column.getCanHide())
-          .map((column) => (
-            <DropdownMenu.Item
-              closeOnSelect={false}
-              key={column.id}
-              onClick={() => column.toggleVisibility(!column.getIsVisible())}
-              value={column.id}
-            >
-              <Checkbox checked={column.getIsVisible()} tabIndex={-1} />
-              {column.id}
-            </DropdownMenu.Item>
-          ))}
-      </DropdownMenu.Content>
-    </DropdownMenu>
+      <Portal>
+        <DropdownMenu.Positioner>
+          <DropdownMenu.Content className="min-w-44">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => (
+                <DropdownMenu.Item
+                  closeOnSelect={false}
+                  key={column.id}
+                  onClick={() =>
+                    column.toggleVisibility(!column.getIsVisible())
+                  }
+                  value={column.id}
+                >
+                  <Checkbox checked={column.getIsVisible()} tabIndex={-1} />
+                  {column.id}
+                </DropdownMenu.Item>
+              ))}
+          </DropdownMenu.Content>
+        </DropdownMenu.Positioner>
+      </Portal>
+    </DropdownMenu.Root>
   );
 }
 

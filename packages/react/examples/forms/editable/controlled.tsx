@@ -7,10 +7,11 @@ export function Controlled() {
 
   return (
     <Card>
-      <Card.Header
-        description="Click the edit button to start editing"
-        title="Edit user"
-      >
+      <Card.Header>
+        <Card.Title>Edit user</Card.Title>
+        <Card.Description>
+          Click the edit button to start editing
+        </Card.Description>
         <Card.Action>
           <Button
             onClick={() => setIsEditing((prev) => !prev)}
@@ -32,7 +33,7 @@ export function Controlled() {
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable
+            <Editable.Root
               activationMode="none"
               defaultValue="Jane Doe"
               edit={isEditing}
@@ -43,11 +44,11 @@ export function Controlled() {
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable
+            <Editable.Root
               activationMode="none"
               defaultValue="@jane.doe"
               edit={isEditing}
@@ -58,7 +59,7 @@ export function Controlled() {
                 </Editable.Input>
                 <Editable.Preview />
               </Editable.Area>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

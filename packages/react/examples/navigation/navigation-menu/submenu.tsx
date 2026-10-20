@@ -1,3 +1,4 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { NavigationMenu } from "@pisagor/react";
 
 export function Submenu() {
@@ -10,7 +11,12 @@ export function Submenu() {
           </NavigationMenu.Link>
         </NavigationMenu.Item>
         <NavigationMenu.Item>
-          <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+          <NavigationMenu.Trigger>
+            Products
+            <NavigationMenu.Indicator>
+              <CaretDownIcon />
+            </NavigationMenu.Indicator>
+          </NavigationMenu.Trigger>
           <NavigationMenu.Content>
             <li>
               <NavigationMenu.Link href="#analytics">

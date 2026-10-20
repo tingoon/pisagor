@@ -1,4 +1,8 @@
-import { Splitter as SplitterPrimitive } from "@ark-ui/vue";
+import {
+  type HTMLArkProps,
+  Splitter as SplitterPrimitive,
+  type SplitterResizeTriggerProps,
+} from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   ResizableEdgeHandleRootContract,
@@ -10,7 +14,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+const { withContext, withProvider } = createSlotRecipeContext({
   name: "Resizable",
   recipe: resizableRecipe,
 });
@@ -42,10 +46,9 @@ export interface ResizableRootProps extends ResizableRootContract {
   class?: unknown;
 }
 
-export interface ResizableResizeTriggerProps {
-  withHandle?: boolean;
-  class?: unknown;
-}
+export type ResizableResizeTriggerProps = SplitterResizeTriggerProps;
+
+export type ResizableResizeTriggerHandleProps = HTMLArkProps<"div">;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -232,40 +235,32 @@ export const ResizableResizeTriggerIndicator = withContext(
   { name: "ResizeTriggerIndicator" },
 );
 
+const ResizeTriggerBase = withContext(SplitterPrimitive.ResizeTrigger, {
+  name: "ResizeTrigger",
+});
+
+/**
+ * Resize trigger with a localized default `aria-label`; compose the indicator /
+ * handle yourself.
+ */
 export const ResizableResizeTrigger = defineComponent({
   inheritAttrs: false,
-  name: "ResizableResizeTrigger",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<ClassValue>,
-    },
-    withHandle: { default: false, type: Boolean },
-  },
-  setup(props, { attrs, slots }) {
+  name: "Resizable.ResizeTrigger",
+  setup(_, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useStyles();
 
     return () =>
       h(
-        SplitterPrimitive.ResizeTrigger as ArkPart,
-        {
-          "aria-label": m("resizable.resize"),
-          ...attrs,
-          class: styles.slots.resizeTrigger({ class: props.class }),
-        },
-        () =>
-          props.withHandle
-            ? h(
-                "div",
-                { class: styles.slots.resizeTriggerHandle() },
-                h(PhDotsSixVertical, {
-                  class: styles.slots.resizeTriggerIcon(),
-                }),
-              )
-            : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
+        ResizeTriggerBase,
+        { "aria-label": m("resizable.resize"), ...attrs },
+        slots,
       );
   },
+});
+
+/** Visible grip inside a resize trigger; pass your own icon. */
+export const ResizableResizeTriggerHandle = withContext("div", {
+  name: "ResizeTriggerHandle",
 });
 
 export const ResizableContext = defineComponent({
@@ -304,6 +299,7 @@ export const Resizable = Object.assign(ResizableRoot, {
   EdgeHandle: ResizableEdgeHandle,
   Panel: ResizablePanel,
   ResizeTrigger: ResizableResizeTrigger,
+  ResizeTriggerHandle: ResizableResizeTriggerHandle,
   ResizeTriggerIndicator: ResizableResizeTriggerIndicator,
   RootProvider: ResizableRootProvider,
 });

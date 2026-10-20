@@ -57,10 +57,9 @@ export function DateField({
           }
         }}
         onValueChange={(nextValue) => onValueChange?.(nextValue ?? [])}
-      >
-        <DatePicker.Input id={id} placeholder={placeholder} />
-        <DatePicker.Content />
-      </DatePicker>
+        inputProps={{ id }}
+        placeholder={placeholder}
+      />
     </FieldShell>
   );
 }

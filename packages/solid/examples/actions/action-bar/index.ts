@@ -1,3 +1,4 @@
+export * from "./compound";
 export * from "./close-trigger";
 export * from "./controlled";
 export * from "./custom-recipe";

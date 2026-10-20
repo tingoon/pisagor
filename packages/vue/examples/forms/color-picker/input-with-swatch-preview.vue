@@ -3,7 +3,7 @@ import { ColorPicker, InputGroup } from "@pisagor/vue";
 </script>
 
 <template>
-  <ColorPicker default-value="#eb5e41">
+  <ColorPicker.Root default-value="#eb5e41">
     <ColorPicker.Control>
       <InputGroup>
         <InputGroup.Addon align="inline-start">
@@ -14,5 +14,5 @@ import { ColorPicker, InputGroup } from "@pisagor/vue";
         </ColorPicker.Input>
       </InputGroup>
     </ColorPicker.Control>
-  </ColorPicker>
+  </ColorPicker.Root>
 </template>

@@ -1,60 +1,14 @@
 <script lang="ts">
   import {
     Popover as PopoverPrimitive,
-    type PopoverContentProps as ArkPopoverContentProps,
-    Portal,
+    type PopoverContentProps,
   } from "@ark-ui/svelte";
-  import type { PopoverRootContract } from "@pisagor/contracts";
-  import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
-  import { XIcon } from "phosphor-svelte";
-  import { useLocale } from "../provider/context";
-  import { Context } from "./popover.context";
-  import PopoverPositioner from "./popover-positioner.svelte";
+  import { withContext } from "./popover.context";
 
-  const { m } = useLocale();
-
-  type Props = ArkPopoverContentProps & {
-    showCloseButton?: boolean;
-  } & PopoverRootContract;
-
-  let {
-    showCloseButton = false,
-    children,
-    recipe = popoverRecipe,
-    class: className,
-    ...rest
-  }: Props = $props();
-
-  const slots = $derived(recipe());
-
-  Context.set({
-    get slots() {
-      return slots;
-    },
-    variants: {},
-  });
+  let { children, ...rest }: PopoverContentProps = $props();
+  const part = withContext(() => rest, { name: "Content", slot: "base" });
 </script>
 
-<Portal>
-  <PopoverPositioner>
-    <PopoverPrimitive.Content
-      {...rest}
-      class={slots.base({ class: cn(className) })}
-    >
-      {@render children?.()}
-      {#if showCloseButton}
-        <PopoverPrimitive.CloseTrigger
-          aria-label={m("popover.close")}
-          class={cn(
-            buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
-            slots.close(),
-          )}
-          type="button"
-        >
-          <XIcon />
-        </PopoverPrimitive.CloseTrigger>
-      {/if}
-    </PopoverPrimitive.Content>
-  </PopoverPositioner>
-</Portal>
+<PopoverPrimitive.Content {...part.props}>
+  {@render children?.()}
+</PopoverPrimitive.Content>

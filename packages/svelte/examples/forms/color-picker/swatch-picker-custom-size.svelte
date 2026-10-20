@@ -2,7 +2,7 @@
   import { ColorPicker } from "@pisagor/svelte";
 </script>
 
-<ColorPicker class="w-full flex-wrap justify-center gap-2" inline>
+<ColorPicker.Root class="w-full flex-wrap justify-center gap-2" inline>
   <ColorPicker.SwatchGroup>
     <ColorPicker.SwatchTrigger class="size-4" value="#0485F7">
       <ColorPicker.Swatch value="#0485F7" />
@@ -23,4 +23,4 @@
       </ColorPicker.Swatch>
     </ColorPicker.SwatchTrigger>
   </ColorPicker.SwatchGroup>
-</ColorPicker>
+</ColorPicker.Root>

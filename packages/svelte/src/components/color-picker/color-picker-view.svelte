@@ -3,17 +3,12 @@
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerViewProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./color-picker.context";
+  import { withContext } from "./color-picker.context";
 
-  let { children, class: className, ...rest }: ColorPickerViewProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerViewProps = $props();
+  const part = withContext(() => rest, { name: "View" });
 </script>
 
-<ColorPickerPrimitive.View
-  {...rest}
-  class={slots.view({ class: cn(className) })}
->
+<ColorPickerPrimitive.View {...part.props}>
   {@render children?.()}
 </ColorPickerPrimitive.View>

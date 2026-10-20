@@ -1,4 +1,8 @@
-import type { PaginationRecipeFn } from "@pisagor/recipes";
+import type {
+  PaginationRecipeFn,
+  PaginationRecipeSlot,
+} from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
 /**
  * Shared Pagination root contract: recipe override. Used by compound roots;
@@ -11,4 +15,13 @@ export interface PaginationRootContract {
    * @defaultValue paginationRecipe
    */
   recipe?: PaginationRecipeFn;
+}
+
+/**
+ * Pagination shorthand contract. Compose with `PaginationRootContract` /
+ * framework `PaginationRootProps`.
+ */
+export interface PaginationContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<PaginationRecipeSlot>;
 }

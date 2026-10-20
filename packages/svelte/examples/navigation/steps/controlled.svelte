@@ -17,7 +17,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-  <Steps
+  <Steps.Root
     class="w-full"
     count={items.length}
     onStepChange={(details) => (step = details.step)}
@@ -44,7 +44,7 @@
     <Steps.CompletedContent>
       <p class="text-muted-foreground">All steps completed.</p>
     </Steps.CompletedContent>
-  </Steps>
+  </Steps.Root>
   <div class="flex gap-2">
     <Button onclick={() => (step = Math.max(0, step - 1))} variant="outline">
       Back

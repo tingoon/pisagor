@@ -1,23 +1,46 @@
 ## Anatomy
 
 ```vue
-<DropdownMenu>
+<DropdownMenu.Root>
   <DropdownMenu.Trigger />
-  <DropdownMenu.Content>
-    <DropdownMenu.ItemGroup>
-      <DropdownMenu.Item>
-        <DropdownMenu.Shortcut />
-      </DropdownMenu.Item>
-      <DropdownMenu.CheckboxItem />
+  <DropdownMenu.Positioner>
+    <DropdownMenu.Content>
+      <DropdownMenu.ItemGroup>
+        <DropdownMenu.ItemGroupLabel />
+        <DropdownMenu.Item>
+          <DropdownMenu.Shortcut />
+        </DropdownMenu.Item>
+      </DropdownMenu.ItemGroup>
+      <DropdownMenu.CheckboxItem>
+        <DropdownMenu.ItemIndicator />
+        <DropdownMenu.ItemText />
+      </DropdownMenu.CheckboxItem>
       <DropdownMenu.RadioItemGroup>
-        <DropdownMenu.RadioItem />
+        <DropdownMenu.RadioItem>
+          <DropdownMenu.ItemIndicator />
+          <DropdownMenu.ItemText />
+        </DropdownMenu.RadioItem>
       </DropdownMenu.RadioItemGroup>
       <DropdownMenu.Separator />
       <DropdownMenu.Sub>
-        <DropdownMenu.TriggerItem />
-        <DropdownMenu.SubContent />
+        <DropdownMenu.TriggerItem>
+          <DropdownMenu.Indicator />
+        </DropdownMenu.TriggerItem>
+        <DropdownMenu.Positioner>
+          <DropdownMenu.Content />
+        </DropdownMenu.Positioner>
       </DropdownMenu.Sub>
-    </DropdownMenu.ItemGroup>
-  </DropdownMenu.Content>
-</DropdownMenu>
+    </DropdownMenu.Content>
+  </DropdownMenu.Positioner>
+</DropdownMenu.Root>
 ```
+
+Wrap each `Positioner` in `Teleport`. Icons are not built in: pass the check icon to `ItemIndicator` and the caret to `Indicator`.
+
+## Examples
+
+### Compound
+
+Build the menu from parts when you need full control over the structure.
+
+<Example name="Compound" />

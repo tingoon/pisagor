@@ -14,7 +14,6 @@ import type {
   ListboxRootProps as ListboxRootPrimitiveProps,
   ListboxValueTextProps,
 } from "@ark-ui/react";
-import { CheckIcon } from "@phosphor-icons/react";
 import type {
   ListboxItemRootContract,
   ListboxItemContract,
@@ -22,28 +21,31 @@ import type {
   ListboxRootContract,
   ListboxContract,
 } from "@pisagor/contracts";
-import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
+import {
+  dropdownMenuRecipe,
+  listboxItemRecipe,
+  listboxRecipe,
+} from "@pisagor/recipes";
 
-import { type ReactNode, useMemo } from "react";
+import type { ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
+import type { DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  Context: ListboxStylesContext,
-  useStyles: useListbox,
-  withContext: withListboxContext,
-} = createSlotRecipeContext({
-  name: "Listbox",
-  recipe: listboxRecipe,
-});
-
-const { Context: ListboxItemStylesContext, useStyles: useListboxItem } =
+const { Context: ListboxStylesContext, withContext: withListboxContext } =
   createSlotRecipeContext({
     name: "Listbox",
-    recipe: listboxItemRecipe,
+    recipe: listboxRecipe,
   });
+
+const {
+  withContext: withListboxItemContext,
+  withProvider: withListboxItemProvider,
+} = createSlotRecipeContext({
+  name: "Listbox",
+  recipe: listboxItemRecipe,
+});
 // #endregion
 
 // #region Types
@@ -104,38 +106,15 @@ export const ListboxContent = withListboxContext<ListboxContentProps>(
   },
 );
 
-export function ListboxItem({
-  variant = "default",
-  children,
-  recipe = listboxItemRecipe,
-  className,
-  ...rest
-}: ListboxItemProps) {
-  const slots = useMemo(() => recipe({ variant }), [variant, recipe]);
+export const ListboxItem = withListboxItemProvider<ListboxItemProps>(
+  ListboxPrimitive.Item,
+  { name: "Item", slot: "base" },
+);
 
-  return (
-    <ListboxItemStylesContext value={{ slots, variants: { variant } as never }}>
-      <ListboxPrimitive.Item
-        {...rest}
-        className={slots.base({ className })}
-        data-variant={variant}
-      >
-        {children}
-      </ListboxPrimitive.Item>
-    </ListboxItemStylesContext>
-  );
-}
-
-export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
-  const { slots } = useListboxItem();
-
-  return (
-    <ListboxPrimitive.ItemText
-      {...rest}
-      className={slots.text({ className })}
-    />
-  );
-}
+export const ListboxItemText = withListboxItemContext<ListboxItemTextProps>(
+  ListboxPrimitive.ItemText,
+  { name: "ItemText", slot: "text" },
+);
 
 export const ListboxItemGroup =
   withListboxContext<ListboxItemGroupPrimitiveProps>(
@@ -143,70 +122,48 @@ export const ListboxItemGroup =
     { name: "ItemGroup" },
   );
 
-export function ListboxItemGroupLabel({
-  className,
-  ...rest
-}: ListboxItemGroupLabelProps) {
-  const { slots } = useListbox();
-
-  return (
-    <ListboxPrimitive.ItemGroupLabel
-      {...rest}
-      className={slots.itemGroupLabel({ className })}
-    />
+export const ListboxItemGroupLabel =
+  withListboxContext<ListboxItemGroupLabelProps>(
+    ListboxPrimitive.ItemGroupLabel,
+    { name: "ItemGroupLabel" },
   );
-}
 
-export function ListboxValueText({
-  className,
-  ...rest
-}: ListboxValueTextProps) {
-  const { slots } = useListbox();
+export const ListboxValueText = withListboxContext<ListboxValueTextProps>(
+  ListboxPrimitive.ValueText,
+  { name: "ValueText" },
+);
 
-  return (
-    <ListboxPrimitive.ValueText
-      {...rest}
-      className={slots.valueText({ className })}
-    />
+/** Selected-item indicator; render your own icon inside. */
+export const ListboxItemIndicator =
+  withListboxItemContext<ListboxItemIndicatorProps>(
+    ListboxPrimitive.ItemIndicator,
+    { name: "ItemIndicator", slot: "indicator" },
   );
-}
 
-export function ListboxItemIndicator({
-  children,
-  className,
-  ...rest
-}: ListboxItemIndicatorProps) {
-  const { slots } = useListboxItem();
+const ListboxEmptyBase = withListboxContext<ListboxEmptyProps>(
+  ListboxPrimitive.Empty,
+  { name: "Empty" },
+);
 
-  return (
-    <ListboxPrimitive.ItemIndicator
-      {...rest}
-      className={slots.indicator({ className })}
-    >
-      {children ?? <CheckIcon />}
-    </ListboxPrimitive.ItemIndicator>
-  );
-}
-
-export function ListboxEmpty({
-  children,
-  className,
-  ...rest
-}: ListboxEmptyProps) {
+/** Empty state with localized default text. */
+export function ListboxEmpty({ children, ...rest }: ListboxEmptyProps) {
   const { m } = useLocale();
-  const { slots } = useListbox();
 
   return (
-    <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
+    <ListboxEmptyBase {...rest}>
       {children || m("listbox.empty")}
-    </ListboxPrimitive.Empty>
+    </ListboxEmptyBase>
   );
 }
 
-export function ListboxShortcut(props: DropdownMenuShortcutProps) {
+export function ListboxShortcut({
+  className,
+  ...rest
+}: DropdownMenuShortcutProps) {
   return (
-    <DropdownMenu.Shortcut
-      {...props}
+    <span
+      {...rest}
+      className={dropdownMenuRecipe().shortcut({ className })}
       data-part="shortcut"
       data-scope="listbox"
     />
@@ -246,13 +203,6 @@ export function ListboxShorthand({
 
 // #region Display Names
 ListboxRoot.displayName = "Listbox.Root";
-ListboxContent.displayName = "Listbox.Content";
-ListboxItem.displayName = "Listbox.Item";
-ListboxItemText.displayName = "Listbox.ItemText";
-ListboxItemGroup.displayName = "Listbox.ItemGroup";
-ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
-ListboxValueText.displayName = "Listbox.ValueText";
-ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 ListboxEmpty.displayName = "Listbox.Empty";
 ListboxShortcut.displayName = "Listbox.Shortcut";
 

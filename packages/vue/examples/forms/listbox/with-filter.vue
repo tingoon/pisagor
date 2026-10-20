@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { PhCheck } from "@phosphor-icons/vue";
 import { useFilter, useListCollection } from "@ark-ui/vue";
 import { Input, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
@@ -40,7 +41,9 @@ function onSearchChange(next: string) {
             :item="item"
           >
             <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
+            <Listbox.ItemIndicator>
+              <PhCheck />
+            </Listbox.ItemIndicator>
           </Listbox.Item>
           <Listbox.Empty v-if="isEmpty">
             No results found. Try a different search.

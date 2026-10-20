@@ -1,8 +1,8 @@
-export { default as CustomRecipe } from "./custom-recipe";
-export { default as Default } from "./default";
-export { default as Groups } from "./groups";
-export { default as Scrollable } from "./scrollable";
-export { default as Shortcuts } from "./shortcuts";
+export { default as CustomRecipe } from "./custom-recipe.vue";
+export { default as Default } from "./default.vue";
+export { default as Groups } from "./groups.vue";
+export { default as Scrollable } from "./scrollable.vue";
+export { default as Shortcuts } from "./shortcuts.vue";
 export { default as Shorthand } from "./shorthand.vue";
-export { default as WithDialog } from "./with-dialog";
-export { default as WithFooter } from "./with-footer";
+export { default as WithDialog } from "./with-dialog.vue";
+export { default as WithFooter } from "./with-footer.vue";

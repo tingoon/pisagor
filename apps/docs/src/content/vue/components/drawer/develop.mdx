@@ -7,18 +7,7 @@ import { Drawer } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<Drawer>
-  <Drawer.Trigger />
-  <Drawer.Content>
-    <Drawer.ContentInner>
-      <Drawer.Header />
-      <Drawer.Body />
-    </Drawer.ContentInner>
-    <Drawer.Footer>
-      <Drawer.CloseTrigger />
-    </Drawer.Footer>
-  </Drawer.Content>
-</Drawer>
+<Drawer />
 ```
 
 ## Examples
@@ -34,12 +23,6 @@ Slide a panel over the page for secondary detail or a short task.
 Inset the drawer from the viewport edge when a floating panel look fits better.
 
 <Example name="Inset" />
-
-### Drawer Content Inner
-
-Structure inner content regions when the drawer needs a composed body.
-
-<Example name="DrawerContentInner" />
 
 ### Snap Points
 
@@ -57,7 +40,7 @@ Limit swipe dismiss directions to match the drawer placement.
 
 ### Class names
 
-Pass `class` for a one-off change to a single element.
+Pass `classNames` to style a single slot without a new recipe.
 
 Override spacing when the default density does not match the surrounding layout.
 

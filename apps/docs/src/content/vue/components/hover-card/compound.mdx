@@ -1,8 +1,22 @@
 ## Anatomy
 
 ```vue
-<HoverCard>
+<HoverCard.Root>
   <HoverCard.Trigger />
-  <HoverCard.Content />
-</HoverCard>
+  <HoverCard.Positioner>
+    <HoverCard.Content>
+      <HoverCard.Arrow>
+        <HoverCard.ArrowTip />
+      </HoverCard.Arrow>
+    </HoverCard.Content>
+  </HoverCard.Positioner>
+</HoverCard.Root>
 ```
+
+## Examples
+
+### Compound
+
+Build the hover card from parts. Wrap the positioner in `Teleport` to render it outside the trigger's stacking context.
+
+<Example name="Compound" />

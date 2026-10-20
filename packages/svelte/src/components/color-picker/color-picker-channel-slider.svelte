@@ -3,23 +3,12 @@
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerChannelSliderProps,
   } from "@ark-ui/svelte";
-  import { cn } from "@pisagor/utils";
-  import { useStyles } from "./color-picker.context";
+  import { withContext } from "./color-picker.context";
 
-  let {
-    children,
-    class: className,
-    ...rest
-  }: ColorPickerChannelSliderProps = $props();
-  const styles = useStyles();
-  const slots = $derived(styles.slots);
+  let { children, ...rest }: ColorPickerChannelSliderProps = $props();
+  const part = withContext(() => rest, { name: "ChannelSlider" });
 </script>
 
-<ColorPickerPrimitive.ChannelSlider
-  {...rest}
-  class={slots.channelSlider({ class: cn(className) })}
->
+<ColorPickerPrimitive.ChannelSlider {...part.props}>
   {@render children?.()}
-  <ColorPickerPrimitive.ChannelSliderTrack class={slots.channelSliderTrack()} />
-  <ColorPickerPrimitive.ChannelSliderThumb class={slots.channelSliderThumb()} />
 </ColorPickerPrimitive.ChannelSlider>

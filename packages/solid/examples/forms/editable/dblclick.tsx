@@ -1,18 +1,20 @@
-import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 
 export function Dblclick() {
   return (
     <Card>
-      <Card.Header
-        description="Double-click the text to start editing"
-        title="Edit with double-click"
-      />
+      <Card.Header>
+        <Card.Title>Edit with double-click</Card.Title>
+        <Card.Description>
+          Double-click the text to start editing
+        </Card.Description>
+      </Card.Header>
       <Card.Content>
         <Field.Group>
           <Field>
             <Field.Label>Name</Field.Label>
-            <Editable activationMode="dblclick" defaultValue="Jane Doe">
+            <Editable.Root activationMode="dblclick" defaultValue="Jane Doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -43,11 +45,11 @@ export function Dblclick() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
           <Field>
             <Field.Label>Username</Field.Label>
-            <Editable activationMode="dblclick" defaultValue="@jane.doe">
+            <Editable.Root activationMode="dblclick" defaultValue="@jane.doe">
               <Editable.Area>
                 <Editable.Input asChild={(props) => <Input {...props()} />} />
                 <Editable.Preview />
@@ -78,7 +80,7 @@ export function Dblclick() {
                   )}
                 />
               </Editable.Control>
-            </Editable>
+            </Editable.Root>
           </Field>
         </Field.Group>
       </Card.Content>

@@ -1,5 +1,6 @@
-import { tourRecipe } from "@pisagor/recipes";
+import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
+import { tourRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandTourRecipe = tv({
@@ -13,30 +14,56 @@ const brandTourRecipe = tv({
 });
 
 export function CustomRecipe() {
+  const steps: TourStepType[] = [
+    {
+      actions: [{ action: "next" as const, label: "Start tour" }],
+      description:
+        "You gonna learn how to use to install and use the component.",
+      id: "step-1",
+      title: "Welcome to the tour",
+      type: "dialog",
+    },
+    {
+      actions: [
+        { action: "prev" as const, label: "Previous" },
+        { action: "next" as const, label: "Next" },
+      ],
+      description:
+        "Let's take a quick tour of the documentation site to help you get started。",
+      id: "step-2",
+      target: () => document.querySelector("#installation"),
+      title: "Installation step",
+      type: "tooltip",
+    },
+    {
+      actions: [
+        { action: "prev" as const, label: "Previous" },
+        { action: "next" as const, label: "Next" },
+      ],
+      description: "This is how to use the component.",
+      id: "step-3",
+      target: () => document.querySelector("#usage"),
+      title: "Usage step",
+      type: "tooltip",
+    },
+    {
+      actions: [{ action: "dismiss" as const, label: "Finish tour" }],
+      description: "You've completed the tour. Thank you for your time.",
+      id: "step-4",
+      title: "Tour complete",
+      type: "dialog",
+    },
+  ];
+
   return (
     <Tour
       recipe={brandTourRecipe}
-      steps={[
-        {
-          actions: [{ action: "next", label: "Next" }],
-          description: "This is the first step.",
-          id: "step-1",
-          title: "Welcome",
-          type: "dialog",
-        },
-        {
-          actions: [{ action: "dismiss", label: "Close" }],
-          description: "Tour complete.",
-          id: "step-2",
-          title: "Done",
-          type: "dialog",
-        },
-      ]}
-    >
-      <Tour.Trigger
-        asChild={(props) => <Button {...props()}>Start tour</Button>}
-      />
-      <Tour.Content />
-    </Tour>
+      steps={steps}
+      trigger={(props) => (
+        <Button {...props} variant="outline">
+          Open
+        </Button>
+      )}
+    />
   );
 }

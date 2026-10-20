@@ -1,17 +1,26 @@
-import PaginationEllipsis from "./pagination-ellipsis.svelte";
-import PaginationItem from "./pagination-item.svelte";
-import PaginationItemLink from "./pagination-item-link.svelte";
-import PaginationItems from "./pagination-items.svelte";
-import PaginationNextTrigger from "./pagination-next-trigger.svelte";
-import PaginationPrevTrigger from "./pagination-prev-trigger.svelte";
-import PaginationRoot from "./pagination-root.svelte";
+import { Pagination as PaginationPrimitive } from "@ark-ui/svelte";
+import PaginationShorthand from "./pagination.svelte";
+import Ellipsis from "./pagination-ellipsis.svelte";
+import Item from "./pagination-item.svelte";
+import ItemLink from "./pagination-item-link.svelte";
+import NextTrigger from "./pagination-next-trigger.svelte";
+import PrevTrigger from "./pagination-prev-trigger.svelte";
+import Root from "./pagination-root.svelte";
 
-export const Pagination = Object.assign(PaginationRoot, {
-  Ellipsis: PaginationEllipsis,
-  Item: PaginationItem,
-  ItemLink: PaginationItemLink,
-  Items: PaginationItems,
-  NextTrigger: PaginationNextTrigger,
-  PrevTrigger: PaginationPrevTrigger,
-  Root: PaginationRoot,
+export type {
+  PaginationContextProps,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationNextTriggerProps,
+  PaginationPrevTriggerProps,
+} from "@ark-ui/svelte";
+
+export const Pagination = Object.assign(PaginationShorthand, {
+  Context: PaginationPrimitive.Context,
+  Ellipsis,
+  Item,
+  ItemLink,
+  NextTrigger,
+  PrevTrigger,
+  Root,
 });

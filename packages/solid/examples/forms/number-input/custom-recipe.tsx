@@ -1,5 +1,5 @@
-import { numberInputRecipe } from "@pisagor/recipes";
 import { NumberInput } from "@pisagor/solid";
+import { numberInputRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
 const brandNumberInputRecipe = tv({

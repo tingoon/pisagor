@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Card, Carousel } from "@pisagor/vue";
+import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import { Button, Card, Carousel } from "@pisagor/vue";
 import { numberedSlides } from "./helpers";
 
 const slides = numberedSlides(8);
@@ -8,8 +9,16 @@ const slides = numberedSlides(8);
 <template>
   <Carousel.Root :slide-count="slides.length">
     <Carousel.Control>
-      <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-      <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+      <Carousel.PrevTrigger as-child>
+        <Button :click-effect="false" pill size="icon-md" variant="outline">
+          <PhCaretLeft aria-hidden="true" />
+        </Button>
+      </Carousel.PrevTrigger>
+      <Carousel.NextTrigger as-child>
+        <Button :click-effect="false" pill size="icon-md" variant="outline">
+          <PhCaretRight aria-hidden="true" />
+        </Button>
+      </Carousel.NextTrigger>
     </Carousel.Control>
     <Carousel.ItemGroup>
       <Carousel.Item

@@ -1,7 +1,7 @@
 import { useFilter, useListCollection } from "@ark-ui/vue";
-import { PhCaretUpDown } from "@phosphor-icons/vue";
+import { PhCaretUpDown, PhCheck } from "@phosphor-icons/vue";
 import { Button, Input, Listbox, Popover } from "@pisagor/vue";
-import { computed, defineComponent, h, ref } from "vue";
+import { computed, defineComponent, h, ref, Teleport } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -41,7 +41,7 @@ export default defineComponent({
         },
         () =>
           h(
-            Popover as ArkPart,
+            Popover.Root as ArkPart,
             {
               onOpenChange: ({ open }: { open: boolean }) => {
                 isOpen.value = open;
@@ -61,40 +61,46 @@ export default defineComponent({
                   ],
                 ),
               ),
-              h(
-                Popover.Content as ArkPart,
-                { class: "min-w-64 gap-2 p-1" },
-                () => [
-                  h(Input as ArkPart, {
-                    onValueChange: onSearchChange,
-                    placeholder: "Search...",
-                    value: search.value,
-                  }),
-                  h(Listbox.Content as ArkPart, null, () => [
-                    ...collection.value.items.map((item) =>
-                      h(
-                        Listbox.Item as ArkPart,
-                        { item, key: item.value },
-                        () => [
+              h(Teleport, { to: "body" }, [
+                h(Popover.Positioner as ArkPart, null, () =>
+                  h(
+                    Popover.Content as ArkPart,
+                    { class: "min-w-64 gap-2 p-1" },
+                    () => [
+                      h(Input as ArkPart, {
+                        onValueChange: onSearchChange,
+                        placeholder: "Search...",
+                        value: search.value,
+                      }),
+                      h(Listbox.Content as ArkPart, null, () => [
+                        ...collection.value.items.map((item) =>
                           h(
-                            Listbox.ItemText as ArkPart,
-                            null,
-                            () => item.label,
+                            Listbox.Item as ArkPart,
+                            { item, key: item.value },
+                            () => [
+                              h(
+                                Listbox.ItemText as ArkPart,
+                                null,
+                                () => item.label,
+                              ),
+                              h(Listbox.ItemIndicator as ArkPart, null, () =>
+                                h(PhCheck),
+                              ),
+                            ],
                           ),
-                          h(Listbox.ItemIndicator as ArkPart),
-                        ],
-                      ),
-                    ),
-                    isEmpty.value
-                      ? h(
-                          Listbox.Empty as ArkPart,
-                          null,
-                          () => "No results found. Try a different search.",
-                        )
-                      : null,
-                  ]),
-                ],
-              ),
+                        ),
+                        isEmpty.value
+                          ? h(
+                              Listbox.Empty as ArkPart,
+                              null,
+                              () => "No results found. Try a different search.",
+                            )
+                          : null,
+                      ]),
+                    ],
+                  ),
+                ),
+              ]),
             ],
           ),
       );

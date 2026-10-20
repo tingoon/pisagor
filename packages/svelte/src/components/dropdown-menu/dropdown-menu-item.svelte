@@ -1,29 +1,18 @@
 <script lang="ts">
   import { Menu as MenuPrimitive, type MenuItemProps } from "@ark-ui/svelte";
-  import type {
-    DropdownMenuItemRootContract,
-    DropdownMenuItemContract,
-  } from "@pisagor/contracts";
-  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-  import { cn } from "@pisagor/utils";
+  import type { DropdownMenuItemRootContract } from "@pisagor/contracts";
+  import { withItemProvider } from "./dropdown-menu.context";
 
-  type Props = MenuItemProps &
-    DropdownMenuItemRootContract &
-    DropdownMenuItemContract;
+  type Props = MenuItemProps & DropdownMenuItemRootContract;
 
-  let {
-    variant = "default",
-    recipe = dropdownMenuItemRecipe,
-    class: className,
-    children,
-    ...rest
-  }: Props = $props();
+  let { children, ...rest }: Props = $props();
+  const part = withItemProvider(() => rest, {
+    defaultProps: { "data-scope": "menu" },
+    name: "Item",
+    slot: "base",
+  });
 </script>
 
-<MenuPrimitive.Item
-  {...rest}
-  class={recipe({ variant }).base({ class: cn(className) })}
-  data-variant={variant}
->
+<MenuPrimitive.Item {...part.props}>
   {@render children?.()}
 </MenuPrimitive.Item>
