@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-bun
       - run: bun fmt --check
-      - run: bun lint
+      - run: bun run lint
       - run: bunx biome ci
       - run: bunx knip
 
