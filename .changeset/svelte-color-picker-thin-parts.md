@@ -1,5 +1,0 @@
----
-"@pisagor/svelte": minor
----
-
-Svelte `ColorPicker` follows the thin parts + shorthand pattern (mirrors React and Solid). `ColorPicker` is now the shorthand (the former `ColorPicker.Field`: swatch trigger, hex input, `clearable`, `variant`, `classNames`; children replace the default popover content). Parts map 1:1 to Ark; adds `Root`, `Positioner`, `AreaBackground`, `ChannelSliderTrack`, `ChannelSliderThumb`, `ChannelSliderLabel`, `ChannelSliderValueText` and `FormatTrigger`; `SwatchPreview` stays. **Breaking:** compound usage starts from `ColorPicker.Root` and you render `Portal` and `Positioner` yourself; `ColorPicker.Field` is removed; `Area` no longer renders `AreaBackground`; `ChannelSlider` no longer renders its track and thumb; `ClearTrigger` is a bare button that no longer wraps itself in an addon, renders an icon or hides itself; `variant` / `clearable` move from the root to the shorthand.

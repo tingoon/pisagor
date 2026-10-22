@@ -1,5 +1,45 @@
 # @pisagor/astro
 
+## 1.0.0
+
+### Major Changes
+
+- 7da3fb1: **Breaking:** Rename `@pisagor/props` to `@pisagor/contracts`. Update imports:
+  
+  ```ts
+  import type { ButtonRootContract } from "@pisagor/contracts";
+  ```
+
+### Patch Changes
+
+- Updated dependencies [12b7fcd]
+- Updated dependencies [ab23cda]
+- Updated dependencies [68aa748]
+- Updated dependencies [fc4ea2f]
+- Updated dependencies [914b1de]
+- Updated dependencies [d10ee2b]
+- Updated dependencies [dfa00fa]
+- Updated dependencies [8c1ba8e]
+- Updated dependencies [6454903]
+- Updated dependencies [804b60e]
+- Updated dependencies [179a336]
+- Updated dependencies [cddebff]
+- Updated dependencies [01c885e]
+- Updated dependencies [19fb071]
+- Updated dependencies [51f0b4a]
+- Updated dependencies [2fc35e7]
+- Updated dependencies [0308f2f]
+- Updated dependencies [7da3fb1]
+- Updated dependencies [c1c42dd]
+- Updated dependencies [3457a73]
+- Updated dependencies [5ac6d3a]
+- Updated dependencies [e304eff]
+- Updated dependencies [349ace9]
+  - @pisagor/contracts@1.0.0
+  - @pisagor/utils@0.3.0
+  - @pisagor/tokens@0.4.0
+  - @pisagor/recipes@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes

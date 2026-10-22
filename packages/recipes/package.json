@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/recipes",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Default recipe entry for Pisagor components (re-exports @pisagor/presets/pisagor).",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

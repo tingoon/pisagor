@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/presets",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Named recipe presets (skins) for Pisagor components.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
