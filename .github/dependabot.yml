@@ -1,7 +1,7 @@
 version: 2
 
 multi-ecosystem-groups:
-  all-dependencies:
+  dependencies:
     schedule:
       interval: weekly
     commit-message:
@@ -12,16 +12,16 @@ updates:
     directory: /
     patterns:
       - "*"
-    multi-ecosystem-group: all-dependencies
+    multi-ecosystem-group: dependencies
 
   - package-ecosystem: github-actions
     directory: /
     patterns:
       - "*"
-    multi-ecosystem-group: all-dependencies
+    multi-ecosystem-group: dependencies
 
   - package-ecosystem: docker
     directory: /.devcontainer
     patterns:
       - "*"
-    multi-ecosystem-group: all-dependencies
+    multi-ecosystem-group: dependencies
