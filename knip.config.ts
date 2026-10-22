@@ -1,7 +1,7 @@
 import { defineConfig } from "knip/config";
 
 export default defineConfig({
-  // Bun built-ins (`bun fmt`, `bun lint`, `bun check`), not package binaries.
+  // Bun built-ins (`bun fmt`, `bun check`), not package binaries.
   ignoreBinaries: ["check", "fmt"],
   // Compound parts are `export const X` then composed via Object.assign in the same file.
   ignoreExportsUsedInFile: true,
