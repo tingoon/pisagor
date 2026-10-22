@@ -7,7 +7,7 @@
   "scripts": {
     "build": "storybook build",
     "build-storybook": "bun run build",
-    "dev": "storybook dev -p 4003",
+    "dev": "storybook dev -p 4003 --exact-port",
     "typecheck": "astro sync && bun check"
   },
   "dependencies": {

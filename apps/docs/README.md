@@ -23,7 +23,7 @@ bun --filter docs dev
 
 | Script      | Description                             |
 | ----------- | --------------------------------------- |
-| `dev`       | Dev server on port 4000                 |
+| `dev`       | Dev server on port 4000 (strict)        |
 | `build`     | Static production build                 |
 | `preview`   | Preview the production build            |
 | `typecheck` | Type check (`astro sync` + `bun check`) |
