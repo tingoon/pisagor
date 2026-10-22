@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/contracts",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Framework-agnostic component contract types (TSDoc) for Pisagor — excludes native HTML attributes.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

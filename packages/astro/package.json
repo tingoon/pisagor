@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/astro",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Static Astro UI components styled with Tailwind CSS and shared recipes.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

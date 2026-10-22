@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/svelte",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Accessible Svelte UI components built on Ark UI and Tailwind CSS v4.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

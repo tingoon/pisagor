@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/utils",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Tree-shakeable class-name helpers (`cn`) for Pisagor.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

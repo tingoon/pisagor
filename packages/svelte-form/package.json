@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/svelte-form",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/svelte.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
