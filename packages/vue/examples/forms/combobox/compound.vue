@@ -18,7 +18,9 @@ function filter(_inputValue: string) {}
 <template>
   <Combobox.Root
     :collection="collection"
-    @input-value-change="(details: { inputValue: string }) => filter(details.inputValue)"
+    @input-value-change="
+      (details: { inputValue: string }) => filter(details.inputValue)
+    "
   >
     <Combobox.Control>
       <InputGroup>
