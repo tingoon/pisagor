@@ -19,7 +19,7 @@ function filter(_inputValue: string) {}
   <Combobox.Root
     multiple
     :collection="collection"
-    @input-value-change="({ inputValue }) => filter(inputValue)"
+    @input-value-change="(details: { inputValue: string }) => filter(details.inputValue)"
   >
     <Combobox.Control>
       <InputGroup>
