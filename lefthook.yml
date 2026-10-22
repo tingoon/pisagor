@@ -4,7 +4,7 @@ pre-commit:
     fmt:
       run: bun fmt --staged
     lint:
-      run: bun lint --staged
+      run: bunx biome lint --no-errors-on-unmatched {staged_files}
     biome:
       glob: "*.{astro,css,json,jsonc,svelte,vue}"
       run: bunx biome check --write --no-errors-on-unmatched {staged_files}
