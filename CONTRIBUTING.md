@@ -22,6 +22,7 @@ bun run dev
 - Vue Storybook: http://localhost:4002.
 - Astro Storybook: http://localhost:4003.
 - Solid / Svelte: stories under `apps/solid` (`solid-stories`) and `apps/svelte` (`svelte-stories`) (used by the docs site; no Storybook apps yet).
+- Ports are strict: if one is already in use, the dev server exits instead of falling back to another port. Free the port and rerun.
 
 ## CI
 

@@ -421,6 +421,7 @@ export default defineConfig({
         { find: /^#\//, replacement: `${docsSrc}/` },
       ],
     },
+    server: { strictPort: true },
     ssr: {
       noExternal: [
         "@pisagor/react",
