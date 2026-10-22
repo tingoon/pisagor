@@ -6,6 +6,8 @@ multi-ecosystem-groups:
       interval: weekly
     commit-message:
       prefix: "chore"
+    labels:
+      - "dependencies"
 
 updates:
   - package-ecosystem: bun
