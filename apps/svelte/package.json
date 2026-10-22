@@ -11,7 +11,7 @@
     "svelte": "catalog:"
   },
   "devDependencies": {
-    "svelte-check-native": "^1.8.0",
+    "svelte-check-native": "^1.10.0",
     "typescript": "catalog:"
   }
 }

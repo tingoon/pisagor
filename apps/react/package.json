@@ -11,7 +11,7 @@
     "typecheck": "bun check"
   },
   "dependencies": {
-    "@mantine/hooks": "^9.6.2",
+    "@mantine/hooks": "^9.7.3",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/react": "workspace:*",
     "@pisagor/react-form": "workspace:*",
@@ -20,15 +20,15 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^10.6.0",
-    "@storybook/addon-docs": "^10.6.0",
-    "@storybook/react-vite": "^10.6.0",
+    "@storybook/addon-a11y": "^10.6.2",
+    "@storybook/addon-docs": "^10.6.2",
+    "@storybook/react-vite": "^10.6.2",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "chromatic": "^18.9.4",
-    "storybook": "^10.6.0",
+    "chromatic": "^18.13.0",
+    "storybook": "^10.6.2",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
   }
