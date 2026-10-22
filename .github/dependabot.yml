@@ -6,28 +6,24 @@ multi-ecosystem-groups:
       interval: weekly
     assignees:
       - "cursor[bot]"
+    commit-message:
+      prefix: "chore"
 
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: bun
     directory: /
     patterns:
       - "*"
     multi-ecosystem-group: all-dependencies
-    commit-message:
-      prefix: "chore"
 
   - package-ecosystem: github-actions
     directory: /
     patterns:
       - "*"
     multi-ecosystem-group: all-dependencies
-    commit-message:
-      prefix: "chore"
 
   - package-ecosystem: docker
     directory: /.devcontainer
     patterns:
       - "*"
     multi-ecosystem-group: all-dependencies
-    commit-message:
-      prefix: "chore"
