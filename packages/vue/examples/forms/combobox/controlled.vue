@@ -27,7 +27,9 @@ function filter(_inputValue: string) {}
       class="w-full"
       :collection="collection"
       :input-value="value"
-      @input-value-change="({ inputValue }) => filter(inputValue)"
+      @input-value-change="
+        (details: { inputValue: string }) => filter(details.inputValue)
+      "
       @value-change="handleValueChange"
     >
       <Combobox.Control>
