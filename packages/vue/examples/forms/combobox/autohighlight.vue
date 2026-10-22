@@ -20,7 +20,9 @@ function filter(_inputValue: string) {}
   <Combobox.Root
     input-behavior="autohighlight"
     :collection="collection"
-    @input-value-change="({ inputValue }) => filter(inputValue)"
+    @input-value-change="
+      (details: { inputValue: string }) => filter(details.inputValue)
+    "
   >
     <Combobox.Control>
       <InputGroup>
