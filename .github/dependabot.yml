@@ -4,8 +4,6 @@ multi-ecosystem-groups:
   all-dependencies:
     schedule:
       interval: weekly
-    assignees:
-      - "cursor[bot]"
     commit-message:
       prefix: "chore"
 
