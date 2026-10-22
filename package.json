@@ -22,7 +22,7 @@
     "check": "bun fmt --check && bun run lint && biome check --linter-enabled=false . && turbo run typecheck --output-logs=errors-only && knip",
     "dev": "turbo run dev",
     "format": "bun fmt && biome check --write .",
-    "lint": "bun lint && biome lint --no-errors-on-unmatched .",
+    "lint": "biome lint --no-errors-on-unmatched .",
     "prepare": "lefthook install && rulesync install",
     "rulesync": "rulesync generate",
     "setup": "bun run rulesync",
