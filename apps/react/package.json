@@ -20,15 +20,15 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^10.6.2",
-    "@storybook/addon-docs": "^10.6.2",
-    "@storybook/react-vite": "^10.6.2",
+    "@storybook/addon-a11y": "^10.6.3",
+    "@storybook/addon-docs": "^10.6.3",
+    "@storybook/react-vite": "^10.6.3",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "chromatic": "^18.13.0",
-    "storybook": "^10.6.2",
+    "chromatic": "^18.13.2",
+    "storybook": "^10.6.3",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
   }
