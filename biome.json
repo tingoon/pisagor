@@ -40,7 +40,7 @@
         "noUnusedVariables": "error"
       },
       "nursery": {
-        "useSortedClasses": "warn"
+        "useTailwindSortedClasses": "warn"
       },
       "style": {
         "noNonNullAssertion": "warn",
