@@ -1,6 +1,4 @@
-/**
- * Shared helpers for `bun pm pack` tarball checks (release + CI verify).
- */
+/** Shared helpers for `bun pm pack` tarball checks (release + CI verify). */
 import { execSync } from "node:child_process";
 import {
   existsSync,
@@ -90,14 +88,20 @@ export function findLeakedSpecifiers(manifest: PackageJson): string[] {
 }
 
 export function readManifestFromTarball(tgzPath: string): PackageJson {
-  const jsonLine = execSync(`tar -xOf ${JSON.stringify(tgzPath)} package/package.json`, {
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "pipe"],
-  });
+  const jsonLine = execSync(
+    `tar -xOf ${JSON.stringify(tgzPath)} package/package.json`,
+    {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
   return JSON.parse(jsonLine) as PackageJson;
 }
 
-/** Run `bun pm pack` in packageDir; returns path to created .tgz (and cleans old tgz in dir). */
+/**
+ * Run `bun pm pack` in packageDir; returns path to created .tgz (and cleans old
+ * tgz in dir).
+ */
 export function bunPmPack(packageDir: string): string {
   for (const file of readdirSync(packageDir)) {
     if (file.endsWith(".tgz")) {

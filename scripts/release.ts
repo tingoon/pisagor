@@ -1,5 +1,6 @@
 /**
- * Custom Changesets publish: bun pm pack → verify tarball → npm publish (provenance) → changeset tag.
+ * Custom Changesets publish: bun pm pack → verify tarball → npm publish
+ * (provenance) → changeset tag.
  */
 import { execSync } from "node:child_process";
 import { rmSync } from "node:fs";
@@ -26,7 +27,9 @@ function main(): void {
     console.log(`Pack ${name}@${version}…`);
     const { tgzPath, leaks } = packAndCheck(dir);
     if (leaks.length > 0) {
-      console.error(`Refusing to publish ${name}@${version} — tarball still contains:`);
+      console.error(
+        `Refusing to publish ${name}@${version} — tarball still contains:`,
+      );
       for (const leak of leaks) console.error(`  - ${leak}`);
       process.exit(1);
     }
