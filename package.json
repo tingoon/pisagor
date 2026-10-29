@@ -28,9 +28,8 @@
     "setup": "bun run rulesync",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "resolve-specifiers": "bun ./scripts/resolve-specifiers.ts",
     "verify-pack": "bun ./scripts/verify-pack.ts",
-    "release": "bun run resolve-specifiers && bun run verify-pack && bunx changeset publish"
+    "release": "bun ./scripts/release.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",

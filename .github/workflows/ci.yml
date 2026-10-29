@@ -59,9 +59,7 @@ jobs:
       - uses: ./.github/actions/setup-bun
       - name: Build publishable packages
         run: bunx turbo run build --filter='./packages/*'
-      - name: Resolve dependency specifiers (dry run)
-        run: bun run resolve-specifiers
-      - name: Verify packed manifests
+      - name: Verify bun pm pack manifests (dry run)
         run: bun run verify-pack
 
   build:
