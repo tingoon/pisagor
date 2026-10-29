@@ -22,6 +22,7 @@ type PackageJson = {
   dependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   optionalDependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
 };
 
 type WorkspacePackage = {
