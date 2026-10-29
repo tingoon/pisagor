@@ -52,6 +52,18 @@ jobs:
           turbo-cache: "true"
       - run: bunx turbo run test --affected
 
+  publish-specifiers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-bun
+      - name: Build publishable packages
+        run: bunx turbo run build --filter='./packages/*'
+      - name: Resolve dependency specifiers (dry run)
+        run: bun run resolve-specifiers
+      - name: Verify packed manifests
+        run: bun run verify-pack
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -70,7 +82,7 @@ jobs:
           DOCS_SITE: https://tingoon.github.io
 
   check:
-    needs: [lint, typecheck, test, build]
+    needs: [lint, typecheck, test, build, publish-specifiers]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -80,3 +92,4 @@ jobs:
           test "${{ needs.typecheck.result }}" = "success"
           test "${{ needs.test.result }}" = "success"
           test "${{ needs.build.result }}" = "success"
+          test "${{ needs.publish-specifiers.result }}" = "success"
