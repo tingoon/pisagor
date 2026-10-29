@@ -27,7 +27,9 @@
     "rulesync": "rulesync generate",
     "setup": "bun run rulesync",
     "test": "turbo run test",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "verify-pack": "bun ./scripts/verify-pack.ts",
+    "release": "bun ./scripts/release.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",

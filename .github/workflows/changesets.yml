@@ -27,11 +27,14 @@ jobs:
       - name: Ensure npm supports OIDC
         run: npm install -g npm@latest
 
+      - name: Build publishable packages
+        run: bunx turbo run build --filter='./packages/*'
+
       - name: Create version PR or publish
         uses: changesets/action@v2.1.2
         with:
           version-script: bunx changeset version
-          publish-script: bunx changeset publish
+          publish: bun run release
           pr-title: "chore: apply changesets"
           commit-message: "chore: apply changesets"
         env:

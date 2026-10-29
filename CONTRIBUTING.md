@@ -91,12 +91,12 @@ Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope wit
 
 1. In a feature PR, run `bunx changeset` (packages + `patch` / `minor` / `major`). Commit `.changeset/*`.
 2. Merge to `main`. The **Release** workflow opens a version PR (changelog + bumps).
-3. Merge that PR. The same workflow runs `changeset publish` (OIDC Trusted Publishing, no `NPM_TOKEN`) and creates git tags.
+3. Merge that PR. The same workflow runs `bun run release` (`bun pm pack` → tarball check → `npm publish --provenance` → `changeset tag`; OIDC Trusted Publishing, no `NPM_TOKEN`).
 
 Local publish (after `npm login` / OTP), from a clean tree with bumped versions:
 
 ```bash
-bunx changeset publish
+bun run release
 ```
 
 Trusted Publisher (once per package): GitHub Actions → org/user `tingoon`, repository `pisagor`, workflow filename `changesets.yml`.
